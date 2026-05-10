@@ -1,0 +1,150 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const term = Astro.url.searchParams.get("term") || "";
+const results = [
+  ["Solutions", "Find solutions to the most common problems.", "/support/solutions/"],
+  ["Forums", "Discuss and suggest improvements with the Seclore community.", "/support/discussions/"],
+  ["Tickets", "Create a new support ticket for a Seclore issue.", "/support/tickets/new/"],
+  ["Escalate Ticket", "Escalate by emailing supportescalation@seclore.com.", "/support/home/#escalate-ticket"]
+];
+---
+
+<BaseLayout title="Search | Seclore Support">
+  <main class="search-page">
+    <Nav />
+    <header>
+      <a class="logo" href="/">SECLORE<sup>TM</sup></a>
+      <a class="pill" href="/support/home/#contact">Contact Us</a>
+    </header>
+    <section class="content">
+      <a href="/support/home/">Back to Support Home</a>
+      <h1>Search</h1>
+      <form action="/support/search/" method="get">
+        <input name="term" type="search" value={term} placeholder="Enter your search term here..." />
+        <button type="submit">Search</button>
+      </form>
+      <p>{term ? `Showing support results for "${term}"` : "Enter a search term to find support content."}</p>
+      <div class="results">
+        {results.map(([title, text, href]) => (
+          <a href={href}>
+            <strong>{title}</strong>
+            <span>{text}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    background: #f6f6f6;
+    color: #161616;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+
+  :global(body::before) {
+    display: none;
+  }
+
+  header {
+    align-items: center;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    min-height: 95px;
+    padding: 22px clamp(24px, 4.4vw, 54px);
+  }
+
+  .logo {
+    color: #4d2dcc;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 0.78;
+  }
+
+  .logo sup {
+    font-size: 0.18em;
+    font-weight: 500;
+    margin-left: 5px;
+  }
+
+  .pill {
+    background: #5f3fd6;
+    border-radius: 999px;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 14px 27px;
+  }
+
+  .content {
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 54px 24px 90px;
+  }
+
+  .content > a,
+  .results a strong {
+    color: #4d2dcc;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin: 28px 0 18px;
+  }
+
+  form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  input {
+    border: 1px solid #d1c7ef;
+    flex: 1;
+    font-size: 1.1rem;
+    min-height: 48px;
+    padding: 10px 12px;
+  }
+
+  button {
+    background: #5f3fd6;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0 22px;
+  }
+
+  .results {
+    display: grid;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .results a {
+    background: #ffffff;
+    border: 1px solid #e2ddf6;
+    border-radius: 6px;
+    display: grid;
+    gap: 5px;
+    padding: 18px;
+  }
+
+  .results span {
+    color: #222222;
+  }
+
+  @media (max-width: 640px) {
+    header,
+    form {
+      align-items: stretch;
+      flex-direction: column;
+    }
+  }
+</style>

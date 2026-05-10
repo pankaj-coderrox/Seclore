@@ -1,0 +1,149 @@
+---
+import Footer from "@components/Footer.astro";
+
+const {
+  title = "seclore | Data Security Platform",
+  description = "An original enterprise cybersecurity SaaS website for data-first protection, visibility, and governance."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      (() => {
+        const storedTheme = localStorage.getItem("theme");
+        document.documentElement.dataset.theme = storedTheme || "light";
+      })();
+    </script>
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
+
+  main {
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  main *,
+  .seclore-nav *,
+  .seclore-footer * {
+    min-width: 0;
+  }
+
+  @media (max-width: 1100px) {
+    main :where([class$="-hero"], [class*="-hero "], .hero, .split, .split-section, .demo-band, .platform-band, .testimonial-band, .armor-panel, .enable-section, .industries-section) {
+      grid-template-columns: 1fr !important;
+    }
+
+    main :where([class$="-grid"], [class*="-grid "], [class$="-list"], [class*="-list "]) {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    main :where(.hero-copy, .split-copy, .demo-copy, .section-heading, .centered) {
+      max-width: 100% !important;
+    }
+  }
+
+  @media (max-width: 760px) {
+    main :where(section, .section, [class$="-section"], [class*="-section "], [class$="-hero"], [class*="-hero "], [class$="-band"], [class*="-band "]) {
+      padding-left: clamp(16px, 5vw, 24px) !important;
+      padding-right: clamp(16px, 5vw, 24px) !important;
+    }
+
+    main :where([class$="-grid"], [class*="-grid "], [class$="-list"], [class*="-list "], [class$="-row"], [class*="-row "], .form-grid, .outcome-grid, .resource-grid, .feature-list, .related-grid, .card-grid) {
+      grid-template-columns: 1fr !important;
+    }
+
+    main :where(h1) {
+      font-size: clamp(2.35rem, 11vw, 3.7rem) !important;
+      letter-spacing: 0 !important;
+      line-height: 1.02 !important;
+      overflow-wrap: anywhere;
+    }
+
+    main :where(h2) {
+      font-size: clamp(1.85rem, 8vw, 3rem) !important;
+      letter-spacing: 0 !important;
+      line-height: 1.08 !important;
+      overflow-wrap: anywhere;
+    }
+
+    main :where(h3) {
+      font-size: clamp(1.05rem, 5vw, 1.45rem) !important;
+      line-height: 1.18 !important;
+      overflow-wrap: anywhere;
+    }
+
+    main :where(p, li) {
+      font-size: clamp(0.95rem, 3.9vw, 1.08rem) !important;
+      line-height: 1.55 !important;
+    }
+
+    main :where(.hero-actions, .home-actions, .resource-heading, .insights-heading, .customer-row, .logo-row, .trust-row) {
+      align-items: stretch !important;
+      flex-direction: column !important;
+    }
+
+    main :where(.primary-button, .secondary-button, .home-button, .btn, button[type="submit"]) {
+      max-width: 100%;
+      white-space: normal;
+    }
+
+    main :where(.photo-card, .hero-photo, .intro-photo, .feature-photo, .motion-image, .laptop-visual, .screenshot-shell, .mock-window) {
+      max-width: 100% !important;
+    }
+
+    main :where(.photo-card, .hero-photo, .intro-photo, .feature-photo, .motion-image) {
+      min-height: 0 !important;
+    }
+
+    main :where(.home-info-card, .industry-card, .insight-card, .resource-card, .feature-card, .compliance-card, .capability-card, .related-card, .quote-panel, .story-section) {
+      min-height: 0 !important;
+      padding: clamp(20px, 6vw, 28px) !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    main :where(section, .section, [class$="-section"], [class*="-section "], [class$="-hero"], [class*="-hero "], [class$="-band"], [class*="-band "]) {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+
+    main :where(h1) {
+      font-size: clamp(2.15rem, 12vw, 3.2rem) !important;
+    }
+
+    main :where(.primary-button, .secondary-button, .home-button, .btn) {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+</style>

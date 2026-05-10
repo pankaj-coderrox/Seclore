@@ -1,0 +1,995 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const logos = [
+  ["STC", "https://www.seclore.com/wp-content/uploads/stc-40px.png"],
+  ["PIF", "https://www.seclore.com/wp-content/uploads/pif-40px.png"],
+  ["Maruti Suzuki", "https://www.seclore.com/wp-content/uploads/maruti-40px.png"],
+  ["Linde", "https://www.seclore.com/wp-content/uploads/linde-40px.png"],
+  ["Ford", "https://www.seclore.com/wp-content/uploads/ford-40px.png"],
+  ["American Express", "https://www.seclore.com/wp-content/uploads/american-express-40px.png"]
+];
+
+const reasons = [
+  {
+    title: "The innovator in data security for enterprises",
+    text: "Enterprises have unique requirements for data-centric security. Enterprise security teams are always understaffed, which means deployment, usage, and maintenance should be low/no overhead for security teams. Adoption has to be highly automated since changing user behavior can increase time-to-value. Any system should integrate with the existing data and identity infrastructure of the enterprise. The list of requirements for enterprises to adopt data-centric security is long and unique. Only Seclore provides comprehensive capabilities that allow large enterprises to move to data-centric security quickly and reliably.",
+    align: "right",
+    image: "https://www.seclore.com/wp-content/uploads/prism-graphic.png"
+  },
+  {
+    title: "Orchestrate the lifecycle of discovery - classification - protection and tracking",
+    text: "Any comprehensive data security platform should cover all the four capabilities i.e. Data Discovery, Data Classification, Data Protection and Data Tracking. While none of these capabilities by themselves are new, the combination of an all in one powerful platform which allows orchestration increases the value manifold. Seclore's DCSP orchestrates the four capabilities allowing for enterprises to deploy best-of-breed solutions.",
+    align: "left",
+    image: "https://www.seclore.com/wp-content/uploads/seclore-orchestration-platform_03062025_v2-1.png"
+  },
+  {
+    title: "Simplify compliance with multiple privacy and export control regulations",
+    text: "Large enterprises today are under pressure to comply with multiple privacy regulations like GDPR, CCPA, NIST, PCI-DSS, etc. Driving numerous privacy compliance initiatives is expensive and complex for enterprises. Seclore's offerings help enterprises move privacy to its most atomic level i.e. data and therefore simplifies compliance to multiple global compliance frameworks.",
+    align: "right",
+    image: "https://www.seclore.com/wp-content/uploads/target-graphic.png"
+  },
+  {
+    title: "Share data fearlessly within and outside the enterprise",
+    text: "Seclore's persistent data-centric security enables enterprises to share data within the enterprise and with external agencies like suppliers, partners, customers, and shareholders without worrying about security and compliance. Enterprise supply chains tend to be large, complex and global. This increases the complexity of supply chain security initiatives. With Seclore, security and privacy policies travel with the data creating the possibility of new workflows within the supply chain.",
+    align: "left",
+    image: "https://www.seclore.com/wp-content/uploads/woman-emailing.png"
+  },
+  {
+    title: "A single-pane-of-glass view of data",
+    text: "Seclore's risk insights provides enterprises with a single-pane-of-glass view of data assets within the enterprise, on cloud and with external agencies. Risk insights provide drill-down views of where the data is, what level of classification each element of data falls into, WHO is doing WHAT with the data, WHEN, and from WHERE. This kind of metadata has just not existed in the past, and enterprises find it incredibly useful in monitoring data flows, compliance, compliance reporting, forensic investigations, and measuring enterprise risk.",
+    align: "right",
+    image: "https://www.seclore.com/wp-content/uploads/pinwheel-graphic.png"
+  },
+  {
+    title: "Flexibility across on-prem or cloud provisioning",
+    text: "Seclore provides complete solutions for enterprises and government agencies to use it off Seclore's cloud (SaaS) with no overhead on enterprise infrastructure OR deploy the platform within the enterprise data center / private cloud including within air-gapped networks for high security environments. This flexibility allows enterprises to choose the provisioning method at will.",
+    align: "left",
+    image: "https://www.seclore.com/wp-content/uploads/photo-45.jpg"
+  },
+  {
+    title: "Seclore provides the \"complete solution\" for enterprises",
+    text: "At Seclore, we combine cutting-edge products with deep vertical expertise, comprehensive 24x7 support, professional services, strategic partnerships, and global presence. Seclore has successfully deployed the Seclore DCSP within the largest enterprises in 40 countries and government agencies in more than 10 countries in North America, Europe, and Asia. Numerous customers regularly protect digital assets in the millions every month with Seclore. The combination ensures that any data-centric security initiative succeeds with tangible results.",
+    align: "right",
+    image: "https://www.seclore.com/wp-content/uploads/seclore-why-traditional-tools-fall-short.png"
+  }
+];
+
+const resources = [
+  {
+    type: "Blog Post",
+    category: "AI, Company, Data Security",
+    title: "The Debate About AI in the Enterprise Is Over. Here Is the Only Question That Matters.",
+    image: "https://www.seclore.com/wp-content/uploads/May6-blog-300x200.png",
+    cta: "View Blog Post"
+  },
+  {
+    type: "Blog Post",
+    category: "AI Risk, Data Security",
+    title: "The Missing Link in Enterprise AI: Why Context and Behavior Are the New Security Perimeter",
+    image: "https://www.seclore.com/wp-content/uploads/context-blog-300x200.png",
+    cta: "View Blog Post"
+  },
+  {
+    type: "On-Demand Webinar",
+    category: "Compliance",
+    title: "From AI Risk to AI Readiness: Where Trust Becomes Operational, Not Aspirational.",
+    image: "https://www.seclore.com/wp-content/uploads/march-2026-webinar-recap-300x300.png",
+    cta: "View On-Demand Webinar"
+  }
+];
+
+---
+
+<BaseLayout
+  title="Why Seclore | Data Security Intelligence for Enterprises"
+  description="Learn why Seclore is the enterprise data security intelligence platform for classification, protection, tracking, compliance, and secure collaboration."
+>
+  <main id="top" class="why-page">
+    <Nav />
+
+    <section class="why-hero">
+      <div class="hero-copy">
+        <span>Why Seclore</span>
+        <h1>Data security intelligence is the only security option for enterprises</h1>
+        <p>
+          Seclore provides comprehensive Data Security Intelligence enabling enterprises to trust
+          and control your data and achieve compliance wherever people and AI work.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#demo">Book a Demo</a>
+          <a class="outline-button" href="https://www.seclore.com/wp-content/uploads/Seclore-One-Pager-Nov-2023.pdf">Download Datasheet</a>
+        </div>
+      </div>
+      <img
+        src="https://www.seclore.com/wp-content/uploads/2025/01/photo-24.png"
+        alt="Enterprise security team standing together"
+      />
+    </section>
+
+    <section class="logo-section" aria-label="Trusted by industry-leading enterprises">
+      <h2>Trusted by industry-leading enterprises</h2>
+      <div class="logo-strip">
+        {logos.map(([label, src]) => <img src={src} alt={label} loading="lazy" />)}
+      </div>
+    </section>
+
+    <section class="reason-stack">
+      {reasons.map((reason) => (
+        <article class={`reason-row ${reason.align}`}>
+          <div class="reason-media" aria-hidden="true">
+            <img src={reason.image} alt="" loading="lazy" />
+          </div>
+          <div class="reason-copy">
+            <h2>{reason.title}</h2>
+            <p>{reason.text}</p>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <section class="quote-card">
+      <blockquote>
+        "Shilpa shares over 1,000 documents back and forth each month, and 30+ authorized users
+        from the Regulatory Affairs and Audit Departments protect and share an additional 400+
+        confidential files with external agencies."
+      </blockquote>
+      <p>- Shilpa Medicare</p>
+      <a class="dark-button" href="#trusted">Customer Story</a>
+    </section>
+
+    <section class="trusted-section" id="trusted">
+      <h2>Trusted by leading enterprises</h2>
+      <img
+        src="https://www.seclore.com/wp-content/uploads/2025/02/why-Trusted-by-Leading-Enterprises.jpg"
+        alt="Trusted enterprise customer story card"
+        loading="lazy"
+      />
+    </section>
+
+    <section class="resources-section">
+      <div class="section-heading">
+        <h2>Additional resources</h2>
+        <p>
+          Seclore is a leading provider of data-centric security. Our solution is easy to use and
+          highly effective at preventing data breaches and ensuring regulatory compliance.
+        </p>
+      </div>
+      <div class="resource-grid">
+        {resources.map((resource) => (
+          <article class="resource-card">
+            <img src={resource.image} alt="" loading="lazy" />
+            <span>{resource.type}</span>
+            <small>{resource.category}</small>
+            <h3>{resource.title}</h3>
+            <a href="#top">{resource.cta} -></a>
+          </article>
+        ))}
+      </div>
+      <div class="pager" aria-label="Resource carousel controls">
+        <button type="button" aria-label="Previous resource">-</button>
+        <button type="button" aria-label="Next resource">+</button>
+      </div>
+    </section>
+
+    <section class="ready-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#top">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #eff0f2;
+    --paper: #ffffff;
+    --ink: #161219;
+    --muted: #5a5860;
+    --deep: #241024;
+    --purple: #5b2bd7;
+    --pink: #d91f52;
+    --line: rgba(25, 22, 30, 0.13);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --demo-button-bg: #5b2bd7;
+    --demo-button-text: #ffffff;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--ink);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  .why-page .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .why-page .site-logo {
+    color: var(--purple);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: clamp(14px, 2vw, 28px);
+    text-transform: uppercase;
+  }
+
+  .why-page .nav-links,
+  .why-page .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .why-page .nav-links {
+    flex: 1 1 auto;
+    gap: clamp(18px, 2.2vw, 34px);
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .why-page .nav-links > a,
+  .why-page .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    gap: 8px;
+    min-height: 68px;
+    padding: 0;
+  }
+
+  .why-page .nav-links > a:hover,
+  .why-page .nav-trigger:hover,
+  .why-page .nav-item:hover .nav-trigger,
+  .why-page .nav-item:focus-within .nav-trigger {
+    color: var(--header-text);
+  }
+
+  .why-page .nav-item {
+    position: static;
+  }
+
+  .why-page .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 8px;
+  }
+
+  .why-page .nav-item:hover .nav-caret,
+  .why-page .nav-item:focus-within .nav-caret,
+  .why-page .nav-item.is-open .nav-caret {
+    transform: rotate(225deg) translateY(-1px);
+  }
+
+  .why-page .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .why-page .nav-item:hover .mega-menu,
+  .why-page .nav-item:focus-within .mega-menu,
+  .why-page .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .why-page .mega-inner {
+    background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .why-page .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .why-page .mega-column,
+  .why-page .mega-sublinks {
+    display: grid;
+  }
+
+  .why-page .mega-column {
+    gap: 10px;
+  }
+
+  .why-page .mega-title {
+    color: var(--dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .why-page .mega-link,
+  .why-page .mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .why-page .mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .why-page .mega-link strong {
+    color: var(--dropdown-text);
+  }
+
+  .why-page .mega-link small,
+  .why-page .mega-sublinks a {
+    color: var(--dropdown-muted);
+  }
+
+  .why-page .mega-link:hover,
+  .why-page .mega-link-group:hover {
+    background: var(--dropdown-link-hover);
+    border-color: var(--dropdown-link-border);
+  }
+
+  .why-page .mega-link-group {
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .why-page .mega-sublinks {
+    gap: 2px;
+    padding: 0 9px 8px 22px;
+  }
+
+  .why-page .mega-sublinks a {
+    font-size: 0.84rem;
+    padding: 5px 0;
+  }
+
+  .why-page .mega-feature {
+    align-content: end;
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .why-page .mega-feature span,
+  .why-page .mega-feature em {
+    color: var(--dropdown-title);
+  }
+
+  .why-page .mega-feature strong {
+    color: var(--dropdown-text);
+    font-size: 1.35rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .why-page .nav-utilities {
+    flex: 0 0 auto;
+    gap: clamp(12px, 1.5vw, 20px);
+    margin-left: clamp(12px, 2vw, 28px);
+  }
+
+  .why-page .utility-link,
+  .why-page .language-button,
+  .why-page .utility-icon,
+  .why-page .theme-toggle {
+    display: none;
+  }
+
+  .why-page .demo-button,
+  .primary-button,
+  .outline-button,
+  .dark-button {
+    align-items: center;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.86rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+  }
+
+  .why-page .demo-button,
+  .primary-button {
+    background: var(--purple);
+    color: #ffffff;
+  }
+
+  .outline-button {
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #ffffff;
+  }
+
+  .dark-button {
+    background: #130b16;
+    color: #ffffff;
+  }
+
+  .why-page .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .why-page .nav-toggle span {
+    background: var(--header-text);
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  .why-page h1,
+  .why-page h2,
+  .why-page h3,
+  .why-page p {
+    margin-top: 0;
+  }
+
+  .why-page h1,
+  .why-page h2,
+  .why-page h3 {
+    color: var(--ink);
+    font-weight: 430;
+    letter-spacing: 0;
+  }
+
+  .why-hero {
+    align-items: center;
+    background: var(--deep);
+    color: #ffffff;
+    display: grid;
+    gap: clamp(28px, 5vw, 70px);
+    grid-template-columns: minmax(0, 0.95fr) minmax(300px, 1.05fr);
+    min-height: 610px;
+    padding: clamp(60px, 8vw, 104px) clamp(18px, 4vw, 56px);
+  }
+
+  .hero-copy {
+    max-width: 670px;
+  }
+
+  .hero-copy span,
+  .logo-section h2 {
+    color: var(--pink);
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+
+  .why-hero h1 {
+    color: #ffffff;
+    font-size: clamp(3.1rem, 6.5vw, 5.9rem);
+    line-height: 0.96;
+    margin-bottom: 24px;
+  }
+
+  .why-hero p {
+    color: rgba(255, 255, 255, 0.84);
+    line-height: 1.55;
+    max-width: 600px;
+  }
+
+  .why-hero img {
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .logo-section {
+    background: #ffffff;
+    padding: 32px clamp(18px, 4vw, 56px);
+    text-align: center;
+  }
+
+  .logo-section h2 {
+    font-size: 0.72rem;
+    margin-bottom: 22px;
+  }
+
+  .logo-strip {
+    align-items: center;
+    display: grid;
+    gap: clamp(22px, 5vw, 76px);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .logo-strip img {
+    filter: grayscale(1);
+    margin: 0 auto;
+    max-height: 32px;
+    max-width: 130px;
+    opacity: 0.72;
+    width: 100%;
+  }
+
+  .reason-stack {
+    background: var(--page-bg);
+    padding: clamp(42px, 6vw, 82px) clamp(18px, 4vw, 56px);
+  }
+
+  .reason-row {
+    align-items: center;
+    display: grid;
+    gap: clamp(28px, 5vw, 72px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 auto clamp(56px, 9vw, 110px);
+    max-width: 1220px;
+  }
+
+  .reason-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .reason-row.right .reason-copy {
+    grid-column: 2;
+  }
+
+  .reason-row.right .reason-media {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .reason-row.left .reason-copy {
+    grid-column: 1;
+  }
+
+  .reason-row.left .reason-media {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .reason-copy {
+    max-width: 560px;
+  }
+
+  .reason-copy h2,
+  .trusted-section h2,
+  .section-heading h2 {
+    font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .reason-copy p,
+  .section-heading p,
+  .ready-section p,
+  .why-footer p {
+    color: var(--muted);
+    line-height: 1.58;
+  }
+
+  .reason-media {
+    min-height: 320px;
+  }
+
+  .reason-media img {
+    display: block;
+    max-height: 420px;
+    object-fit: contain;
+    opacity: 0.78;
+    width: 100%;
+  }
+
+  .quote-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 18px 45px rgba(16, 12, 20, 0.08);
+    margin: 0 clamp(18px, 4vw, 56px) clamp(50px, 7vw, 84px);
+    padding: clamp(24px, 4vw, 42px);
+    text-align: center;
+  }
+
+  .quote-card blockquote {
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    font-weight: 650;
+    line-height: 1.45;
+    margin: 0 auto 18px;
+    max-width: 1060px;
+  }
+
+  .quote-card p {
+    color: var(--purple);
+    font-size: 0.84rem;
+    font-weight: 900;
+    margin-bottom: 26px;
+    text-transform: uppercase;
+  }
+
+  .trusted-section,
+  .resources-section {
+    padding: 0 clamp(18px, 4vw, 56px) clamp(64px, 8vw, 100px);
+    text-align: center;
+  }
+
+  .trusted-section img {
+    display: block;
+    margin: 38px auto 0;
+    max-width: 1180px;
+    width: 100%;
+  }
+
+  .section-heading {
+    margin: 0 auto 42px;
+    max-width: 760px;
+  }
+
+  .resource-grid {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0 auto;
+    max-width: 980px;
+    text-align: left;
+  }
+
+  .resource-card {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 380px;
+  }
+
+  .resource-card img {
+    aspect-ratio: 1.42 / 1;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .resource-card span,
+  .resource-card small,
+  .resource-card h3,
+  .resource-card a {
+    display: block;
+    margin-inline: 22px;
+  }
+
+  .resource-card span {
+    color: #737079;
+    font-size: 0.72rem;
+    font-weight: 900;
+    margin-top: 22px;
+    text-transform: uppercase;
+  }
+
+  .resource-card small {
+    color: var(--pink);
+    font-size: 0.72rem;
+    font-weight: 850;
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+
+  .resource-card h3 {
+    font-size: 1.05rem;
+    font-weight: 520;
+    line-height: 1.2;
+    margin-top: 16px;
+  }
+
+  .resource-card a {
+    font-size: 0.82rem;
+    font-weight: 850;
+    margin-bottom: 24px;
+    margin-top: 24px;
+  }
+
+  .pager {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .pager button {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+  }
+
+  .ready-section,
+  .why-footer {
+    background: #ffffff;
+    padding-inline: clamp(18px, 4vw, 56px);
+  }
+
+  .ready-section {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 44px;
+    padding-top: 42px;
+  }
+
+  .ready-section h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 10px;
+  }
+
+  .ready-section .primary-button {
+    margin-top: 24px;
+    min-width: 170px;
+  }
+
+  .why-footer {
+    padding-bottom: 42px;
+  }
+
+  .footer-lines {
+    border-block: 1px solid var(--line);
+    margin-bottom: 36px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .footer-lines details:last-child {
+    border-bottom: 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 850;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 9px;
+    margin: 30px 0;
+    max-width: 180px;
+  }
+
+  .store-row span {
+    background: #19121f;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 850;
+    padding: 10px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 26px;
+  }
+
+  .social-row a {
+    color: #303038;
+    font-weight: 900;
+  }
+
+  .legal {
+    font-size: 0.9rem;
+    margin-top: 24px;
+  }
+
+  .legal a {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1180px) {
+    .why-page .site-header {
+      flex-wrap: wrap;
+    }
+
+    .why-page .site-logo {
+      order: 0;
+    }
+
+    .why-page .nav-toggle {
+      display: block;
+      margin-left: auto;
+      order: 1;
+    }
+
+    .why-page .nav-links {
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      order: 2;
+      padding: 10px 0 14px;
+    }
+
+    .why-page .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .why-page .nav-links > a,
+    .why-page .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .why-page .nav-item {
+      display: grid;
+    }
+
+    .why-page .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .why-page .nav-item:hover .mega-menu,
+    .why-page .nav-item:focus-within .mega-menu {
+      display: none;
+    }
+
+    .why-page .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .why-page .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .why-page .nav-utilities {
+      align-items: stretch;
+      display: flex;
+      margin-left: auto;
+      order: 0;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .why-hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .logo-strip {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .reason-row,
+    .reason-row.left,
+    .reason-row.right {
+      gap: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .reason-media {
+      min-height: 0;
+    }
+
+    .reason-media img {
+      max-height: 240px;
+    }
+
+    .resource-grid {
+      grid-template-columns: 1fr;
+      max-width: 360px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .why-hero h1 {
+      font-size: 2.9rem;
+    }
+
+    .reason-copy h2,
+    .trusted-section h2,
+    .section-heading h2 {
+      font-size: 2.2rem;
+    }
+
+    .reason-copy p {
+      font-size: 0.9rem;
+    }
+
+    .hero-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .primary-button,
+    .outline-button {
+      width: 100%;
+    }
+  }
+</style>

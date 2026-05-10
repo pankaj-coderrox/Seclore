@@ -1,0 +1,1351 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "http://127.0.0.1:5000";
+
+const meaningCards = [
+  {
+    title: "Communicate Risk in Business Terms",
+    text: "Connect sensitive data findings to owners, workflows, behavior, and exposure so leaders see risk in the language of the business.",
+    bullets: ["Faster remediation decisions", "Board-ready reporting", "Less time explaining, more time acting"]
+  },
+  {
+    title: "Enforce Compliance and Prove It",
+    text: "Turn reporting into evidence. ARMOR DSPM generates controls, audit trails, and regulator-ready proof while work continues.",
+    bullets: ["Controls enforced automatically", "Evidence generated continuously", "Regulator-ready by default"]
+  }
+];
+
+const generations = [
+  ["Gen 1", "Pattern Matching", "Finds known patterns, but often creates noisy alerts without context."],
+  ["Gen 2", "Trainable Classifiers", "Learns from examples, yet still needs long tuning cycles and manual review."],
+  ["Gen 3", "LLM-Based", "Adds semantic context, but can leave remediation disconnected from controls."],
+  ["ARMOR DSPM", "Intelligent DSPM", "Unifies discovery, context, policy, and proof through sovereign-ready protection flows."]
+];
+
+const layers = [
+  ["Layer 1: Data Context", "Understands what the data is, what it means, and whether it contains sensitive or regulated information."],
+  ["Layer 2: Enterprise Context", "Maps ownership, behavior, repositories, sharing paths, and business relevance into actionable risk."],
+  ["Layer 3: Regulatory Context", "Identifies obligations across frameworks and converts compliance needs into enforceable controls."]
+];
+
+const benefits = [
+  ["Intelligent Discovery", "ARMOR DSPM derives context and intent from enterprise data, not only patterns."],
+  ["Sovereign-Ready Architecture", "Data remains under enterprise control while intelligence and policy decisions stay local."],
+  ["From Diagnosis to Cure", "Discovery connects directly to classification, protection, masking, and audit evidence."],
+  ["Zero-Configuration Value", "Start with AI-native classification and risk insight without long training projects."]
+];
+
+const steps = [
+  ["01", "Detect", "Continuously ingest data across repositories and identify sensitive content with semantic context."],
+  ["02", "Contextualize", "Connect data meaning to business ownership, sharing behavior, and regulatory obligations."],
+  ["03", "Enforce", "Trigger classification, data-aware controls, masking, and persistent protection automatically."],
+  ["04", "Prove", "Create evidence that shows who accessed what, when, why, and how policy responded."]
+];
+
+const useCases = [
+  ["Data Risk Intelligence", "Maintain a continuous view of sensitive data exposure and translate signals into business risk."],
+  ["AI Readiness and Governance", "Understand data before it reaches AI systems, agents, copilots, or model workflows."],
+  ["Regulatory Compliance at Scale", "Identify obligations, prioritize regulated data, and generate proof across jurisdictions."],
+  ["Establish Data Ownership", "Give data owners context-rich insight into meaning, usage, sensitivity, and action."]
+];
+---
+
+<BaseLayout title="ARMOR DSPM | seclore">
+  <main id="top" class="dspm-page">
+    <Nav />
+
+    <section class="dspm-hero">
+      <div class="hero-copy">
+        <span class="brand-kicker">ARMOR DSPM</span>
+        <h1>Turn Risk into Readiness</h1>
+        <p>
+          Intelligent DSPM for the AI era. Understand what your data is, why it matters, and
+          whether it is compliant, then classify, protect, and prove it.
+        </p>
+        <a class="primary-button" href="#demo">Get a Demo</a>
+      </div>
+      <div class="dashboard-shell" aria-label="ARMOR DSPM dashboard preview">
+        <div class="dashboard-bar">
+          <strong>Overview</strong>
+          <span></span>
+        </div>
+        <div class="dashboard-metrics">
+          <div><strong>100K</strong><span>Data repository</span></div>
+          <div><strong>80K</strong><span>Business context</span></div>
+          <div><strong>24.8K</strong><span>Records at risk</span></div>
+        </div>
+        <div class="risk-band"></div>
+        <div class="dashboard-grid">
+          <div class="table-lines">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="mini-card"></div>
+          <div class="mini-card muted"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-section">
+      <div class="section-heading">
+        <h2>What ARMOR DSPM Means for Your Organization</h2>
+      </div>
+      <div class="meaning-grid">
+        {meaningCards.map((card) => (
+          <article class="meaning-card">
+            <div class="icon-box"></div>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+            <ul>
+              {card.bullets.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="split-section">
+      <div class="section-heading centered">
+        <h2>Intelligent DSPM for the AI Enterprise</h2>
+      </div>
+      <div class="split-grid">
+        <div class="ai-visual">
+          <div class="orb"></div>
+          <div class="floating-card one"></div>
+          <div class="floating-card two"></div>
+          <div class="floating-card three"></div>
+        </div>
+        <div>
+          <h3>AI is rewriting the rules</h3>
+          <p>
+            Legacy discovery tools can list files, but AI-driven enterprises need live context:
+            ownership, intent, exposure, compliance obligation, and the controls required to act.
+          </p>
+          <p>
+            ARMOR DSPM connects discovery to protection so security leaders can move from signal to
+            decision to proof without stitching together disconnected tools.
+          </p>
+          <p class="flow-line">Discover &gt; Contextualize &gt; Enforce &gt; Prove</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="generation-section">
+      <div class="section-heading centered">
+        <h2>Three Generations of DSPM</h2>
+        <p>ARMOR DSPM operates across multiple layers of context simultaneously.</p>
+      </div>
+      <div class="generation-grid">
+        {generations.map(([label, title, text]) => (
+          <article class={label === "ARMOR DSPM" ? "generation-card current" : "generation-card"}>
+            <span>{label}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="layers-section">
+      <div class="section-heading centered purple-title">
+        <h2>Three Layers of Intelligence. One Automated Action.</h2>
+      </div>
+      <div class="layer-grid">
+        {layers.map(([title, text]) => (
+          <article class="layer-card">
+            <div class="small-icon"></div>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="split-section continuous">
+      <div>
+        <h2>Purpose-Built for Continuous Data Intelligence</h2>
+        <p>
+          ARMOR DSPM establishes a living understanding of sensitive data that changes as files
+          move, users collaborate, labels evolve, and business context shifts.
+        </p>
+        <p>
+          This continuous intelligence feeds context-aware classification, AI controls, governance,
+          and audit readiness.
+        </p>
+      </div>
+      <div class="dashboard-shell compact" aria-label="Data intelligence table preview">
+        <div class="dashboard-bar"><strong>Data risk</strong><span></span></div>
+        <div class="table-lines large">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="text-section">
+      <h2>Beyond Traditional DSPM</h2>
+      <p>
+        ARMOR DSPM transforms discovery from detection into protection that leads to security
+        intelligence. It does more than count files or raise alerts; it translates data signals into
+        business risk, regulatory impact, and immediate remediation paths.
+      </p>
+      <ul>
+        <li>Continuously ingests data across the enterprise</li>
+        <li>Analyzes content and context through AI-native classification</li>
+        <li>Connects sensitivity, business relevance, and regulation</li>
+        <li>Enables remediation through classification, protection, and compliance controls</li>
+      </ul>
+    </section>
+
+    <section class="compare-section">
+      <div class="section-heading centered">
+        <h2>Why ARMOR DSPM</h2>
+        <p>Where earlier discovery stops, ARMOR continues.</p>
+      </div>
+      <div class="comparison-table">
+        <div class="table-head">Gen 1-3 DSPMs</div>
+        <div class="table-head armor">ARMOR DSPM</div>
+        <div>File classification without context</div><div>Three-layer intelligence: data, enterprise, and regulatory context</div>
+        <div>Static scans or months of training</div><div>AI-native classification from day one</div>
+        <div>Cloud-only processing assumptions</div><div>Sovereign-ready data control</div>
+        <div>Alert-only discovery</div><div>Closed-loop discover, contextualize, enforce, prove</div>
+        <div>File counts and alert volumes</div><div>Business risk signals leaders can act on</div>
+      </div>
+    </section>
+
+    <section class="benefits-section">
+      <div class="section-heading centered">
+        <h2>Key Benefits</h2>
+      </div>
+      <div class="benefit-grid">
+        {benefits.map(([title, text]) => (
+          <article class="benefit-card">
+            <h3>{title}</h3>
+            <strong>{title === "From Diagnosis to Cure" ? "Visibility is not control." : title === "Zero-Configuration Value" ? "Install. Connect. Protect." : title === "Sovereign-Ready Architecture" ? "Private and sovereign-first DSPM." : "Intelligence starts here."}</strong>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="works-section">
+      <div class="section-heading centered">
+        <h2>How ARMOR DSPM Works</h2>
+        <p>Protection begins at discovery.</p>
+      </div>
+      <div class="step-grid">
+        {steps.map(([number, title, text]) => (
+          <article class="step-card">
+            <span>{number}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="demo-band" id="demo">
+      <div class="demo-copy">
+        <h2>Move Beyond Discovery. Establish Data Intelligence.</h2>
+        <p>See how AI discovery helps organizations understand, prioritize, and control sensitive data in AI environments.</p>
+      </div>
+      <form class="dspm-form" data-endpoint="/api/demo">
+        <h3>Seclore Demo</h3>
+        <label>Email<input name="email" type="email" required /></label>
+        <label>First Name<input name="name" required minlength="2" /></label>
+        <label>Company Name<input name="company" required /></label>
+        <label>Job Title<input name="role" /></label>
+        <label>Phone Number<input name="phone" /></label>
+        <label>Comments<textarea name="message" rows="4"></textarea></label>
+        <button class="primary-button" type="submit">Schedule A Demo</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="use-section">
+      <div class="section-heading centered">
+        <h2>Use Cases</h2>
+      </div>
+      <div class="use-grid">
+        {useCases.map(([title, text]) => (
+          <article class="use-card">
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <h2>Move Beyond Discovery. Establish Data Security Intelligence.</h2>
+      <p>See how ARMOR DSPM turns data signals into business risk, regulatory action, and proof across the board.</p>
+      <a class="primary-button" href="#demo">Request a Demo of ARMOR DSPM</a>
+    </section>
+  </main>
+
+  <script is:inline define:vars={{ apiBase }}>
+    document.querySelectorAll(".dspm-form").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const status = form.querySelector(".form-status");
+        const button = form.querySelector("button[type='submit']");
+        const payload = Object.fromEntries(new FormData(form).entries());
+
+        status.textContent = "Sending...";
+        status.className = "form-status";
+        button.disabled = true;
+
+        try {
+          const response = await fetch(`${apiBase}${form.dataset.endpoint}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.message || "Request failed.");
+          form.reset();
+          status.textContent = data.message || "Submitted successfully.";
+          status.classList.add("success");
+        } catch (error) {
+          status.textContent = error.message || "Something went wrong.";
+          status.classList.add("error");
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: dark;
+    --page-bg: #f7f7fb;
+    --page-text: #221c2c;
+    --page-muted: #554a62;
+    --purple: #5b2bd7;
+    --purple-dark: #38178f;
+    --lavender: #f0edfb;
+    --card: #ffffff;
+    --line: rgba(91, 43, 215, 0.16);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: none;
+    --header-text: #27242b;
+    --header-muted: #27242b;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --demo-button-bg: #4f2bd6;
+    --demo-button-text: #ffffff;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  html[data-theme="dark"] {
+    --page-bg: #08111f;
+    --page-text: #f4f0ff;
+    --page-muted: #c9bedb;
+    --lavender: #141026;
+    --card: #11192a;
+    --line: rgba(177, 145, 255, 0.24);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: none;
+    --header-text: #27242b;
+    --header-muted: #27242b;
+    --dropdown-bg: linear-gradient(135deg, rgba(9, 25, 44, 0.98), rgba(5, 17, 31, 0.98));
+    --dropdown-grid-line: rgba(45, 212, 255, 0.045);
+    --dropdown-border: rgba(151, 190, 230, 0.18);
+    --dropdown-link-hover: rgba(255, 255, 255, 0.055);
+    --dropdown-link-border: rgba(45, 212, 255, 0.22);
+    --dropdown-title: #7cf6c7;
+    --dropdown-text: #edf7ff;
+    --dropdown-muted: #9eb5ca;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(45, 212, 255, 0.18), rgba(124, 246, 199, 0.08)), rgba(255, 255, 255, 0.045);
+    --dropdown-feature-border: rgba(45, 212, 255, 0.22);
+    --demo-button-bg: #ffffff;
+    --demo-button-text: #07111f;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  .site-header {
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: block;
+    min-height: 166px;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .site-logo {
+    color: var(--purple);
+    font-size: clamp(1.55rem, 2.1vw, 2rem);
+    font-weight: 950;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    margin: 0;
+    position: absolute;
+    left: clamp(54px, 6vw, 112px);
+    top: 80px;
+    text-transform: uppercase;
+  }
+
+  .site-logo::after {
+    content: "™";
+    font-size: 0.28em;
+    margin-left: 2px;
+    vertical-align: top;
+  }
+
+  .nav-links,
+  .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .nav-links {
+    display: flex;
+    flex: 1 1 auto;
+    gap: clamp(28px, 3.5vw, 54px);
+    justify-content: center;
+    left: clamp(340px, 23vw, 430px);
+    min-width: 0;
+    position: absolute;
+    right: clamp(380px, 23vw, 430px);
+    top: 65px;
+  }
+
+  .nav-links > a,
+  .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: clamp(1rem, 1.1vw, 1.25rem);
+    font-weight: 800;
+    gap: 12px;
+    min-height: 54px;
+    padding: 0;
+  }
+
+  .nav-links > a:hover,
+  .nav-trigger:hover,
+  .nav-item:hover .nav-trigger,
+  .nav-item:focus-within .nav-trigger {
+    color: var(--header-text);
+  }
+
+  .nav-item {
+    position: static;
+  }
+
+  .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 10px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 10px;
+  }
+
+  .nav-item:hover .nav-caret,
+  .nav-item:focus-within .nav-caret,
+  .nav-item.is-open .nav-caret {
+    transform: rotate(225deg) translateY(-1px);
+  }
+
+  .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .nav-item:hover .mega-menu,
+  .nav-item:focus-within .mega-menu,
+  .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mega-inner {
+    background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .mega-column,
+  .mega-sublinks {
+    display: grid;
+  }
+
+  .mega-column {
+    gap: 10px;
+  }
+
+  .mega-title {
+    color: var(--dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mega-link,
+  .mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .mega-link strong {
+    color: var(--dropdown-text);
+  }
+
+  .mega-link small,
+  .mega-sublinks a {
+    color: var(--dropdown-muted);
+  }
+
+  .mega-link:hover,
+  .mega-link-group:hover {
+    background: var(--dropdown-link-hover);
+    border-color: var(--dropdown-link-border);
+  }
+
+  .mega-link-group {
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .mega-sublinks {
+    gap: 2px;
+    padding: 0 9px 8px 22px;
+  }
+
+  .mega-sublinks a {
+    font-size: 0.84rem;
+    padding: 5px 0;
+  }
+
+  .mega-feature {
+    align-content: end;
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .mega-feature span,
+  .mega-feature em {
+    color: var(--dropdown-title);
+  }
+
+  .mega-feature strong {
+    color: var(--dropdown-text);
+    font-size: 1.35rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .nav-utilities {
+    display: contents;
+    flex: 0 0 auto;
+    margin-left: 0;
+  }
+
+  .utility-link,
+  .utility-label,
+  .language-button,
+  .utility-icon,
+  .theme-toggle {
+    color: var(--header-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .utility-link {
+    position: absolute;
+    right: clamp(382px, 21.5vw, 405px);
+    top: 14px;
+    white-space: nowrap;
+  }
+
+  .utility-label {
+    display: inline-flex;
+    position: absolute;
+    top: 14px;
+  }
+
+  .utility-label:nth-of-type(1) {
+    right: clamp(282px, 15vw, 300px);
+  }
+
+  .utility-label:nth-of-type(2) {
+    right: clamp(132px, 7.2vw, 142px);
+  }
+
+  .utility-icon,
+  .language-button {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 8px;
+    padding: 0;
+  }
+
+  .utility-icon {
+    position: absolute;
+    right: clamp(240px, 12.7vw, 255px);
+    top: 10px;
+  }
+
+  .language-button {
+    position: absolute;
+    right: clamp(78px, 4.2vw, 86px);
+    top: 9px;
+  }
+
+  .theme-toggle {
+    display: none;
+  }
+
+  .search-icon {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 22px;
+    position: relative;
+    width: 22px;
+  }
+
+  .search-icon::after {
+    background: currentColor;
+    content: "";
+    height: 2px;
+    position: absolute;
+    right: -8px;
+    top: 16px;
+    transform: rotate(45deg);
+    width: 10px;
+  }
+
+  .globe-icon {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 26px;
+    position: relative;
+    width: 26px;
+  }
+
+  .globe-icon::before,
+  .globe-icon::after {
+    content: "";
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .globe-icon::before {
+    border-left: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    border-radius: 50%;
+    height: 22px;
+    width: 10px;
+  }
+
+  .globe-icon::after {
+    border-bottom: 2px solid currentColor;
+    border-top: 2px solid currentColor;
+    height: 9px;
+    width: 22px;
+  }
+
+  .demo-button,
+  .primary-button {
+    align-items: center;
+    background: #5531d1;
+    border: 0;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: clamp(1rem, 1.1vw, 1.22rem);
+    font-weight: 850;
+    justify-content: center;
+    min-height: 49px;
+    padding: 0 38px;
+  }
+
+  .demo-button {
+    min-width: 190px;
+    position: absolute;
+    right: clamp(54px, 6.8vw, 128px);
+    top: 66px;
+  }
+
+  .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .nav-toggle span {
+    background: var(--header-text);
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  .dspm-hero,
+  .soft-section,
+  .split-section,
+  .generation-section,
+  .layers-section,
+  .text-section,
+  .compare-section,
+  .benefits-section,
+  .works-section,
+  .use-section,
+  .final-cta,
+  .dspm-footer {
+    padding: clamp(56px, 8vw, 96px) clamp(16px, 4vw, 52px);
+  }
+
+  .dspm-hero {
+    align-items: center;
+    background: var(--card);
+    display: grid;
+    gap: 40px;
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+    min-height: 520px;
+  }
+
+  .brand-kicker {
+    display: block;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: clamp(3.1rem, 6vw, 5.6rem);
+    font-weight: 500;
+    line-height: 0.98;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 450;
+    line-height: 1.05;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+    line-height: 1.15;
+  }
+
+  p,
+  li {
+    color: var(--page-muted);
+    line-height: 1.6;
+  }
+
+  .hero-copy p {
+    max-width: 620px;
+  }
+
+  .dashboard-shell {
+    background: linear-gradient(145deg, #ffffff, #f6f1ff);
+    border: 1px solid #ded0ff;
+    border-radius: 8px;
+    box-shadow: 0 28px 80px rgba(91, 43, 215, 0.14);
+    padding: 22px;
+  }
+
+  html[data-theme="dark"] .dashboard-shell {
+    background: linear-gradient(145deg, #151d31, #21173a);
+  }
+
+  .dashboard-bar,
+  .dashboard-metrics,
+  .dashboard-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .dashboard-bar {
+    align-items: center;
+    background: rgba(91, 43, 215, 0.08);
+    grid-template-columns: 1fr 80px;
+    padding: 12px;
+  }
+
+  .dashboard-bar span,
+  .risk-band,
+  .table-lines span,
+  .mini-card {
+    background: linear-gradient(90deg, #50e3c2, #ffcc6b, #ff7ea8, #7f5af0);
+    border-radius: 999px;
+    min-height: 10px;
+  }
+
+  .dashboard-metrics {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 16px 0;
+  }
+
+  .dashboard-metrics div,
+  .mini-card {
+    background: rgba(91, 43, 215, 0.08);
+    border-radius: 8px;
+    padding: 14px;
+  }
+
+  .dashboard-metrics strong,
+  .dashboard-metrics span {
+    display: block;
+  }
+
+  .dashboard-metrics span {
+    color: var(--page-muted);
+    font-size: 0.84rem;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1.2fr 0.8fr 0.8fr;
+    margin-top: 18px;
+  }
+
+  .table-lines {
+    display: grid;
+    gap: 10px;
+  }
+
+  .table-lines span:nth-child(2n) {
+    opacity: 0.45;
+    width: 82%;
+  }
+
+  .mini-card {
+    border-radius: 8px;
+    min-height: 110px;
+  }
+
+  .mini-card.muted {
+    opacity: 0.45;
+  }
+
+  .soft-section,
+  .generation-section,
+  .text-section,
+  .works-section,
+  .dspm-footer {
+    background: var(--lavender);
+  }
+
+  .section-heading {
+    margin: 0 auto 36px;
+    max-width: 860px;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
+  .meaning-grid,
+  .benefit-grid {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .meaning-card,
+  .layer-card,
+  .benefit-card,
+  .step-card,
+  .use-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: clamp(24px, 4vw, 42px);
+  }
+
+  .meaning-card h3,
+  .benefit-card h3,
+  .purple-title h2 {
+    color: var(--purple);
+  }
+
+  .meaning-card ul {
+    display: grid;
+    gap: 14px;
+    list-style: none;
+    margin: 70px 0 0;
+    padding: 0;
+  }
+
+  .meaning-card li::before {
+    content: "+ ";
+    color: var(--purple);
+  }
+
+  .icon-box,
+  .small-icon {
+    background: linear-gradient(135deg, rgba(91, 43, 215, 0.08), rgba(91, 43, 215, 0.28));
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    height: 42px;
+    margin-bottom: 20px;
+    width: 42px;
+  }
+
+  .split-grid,
+  .split-section.continuous {
+    align-items: center;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .ai-visual {
+    background: radial-gradient(circle at 50% 50%, rgba(91, 43, 215, 0.18), transparent 56%), #ffffff;
+    border: 1px solid #b99cff;
+    border-radius: 12px;
+    min-height: 330px;
+    position: relative;
+  }
+
+  html[data-theme="dark"] .ai-visual {
+    background: radial-gradient(circle at 50% 50%, rgba(177, 145, 255, 0.24), transparent 56%), #11192a;
+  }
+
+  .orb {
+    background: conic-gradient(from 45deg, #5b2bd7, #f7c9ff, #5b2bd7);
+    border-radius: 50%;
+    height: 110px;
+    left: calc(50% - 55px);
+    position: absolute;
+    top: calc(50% - 55px);
+    width: 110px;
+  }
+
+  .floating-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 18px 50px rgba(91, 43, 215, 0.14);
+    height: 78px;
+    position: absolute;
+    width: 130px;
+  }
+
+  .floating-card.one { left: 28px; top: 40px; }
+  .floating-card.two { right: 36px; top: 96px; }
+  .floating-card.three { bottom: 36px; left: 34%; }
+
+  .flow-line {
+    color: var(--purple);
+    font-weight: 800;
+  }
+
+  .generation-grid,
+  .layer-grid,
+  .step-grid,
+  .use-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .generation-card {
+    border-left: 1px solid var(--line);
+    min-height: 320px;
+    padding: 28px;
+  }
+
+  .generation-card span,
+  .step-card span {
+    color: var(--purple);
+    display: block;
+    font-size: 1.55rem;
+    font-weight: 850;
+  }
+
+  .generation-card.current {
+    background: linear-gradient(180deg, #6e37dd, #4c22b9);
+    border-radius: 14px;
+    color: #ffffff;
+  }
+
+  .generation-card.current p,
+  .generation-card.current span {
+    color: #ffffff;
+  }
+
+  .layers-section {
+    background: var(--card);
+  }
+
+  .layer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .continuous {
+    background: var(--card);
+  }
+
+  .compact {
+    min-height: 250px;
+  }
+
+  .table-lines.large span {
+    height: 24px;
+  }
+
+  .text-section {
+    padding-bottom: 76px;
+  }
+
+  .text-section ul {
+    margin: 24px 0 0;
+    padding-left: 20px;
+  }
+
+  .comparison-table {
+    border: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 auto;
+    max-width: 1120px;
+  }
+
+  .comparison-table div {
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 22px;
+  }
+
+  .comparison-table .table-head {
+    font-weight: 900;
+  }
+
+  .comparison-table .armor {
+    background: var(--purple);
+    color: #ffffff;
+  }
+
+  .benefit-grid {
+    margin: 0 auto;
+    max-width: 1120px;
+  }
+
+  .benefit-card strong {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .demo-band {
+    align-items: center;
+    background: linear-gradient(135deg, #dbeaff, #f7f2ff);
+    display: grid;
+    gap: 48px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    padding: clamp(56px, 8vw, 96px) clamp(16px, 4vw, 52px);
+  }
+
+  html[data-theme="dark"] .demo-band {
+    background: linear-gradient(135deg, #0f2848, #21173a);
+  }
+
+  .demo-copy h2 {
+    font-size: clamp(3rem, 7vw, 6rem);
+  }
+
+  .dspm-form {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 34px;
+  }
+
+  html[data-theme="dark"] .dspm-form {
+    background: rgba(17, 25, 42, 0.9);
+  }
+
+  .dspm-form h3 {
+    text-align: center;
+  }
+
+  .dspm-form label {
+    color: var(--page-text);
+    display: grid;
+    font-size: 0.88rem;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .dspm-form input,
+  .dspm-form textarea {
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 4px;
+    color: #111827;
+    min-height: 40px;
+    padding: 10px;
+  }
+
+  .dspm-form textarea {
+    resize: vertical;
+  }
+
+  .dspm-form button {
+    margin-top: 12px;
+  }
+
+  .form-status {
+    min-height: 24px;
+  }
+
+  .form-status.success {
+    color: #087f6f;
+  }
+
+  .form-status.error {
+    color: #bd2b2b;
+  }
+
+  .use-section {
+    background: var(--card);
+  }
+
+  .final-cta {
+    background: linear-gradient(135deg, rgba(91, 43, 215, 0.12), rgba(91, 43, 215, 0.04));
+    text-align: center;
+  }
+
+  .final-cta p {
+    margin-inline: auto;
+    max-width: 900px;
+  }
+
+  .dspm-footer {
+    border-top: 1px solid var(--line);
+  }
+
+  .footer-lines {
+    border-block: 1px solid rgba(15, 23, 42, 0.22);
+    margin: 32px 0;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.16);
+    padding: 16px 0;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 1420px) {
+    .nav-toggle {
+      display: block;
+      margin-left: auto;
+      order: 1;
+    }
+
+    .site-header {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 68px;
+      padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    }
+
+    .site-logo {
+      order: 0;
+      position: static;
+    }
+
+    .nav-links {
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      left: auto;
+      order: 2;
+      padding: 10px 0 14px;
+      position: static;
+      right: auto;
+      top: auto;
+    }
+
+    .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .nav-links > a,
+    .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .nav-item {
+      display: grid;
+    }
+
+    .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .nav-item:hover .mega-menu,
+    .nav-item:focus-within .mega-menu {
+      display: none;
+    }
+
+    .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .nav-utilities {
+      align-items: stretch;
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      margin-left: 0;
+      order: 3;
+      padding-bottom: 16px;
+    }
+
+    .nav-links.open + .nav-utilities {
+      display: grid;
+    }
+
+    .utility-link,
+    .utility-label,
+    .utility-icon,
+    .language-button,
+    .demo-button {
+      position: static;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .dspm-hero,
+    .split-grid,
+    .split-section.continuous,
+    .demo-band,
+    .meaning-grid,
+    .benefit-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .generation-grid,
+    .layer-grid,
+    .step-grid,
+    .use-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .generation-card {
+      min-height: auto;
+    }
+
+    .comparison-table {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

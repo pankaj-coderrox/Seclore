@@ -1,0 +1,1016 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const pressItems = [
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/2025/02/ET-edge-insights.png",
+    outlet: "ET Insights",
+    date: "Mar 07, 2026",
+    title: "As cyber threats evolve, enterprises turn to contextual data discovery"
+  },
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/wire-logo.svg",
+    outlet: "Business Wire",
+    date: "Feb 14, 2026",
+    title: "Seclore Repositions as a Data Security Intelligence Company; Launches ARMOR Platform to Secure Enterprise AI"
+  },
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/expresscomputer.webp",
+    outlet: "Express Computer",
+    date: "Feb 16, 2026",
+    title: "Seclore repositions as a Data Security Intelligence company, launches ARMOR platform to secure enterprise AI"
+  },
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/vmblog-logo-color-horz.png",
+    outlet: "VMblog",
+    date: "Jan 14, 2026",
+    title: "Why Data-Centric Security is the New Imperative"
+  },
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/expresscomputer.webp",
+    outlet: "Express Computer",
+    date: "Dec 12, 2025",
+    title: "Seclore debuts data security intelligence framework for improved decision-making"
+  },
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/timestech-logo.png",
+    outlet: "TimesTech",
+    date: "Nov 10, 2025",
+    title: "Why Data-Centric Security is the New Imperative"
+  },
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/2025/02/press-dq-channels.png",
+    outlet: "DQ Channels",
+    date: "Oct 22, 2025",
+    title: "Astra AI marks Seclore's AI-native leap to enhance global data-security operations"
+  },
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/2025/02/dark-reading.png",
+    outlet: "Dark Reading",
+    date: "Oct 21, 2025",
+    title: "Asian Nations Ramp Up Pressure on Cybercrime 'Scam Factories'"
+  },
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/siliconIndia_logo.png",
+    outlet: "SiliconIndia",
+    date: "Oct 11, 2025",
+    title: "The Invisible Risk of Untracked Data Movement in Enterprise Security"
+  },
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/Logo-CSO-black.webp",
+    outlet: "CSO",
+    date: "Sep 11, 2025",
+    title: "AI prompt injection gets real - with macros the latest hidden threat"
+  },
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/2025/02/ET-edge-insights.png",
+    outlet: "ET Insights",
+    date: "Jul 10, 2025",
+    title: "Seclore appoints Vishal Gauri as Chief Executive Officer"
+  },
+  {
+    logo: "https://www.seclore.com/wp-content/uploads/alriyadhdaily-arabic.png",
+    outlet: "Al Riyadh",
+    date: "Mar 04, 2025",
+    title: "Seclore leads the way to Kingdom of Saudi Arabia's vision 2030 in the cybersecurity landscape"
+  }
+];
+
+const awards = [
+  ["Business Intelligence Group", "Fortress Cyber Security Award", "2024"],
+  ["The Channel Co.", "CRN Women of the Channel", "2024"],
+  ["Cyber Defense Awards", "Global InfoSec Awards Winner", "2024"]
+];
+
+const resources = [
+  {
+    type: "Blog Post",
+    category: "AI, Company, Data Security",
+    title: "The Debate About AI in the Enterprise Is Over. Here Is the Only Question That Matters.",
+    image: "https://www.seclore.com/wp-content/uploads/May6-blog-300x200.png"
+  },
+  {
+    type: "Blog Post",
+    category: "AI Risk, Data Security",
+    title: "The Missing Link in Enterprise AI: Why Context and Behavior Are the New Security Perimeter",
+    image: "https://www.seclore.com/wp-content/uploads/context-blog-300x200.png"
+  },
+  {
+    type: "Blog Post",
+    category: "AI Risk, Data Security",
+    title: "ChatGPT Read 400 Internal Company Files In 42 Milliseconds. Security Stacks Saw Nothing",
+    image: "https://www.seclore.com/wp-content/uploads/blog-post-chatgpt-300x157.png"
+  }
+];
+
+---
+
+<BaseLayout
+  title="Seclore Newsroom | Recent Seclore News"
+  description="Read recent Seclore news, awards, press coverage, and data-centric security resources."
+>
+  <main id="top" class="newsroom-page">
+    <Nav />
+
+    <section class="news-hero">
+      <span>News Highlights</span>
+      <h1>Recent Seclore News</h1>
+      <div class="hero-actions">
+        <a class="primary-button" href="#demo">Schedule Demo</a>
+        <a class="outline-button" href="#press">Press Inquiry</a>
+      </div>
+    </section>
+
+    <section class="press-section" id="press">
+      <div class="press-grid">
+        {pressItems.map((item) => (
+          <article class="press-card">
+            <div class="logo-wrap">
+              <img src={item.logo} alt={item.outlet} loading="lazy" />
+            </div>
+            <span>{item.date}</span>
+            <h2>{item.title}</h2>
+            <a href="#top">View Press Coverage -></a>
+          </article>
+        ))}
+      </div>
+      <nav class="pagination" aria-label="News pages">
+        <a class="current" href="#press">1</a>
+        <a href="#press">2</a>
+        <a href="#press">3</a>
+        <span>...</span>
+        <a href="#press">14</a>
+        <a href="#press">Next</a>
+      </nav>
+    </section>
+
+    <section class="awards-section">
+      <h2>Awards</h2>
+      <div class="award-grid">
+        {awards.map(([program, title, year]) => (
+          <article class="award-card">
+            <span>{program}</span>
+            <h3>{title}</h3>
+            <p>{year}</p>
+          </article>
+        ))}
+      </div>
+      <div class="pager" aria-label="Awards carousel controls">
+        <button type="button" aria-label="Previous award">&larr;</button>
+        <button type="button" aria-label="Next award">&rarr;</button>
+      </div>
+    </section>
+
+    <section class="press-cta">
+      <div>
+        <h2>Catch up on Seclore News</h2>
+        <a class="secondary-button" href="#press">Latest Press Releases</a>
+      </div>
+    </section>
+
+    <section class="resources-section">
+      <div class="section-heading">
+        <h2>Learn more about data-centric security</h2>
+      </div>
+      <div class="resource-grid">
+        {resources.map((resource) => (
+          <article class="resource-card">
+            <img src={resource.image} alt="" loading="lazy" />
+            <span>{resource.type}</span>
+            <small>{resource.category}</small>
+            <h3>{resource.title}</h3>
+            <a href="#top">View Blog Post -></a>
+          </article>
+        ))}
+      </div>
+      <div class="pager" aria-label="Resource carousel controls">
+        <button type="button" aria-label="Previous resource">&larr;</button>
+        <button type="button" aria-label="Next resource">&rarr;</button>
+      </div>
+    </section>
+
+    <section class="ready-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#top">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f0f1f3;
+    --paper: #ffffff;
+    --ink: #17151b;
+    --muted: #5d5b63;
+    --purple: #5b2bd7;
+    --pink: #d91f52;
+    --deep: #241024;
+    --line: rgba(21, 21, 26, 0.12);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --demo-button-bg: #5b2bd7;
+    --demo-button-text: #ffffff;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--ink);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  .newsroom-page .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .newsroom-page .site-logo {
+    color: var(--purple);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: clamp(14px, 2vw, 28px);
+    text-transform: uppercase;
+  }
+
+  .newsroom-page .nav-links,
+  .newsroom-page .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .newsroom-page .nav-links {
+    flex: 1 1 auto;
+    gap: clamp(18px, 2.2vw, 34px);
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .newsroom-page .nav-links > a,
+  .newsroom-page .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    gap: 8px;
+    min-height: 68px;
+    padding: 0;
+  }
+
+  .newsroom-page .nav-links > a:hover,
+  .newsroom-page .nav-trigger:hover,
+  .newsroom-page .nav-item:hover .nav-trigger,
+  .newsroom-page .nav-item:focus-within .nav-trigger {
+    color: var(--header-text);
+  }
+
+  .newsroom-page .nav-item {
+    position: static;
+  }
+
+  .newsroom-page .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 8px;
+  }
+
+  .newsroom-page .nav-item:hover .nav-caret,
+  .newsroom-page .nav-item:focus-within .nav-caret,
+  .newsroom-page .nav-item.is-open .nav-caret {
+    transform: rotate(225deg) translateY(-1px);
+  }
+
+  .newsroom-page .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .newsroom-page .nav-item:hover .mega-menu,
+  .newsroom-page .nav-item:focus-within .mega-menu,
+  .newsroom-page .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .newsroom-page .mega-inner {
+    background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .newsroom-page .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .newsroom-page .mega-column,
+  .newsroom-page .mega-sublinks {
+    display: grid;
+  }
+
+  .newsroom-page .mega-column {
+    gap: 10px;
+  }
+
+  .newsroom-page .mega-title {
+    color: var(--dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .newsroom-page .mega-link,
+  .newsroom-page .mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .newsroom-page .mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .newsroom-page .mega-link strong {
+    color: var(--dropdown-text);
+  }
+
+  .newsroom-page .mega-link small,
+  .newsroom-page .mega-sublinks a {
+    color: var(--dropdown-muted);
+  }
+
+  .newsroom-page .mega-link:hover,
+  .newsroom-page .mega-link-group:hover {
+    background: var(--dropdown-link-hover);
+    border-color: var(--dropdown-link-border);
+  }
+
+  .newsroom-page .mega-link-group {
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .newsroom-page .mega-sublinks {
+    gap: 2px;
+    padding: 0 9px 8px 22px;
+  }
+
+  .newsroom-page .mega-sublinks a {
+    font-size: 0.84rem;
+    padding: 5px 0;
+  }
+
+  .newsroom-page .mega-feature {
+    align-content: end;
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .newsroom-page .mega-feature span,
+  .newsroom-page .mega-feature em {
+    color: var(--dropdown-title);
+  }
+
+  .newsroom-page .mega-feature strong {
+    color: var(--dropdown-text);
+    font-size: 1.35rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .newsroom-page .nav-utilities {
+    flex: 0 0 auto;
+    gap: clamp(12px, 1.5vw, 20px);
+    margin-left: clamp(12px, 2vw, 28px);
+  }
+
+  .newsroom-page .utility-link,
+  .newsroom-page .language-button,
+  .newsroom-page .utility-icon,
+  .newsroom-page .theme-toggle {
+    display: none;
+  }
+
+  .newsroom-page .demo-button,
+  .primary-button,
+  .outline-button,
+  .secondary-button {
+    align-items: center;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.86rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+  }
+
+  .newsroom-page .demo-button,
+  .primary-button {
+    background: var(--purple);
+    color: #ffffff;
+  }
+
+  .outline-button {
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    color: #ffffff;
+  }
+
+  .secondary-button {
+    background: var(--pink);
+    color: #ffffff;
+  }
+
+  .newsroom-page .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .newsroom-page .nav-toggle span {
+    background: var(--header-text);
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  .newsroom-page h1,
+  .newsroom-page h2,
+  .newsroom-page h3,
+  .newsroom-page p {
+    margin-top: 0;
+  }
+
+  .newsroom-page h1,
+  .newsroom-page h2,
+  .newsroom-page h3 {
+    color: var(--ink);
+    font-weight: 430;
+    letter-spacing: 0;
+  }
+
+  .news-hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 16% 76%, rgba(255, 255, 255, 0.35), transparent 31%),
+      linear-gradient(135deg, #c882e8 0%, #8925f5 44%, #5f0de8 100%);
+    color: #ffffff;
+    display: grid;
+    min-height: 430px;
+    padding: 86px clamp(18px, 4vw, 56px);
+    place-items: center;
+    text-align: center;
+  }
+
+  .news-hero span {
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 900;
+    margin-bottom: 24px;
+  }
+
+  .news-hero h1 {
+    color: #ffffff;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1;
+    margin-bottom: 26px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .press-section,
+  .resources-section {
+    padding: clamp(48px, 7vw, 82px) clamp(18px, 4vw, 56px);
+  }
+
+  .press-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 auto;
+    max-width: 1180px;
+  }
+
+  .press-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    min-height: 270px;
+    padding: 28px;
+  }
+
+  .logo-wrap {
+    align-items: center;
+    display: flex;
+    height: 56px;
+    margin-bottom: 36px;
+  }
+
+  .logo-wrap img {
+    display: block;
+    max-height: 48px;
+    max-width: 210px;
+    object-fit: contain;
+  }
+
+  .press-card span,
+  .resource-card span,
+  .resource-card small {
+    color: #6e6b74;
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .press-card h2 {
+    font-size: clamp(1.2rem, 2.4vw, 1.72rem);
+    line-height: 1.1;
+    margin: 18px 0 32px;
+  }
+
+  .press-card a,
+  .resource-card a {
+    font-size: 0.82rem;
+    font-weight: 850;
+  }
+
+  .pagination {
+    align-items: center;
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-top: 54px;
+  }
+
+  .pagination a,
+  .pagination span {
+    color: #302e35;
+    font-size: 0.86rem;
+    font-weight: 850;
+  }
+
+  .pagination .current {
+    background: #d9dde2;
+    border-radius: 4px;
+    padding: 8px 10px;
+  }
+
+  .awards-section {
+    background: #ffffff;
+    border-radius: 8px;
+    margin: 0 clamp(18px, 4vw, 56px) clamp(56px, 7vw, 88px);
+    padding: clamp(42px, 6vw, 68px) clamp(18px, 4vw, 46px);
+    text-align: center;
+  }
+
+  .awards-section h2,
+  .section-heading h2 {
+    font-size: clamp(2.7rem, 5.2vw, 4.2rem);
+    line-height: 1.05;
+    margin-bottom: 38px;
+  }
+
+  .award-grid {
+    display: grid;
+    gap: clamp(18px, 3vw, 38px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .award-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    min-height: 220px;
+    padding: 54px 24px 28px;
+  }
+
+  .award-card span {
+    background: var(--pink);
+    border-radius: 999px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 0.68rem;
+    font-weight: 850;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+  }
+
+  .award-card:nth-child(2) span {
+    background: #f2bd37;
+    color: #3b2a00;
+  }
+
+  .award-card h3 {
+    font-size: clamp(1.35rem, 2.3vw, 1.85rem);
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+
+  .award-card p {
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .pager {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .awards-section .pager {
+    justify-content: flex-start;
+  }
+
+  .pager button {
+    background: #ffffff;
+    border: 1px solid rgba(21, 21, 26, 0.28);
+    border-radius: 50%;
+    color: #55515a;
+    height: 42px;
+    width: 42px;
+  }
+
+  .press-cta {
+    background:
+      linear-gradient(rgba(36, 16, 36, 0.88), rgba(36, 16, 36, 0.88)),
+      url("https://www.seclore.com/wp-content/uploads/2025/01/Seclore_Wave_Pattern_Dark_1@1x-1.png");
+    background-position: center;
+    background-size: cover;
+    padding: clamp(68px, 9vw, 112px) clamp(18px, 4vw, 56px);
+  }
+
+  .press-cta div {
+    border: 1px solid var(--pink);
+    border-radius: 8px;
+    color: #ffffff;
+    margin: 0 auto;
+    max-width: 1160px;
+    padding: clamp(42px, 6vw, 72px) 22px;
+    text-align: center;
+  }
+
+  .press-cta h2 {
+    color: #ffffff;
+    font-size: clamp(1.8rem, 3.6vw, 2.7rem);
+    margin-bottom: 22px;
+  }
+
+  .resources-section {
+    text-align: center;
+  }
+
+  .section-heading {
+    margin: 0 auto 44px;
+    max-width: 850px;
+  }
+
+  .resource-grid {
+    display: grid;
+    gap: clamp(28px, 8vw, 110px);
+    grid-template-columns: repeat(3, minmax(0, 250px));
+    justify-content: start;
+  }
+
+  .resource-card {
+    background: #ffffff;
+    border-radius: 8px;
+    min-height: 360px;
+    overflow: hidden;
+    text-align: left;
+  }
+
+  .resource-card img {
+    aspect-ratio: 1 / 1.05;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .resource-card span,
+  .resource-card small,
+  .resource-card h3,
+  .resource-card a {
+    display: block;
+    margin-inline: 22px;
+  }
+
+  .resource-card span {
+    margin-top: 22px;
+  }
+
+  .resource-card small {
+    background: #f0eef2;
+    border-radius: 999px;
+    color: #76727d;
+    display: inline-flex;
+    margin-top: 10px;
+    padding: 5px 10px;
+  }
+
+  .resource-card h3 {
+    font-size: 1.06rem;
+    font-weight: 520;
+    line-height: 1.18;
+    margin-top: 18px;
+  }
+
+  .resource-card a {
+    margin-bottom: 24px;
+    margin-top: 24px;
+  }
+
+  .ready-section,
+  .newsroom-footer {
+    background: #ffffff;
+    padding-inline: clamp(18px, 4vw, 56px);
+  }
+
+  .ready-section {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 44px;
+    padding-top: 42px;
+  }
+
+  .ready-section h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 10px;
+  }
+
+  .ready-section p,
+  .newsroom-footer p {
+    color: var(--muted);
+    line-height: 1.58;
+  }
+
+  .ready-section .primary-button {
+    margin-top: 24px;
+    min-width: 170px;
+  }
+
+  .newsroom-footer {
+    padding-bottom: 42px;
+  }
+
+  .footer-lines {
+    border-block: 1px solid var(--line);
+    margin-bottom: 36px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .footer-lines details:last-child {
+    border-bottom: 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 850;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 9px;
+    margin: 30px 0;
+    max-width: 180px;
+  }
+
+  .store-row span {
+    background: #19121f;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 850;
+    padding: 10px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 26px;
+  }
+
+  .social-row a {
+    color: #303038;
+    font-weight: 900;
+  }
+
+  .legal {
+    font-size: 0.9rem;
+    margin-top: 24px;
+  }
+
+  .legal a {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1180px) {
+    .newsroom-page .site-header {
+      flex-wrap: wrap;
+    }
+
+    .newsroom-page .site-logo {
+      order: 0;
+    }
+
+    .newsroom-page .nav-toggle {
+      display: block;
+      margin-left: auto;
+      order: 1;
+    }
+
+    .newsroom-page .nav-links {
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      order: 2;
+      padding: 10px 0 14px;
+    }
+
+    .newsroom-page .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .newsroom-page .nav-links > a,
+    .newsroom-page .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .newsroom-page .nav-item {
+      display: grid;
+    }
+
+    .newsroom-page .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .newsroom-page .nav-item:hover .mega-menu,
+    .newsroom-page .nav-item:focus-within .mega-menu {
+      display: none;
+    }
+
+    .newsroom-page .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .newsroom-page .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .newsroom-page .nav-utilities {
+      align-items: stretch;
+      display: flex;
+      margin-left: auto;
+      order: 0;
+    }
+  }
+
+  @media (max-width: 820px) {
+    .award-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .resource-grid {
+      gap: 28px 56px;
+      grid-template-columns: repeat(2, minmax(0, 250px));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .news-hero h1 {
+      font-size: 3rem;
+    }
+
+    .press-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .press-card {
+      min-height: 250px;
+      padding: 20px;
+    }
+
+    .logo-wrap {
+      height: 46px;
+      margin-bottom: 28px;
+    }
+
+    .press-card h2 {
+      font-size: 1rem;
+    }
+
+    .resource-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ready-section,
+    .newsroom-footer,
+    .press-section,
+    .resources-section,
+    .press-cta {
+      padding-inline: 16px;
+    }
+  }
+</style>

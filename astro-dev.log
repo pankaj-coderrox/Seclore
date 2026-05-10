@@ -1,0 +1,73 @@
+[2m12:43:16[22m [34m[types][39m Generated [2m3ms[22m
+[2m12:43:16[22m [34m[content][39m Syncing content
+[2m12:43:16[22m [34m[content][39m Synced content
+
+[42m[1m astro [22m[49m [32mv5.18.1[39m [2mready in[22m 399 [2mms[22m
+
+[2m┃[22m Local    [36mhttp://127.0.0.1:4322/[39m
+
+[2m12:43:16[22m [32mwatching for file changes...[39m
+[2m12:44:30[22m [34m[200][39m /integrations/broadcom/ [2m42ms[22m
+[2m12:44:30[22m [34m[200][39m /integrations/broadcom/ [2m8ms[22m
+[2m12:44:52[22m [34m[200][39m /integrations/broadcom/ [2m6ms[22m
+[2m12:45:14[22m [34m[200][39m /integrations/dlp-casb/ [2m11ms[22m
+[2m12:45:16[22m [34m[200][39m /armor/aidlp/ [2m15ms[22m
+[2m12:51:38[22m [34m[watch][39m src/components/Nav.astro
+[2m12:51:38[22m [34m[200][39m /armor/aidlp/ [2m10ms[22m
+[2m12:51:50[22m [34m[watch][39m /src/pages/integrations/dlp-casb.astro?astro&type=style&index=0&lang.css
+[2m12:51:50[22m [34m[200][39m /armor/aidlp/ [2m5ms[22m
+[2m12:53:44[22m [34m[200][39m /integrations/forcepoint/ [2m15ms[22m
+[2m12:54:00[22m [34m[200][39m /integrations/dlp-casb/ [2m9ms[22m
+[2m12:54:02[22m [34m[200][39m /armor/aidlp/ [2m5ms[22m
+[2m13:00:06[22m [34m[watch][39m src/components/Nav.astro
+[2m13:00:06[22m [34m[200][39m /armor/aidlp/ [2m8ms[22m
+[2m13:00:18[22m [34m[watch][39m /src/pages/integrations/dlp-casb.astro?astro&type=style&index=0&lang.css
+[2m13:00:19[22m [34m[200][39m /armor/aidlp/ [2m5ms[22m
+[2m13:01:29[22m [34m[200][39m /integrations/skyhigh/ [2m10ms[22m
+[2m13:01:47[22m [34m[200][39m /integrations/dlp-casb/ [2m7ms[22m
+[2m13:01:48[22m [34m[200][39m /armor/aidlp/ [2m5ms[22m
+[2m13:11:28[22m [34m[watch][39m src/components/Nav.astro
+[2m13:11:28[22m [34m[200][39m /armor/aidlp/ [2m15ms[22m
+[2m13:13:37[22m [34m[200][39m /integrations/file-storage/ [2m8ms[22m
+[2m13:14:04[22m [34m[200][39m /integrations/ [2m8ms[22m
+[2m13:14:05[22m [34m[200][39m /armor/aidlp/ [2m4ms[22m
+[2m13:24:20[22m [34m[watch][39m src/components/Nav.astro
+[2m13:24:20[22m [34m[200][39m /armor/aidlp/ [2m10ms[22m
+[2m13:24:20[22m [34m[watch][39m /src/pages/integrations.astro?astro&type=style&index=0&lang.css
+[2m13:25:51[22m [34m[200][39m /integrations/microsoft/ [2m9ms[22m
+[2m13:27:24[22m [34m[200][39m /integrations/microsoft/ [2m4ms[22m
+[2m13:27:40[22m [34m[200][39m /integrations/microsoft/ [2m7ms[22m
+[2m13:28:04[22m [34m[200][39m /integrations/microsoft/ [2m4ms[22m
+[2m13:28:59[22m [34m[200][39m /integrations/ [2m8ms[22m
+[2m13:34:48[22m [34m[watch][39m /src/pages/integrations/microsoft.astro?astro&type=style&index=0&lang.css
+[2m13:34:48[22m [34m[watch][39m src/pages/integrations/microsoft.astro
+[2m13:36:36[22m [34m[200][39m /integrations/microsoft/ [2m8ms[22m
+[2m13:37:03[22m [34m[200][39m /integrations/file-storage/ [2m43ms[22m
+[2m13:37:46[22m [34m[200][39m /integrations/file-storage/ [2m4ms[22m
+[2m13:50:44[22m [34m[watch][39m src/components/Nav.astro
+[2m13:50:44[22m [34m[watch][39m /src/pages/integrations/file-storage.astro?astro&type=style&index=0&lang.css
+[2m13:50:44[22m [34m[200][39m /integrations/file-storage/ [2m16ms[22m
+[2m13:50:44[22m [34m[200][39m /integrations/file-storage/ [2m6ms[22m
+[2m13:52:42[22m [34m[200][39m /integrations/sharepoint/ [2m9ms[22m
+[2m13:53:07[22m [34m[200][39m /integrations/file-storage/ [2m4ms[22m
+[2m14:00:52[22m [34m[watch][39m src/components/Nav.astro
+[2m14:00:52[22m [34m[watch][39m /src/pages/integrations/file-storage.astro?astro&type=style&index=0&lang.css
+[2m14:00:52[22m [34m[200][39m /integrations/file-storage/ [2m11ms[22m
+[2m14:03:56[22m [34m[200][39m /integrations/file-servers/ [2m9ms[22m
+[2m14:04:20[22m [34m[200][39m /integrations/file-storage/ [2m5ms[22m
+[2m14:16:57[22m [34m[200][39m /integrations/file-storage/ [2m5ms[22m
+[2m14:28:18[22m [34m[watch][39m src/components/Nav.astro
+[2m14:28:18[22m [34m[watch][39m /src/pages/integrations.astro?astro&type=style&index=0&lang.css
+[2m14:28:18[22m [34m[200][39m /integrations/file-storage/ [2m14ms[22m
+[2m14:28:18[22m [34m[200][39m /integrations/file-storage/ [2m8ms[22m
+[2m14:30:24[22m [34m[200][39m /integrations/content-storage-and-collaboration-platforms/ [2m10ms[22m
+[2m14:31:13[22m [34m[200][39m /integrations/ [2m13ms[22m
+[2m14:42:03[22m [34m[watch][39m src/components/Nav.astro
+[2m14:42:03[22m [34m[200][39m /integrations/ [2m13ms[22m
+[2m14:42:03[22m [34m[watch][39m /src/pages/integrations.astro?astro&type=style&index=0&lang.css
+[2m14:44:23[22m [34m[200][39m /integrations/discovery-classification/ [2m11ms[22m
+[2m14:44:56[22m [34m[200][39m /integrations/ [2m14ms[22m
+[2m14:55:44[22m [34m[watch][39m src/components/Nav.astro
+[2m14:55:44[22m [34m[200][39m /integrations/ [2m12ms[22m
+
+C:\Users\Acer\Documents\New project>

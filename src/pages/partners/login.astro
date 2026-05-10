@@ -1,0 +1,705 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "http://127.0.0.1:5000";
+---
+
+<BaseLayout
+  title="Partner Portal Login | seclore"
+  description="Seclore Partner Network portal login page for partner success programs, campaigns, microsites, and co-branded collateral."
+>
+  <main class="portal-page">
+    <Nav />
+    <section class="portal-hero" id="login">
+      <button class="menu-button" type="button" aria-label="Open portal menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="portal-menu" aria-label="Partner portal menu">
+        <a href="/partners/">Partner community</a>
+        <a href="/partners/login/">Register a Deal</a>
+        <a href="/partners/register/">Register today</a>
+        <a href="/partners/lead-referral/">Lead referral</a>
+        <a href="#help">Help</a>
+      </nav>
+
+      <a class="portal-logo" href="/partners/" aria-label="Seclore Partner Network">
+        <strong>seclore</strong>
+        <span>Partner Network</span>
+      </a>
+
+      <div class="stripe-stack" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="welcome-copy">
+        <h1>Welcome to your partner portal</h1>
+      </div>
+
+      <form class="login-card is-active" id="portal-login-form">
+        <h2>Login</h2>
+        <label>
+          Email Address
+          <input name="email" type="email" placeholder="Email Address" required />
+        </label>
+        <label>
+          Password
+          <input name="password" type="password" placeholder="Password" required />
+        </label>
+        <button class="forgot-link" type="button">Forgot Your Password?</button>
+        <button class="pill-button" type="submit">Sign In</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+        <div class="divider"></div>
+        <h3>Not a partner?</h3>
+        <a class="pill-button compact" href="/partners/register/">Register today</a>
+      </form>
+
+      <form class="login-card reset-card" id="portal-reset-form" hidden>
+        <h2>Reset Password</h2>
+        <label>
+          Email Address
+          <input name="email" type="email" placeholder="Email Address" required />
+        </label>
+        <button class="pill-button" type="submit">Send Reset Link</button>
+        <button class="back-link" type="button">Back to Login</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="program-intro" id="register">
+      <h2>Check out our all-inclusive partner success programs in our Partner Portal.</h2>
+      <p>
+        Our Partner Success team is here to help you with an entire organization of industry,
+        product and marketing experts that can help you grow your business. Find marketing
+        resources to generate leads, create more opportunities and close more deals!
+      </p>
+      <a class="pill-button compact" href="/partners/register/">Register today</a>
+    </section>
+
+    <section class="feature-cards" aria-label="Partner portal tools">
+      <article>
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M8 12h32v24H8z" />
+          <path d="M18 40h12M24 36v4M17 20l-5 4 5 4M31 20l5 4-5 4M21 29l6-10" />
+        </svg>
+        <h3>Create your own microsite</h3>
+        <p>Check out our customizable microsite that helps you capitalize on our products.</p>
+      </article>
+      <article>
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M16 31 8 40l11-5 15-15c5-5 6-10 4-12s-7-1-12 4L11 27z" />
+          <path d="M26 12l10 10M18 34l-4-4M10 39l-1-8" />
+        </svg>
+        <h3>Customize an email campaign</h3>
+        <p>Check out our pre-packaged campaigns, and customize them to start building leads today.</p>
+      </article>
+      <article>
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M16 9v13l7 7M32 39V26l-7-7" />
+          <path d="M14 9h6M28 39h6M24 11h12v10M12 27v10h12" />
+        </svg>
+        <h3>Try our co-branded collateral</h3>
+        <p>Check out all of our pre-made collateral that can be customized to highlight your company.</p>
+      </article>
+    </section>
+
+    <section class="leads-section">
+      <img
+        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80"
+        alt="Business professional reviewing messages at a laptop"
+        loading="lazy"
+      />
+      <div>
+        <h2>Are you generating new, exciting leads?</h2>
+        <p>
+          Take a look at all we have to offer and find marketing resources to generate leads, create
+          more opportunities and close more deals!
+        </p>
+      </div>
+    </section>
+
+    <section class="help-section" id="help">
+      <div>
+        <h2>Need help navigating the Portal?</h2>
+        <p>
+          Our Seclore team is here to assist you with any questions or support you need to make the
+          most of the Partner Portal and achieve your business goals.
+        </p>
+      </div>
+      <div class="help-visual" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <script is:inline define:vars={{ apiBase }}>
+    const menuButton = document.querySelector(".menu-button");
+    const portalMenu = document.querySelector(".portal-menu");
+    const loginForm = document.querySelector("#portal-login-form");
+    const resetForm = document.querySelector("#portal-reset-form");
+    const forgotButton = document.querySelector(".forgot-link");
+    const backButton = document.querySelector(".back-link");
+
+    function setStatus(form, message, state) {
+      const status = form.querySelector(".form-status");
+      status.textContent = message;
+      status.className = `form-status ${state}`;
+    }
+
+    async function submitPortalForm(form, endpoint, successKey) {
+      const button = form.querySelector("button[type='submit']");
+      const payload = Object.fromEntries(new FormData(form).entries());
+
+      setStatus(form, "Working...", "");
+      button.disabled = true;
+
+      try {
+        const response = await fetch(`${apiBase}${endpoint}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || "Request failed.");
+        }
+
+        if (successKey) {
+          localStorage.setItem(successKey, JSON.stringify(data.user || payload));
+        }
+
+        setStatus(form, data.message || "Success.", "success");
+      } catch (error) {
+        setStatus(form, error.message || "Something went wrong.", "error");
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    menuButton?.addEventListener("click", () => {
+      const isOpen = portalMenu?.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(Boolean(isOpen)));
+    });
+
+    forgotButton?.addEventListener("click", () => {
+      loginForm.hidden = true;
+      resetForm.hidden = false;
+    });
+
+    backButton?.addEventListener("click", () => {
+      resetForm.hidden = true;
+      loginForm.hidden = false;
+    });
+
+    loginForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitPortalForm(loginForm, "/api/partner-login", "seclorePartnerSession");
+    });
+
+    resetForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitPortalForm(resetForm, "/api/partner-password-reset");
+    });
+  </script>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --ink: #251123;
+    --ink-soft: #32162e;
+    --text: #2b1b30;
+    --muted: #5a4a60;
+    --pink: #ee2355;
+    --pink-dark: #ba1746;
+    --orange: #ff7922;
+    --card: #f2f3f5;
+    --line: rgba(255, 255, 255, 0.34);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: #ffffff;
+    color: var(--text);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  .portal-page {
+    min-width: 320px;
+    overflow: hidden;
+  }
+
+  .portal-hero {
+    background: var(--ink);
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.82fr);
+    min-height: 710px;
+    overflow: hidden;
+    padding: 118px clamp(24px, 5vw, 86px) 74px;
+    position: relative;
+  }
+
+  .menu-button {
+    background: transparent;
+    border: 0;
+    display: grid;
+    gap: 6px;
+    left: 32px;
+    padding: 0;
+    position: absolute;
+    top: 28px;
+    width: 34px;
+    z-index: 3;
+  }
+
+  .portal-menu {
+    background: rgba(25, 10, 24, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    display: none;
+    gap: 4px;
+    left: 28px;
+    padding: 12px;
+    position: absolute;
+    top: 72px;
+    width: min(280px, calc(100vw - 56px));
+    z-index: 5;
+  }
+
+  .portal-menu.is-open {
+    display: grid;
+  }
+
+  .portal-menu a {
+    border-radius: 6px;
+    color: #ffffff;
+    font-weight: 800;
+    padding: 12px 14px;
+    text-decoration: none;
+  }
+
+  .portal-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .menu-button span {
+    background: rgba(255, 255, 255, 0.55);
+    display: block;
+    height: 3px;
+    width: 100%;
+  }
+
+  .portal-logo {
+    color: #ffffff;
+    left: 50%;
+    line-height: 1;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    top: 12px;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+
+  .portal-logo strong {
+    display: block;
+    font-size: clamp(1.65rem, 3vw, 2.1rem);
+    font-weight: 950;
+    letter-spacing: 0.04em;
+  }
+
+  .portal-logo span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 650;
+    letter-spacing: 0;
+    margin-top: 4px;
+    text-transform: none;
+  }
+
+  .stripe-stack {
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .stripe-stack span {
+    bottom: -82px;
+    height: 990px;
+    position: absolute;
+    transform: rotate(43deg);
+    transform-origin: bottom center;
+    width: 154px;
+  }
+
+  .stripe-stack span:nth-child(1) {
+    background: linear-gradient(180deg, var(--orange), var(--pink));
+    left: 38%;
+  }
+
+  .stripe-stack span:nth-child(2) {
+    background: linear-gradient(180deg, #f22c54, var(--pink-dark));
+    left: 50%;
+  }
+
+  .stripe-stack span:nth-child(3) {
+    background: rgba(117, 28, 64, 0.48);
+    left: 62%;
+  }
+
+  .welcome-copy,
+  .login-card {
+    position: relative;
+    z-index: 2;
+  }
+
+  .welcome-copy {
+    align-self: center;
+    max-width: 700px;
+  }
+
+  .welcome-copy h1 {
+    color: #ffffff;
+    font-size: clamp(3rem, 7vw, 5.3rem);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    line-height: 1.34;
+    margin: 0;
+  }
+
+  .login-card {
+    align-self: start;
+    justify-self: center;
+    max-width: 420px;
+    width: 100%;
+  }
+
+  .login-card h2,
+  .login-card h3 {
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .login-card h2 {
+    font-size: 1.55rem;
+    margin-bottom: 24px;
+  }
+
+  .login-card h3 {
+    font-size: 1.5rem;
+    margin: 30px 0 20px;
+  }
+
+  .login-card label {
+    color: #ffffff;
+    display: grid;
+    font-size: 1.08rem;
+    font-weight: 800;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .login-card input {
+    background: #ffffff;
+    border: 1px solid #cfcbd1;
+    border-radius: 4px;
+    color: #23162a;
+    min-height: 48px;
+    padding: 0 18px;
+    width: 100%;
+  }
+
+  .login-card input:focus {
+    border-color: var(--pink);
+    outline: 3px solid rgba(238, 35, 85, 0.26);
+  }
+
+  .forgot-link,
+  .back-link {
+    background: transparent;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 850;
+    margin: -4px 0 26px;
+    padding: 0;
+    text-align: right;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  .back-link {
+    margin: 18px 0 0;
+    text-align: center;
+  }
+
+  .pill-button {
+    align-items: center;
+    background: var(--pink);
+    border: 2px solid rgba(255, 255, 255, 0.86);
+    border-radius: 999px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 62px;
+    padding: 0 32px;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  .pill-button:disabled {
+    cursor: progress;
+    opacity: 0.74;
+  }
+
+  .pill-button.compact {
+    min-height: 58px;
+    width: auto;
+  }
+
+  .form-status {
+    color: #ffffff;
+    font-size: 0.9rem;
+    min-height: 22px;
+    margin: 14px 0 0;
+    text-align: center;
+  }
+
+  .form-status.success {
+    color: #9df1b4;
+  }
+
+  .form-status.error {
+    color: #ffb1bd;
+  }
+
+  .divider {
+    background: rgba(255, 255, 255, 0.5);
+    height: 1px;
+    margin: 14px 0 0;
+    width: 100%;
+  }
+
+  .program-intro {
+    padding: clamp(70px, 9vw, 108px) clamp(24px, 8vw, 140px) 82px;
+    text-align: center;
+  }
+
+  .program-intro h2 {
+    color: var(--text);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 450;
+    line-height: 1.18;
+    margin-inline: auto;
+    max-width: 1120px;
+  }
+
+  .program-intro p {
+    color: var(--text);
+    font-size: clamp(1rem, 1.5vw, 1.22rem);
+    font-weight: 560;
+    line-height: 1.55;
+    margin: 26px auto 34px;
+    max-width: 1050px;
+  }
+
+  .feature-cards {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0 clamp(18px, 4vw, 42px) clamp(88px, 9vw, 126px);
+  }
+
+  .feature-cards article {
+    background: var(--card);
+    border-radius: 8px;
+    min-height: 314px;
+    padding: 48px 42px;
+  }
+
+  .feature-cards svg {
+    fill: none;
+    height: 72px;
+    margin-bottom: 34px;
+    stroke: #000000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3.2;
+    width: 72px;
+  }
+
+  .feature-cards h3 {
+    color: var(--text);
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 450;
+    line-height: 1.12;
+    margin-bottom: 18px;
+  }
+
+  .feature-cards p {
+    color: var(--text);
+    font-size: 1.06rem;
+    font-weight: 560;
+    line-height: 1.48;
+  }
+
+  .leads-section {
+    align-items: center;
+    display: grid;
+    gap: clamp(42px, 6vw, 72px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    padding: 0 clamp(18px, 4vw, 42px) clamp(78px, 9vw, 110px);
+  }
+
+  .leads-section img {
+    aspect-ratio: 16 / 10.7;
+    border-radius: 8px;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .leads-section h2 {
+    color: var(--text);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 450;
+    line-height: 1.1;
+  }
+
+  .leads-section p {
+    color: var(--text);
+    font-size: clamp(1rem, 1.5vw, 1.22rem);
+    font-weight: 560;
+    line-height: 1.55;
+    max-width: 660px;
+  }
+
+  .help-section {
+    background: var(--ink);
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1.3fr);
+    min-height: 560px;
+    overflow: hidden;
+    padding: clamp(80px, 12vw, 150px) clamp(18px, 4vw, 42px) 0;
+    position: relative;
+  }
+
+  .help-section h2 {
+    color: #ffffff;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 450;
+    line-height: 1.08;
+  }
+
+  .help-section p {
+    color: #ffffff;
+    font-size: 1.14rem;
+    font-weight: 750;
+    line-height: 1.6;
+    max-width: 470px;
+  }
+
+  .help-visual {
+    align-self: end;
+    background:
+      linear-gradient(126deg, var(--pink) 0 7%, rgba(238, 35, 85, 0.72) 7% 10%, transparent 10%),
+      repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.18) 0 2px, transparent 2px 44px),
+      linear-gradient(135deg, rgba(255, 122, 34, 0.76), rgba(43, 31, 48, 0.84) 28%, #15121d 100%);
+    clip-path: polygon(31% 0, 100% 0, 100% 100%, 0 100%);
+    min-height: 410px;
+    width: calc(100% + 42px);
+  }
+
+  .portal-footer {
+    align-items: center;
+    background: var(--ink);
+    color: #ffffff;
+    display: flex;
+    gap: 54px;
+    justify-content: center;
+    padding: 28px 24px 36px;
+  }
+
+  .portal-footer a {
+    color: #ffffff;
+    font-weight: 850;
+  }
+
+  @media (max-width: 980px) {
+    .portal-hero,
+    .leads-section,
+    .help-section {
+      grid-template-columns: 1fr;
+    }
+
+    .portal-hero {
+      gap: 44px;
+      padding-top: 128px;
+    }
+
+    .welcome-copy {
+      max-width: none;
+      text-align: center;
+    }
+
+    .feature-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .help-section {
+      min-height: auto;
+    }
+
+    .help-visual {
+      min-height: 300px;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .portal-hero {
+      min-height: auto;
+      padding-inline: 18px;
+    }
+
+    .stripe-stack {
+      opacity: 0.38;
+    }
+
+    .feature-cards article {
+      padding: 34px 28px;
+    }
+
+    .portal-footer {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+  }
+</style>

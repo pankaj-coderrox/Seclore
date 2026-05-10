@@ -1,0 +1,284 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const benefits = [
+  {
+    title: "Enhanced Data Security",
+    text: "Easily secure, store, manage and share sensitive documents like contracts, IP, financial records, and safeguard them from unauthorized access, accidental data exfiltration, or misuse."
+  },
+  {
+    title: "Secure Collaboration",
+    text: "Facilitate seamless collaboration across teams and external stakeholders with advanced security features such as encryption, access and usage control, and audit trails."
+  },
+  {
+    title: "Secure Business Transactions",
+    text: "Simplify critical business processes, such as mergers, acquisitions, due diligence, real estate deals, or fundraising, with secure document sharing and real-time collaboration."
+  }
+];
+
+const transactions = [
+  {
+    title: "Mergers & acquisitions (M&A), Joint ventures (JVs)",
+    text: "Easily secure, store, manage and share sensitive documents like contracts, IP, financial records, and safeguard them from unauthorized access, accidental data exfiltration, or misuse."
+  },
+  {
+    title: "Fundraising and investments, financial transactions, and due diligence",
+    text: "Protect sensitive investor reports, valuation documents, and business plans to prevent leaks that could impact deal negotiations."
+  },
+  {
+    title: "Legal transactions and litigations",
+    text: "Protect and maintain confidentiality of documents related to lawsuits, contracts and legal proceedings."
+  },
+  {
+    title: "Board communications & corporate strategy",
+    text: "Secure high-level discussions, executive decisions, and confidential board materials with continuous tracking and access restrictions."
+  }
+];
+---
+
+<BaseLayout
+  title="Content Storage and Collaboration Platforms | seclore"
+  description="Security and compliance for VDR, ECM, EFSS, PLM, and content storage and collaboration systems."
+>
+  <main id="top" class="content-storage-page">
+    <Nav />
+
+    <section class="product-hero">
+      <span>Integrations</span>
+      <h1>Security and Compliance for VDR, ECM, EFSS, PLM, &amp; more Content Storage and Collaboration Systems</h1>
+      <p>
+        Empower businesses with secure, compliant, and efficient content storage and collaboration
+        solutions that enhance productivity, protect sensitive data, and streamline workflows.
+      </p>
+      <a class="primary-button" href="#demo">Book a Demo</a>
+    </section>
+
+    <section class="intro-section">
+      <div class="section-heading centered">
+        <h2>Safeguarding sensitive data with secure content collaboration systems</h2>
+        <p>
+          Secure content storage and collaboration systems, such as Enterprise Content Management
+          (ECM), Document Management Systems (DMS), and Content Collaboration Platforms (CCP), are
+          vital for industries like banking, manufacturing, healthcare, and legal services. Sectors
+          like manufacturing and high-tech also rely on Product Lifecycle Management (PLM) and
+          Supply Chain Management (SCM) systems to protect intellectual property, while critical
+          business activities (M&amp;A, fundraising, IPOs) require secure document sharing. As data is
+          constantly handled, enterprises face risks of leakage and non-compliance. Restricting
+          access to sensitive information minimizes these risks, ensuring security, compliance, and
+          operational efficiency.
+        </p>
+      </div>
+    </section>
+
+    <section class="benefits-section">
+      <div class="section-heading centered">
+        <h2>Enterprise benefits</h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="photo-card benefit-photo">
+          <img src="/images/integrations/content-storage/enterprise-benefits.png" alt="Engineers reviewing product data in a collaboration platform" loading="lazy" />
+        </div>
+        {benefits.map((benefit) => (
+          <article class="benefit-item">
+            <h3>{benefit.title}</h3>
+            <p>{benefit.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="vdr-band">
+      <h2>Secure M&amp;A transactions and more with Seclore for VDRs</h2>
+      <p>Protect sensitive data without disrupting productivity</p>
+    </section>
+
+    <section class="transactions-section">
+      <div class="transaction-grid">
+        {transactions.map((item) => (
+          <article class="transaction-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="cta-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#top">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f6f6f7;
+    --page-text: #29282d;
+    --purple: #5b2bd7;
+    --purple-dark: #4515c7;
+    --line: #dedee5;
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: #ffffff;
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+  .content-storage-page h1,
+  .content-storage-page h2,
+  .content-storage-page h3,
+  .content-storage-page p { margin: 0; }
+
+  .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .site-logo { color: var(--purple); font-size: 1.35rem; font-weight: 950; letter-spacing: 0.04em; margin-right: clamp(14px, 2vw, 28px); text-transform: uppercase; }
+  .nav-links, .nav-utilities { align-items: center; display: flex; }
+  .nav-links { flex: 1 1 auto; gap: clamp(18px, 2.2vw, 34px); justify-content: center; min-width: 0; }
+  .nav-links > a, .nav-trigger { align-items: center; background: transparent; border: 0; color: var(--header-muted); cursor: pointer; display: inline-flex; font-size: 0.98rem; font-weight: 800; gap: 8px; min-height: 68px; padding: 0; }
+  .nav-item { position: static; }
+  .nav-caret { border-bottom: 2px solid currentColor; border-right: 2px solid currentColor; display: inline-block; height: 8px; transform: rotate(45deg) translateY(-2px); width: 8px; }
+  .mega-menu { left: 22px; opacity: 0; pointer-events: none; position: absolute; right: clamp(20px, 4vw, 42px); top: calc(100% - 1px); transform: translateY(12px); transition: opacity 180ms ease, transform 180ms ease; }
+  .nav-item:hover .mega-menu, .nav-item:focus-within .mega-menu, .nav-item.is-open .mega-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .mega-inner { background: var(--dropdown-bg); border: 1px solid var(--dropdown-border); border-radius: 8px; box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2); display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr) 320px; min-height: 320px; overflow: hidden; padding: 26px; }
+  .mega-columns { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+  .mega-column, .mega-sublinks { display: grid; }
+  .mega-column { gap: 10px; }
+  .mega-title { color: var(--dropdown-title); font-size: 0.76rem; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; }
+  .mega-link, .mega-link-group { border: 1px solid transparent; border-radius: 8px; }
+  .mega-link { display: grid; gap: 5px; padding: 13px; }
+  .mega-link strong { color: var(--dropdown-text); }
+  .mega-link small, .mega-sublinks a { color: var(--dropdown-muted); }
+  .mega-link:hover, .mega-link-group:hover { background: var(--dropdown-link-hover); border-color: var(--dropdown-link-border); }
+  .mega-link-group { display: grid; gap: 4px; padding: 4px; }
+  .mega-sublinks { gap: 2px; padding: 0 9px 8px 22px; }
+  .mega-sublinks a { font-size: 0.84rem; padding: 5px 0; }
+  .mega-feature { align-content: end; background: var(--dropdown-feature-bg); border: 1px solid var(--dropdown-feature-border); border-radius: 8px; display: grid; min-height: 268px; padding: 24px; }
+  .mega-feature span, .mega-feature em { color: var(--dropdown-title); }
+  .mega-feature strong { color: var(--dropdown-text); font-size: 1.35rem; line-height: 1.18; margin-top: auto; }
+  .nav-utilities { flex: 0 0 auto; gap: clamp(12px, 1.5vw, 20px); margin-left: clamp(12px, 2vw, 28px); }
+  .utility-link, .language-button, .utility-icon, .theme-toggle { color: var(--header-muted); display: none; font-size: 0.88rem; font-weight: 750; }
+  .demo-button, .primary-button { align-items: center; background: linear-gradient(135deg, var(--purple), var(--purple-dark)); border: 0; border-radius: 7px; color: #fff; cursor: pointer; display: inline-flex; font-size: 0.9rem; font-weight: 850; justify-content: center; min-height: 40px; padding: 0 18px; }
+  .nav-toggle { background: transparent; border: 0; display: none; height: 42px; width: 42px; }
+  .nav-toggle span { background: var(--header-text); display: block; height: 2px; margin: 6px 0; width: 24px; }
+
+  .product-hero {
+    align-items: center;
+    background: radial-gradient(circle at 15% 86%, rgba(229, 175, 245, 0.86), transparent 36%), linear-gradient(125deg, #8736df 0%, #7d2dea 45%, #4a04dc 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 900px;
+    padding: 190px 24px 150px;
+    text-align: center;
+  }
+
+  .product-hero span { font-size: 1rem; font-weight: 850; margin-bottom: 2.2rem; }
+  .product-hero h1 { font-size: clamp(3rem, 7.8vw, 7.3rem); font-weight: 500; letter-spacing: 0; line-height: 1.03; max-width: 1190px; }
+  .product-hero p { font-size: clamp(1rem, 1.6vw, 1.25rem); line-height: 1.55; margin: 3rem auto 2.2rem; max-width: 1190px; }
+
+  .intro-section { background: #f5f5f6; padding: 70px 30px 92px; }
+  .section-heading.centered { margin: 0 auto; max-width: 1160px; text-align: center; }
+  .section-heading h2 { color: #333136; font-size: clamp(2.4rem, 4.5vw, 4.6rem); font-weight: 500; line-height: 1.08; }
+  .section-heading p { color: #17151e; font-size: 1.18rem; line-height: 1.55; margin: 2.6rem auto 0; max-width: 1140px; }
+
+  .benefits-section { background: #fff; padding: 92px 30px 280px; }
+  .benefits-grid { display: grid; gap: 58px 78px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 70px auto 0; max-width: 1120px; }
+  .photo-card { border-radius: 18px; overflow: hidden; }
+  .photo-card img { display: block; height: 100%; object-fit: cover; width: 100%; }
+  .benefit-photo { aspect-ratio: 1.76; grid-column: 1 / 2; }
+  .benefit-item h3 { color: #050506; font-size: clamp(2.1rem, 3.8vw, 3.4rem); font-weight: 500; line-height: 1.05; }
+  .benefit-item p { color: #1e1d25; font-size: 1.12rem; line-height: 1.62; margin-top: 3rem; }
+  .benefit-item:nth-of-type(3) { grid-column: 1 / 2; margin-top: 210px; }
+
+  .vdr-band { background: #4d27cf; color: #fff; padding: 62px 24px 70px; text-align: center; }
+  .vdr-band h2 { font-size: clamp(2.4rem, 5vw, 5rem); font-weight: 500; line-height: 1.1; margin: 0 auto; max-width: 1120px; }
+  .vdr-band p { font-size: 1.3rem; margin-top: 2.2rem; }
+
+  .transactions-section { background: #fff; padding: 120px 30px 220px; }
+  .transaction-grid { display: grid; gap: clamp(38px, 6vw, 80px); grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 auto; max-width: 1120px; }
+  .transaction-card h3 { color: #050506; font-size: clamp(2rem, 3.3vw, 3.35rem); font-weight: 500; line-height: 1.05; }
+  .transaction-card p { color: #1e1d25; font-size: 1.12rem; line-height: 1.62; margin-top: 2.6rem; }
+
+  .cta-section { background: #fff; padding: 55px 30px 65px; }
+  .cta-section h2, .cta-section p, .cta-section a { margin-left: auto; margin-right: auto; max-width: 1120px; }
+  .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 500; }
+  .cta-section p { color: #92939b; font-size: 1.16rem; line-height: 1.55; margin-top: 0.8rem; }
+  .cta-section .primary-button { margin-top: 2rem; }
+
+  .site-footer { background: #fff; color: #5f626b; padding: 0 30px 55px; }
+  .site-footer > * { margin-left: auto; margin-right: auto; max-width: 1120px; }
+  .footer-lines { border-top: 1px solid #cfcfd4; }
+  .footer-lines details { border-bottom: 1px solid #cfcfd4; color: #22222b; padding: 1.35rem 0; }
+  .footer-lines summary { cursor: pointer; font-size: 1.18rem; font-weight: 800; }
+  .footer-lines p { color: #656873; line-height: 1.6; margin-top: 0.75rem; }
+  .footer-logo { color: #5b2bd7; display: block; font-size: 2rem; font-weight: 900; letter-spacing: 1px; margin-top: 2.4rem; text-transform: uppercase; }
+  .site-footer p { font-size: 1.05rem; line-height: 1.65; margin-top: 1.4rem; }
+  .store-row { display: flex; flex-direction: column; gap: 10px; margin-top: 2.4rem; }
+  .store-row span { align-items: center; background: #17101b; border-radius: 6px; color: #fff; display: inline-flex; font-size: 0.9rem; font-weight: 800; height: 40px; justify-content: center; width: 168px; }
+  .social-row { border-top: 1px solid #d1d1d6; padding-top: 1.7rem; }
+  .legal a { text-decoration: underline; }
+
+  @media (max-width: 1280px) {
+    .nav-toggle { display: block; margin-left: 12px; order: 1; }
+    .site-header { flex-wrap: wrap; }
+    .site-logo { order: 0; }
+    .nav-links { background: var(--header-bg); border-top: 1px solid var(--header-border); display: none; flex: 1 0 100%; order: 2; padding: 10px 0 14px; }
+    .nav-links.open { align-items: stretch; display: grid; }
+    .nav-links > a, .nav-trigger { justify-content: space-between; min-height: 48px; width: 100%; }
+    .nav-item { display: grid; }
+    .mega-menu { display: none; opacity: 1; position: static; transform: none; }
+    .nav-item:hover .mega-menu, .nav-item:focus-within .mega-menu { display: none; }
+    .nav-item.is-open .mega-menu { display: block; }
+    .mega-inner { box-shadow: none; grid-template-columns: 1fr; min-height: 0; padding: 16px; }
+    .nav-utilities { align-items: stretch; display: flex; margin-left: auto; order: 0; }
+  }
+
+  @media (max-width: 900px) {
+    .product-hero { min-height: 620px; padding: 105px 20px 90px; }
+    .benefits-section { padding: 72px 20px 120px; }
+    .benefits-grid, .transaction-grid { grid-template-columns: 1fr; }
+    .benefit-photo, .benefit-item:nth-of-type(3) { grid-column: auto; margin-top: 0; }
+    .transactions-section { padding: 80px 20px 120px; }
+  }
+
+  @media (max-width: 560px) {
+    .product-hero h1 { font-size: 2.6rem; }
+    .section-heading h2, .vdr-band h2 { font-size: 2.2rem; }
+    .benefit-item h3, .transaction-card h3 { font-size: 2rem; }
+  }
+</style>

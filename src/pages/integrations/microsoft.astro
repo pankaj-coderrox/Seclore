@@ -1,0 +1,954 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const outcomes = [
+  {
+    title: "Insider threat",
+    text: "Protect sensitive data from threats like excessive access, oversharing through co-pilot, accidental sharing via email, Teams, OneDrive, and malicious insiders. Apply persistent protection with granular controls to secure data within and beyond Microsoft 365 applications."
+  },
+  {
+    title: "Secure external collaboration",
+    text: "Fill Microsoft 365 security gaps with external collaboration. Extend organization security policies to third parties and retain control of your sensitive data throughout its lifecycle, even when shared with third parties."
+  },
+  {
+    title: "Reduce overhead",
+    text: "Reduce the overhead of security configurations within Microsoft 365 with embedded and transparent data-centric security. Easy, one-click protection for emails, SharePoint and Teams."
+  }
+];
+
+const features = [
+  {
+    title: "Email security",
+    text: "User-driven or automated rule-driven classification and protection for sensitive emails and attachments. Apply granular controls, set expiry, and control downstream sharing.",
+    icon: "mail"
+  },
+  {
+    title: "Cloud data protection",
+    text: "Automatic protection of sensitive data within Microsoft Cloud, including SharePoint, OneDrive, and Teams. Enable secure collaboration by encrypting downloaded data or sharing links with granular usage controls.",
+    icon: "cloud"
+  },
+  {
+    title: "Identity federation",
+    text: "SSO for end users with your organization's Microsoft Entra ID while accessing sensitive digital assets.",
+    icon: "identity"
+  },
+  {
+    title: "Policy federation",
+    text: "Extend SharePoint and Teams user permissions automatically to downloaded copies. Any changes are reflected in real-time and on downloaded copies.",
+    icon: "policy"
+  },
+  {
+    title: "Secure access",
+    text: "Securely access protected files with dynamic watermarking in a native desktop application or via a secure browser on a desktop. Allow secure access on mobile devices.",
+    icon: "lock"
+  },
+  {
+    title: "Sensitivity label-driven protection",
+    text: "Automatically apply persistent protection to sensitive digital assets based on their Microsoft sensitivity label.",
+    icon: "tag"
+  },
+  {
+    title: "Revoke access",
+    text: "Dynamically revoke access on demand by end users or document owners to sensitive data shared internally or externally with third parties.",
+    icon: "revoke"
+  },
+  {
+    title: "Tracking and reporting",
+    text: "Publish detailed audit logs and user actions with sensitive data to Azure Sentinel for comprehensive tracking, reporting, and remediation.",
+    icon: "report"
+  }
+];
+
+const resources = [
+  {
+    type: "Page",
+    title: "Microsoft 365",
+    cta: "View Page"
+  },
+  {
+    type: "Whitepaper",
+    tag: "Partners & Integrations",
+    title: "Seclore for Microsoft 365",
+    cta: "View Whitepaper"
+  },
+  {
+    type: "Datasheet",
+    tag: "Partners & Integrations",
+    title: "Seclore for Microsoft 365",
+    cta: "Read More"
+  }
+];
+---
+
+<BaseLayout
+  title="Microsoft 365 Integrations | seclore"
+  description="Advanced data security for Microsoft 365 with Seclore persistent protection, access controls, identity federation, and tracking."
+>
+  <main id="top" class="microsoft-page">
+    <Nav />
+
+    <section class="microsoft-hero">
+      <div class="hero-copy">
+        <span>Integrations</span>
+        <h1>Advanced Data Security for Microsoft 365 with Seclore</h1>
+        <p>
+          Embed data-centric security from Seclore within your Microsoft 365 environment to
+          enhance protection and control while ensuring a seamless collaborative workspace.
+        </p>
+        <a class="primary-button" href="#demo">Book a Demo</a>
+      </div>
+      <div class="photo-card hero-photo">
+        <img src="/images/integrations/microsoft/microsoft-hero.png" alt="Microsoft 365 security briefing in a conference room" />
+      </div>
+    </section>
+
+    <section class="split-section intro-section">
+      <div class="photo-card intro-photo">
+        <img src="/images/integrations/microsoft/microsoft-cloud.png" alt="Security team reviewing Microsoft cloud collaboration activity" loading="lazy" />
+      </div>
+      <div class="split-copy">
+        <h2>Secure Data Within the Microsoft Cloud Ecosystem and Beyond</h2>
+        <p>
+          With the rise of hybrid work, Microsoft 365 has become the go-to platform for
+          productivity and cloud collaboration. However, this shift also challenges security, as
+          organizations lose control over sensitive data once it is shared across global teams and
+          third parties.
+        </p>
+        <p>
+          With our best-in-class data-centric security, Seclore allows users to collaborate
+          securely using Microsoft 365 apps without compromising user productivity. Protect your
+          files, emails, and attachments via productivity and collaboration apps like Outlook,
+          SharePoint, OneDrive, and Teams.
+        </p>
+        <p>
+          Leverage Microsoft sensitivity labels to automatically protect sensitive data on creation
+          to ensure authorized sharing and collaboration. Publish granular usage information to
+          Microsoft Sentinel for a holistic view of user behavior.
+        </p>
+        <a class="primary-button small" href="#resources">Read the Solution Brief</a>
+      </div>
+    </section>
+
+    <section class="band-section">
+      <h2>Protect your Microsoft 365 environment and organization from being compromised</h2>
+    </section>
+
+    <section class="outcome-section">
+      <div class="outcome-grid">
+        {outcomes.map((outcome) => (
+          <article>
+            <h3>{outcome.title}</h3>
+            <p>{outcome.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="feature-section" id="microsoft-365">
+      <div class="section-heading centered">
+        <h2>Enhance Security for Microsoft 365 with Seclore</h2>
+      </div>
+      <div class="feature-list">
+        {features.map((feature) => (
+          <article class="feature-card">
+            <div class={`line-icon ${feature.icon}`} aria-hidden="true"></div>
+            <h3>{feature.title}</h3>
+            <p>{feature.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="resources-section" id="resources">
+      <div class="section-heading centered">
+        <h2>Additional Resources</h2>
+      </div>
+      <div class="resource-grid">
+        {resources.map((resource) => (
+          <article class="resource-card">
+            <div class="resource-body">
+              <span>{resource.type}</span>
+              {resource.tag && <strong>{resource.tag}</strong>}
+              <h3>{resource.title}</h3>
+              <a href="#resources">{resource.cta} <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="resource-controls" aria-label="Resource carousel controls">
+        <button type="button" aria-label="Previous resources">&larr;</button>
+        <button type="button" aria-label="Next resources">&rarr;</button>
+      </div>
+    </section>
+
+    <section class="cta-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#top">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f6f6f7;
+    --page-text: #29282d;
+    --muted: #65636c;
+    --purple: #5b2bd7;
+    --purple-deep: #4720c8;
+    --line: #dedee5;
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: #ffffff;
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+  .microsoft-page h1,
+  .microsoft-page h2,
+  .microsoft-page h3,
+  .microsoft-page p { margin: 0; }
+
+  .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .site-logo {
+    color: var(--purple);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: auto;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    background: var(--dropdown-bg);
+    border: 1px solid var(--dropdown-border);
+    box-shadow: 0 22px 55px rgba(15, 23, 42, 0.14);
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+    padding: 12px;
+    position: fixed;
+    right: 20px;
+    top: 76px;
+    width: min(460px, calc(100vw - 40px));
+    z-index: 30;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links > a,
+  .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    color: var(--header-muted);
+    cursor: pointer;
+    display: flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    justify-content: space-between;
+    min-height: 48px;
+    padding: 0 8px;
+    width: 100%;
+  }
+
+  .nav-item { position: relative; width: 100%; }
+  .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 7px;
+    transform: rotate(45deg) translateY(-2px);
+    width: 7px;
+  }
+
+  .mega-menu { display: none; padding: 12px 0; }
+  .nav-item.is-open .mega-menu { display: block; }
+  .mega-inner,
+  .mega-columns {
+    display: grid;
+    gap: 14px;
+  }
+
+  .mega-column {
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    padding: 12px;
+  }
+
+  .mega-title {
+    color: var(--dropdown-title);
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 950;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .mega-link {
+    border-radius: 7px;
+    display: block;
+    padding: 10px;
+  }
+
+  .mega-link:hover { background: var(--dropdown-link-hover); }
+  .mega-link strong,
+  .mega-feature strong {
+    color: var(--dropdown-text);
+    display: block;
+    font-size: 0.93rem;
+  }
+
+  .mega-link small,
+  .mega-feature span {
+    color: var(--dropdown-muted);
+    display: block;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    margin-top: 3px;
+  }
+
+  .mega-sublinks {
+    border-left: 1px solid var(--dropdown-link-border);
+    display: grid;
+    gap: 7px;
+    margin: 4px 0 10px 12px;
+    padding-left: 12px;
+  }
+
+  .mega-sublinks a {
+    color: #45424e;
+    font-size: 0.84rem;
+    font-weight: 750;
+  }
+
+  .mega-feature {
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: block;
+    padding: 14px;
+  }
+
+  .mega-feature em {
+    color: var(--purple);
+    display: block;
+    font-size: 0.82rem;
+    font-style: normal;
+    font-weight: 900;
+    margin-top: 12px;
+  }
+
+  .nav-utilities {
+    align-items: center;
+    display: flex;
+    gap: 14px;
+  }
+
+  .utility-link,
+  .utility-icon,
+  .language-button,
+  .theme-toggle { display: none; }
+
+  .demo-button,
+  .primary-button {
+    align-items: center;
+    background: linear-gradient(135deg, var(--purple), #5633e7);
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    display: inline-flex;
+    font-size: 0.92rem;
+    font-weight: 900;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 24px;
+  }
+
+  .primary-button.small {
+    font-size: 0.82rem;
+    min-height: 38px;
+    padding: 0 18px;
+  }
+
+  .nav-toggle {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: grid;
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .nav-toggle span {
+    background: #27242b;
+    border-radius: 99px;
+    display: block;
+    height: 3px;
+    width: 30px;
+  }
+
+  @media (min-width: 1281px) {
+    .site-logo {
+      margin-right: clamp(14px, 2vw, 28px);
+    }
+
+    .nav-links,
+    .nav-utilities {
+      align-items: center;
+      display: flex;
+    }
+
+    .nav-links {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      flex: 1 1 auto;
+      flex-direction: row;
+      gap: clamp(18px, 2.2vw, 34px);
+      justify-content: center;
+      max-height: none;
+      min-width: 0;
+      overflow: visible;
+      padding: 0;
+      position: static;
+      right: auto;
+      top: auto;
+      width: auto;
+      z-index: auto;
+    }
+
+    .nav-links > a,
+    .nav-trigger {
+      border-bottom: 0;
+      display: inline-flex;
+      gap: 8px;
+      justify-content: flex-start;
+      min-height: 68px;
+      padding: 0;
+      width: auto;
+    }
+
+    .nav-item {
+      position: static;
+      width: auto;
+    }
+
+    .nav-caret {
+      height: 8px;
+      width: 8px;
+    }
+
+    .mega-menu {
+      display: block;
+      left: 22px;
+      opacity: 0;
+      padding: 0;
+      pointer-events: none;
+      position: absolute;
+      right: clamp(20px, 4vw, 42px);
+      top: calc(100% - 1px);
+      transform: translateY(12px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .nav-item:hover .mega-menu,
+    .nav-item:focus-within .mega-menu,
+    .nav-item.is-open .mega-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mega-inner {
+      background: var(--dropdown-bg);
+      border: 1px solid var(--dropdown-border);
+      border-radius: 8px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+      display: grid;
+      gap: 24px;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      min-height: 320px;
+      overflow: hidden;
+      padding: 26px;
+    }
+
+    .mega-columns {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    }
+
+    .mega-column {
+      border: 0;
+      border-radius: 0;
+      display: grid;
+      gap: 10px;
+      padding: 0;
+    }
+
+    .mega-title {
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      margin-bottom: 0;
+    }
+
+    .mega-link,
+    .mega-link-group {
+      border: 1px solid transparent;
+      border-radius: 8px;
+    }
+
+    .mega-link {
+      display: grid;
+      gap: 5px;
+      padding: 13px;
+    }
+
+    .mega-link:hover,
+    .mega-link-group:hover {
+      background: var(--dropdown-link-hover);
+      border-color: var(--dropdown-link-border);
+    }
+
+    .mega-link strong,
+    .mega-feature strong {
+      font-size: initial;
+    }
+
+    .mega-link small,
+    .mega-feature span {
+      font-size: 0.78rem;
+      margin-top: 0;
+    }
+
+    .mega-link-group {
+      display: grid;
+      gap: 4px;
+      padding: 4px;
+    }
+
+    .mega-sublinks {
+      border-left: 0;
+      gap: 2px;
+      margin: 0;
+      padding: 0 9px 8px 22px;
+    }
+
+    .mega-feature {
+      align-content: end;
+      display: grid;
+      min-height: 268px;
+      padding: 24px;
+    }
+
+    .mega-feature strong {
+      font-size: 1.35rem;
+      line-height: 1.18;
+      margin-top: auto;
+    }
+
+    .nav-utilities {
+      flex: 0 0 auto;
+      gap: clamp(12px, 1.5vw, 20px);
+      margin-left: clamp(12px, 2vw, 28px);
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+  }
+
+  .microsoft-hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 13% 95%, rgba(213, 129, 246, 0.72), transparent 24%),
+      linear-gradient(130deg, #842df4 0%, #6122e2 54%, #6b28f1 100%);
+    color: #fff;
+    display: grid;
+    gap: clamp(28px, 5vw, 70px);
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
+    min-height: 720px;
+    padding: clamp(72px, 10vw, 148px) clamp(30px, 5vw, 92px);
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 28px;
+    max-width: 570px;
+  }
+
+  .hero-copy span,
+  .microsoft-hero p {
+    font-size: clamp(1rem, 1.35vw, 1.25rem);
+    font-weight: 750;
+    line-height: 1.55;
+  }
+
+  .microsoft-hero h1 {
+    font-size: clamp(4rem, 7vw, 6.9rem);
+    font-weight: 500;
+    line-height: 0.98;
+  }
+
+  .photo-card {
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .photo-card img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .hero-photo {
+    aspect-ratio: 1.32;
+    align-self: center;
+    box-shadow: 0 28px 60px rgba(39, 22, 87, 0.18);
+  }
+
+  .split-section {
+    align-items: center;
+    display: grid;
+    gap: clamp(42px, 8vw, 138px);
+    grid-template-columns: minmax(280px, 0.92fr) minmax(300px, 0.92fr);
+    padding: clamp(96px, 12vw, 148px) clamp(30px, 5vw, 92px);
+  }
+
+  .intro-section { background: #fff; }
+  .intro-photo { aspect-ratio: 1.39; }
+
+  .split-copy {
+    display: grid;
+    gap: 26px;
+    max-width: 590px;
+  }
+
+  .split-copy h2 {
+    font-size: clamp(2.8rem, 4.2vw, 4.6rem);
+    font-weight: 500;
+    line-height: 1.03;
+  }
+
+  .split-copy p,
+  .outcome-grid p,
+  .feature-card p,
+  .cta-section p,
+  .site-footer p {
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
+
+  .band-section {
+    background: linear-gradient(135deg, var(--purple-deep), #5028d8);
+    color: #fff;
+    padding: clamp(64px, 8vw, 96px) clamp(24px, 6vw, 110px);
+    text-align: center;
+  }
+
+  .band-section h2 {
+    font-size: clamp(2.5rem, 4.2vw, 4.7rem);
+    font-weight: 500;
+    line-height: 1.05;
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+
+  .outcome-section {
+    background: #fff;
+    padding: clamp(70px, 9vw, 120px) clamp(30px, 5vw, 92px);
+  }
+
+  .outcome-grid {
+    display: grid;
+    gap: clamp(34px, 5vw, 74px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .outcome-grid h3 {
+    color: #111015;
+    font-size: clamp(2.2rem, 3vw, 3rem);
+    font-weight: 500;
+    line-height: 1.08;
+    margin-bottom: 28px;
+  }
+
+  .feature-section {
+    background: #f4f4f5;
+    padding: clamp(76px, 10vw, 116px) clamp(24px, 4vw, 82px);
+  }
+
+  .section-heading.centered {
+    margin: 0 auto clamp(54px, 7vw, 86px);
+    max-width: 850px;
+    text-align: center;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2.7rem, 4vw, 4.4rem);
+    font-weight: 500;
+    line-height: 1.08;
+  }
+
+  .feature-list {
+    display: grid;
+    gap: 28px;
+    margin: 0 auto;
+    max-width: 1120px;
+  }
+
+  .feature-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    display: grid;
+    gap: 22px;
+    min-height: 168px;
+    padding: clamp(28px, 4vw, 44px);
+  }
+
+  .feature-card h3 {
+    font-size: 1.55rem;
+    font-weight: 650;
+  }
+
+  .line-icon {
+    color: var(--purple);
+    height: 42px;
+    position: relative;
+    width: 42px;
+  }
+
+  .line-icon::before,
+  .line-icon::after {
+    border: 4px solid currentColor;
+    border-radius: 6px;
+    content: "";
+    left: 4px;
+    position: absolute;
+    top: 8px;
+  }
+
+  .line-icon::before { height: 24px; width: 30px; }
+  .line-icon.cloud::before { border-radius: 24px 24px 10px 10px; height: 18px; top: 16px; }
+  .line-icon.identity::before { border-radius: 50%; height: 28px; width: 28px; }
+  .line-icon.policy::before { height: 5px; top: 10px; width: 28px; box-shadow: 0 13px 0 currentColor, 0 26px 0 currentColor; }
+  .line-icon.lock::after { height: 12px; left: 12px; top: 2px; width: 14px; }
+  .line-icon.tag::before { transform: rotate(-45deg); }
+  .line-icon.revoke::before { border-radius: 50%; }
+  .line-icon.report::before { height: 30px; }
+
+  .resources-section {
+    background: #fff;
+    padding: clamp(82px, 10vw, 130px) clamp(24px, 4vw, 82px);
+  }
+
+  .resource-grid {
+    display: grid;
+    gap: clamp(28px, 12vw, 220px);
+    grid-template-columns: repeat(2, minmax(220px, 360px));
+    justify-content: start;
+  }
+
+  .resource-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    display: flex;
+    min-height: 355px;
+    overflow: hidden;
+  }
+
+  .resource-body {
+    align-self: end;
+    display: grid;
+    gap: 18px;
+    padding: 36px 38px;
+  }
+
+  .resource-body span,
+  .resource-body strong {
+    align-self: start;
+    background: #f0f0f3;
+    border-radius: 99px;
+    color: #20172c;
+    display: inline-flex;
+    font-size: 0.79rem;
+    font-weight: 950;
+    justify-self: start;
+    padding: 7px 14px;
+    text-transform: uppercase;
+  }
+
+  .resource-body h3 {
+    color: #17111f;
+    font-size: 1.65rem;
+    font-weight: 500;
+    line-height: 1.08;
+  }
+
+  .resource-body a {
+    font-size: 0.95rem;
+    font-weight: 900;
+  }
+
+  .resource-controls {
+    display: flex;
+    gap: 14px;
+    margin-top: 46px;
+  }
+
+  .resource-controls button {
+    align-items: center;
+    background: #fff;
+    border: 1px solid #cfcfd7;
+    border-radius: 50%;
+    color: #66616d;
+    display: inline-flex;
+    height: 48px;
+    justify-content: center;
+    width: 48px;
+  }
+
+  .cta-section {
+    background: #fff;
+    padding: 30px clamp(24px, 4vw, 82px) 54px;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(2rem, 3vw, 2.85rem);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .cta-section .primary-button { margin-top: 26px; }
+
+  .site-footer {
+    background: #fff;
+    border-top: 1px solid #cac9cf;
+    color: #65636c;
+    padding: 0 clamp(24px, 4vw, 82px) 32px;
+  }
+
+  .footer-lines {
+    border-bottom: 1px solid #cac9cf;
+    margin-bottom: 30px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid #cac9cf;
+    padding: 21px 0;
+  }
+
+  .footer-lines details:last-child { border-bottom: 0; }
+  .footer-lines summary {
+    color: #24222a;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 900;
+    list-style: none;
+  }
+
+  .footer-lines summary::after { content: "v"; float: right; }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.85rem;
+    font-weight: 950;
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 10px;
+    margin: 34px 0 40px;
+    width: max-content;
+  }
+
+  .store-row span {
+    background: #18131f;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-flex;
+    font-size: 0.88rem;
+    font-weight: 900;
+    justify-content: center;
+    min-width: 150px;
+    padding: 9px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid #cac9cf;
+    padding-top: 22px;
+    word-spacing: 18px;
+  }
+
+  .legal { margin-top: 20px; }
+  .legal a { text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    .demo-button { display: none; }
+    .microsoft-hero,
+    .split-section,
+    .outcome-grid,
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .microsoft-hero {
+      min-height: 0;
+      padding-top: 54px;
+    }
+
+    .microsoft-hero h1 { font-size: clamp(3.1rem, 13vw, 5rem); }
+    .hero-photo { max-width: 620px; }
+    .split-section { gap: 38px; padding-block: 70px; }
+    .outcome-grid { gap: 46px; }
+    .resource-grid { gap: 28px; }
+  }
+</style>

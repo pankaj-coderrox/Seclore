@@ -1,0 +1,465 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "http://127.0.0.1:5000";
+
+const trustLogos = ["Itron", "Cummins", "FLEX", "Stanley Black & Decker"];
+
+const complianceCards = [
+  {
+    title: "Reduce compliance overhead",
+    text: "Enabling data-centric security makes it easier to comply with multiple security regulatory frameworks without increasing overhead."
+  },
+  {
+    title: "Right-size protection",
+    text: "Discover where digital assets are sensitive and where they are, help organizations apply effective encryption and security options such as encryption, watermarking, EDRM, etc."
+  },
+  {
+    title: "Prove compliance",
+    text: "Use activity information and monitoring-ready access to audit trails and reporting information that enterprises quickly identify and address compliance gaps."
+  }
+];
+
+const tools = [
+  ["Data classification", "Identify regulated data so third-party apps or business processes can apply classification labels that automatically prompt pre-approved protection policies in compliance with applicable regulations."],
+  ["Data encryption", "Protect digital assets at rest, in transit, and in use with persistent AES-256 data encryption."],
+  ["Access and usage policies", "Control access for specific users, groups, and locations, and prevent certain activities like printing, saving a copy, downloading, or copying text from digital assets."],
+  ["DLP/CASB/DSPM compatible", "Leverage DLP tools upstream to discover digital assets that contain regulated data, then persistently orchestrate enforcement for protection automatically."],
+  ["Activity tracking", "Track and log users who access protected digital assets, where, IP, device, applications, browser details, allowed actions, and other compliance-related information."],
+  ["Easy integrations for SIEM and reporting BI tools", "Seclore offers several ways for SIEM and reporting BI tools to consume activity reports from Seclore."]
+];
+
+const relatedProducts = [
+  {
+    title: "Digital Asset Classification",
+    text: "Classify digital assets based on their underlying data sensitivity, business value, compliance, or regulatory requirements."
+  },
+  {
+    title: "Risk Insights and Reporting",
+    text: "Get digital insights for risk management as well as file and user level activity to quickly address unauthorized access or non-compliance."
+  }
+];
+
+const resources = [
+  ["Whitepaper", "Banking", "Enhancing Banking Security and Compliance: Navigating RBI Guidelines with a Data-Centric Approach"],
+  ["Whitepaper", "Compliance", "Complying with the Personal Data Protection Law (PDPL) Using Seclore's Data-Centric Security Platform"],
+  ["Whitepaper", "Banking & Financial Services", "Enhancing Cloud Security and Resilience: Financial Sector Compliance with Saudi Arabian Monetary Authority Guidelines"]
+];
+---
+
+<BaseLayout
+  title="Compliance | seclore"
+  description="Seclore data compliance solutions for regulated data, classification, encryption, access control, activity tracking, and audit reporting."
+>
+  <main id="top" class="compliance-page">
+    <Nav />
+
+    <section class="compliance-hero">
+      <div class="hero-copy">
+        <span>Compliance</span>
+        <h1>Data Compliance Solutions for Enterprises</h1>
+        <p>
+          Orchestrate discovery and classification by integrating Seclore with other trusted security tools to eliminate
+          protection blindspots, control access to sensitive information, and safeguard digital assets throughout their
+          lifecycle.
+        </p>
+        <a class="primary-button alert" href="#demo">Book a Demo</a>
+      </div>
+      <div class="compliance-hero-visual" aria-label="Enterprise compliance consultation visual">
+        <div class="window-panel"></div>
+        <div class="consultant consultant-a"></div>
+        <div class="consultant consultant-b"></div>
+        <div class="document-stack"></div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <h2>Trusted by industry-leading enterprises</h2>
+      <div class="trust-row">
+        {trustLogos.map((logo) => <span>{logo}</span>)}
+      </div>
+    </section>
+
+    <section class="split-section maintain-section">
+      <div class="audit-visual" aria-label="Compliance review visual">
+        <div class="audit-glass"></div>
+        <div class="audit-person"></div>
+        <div class="audit-desk"></div>
+      </div>
+      <div>
+        <h2>Maintain and demonstrate compliance</h2>
+        <p>
+          Achieving, maintaining, and demonstrating compliance are among the most important challenges that global enterprises
+          face in today's operating environment.
+        </p>
+        <p>
+          Seclore helps demonstrate compliance by standardizing access and usage policies for digital assets, and uses data
+          organization metadata across assets for deeper context.
+        </p>
+        <p>
+          With user activity related to Seclore-protected files and audit records, you can demonstrate security control
+          effectiveness for frameworks like NIST, DFARS, CMMC, and other requirements.
+        </p>
+        <a class="primary-button dark" href="#resources">View Whitepaper</a>
+      </div>
+    </section>
+
+    <section class="protect-section">
+      <div class="section-heading centered">
+        <h2>Protect and comply</h2>
+        <p>
+          Classification, protection, and tracking are each core pillars of several data privacy, cybersecurity, or industry
+          regulations. Seclore helps teams simplify compliance, reduce manual overhead, and provide evidence chains of
+          custody and reporting information during audits and investigations.
+        </p>
+      </div>
+      <div class="card-grid three">
+        {complianceCards.map((card) => (
+          <article class="feature-card">
+            <div class="hex-icon"></div>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="demo-band" id="demo">
+      <div class="demo-copy">
+        <h2>Meet with a data-centric security expert</h2>
+        <p>
+          See our data-centric security platform in action, and learn how to protect and control your digital assets wherever
+          they go.
+        </p>
+        <strong>Learn more about</strong>
+        <ul>
+          <li>Digital asset security for every user, device, app, and cloud</li>
+          <li>Granular access, usage, and privacy controls</li>
+          <li>Never losing control or visibility of your digital assets</li>
+        </ul>
+        <div class="demo-logos">
+          <span>Orica</span>
+          <span>FLEX</span>
+          <span>Shell</span>
+        </div>
+      </div>
+      <form class="compliance-form" data-endpoint="/api/demo">
+        <h3>Seclore Demo</h3>
+        <label>Email<input name="email" type="email" required /></label>
+        <label>First Name<input name="name" required minlength="2" /></label>
+        <label>Last Name<input name="lastName" /></label>
+        <label>Company Name<input name="company" required /></label>
+        <label>Job Title<input name="role" /></label>
+        <label>Phone Number<input name="phone" /></label>
+        <label>Country<select name="country"><option>Please Select</option><option>United States</option><option>India</option></select></label>
+        <button class="primary-button" type="submit">Submit Form</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="tools-section">
+      <div class="section-heading centered">
+        <h2>Data-centric security tools for compliance</h2>
+      </div>
+      <div class="tools-grid">
+        {tools.map(([title, text]) => (
+          <article class="offering-card">
+            <div class="line-icon"></div>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="story-section">
+      <article class="story-card">
+        <span>Semiconductor Manufacturer</span>
+        <blockquote>
+          "The company achieved HIPAA compliance while providing critical information to CxO/HIA and the best health
+          authorities when necessary. This helped the company avoid scenarios that could harm the bottom line."
+        </blockquote>
+        <strong>Semiconductor Manufacturer</strong>
+        <a class="primary-button dark" href="#resources">Customer Story</a>
+      </article>
+    </section>
+
+    <section class="related-section">
+      <div class="section-heading centered">
+        <h2>Data-centric security related products</h2>
+        <p>
+          Add a layer of cybersecurity and compliance controls at the data level to ensure digital assets are always compliant
+          with applicable regulations.
+        </p>
+      </div>
+      <div class="related-products">
+        {relatedProducts.map((item) => (
+          <article class="related-product">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <a href="#demo">Learn More</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="resources-section" id="resources">
+      <div class="section-heading centered">
+        <h2>Compliance resources</h2>
+        <p>
+          Seclore is a leading provider of data-centric security. Our solutions help to secure and control highly effective
+          compliance programs, preventing data breaches and ensuring organizations meet and exceed regulatory requirements.
+        </p>
+      </div>
+      <div class="resource-shell">
+        <div class="resource-track" data-carousel>
+          {resources.map(([type, tag, title]) => (
+            <article class="resource-card">
+              <span>{type}</span>
+              <em>{tag}</em>
+              <h3>{title}</h3>
+              <a href="#demo">View {type}</a>
+            </article>
+          ))}
+        </div>
+        <div class="slide-controls" aria-label="Resource carousel controls">
+          <button type="button" data-carousel-prev aria-label="Previous resource">&lt;</button>
+          <button type="button" data-carousel-next aria-label="Next resource">&gt;</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script is:inline define:vars={{ apiBase }}>
+    document.querySelectorAll(".compliance-form").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const status = form.querySelector(".form-status");
+        const button = form.querySelector("button[type='submit']");
+        const payload = Object.fromEntries(new FormData(form).entries());
+
+        status.textContent = "Sending...";
+        status.className = "form-status";
+        button.disabled = true;
+
+        try {
+          const response = await fetch(`${apiBase}${form.dataset.endpoint}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.message || "Request failed.");
+          form.reset();
+          status.textContent = data.message || "Submitted successfully.";
+          status.classList.add("success");
+        } catch (error) {
+          status.textContent = error.message || "Something went wrong.";
+          status.classList.add("error");
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+
+    const carousel = document.querySelector("[data-carousel]");
+    const previous = document.querySelector("[data-carousel-prev]");
+    const next = document.querySelector("[data-carousel-next]");
+    const scrollResources = (direction) => {
+      if (!carousel) return;
+      const card = carousel.querySelector(".resource-card");
+      const distance = card ? card.getBoundingClientRect().width + 24 : 260;
+      carousel.scrollBy({ left: direction * distance, behavior: "smooth" });
+    };
+    previous?.addEventListener("click", () => scrollResources(-1));
+    next?.addEventListener("click", () => scrollResources(1));
+  </script>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f2f3f5;
+    --page-text: #232128;
+    --page-muted: #636773;
+    --purple: #5b2bd7;
+    --wine: #2b1024;
+    --alert: #eb3157;
+    --orange: #ff9500;
+    --plum: #8d204e;
+    --card: #ffffff;
+    --line: rgba(29, 29, 34, 0.13);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --demo-button-bg: #5b2bd7;
+    --demo-button-text: #ffffff;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page-bg); color: var(--page-text); }
+  a { color: inherit; text-decoration: none; }
+  button, input, textarea, select { font: inherit; }
+
+  .site-header { align-items: center; background: var(--header-bg); border-bottom: 1px solid var(--header-border); box-shadow: var(--header-shadow); display: flex; gap: 18px; min-height: 68px; padding: 0 clamp(20px, 4vw, 42px) 0 22px; position: sticky; top: 0; z-index: 20; }
+  .site-logo { color: var(--purple); font-size: 1.35rem; font-weight: 950; letter-spacing: 0.04em; margin-right: clamp(14px, 2vw, 28px); text-transform: uppercase; }
+  .nav-links, .nav-utilities { align-items: center; display: flex; }
+  .nav-links { flex: 1 1 auto; gap: clamp(18px, 2.2vw, 34px); justify-content: center; min-width: 0; }
+  .nav-links > a, .nav-trigger { align-items: center; background: transparent; border: 0; color: var(--header-muted); cursor: pointer; display: inline-flex; font-size: 0.98rem; font-weight: 800; gap: 8px; min-height: 68px; padding: 0; }
+  .nav-links > a:hover, .nav-trigger:hover, .nav-item:hover .nav-trigger, .nav-item:focus-within .nav-trigger { color: var(--header-text); }
+  .nav-item { position: static; }
+  .nav-caret { border-bottom: 2px solid currentColor; border-right: 2px solid currentColor; display: inline-block; height: 8px; transform: rotate(45deg) translateY(-2px); transition: transform 180ms ease; width: 8px; }
+  .nav-item:hover .nav-caret, .nav-item:focus-within .nav-caret, .nav-item.is-open .nav-caret { transform: rotate(225deg) translateY(-1px); }
+  .mega-menu { left: 22px; opacity: 0; pointer-events: none; position: absolute; right: clamp(20px, 4vw, 42px); top: calc(100% - 1px); transform: translateY(12px); transition: opacity 180ms ease, transform 180ms ease; }
+  .nav-item:hover .mega-menu, .nav-item:focus-within .mega-menu, .nav-item.is-open .mega-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .mega-inner { background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px); border: 1px solid var(--dropdown-border); border-radius: 8px; box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2); display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr) 320px; min-height: 320px; overflow: hidden; padding: 26px; }
+  .mega-columns { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+  .mega-column, .mega-sublinks { display: grid; }
+  .mega-column { gap: 10px; }
+  .mega-title { color: var(--dropdown-title); font-size: 0.76rem; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; }
+  .mega-link, .mega-link-group { border: 1px solid transparent; border-radius: 8px; }
+  .mega-link { display: grid; gap: 5px; padding: 13px; }
+  .mega-link strong { color: var(--dropdown-text); }
+  .mega-link small, .mega-sublinks a { color: var(--dropdown-muted); }
+  .mega-link:hover, .mega-link-group:hover { background: var(--dropdown-link-hover); border-color: var(--dropdown-link-border); }
+  .mega-link-group { display: grid; gap: 4px; padding: 4px; }
+  .mega-sublinks { gap: 2px; padding: 0 9px 8px 22px; }
+  .mega-sublinks a { font-size: 0.84rem; padding: 5px 0; }
+  .mega-feature { align-content: end; background: var(--dropdown-feature-bg); border: 1px solid var(--dropdown-feature-border); border-radius: 8px; display: grid; min-height: 268px; padding: 24px; }
+  .mega-feature span, .mega-feature em { color: var(--dropdown-title); }
+  .mega-feature strong { color: var(--dropdown-text); font-size: 1.35rem; line-height: 1.18; margin-top: auto; }
+  .nav-utilities { flex: 0 0 auto; gap: clamp(12px, 1.5vw, 20px); margin-left: clamp(12px, 2vw, 28px); }
+  .utility-link, .language-button, .utility-icon, .theme-toggle { display: none; }
+  .demo-button, .primary-button { align-items: center; background: var(--demo-button-bg); border: 0; border-radius: 7px; color: var(--demo-button-text); cursor: pointer; display: inline-flex; font-size: 0.88rem; font-weight: 850; justify-content: center; min-height: 39px; padding: 0 18px; }
+  .primary-button.alert { background: var(--alert); }
+  .primary-button.dark { background: #211326; color: #ffffff; }
+  .nav-toggle { background: transparent; border: 0; display: none; height: 42px; width: 42px; }
+  .nav-toggle span { background: var(--header-text); display: block; height: 2px; margin: 6px 0; width: 24px; }
+
+  h1, h2, h3, p { margin-top: 0; }
+  h1 { font-size: clamp(3rem, 6vw, 5.8rem); font-weight: 500; line-height: 0.98; margin-bottom: 22px; overflow-wrap: break-word; }
+  h2 { font-size: clamp(2rem, 4vw, 4rem); font-weight: 450; line-height: 1.05; }
+  p, li { color: var(--page-muted); line-height: 1.6; }
+
+  .compliance-hero { align-items: center; background: var(--wine); color: #ffffff; display: grid; gap: 44px; grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr); padding: clamp(56px, 7vw, 86px) clamp(18px, 4vw, 52px); }
+  .compliance-hero span { display: block; font-size: 0.88rem; font-weight: 850; letter-spacing: 0.05em; margin-bottom: 18px; text-transform: uppercase; }
+  .compliance-hero p { color: rgba(255, 255, 255, 0.82); max-width: 620px; }
+  .compliance-hero-visual { background: linear-gradient(135deg, #d8eef1, #ffffff 45%, #305d66); border-radius: 8px; min-height: 330px; overflow: hidden; position: relative; }
+  .window-panel { background: rgba(255, 255, 255, 0.35); height: 100%; left: 0; position: absolute; top: 0; width: 44%; }
+  .consultant { border-radius: 48% 48% 8px 8px; bottom: 52px; position: absolute; }
+  .consultant::before { border-radius: 50%; content: ""; height: 54px; left: 24px; position: absolute; top: -38px; width: 54px; }
+  .consultant-a { background: #72a8b7; height: 174px; left: 32%; width: 98px; }
+  .consultant-a::before { background: #d6aa86; }
+  .consultant-b { background: #334a5f; height: 190px; right: 20%; width: 104px; }
+  .consultant-b::before { background: #e3c0a1; }
+  .document-stack { background: #ffffff; border-radius: 6px; bottom: 42px; box-shadow: 0 14px 28px rgba(20, 27, 37, 0.16); height: 66px; left: 34%; position: absolute; width: 180px; }
+
+  .trust-strip { background: var(--page-bg); padding: 48px clamp(18px, 4vw, 52px); text-align: center; }
+  .trust-strip h2 { color: #a34462; font-size: 0.88rem; letter-spacing: 0.04em; margin-bottom: 32px; text-transform: uppercase; }
+  .trust-row { align-items: center; display: grid; gap: 24px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .trust-row span { color: rgba(36, 35, 41, 0.48); font-weight: 900; }
+
+  .split-section, .demo-band { align-items: center; display: grid; gap: clamp(30px, 5vw, 72px); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: clamp(58px, 8vw, 96px) clamp(18px, 4vw, 52px); }
+  .maintain-section, .protect-section, .related-section { background: var(--page-bg); }
+  .tools-section, .story-section, .resources-section, .compliance-footer { background: var(--card); }
+  .audit-visual { background: linear-gradient(135deg, #edf5f4, #ffffff 48%, #d8b982); border-radius: 8px; min-height: 320px; overflow: hidden; position: relative; }
+  .audit-glass { background: rgba(255, 255, 255, 0.5); height: 100%; left: 0; position: absolute; top: 0; width: 44%; }
+  .audit-person { background: linear-gradient(150deg, #f1f8ff, #374f67); border-radius: 48% 48% 8px 8px; bottom: 48px; height: 180px; left: 38%; position: absolute; width: 110px; }
+  .audit-person::before { background: #d2a27f; border-radius: 50%; content: ""; height: 58px; left: 26px; position: absolute; top: -40px; width: 58px; }
+  .audit-desk { background: rgba(37, 54, 69, 0.12); bottom: 0; height: 78px; left: 0; position: absolute; right: 0; }
+
+  .protect-section, .related-section, .tools-section, .story-section, .resources-section { padding: clamp(58px, 8vw, 96px) clamp(18px, 4vw, 52px); }
+  .section-heading { margin: 0 auto 36px; max-width: 1040px; }
+  .centered { text-align: center; }
+  .card-grid, .tools-grid { display: grid; gap: 22px; margin-inline: auto; max-width: 1120px; }
+  .card-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .feature-card, .offering-card, .compliance-form, .story-card, .resource-card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: clamp(24px, 4vw, 38px); }
+  .hex-icon { background: linear-gradient(135deg, var(--orange), #f5a50d); clip-path: polygon(25% 4%, 75% 4%, 100% 50%, 75% 96%, 25% 96%, 0 50%); height: 44px; margin-bottom: 20px; width: 44px; }
+  .feature-card:nth-child(2) .hex-icon { background: linear-gradient(135deg, var(--alert), #c4254d); }
+  .feature-card:nth-child(3) .hex-icon { background: linear-gradient(135deg, var(--plum), #6f234a); }
+
+  .demo-band { background: linear-gradient(135deg, #dceaff, #f2eaff); }
+  .demo-copy ul { padding-left: 20px; }
+  .demo-copy strong { color: var(--page-text); display: block; margin-bottom: 8px; }
+  .demo-logos { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
+  .demo-logos span { color: rgba(36, 35, 41, 0.56); font-size: 0.82rem; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; }
+  .compliance-form h3 { text-align: center; }
+  .compliance-form label { color: var(--page-text); display: grid; font-size: 0.88rem; gap: 8px; margin-bottom: 14px; }
+  .compliance-form input, .compliance-form select { background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(15, 23, 42, 0.16); border-radius: 4px; color: #111827; min-height: 40px; padding: 10px; }
+  .form-status { min-height: 24px; }
+  .form-status.success { color: #087f6f; }
+  .form-status.error { color: #bd2b2b; }
+  .line-icon { border: 2px solid #ff4267; border-radius: 12px; height: 42px; margin-bottom: 20px; position: relative; width: 42px; }
+  .line-icon::before, .line-icon::after { background: #ff4267; content: ""; height: 2px; left: 10px; position: absolute; right: 10px; }
+  .line-icon::before { top: 14px; }
+  .line-icon::after { bottom: 14px; }
+
+  .story-card { margin-inline: auto; max-width: 1180px; }
+  .story-card > span, .resource-card span, .resource-card em { color: var(--page-muted); display: block; font-size: 0.8rem; font-style: normal; font-weight: 900; letter-spacing: 0.04em; margin-bottom: 22px; text-transform: uppercase; }
+  .story-card blockquote { font-size: clamp(1.1rem, 2vw, 1.55rem); line-height: 1.45; margin: 0 0 24px; }
+  .story-card strong { color: var(--purple); display: block; margin-bottom: 20px; text-transform: uppercase; }
+  .related-products { display: grid; gap: 32px; margin-inline: auto; max-width: 980px; }
+  .related-product { min-height: 280px; padding-top: clamp(36px, 7vw, 96px); text-align: center; }
+  .related-product a, .resource-card a { color: var(--page-text); font-weight: 900; }
+  .resource-shell { margin-inline: auto; max-width: 980px; }
+  .resource-track { display: grid; gap: 32px; grid-auto-columns: minmax(220px, 1fr); grid-auto-flow: column; overflow-x: auto; padding: 4px 2px 16px; scroll-behavior: smooth; scroll-snap-type: x mandatory; }
+  .resource-track::-webkit-scrollbar { height: 0; }
+  .resource-card { min-height: 340px; scroll-snap-align: start; }
+  .slide-controls { display: flex; gap: 10px; margin-top: 18px; }
+  .slide-controls button { background: var(--card); border: 1px solid var(--line); border-radius: 50%; cursor: pointer; height: 36px; width: 36px; }
+
+  .compliance-footer { border-top: 1px solid var(--line); padding: 34px clamp(18px, 4vw, 52px); }
+  .footer-lines { border-block: 1px solid var(--line); margin: 30px 0; }
+  .footer-lines details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+  .footer-lines details:last-child { border-bottom: 0; }
+  .footer-lines summary { cursor: pointer; font-weight: 800; }
+  .footer-logo { color: var(--purple); display: block; font-size: 1.45rem; font-weight: 950; letter-spacing: 0.04em; margin-bottom: 24px; text-transform: uppercase; }
+  .store-row { display: grid; gap: 9px; margin: 26px 0; max-width: 160px; }
+  .store-row span { background: #1a1421; border-radius: 5px; color: #ffffff; font-size: 0.85rem; font-weight: 800; padding: 10px 16px; }
+  .legal { border-top: 1px solid var(--line); font-size: 0.86rem; padding-top: 26px; }
+
+  @media (max-width: 1180px) {
+    .nav-toggle { display: block; margin-left: auto; order: 1; }
+    .site-header { flex-wrap: wrap; }
+    .site-logo { order: 0; }
+    .nav-links { background: var(--header-bg); border-top: 1px solid var(--header-border); display: none; flex: 1 0 100%; order: 2; padding: 10px 0 14px; }
+    .nav-links.open { align-items: stretch; display: grid; }
+    .nav-links > a, .nav-trigger { justify-content: space-between; min-height: 48px; width: 100%; }
+    .nav-item { display: grid; }
+    .mega-menu { display: none; opacity: 1; position: static; transform: none; }
+    .nav-item:hover .mega-menu, .nav-item:focus-within .mega-menu { display: none; }
+    .nav-item.is-open .mega-menu { display: block; }
+    .mega-inner { box-shadow: none; grid-template-columns: 1fr; min-height: 0; padding: 16px; }
+    .nav-utilities { align-items: stretch; display: flex; margin-left: auto; order: 0; }
+  }
+
+  @media (max-width: 900px) {
+    .compliance-hero, .split-section, .demo-band, .card-grid.three, .tools-grid { grid-template-columns: 1fr; }
+    .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .related-product { min-height: 210px; padding-top: 42px; }
+  }
+
+  @media (max-width: 520px) {
+    h1 { font-size: 2.35rem; line-height: 1.05; }
+    h2 { font-size: 2rem; }
+    .compliance-hero-visual, .audit-visual { min-height: 250px; }
+    .consultant-a { left: 22%; }
+    .consultant-b { right: 10%; }
+    .document-stack { left: 20%; width: 150px; }
+  }
+</style>

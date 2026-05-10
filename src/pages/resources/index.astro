@@ -1,0 +1,1293 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const featured = {
+  type: "Featured",
+  title: "From AI Risk to AI Readiness: Where Trust Becomes Operational, Not Aspirational",
+  summary:
+    "In this webinar, you will explore how the next era of security must evolve from static enforcement to Data Security Intelligence, and why going beyond traditional DSPM to close the execution gap is essential for AI readiness.",
+  image: "desk"
+};
+
+const resources = [
+  {
+    type: "Blog Post",
+    category: "AI, Company, Data Security",
+    title: "The Debate About AI in the Enterprise Is Over. Here Is the Only Question That Matters.",
+    image: "aurora"
+  },
+  {
+    type: "Blog Post",
+    category: "AI Risk, Data Security",
+    title: "The Missing Link in Enterprise AI: Why Context and Behavior Are the New Security Perimeter",
+    image: "blank"
+  },
+  {
+    type: "On-Demand Webinar",
+    category: "Compliance",
+    title: "From AI Risk to AI Readiness: Where Trust Becomes Operational, Not Aspirational",
+    image: "blank"
+  },
+  {
+    type: "Blog Post",
+    category: "AI Risk, Data Security",
+    title: "ChatGPT Read 400 Internal Company Files In 42 Milliseconds. Security Stacks Saw Nothing",
+    image: "blank"
+  },
+  {
+    type: "On-Demand Webinar",
+    category: "Compliance",
+    title: "DPDP Readiness in the Age of AI: The Role of Data Security Intelligence",
+    image: "blank"
+  },
+  {
+    type: "Whitepaper",
+    category: "Compliance",
+    title: "Complying with the National Information Assurance Policy (NIAP)",
+    image: "blank"
+  },
+  {
+    type: "Blog Post",
+    category: "Company, Compliance, Data Security",
+    title: "Introducing Seclore ARMOR: Data Security Intelligence for the AI Enterprise",
+    image: "blank"
+  },
+  {
+    type: "On-Demand Webinar",
+    category: "Data Security",
+    title: "2026 Data Security Reality Check: What's Critical Now and What's Coming",
+    image: "blank"
+  },
+  {
+    type: "Datasheet",
+    category: "Data Compliance",
+    title: "Seclore for DPDP Compliance",
+    image: "blank"
+  },
+  {
+    type: "Blog Post",
+    category: "Data Compliance",
+    title: "DPDP 2025: Why Compliance Now Depends on Evidence, Not Policies",
+    image: "blank"
+  },
+  {
+    type: "Blog Post",
+    category: "Access Control, AI Risk, Data Loss Prevention, Data Protection",
+    title: "Ctrl-C and Ctrl-V are the Latest Major Data Exposure Risk",
+    image: "blank"
+  },
+  {
+    type: "On-Demand Webinar",
+    category: "Data Security",
+    title: "Inside the Data Intelligence Framework",
+    image: "blank"
+  }
+];
+
+const categoryLinks = [
+  "Datasheets",
+  "Infographics",
+  "Customer Case Studies",
+  "Whitepapers & Reports",
+  "Videos",
+  "eBooks"
+];
+
+---
+
+<BaseLayout
+  title="Data Security Intelligence Resources | seclore"
+  description="Explore Seclore data security intelligence resources, webinars, blog posts, datasheets, and compliance guides."
+>
+  <main id="top" class="resources-page">
+    <Nav />
+
+    <section class="resources-hero">
+      <span>Resources</span>
+      <h1>Data Security Intelligence Resources</h1>
+      <p>
+        Learn more about data security intelligence, and how to protect your organization from data
+        theft and noncompliance.
+      </p>
+    </section>
+
+    <section class="featured-wrap" aria-label="Featured resources">
+      <article class="featured-card">
+        <div class="featured-copy">
+          <span>{featured.type}</span>
+          <h2>{featured.title}</h2>
+          <p>{featured.summary}</p>
+          <a class="primary-button" href="#results">Read More</a>
+          <div class="carousel-controls" aria-label="Featured carousel controls">
+            <button type="button" aria-label="Previous featured resource"></button>
+            <button type="button" aria-label="Next featured resource"></button>
+          </div>
+        </div>
+        <div class={`resource-image ${featured.image}`} aria-hidden="true">
+          <div class="laptop-screen"><span></span><span></span><span></span></div>
+        </div>
+        <div class="carousel-dots" aria-label="Slide position">
+          <span></span><span></span><span class="active"></span><span></span>
+        </div>
+      </article>
+    </section>
+
+    <section class="catalog" id="results">
+      <form class="filter-bar" aria-label="Filter resources">
+        <strong>Filter by:</strong>
+        <select aria-label="Type"><option>Any type</option></select>
+        <select aria-label="Industry"><option>Any industry</option></select>
+        <select aria-label="Category"><option>All categories</option></select>
+        <label class="search-box">
+          <span aria-hidden="true"></span>
+          <input type="search" placeholder="Enter keywords" aria-label="Enter keywords" />
+        </label>
+      </form>
+
+      <div class="results-row">
+        <strong>Results:</strong>
+        <select aria-label="Sort resources"><option>Sort by</option></select>
+      </div>
+
+      <div class="resource-grid">
+        {resources.map((resource) => (
+          <article class="resource-card">
+            <div class={`resource-thumb ${resource.image}`} aria-hidden="true">
+              {resource.image !== "blank" && <strong>seclore</strong>}
+            </div>
+            <div class="resource-card-copy">
+              <div class="meta-row">
+                <span>{resource.type}</span>
+                <span>{resource.category}</span>
+              </div>
+              <h3>{resource.title}</h3>
+              <a href="#top">
+                {resource.type === "Datasheet" ? "Read More" : `View ${resource.type}`} <span aria-hidden="true">-&gt;</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <nav class="pagination" aria-label="Resources pagination">
+        <a class="current" href="#results">1</a>
+        <a href="#results">2</a>
+        <a href="#results">3</a>
+        <span>...</span>
+        <a href="#results">22</a>
+        <a href="#results">Next</a>
+      </nav>
+    </section>
+
+    <section class="category-band" aria-label="Resource categories">
+      {categoryLinks.map((item) => (
+        <a href={item === "Datasheets" ? "/resources/datasheets/" : item === "Customer Case Studies" ? "/resources/customer-case-studies/" : item === "Whitepapers & Reports" ? "/resources/whitepapers-reports/" : item === "Videos" ? "/resources/videos/" : item === "eBooks" ? "/resources/ebooks/" : "#results"}>
+          {item}
+          <span aria-hidden="true">+</span>
+        </a>
+      ))}
+    </section>
+
+    <section class="ready-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#demo">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f7f7f8;
+    --page-text: #23212a;
+    --page-muted: #76737d;
+    --purple: #5b2bd7;
+    --purple-strong: #6d21e8;
+    --purple-dark: #4422ba;
+    --lavender: #d99bf0;
+    --card: #ffffff;
+    --soft: #f1f0f3;
+    --line: rgba(32, 29, 40, 0.12);
+    --shadow: 0 20px 45px rgba(27, 20, 45, 0.08);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: none;
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --demo-button-bg: #5b2bd7;
+    --demo-button-text: #ffffff;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  .resources-page {
+    background: var(--page-bg);
+    min-height: 100vh;
+  }
+
+  .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid transparent;
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 74px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 34px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .site-logo {
+    color: var(--purple);
+    flex: 0 0 auto;
+    font-size: 1.45rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: clamp(14px, 2vw, 28px);
+    text-transform: uppercase;
+  }
+
+  .nav-links,
+  .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .nav-links {
+    flex: 1 1 auto;
+    gap: clamp(18px, 2.2vw, 34px);
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .nav-links > a,
+  .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    gap: 8px;
+    min-height: 68px;
+    padding: 0;
+  }
+
+  .nav-links > a:hover,
+  .nav-trigger:hover,
+  .nav-item:hover .nav-trigger,
+  .nav-item:focus-within .nav-trigger {
+    color: var(--header-text);
+  }
+
+  .nav-item {
+    position: static;
+  }
+
+  .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 8px;
+  }
+
+  .nav-item:hover .nav-caret,
+  .nav-item:focus-within .nav-caret,
+  .nav-item.is-open .nav-caret {
+    transform: rotate(225deg) translateY(-1px);
+  }
+
+  .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .nav-item:hover .mega-menu,
+  .nav-item:focus-within .mega-menu,
+  .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mega-inner {
+    background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .mega-column,
+  .mega-sublinks {
+    display: grid;
+  }
+
+  .mega-column {
+    gap: 10px;
+  }
+
+  .mega-title {
+    color: var(--dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mega-link,
+  .mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .mega-link strong {
+    color: var(--dropdown-text);
+  }
+
+  .mega-link small,
+  .mega-sublinks a {
+    color: var(--dropdown-muted);
+  }
+
+  .mega-link:hover,
+  .mega-link-group:hover {
+    background: var(--dropdown-link-hover);
+    border-color: var(--dropdown-link-border);
+  }
+
+  .mega-link-group {
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .mega-sublinks {
+    gap: 2px;
+    padding: 0 9px 8px 22px;
+  }
+
+  .mega-sublinks a {
+    font-size: 0.84rem;
+    padding: 5px 0;
+  }
+
+  .mega-feature {
+    align-content: end;
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .mega-feature span,
+  .mega-feature em {
+    color: var(--dropdown-title);
+  }
+
+  .mega-feature strong {
+    color: var(--dropdown-text);
+    font-size: 1.35rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .nav-utilities {
+    flex: 0 0 auto;
+    gap: clamp(12px, 1.5vw, 20px);
+    margin-left: clamp(12px, 2vw, 28px);
+  }
+
+  .utility-link,
+  .language-button,
+  .utility-icon,
+  .theme-toggle {
+    color: var(--header-muted);
+    display: none;
+    font-size: 0.88rem;
+    font-weight: 750;
+  }
+
+  .demo-button,
+  .primary-button {
+    align-items: center;
+    background: var(--demo-button-bg);
+    border: 0;
+    border-radius: 6px;
+    color: var(--demo-button-text);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.88rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 18px;
+  }
+
+  .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    margin-left: auto;
+    width: 42px;
+  }
+
+  .nav-toggle span {
+    background: var(--header-text);
+    display: block;
+    height: 2px;
+    margin: 7px 0;
+    width: 28px;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  .resources-hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 18% 88%, rgba(237, 182, 242, 0.7), transparent 35%),
+      linear-gradient(135deg, #8f24ea 0%, #7224df 48%, #6620e1 100%);
+    color: #ffffff;
+    display: grid;
+    min-height: 350px;
+    padding: 62px clamp(16px, 5vw, 72px) 72px;
+    place-items: center;
+    text-align: center;
+  }
+
+  .resources-hero span {
+    font-size: 0.78rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+
+  .resources-hero h1 {
+    font-size: clamp(2.9rem, 7vw, 5.8rem);
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.02;
+    margin-bottom: 24px;
+    max-width: 1040px;
+  }
+
+  .resources-hero p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: clamp(0.96rem, 1.6vw, 1.2rem);
+    line-height: 1.6;
+    margin-bottom: 0;
+    max-width: 1030px;
+  }
+
+  .featured-wrap {
+    padding: 34px clamp(16px, 4vw, 48px) 56px;
+  }
+
+  .featured-card {
+    background: var(--card);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: clamp(18px, 4vw, 58px);
+    grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.82fr);
+    margin-inline: auto;
+    max-width: 1480px;
+    min-height: 430px;
+    padding: clamp(24px, 4vw, 52px);
+    position: relative;
+  }
+
+  .featured-copy {
+    align-content: start;
+    display: grid;
+  }
+
+  .featured-copy > span {
+    color: var(--purple);
+    font-size: 0.84rem;
+    font-weight: 800;
+    margin-bottom: 22px;
+  }
+
+  .featured-copy h2 {
+    font-size: clamp(2.05rem, 4.7vw, 3.8rem);
+    font-weight: 450;
+    letter-spacing: 0;
+    line-height: 1.02;
+    margin-bottom: 26px;
+    max-width: 700px;
+  }
+
+  .featured-copy p {
+    color: #6b6873;
+    font-size: clamp(0.98rem, 1.45vw, 1.2rem);
+    line-height: 1.55;
+    margin-bottom: 22px;
+    max-width: 640px;
+  }
+
+  .featured-copy .primary-button {
+    justify-self: start;
+  }
+
+  .resource-image {
+    align-self: center;
+    aspect-ratio: 1.75 / 1;
+    border-radius: 8px;
+    min-height: 230px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .resource-image.desk,
+  .resource-thumb.desk,
+  .resource-thumb.laptop {
+    background:
+      radial-gradient(circle at 18% 84%, rgba(230, 180, 126, 0.95), transparent 12%),
+      radial-gradient(circle at 75% 30%, rgba(250, 240, 226, 0.95), transparent 18%),
+      linear-gradient(135deg, #c88e63, #31424a 45%, #f1eee3);
+  }
+
+  .resource-image::before,
+  .resource-thumb.desk::before,
+  .resource-thumb.laptop::before {
+    background: linear-gradient(145deg, #151c27, #2c3844);
+    border: 8px solid #202934;
+    border-radius: 8px;
+    content: "";
+    height: 38%;
+    left: 42%;
+    position: absolute;
+    top: 24%;
+    transform: perspective(450px) rotateX(14deg) rotateZ(1deg);
+    width: 36%;
+  }
+
+  .laptop-screen {
+    background: #111823;
+    border-radius: 6px;
+    display: grid;
+    gap: 8px;
+    left: 50%;
+    padding: 18px;
+    position: absolute;
+    top: 33%;
+    transform: translate(-8%, -26%) rotate(2deg);
+    width: 35%;
+  }
+
+  .laptop-screen span {
+    background: linear-gradient(90deg, #6d21e8, #b69af8);
+    border-radius: 999px;
+    display: block;
+    height: 7px;
+  }
+
+  .laptop-screen span:nth-child(2) {
+    width: 72%;
+  }
+
+  .laptop-screen span:nth-child(3) {
+    width: 54%;
+  }
+
+  .carousel-controls {
+    display: flex;
+    gap: 12px;
+    margin-top: 42px;
+  }
+
+  .carousel-controls button {
+    background: #ffffff;
+    border: 1px solid #d8d5dd;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 38px;
+    position: relative;
+    width: 38px;
+  }
+
+  .carousel-controls button::before {
+    color: #4d4856;
+    content: "<";
+    font-weight: 900;
+  }
+
+  .carousel-controls button + button::before {
+    content: ">";
+  }
+
+  .carousel-dots {
+    bottom: 42px;
+    display: flex;
+    gap: 8px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+  }
+
+  .carousel-dots span {
+    background: #cfcbd5;
+    border-radius: 50%;
+    height: 6px;
+    width: 6px;
+  }
+
+  .carousel-dots .active {
+    background: #625c6d;
+  }
+
+  .catalog {
+    background: #ffffff;
+    padding: 28px clamp(16px, 2.5vw, 34px) 62px;
+  }
+
+  .filter-bar,
+  .results-row {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+  }
+
+  .filter-bar {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(27, 20, 45, 0.04);
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding: 16px;
+  }
+
+  .filter-bar strong,
+  .results-row strong {
+    color: #292531;
+    font-size: 0.9rem;
+  }
+
+  .filter-bar select,
+  .results-row select,
+  .search-box {
+    background: #f7f6f8;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: #67626f;
+    min-height: 36px;
+  }
+
+  .filter-bar select,
+  .results-row select {
+    min-width: 150px;
+    padding: 0 12px;
+  }
+
+  .search-box {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    min-width: min(100%, 230px);
+    padding: 0 12px;
+  }
+
+  .search-box span {
+    border: 2px solid #a7a2ad;
+    border-radius: 50%;
+    height: 14px;
+    position: relative;
+    width: 14px;
+  }
+
+  .search-box span::after {
+    background: #a7a2ad;
+    content: "";
+    height: 2px;
+    position: absolute;
+    right: -6px;
+    top: 9px;
+    transform: rotate(45deg);
+    width: 7px;
+  }
+
+  .search-box input {
+    background: transparent;
+    border: 0;
+    color: #292531;
+    min-height: 34px;
+    min-width: 0;
+    outline: 0;
+    width: 100%;
+  }
+
+  .results-row {
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .resource-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .resource-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    min-height: 380px;
+    overflow: hidden;
+  }
+
+  .resource-thumb {
+    align-items: end;
+    aspect-ratio: 1.65 / 1;
+    display: flex;
+    min-height: 146px;
+    overflow: hidden;
+    padding: 18px;
+    position: relative;
+  }
+
+  .resource-thumb strong {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .resource-thumb.aurora {
+    background:
+      linear-gradient(135deg, rgba(72, 45, 184, 0.92), rgba(221, 109, 189, 0.62)),
+      radial-gradient(circle at 80% 18%, #efb86c, transparent 28%),
+      radial-gradient(circle at 24% 88%, #7760e5, transparent 34%);
+  }
+
+  .resource-thumb.purple {
+    background:
+      linear-gradient(145deg, rgba(82, 44, 198, 0.94), rgba(126, 66, 201, 0.74)),
+      radial-gradient(circle at 84% 48%, #f7a66b, transparent 22%);
+  }
+
+  .resource-thumb.purple::after,
+  .resource-thumb.aurora::after {
+    color: #ffffff;
+    content: "The Missing Link in Enterprise AI";
+    font-size: clamp(0.78rem, 1.15vw, 1.04rem);
+    font-weight: 750;
+    left: 18px;
+    line-height: 1.28;
+    max-width: 78%;
+    position: absolute;
+    top: 18px;
+  }
+
+  .resource-thumb.aurora::after {
+    content: "The Debate About AI in the Enterprise Is Over.";
+  }
+
+  .resource-thumb.blank {
+    background: #ffffff;
+  }
+
+  .resource-card-copy {
+    align-content: start;
+    display: grid;
+    padding: 18px;
+  }
+
+  .meta-row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .meta-row span {
+    background: #f0eff2;
+    border-radius: 999px;
+    color: #4d4856;
+    font-size: 0.66rem;
+    font-weight: 850;
+    letter-spacing: 0.03em;
+    max-width: 100%;
+    padding: 6px 9px;
+    text-transform: uppercase;
+  }
+
+  .resource-card h3 {
+    font-size: clamp(0.95rem, 1.12vw, 1.15rem);
+    font-weight: 500;
+    line-height: 1.28;
+    margin-bottom: 22px;
+  }
+
+  .resource-card a {
+    align-self: end;
+    color: #2d2936;
+    font-size: 0.82rem;
+    font-weight: 800;
+    margin-top: auto;
+  }
+
+  .pagination {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 52px;
+  }
+
+  .pagination a,
+  .pagination span {
+    color: #2f2a37;
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  .pagination .current {
+    background: #e8e6ea;
+    border-radius: 3px;
+    padding: 9px 12px;
+  }
+
+  .category-band {
+    background: var(--purple-dark);
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 30px clamp(16px, 2.5vw, 34px);
+  }
+
+  .category-band a {
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 6px;
+    color: #ffffff;
+    display: flex;
+    font-size: 0.9rem;
+    font-weight: 800;
+    justify-content: space-between;
+    min-height: 50px;
+    padding: 0 20px;
+  }
+
+  .ready-section,
+  .resource-footer {
+    background: #ffffff;
+    padding-inline: clamp(16px, 2.5vw, 34px);
+  }
+
+  .ready-section {
+    padding-block: 32px 40px;
+  }
+
+  .ready-section h2 {
+    font-size: clamp(1.45rem, 2.2vw, 2rem);
+    font-weight: 450;
+    margin-bottom: 8px;
+  }
+
+  .ready-section p,
+  .resource-footer p {
+    color: var(--page-muted);
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .footer-lines {
+    border-block: 1px solid var(--line);
+    margin-bottom: 34px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
+  }
+
+  .footer-lines details:last-child {
+    border-bottom: 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+
+  .store-row,
+  .social-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 28px 0;
+  }
+
+  .store-row span {
+    background: #151019;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 9px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+
+  .social-row span {
+    color: #343238;
+    font-weight: 900;
+  }
+
+  .legal {
+    font-size: 0.88rem;
+    padding-bottom: 30px;
+  }
+
+  @media (max-width: 1180px) {
+    .nav-toggle {
+      display: block;
+      order: 1;
+    }
+
+    .site-header {
+      flex-wrap: wrap;
+    }
+
+    .site-logo {
+      order: 0;
+    }
+
+    .nav-links {
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      order: 2;
+      padding: 10px 0 14px;
+    }
+
+    .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .nav-links > a,
+    .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .nav-item {
+      display: grid;
+    }
+
+    .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .nav-item:hover .mega-menu,
+    .nav-item:focus-within .mega-menu {
+      display: none;
+    }
+
+    .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .nav-utilities {
+      align-items: stretch;
+      display: flex;
+      margin-left: auto;
+      order: 0;
+    }
+
+    .nav-links.open + .nav-utilities {
+      display: grid;
+      flex: 1 0 100%;
+      order: 3;
+    }
+
+    .resource-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 900px) {
+    .featured-card {
+      grid-template-columns: 1fr;
+    }
+
+    .carousel-dots {
+      bottom: 22px;
+    }
+
+    .resource-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .site-header {
+      min-height: 58px;
+      padding-left: 8px;
+      padding-right: 10px;
+    }
+
+    .site-logo {
+      font-size: 0.85rem;
+    }
+
+    .demo-button {
+      font-size: 0.66rem;
+      min-height: 30px;
+      padding-inline: 12px;
+    }
+
+    .nav-toggle {
+      height: 32px;
+      width: 32px;
+    }
+
+    .nav-toggle span {
+      margin: 5px 0;
+      width: 21px;
+    }
+
+    .resources-hero {
+      min-height: 205px;
+      padding: 34px 8px 42px;
+    }
+
+    .resources-hero h1 {
+      font-size: 2rem;
+      max-width: 310px;
+    }
+
+    .resources-hero p {
+      font-size: 0.66rem;
+      max-width: 330px;
+    }
+
+    .featured-wrap {
+      padding: 18px 16px 36px;
+    }
+
+    .featured-card {
+      align-items: center;
+      gap: 12px;
+      grid-template-columns: minmax(0, 1fr) minmax(118px, 0.88fr);
+      min-height: 0;
+      padding: 22px 18px 48px;
+    }
+
+    .featured-copy > span {
+      font-size: 0.62rem;
+      margin-bottom: 10px;
+    }
+
+    .featured-copy h2 {
+      font-size: 1.05rem;
+      line-height: 1.06;
+      margin-bottom: 12px;
+    }
+
+    .featured-copy p {
+      font-size: 0.52rem;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .featured-copy .primary-button {
+      font-size: 0.55rem;
+      min-height: 24px;
+      padding-inline: 10px;
+    }
+
+    .resource-image {
+      min-height: 92px;
+    }
+
+    .carousel-controls {
+      grid-column: 1 / 2;
+      margin-top: 12px;
+    }
+
+    .carousel-controls button {
+      height: 26px;
+      width: 26px;
+    }
+
+    .catalog {
+      padding-inline: 8px;
+    }
+
+    .filter-bar {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      padding: 12px;
+    }
+
+    .filter-bar strong {
+      grid-row: span 2;
+    }
+
+    .filter-bar select,
+    .search-box {
+      font-size: 0.72rem;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .search-box {
+      grid-column: span 2;
+    }
+
+    .resource-grid {
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .resource-card {
+      min-height: 255px;
+    }
+
+    .resource-thumb {
+      min-height: 92px;
+      padding: 10px;
+    }
+
+    .resource-card-copy {
+      padding: 11px;
+    }
+
+    .meta-row {
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .meta-row span {
+      font-size: 0.48rem;
+      padding: 4px 6px;
+    }
+
+    .resource-card h3 {
+      font-size: 0.68rem;
+      line-height: 1.24;
+      margin-bottom: 14px;
+    }
+
+    .resource-card a {
+      font-size: 0.58rem;
+    }
+
+    .category-band {
+      gap: 8px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding-inline: 8px;
+    }
+
+    .category-band a {
+      font-size: 0.58rem;
+      min-height: 36px;
+      padding-inline: 10px;
+    }
+  }
+</style>

@@ -1,0 +1,1230 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const benefits = [
+  ["Unwind & recharge", "Paid Time Off: When you need time off, your tribe steps in to support you, ensuring your responsibilities are covered while you unwind and recharge."],
+  ["Health first, always", "Healthcare Benefits: We care about your health and well-being, and we support the people who mean the most to you."],
+  ["Work your way", "Flexible Working: Plan your workday around what works best for you, balancing personal comfort with professional commitment."],
+  ["Learn, lead, and evolve", "Learning and Development: Programs designed for growth help you keep building while you work."],
+  ["Mentors who have got your back", "Work alongside bright minds in the business who are ready to guide and support your journey."],
+  ["Code your career", "Choose a path that gives you the flexibility to grow in your role or explore new functions."],
+  ["Ideas over hierarchy", "Your voice is heard here, with leaders open to fresh ideas and feedback."],
+  ["Rewards and recognition", "Seclore celebrates great performance and the actions that reflect its SPICE values."]
+];
+
+const galleryImages = [
+  "https://www.seclore.com/wp-content/uploads/2025/01/careers-3-1.png",
+  "https://www.seclore.com/wp-content/uploads/2025/01/careers-5-1.png",
+  "https://www.seclore.com/wp-content/uploads/2025/01/careers-10-scaled-1-1.png",
+  "https://www.seclore.com/wp-content/uploads/seclore_careers2-scaled-1.jpeg",
+  "https://www.seclore.com/wp-content/uploads/careers-7B.jpeg"
+];
+
+const testimonials = [
+  {
+    image: "https://www.seclore.com/wp-content/uploads/Ahmad-1.jpeg",
+    quote: "Seclore is a place where innovation meets collaboration. We are empowered to share our ideas and opinions, creating a truly inclusive environment for impactful contributions. With a commitment to professional growth and a team culture that feels like family, Seclore is the ideal space to build a fulfilling career in data security.",
+    person: "Ahmad Alhrgan, Director, Sales (KSA and Bahrain)"
+  },
+  {
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/Khalil-2.jpg",
+    quote: "Seclore cultivates a dynamic and growth-oriented environment that focuses on meaningful impact and excellence. The support and collaboration you receive here empower you to build lasting client relationships and achieve remarkable success.",
+    person: "Khalil, Customer Success Director"
+  },
+  {
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/Kritika.jpg",
+    quote: "Seclore's rapid expansion and unmatched culture were irresistible pulls for my return. Being back feels like reuniting with a team that is more than colleagues. It is where passion meets purpose.",
+    person: "Kritika, Customer Success Associate Director"
+  },
+  {
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/Hamza-M-1024x1024.png",
+    quote: "Working at Seclore has been a masterclass about innovation. Mentorship and challenging projects have levelled up my skills, and the collaboration among teams has been exceptional.",
+    person: "Hamza, Associate Product Architect"
+  }
+];
+
+const awards = [
+  "https://www.seclore.com/wp-content/uploads/2025/02/GPTW-India-optimized.png",
+  "https://www.seclore.com/wp-content/uploads/cybersecurity_awards_2025_gold-2-square.png",
+  "https://www.seclore.com/wp-content/uploads/Seclore_Inc_US_English_2025_Certification_Badge.png",
+  "https://www.seclore.com/wp-content/uploads/Seclore_Technology_Pvt_Ltd_IN_English_2025_Certification_Badge.jpg",
+  "https://www.seclore.com/wp-content/uploads/2025/02/companyBadge-optimized.png"
+];
+
+const jobs = [
+  ["Cloud Ops Engineer", "Permanent", "Cloud", "India"],
+  ["SRE", "Permanent", "Cloud", "India"],
+  ["Application support Engineer", "Permanent", "Customer Support", "India"],
+  ["Employer Branding Specialist", "Permanent", "People Practices", "India"],
+  ["Senior Product Manager", "Permanent", "Product Management", "India"],
+  ["Senior DevOps Engineer", "Permanent", "DevOps", "India"],
+  ["Senior SRE", "Permanent", "Cloud", "India"],
+  ["Regional Sales Manager", "Permanent", "Sales", "United States"]
+];
+
+const departments = [...new Set(jobs.map((job) => job[2]))];
+const locations = [...new Set(jobs.map((job) => job[3]))];
+
+---
+
+<BaseLayout
+  title="Careers at Seclore | Join the Data Security Team"
+  description="Explore life at Seclore, benefits, culture, recognition, and open career opportunities."
+>
+  <main id="top" class="careers-page">
+    <Nav />
+
+    <section class="career-hero">
+      <span>Careers</span>
+      <h1>Drive Innovation.<br />Embrace Collaboration.<br />Discover Horizons.</h1>
+      <p>Join us to redefine how the world protects data.</p>
+      <a class="primary-button" href="#open-positions">View Open Positions</a>
+    </section>
+
+    <section class="life-section">
+      <img src="https://www.seclore.com/wp-content/uploads/Team-Seclore-fisheye-scaled.jpeg" alt="Seclore team together outdoors" loading="lazy" />
+      <div>
+        <span>Life at Seclore</span>
+        <h2>Innovate, create, and make it happen.</h2>
+        <p>At Seclore, we believe in unlocking the potential of our people, our solutions, and the organizations we serve. Join a team that values creativity, thrives on solving challenges, and champions purpose-driven work. Whether coding the next big idea or driving customer success, you are not just doing a job. You are building a legacy. Let us build a smarter, more secure world, one solution at a time.</p>
+      </div>
+    </section>
+
+    <section class="benefits-section">
+      <div class="section-heading">
+        <span>Benefits</span>
+        <h2>Unleash your potential</h2>
+        <p>Seclore offers comprehensive benefits regionally customized to help individuals thrive.</p>
+      </div>
+      <div class="benefit-strip" data-scroll-strip="benefits">
+        {benefits.map(([title, text], index) => (
+          <article class="benefit-card">
+            <span class={`benefit-icon benefit-${index + 1}`} aria-hidden="true"></span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="round-controls">
+        <button type="button" data-scroll-prev="benefits" aria-label="Previous benefit">&larr;</button>
+        <button type="button" data-scroll-next="benefits" aria-label="Next benefit">&rarr;</button>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2>Picture yourself at Seclore</h2>
+      <div class="gallery-strip" data-scroll-strip="gallery">
+        {galleryImages.map((image) => (
+          <img src={image} alt="Seclore team moment" loading="lazy" />
+        ))}
+      </div>
+    </section>
+
+    <section class="testimonial-section">
+      <div class="testimonial-card">
+        {testimonials.map((item, index) => (
+          <article class="testimonial-slide" data-testimonial-slide hidden={index !== 0}>
+            <img src={item.image} alt={item.person} loading="lazy" />
+            <blockquote>{item.quote}</blockquote>
+            <p>{item.person}</p>
+          </article>
+        ))}
+        <div class="testimonial-footer">
+          <div class="round-controls">
+            <button type="button" data-testimonial-prev aria-label="Previous testimonial">&larr;</button>
+            <button type="button" data-testimonial-next aria-label="Next testimonial">&rarr;</button>
+          </div>
+          <div class="dots" aria-label="Testimonial slides">
+            {testimonials.map((_, index) => (
+              <button class={index === 0 ? "active" : ""} type="button" data-testimonial-dot={index} aria-label={`Show testimonial ${index + 1}`}></button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="awards-section">
+      <div class="award-strip" data-scroll-strip="awards">
+        {awards.map((image) => (
+          <img src={image} alt="Seclore workplace award" loading="lazy" />
+        ))}
+      </div>
+      <div class="round-controls">
+        <button type="button" data-scroll-prev="awards" aria-label="Previous award">&larr;</button>
+        <button type="button" data-scroll-next="awards" aria-label="Next award">&rarr;</button>
+      </div>
+    </section>
+
+    <section class="jobs-section" id="open-positions">
+      <h2>Open Positions</h2>
+      <div class="job-controls">
+        <label class="search-control">
+          <span>Search</span>
+          <input id="job-search" type="search" placeholder="Enter keywords" />
+        </label>
+        <label>
+          <span>Department</span>
+          <select id="department-filter">
+            <option value="all">Any department</option>
+            {departments.map((department) => <option value={department}>{department}</option>)}
+          </select>
+        </label>
+        <label>
+          <span>Location</span>
+          <select id="location-filter">
+            <option value="all">Any location</option>
+            {locations.map((location) => <option value={location}>{location}</option>)}
+          </select>
+        </label>
+        <label>
+          <span>Sort by</span>
+          <select id="job-sort">
+            <option value="title">Job Title</option>
+            <option value="team">Team</option>
+            <option value="location">Location</option>
+          </select>
+        </label>
+      </div>
+      <p class="results-line">Results: <strong data-job-count>{jobs.length}</strong></p>
+      <div class="jobs-table" role="table" aria-label="Open positions">
+        <div class="job-row job-head" role="row">
+          <span role="columnheader">Job Title</span>
+          <span role="columnheader">Job Type</span>
+          <span role="columnheader">Team</span>
+          <span role="columnheader">Location</span>
+          <span role="columnheader">Action</span>
+        </div>
+        {jobs.map(([title, type, team, location]) => (
+          <div class="job-row" role="row" data-job-row data-title={title.toLowerCase()} data-type={type} data-team={team} data-location={location}>
+            <span role="cell">{title}</span>
+            <span role="cell">{type}</span>
+            <span role="cell">{team}</span>
+            <span role="cell">{location}</span>
+            <button type="button" data-apply-button={title}>Apply</button>
+          </div>
+        ))}
+      </div>
+      <p class="empty-state" data-job-empty hidden>No positions match your filters.</p>
+    </section>
+
+    <div class="application-panel" data-application-panel hidden>
+      <div>
+        <button type="button" data-close-application aria-label="Close application">x</button>
+        <span>Application</span>
+        <h2 data-application-title>Apply at Seclore</h2>
+        <form id="career-application-form" novalidate>
+          <label>
+            <span>Name*</span>
+            <input name="name" type="text" required />
+          </label>
+          <label>
+            <span>Email*</span>
+            <input name="email" type="email" required />
+          </label>
+          <label>
+            <span>LinkedIn or portfolio</span>
+            <input name="portfolio" type="url" />
+          </label>
+          <label>
+            <span>Why this role?</span>
+            <textarea name="note" rows="4"></textarea>
+          </label>
+          <p data-application-error hidden>Please add your name and a valid email.</p>
+          <p data-application-success hidden>Thanks. Your application has been captured locally for this demo.</p>
+          <button class="submit-button" type="submit">Submit Application</button>
+        </form>
+      </div>
+    </div>
+
+    <section class="ready-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#top">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  function scrollStrip(name, direction) {
+    const strip = document.querySelector(`[data-scroll-strip="${name}"]`);
+    if (!strip) {
+      return;
+    }
+    strip.scrollBy({ left: direction * Math.max(260, strip.clientWidth * 0.72), behavior: "smooth" });
+  }
+
+  document.querySelectorAll("[data-scroll-prev]").forEach((button) => {
+    button.addEventListener("click", () => scrollStrip(button.dataset.scrollPrev, -1));
+  });
+
+  document.querySelectorAll("[data-scroll-next]").forEach((button) => {
+    button.addEventListener("click", () => scrollStrip(button.dataset.scrollNext, 1));
+  });
+
+  const slides = Array.from(document.querySelectorAll("[data-testimonial-slide]"));
+  const dots = Array.from(document.querySelectorAll("[data-testimonial-dot]"));
+  let activeTestimonial = 0;
+
+  function showTestimonial(index) {
+    activeTestimonial = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      slide.hidden = slideIndex !== activeTestimonial;
+    });
+    dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("active", dotIndex === activeTestimonial);
+    });
+  }
+
+  document.querySelector("[data-testimonial-prev]")?.addEventListener("click", () => showTestimonial(activeTestimonial - 1));
+  document.querySelector("[data-testimonial-next]")?.addEventListener("click", () => showTestimonial(activeTestimonial + 1));
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => showTestimonial(Number(dot.dataset.testimonialDot)));
+  });
+
+  const rows = Array.from(document.querySelectorAll("[data-job-row]"));
+  const table = document.querySelector(".jobs-table");
+  const searchInput = document.querySelector("#job-search");
+  const departmentFilter = document.querySelector("#department-filter");
+  const locationFilter = document.querySelector("#location-filter");
+  const sortSelect = document.querySelector("#job-sort");
+  const countNode = document.querySelector("[data-job-count]");
+  const emptyNode = document.querySelector("[data-job-empty]");
+
+  function renderJobs() {
+    const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
+    const department = departmentFilter ? departmentFilter.value : "all";
+    const location = locationFilter ? locationFilter.value : "all";
+    const sortKey = sortSelect ? sortSelect.value : "title";
+
+    const matches = rows.filter((row) => {
+      const text = `${row.dataset.title} ${row.dataset.team} ${row.dataset.location}`.toLowerCase();
+      return (!query || text.includes(query)) &&
+        (department === "all" || row.dataset.team === department) &&
+        (location === "all" || row.dataset.location === location);
+    });
+
+    matches.sort((a, b) => {
+      const key = sortKey === "team" ? "team" : sortKey === "location" ? "location" : "title";
+      return String(a.dataset[key]).localeCompare(String(b.dataset[key]));
+    });
+
+    rows.forEach((row) => {
+      row.hidden = !matches.includes(row);
+    });
+
+    matches.forEach((row) => table?.appendChild(row));
+
+    if (countNode) {
+      countNode.textContent = String(matches.length);
+    }
+    if (emptyNode) {
+      emptyNode.hidden = matches.length > 0;
+    }
+  }
+
+  searchInput?.addEventListener("input", renderJobs);
+  departmentFilter?.addEventListener("change", renderJobs);
+  locationFilter?.addEventListener("change", renderJobs);
+  sortSelect?.addEventListener("change", renderJobs);
+
+  const panel = document.querySelector("[data-application-panel]");
+  const panelTitle = document.querySelector("[data-application-title]");
+  const applicationForm = document.querySelector("#career-application-form");
+  const applicationError = document.querySelector("[data-application-error]");
+  const applicationSuccess = document.querySelector("[data-application-success]");
+
+  document.querySelectorAll("[data-apply-button]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (panelTitle) {
+        panelTitle.textContent = `Apply for ${button.dataset.applyButton}`;
+      }
+      if (panel) {
+        panel.hidden = false;
+      }
+    });
+  });
+
+  document.querySelector("[data-close-application]")?.addEventListener("click", () => {
+    if (panel) {
+      panel.hidden = true;
+    }
+  });
+
+  applicationForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!applicationForm.checkValidity()) {
+      applicationForm.classList.add("was-validated");
+      if (applicationError) {
+        applicationError.hidden = false;
+      }
+      if (applicationSuccess) {
+        applicationSuccess.hidden = true;
+      }
+      return;
+    }
+    applicationForm.classList.remove("was-validated");
+    if (applicationError) {
+      applicationError.hidden = true;
+    }
+    if (applicationSuccess) {
+      applicationSuccess.hidden = false;
+    }
+    applicationForm.reset();
+  });
+
+  renderJobs();
+</script>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f4f5f7;
+    --paper: #ffffff;
+    --ink: #17151b;
+    --muted: #64616a;
+    --purple: #5b2bd7;
+    --pink: #d91f52;
+    --line: rgba(21, 21, 26, 0.12);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--ink);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  .careers-page .site-header {
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .careers-page .site-logo {
+    color: var(--purple);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: clamp(14px, 2vw, 28px);
+    text-transform: uppercase;
+  }
+
+  .careers-page .nav-links,
+  .careers-page .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .careers-page .nav-links {
+    flex: 1 1 auto;
+    gap: clamp(18px, 2.2vw, 34px);
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .careers-page .nav-links > a,
+  .careers-page .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #28272c;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    gap: 8px;
+    min-height: 68px;
+    padding: 0;
+  }
+
+  .careers-page .nav-item {
+    position: static;
+  }
+
+  .careers-page .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    width: 8px;
+  }
+
+  .careers-page .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .careers-page .nav-item:hover .mega-menu,
+  .careers-page .nav-item:focus-within .mega-menu,
+  .careers-page .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .careers-page .mega-inner {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .careers-page .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .careers-page .mega-column,
+  .careers-page .mega-sublinks {
+    display: grid;
+    gap: 8px;
+  }
+
+  .careers-page .mega-title {
+    color: #0b5cad;
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .careers-page .mega-link,
+  .careers-page .mega-feature {
+    border-radius: 8px;
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .careers-page .mega-link:hover {
+    background: rgba(15, 76, 129, 0.055);
+  }
+
+  .careers-page .mega-link strong,
+  .careers-page .mega-feature strong {
+    color: #101828;
+  }
+
+  .careers-page .mega-link small,
+  .careers-page .mega-sublinks a,
+  .careers-page .mega-feature em {
+    color: #667085;
+  }
+
+  .careers-page .mega-feature {
+    align-content: end;
+    background: rgba(91, 43, 215, 0.08);
+  }
+
+  .careers-page .nav-utilities {
+    flex: 0 0 auto;
+    gap: 14px;
+    margin-left: auto;
+  }
+
+  .careers-page .utility-link,
+  .careers-page .language-button,
+  .careers-page .utility-icon,
+  .careers-page .theme-toggle {
+    display: none;
+  }
+
+  .careers-page .demo-button,
+  .primary-button {
+    align-items: center;
+    background: var(--purple);
+    border-radius: 7px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 0.86rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+  }
+
+  .careers-page .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .careers-page .nav-toggle span {
+    background: #25242a;
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  .careers-page h1,
+  .careers-page h2,
+  .careers-page h3,
+  .careers-page p {
+    margin-top: 0;
+  }
+
+  .careers-page h1,
+  .careers-page h2,
+  .careers-page h3 {
+    font-weight: 430;
+    letter-spacing: 0;
+  }
+
+  .career-hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 16% 76%, rgba(255, 255, 255, 0.35), transparent 31%),
+      linear-gradient(135deg, #c882e8 0%, #8925f5 44%, #5f0de8 100%);
+    color: #ffffff;
+    display: grid;
+    min-height: 430px;
+    padding: 72px clamp(18px, 4vw, 56px);
+    place-items: center;
+    text-align: center;
+  }
+
+  .career-hero span {
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 900;
+    margin-bottom: 24px;
+  }
+
+  .career-hero h1 {
+    color: #ffffff;
+    font-size: clamp(3rem, 6.6vw, 5.4rem);
+    line-height: 0.95;
+    margin-bottom: 22px;
+  }
+
+  .career-hero p {
+    color: #ffffff;
+    margin-bottom: 22px;
+  }
+
+  .life-section {
+    align-items: center;
+    background: #ffffff;
+    display: grid;
+    gap: clamp(28px, 5vw, 72px);
+    grid-template-columns: minmax(260px, 0.9fr) minmax(280px, 1fr);
+    margin-top: clamp(160px, 24vw, 285px);
+    padding: clamp(52px, 7vw, 84px) clamp(18px, 4vw, 56px);
+  }
+
+  .life-section img {
+    border-radius: 8px;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .life-section span,
+  .section-heading span {
+    color: var(--purple);
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 900;
+    margin-bottom: 16px;
+  }
+
+  .life-section h2,
+  .section-heading h2,
+  .jobs-section h2 {
+    font-size: clamp(2.4rem, 5vw, 4.1rem);
+    line-height: 1.02;
+    margin-bottom: 18px;
+  }
+
+  .life-section p,
+  .section-heading p,
+  .benefit-card p,
+  .testimonial-card blockquote {
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .benefits-section,
+  .testimonial-section,
+  .awards-section,
+  .jobs-section {
+    background: #ffffff;
+    padding: clamp(52px, 7vw, 86px) clamp(18px, 4vw, 56px);
+  }
+
+  .section-heading {
+    margin: 0 auto 40px;
+    max-width: 740px;
+    text-align: center;
+  }
+
+  .benefit-strip,
+  .gallery-strip,
+  .award-strip {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .benefit-strip::-webkit-scrollbar,
+  .gallery-strip::-webkit-scrollbar,
+  .award-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .benefit-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    flex: 0 0 min(360px, 82vw);
+    min-height: 245px;
+    padding: 30px;
+    scroll-snap-align: start;
+  }
+
+  .benefit-icon {
+    background: #f8d887;
+    border-radius: 14px;
+    display: inline-block;
+    height: 42px;
+    margin-bottom: 28px;
+    position: relative;
+    width: 42px;
+  }
+
+  .benefit-icon::after {
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    content: "";
+    height: 15px;
+    left: 12px;
+    position: absolute;
+    top: 12px;
+    width: 15px;
+  }
+
+  .benefit-2,
+  .benefit-5,
+  .benefit-8 {
+    background: var(--purple);
+  }
+
+  .benefit-3,
+  .benefit-6 {
+    background: #10a7a7;
+  }
+
+  .benefit-4,
+  .benefit-7 {
+    background: var(--pink);
+  }
+
+  .benefit-card h3 {
+    font-size: 1.65rem;
+    margin-bottom: 18px;
+  }
+
+  .round-controls {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .round-controls button {
+    background: #ffffff;
+    border: 1px solid rgba(21, 21, 26, 0.28);
+    border-radius: 50%;
+    color: #55515a;
+    cursor: pointer;
+    height: 42px;
+    width: 42px;
+  }
+
+  .gallery-section {
+    background: var(--purple);
+    color: #ffffff;
+    padding: clamp(42px, 6vw, 66px) clamp(18px, 4vw, 56px);
+  }
+
+  .gallery-section h2 {
+    color: #ffffff;
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .gallery-strip img {
+    aspect-ratio: 1.04 / 1;
+    border-radius: 8px;
+    flex: 0 0 min(250px, 56vw);
+    object-fit: cover;
+    scroll-snap-align: start;
+  }
+
+  .testimonial-card,
+  .awards-section {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+
+  .testimonial-card {
+    background: #ffffff;
+    margin: 0 auto;
+    max-width: 1180px;
+    padding: clamp(34px, 6vw, 72px);
+  }
+
+  .testimonial-slide {
+    text-align: left;
+  }
+
+  .testimonial-slide img {
+    border-radius: 8px;
+    display: block;
+    height: 220px;
+    margin: 0 auto 32px;
+    object-fit: cover;
+    width: min(280px, 82vw);
+  }
+
+  .testimonial-slide blockquote {
+    margin: 0 0 20px;
+  }
+
+  .testimonial-slide p {
+    color: var(--purple);
+    font-size: 0.92rem;
+    font-weight: 850;
+  }
+
+  .testimonial-footer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .dots button {
+    background: #c7c3cb;
+    border: 0;
+    border-radius: 50%;
+    height: 7px;
+    width: 7px;
+  }
+
+  .dots button.active {
+    background: var(--purple);
+  }
+
+  .awards-section {
+    margin: 28px clamp(18px, 4vw, 56px);
+  }
+
+  .award-strip {
+    align-items: center;
+  }
+
+  .award-strip img {
+    flex: 0 0 min(260px, 64vw);
+    max-height: 180px;
+    object-fit: contain;
+    scroll-snap-align: start;
+  }
+
+  .jobs-section {
+    margin-top: 28px;
+  }
+
+  .job-controls {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: minmax(220px, 1fr) repeat(3, minmax(160px, 0.55fr));
+    margin-bottom: 28px;
+    padding: 18px;
+  }
+
+  .job-controls label {
+    display: grid;
+    gap: 7px;
+  }
+
+  .job-controls span {
+    color: #76727d;
+    font-size: 0.7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .job-controls input,
+  .job-controls select {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    min-height: 42px;
+    padding: 0 12px;
+    width: 100%;
+  }
+
+  .results-line {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .jobs-table {
+    display: grid;
+    overflow: hidden;
+  }
+
+  .job-row {
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    gap: 16px;
+    grid-template-columns: minmax(180px, 1.35fr) repeat(3, minmax(110px, 0.7fr)) minmax(90px, 0.4fr);
+    min-height: 72px;
+  }
+
+  .job-row[hidden] {
+    display: none;
+  }
+
+  .job-head {
+    color: #6e6b74;
+    font-size: 0.88rem;
+    font-weight: 850;
+  }
+
+  .job-row button {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    cursor: pointer;
+    min-height: 36px;
+  }
+
+  .empty-state {
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .application-panel {
+    background: rgba(12, 8, 16, 0.62);
+    inset: 0;
+    padding: 24px;
+    position: fixed;
+    z-index: 40;
+  }
+
+  .application-panel > div {
+    background: #ffffff;
+    border-radius: 8px;
+    margin: 8vh auto;
+    max-width: 560px;
+    padding: 32px;
+    position: relative;
+  }
+
+  .application-panel > div > button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 18px;
+    top: 16px;
+  }
+
+  .application-panel span {
+    color: var(--purple);
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .application-panel h2 {
+    font-size: 2rem;
+    margin: 12px 0 24px;
+  }
+
+  .application-panel form {
+    display: grid;
+    gap: 16px;
+  }
+
+  .application-panel label {
+    display: grid;
+    gap: 7px;
+  }
+
+  .application-panel input,
+  .application-panel textarea {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    min-height: 42px;
+    padding: 0 12px;
+    width: 100%;
+  }
+
+  .application-panel textarea {
+    padding: 12px;
+  }
+
+  .application-panel form.was-validated input:invalid {
+    border-color: var(--pink);
+  }
+
+  .application-panel p {
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .submit-button {
+    background: var(--pink);
+    border: 0;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 850;
+    justify-self: start;
+    min-height: 42px;
+    padding: 0 18px;
+  }
+
+  .ready-section,
+  .careers-footer {
+    background: #ffffff;
+    padding-inline: clamp(18px, 4vw, 56px);
+  }
+
+  .ready-section {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 44px;
+    padding-top: 42px;
+  }
+
+  .ready-section h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 10px;
+  }
+
+  .ready-section p,
+  .careers-footer p {
+    color: var(--muted);
+    line-height: 1.58;
+  }
+
+  .ready-section .primary-button {
+    margin-top: 24px;
+    min-width: 170px;
+  }
+
+  .careers-footer {
+    padding-bottom: 42px;
+  }
+
+  .footer-lines {
+    border-block: 1px solid var(--line);
+    margin-bottom: 36px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .footer-lines details:last-child {
+    border-bottom: 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 850;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 9px;
+    margin: 30px 0;
+    max-width: 180px;
+  }
+
+  .store-row span {
+    background: #19121f;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 850;
+    padding: 10px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 26px;
+  }
+
+  .social-row a {
+    color: #303038;
+    font-weight: 900;
+  }
+
+  .legal {
+    font-size: 0.9rem;
+    margin-top: 24px;
+  }
+
+  .legal a {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1180px) {
+    .careers-page .site-header {
+      flex-wrap: wrap;
+    }
+
+    .careers-page .nav-toggle {
+      display: block;
+      margin-left: auto;
+    }
+
+    .careers-page .nav-links {
+      background: #ffffff;
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+      display: none;
+      flex: 1 0 100%;
+      order: 2;
+      padding: 10px 0 14px;
+    }
+
+    .careers-page .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .careers-page .nav-links > a,
+    .careers-page .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .careers-page .nav-item {
+      display: grid;
+    }
+
+    .careers-page .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .careers-page .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .careers-page .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .life-section,
+    .job-controls {
+      grid-template-columns: 1fr;
+    }
+
+    .job-row {
+      grid-template-columns: minmax(160px, 1.2fr) repeat(3, minmax(86px, 0.7fr)) minmax(70px, 0.45fr);
+      min-width: 760px;
+    }
+
+    .jobs-table {
+      overflow-x: auto;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .career-hero h1 {
+      font-size: 3rem;
+    }
+
+    .life-section {
+      margin-top: 170px;
+    }
+
+    .benefits-section,
+    .testimonial-section,
+    .awards-section,
+    .jobs-section,
+    .ready-section,
+    .careers-footer {
+      padding-inline: 16px;
+    }
+  }
+</style>

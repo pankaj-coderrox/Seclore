@@ -1,0 +1,1011 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const packages = [
+  {
+    title: "Data protection & encryption",
+    features: [
+      "Access controls",
+      "Usage controls",
+      "Dynamic watermarking",
+      "Remote revocation",
+      "Custom/browser viewers",
+      "Geo-fencing",
+      "AES 256-Bit encryption",
+      "RSA 2048-Bit encryption"
+    ]
+  },
+  {
+    title: "Data discovery & classification",
+    features: [
+      "Pre-built DLP integrations",
+      "Discovery-engine support",
+      "Auto-classification",
+      "Labels & sub-labels",
+      "Icon markers",
+      "Discovery decryption"
+    ]
+  },
+  {
+    title: "Data analytics & reporting",
+    features: [
+      "Audit logs",
+      "Login attempts",
+      "Successful activities",
+      "Prevented activities",
+      "Risk insights dashboard",
+      "Protection dashboard",
+      "Classification dashboard",
+      "SIEM/BI integrations"
+    ]
+  }
+];
+
+const platformRows = [
+  "Encryption and key management",
+  "Policy manager",
+  "Identity provider (IDP)/Active Directory (AD) integration",
+  "External user ID manager",
+  "Online viewer and editor",
+  "Master key management via HSM",
+  "Identity & access management (IAM), and single sign-on (SSO) support",
+  "Mobile-device, mobile device management (MDM), and enterprise mobility management (EMM) support",
+  "Discovery-driven decryption for Seclore-protected files and emails",
+  "Support for file and email (PST) decryption via the decryption utility",
+  "Support for file and email (PST) decryption via decryption utility",
+  "On-cloud, on-premises, and air gapped deployment options"
+];
+
+const edrmRows = [
+  ["EDRM for endpoint files", true, true, true],
+  ["EDRM for endpoint folders", true, true, true],
+  ["EDRM for emails and attachments", true, true, true],
+  ["Classification-driven protection for files and emails", false, true, true],
+  ["Auto-protect user generated emails", false, true, true],
+  ["Auto-protect application-generated emails", false, true, true],
+  ["Auto-protect emails based on metadata, headers, sender, recipient, classification, sensitivity, etc.", false, true, true],
+  ["Auto-protect files on network file servers", false, true, true],
+  ["Auto-protect files on Sharepoint online/on-premises & Teams", false, true, true],
+  ["Classification-driven protection for files using Microsoft Sensitivity labels", false, false, true],
+  ["DLP connector - protect endpoint files", false, false, true],
+  ["DLP connector - protect digital assets on network file servers", false, false, true]
+];
+
+const simpleSections = [
+  {
+    title: "Digital Asset Classification",
+    rows: [
+      "Classification labels & sub-labels",
+      "Classification-driven protection",
+      "Discovery-driven decryption for Seclore-protected files and emails"
+    ]
+  },
+  {
+    title: "Risk Insights & Reporting",
+    rows: [
+      "Data audit logs",
+      "Access and activity dashboard",
+      "Risk Insights dashboard",
+      "Protection dashboard",
+      "Classification dashboard",
+      "Security information and event management (SIEM), and business intelligence (BI) integrations"
+    ]
+  },
+  {
+    title: "Support",
+    rows: [
+      "Product training - vertical/department specific",
+      "Onboarding - In-person, remote, and on-demand",
+      "Solution consulting - custom, or industry best practices",
+      "Standard support"
+    ]
+  }
+];
+
+const additionalServices = [
+  "APIs and SDKs for endpoint integrations",
+  "APIs and SDKs for server integrations",
+  "Data extraction APIs",
+  "Platinum business support",
+  "Resident/on-site engineer"
+];
+---
+
+<BaseLayout
+  title="Pricing | seclore"
+  description="Seclore pricing packages and offerings for data protection, discovery, classification, analytics, reporting, support, and additional services."
+>
+  <main id="top" class="pricing-page">
+    <Nav />
+
+    <section class="pricing-hero">
+      <span>Pricing</span>
+      <h1>Seclore Packages & Offerings</h1>
+      <p>
+        Our data-centric security solutions can be rapidly deployed to protect your organization's
+        sensitive, private, and regulated data across digital assets including files, emails,
+        attachments, and more. Choose the package that fits your needs.
+      </p>
+    </section>
+
+    <section class="packages-section">
+      <div class="section-heading">
+        <h2>Discover, classify, protect, and track sensitive and regulated data</h2>
+        <p>
+          The data-centric security platform protects digital assets for their entire lifecycle,
+          integrates seamlessly with security and business applications, and supports cloud,
+          on-prem, and hybrid deployments.
+        </p>
+      </div>
+
+      <div class="package-grid">
+        {packages.map((item) => (
+          <article class="package-card">
+            <h3>{item.title}</h3>
+            <a href="#demo" class="contact-button">Contact Sales</a>
+            <strong>Includes</strong>
+            <ul>
+              {item.features.map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="feature-section">
+      <h2>Data-Centric Security Platform</h2>
+      <div class="stripe-list">
+        {platformRows.map((row) => <div>{row}</div>)}
+      </div>
+    </section>
+
+    <section class="feature-section comparison-section">
+      <h2>Enterprise Digital Rights Management</h2>
+      <div class="comparison-table" role="table" aria-label="Enterprise digital rights management tiers">
+        <div class="comparison-head" role="row">
+          <span role="columnheader"></span>
+          <strong role="columnheader">Essential</strong>
+          <strong role="columnheader">Enterprise</strong>
+          <strong role="columnheader">Elite</strong>
+        </div>
+        {edrmRows.map(([label, essential, enterprise, elite]) => (
+          <div class="comparison-row" role="row">
+            <span role="cell">{label}</span>
+            <span role="cell">{essential && <i class="tier-check essential" aria-label="Included"></i>}</span>
+            <span role="cell">{enterprise && <i class="tier-check enterprise" aria-label="Included"></i>}</span>
+            <span role="cell">{elite && <i class="tier-check elite" aria-label="Included"></i>}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {simpleSections.map((section) => (
+      <section class="feature-section simple-section">
+        <h2>{section.title}</h2>
+        <div class="stripe-list compact">
+          {section.rows.map((row) => <div>{row}</div>)}
+        </div>
+      </section>
+    ))}
+
+    <section class="feature-section simple-section">
+      <h2>Additional Services</h2>
+      <a href="#demo" class="contact-button narrow">Contact Us</a>
+      <div class="stripe-list compact">
+        {additionalServices.map((row) => <div>{row}</div>)}
+      </div>
+    </section>
+
+    <section class="workflow-section">
+      <h2>Enhance existing workflows</h2>
+      <p>
+        Integrate Seclore with the security solutions and productivity tools your teams already
+        trust, to improve data security and compliance throughout your organization and beyond.
+      </p>
+      <a href="/integrations/" class="integrations-button">View All Integrations</a>
+    </section>
+
+    <section class="ready-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a href="#top" class="contact-button ready-button">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f1f2f4;
+    --page-text: #09090b;
+    --page-muted: #43424a;
+    --purple: #5b2bd7;
+    --purple-dark: #4b20c3;
+    --pink: #e82155;
+    --orange: #fb8b00;
+    --card: #ffffff;
+    --line: rgba(22, 24, 30, 0.14);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --demo-button-bg: #5b2bd7;
+    --demo-button-text: #ffffff;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  .pricing-page .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .pricing-page .site-logo {
+    color: var(--purple);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: clamp(14px, 2vw, 28px);
+    text-transform: uppercase;
+  }
+
+  .pricing-page .nav-links,
+  .pricing-page .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .pricing-page .nav-links {
+    flex: 1 1 auto;
+    gap: clamp(18px, 2.2vw, 34px);
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .pricing-page .nav-links > a,
+  .pricing-page .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    gap: 8px;
+    min-height: 68px;
+    padding: 0;
+  }
+
+  .pricing-page .nav-links > a:hover,
+  .pricing-page .nav-trigger:hover,
+  .pricing-page .nav-item:hover .nav-trigger,
+  .pricing-page .nav-item:focus-within .nav-trigger {
+    color: var(--header-text);
+  }
+
+  .pricing-page .nav-item {
+    position: static;
+  }
+
+  .pricing-page .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 8px;
+  }
+
+  .pricing-page .nav-item:hover .nav-caret,
+  .pricing-page .nav-item:focus-within .nav-caret,
+  .pricing-page .nav-item.is-open .nav-caret {
+    transform: rotate(225deg) translateY(-1px);
+  }
+
+  .pricing-page .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .pricing-page .nav-item:hover .mega-menu,
+  .pricing-page .nav-item:focus-within .mega-menu,
+  .pricing-page .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .pricing-page .mega-inner {
+    background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .pricing-page .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .pricing-page .mega-column,
+  .pricing-page .mega-sublinks {
+    display: grid;
+  }
+
+  .pricing-page .mega-column {
+    gap: 10px;
+  }
+
+  .pricing-page .mega-title {
+    color: var(--dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .pricing-page .mega-link,
+  .pricing-page .mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .pricing-page .mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .pricing-page .mega-link strong {
+    color: var(--dropdown-text);
+  }
+
+  .pricing-page .mega-link small,
+  .pricing-page .mega-sublinks a {
+    color: var(--dropdown-muted);
+  }
+
+  .pricing-page .mega-link:hover,
+  .pricing-page .mega-link-group:hover {
+    background: var(--dropdown-link-hover);
+    border-color: var(--dropdown-link-border);
+  }
+
+  .pricing-page .mega-link-group {
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .pricing-page .mega-sublinks {
+    gap: 2px;
+    padding: 0 9px 8px 22px;
+  }
+
+  .pricing-page .mega-sublinks a {
+    font-size: 0.84rem;
+    padding: 5px 0;
+  }
+
+  .pricing-page .mega-feature {
+    align-content: end;
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .pricing-page .mega-feature span,
+  .pricing-page .mega-feature em {
+    color: var(--dropdown-title);
+  }
+
+  .pricing-page .mega-feature strong {
+    color: var(--dropdown-text);
+    font-size: 1.35rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .pricing-page .nav-utilities {
+    flex: 0 0 auto;
+    gap: clamp(12px, 1.5vw, 20px);
+    margin-left: clamp(12px, 2vw, 28px);
+  }
+
+  .pricing-page .utility-link,
+  .pricing-page .language-button,
+  .pricing-page .utility-icon,
+  .pricing-page .theme-toggle {
+    display: none;
+  }
+
+  .pricing-page .demo-button,
+  .contact-button,
+  .integrations-button {
+    align-items: center;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.9rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+  }
+
+  .pricing-page .demo-button,
+  .contact-button {
+    background: var(--purple);
+    color: #ffffff;
+  }
+
+  .pricing-page .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .pricing-page .nav-toggle span {
+    background: var(--header-text);
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  .pricing-page h1,
+  .pricing-page h2,
+  .pricing-page h3,
+  .pricing-page p {
+    margin-top: 0;
+  }
+
+  .pricing-page h1 {
+    font-size: clamp(3.3rem, 7vw, 6.6rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    margin-bottom: 28px;
+  }
+
+  .pricing-page h2 {
+    font-size: clamp(2.4rem, 5.4vw, 5rem);
+    font-weight: 420;
+    letter-spacing: 0;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .pricing-page h3 {
+    font-size: clamp(2rem, 4vw, 3.1rem);
+    font-weight: 430;
+    line-height: 1.08;
+    margin-bottom: 28px;
+  }
+
+  .pricing-page p,
+  .pricing-page li {
+    color: var(--page-muted);
+    line-height: 1.58;
+  }
+
+  .pricing-hero {
+    background: radial-gradient(circle at 10% 65%, rgba(255, 255, 255, 0.26), transparent 24%), linear-gradient(135deg, #d193ef 0%, #8b22ff 47%, #5b0be8 100%);
+    color: #ffffff;
+    min-height: 580px;
+    padding: 118px clamp(18px, 3vw, 42px) 90px;
+    text-align: center;
+  }
+
+  .pricing-hero span {
+    display: block;
+    font-size: 1rem;
+    font-weight: 900;
+    margin-bottom: 36px;
+  }
+
+  .pricing-hero p {
+    color: rgba(255, 255, 255, 0.94);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    margin-inline: auto;
+    max-width: 1320px;
+  }
+
+  .packages-section,
+  .feature-section {
+    padding: clamp(74px, 9vw, 130px) clamp(18px, 3vw, 46px);
+  }
+
+  .section-heading {
+    margin: 0 auto;
+    max-width: 1280px;
+    text-align: center;
+  }
+
+  .section-heading p {
+    font-size: clamp(1rem, 1.25vw, 1.18rem);
+  }
+
+  .package-grid {
+    display: grid;
+    gap: clamp(26px, 4vw, 48px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 64px;
+  }
+
+  .package-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    min-height: 450px;
+    padding: clamp(28px, 3vw, 40px);
+  }
+
+  .package-card .contact-button {
+    width: 100%;
+  }
+
+  .package-card strong {
+    display: block;
+    font-size: 1.1rem;
+    margin: 34px 0 20px;
+  }
+
+  .package-card ul {
+    display: grid;
+    gap: 17px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .package-card li {
+    align-items: start;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 16px minmax(0, 1fr);
+  }
+
+  .package-card li::before {
+    border-bottom: 2px solid var(--purple);
+    border-right: 2px solid var(--purple);
+    content: "";
+    height: 11px;
+    margin-top: 2px;
+    transform: rotate(45deg);
+    width: 6px;
+  }
+
+  .feature-section {
+    padding-inline: 0;
+  }
+
+  .feature-section h2 {
+    padding-inline: 18px;
+  }
+
+  .stripe-list {
+    border-block: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .stripe-list div {
+    border-bottom: 1px solid var(--line);
+    min-height: 45px;
+    padding: 13px clamp(16px, 2vw, 32px);
+  }
+
+  .stripe-list div:nth-child(odd),
+  .comparison-row:nth-child(even) {
+    background: #eceeef;
+  }
+
+  .stripe-list div:nth-child(even),
+  .comparison-row:nth-child(odd) {
+    background: #f8f8f8;
+  }
+
+  .stripe-list div:last-child {
+    border-bottom: 0;
+  }
+
+  .comparison-section {
+    padding-inline: clamp(18px, 3vw, 46px);
+  }
+
+  .comparison-table {
+    display: grid;
+    margin: 40px auto 0;
+    max-width: 1320px;
+  }
+
+  .comparison-head,
+  .comparison-row {
+    display: grid;
+    grid-template-columns: minmax(210px, 1.4fr) repeat(3, minmax(120px, 1fr));
+  }
+
+  .comparison-head span,
+  .comparison-head strong,
+  .comparison-row > span {
+    align-items: center;
+    border-right: 1px solid var(--line);
+    display: flex;
+    min-height: 76px;
+    padding: 16px;
+  }
+
+  .comparison-head strong,
+  .comparison-row > span:not(:first-child) {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .comparison-head strong {
+    font-size: clamp(1.4rem, 2.6vw, 2.45rem);
+    font-weight: 700;
+  }
+
+  .comparison-head span,
+  .comparison-head strong:last-child,
+  .comparison-row > span:last-child {
+    border-right: 0;
+  }
+
+  .comparison-row {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .comparison-row > span:first-child {
+    justify-content: center;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .tier-check {
+    border-radius: 50%;
+    display: inline-block;
+    height: 30px;
+    position: relative;
+    width: 30px;
+  }
+
+  .tier-check::after {
+    border-bottom: 3px solid #ffffff;
+    border-right: 3px solid #ffffff;
+    content: "";
+    height: 10px;
+    left: 10px;
+    position: absolute;
+    top: 6px;
+    transform: rotate(45deg);
+    width: 6px;
+  }
+
+  .tier-check.essential {
+    background: #8c2043;
+  }
+
+  .tier-check.enterprise {
+    background: var(--orange);
+  }
+
+  .tier-check.elite {
+    background: var(--pink);
+  }
+
+  .simple-section {
+    padding-bottom: clamp(48px, 7vw, 96px);
+    padding-top: clamp(48px, 7vw, 96px);
+  }
+
+  .compact {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin: 34px clamp(18px, 3vw, 46px) 0;
+  }
+
+  .narrow {
+    display: flex;
+    margin: 0 auto 42px;
+    max-width: 180px;
+  }
+
+  .workflow-section {
+    background: #ffffff;
+    padding: clamp(72px, 9vw, 120px) clamp(18px, 3vw, 46px);
+    text-align: center;
+  }
+
+  .workflow-section h2 {
+    font-size: clamp(2.7rem, 5.6vw, 5rem);
+    font-weight: 420;
+    margin-bottom: 26px;
+  }
+
+  .workflow-section p {
+    font-size: clamp(1rem, 1.35vw, 1.22rem);
+    margin: 0 auto 34px;
+    max-width: 1040px;
+  }
+
+  .integrations-button {
+    background: #bf1d45;
+    color: #ffffff;
+    min-width: 230px;
+  }
+
+  .ready-section,
+  .pricing-footer {
+    background: #ffffff;
+    padding-inline: clamp(18px, 3vw, 46px);
+  }
+
+  .ready-section {
+    padding-bottom: 44px;
+  }
+
+  .ready-section h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 420;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .ready-button {
+    margin-top: 28px;
+    min-width: 170px;
+  }
+
+  .pricing-footer {
+    padding-bottom: 42px;
+  }
+
+  .footer-lines {
+    border-block: 1px solid var(--line);
+    margin-bottom: 36px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .footer-lines details:last-child {
+    border-bottom: 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 850;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 9px;
+    margin: 30px 0;
+    max-width: 180px;
+  }
+
+  .store-row span {
+    background: #19121f;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 850;
+    padding: 10px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 26px;
+  }
+
+  .social-row a {
+    color: #303038;
+    font-weight: 900;
+  }
+
+  .legal {
+    font-size: 0.9rem;
+    margin-top: 24px;
+  }
+
+  .legal a {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1180px) {
+    .pricing-page .nav-toggle {
+      display: block;
+      margin-left: auto;
+      order: 1;
+    }
+
+    .pricing-page .site-header {
+      flex-wrap: wrap;
+    }
+
+    .pricing-page .site-logo {
+      order: 0;
+    }
+
+    .pricing-page .nav-links {
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      order: 2;
+      padding: 10px 0 14px;
+    }
+
+    .pricing-page .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .pricing-page .nav-links > a,
+    .pricing-page .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .pricing-page .nav-item {
+      display: grid;
+    }
+
+    .pricing-page .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .pricing-page .nav-item:hover .mega-menu,
+    .pricing-page .nav-item:focus-within .mega-menu {
+      display: none;
+    }
+
+    .pricing-page .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .pricing-page .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .pricing-page .nav-utilities {
+      align-items: stretch;
+      display: flex;
+      margin-left: auto;
+      order: 0;
+    }
+  }
+
+  @media (max-width: 840px) {
+    .pricing-hero {
+      min-height: 500px;
+      padding-top: 82px;
+    }
+
+    .package-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .comparison-table {
+      overflow-x: auto;
+    }
+
+    .comparison-head,
+    .comparison-row {
+      min-width: 760px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .pricing-page h1 {
+      font-size: 3rem;
+    }
+
+    .pricing-page h2 {
+      font-size: 2.45rem;
+    }
+
+    .pricing-page h3 {
+      font-size: 2.1rem;
+    }
+
+    .package-card {
+      padding: 26px 22px;
+    }
+
+    .workflow-section h2 {
+      font-size: 2.6rem;
+    }
+  }
+</style>

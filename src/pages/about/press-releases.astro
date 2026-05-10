@@ -1,0 +1,1198 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const releases = [
+  {
+    date: "May 7, 2026",
+    year: "2026",
+    title: "Seclore Launches ARMOR AI-DLP to Enable Safe Enterprise AI Adoption",
+    link: "https://www.seclore.com/about/press-releases/seclore-launches-armor-ai-dlp-to-enable-safe-enterprise-ai-adoption/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Feb 12, 2026",
+    year: "2026",
+    title: "Seclore Launches ARMOR, a Unified Data Security Intelligence Platform Enabling Organizations to Embrace AI",
+    link: "https://www.seclore.com/about/press-releases/seclore-launches-armor-a-unified-data-security-intelligence-platform-enabling-organizations-to-embrace-ai/",
+    image: "https://www.seclore.com/wp-content/uploads/press-relase-ARMOR-launch-Feb2026.png"
+  },
+  {
+    date: "Dec 1, 2025",
+    year: "2025",
+    title: "Seclore Debuts Data Security Intelligence Framework for Improved Decision-making",
+    link: "https://www.seclore.com/about/press-releases/seclore-debuts-data-security-intelligence-framework-for-improved-decision-making/",
+    image: "https://www.seclore.com/wp-content/uploads/Seclore-Debuts-Data-Security-Intelligence-Framework-scaled.png"
+  },
+  {
+    date: "Jul 9, 2025",
+    year: "2025",
+    title: "Seclore Appoints Vishal Gauri as Chief Executive Officer",
+    link: "https://www.seclore.com/about/press-releases/seclore-appoints-vishal-gauri-as-chief-executive-officer/",
+    image: "https://www.seclore.com/wp-content/uploads/pr-page-vishal-gauri-ceo-hire.png"
+  },
+  {
+    date: "Feb 26, 2025",
+    year: "2025",
+    title: "Seclore Expands in Saudi Arabia Offering Support for Vision 2030 with Secure 2030 Initiative",
+    link: "https://www.seclore.com/about/press-releases/seclore-expands-in-saudi-arabia-offering-support-for-vision-2030-with-secure-2030-initiative/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Oct 29, 2024",
+    year: "2024",
+    title: "Seclore Extends World-Class EDRM Capabilities to Protect Neutral CAD Files for the Supply Chain",
+    link: "https://www.seclore.com/about/press-releases/seclore-extends-world-class-edrm-capabilities-to-protect-neutral-cad-files-for-the-supply-chain/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Oct 16, 2024",
+    year: "2024",
+    title: "Seclore Sets a New Compliance Standard for Navigating Complex Global Regulations with Data-Centric Security",
+    link: "https://www.seclore.com/about/press-releases/seclore-sets-a-new-compliance-standard-for-navigating-complex-global-regulations-with-data-centric-security/",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/press-compliance-Oct2024.png"
+  },
+  {
+    date: "Oct 10, 2024",
+    year: "2024",
+    title: "Seclore Wins Data Security Solution of the Year in 2024 CyberSecurity Breakthrough Awards",
+    link: "https://www.seclore.com/about/press-releases/seclore-wins-data-security-solution-of-the-year-in-2024-cybersecurity-breakthrough-awards/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Aug 31, 2024",
+    year: "2024",
+    title: "Seclore Hires Darshan Masalia to Drive Data-Centric Security Innovation as New Vice President of Product Engineering",
+    link: "https://www.seclore.com/about/press-releases/seclore-hires-darshan-masalia-to-drive-data-centric-security-innovation-as-new-vice-president-of-product-engineering/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Jun 20, 2024",
+    year: "2024",
+    title: "Seclore Welcomes Ramin Farassat as Chief Product Officer",
+    link: "https://www.seclore.com/about/press-releases/seclore-welcomes-ramin-farassat-as-chief-product-officer/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "May 6, 2024",
+    year: "2024",
+    title: "Seclore Dominates Data-Centric Security Category with Award Wins During RSA Conference 2024",
+    link: "https://www.seclore.com/about/press-releases/seclore-dominates-data-centric-security-category-with-award-wins-during-rsa-conference-2024/",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/RSA-Awards-Social-Media-Image-2.png"
+  },
+  {
+    date: "Apr 16, 2024",
+    year: "2024",
+    title: "Seclore Recognised as Great Place To Work for Fifth Consecutive Year",
+    link: "https://www.seclore.com/about/press-releases/seclore-recognised-as-great-place-to-work-for-fifth-consecutive-year/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Apr 11, 2024",
+    year: "2024",
+    title: "Seclore Launches Professional Services and Verified Partners to Support Customers and Expand Data-Centric Security Platform",
+    link: "https://www.seclore.com/about/press-releases/seclore-launches-professional-services-and-verified-partners-to-support-customers-and-expand-data-centric-security-platform/",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/Seclore-Launches-Professional-Services-and-Verified-Partners.png"
+  },
+  {
+    date: "Apr 2, 2024",
+    year: "2024",
+    title: "Seclore Earns Premier 5-Star Rating in 2024 CRN Partner Program Guide",
+    link: "https://www.seclore.com/about/press-releases/seclore-earns-premier-5-star-rating-in-2024-crn-partner-program-guide/",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/Award-or-new-hire-sample.png"
+  },
+  {
+    date: "Feb 21, 2024",
+    year: "2024",
+    title: "Seclore's Justin Endres Recognized as 2024 CRN Channel Chief",
+    link: "https://www.seclore.com/about/press-releases/seclores-justin-endres-recognized-as-2024-crn-channel-chief/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Feb 13, 2024",
+    year: "2024",
+    title: "Seclore Surges Into 2024 on the Heels of a Record-Breaking Quarter and Major Customer Wins",
+    link: "https://www.seclore.com/about/press-releases/seclore-surges-into-2024-on-the-heels-of-a-record-breaking-quarter-and-major-customer-wins/",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/Momentum-PR-Feb2024.png"
+  },
+  {
+    date: "Oct 26, 2023",
+    year: "2023",
+    title: "Seclore Named 2023 Hot Company in Data Security by Cyber Defense Magazine",
+    link: "https://www.seclore.com/about/press-releases/seclore-named-2023-hot-company-in-data-security-by-cyber-defense-magazine/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Oct 18, 2023",
+    year: "2023",
+    title: "Seclore Addresses Growing Cybersecurity Needs with its Data-Centric Security Solutions",
+    link: "https://www.seclore.com/about/press-releases/seclore-addresses-growing-cybersecurity-needs-with-its-data-centric-security-solutions/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Aug 22, 2023",
+    year: "2023",
+    title: "Seclore and Nagarro Unveil Joint Secure Collaboration Solution for Enhanced Data Security and Compliance",
+    link: "https://www.seclore.com/about/press-releases/seclore-and-nagarro-unveil-joint-secure-collaboration-solution-for-enhanced-data-security-and-compliance/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Aug 15, 2023",
+    year: "2023",
+    title: "Seclore Appoints Justin Endres as Chief Revenue Officer",
+    link: "https://www.seclore.com/about/press-releases/seclore-appoints-justin-endres-as-chief-revenue-officer/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Apr 25, 2023",
+    year: "2023",
+    title: "Seclore Puts Risk Into Focus with New Data Classification and Risk Insights Capabilities That Protect Enterprises' Most Critical Assets",
+    link: "https://www.seclore.com/about/press-releases/new-data-classification-and-risk-insights-capabilities/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Oct 19, 2022",
+    year: "2022",
+    title: "Seclore, Tech First Gulf Partner to Grow Africa's Cybersecurity Market",
+    link: "https://www.seclore.com/about/press-releases/seclore-tech-first-gulf-partner-to-grow-africas-cybersecurity-market/",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/Seclore-TFG-Partnership-1024x572-1.png"
+  },
+  {
+    date: "Aug 4, 2022",
+    year: "2022",
+    title: "Seclore Inc. Adds Two New Members to the Executive Team",
+    link: "https://www.seclore.com/about/press-releases/seclore-inc-adds-two-new-members-to-the-executive-team/",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/New-Hires-PR-1024x665-1.png"
+  },
+  {
+    date: "Jul 12, 2022",
+    year: "2022",
+    title: "Seclore Announces Partnership with Global IT Solutions Aggregator TD SYNNEX",
+    link: "https://www.seclore.com/about/press-releases/seclore-announces-partnership-with-global-it-solutions-aggregator-td-synnex/",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/Seclore-TD-Synnex-Press-Release.png"
+  },
+  {
+    date: "Jun 28, 2022",
+    year: "2022",
+    title: "Seclore's Data-Centric Security Platform Now Available for Purchase in AWS Marketplace",
+    link: "https://www.seclore.com/about/press-releases/seclores-data-centric-security-platform-now-available-for-purchase-in-aws-marketplace/",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/Seclore-is-on-the-AWS-marketplace-1024x665-1.png"
+  },
+  {
+    date: "May 18, 2022",
+    year: "2022",
+    title: "Seclore Closes $27M Series C Growth Round to Protect the World's Enterprise Data, Everywhere",
+    link: "https://www.seclore.com/about/press-releases/seclore-closes-27m-series-c-growth-round-to-protect-the-worlds-enterprise-data-everywhere/",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/20220502_165636-scaled-1.jpg"
+  },
+  {
+    date: "Jun 29, 2021",
+    year: "2021",
+    title: "Microsoft's Sensitivity Labels Get Meaning with Seclore's Automated Protection and Tracking",
+    link: "https://www.seclore.com/about/press-releases/microsofts-sensitivity-labels-get-meaning-with-seclores-automated-protection-and-tracking/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "May 6, 2021",
+    year: "2021",
+    title: "Seclore Accelerates Data-Centric Security in the Cloud within 24 Hours",
+    link: "https://www.seclore.com/about/press-releases/seclore-accelerates-data-centric-security-in-the-cloud-within-24-hours/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Apr 13, 2021",
+    year: "2021",
+    title: "Seclore Achieves Phenomenal Growth in Data-Centric Security Adoption, Expands Executive Team",
+    link: "https://www.seclore.com/about/press-releases/seclore-achieves-phenomenal-growth-in-data-centric-security-adoption-expands-executive-team/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  },
+  {
+    date: "Jan 28, 2021",
+    year: "2021",
+    title: "Seclore Launches Data-Centric Security for Microsoft Teams",
+    link: "https://www.seclore.com/about/press-releases/seclore-launches-data-centric-security-for-microsoft-teams/",
+    image: "https://www.seclore.com/wp-content/uploads/social-share-thumbnail.png"
+  }
+];
+
+const years = [...new Set(releases.map((release) => release.year))];
+
+const learnCards = [
+  ["Careers", "Explore job opportunities", "/about/#careers", "briefcase"],
+  ["Leadership", "Meet the leadership team", "/about/leadership/", "team"],
+  ["News", "Latest news about Seclore", "/about/newsroom/", "news"],
+  ["Contact Us", "Get in touch with us", "/about/#contact", "message"]
+];
+
+---
+
+<BaseLayout
+  title="Seclore Press Releases | Latest Company News"
+  description="Read the latest Seclore press releases and company announcements."
+>
+  <main id="top" class="press-release-page">
+    <Nav />
+
+    <section class="press-hero">
+      <span>Seclore News</span>
+      <h1>Latest Press Releases</h1>
+      <div class="hero-actions">
+        <a class="primary-button" href="#demo">Schedule Demo</a>
+        <a class="outline-button" href="mailto:press@seclore.com">Press Inquiry</a>
+      </div>
+    </section>
+
+    <section class="release-section" aria-labelledby="release-heading">
+      <div class="release-toolbar">
+        <div>
+          <span class="eyebrow">Filter by:</span>
+          <label>
+            <span>Year</span>
+            <select id="year-filter">
+              <option value="all">All years</option>
+              {years.map((year) => <option value={year}>{year}</option>)}
+            </select>
+          </label>
+        </div>
+        <label class="search-field">
+          <span>Search</span>
+          <input id="release-search" type="search" placeholder="Search press releases" />
+        </label>
+        <p>Results: <strong data-result-count>{releases.length}</strong></p>
+      </div>
+
+      <h2 id="release-heading" class="sr-only">Press releases</h2>
+      <div class="release-grid">
+        {releases.map((release) => (
+          <article class="release-card" data-year={release.year} data-title={release.title.toLowerCase()}>
+            <a class="release-image" href={release.link} target="_blank" rel="noreferrer">
+              <img src={release.image} alt="" loading="lazy" />
+            </a>
+            <div class="release-body">
+              <span>{release.date}</span>
+              <h3>{release.title}</h3>
+              <a href={release.link} target="_blank" rel="noreferrer">View press release -></a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p class="empty-state" hidden>No press releases match your filters.</p>
+
+      <nav class="pagination" aria-label="Press release pages">
+        <button class="current" type="button" data-page-button="1">1</button>
+        <button type="button" data-page-button="2">2</button>
+        <button type="button" data-page-button="3">3</button>
+        <span>...</span>
+        <button type="button" data-page-button="11">11</button>
+        <button type="button" data-next-page>Next</button>
+      </nav>
+    </section>
+
+    <section class="learn-section">
+      <h2>Learn more about Seclore</h2>
+      <a class="primary-button" href="/about/">Learn More</a>
+      <div class="learn-grid">
+        {learnCards.map(([title, text, href, icon]) => (
+          <a class="learn-card" href={href}>
+            <span class={`icon-badge ${icon}`} aria-hidden="true"></span>
+            <h3>{title}</h3>
+            <p>{text} -></p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="ready-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#top">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  const cards = Array.from(document.querySelectorAll(".release-card"));
+  const yearFilter = document.querySelector("#year-filter");
+  const searchInput = document.querySelector("#release-search");
+  const pageButtons = Array.from(document.querySelectorAll("[data-page-button]"));
+  const nextButton = document.querySelector("[data-next-page]");
+  const resultCount = document.querySelector("[data-result-count]");
+  const emptyState = document.querySelector(".empty-state");
+  const perPage = 12;
+  let activePage = 1;
+
+  function getMatches() {
+    const year = yearFilter ? yearFilter.value : "all";
+    const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
+
+    return cards.filter((card) => {
+      const yearMatch = year === "all" || card.dataset.year === year;
+      const titleMatch = !query || (card.dataset.title || "").includes(query);
+      return yearMatch && titleMatch;
+    });
+  }
+
+  function renderCards() {
+    const matches = getMatches();
+    const maxPage = Math.max(1, Math.ceil(matches.length / perPage));
+    activePage = Math.min(activePage, maxPage);
+    const start = (activePage - 1) * perPage;
+    const visible = new Set(matches.slice(start, start + perPage));
+
+    cards.forEach((card) => {
+      card.hidden = !visible.has(card);
+    });
+
+    pageButtons.forEach((button) => {
+      const buttonPage = Number(button.dataset.pageButton);
+      button.classList.toggle("current", buttonPage === activePage);
+      button.disabled = buttonPage > maxPage;
+    });
+
+    if (resultCount) {
+      resultCount.textContent = String(matches.length);
+    }
+
+    if (emptyState) {
+      emptyState.hidden = matches.length > 0;
+    }
+  }
+
+  yearFilter?.addEventListener("change", () => {
+    activePage = 1;
+    renderCards();
+  });
+
+  searchInput?.addEventListener("input", () => {
+    activePage = 1;
+    renderCards();
+  });
+
+  pageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activePage = Number(button.dataset.pageButton);
+      renderCards();
+    });
+  });
+
+  nextButton?.addEventListener("click", () => {
+    const matches = getMatches();
+    const maxPage = Math.max(1, Math.ceil(matches.length / perPage));
+    activePage = activePage >= maxPage ? 1 : activePage + 1;
+    renderCards();
+  });
+
+  renderCards();
+</script>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f0f1f3;
+    --paper: #ffffff;
+    --ink: #17151b;
+    --muted: #5d5b63;
+    --purple: #5b2bd7;
+    --pink: #d91f52;
+    --line: rgba(21, 21, 26, 0.12);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--ink);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  .press-release-page .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .press-release-page .site-logo {
+    color: var(--purple);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: clamp(14px, 2vw, 28px);
+    text-transform: uppercase;
+  }
+
+  .press-release-page .nav-links,
+  .press-release-page .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .press-release-page .nav-links {
+    flex: 1 1 auto;
+    gap: clamp(18px, 2.2vw, 34px);
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .press-release-page .nav-links > a,
+  .press-release-page .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    gap: 8px;
+    min-height: 68px;
+    padding: 0;
+  }
+
+  .press-release-page .nav-links > a:hover,
+  .press-release-page .nav-trigger:hover,
+  .press-release-page .nav-item:hover .nav-trigger,
+  .press-release-page .nav-item:focus-within .nav-trigger {
+    color: var(--header-text);
+  }
+
+  .press-release-page .nav-item {
+    position: static;
+  }
+
+  .press-release-page .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 8px;
+  }
+
+  .press-release-page .nav-item:hover .nav-caret,
+  .press-release-page .nav-item:focus-within .nav-caret,
+  .press-release-page .nav-item.is-open .nav-caret {
+    transform: rotate(225deg) translateY(-1px);
+  }
+
+  .press-release-page .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .press-release-page .nav-item:hover .mega-menu,
+  .press-release-page .nav-item:focus-within .mega-menu,
+  .press-release-page .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .press-release-page .mega-inner {
+    background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .press-release-page .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .press-release-page .mega-column,
+  .press-release-page .mega-sublinks {
+    display: grid;
+  }
+
+  .press-release-page .mega-column {
+    gap: 10px;
+  }
+
+  .press-release-page .mega-title {
+    color: var(--dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .press-release-page .mega-link,
+  .press-release-page .mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .press-release-page .mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .press-release-page .mega-link strong {
+    color: var(--dropdown-text);
+  }
+
+  .press-release-page .mega-link small,
+  .press-release-page .mega-sublinks a {
+    color: var(--dropdown-muted);
+  }
+
+  .press-release-page .mega-link:hover,
+  .press-release-page .mega-link-group:hover {
+    background: var(--dropdown-link-hover);
+    border-color: var(--dropdown-link-border);
+  }
+
+  .press-release-page .mega-link-group {
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .press-release-page .mega-sublinks {
+    gap: 2px;
+    padding: 0 9px 8px 22px;
+  }
+
+  .press-release-page .mega-sublinks a {
+    font-size: 0.84rem;
+    padding: 5px 0;
+  }
+
+  .press-release-page .mega-feature {
+    align-content: end;
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .press-release-page .mega-feature span,
+  .press-release-page .mega-feature em {
+    color: var(--dropdown-title);
+  }
+
+  .press-release-page .mega-feature strong {
+    color: var(--dropdown-text);
+    font-size: 1.35rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .press-release-page .nav-utilities {
+    flex: 0 0 auto;
+    gap: clamp(12px, 1.5vw, 20px);
+    margin-left: clamp(12px, 2vw, 28px);
+  }
+
+  .press-release-page .utility-link,
+  .press-release-page .language-button,
+  .press-release-page .utility-icon,
+  .press-release-page .theme-toggle {
+    display: none;
+  }
+
+  .press-release-page .demo-button,
+  .primary-button,
+  .outline-button {
+    align-items: center;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.86rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+  }
+
+  .press-release-page .demo-button,
+  .primary-button {
+    background: var(--purple);
+    color: #ffffff;
+  }
+
+  .outline-button {
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    color: #ffffff;
+  }
+
+  .press-release-page .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .press-release-page .nav-toggle span {
+    background: var(--header-text);
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  .press-release-page h1,
+  .press-release-page h2,
+  .press-release-page h3,
+  .press-release-page p {
+    margin-top: 0;
+  }
+
+  .press-release-page h1,
+  .press-release-page h2,
+  .press-release-page h3 {
+    color: var(--ink);
+    font-weight: 430;
+    letter-spacing: 0;
+  }
+
+  .press-hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 16% 76%, rgba(255, 255, 255, 0.35), transparent 31%),
+      linear-gradient(135deg, #c882e8 0%, #8925f5 44%, #5f0de8 100%);
+    color: #ffffff;
+    display: grid;
+    min-height: 430px;
+    padding: 86px clamp(18px, 4vw, 56px);
+    place-items: center;
+    text-align: center;
+  }
+
+  .press-hero span {
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 900;
+    margin-bottom: 24px;
+  }
+
+  .press-hero h1 {
+    color: #ffffff;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1;
+    margin-bottom: 26px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .release-section {
+    background: #ffffff;
+    padding: clamp(42px, 7vw, 72px) clamp(18px, 4vw, 56px) clamp(60px, 8vw, 92px);
+  }
+
+  .release-toolbar {
+    align-items: end;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: minmax(220px, 0.7fr) minmax(260px, 1fr) auto;
+    margin: 0 auto 30px;
+    max-width: 1180px;
+  }
+
+  .release-toolbar > div,
+  .release-toolbar label {
+    display: grid;
+    gap: 8px;
+  }
+
+  .release-toolbar > div {
+    grid-template-columns: auto 1fr;
+  }
+
+  .release-toolbar label span,
+  .release-toolbar .eyebrow {
+    color: #6e6b74;
+    font-size: 0.74rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .release-toolbar input,
+  .release-toolbar select {
+    background: #f6f7f8;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    min-height: 44px;
+    padding: 0 14px;
+    width: 100%;
+  }
+
+  .release-toolbar p {
+    color: var(--muted);
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .release-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 auto;
+    max-width: 1180px;
+  }
+
+  .release-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    min-height: 420px;
+    overflow: hidden;
+  }
+
+  .release-card[hidden] {
+    display: none;
+  }
+
+  .release-image {
+    align-items: center;
+    background: #e3e5e8;
+    display: flex;
+    min-height: 190px;
+    overflow: hidden;
+  }
+
+  .release-image img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .release-image img[src*="social-share-thumbnail"] {
+    object-fit: contain;
+    padding: clamp(28px, 6vw, 54px);
+  }
+
+  .release-body {
+    display: grid;
+    padding: 28px;
+  }
+
+  .release-body span {
+    align-self: start;
+    color: #6e6b74;
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .release-body h3 {
+    font-size: clamp(1.2rem, 2.4vw, 1.72rem);
+    line-height: 1.1;
+    margin: 18px 0 32px;
+  }
+
+  .release-body a {
+    align-self: end;
+    font-size: 0.82rem;
+    font-weight: 850;
+  }
+
+  .empty-state {
+    color: var(--muted);
+    margin: 36px auto 0;
+    max-width: 1180px;
+    text-align: center;
+  }
+
+  .pagination {
+    align-items: center;
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-top: 54px;
+  }
+
+  .pagination button,
+  .pagination span {
+    background: transparent;
+    border: 0;
+    color: #302e35;
+    cursor: pointer;
+    font-size: 0.86rem;
+    font-weight: 850;
+  }
+
+  .pagination button:disabled {
+    color: #aaa7af;
+    cursor: not-allowed;
+  }
+
+  .pagination .current {
+    background: #d9dde2;
+    border-radius: 4px;
+    padding: 8px 10px;
+  }
+
+  .learn-section {
+    background: var(--page-bg);
+    padding: clamp(56px, 7vw, 88px) clamp(18px, 4vw, 56px);
+    text-align: center;
+  }
+
+  .learn-section h2 {
+    font-size: clamp(2.6rem, 5.6vw, 4.6rem);
+    line-height: 1.05;
+    margin-bottom: 24px;
+  }
+
+  .learn-grid {
+    display: grid;
+    gap: clamp(18px, 3vw, 34px);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 38px auto 0;
+    max-width: 1180px;
+    text-align: left;
+  }
+
+  .learn-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    min-height: 170px;
+    padding: 28px;
+  }
+
+  .learn-card h3 {
+    font-size: 1.45rem;
+    margin: 24px 0 18px;
+  }
+
+  .learn-card p {
+    font-size: 0.86rem;
+    font-weight: 850;
+    margin: 0;
+  }
+
+  .icon-badge {
+    background: var(--pink);
+    border-radius: 14px;
+    display: inline-block;
+    height: 38px;
+    position: relative;
+    width: 38px;
+  }
+
+  .icon-badge.team {
+    background: #f59a16;
+  }
+
+  .icon-badge.news {
+    background: #9a1746;
+  }
+
+  .icon-badge.message {
+    background: #f05b23;
+  }
+
+  .icon-badge::before {
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    content: "";
+    height: 14px;
+    left: 11px;
+    position: absolute;
+    top: 11px;
+    width: 14px;
+  }
+
+  .ready-section,
+  .press-footer {
+    background: #ffffff;
+    padding-inline: clamp(18px, 4vw, 56px);
+  }
+
+  .ready-section {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 44px;
+    padding-top: 42px;
+  }
+
+  .ready-section h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 10px;
+  }
+
+  .ready-section p,
+  .press-footer p {
+    color: var(--muted);
+    line-height: 1.58;
+  }
+
+  .ready-section .primary-button {
+    margin-top: 24px;
+    min-width: 170px;
+  }
+
+  .press-footer {
+    padding-bottom: 42px;
+  }
+
+  .footer-lines {
+    border-block: 1px solid var(--line);
+    margin-bottom: 36px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .footer-lines details:last-child {
+    border-bottom: 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 850;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 9px;
+    margin: 30px 0;
+    max-width: 180px;
+  }
+
+  .store-row span {
+    background: #19121f;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 850;
+    padding: 10px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 26px;
+  }
+
+  .social-row a {
+    color: #303038;
+    font-weight: 900;
+  }
+
+  .legal {
+    font-size: 0.9rem;
+    margin-top: 24px;
+  }
+
+  .legal a {
+    text-decoration: underline;
+  }
+
+  .sr-only {
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  @media (max-width: 1180px) {
+    .press-release-page .site-header {
+      flex-wrap: wrap;
+    }
+
+    .press-release-page .site-logo {
+      order: 0;
+    }
+
+    .press-release-page .nav-toggle {
+      display: block;
+      margin-left: auto;
+      order: 1;
+    }
+
+    .press-release-page .nav-links {
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      order: 2;
+      padding: 10px 0 14px;
+    }
+
+    .press-release-page .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .press-release-page .nav-links > a,
+    .press-release-page .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .press-release-page .nav-item {
+      display: grid;
+    }
+
+    .press-release-page .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .press-release-page .nav-item:hover .mega-menu,
+    .press-release-page .nav-item:focus-within .mega-menu {
+      display: none;
+    }
+
+    .press-release-page .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .press-release-page .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .press-release-page .nav-utilities {
+      align-items: stretch;
+      display: flex;
+      margin-left: auto;
+      order: 0;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .release-toolbar {
+      align-items: stretch;
+      grid-template-columns: 1fr;
+    }
+
+    .release-toolbar > div {
+      grid-template-columns: 1fr;
+    }
+
+    .learn-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .press-hero h1 {
+      font-size: 3rem;
+    }
+
+    .release-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .release-card {
+      min-height: 320px;
+    }
+
+    .release-image {
+      min-height: 122px;
+    }
+
+    .release-body {
+      padding: 18px;
+    }
+
+    .release-body h3 {
+      font-size: 1rem;
+    }
+
+    .learn-grid {
+      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .learn-card {
+      padding: 22px;
+    }
+
+    .ready-section,
+    .press-footer,
+    .release-section,
+    .learn-section {
+      padding-inline: 16px;
+    }
+  }
+</style>

@@ -1,0 +1,510 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const checklist = [
+  "Register the Referral on our Website (Required)",
+  "Schedule an Intro. Meeting for Seclore's Sales Team",
+  "5% Bonus paid on the first year ACV of the Closed Product License Order (up to $5K)",
+  "Paid 60 days from when Seclore is Paid"
+];
+
+---
+
+<BaseLayout
+  title="Partner Lead Referral | seclore"
+  description="Refer a lead to Seclore through the referral program and submit prospect details for partner follow-up."
+>
+  <main class="referral-page" id="top">
+    <Nav />
+    <header class="simple-header">
+      <a class="simple-logo" href="/partners/" aria-label="Seclore partners">seclore</a>
+      <div class="header-actions">
+        <a class="demo-button" href="#demo">Book a Demo</a>
+        <button class="hamburger" type="button" aria-label="Open navigation">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <section class="referral-hero">
+      <div class="referral-copy">
+        <h1>Seclore's Referral Program</h1>
+        <h2>How easy is the Seclore Referral Program?</h2>
+        <p>
+          You recommend Seclore to your clients, and we pay you a commission for every deal we close.
+          It's as simple as that. Seclore provides the resources to showcase what our award-winning
+          solution can do.
+        </p>
+        <ul>
+          {checklist.map((item) => <li>{item}</li>)}
+        </ul>
+        <p>
+          Submitting the lead via the webform will provide you with a new way to make money when
+          Seclore wins.
+        </p>
+        <strong>
+          Over 40 Million Documents and Emails Protected Each Month. Trusted by 2000+ Enterprises.
+          <span>TRUSTED BY INDUSTRY-LEADING ENTERPRISES</span>
+        </strong>
+      </div>
+
+      <form class="referral-form" id="referral-form">
+        <h2>Refer a lead</h2>
+        <div class="form-rule"></div>
+
+        <fieldset>
+          <legend>Tell Us About Yourself</legend>
+          <label class="wide">
+            Your Name, Your Email and Your Company. Tell us more about the deal. <span>*</span>
+            <textarea name="referrer_details" rows="4" required></textarea>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Tell Us About Your Referral</legend>
+          <label>Email<span>*</span><input name="email" type="email" required /></label>
+          <label>First Name<span>*</span><input name="first_name" required /></label>
+          <label>Last Name<span>*</span><input name="last_name" required /></label>
+          <label>Phone number<span>*</span><input name="phone" type="tel" required /></label>
+          <label>Job title<span>*</span><input name="job_title" required /></label>
+          <label>Company name<span>*</span><input name="company" required /></label>
+          <label>
+            Country<span>*</span>
+            <select name="country" required>
+              <option value="">Please Select</option>
+              <option>United States</option>
+              <option>India</option>
+              <option>United Kingdom</option>
+              <option>Germany</option>
+              <option>Singapore</option>
+              <option>United Arab Emirates</option>
+            </select>
+          </label>
+          <label>
+            Industry<span>*</span>
+            <select name="industry" required>
+              <option value="">Please Select</option>
+              <option>Financial Services</option>
+              <option>Manufacturing</option>
+              <option>Government</option>
+              <option>Healthcare</option>
+              <option>Technology</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Website URL<span>*</span><input name="website" type="url" required /></label>
+        </fieldset>
+
+        <button class="submit-button" type="submit">Submit</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="ready-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="demo-button" href="/partners/">Book a Demo</a>
+    </section>
+  </main>
+
+  <script>
+    const referralForm = document.querySelector<HTMLFormElement>("#referral-form");
+    const status = referralForm?.querySelector<HTMLElement>(".form-status");
+
+    referralForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      referralForm.reset();
+      if (status) {
+        status.textContent = "Referral submitted successfully.";
+        status.classList.add("success");
+      }
+    });
+  </script>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --dark: #251126;
+    --dark-soft: #341530;
+    --purple: #5b2bd7;
+    --pink: #ee2355;
+    --text: #252a32;
+    --muted: #777a82;
+    --line: rgba(37, 42, 50, 0.22);
+    --field: #f2f6f9;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: #ffffff;
+    color: var(--text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  h1,
+  h2,
+  p {
+    margin-top: 0;
+  }
+
+  .simple-header {
+    align-items: center;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    min-height: 74px;
+    padding: 0 clamp(20px, 3vw, 34px);
+  }
+
+  .simple-logo,
+  .footer-logo {
+    color: var(--purple);
+    font-size: 1.55rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .header-actions {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+  }
+
+  .demo-button {
+    align-items: center;
+    background: var(--purple);
+    border-radius: 7px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 32px;
+  }
+
+  .hamburger {
+    background: transparent;
+    border: 0;
+    display: grid;
+    gap: 8px;
+    padding: 0;
+    width: 30px;
+  }
+
+  .hamburger span {
+    background: #2c3037;
+    display: block;
+    height: 3px;
+    width: 100%;
+  }
+
+  .referral-hero {
+    align-items: start;
+    background:
+      radial-gradient(circle at 54% 112%, rgba(239, 35, 85, 0.95), transparent 26%),
+      radial-gradient(circle at 25% 110%, rgba(169, 80, 36, 0.74), transparent 34%),
+      var(--dark);
+    color: #ffffff;
+    display: grid;
+    gap: clamp(42px, 7vw, 92px);
+    grid-template-columns: minmax(0, 0.92fr) minmax(380px, 0.88fr);
+    min-height: calc(100vh - 74px);
+    padding: clamp(62px, 7vw, 98px) clamp(20px, 3vw, 34px) 68px;
+  }
+
+  .referral-copy {
+    max-width: 620px;
+  }
+
+  .referral-copy h1 {
+    color: #ffffff;
+    font-size: clamp(3.45rem, 7vw, 6rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    margin-bottom: 42px;
+  }
+
+  .referral-copy h2 {
+    color: #ffffff;
+    font-size: clamp(1.9rem, 3vw, 2.75rem);
+    font-weight: 400;
+    line-height: 1.08;
+    margin-bottom: 42px;
+  }
+
+  .referral-copy p,
+  .referral-copy li {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: clamp(1.06rem, 1.55vw, 1.36rem);
+    line-height: 1.45;
+  }
+
+  .referral-copy ul {
+    display: grid;
+    gap: 8px;
+    list-style: none;
+    margin: 36px 0 36px;
+    padding: 0;
+  }
+
+  .referral-copy li {
+    padding-left: 34px;
+    position: relative;
+  }
+
+  .referral-copy li::before {
+    color: var(--pink);
+    content: "✓";
+    font-size: 1.38rem;
+    left: 0;
+    line-height: 1;
+    position: absolute;
+    top: 3px;
+  }
+
+  .referral-copy strong {
+    color: #ffffff;
+    display: block;
+    font-size: clamp(1rem, 1.35vw, 1.24rem);
+    line-height: 1.38;
+    margin-top: 44px;
+    text-align: center;
+  }
+
+  .referral-copy strong span {
+    display: block;
+  }
+
+  .referral-form {
+    background: #ffffff;
+    border-radius: 22px;
+    color: #304057;
+    padding: clamp(24px, 3vw, 42px);
+  }
+
+  .referral-form h2 {
+    color: var(--dark);
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 420;
+    margin-bottom: 28px;
+  }
+
+  .form-rule {
+    background: var(--line);
+    height: 1px;
+    margin-bottom: 34px;
+  }
+
+  .referral-form fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .referral-form legend {
+    color: #34455b;
+    font-size: 1.3rem;
+    font-weight: 850;
+    margin-bottom: 18px;
+    padding: 0;
+  }
+
+  .referral-form label {
+    color: #304057;
+    display: grid;
+    font-size: 0.98rem;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+
+  .referral-form label span {
+    color: var(--pink);
+  }
+
+  .referral-form input,
+  .referral-form select,
+  .referral-form textarea {
+    background: var(--field);
+    border: 1px solid rgba(48, 64, 87, 0.2);
+    border-radius: 4px;
+    color: #1f2937;
+    min-height: 50px;
+    padding: 11px 14px;
+    width: 100%;
+  }
+
+  .referral-form textarea {
+    min-height: 86px;
+    resize: vertical;
+  }
+
+  .referral-form input:focus,
+  .referral-form select:focus,
+  .referral-form textarea:focus {
+    border-color: var(--pink);
+    outline: 3px solid rgba(238, 35, 85, 0.18);
+  }
+
+  .submit-button {
+    background: var(--pink);
+    border: 0;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.86rem;
+    font-weight: 850;
+    min-height: 52px;
+    padding: 0 34px;
+  }
+
+  .form-status {
+    color: #166534;
+    min-height: 22px;
+    margin: 14px 0 0;
+  }
+
+  .ready-section {
+    background: #ffffff;
+    border-bottom: 1px solid var(--line);
+    padding: 44px clamp(20px, 3vw, 34px) 34px;
+  }
+
+  .ready-section h2 {
+    color: var(--text);
+    font-size: clamp(1.8rem, 3vw, 2.55rem);
+    font-weight: 420;
+    margin-bottom: 16px;
+  }
+
+  .ready-section p {
+    color: var(--muted);
+    font-size: 1.18rem;
+    margin-bottom: 30px;
+  }
+
+  .referral-footer {
+    background: #ffffff;
+    padding: 0 clamp(20px, 3vw, 34px) 34px;
+  }
+
+  .footer-lines {
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 34px;
+  }
+
+  .footer-lines details {
+    border-top: 1px solid var(--line);
+    padding: 20px 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1.18rem;
+    font-weight: 850;
+  }
+
+  .footer-logo {
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .referral-footer p {
+    color: #58606c;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 10px;
+    margin: 40px 0;
+    max-width: 150px;
+  }
+
+  .store-row span {
+    background: #1a1221;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 850;
+    padding: 9px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 28px;
+  }
+
+  .social-row span {
+    color: #2c3037;
+    font-weight: 850;
+  }
+
+  .legal {
+    margin-top: 24px;
+  }
+
+  .legal a {
+    color: #58606c;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 980px) {
+    .referral-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .referral-copy {
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .simple-header {
+      padding-inline: 16px;
+    }
+
+    .demo-button {
+      min-height: 42px;
+      padding-inline: 18px;
+    }
+
+    .header-actions {
+      gap: 14px;
+    }
+
+    .referral-hero,
+    .ready-section,
+    .referral-footer {
+      padding-inline: 16px;
+    }
+
+    .referral-form {
+      border-radius: 16px;
+    }
+  }
+</style>

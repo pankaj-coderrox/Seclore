@@ -1,0 +1,408 @@
+---
+const footerProduct = [
+  ["ARMOR", "/armor/"],
+  ["DSPM", "/armor/dspm/"],
+  ["Solutions", "/solutions/"],
+  ["Pricing Page", "/pricing/"],
+  ["Resources", "/resources/"],
+  ["Partners", "/partners/"]
+];
+
+const footerAbout = [
+  ["Why Seclore", "/about/why-seclore/"],
+  ["Learn the Fundamentals", "/resources/"],
+  ["Leadership", "/about/leadership/"],
+  ["Newsroom", "/about/newsroom/"],
+  ["Press Releases", "/about/press-releases/"],
+  ["Contact Us", "/about/contact-us/"],
+  ["Careers", "/about/careers/"]
+];
+
+const footerSupport = [
+  ["Get Started", "/about/contact-us/"],
+  ["Docs", "/support/solutions/"],
+  ["Contact Support", "/support/home/#contact"],
+  ["How to Open a Seclore File", "/how-to-open-a-seclore-protected-file/"]
+];
+
+const footerRegulationsLeft = ["NIAP", "NCA", "PCI-DSS", "ITAR", "GLBA", "NIST", "NYCRR", "CCPA"];
+const footerRegulationsRight = ["DORA", "GDPR", "NIS2", "SDAIA-PDPL", "UAE-PDPL", "UAE CR #21", "IRDAI", "DPDP"];
+
+const footerSocials = [
+  ["Facebook", "f"],
+  ["LinkedIn", "in"],
+  ["X", "X"],
+  ["YouTube", "play"],
+  ["Instagram", "ig"],
+  ["Bluesky", "b"]
+];
+
+function regulationHref(label: string) {
+  return `/regulations/#${label.toLowerCase().replaceAll(" ", "-").replaceAll("#", "")}`;
+}
+---
+
+<footer class="seclore-footer">
+  <div class="seclore-footer__inner">
+    <div class="seclore-footer__grid">
+      <section class="seclore-footer__contact" aria-label="Seclore contact information">
+        <a class="seclore-footer__brand" href="/" aria-label="Seclore home">seclore</a>
+        <address>
+          <span>5201 Great America Parkway Suite 440</span>
+          <span>Santa Clara, CA 95054</span>
+        </address>
+        <p class="seclore-footer__phones">
+          <a href="tel:18444732567">1-844-4-Seclore</a>
+          <a href="tel:18444732567">1-844-473-2567</a>
+        </p>
+        <a class="seclore-footer__email" href="mailto:hello@seclore.com">hello@seclore.com</a>
+
+        <div class="seclore-footer__stores" aria-label="Download Seclore apps">
+          <a class="seclore-footer__store google" href="#google-play" aria-label="Get it on Google Play">
+            <span class="seclore-footer__store-mark" aria-hidden="true"></span>
+            <span><small>GET IT ON</small>Google Play</span>
+          </a>
+          <a class="seclore-footer__store apple" href="#app-store" aria-label="Download on the App Store">
+            <span class="seclore-footer__apple-mark" aria-hidden="true"></span>
+            <span><small>Download on the</small>App Store</span>
+          </a>
+        </div>
+      </section>
+
+      <div class="seclore-footer__product-stack">
+        <nav class="seclore-footer__column" aria-label="Product footer links">
+          <h2>Product</h2>
+          {footerProduct.map(([label, href]) => <a href={href}>{label}</a>)}
+        </nav>
+
+        <nav class="seclore-footer__column seclore-footer__support" aria-label="Support footer links">
+          <h2>Support</h2>
+          {footerSupport.map(([label, href]) => <a href={href}>{label}</a>)}
+        </nav>
+      </div>
+
+      <nav class="seclore-footer__column" aria-label="About footer links">
+        <h2>About</h2>
+        {footerAbout.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+
+      <nav class="seclore-footer__column seclore-footer__regulations" aria-label="Regulations footer links">
+        <h2>Regulations</h2>
+        <div>
+          <ul>
+            {footerRegulationsLeft.map((item) => <li><a href={regulationHref(item)}>{item}</a></li>)}
+          </ul>
+          <ul>
+            {footerRegulationsRight.map((item) => <li><a href={regulationHref(item)}>{item}</a></li>)}
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="seclore-footer__bottom">
+      <nav class="seclore-footer__socials" aria-label="Social media links">
+        {footerSocials.map(([label, icon]) => <a href={`#${label.toLowerCase()}`} aria-label={label}>{icon}</a>)}
+      </nav>
+      <p>&copy; 2026 Seclore. All Rights Reserved. <a href="/legal/">Legal</a></p>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  .seclore-footer,
+  .seclore-footer * {
+    box-sizing: border-box;
+  }
+
+  .seclore-footer {
+    background: #ffffff;
+    color: #151927;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    padding: 0 clamp(22px, 5vw, 80px) 28px;
+  }
+
+  .seclore-footer a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .seclore-footer a:hover {
+    color: #5630d6;
+  }
+
+  .seclore-footer__inner {
+    margin: 0 auto;
+    max-width: 1640px;
+    width: 100%;
+  }
+
+  .seclore-footer__grid {
+    align-items: start;
+    display: grid;
+    column-gap: clamp(58px, 6vw, 126px);
+    grid-template-columns: minmax(310px, 1.25fr) minmax(180px, 0.6fr) minmax(230px, 0.75fr) minmax(440px, 1.35fr);
+    min-height: 670px;
+    row-gap: 42px;
+    padding-top: 12px;
+  }
+
+  .seclore-footer__brand {
+    color: #5630d6;
+    display: inline-flex;
+    font-size: clamp(2.15rem, 2.9vw, 3rem);
+    font-weight: 950;
+    letter-spacing: 0.055em;
+    line-height: 1;
+    margin-bottom: 36px;
+    text-transform: uppercase;
+  }
+
+  .seclore-footer__brand::after {
+    content: "TM";
+    font-size: 0.22em;
+    margin-left: 3px;
+    margin-top: 2px;
+  }
+
+  .seclore-footer__contact {
+    min-width: 0;
+  }
+
+  .seclore-footer address {
+    display: grid;
+    font-style: normal;
+    gap: 7px;
+    margin-bottom: 24px;
+  }
+
+  .seclore-footer__phones {
+    display: grid;
+    gap: 4px;
+    margin: 0 0 26px;
+  }
+
+  .seclore-footer__email {
+    display: inline-flex;
+    margin-bottom: 82px;
+  }
+
+  .seclore-footer address,
+  .seclore-footer__phones,
+  .seclore-footer__email,
+  .seclore-footer__column a,
+  .seclore-footer__bottom p {
+    color: #1f2430;
+    font-size: clamp(1.04rem, 1.04vw, 1.3rem);
+    line-height: 1.42;
+  }
+
+  .seclore-footer__stores {
+    display: grid;
+    gap: 20px;
+    justify-items: start;
+  }
+
+  .seclore-footer__store {
+    align-items: center;
+    background: #1d1024;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-flex;
+    gap: 10px;
+    min-height: 50px;
+    min-width: 170px;
+    padding: 7px 13px;
+  }
+
+  .seclore-footer__store span:last-child {
+    display: grid;
+    font-size: 1.28rem;
+    font-weight: 800;
+    line-height: 0.95;
+  }
+
+  .seclore-footer__store small {
+    color: #ffffff;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .seclore-footer__store-mark {
+    border-bottom: 13px solid transparent;
+    border-left: 22px solid #39d353;
+    border-top: 13px solid transparent;
+    display: inline-block;
+    height: 0;
+    position: relative;
+    width: 0;
+  }
+
+  .seclore-footer__store-mark::before,
+  .seclore-footer__store-mark::after {
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+    content: "";
+    left: -22px;
+    position: absolute;
+  }
+
+  .seclore-footer__store-mark::before {
+    border-left: 14px solid #4285f4;
+    top: -13px;
+  }
+
+  .seclore-footer__store-mark::after {
+    border-left: 14px solid #fbbc05;
+    top: -3px;
+  }
+
+  .seclore-footer__apple-mark {
+    background: #ffffff;
+    border-radius: 46% 46% 48% 48%;
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 21px;
+  }
+
+  .seclore-footer__apple-mark::before {
+    background: #ffffff;
+    border-radius: 999px 0;
+    content: "";
+    height: 10px;
+    left: 12px;
+    position: absolute;
+    top: -8px;
+    transform: rotate(35deg);
+    width: 8px;
+  }
+
+  .seclore-footer__column {
+    align-content: start;
+    display: grid;
+    gap: 12px;
+    justify-items: start;
+    min-width: 0;
+  }
+
+  .seclore-footer__product-stack {
+    align-content: start;
+    display: grid;
+    gap: clamp(74px, 6vw, 112px);
+    min-width: 0;
+  }
+
+  .seclore-footer__column h2 {
+    color: #141926;
+    font-size: clamp(1.42rem, 1.35vw, 1.72rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 22px;
+  }
+
+  .seclore-footer__support {
+    margin-top: 0;
+  }
+
+  .seclore-footer__regulations div {
+    display: grid;
+    gap: clamp(36px, 5vw, 112px);
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+
+  .seclore-footer__regulations ul {
+    display: grid;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .seclore-footer__bottom {
+    align-items: center;
+    border-top: 1px solid rgba(21, 25, 39, 0.35);
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    padding-top: 28px;
+  }
+
+  .seclore-footer__socials {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+  }
+
+  .seclore-footer__socials a {
+    align-items: center;
+    color: #272a2f;
+    display: inline-flex;
+    font-size: 1rem;
+    font-weight: 900;
+    height: 26px;
+    justify-content: center;
+    line-height: 1;
+    min-width: 22px;
+    text-transform: lowercase;
+  }
+
+  .seclore-footer__bottom p {
+    margin: 0;
+    text-align: right;
+  }
+
+  .seclore-footer__bottom a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  @media (max-width: 1380px) {
+    .seclore-footer__grid {
+      column-gap: clamp(38px, 4vw, 72px);
+      grid-template-columns: minmax(280px, 1fr) minmax(170px, 0.62fr) minmax(220px, 0.76fr) minmax(360px, 1.2fr);
+      min-height: 0;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .seclore-footer__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: 52px;
+    }
+
+    .seclore-footer__regulations {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .seclore-footer__product-stack {
+      gap: 46px;
+    }
+
+    .seclore-footer__email {
+      margin-bottom: 42px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .seclore-footer {
+      padding-inline: 20px;
+    }
+
+    .seclore-footer__grid,
+    .seclore-footer__regulations div {
+      grid-template-columns: 1fr;
+    }
+
+    .seclore-footer__bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .seclore-footer__bottom p {
+      text-align: left;
+    }
+  }
+</style>

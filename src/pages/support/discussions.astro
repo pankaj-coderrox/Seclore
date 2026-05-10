@@ -1,0 +1,168 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const forums = [
+  ["Seclore Release Announcements", "Product release updates and component announcements."],
+  ["General Questions", "Ask the community about common Seclore usage questions."],
+  ["Product Suggestions", "Share ideas and improvements for Seclore products."]
+];
+---
+
+<BaseLayout title="Forums | Seclore Support">
+  <main class="forums-page">
+    <Nav />
+    <header>
+      <a class="logo" href="/">SECLORE<sup>TM</sup></a>
+      <a class="pill" href="/support/home/#contact">Contact Us</a>
+    </header>
+    <nav>
+      <a href="/support/home/">Support Home</a>
+      <a href="/support/solutions/">Solutions</a>
+      <a class="active" href="/support/discussions/">Forums</a>
+      <span></span>
+      <a href="/support/login/">Login</a>
+      <a class="ticket" href="/support/tickets/new/">New Support Ticket</a>
+    </nav>
+    <section class="content">
+      <h1>Community forums</h1>
+      <p>Showing recent updates</p>
+      {forums.map(([title, text]) => (
+        <article>
+          <h2>{title}</h2>
+          <p>{text}</p>
+          <a href="/home/release-notes/">See related release notes</a>
+        </article>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    background: #f6f6f6;
+    color: #161616;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+
+  :global(body::before) {
+    display: none;
+  }
+
+  header {
+    align-items: center;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    min-height: 95px;
+    padding: 22px clamp(24px, 4.4vw, 54px);
+  }
+
+  .logo {
+    color: #4d2dcc;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 0.78;
+  }
+
+  .logo sup {
+    font-size: 0.18em;
+    font-weight: 500;
+    margin-left: 5px;
+  }
+
+  .pill,
+  .ticket {
+    background: #5f3fd6;
+    border-radius: 999px;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 14px 27px;
+  }
+
+  nav {
+    align-items: center;
+    background: #5f3fd6;
+    color: #ffffff;
+    display: flex;
+    gap: 26px;
+    min-height: 67px;
+    padding: 0 32px;
+  }
+
+  nav span {
+    flex: 1;
+  }
+
+  nav a {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  nav .active {
+    text-decoration: underline;
+    text-underline-offset: 7px;
+  }
+
+  nav .ticket {
+    background: #ffffff;
+    color: #5f3fd6;
+    padding: 12px 24px;
+  }
+
+  .content {
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 54px 24px 90px;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  .content > p {
+    color: #5f3fd6;
+    font-weight: 700;
+    margin: 0 0 26px;
+  }
+
+  article {
+    background: #ffffff;
+    border: 1px solid #e2ddf6;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    padding: 22px 24px;
+  }
+
+  h2 {
+    color: #5f3fd6;
+    margin: 0 0 8px;
+  }
+
+  article p {
+    color: #222222;
+    line-height: 1.45;
+  }
+
+  article a {
+    color: #4d2dcc;
+    font-weight: 700;
+  }
+
+  @media (max-width: 760px) {
+    header,
+    nav {
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 18px;
+    }
+
+    nav span {
+      display: none;
+    }
+  }
+</style>

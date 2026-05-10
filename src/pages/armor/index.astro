@@ -1,0 +1,484 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const promiseCards = [
+  {
+    title: "Enable AI",
+    text: "ARMOR enables safe AI adoption by ensuring the data AI uses is trusted, understood, and controlled.",
+    icon: "magic"
+  },
+  {
+    title: "Continuous Control",
+    text: "ARMOR maintains control as data moves across users, applications, clouds, partners, and AI agents.",
+    icon: "handshake"
+  },
+  {
+    title: "Less Risk, No Friction",
+    text: "ARMOR adapts security to context and intent, protecting sensitive data without disrupting work.",
+    icon: "shield"
+  },
+  {
+    title: "Always Ready",
+    text: "ARMOR actively remediates risk, not just reveals it, so organizations stay ready as conditions change.",
+    icon: "loop"
+  }
+];
+
+const steps = [
+  {
+    title: "Discover",
+    text: "Discover what data exists and where it lives",
+    open: true
+  },
+  {
+    title: "Context",
+    text: "Understand sensitivity, business value, usage, and regulatory obligations"
+  },
+  {
+    title: "Enforce",
+    text: "Apply classification, protection, and access controls automatically"
+  },
+  {
+    title: "Prove",
+    text: "Create evidence that shows data is controlled and compliant"
+  }
+];
+
+const components = [
+  {
+    title: "AI Discovery",
+    text: "Identifies where AI systems and agents access, generate, and use enterprise data, giving organizations visibility into AI-driven data activity so AI can be adopted safely and with confidence."
+  },
+  {
+    title: "Classification",
+    text: "Understands what data is, its sensitivity, and its business value, enabling automatic, context-aware controls that guide how data is accessed, shared, and used."
+  },
+  {
+    title: "EDRM",
+    text: "Applies persistent, data-centric controls that stay with sensitive information, ensuring it is accessed and used appropriately wherever it moves, across people, applications, and AI."
+  },
+  {
+    title: "Data Insights Framework",
+    text: "Applies persistent, data-centric controls that stay with sensitive information, ensuring it is accessed and used appropriately wherever it moves, across people, applications, and AI."
+  }
+];
+
+const resources = [
+  {
+    type: "Blog Post",
+    tag: "AI, Company, Data Security",
+    title: "The Debate About AI in the Enterprise Is Over. Here Is the Only Question That Matters.",
+    cta: "View Blog Post"
+  },
+  {
+    type: "Blog Post",
+    tag: "AI Risk, Data Security",
+    title: "The Missing Link in Enterprise AI: Why Context and Behavior Are the New Security Perimeter",
+    cta: "View Blog Post"
+  },
+  {
+    type: "Blog Post",
+    tag: "AI Risk, Data Security",
+    title: "ChatGPT Read 400 Internal Company Files In 42 Milliseconds. Security Stacks Saw Nothing",
+    cta: "View Blog Post"
+  }
+];
+---
+
+<BaseLayout
+  title="ARMOR | Seclore"
+  description="Seclore ARMOR is a unified data security intelligence platform that helps organizations trust and control data wherever people and AI work."
+>
+  <main id="top" class="armor-page">
+    <Nav />
+
+    <section class="armor-hero">
+      <div class="hero-copy">
+        <div class="armor-lockup" aria-label="ARMOR">
+          <span class="armor-mark" aria-hidden="true"></span>
+          <strong>ARMOR</strong>
+        </div>
+        <h1>Turn Risk into Readiness</h1>
+        <p>
+          A unified Data Security Intelligence platform that helps organizations trust and control
+          their data wherever people and AI work.
+        </p>
+        <a class="primary-button" href="#demo">Book a Demo</a>
+        <div class="trust-strip">
+          <p>Trusted by industry-leading enterprises</p>
+          <div class="logo-row" aria-label="Customer logos">
+            <span>SUZUKI</span>
+            <span>Linde</span>
+            <span>HD</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-dashboard">
+        <img src="/images/armor/armor-dashboard.png" alt="ARMOR data catalog dashboard" loading="eager" />
+      </div>
+    </section>
+
+    <section class="promise-section">
+      <div class="section-heading centered">
+        <h2>Enable AI everywhere through context-aware intelligence without losing control.</h2>
+        <p>
+          Seclore ARMOR is the data security intelligence platform for enterprise AI. It brings
+          together AI-discovery, classification, persistent protection, and insights into a unified
+          approach.
+        </p>
+      </div>
+      <div class="promise-grid">
+        {promiseCards.map((card) => (
+          <article class="promise-card">
+            <div class={`line-icon ${card.icon}`} aria-hidden="true"></div>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="works-section">
+      <span class="eyebrow">How It Works</span>
+      <h2>Discover &rarr; Context &rarr; Enforce &rarr; Prove</h2>
+      <p>ARMOR applies Data Security Intelligence through a continuous, data-centric control loop</p>
+      <div class="works-grid">
+        <div class="repository-card">
+          <img src="/images/armor/armor-data-repository.png" alt="ARMOR data repository detail" loading="lazy" />
+        </div>
+        <div class="step-list">
+          {steps.map((step) => (
+            <article class={step.open ? "step-card open" : "step-card"}>
+              <div>
+                <h3>{step.title}</h3>
+                <span>{step.open ? "×" : "+"}</span>
+              </div>
+              {step.open && <p>{step.text}</p>}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="components-section">
+      <div class="section-heading centered">
+        <h2>Key Components</h2>
+      </div>
+      <div class="component-grid">
+        {components.map((component) => (
+          <article class="component-card">
+            <h3>{component.title}</h3>
+            <p>{component.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="resources-section" id="resources">
+      <div class="resource-heading">
+        <h2>Insights on AI, data security, and trust</h2>
+        <a href="/resources/">View All Resources</a>
+      </div>
+      <div class="resource-grid">
+        {resources.map((resource) => (
+          <article class="resource-card">
+            <div class="resource-body">
+              <span>{resource.type}</span>
+              <strong>{resource.tag}</strong>
+              <h3>{resource.title}</h3>
+              <a href="#resources">{resource.cta} <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="resource-controls" aria-label="Resource carousel controls">
+        <button type="button" aria-label="Previous resources">&larr;</button>
+        <button type="button" aria-label="Next resources">&rarr;</button>
+      </div>
+    </section>
+
+    <section class="demo-band" id="demo">
+      <div class="demo-copy">
+        <h2>Get a Personalized Demo</h2>
+        <p>See Seclore ARMOR in action! Learn how to enable safe use of Data and AI.</p>
+      </div>
+      <form class="demo-form">
+        <h3>Request a Demo</h3>
+        <label>Email<span>*</span><input name="email" type="email" required /></label>
+        <label>First Name<span>*</span><input name="firstName" required /></label>
+        <label>Last Name<span>*</span><input name="lastName" required /></label>
+        <label>Company name<span>*</span><input name="company" required /></label>
+        <label>Job title<span>*</span><input name="role" required /></label>
+        <label>Phone number<span>*</span><input name="phone" required /></label>
+        <label>Country<span>*</span><select name="country" required><option value="">Please Select</option><option>United States</option><option>India</option><option>United Kingdom</option></select></label>
+        <button class="primary-button" type="submit">Schedule A Demo</button>
+      </form>
+    </section>
+
+    <section class="cta-section">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#demo">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #ffffff;
+    --page-text: #24182f;
+    --page-muted: #51475a;
+    --purple: #562bd4;
+    --purple-dark: #3c16b0;
+    --soft: #f7f6f8;
+    --line: #dedee5;
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: #ffffff;
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button,
+  input,
+  select { font: inherit; }
+
+  .armor-page h1,
+  .armor-page h2,
+  .armor-page h3,
+  .armor-page p { margin: 0; }
+
+  .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .site-logo { color: var(--purple); font-size: 1.35rem; font-weight: 950; letter-spacing: 0.04em; margin-right: clamp(14px, 2vw, 28px); text-transform: uppercase; }
+  .nav-links, .nav-utilities { align-items: center; display: flex; }
+  .nav-links { flex: 1 1 auto; gap: clamp(18px, 2.2vw, 34px); justify-content: center; min-width: 0; }
+  .nav-links > a, .nav-trigger { align-items: center; background: transparent; border: 0; color: var(--header-muted); cursor: pointer; display: inline-flex; font-size: 0.98rem; font-weight: 800; gap: 8px; min-height: 68px; padding: 0; }
+  .nav-links > a:hover, .nav-trigger:hover, .nav-item:hover .nav-trigger, .nav-item:focus-within .nav-trigger { color: var(--header-text); }
+  .nav-item { position: static; }
+  .nav-caret { border-bottom: 2px solid currentColor; border-right: 2px solid currentColor; display: inline-block; height: 8px; transform: rotate(45deg) translateY(-2px); transition: transform 180ms ease; width: 8px; }
+  .nav-item:hover .nav-caret, .nav-item:focus-within .nav-caret, .nav-item.is-open .nav-caret { transform: rotate(225deg) translateY(-1px); }
+  .mega-menu { left: 22px; opacity: 0; pointer-events: none; position: absolute; right: clamp(20px, 4vw, 42px); top: calc(100% - 1px); transform: translateY(12px); transition: opacity 180ms ease, transform 180ms ease; }
+  .nav-item:hover .mega-menu, .nav-item:focus-within .mega-menu, .nav-item.is-open .mega-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .mega-inner { background: var(--dropdown-bg); border: 1px solid var(--dropdown-border); border-radius: 8px; box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2); display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr) 320px; min-height: 320px; overflow: hidden; padding: 26px; }
+  .mega-columns { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+  .mega-column, .mega-sublinks { display: grid; }
+  .mega-column { gap: 10px; }
+  .mega-title { color: var(--dropdown-title); font-size: 0.76rem; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; }
+  .mega-link, .mega-link-group { border: 1px solid transparent; border-radius: 8px; }
+  .mega-link { display: grid; gap: 5px; padding: 13px; }
+  .mega-link strong { color: var(--dropdown-text); }
+  .mega-link small, .mega-sublinks a { color: var(--dropdown-muted); }
+  .mega-link:hover, .mega-link-group:hover { background: var(--dropdown-link-hover); border-color: var(--dropdown-link-border); }
+  .mega-link-group { display: grid; gap: 4px; padding: 4px; }
+  .mega-sublinks { gap: 2px; padding: 0 9px 8px 22px; }
+  .mega-sublinks a { font-size: 0.84rem; padding: 5px 0; }
+  .mega-feature { align-content: end; background: var(--dropdown-feature-bg); border: 1px solid var(--dropdown-feature-border); border-radius: 8px; display: grid; min-height: 268px; padding: 24px; }
+  .mega-feature span, .mega-feature em { color: var(--dropdown-title); }
+  .mega-feature strong { color: var(--dropdown-text); font-size: 1.35rem; line-height: 1.18; margin-top: auto; }
+  .nav-utilities { flex: 0 0 auto; gap: clamp(12px, 1.5vw, 20px); margin-left: clamp(12px, 2vw, 28px); }
+  .utility-link, .language-button, .utility-icon, .theme-toggle { color: var(--header-muted); display: none; font-size: 0.88rem; font-weight: 750; }
+  .demo-button,
+  .primary-button { align-items: center; background: linear-gradient(135deg, var(--purple), var(--purple-dark)); border: 0; border-radius: 7px; color: #fff; cursor: pointer; display: inline-flex; font-size: 0.9rem; font-weight: 850; justify-content: center; min-height: 40px; padding: 0 18px; }
+  .nav-toggle { background: transparent; border: 0; display: none; height: 42px; width: 42px; }
+  .nav-toggle span { background: var(--header-text); display: block; height: 2px; margin: 6px 0; width: 24px; }
+
+  .armor-hero {
+    align-items: center;
+    display: grid;
+    gap: clamp(3rem, 6vw, 6rem);
+    grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.08fr);
+    margin: 0 auto;
+    max-width: 1220px;
+    padding: 78px 30px 70px;
+  }
+
+  .armor-lockup { align-items: center; color: var(--purple); display: flex; gap: 18px; margin-bottom: 52px; }
+  .armor-lockup strong { font-size: clamp(4rem, 8vw, 7.3rem); font-weight: 800; letter-spacing: 0.03em; line-height: 0.8; }
+  .armor-mark { background: var(--purple); clip-path: polygon(38% 0, 62% 0, 78% 21%, 100% 38%, 100% 62%, 78% 79%, 62% 100%, 38% 100%, 22% 79%, 0 62%, 0 38%, 22% 21%); display: inline-block; height: clamp(62px, 8vw, 90px); width: clamp(62px, 8vw, 90px); }
+  .hero-copy h1 { font-size: clamp(3.4rem, 7vw, 6.55rem); font-weight: 500; line-height: 0.96; }
+  .hero-copy > p { color: var(--page-text); font-size: 1.35rem; line-height: 1.55; margin-top: 2.2rem; max-width: 650px; }
+  .hero-copy .primary-button { margin-top: 2.2rem; min-height: 50px; padding-inline: 28px; }
+
+  .hero-dashboard { border-radius: 22px; overflow: hidden; }
+  .hero-dashboard img { display: block; width: 100%; }
+
+  .trust-strip { margin-top: 92px; }
+  .trust-strip p { color: var(--page-text); font-size: 1.28rem; }
+  .logo-row { align-items: center; display: flex; gap: clamp(48px, 7vw, 96px); margin-top: 64px; }
+  .logo-row span { color: #777; font-size: 1.35rem; font-weight: 900; filter: grayscale(1); opacity: 0.9; }
+
+  .promise-section,
+  .works-section,
+  .components-section,
+  .resources-section {
+    padding: 82px 30px;
+  }
+
+  .section-heading.centered { margin: 0 auto; max-width: 1120px; text-align: center; }
+  .section-heading h2 { color: var(--purple); font-size: clamp(2.7rem, 5vw, 5.05rem); font-weight: 500; line-height: 1.02; }
+  .section-heading p { color: #1f1828; font-size: clamp(1.15rem, 2vw, 1.55rem); line-height: 1.55; margin: 2.2rem auto 0; max-width: 1080px; }
+
+  .promise-grid { display: grid; gap: 40px; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 62px auto 0; max-width: 1190px; }
+  .promise-card { background: var(--soft); border-radius: 18px; min-height: 405px; padding: 46px 38px 40px; }
+  .promise-card h3 { color: #050309; font-size: 1.82rem; font-weight: 500; line-height: 1.1; margin-top: 2.7rem; }
+  .promise-card p { color: #1f1a25; font-size: 1.05rem; line-height: 1.62; margin-top: 2.4rem; }
+
+  .line-icon { height: 46px; position: relative; width: 46px; }
+  .line-icon::before,
+  .line-icon::after { content: ""; position: absolute; }
+  .line-icon.magic::before { border-bottom: 4px solid var(--purple); border-left: 4px solid var(--purple); height: 30px; left: 11px; top: 5px; transform: rotate(-45deg); width: 10px; }
+  .line-icon.magic::after { background: #ef8d29; border-radius: 50%; box-shadow: 16px -8px 0 #ef8d29, 21px 12px 0 var(--purple); height: 6px; left: 7px; top: 7px; width: 6px; }
+  .line-icon.handshake::before { border: 4px solid var(--purple); border-radius: 18px; height: 18px; left: 4px; top: 13px; transform: rotate(-28deg); width: 28px; }
+  .line-icon.handshake::after { border: 4px solid #ef8d29; border-radius: 18px; height: 18px; left: 17px; top: 13px; transform: rotate(28deg); width: 28px; }
+  .line-icon.shield::before { border: 4px solid var(--purple); border-radius: 20px 20px 14px 14px; height: 34px; left: 8px; top: 5px; width: 28px; }
+  .line-icon.shield::after { border-bottom: 4px solid #ef8d29; border-right: 4px solid #ef8d29; height: 13px; left: 18px; top: 14px; transform: rotate(45deg); width: 8px; }
+  .line-icon.loop::before { border: 4px solid var(--purple); border-right-color: transparent; border-radius: 50%; height: 23px; left: 0; top: 9px; width: 23px; }
+  .line-icon.loop::after { border: 4px solid #ef8d29; border-left-color: transparent; border-radius: 50%; height: 23px; right: 0; top: 9px; width: 23px; }
+
+  .works-section { padding-top: 44px; }
+  .eyebrow { color: var(--purple); display: block; font-size: 1rem; font-weight: 850; margin: 0 auto 28px; max-width: 1190px; }
+  .works-section > h2,
+  .works-section > p { margin-left: auto; margin-right: auto; max-width: 1190px; }
+  .works-section > h2 { color: #06050a; font-size: clamp(3rem, 5vw, 5.3rem); font-weight: 500; line-height: 1.02; }
+  .works-section > p { color: #211b29; font-size: 1.15rem; line-height: 1.55; margin-top: 2.2rem; }
+  .works-grid { align-items: start; display: grid; gap: 62px; grid-template-columns: minmax(300px, 0.95fr) minmax(300px, 1fr); margin: 56px auto 0; max-width: 1190px; }
+  .repository-card { background: linear-gradient(140deg, #fbecff, #eff8ff 70%, #ffeef4); border-radius: 18px; overflow: hidden; }
+  .repository-card img { display: block; width: 100%; }
+  .step-list { display: grid; gap: 42px; }
+  .step-card { background: linear-gradient(135deg, #fff6fa, #f8fdff); border: 1px solid #f0bfd5; border-radius: 10px; padding: 42px 54px; }
+  .step-card div { align-items: center; display: flex; justify-content: space-between; }
+  .step-card h3 { color: #1d1624; font-size: 2rem; font-weight: 650; }
+  .step-card span { font-size: 2rem; font-weight: 800; }
+  .step-card p { color: #241d2c; font-size: 1.18rem; line-height: 1.55; margin-top: 3rem; max-width: 330px; }
+
+  .components-section { padding-top: 20px; }
+  .components-section .section-heading h2 { color: #291d34; }
+  .component-grid { display: grid; gap: 42px; grid-template-columns: repeat(2, minmax(250px, 1fr)); margin: 58px 0 0 86px; max-width: 620px; }
+  .component-card { background: linear-gradient(180deg, #fff, #f3f5f9); border: 1px solid #f1bfd7; border-radius: 18px; min-height: 470px; padding: 48px 42px; }
+  .component-card h3 { color: #060409; font-size: 2rem; font-weight: 800; line-height: 1.05; }
+  .component-card p { color: #0f0b15; font-size: 1.25rem; line-height: 1.55; margin-top: 2rem; }
+
+  .resources-section { background: #fff; padding-top: 95px; }
+  .resource-heading { align-items: center; display: flex; gap: 24px; justify-content: space-between; margin: 0 auto; max-width: 1190px; }
+  .resource-heading h2 { color: #050408; font-size: clamp(2.6rem, 4.6vw, 4.7rem); font-weight: 500; line-height: 1.05; }
+  .resource-heading > a { border: 1px solid var(--purple); border-radius: 6px; color: var(--purple); font-size: 1rem; font-weight: 700; line-height: 1.2; min-width: 190px; padding: 18px 22px; text-align: center; }
+  .resource-grid { display: grid; gap: 40px min(13vw, 250px); grid-template-columns: repeat(2, minmax(260px, 365px)); margin: 65px auto 0; max-width: 970px; }
+  .resource-card { border: 1px solid var(--line); border-radius: 18px; min-height: 430px; overflow: hidden; }
+  .resource-body { background: #fff; display: grid; gap: 1.4rem; padding: 185px 38px 40px; }
+  .resource-body span,
+  .resource-body strong { background: #f1f1f3; border-radius: 999px; color: #191826; display: inline-flex; font-size: 0.86rem; font-weight: 900; justify-content: center; line-height: 1.35; padding: 0.55rem 1rem; text-transform: uppercase; width: max-content; }
+  .resource-body strong { max-width: 270px; text-align: center; }
+  .resource-body h3 { color: #151321; font-size: 1.8rem; font-weight: 500; line-height: 1.12; }
+  .resource-card a { color: #111118; display: inline-flex; font-weight: 800; gap: 0.5rem; }
+  .resource-controls { display: flex; gap: 20px; margin: 48px auto 0; max-width: 970px; }
+  .resource-controls button { background: #fff; border: 1px solid #a9a9b2; border-radius: 999px; color: #7d7d87; height: 64px; width: 64px; }
+
+  .demo-band {
+    align-items: center;
+    background: linear-gradient(135deg, #dbeaff, #f9f4ff 72%, #ffffff);
+    display: grid;
+    gap: 48px;
+    grid-template-columns: minmax(0, 1.05fr) minmax(330px, 0.95fr);
+    padding: 95px clamp(30px, 5vw, 92px);
+  }
+  .demo-copy h2 { color: #2a1d35; font-size: clamp(3.7rem, 7vw, 7rem); font-weight: 500; line-height: 1; }
+  .demo-copy p { color: #2c2532; font-size: 1.2rem; line-height: 1.55; margin-top: 2.4rem; max-width: 610px; }
+  .demo-form { background: rgba(255, 255, 255, 0.88); border: 1px solid #fff; border-radius: 14px; padding: 46px 42px; }
+  .demo-form h3 { color: #2b1d36; font-size: 2.35rem; font-weight: 500; text-align: center; }
+  .demo-form label { color: #2f2d34; display: grid; font-size: 0.88rem; font-weight: 700; gap: 9px; margin-top: 18px; }
+  .demo-form label span { color: #d52929; }
+  .demo-form input,
+  .demo-form select { background: #f7fafc; border: 1px solid #cfd8e3; border-radius: 2px; min-height: 46px; padding: 8px 12px; width: 100%; }
+  .demo-form .primary-button { margin-top: 28px; }
+
+  .cta-section { background: #fff; padding: 55px 30px 65px; }
+  .cta-section h2,
+  .cta-section p,
+  .cta-section a { margin-left: auto; margin-right: auto; max-width: 1120px; }
+  .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 500; }
+  .cta-section p { color: #92939b; font-size: 1.16rem; line-height: 1.55; margin-top: 0.8rem; }
+  .cta-section .primary-button { margin-top: 2rem; }
+
+  .site-footer { background: #fff; color: #5f626b; padding: 0 30px 55px; }
+  .site-footer > * { margin-left: auto; margin-right: auto; max-width: 1120px; }
+  .footer-lines { border-top: 1px solid #cfcfd4; }
+  .footer-lines details { border-bottom: 1px solid #cfcfd4; color: #22222b; padding: 1.35rem 0; }
+  .footer-lines summary { cursor: pointer; font-size: 1.18rem; font-weight: 800; }
+  .footer-lines p { color: #656873; line-height: 1.6; margin-top: 0.75rem; }
+  .footer-logo { color: #5b2bd7; display: block; font-size: 2rem; font-weight: 900; letter-spacing: 1px; margin-top: 2.4rem; text-transform: uppercase; }
+  .site-footer p { font-size: 1.05rem; line-height: 1.65; margin-top: 1.4rem; }
+  .store-row { display: flex; flex-direction: column; gap: 10px; margin-top: 2.4rem; }
+  .store-row span { align-items: center; background: #17101b; border-radius: 6px; color: #fff; display: inline-flex; font-size: 0.9rem; font-weight: 800; height: 40px; justify-content: center; width: 168px; }
+  .social-row { border-top: 1px solid #d1d1d6; padding-top: 1.7rem; }
+  .legal a { text-decoration: underline; }
+
+  @media (max-width: 1280px) {
+    .nav-toggle { display: block; margin-left: 12px; order: 1; }
+    .site-header { flex-wrap: wrap; }
+    .site-logo { order: 0; }
+    .nav-links { background: var(--header-bg); border-top: 1px solid var(--header-border); display: none; flex: 1 0 100%; order: 2; padding: 10px 0 14px; }
+    .nav-links.open { align-items: stretch; display: grid; }
+    .nav-links > a, .nav-trigger { justify-content: space-between; min-height: 48px; width: 100%; }
+    .nav-item { display: grid; }
+    .mega-menu { display: none; opacity: 1; position: static; transform: none; }
+    .nav-item:hover .mega-menu, .nav-item:focus-within .mega-menu { display: none; }
+    .nav-item.is-open .mega-menu { display: block; }
+    .mega-inner { box-shadow: none; grid-template-columns: 1fr; min-height: 0; padding: 16px; }
+    .nav-utilities { align-items: stretch; display: flex; margin-left: auto; order: 0; }
+  }
+
+  @media (max-width: 980px) {
+    .armor-hero,
+    .works-grid,
+    .demo-band { grid-template-columns: 1fr; }
+    .promise-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .component-grid { margin-left: auto; margin-right: auto; }
+  }
+
+  @media (max-width: 640px) {
+    .armor-lockup { margin-bottom: 32px; }
+    .armor-lockup strong { font-size: 3.1rem; }
+    .armor-mark { height: 52px; width: 52px; }
+    .hero-copy h1 { font-size: 3.25rem; }
+    .promise-grid,
+    .component-grid,
+    .resource-grid { grid-template-columns: 1fr; }
+    .promise-card,
+    .component-card { min-height: 0; }
+    .resource-heading { align-items: flex-start; flex-direction: column; }
+  }
+</style>

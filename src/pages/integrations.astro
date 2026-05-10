@@ -1,0 +1,1034 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "http://127.0.0.1:5000";
+
+const logos = ["Microsoft", "FIRMEX", "knovos", "forcepoint", "BRC"];
+
+const integrationSections = [
+  {
+    id: "dlp-casb",
+    title: "DLP and CASB integrations",
+    text: "Connect data-centric policy with your enterprise DLP and CASB investments. Keep sensitive data protected even after discovery, classification, or policy signals identify risk.",
+    image: "/images/integrations/dlp-casb.png",
+    href: "/integrations/dlp-casb/",
+    reverse: false
+  },
+  {
+    id: "discovery-classification",
+    title: "Discovery and classification integrations",
+    text: "Extend discovery, classification, and categorization systems by automatically applying granular protection, usage controls, and persistent remote tracking to sensitive assets.",
+    href: "/integrations/discovery-classification/",
+    reverse: true
+  },
+  {
+    id: "microsoft-365",
+    title: "Microsoft 365 integrations",
+    text: "Embed data-centric security within your Microsoft 365 environment so classification, access controls, and activity protection work inside the tools teams already use.",
+    href: "/integrations/microsoft/",
+    reverse: false,
+    bullets: [
+      "Classify, protect, and track sensitive digital assets natively in Microsoft Office, Word, Excel, PowerPoint, and Outlook",
+      "Classify and protect emails and attachments in Microsoft Outlook",
+      "Automatically protect data inside and outside of Teams, SharePoint Online, and OneDrive for business"
+    ]
+  },
+  {
+    id: "content-storage",
+    title: "Content storage and collaboration platform integrations",
+    text: "Protect content stored across enterprise repositories and collaboration tools. Seclore integrates with storage platforms to automate protection, enforce policies, and preserve audit trails.",
+    href: "/integrations/content-storage-and-collaboration-platforms/",
+    reverse: true
+  },
+  {
+    id: "analytics",
+    title: "Data analytics and insight application integrations",
+    text: "Integrate with SIEM and BI tools to visualize user activity, data interaction patterns, policy events, and risk insights for faster decisions.",
+    reverse: false
+  },
+  {
+    id: "identity",
+    title: "Identity and single sign-on integrations",
+    text: "Use enterprise identity and access management systems to simplify authentication and enforce authorization policies across protected files and applications.",
+    reverse: true
+  },
+  {
+    id: "custom",
+    title: "Custom application integrations",
+    text: "Integrate custom applications and internal systems through RESTful APIs and SDKs. Add classification, encryption, access controls, tracking, and usage enforcement into business workflows.",
+    reverse: false,
+    secondary: true
+  }
+];
+---
+
+<BaseLayout
+  title="Integrations | seclore"
+  description="Seclore integrations connect data-centric security with enterprise tools for discovery, classification, protection, tracking, and compliance."
+>
+  <main id="top" class="integrations-page">
+    <Nav />
+
+    <section class="integrations-hero">
+      <span>Integrations</span>
+      <h1>Building a Unified Ecosystem for Data Security</h1>
+      <p>
+        Seclore seamlessly integrates with the tools you know and trust to automate and streamline
+        enterprise data discovery, classification, protection, and tracking.
+      </p>
+      <div class="hero-actions">
+        <a class="primary-button" href="#demo">Get a Demo</a>
+        <a class="secondary-button" href="#custom">Professional Services</a>
+      </div>
+    </section>
+
+    <section class="intro-section">
+      <div class="photo-card meeting" aria-label="Enterprise security team collaboration visual">
+        <img src="/images/integrations/intro-meeting.png" alt="Business team discussing data security integration" loading="lazy" />
+      </div>
+      <div>
+        <h2>Integrate data-centric security without disruption</h2>
+        <p>
+          In modern enterprises, sensitive digital assets are scattered across applications, cloud
+          storage, collaboration platforms, and repositories. This widespread distribution increases
+          the risk of data loss and regulatory non-compliance.
+        </p>
+        <p>
+          Seclore integrates data security with a data-centric approach that works with existing
+          workflows and applications. With Seclore, organizations get persistent and automated
+          protection without disrupting productivity.
+        </p>
+      </div>
+    </section>
+
+    <section class="logo-strip" aria-label="Integration partner examples">
+      {logos.map((logo) => <span>{logo}</span>)}
+    </section>
+
+    <section class="orchestration-section">
+      <div class="section-heading centered">
+        <h2>Top integrations with Seclore's orchestration layer</h2>
+        <p>
+          Seclore's orchestration layer connects key data security capabilities such as discovery,
+          classification, protection, and monitoring into one easy-to-manage system.
+        </p>
+      </div>
+    </section>
+
+    <section class="integration-list">
+      {integrationSections.map((item) => (
+        <article id={item.id} class={item.reverse ? "integration-row reverse" : "integration-row"}>
+          {item.image ? (
+            <div class="photo-card">
+              <img src={item.image} alt={`${item.title} visual`} loading="lazy" />
+            </div>
+          ) : (
+            <div class="empty-media" aria-hidden="true"></div>
+          )}
+          <div class="integration-copy">
+            <h2>{item.title}</h2>
+            <p>{item.text}</p>
+            {item.bullets && (
+              <ul>
+                {item.bullets.map((bullet) => <li>{bullet}</li>)}
+              </ul>
+            )}
+            <div class="button-row">
+              <a class="primary-button small" href={item.href || "#demo"}>Learn More</a>
+              {item.secondary && <a class="secondary-button small" href="#demo">Professional Services</a>}
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <section class="demo-section" id="demo">
+      <div class="demo-copy">
+        <h2>Ready to get started?</h2>
+        <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+        <a class="primary-button" href="#demo-form">Book a Demo</a>
+      </div>
+      <form class="integrations-form" id="demo-form" data-endpoint="/api/demo">
+        <h3>Book a Demo</h3>
+        <label>Email<input name="email" type="email" required /></label>
+        <label>First Name<input name="name" required minlength="2" /></label>
+        <label>Company Name<input name="company" required /></label>
+        <label>Job Title<input name="role" /></label>
+        <label>Phone Number<input name="phone" /></label>
+        <label>Comments<textarea name="message" rows="4"></textarea></label>
+        <button class="primary-button" type="submit">Schedule a Demo</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script is:inline define:vars={{ apiBase }}>
+    document.querySelectorAll(".integrations-form").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const status = form.querySelector(".form-status");
+        const button = form.querySelector("button[type='submit']");
+        const payload = Object.fromEntries(new FormData(form).entries());
+
+        status.textContent = "Sending...";
+        status.className = "form-status";
+        button.disabled = true;
+
+        try {
+          const response = await fetch(`${apiBase}${form.dataset.endpoint}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.message || "Request failed.");
+          form.reset();
+          status.textContent = data.message || "Submitted successfully.";
+          status.classList.add("success");
+        } catch (error) {
+          status.textContent = error.message || "Something went wrong.";
+          status.classList.add("error");
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f7f7f8;
+    --page-text: #242329;
+    --page-muted: #666a73;
+    --purple: #5b2bd7;
+    --purple-dark: #3f1cad;
+    --violet: #8d19ff;
+    --card: #ffffff;
+    --line: rgba(29, 29, 34, 0.14);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --demo-button-bg: #5b2bd7;
+    --demo-button-text: #ffffff;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .site-logo {
+    color: var(--purple);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: clamp(14px, 2vw, 28px);
+    text-transform: uppercase;
+  }
+
+  .nav-links,
+  .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .nav-links {
+    flex: 1 1 auto;
+    gap: clamp(18px, 2.2vw, 34px);
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .nav-links > a,
+  .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    gap: 8px;
+    min-height: 68px;
+    padding: 0;
+  }
+
+  .nav-links > a:hover,
+  .nav-trigger:hover,
+  .nav-item:hover .nav-trigger,
+  .nav-item:focus-within .nav-trigger {
+    color: var(--header-text);
+  }
+
+  .nav-item {
+    position: static;
+  }
+
+  .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 8px;
+  }
+
+  .nav-item:hover .nav-caret,
+  .nav-item:focus-within .nav-caret,
+  .nav-item.is-open .nav-caret {
+    transform: rotate(225deg) translateY(-1px);
+  }
+
+  .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .nav-item:hover .mega-menu,
+  .nav-item:focus-within .mega-menu,
+  .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mega-inner {
+    background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .mega-column,
+  .mega-sublinks {
+    display: grid;
+  }
+
+  .mega-column {
+    gap: 10px;
+  }
+
+  .mega-title {
+    color: var(--dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mega-link,
+  .mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .mega-link strong {
+    color: var(--dropdown-text);
+  }
+
+  .mega-link small,
+  .mega-sublinks a {
+    color: var(--dropdown-muted);
+  }
+
+  .mega-link:hover,
+  .mega-link-group:hover {
+    background: var(--dropdown-link-hover);
+    border-color: var(--dropdown-link-border);
+  }
+
+  .mega-link-group {
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .mega-sublinks {
+    gap: 2px;
+    padding: 0 9px 8px 22px;
+  }
+
+  .mega-sublinks a {
+    font-size: 0.84rem;
+    padding: 5px 0;
+  }
+
+  .mega-feature {
+    align-content: end;
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .mega-feature span,
+  .mega-feature em {
+    color: var(--dropdown-title);
+  }
+
+  .mega-feature strong {
+    color: var(--dropdown-text);
+    font-size: 1.35rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .nav-utilities {
+    flex: 0 0 auto;
+    gap: clamp(12px, 1.5vw, 20px);
+    margin-left: clamp(12px, 2vw, 28px);
+  }
+
+  .utility-link,
+  .language-button,
+  .utility-icon,
+  .theme-toggle {
+    color: var(--header-muted);
+    font-size: 0.88rem;
+    font-weight: 750;
+  }
+
+  .utility-link,
+  .language-button,
+  .utility-icon,
+  .theme-toggle {
+    display: none;
+  }
+
+  .demo-button,
+  .primary-button,
+  .secondary-button {
+    align-items: center;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.9rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+  }
+
+  .demo-button,
+  .primary-button {
+    background: var(--demo-button-bg);
+    color: var(--demo-button-text);
+  }
+
+  .secondary-button {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    color: #ffffff;
+  }
+
+  .primary-button.small,
+  .secondary-button.small {
+    font-size: 0.82rem;
+    min-height: 34px;
+    padding-inline: 14px;
+  }
+
+  .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .nav-toggle span {
+    background: var(--header-text);
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: 4.6rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 22px;
+  }
+
+  h2 {
+    font-size: 2.6rem;
+    font-weight: 450;
+    line-height: 1.05;
+  }
+
+  p,
+  li {
+    color: var(--page-muted);
+    line-height: 1.58;
+  }
+
+  .integrations-hero {
+    background: radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.22), transparent 28%), linear-gradient(135deg, #c27ff5 0%, #8b23ff 46%, #5b11e6 100%);
+    color: #ffffff;
+    min-height: 500px;
+    padding: 82px clamp(18px, 4vw, 52px);
+    text-align: center;
+  }
+
+  .integrations-hero span {
+    display: block;
+    font-weight: 900;
+    margin-bottom: 18px;
+  }
+
+  .integrations-hero p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-inline: auto;
+    max-width: 1180px;
+  }
+
+  .hero-actions,
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    margin-top: 28px;
+  }
+
+  .intro-section,
+  .integration-row,
+  .demo-section {
+    align-items: center;
+    display: grid;
+    gap: clamp(28px, 5vw, 72px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    padding: clamp(58px, 8vw, 96px) clamp(18px, 4vw, 52px);
+  }
+
+  .intro-section,
+  .integration-list,
+  .demo-section,
+  .integrations-footer {
+    background: var(--card);
+  }
+
+  .photo-card {
+    border-radius: 8px;
+    min-height: 320px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .photo-card img {
+    display: block;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .empty-media {
+    min-height: 1px;
+  }
+
+  .photo-card span {
+    position: absolute;
+  }
+
+  .meeting {
+    background: linear-gradient(135deg, #d6f0ef, #ffffff 46%, #e9d6c8);
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+  }
+
+  .meeting span {
+    background: linear-gradient(145deg, #27425d, #7bb8b2);
+    border-radius: 50%;
+    height: 86px;
+    top: 78px;
+    width: 86px;
+  }
+
+  .meeting span:nth-child(1) { left: 48px; }
+  .meeting span:nth-child(2) { left: 150px; top: 64px; }
+  .meeting span:nth-child(3) { right: 56px; top: 92px; }
+
+  .logo-strip {
+    align-items: center;
+    background: var(--page-bg);
+    display: grid;
+    gap: 34px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    padding: 42px clamp(18px, 4vw, 52px);
+    text-align: center;
+  }
+
+  .logo-strip span {
+    color: rgba(36, 35, 41, 0.48);
+    font-weight: 900;
+  }
+
+  .orchestration-section {
+    background: var(--page-bg);
+    padding: 70px clamp(18px, 4vw, 52px);
+  }
+
+  .section-heading {
+    margin: 0 auto;
+    max-width: 1120px;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
+  .integration-row {
+    padding-bottom: 46px;
+    padding-top: 46px;
+  }
+
+  .integration-row.reverse .photo-card {
+    order: 2;
+  }
+
+  .integration-row.reverse .empty-media {
+    order: 2;
+  }
+
+  .integration-copy {
+    max-width: 650px;
+  }
+
+  .integration-copy ul {
+    margin: 18px 0 0;
+    padding-left: 20px;
+  }
+
+  .integration-copy .button-row {
+    margin-top: 24px;
+  }
+
+  .integration-copy .secondary-button.small {
+    background: transparent;
+    border-color: var(--purple);
+    color: var(--purple);
+  }
+
+  .map {
+    background: linear-gradient(135deg, #dfeef4, #ffffff 45%, #b8d5dc);
+  }
+
+  .map span {
+    background: #4a88b8;
+    height: 4px;
+    left: 12%;
+    transform: rotate(-22deg);
+    width: 82%;
+  }
+
+  .map span:nth-child(1) { top: 34%; }
+  .map span:nth-child(2) { top: 48%; opacity: 0.7; }
+  .map span:nth-child(3) { top: 62%; opacity: 0.5; }
+
+  .server {
+    background: linear-gradient(135deg, #111b28, #4b3424);
+  }
+
+  .server span {
+    background: linear-gradient(90deg, #f0a637, #f45d48);
+    border-radius: 999px;
+    height: 7px;
+    left: 12%;
+    right: 12%;
+  }
+
+  .server span:nth-child(1) { top: 34%; }
+  .server span:nth-child(2) { top: 50%; }
+  .server span:nth-child(3) { top: 66%; }
+
+  .microsoft {
+    background: linear-gradient(135deg, #86bdf3, #eeeeee);
+  }
+
+  .microsoft::before {
+    background: conic-gradient(#f25022 0 25%, #7fba00 0 50%, #00a4ef 0 75%, #ffb900 0);
+    content: "";
+    height: 118px;
+    left: 42%;
+    position: absolute;
+    top: 32%;
+    width: 118px;
+  }
+
+  .microsoft span {
+    display: none;
+  }
+
+  .collab {
+    background: radial-gradient(circle at 50% 45%, #f6d879, transparent 12%), linear-gradient(135deg, #f8f2df, #bfd2e0);
+  }
+
+  .collab span {
+    background: var(--purple);
+    border-radius: 50%;
+    height: 44px;
+    width: 44px;
+  }
+
+  .collab span:nth-child(1) { left: 24%; top: 32%; }
+  .collab span:nth-child(2) { left: 48%; top: 58%; background: #22a6a3; }
+  .collab span:nth-child(3) { right: 22%; top: 36%; background: #ef7b44; }
+
+  .analytics {
+    background: linear-gradient(135deg, #9ed0e8, #40526d);
+  }
+
+  .analytics span {
+    background: rgba(255, 255, 255, 0.82);
+    border-radius: 8px;
+    height: 78px;
+    top: 36%;
+    width: 110px;
+  }
+
+  .analytics span:nth-child(1) { left: 14%; }
+  .analytics span:nth-child(2) { left: 42%; }
+  .analytics span:nth-child(3) { right: 12%; }
+
+  .identity {
+    background: linear-gradient(135deg, #d3edf7, #f7f2ff);
+  }
+
+  .identity span {
+    background: #ffffff;
+    border: 8px solid #d4e2f0;
+    border-radius: 16px;
+    height: 150px;
+    left: 20%;
+    top: 26%;
+    width: 230px;
+  }
+
+  .identity span:nth-child(2),
+  .identity span:nth-child(3) {
+    display: none;
+  }
+
+  .support {
+    background: linear-gradient(135deg, #e8d2bd, #ffffff 48%, #c4dbe2);
+  }
+
+  .support span {
+    background: linear-gradient(145deg, #6c402c, #f1c6a8);
+    border-radius: 50%;
+    height: 76px;
+    top: 28%;
+    width: 76px;
+  }
+
+  .support span:nth-child(1) { left: 18%; }
+  .support span:nth-child(2) { left: 44%; top: 40%; }
+  .support span:nth-child(3) { right: 18%; }
+
+  .demo-section {
+    border-top: 1px solid var(--line);
+  }
+
+  .integrations-form {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 28px;
+  }
+
+  .integrations-form h3 {
+    text-align: center;
+  }
+
+  .integrations-form label {
+    color: var(--page-text);
+    display: grid;
+    font-size: 0.88rem;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .integrations-form input,
+  .integrations-form textarea {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(15, 23, 42, 0.16);
+    border-radius: 4px;
+    color: #111827;
+    min-height: 40px;
+    padding: 10px;
+  }
+
+  .integrations-form textarea {
+    resize: vertical;
+  }
+
+  .form-status {
+    min-height: 24px;
+  }
+
+  .form-status.success {
+    color: #087f6f;
+  }
+
+  .form-status.error {
+    color: #bd2b2b;
+  }
+
+  .integrations-footer {
+    padding: 24px clamp(18px, 4vw, 52px) 34px;
+  }
+
+  .footer-lines {
+    border-block: 1px solid var(--line);
+    margin-bottom: 30px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .footer-lines details:last-child {
+    border-bottom: 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 9px;
+    margin: 26px 0;
+    max-width: 160px;
+  }
+
+  .store-row span {
+    background: #1a1421;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 10px 16px;
+  }
+
+  .legal {
+    border-top: 1px solid var(--line);
+    font-size: 0.86rem;
+    padding-top: 26px;
+  }
+
+  @media (max-width: 1180px) {
+    .nav-toggle {
+      display: block;
+      margin-left: auto;
+      order: 1;
+    }
+
+    .site-header {
+      flex-wrap: wrap;
+    }
+
+    .site-logo {
+      order: 0;
+    }
+
+    .nav-links {
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      order: 2;
+      padding: 10px 0 14px;
+    }
+
+    .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .nav-links > a,
+    .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .nav-item {
+      display: grid;
+    }
+
+    .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .nav-item:hover .mega-menu,
+    .nav-item:focus-within .mega-menu {
+      display: none;
+    }
+
+    .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .nav-utilities {
+      align-items: stretch;
+      display: flex;
+      margin-left: auto;
+      order: 0;
+    }
+  }
+
+  @media (max-width: 900px) {
+    h1 {
+      font-size: 3rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .intro-section,
+    .integration-row,
+    .demo-section {
+      grid-template-columns: 1fr;
+    }
+
+    .integration-row.reverse .photo-card,
+    .integration-row.reverse .empty-media {
+      order: 0;
+    }
+
+    .empty-media {
+      display: none;
+    }
+
+    .logo-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 520px) {
+    h1 {
+      font-size: 2.35rem;
+    }
+
+    .integrations-hero {
+      min-height: 430px;
+      padding-top: 58px;
+    }
+
+    .photo-card {
+      min-height: 250px;
+    }
+  }
+</style>

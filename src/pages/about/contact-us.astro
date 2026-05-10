@@ -1,0 +1,853 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const offices = [
+  {
+    region: "United States - Global HQ",
+    city: "Santa Clara",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/santa-clara.png",
+    address: ["5201 Great America Parkway", "Suite 440", "Santa Clara, CA 95054"]
+  },
+  {
+    region: "India",
+    city: "Mumbai",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/mumbai.png",
+    address: [
+      "R Square, 10th Floor, Unit No. 2 & 4, Near J B Nagar Metro station,",
+      "Andheri - Kurla Rd, Bhim Nagar, Andheri East, Andheri, Mumbai,",
+      "Maharashtra 400059"
+    ]
+  },
+  {
+    region: "India",
+    city: "Pune",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/pune.png",
+    address: [
+      "Fifth Floor, 43 EQ Smartworks, Survey No 43 H. No. 8/1 (P, Plot A, opp. Bhartiya Vidyapeeth School,",
+      "Balewadi, Pune, Maharashtra 411045"
+    ]
+  },
+  {
+    region: "India",
+    city: "Delhi",
+    image: "https://www.seclore.com/wp-content/uploads/Delhi-Skyline.png",
+    address: [
+      "Nukleus Coworking, 9th Floor, Barakhamba Tower, 1102, Barakhamba Rd,",
+      "Fire Brigade Lane, Near Barakhamba Metro Station Gate No. 2, Connaught Place, New Delhi 110001"
+    ]
+  },
+  {
+    region: "Saudi Arabia",
+    city: "Riyadh",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/riyadh.png",
+    address: [
+      "Alamari Center",
+      "Office No 19 Third Floor",
+      "RASA2727, 2727 Anas Ibn Malik Rd, 8109, As Sahafah, Riyadh 13321"
+    ]
+  },
+  {
+    region: "United Arab Emirates",
+    city: "Dubai",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/dubai.png",
+    address: ["Dubai Internet City Building 10", "Office 108 Al Sufouh", "Dubai - United Arab Emirates", "PO Box 73030", "+9714 4401348"]
+  }
+];
+
+const contactReasons = [
+  "Request a demo",
+  "Sales inquiry",
+  "Product support",
+  "Partner inquiry",
+  "Press inquiry",
+  "Careers",
+  "Other"
+];
+
+const countries = [
+  "Australia",
+  "Brazil",
+  "Canada",
+  "France",
+  "Germany",
+  "India",
+  "Japan",
+  "Saudi Arabia",
+  "Singapore",
+  "United Arab Emirates",
+  "United Kingdom",
+  "United States",
+  "Other"
+];
+
+---
+
+<BaseLayout
+  title="Contact Seclore | Offices and Contact Form"
+  description="Contact Seclore for product support, sales, press, partner, and general inquiries."
+>
+  <main id="top" class="contact-page">
+    <Nav />
+
+    <section class="contact-shell">
+      <div class="offices-column">
+        <h1>Offices</h1>
+        <p class="intro">Seclore offices are strategically positioned around the globe to best serve our customers.</p>
+
+        <div class="office-list">
+          {offices.map((office) => (
+            <article class="office-card">
+              <img src={office.image} alt={`${office.city} office location`} loading="lazy" />
+              <span>{office.region}</span>
+              <h2>{office.city}</h2>
+              <address>
+                {office.address.map((line) => (
+                  <>
+                    {line}
+                    <br />
+                  </>
+                ))}
+              </address>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="contact-column">
+        <h2>Contact Us</h2>
+        <div class="help-links">
+          <p>Need Product Help: <a href="/support/home/">Use the Support Portal</a></p>
+          <p>Opening a Seclore file: <a href="/support/home/">Use the Step-by-Step Guide</a></p>
+        </div>
+        <p class="form-copy">Use the webform below to contact the Seclore team</p>
+
+        <form class="contact-form" id="seclore-contact-form" novalidate>
+          <label>
+            <span>Contact Reason*</span>
+            <select name="reason" required>
+              <option value="">Please Select</option>
+              {contactReasons.map((reason) => <option value={reason}>{reason}</option>)}
+            </select>
+          </label>
+
+          <label>
+            <span>Email*</span>
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+
+          <div class="form-pair">
+            <label>
+              <span>First Name*</span>
+              <input name="firstName" type="text" autocomplete="given-name" required />
+            </label>
+            <label>
+              <span>Last Name*</span>
+              <input name="lastName" type="text" autocomplete="family-name" required />
+            </label>
+          </div>
+
+          <label>
+            <span>Phone number*</span>
+            <input name="phone" type="tel" autocomplete="tel" required />
+          </label>
+
+          <label>
+            <span>Job title*</span>
+            <input name="jobTitle" type="text" autocomplete="organization-title" required />
+          </label>
+
+          <label>
+            <span>Company name*</span>
+            <input name="company" type="text" autocomplete="organization" required />
+          </label>
+
+          <label>
+            <span>Country*</span>
+            <select name="country" autocomplete="country-name" required>
+              <option value="">Please Select</option>
+              {countries.map((country) => <option value={country}>{country}</option>)}
+            </select>
+          </label>
+
+          <label>
+            <span>Any Comments</span>
+            <textarea name="comments" rows="4"></textarea>
+          </label>
+
+          <label class="human-check">
+            <input name="human" type="checkbox" required />
+            <span>I confirm this is a real contact request.</span>
+          </label>
+
+          <p class="form-error" data-form-error hidden>Please complete the required fields before submitting.</p>
+          <p class="form-success" data-form-success hidden>Thank you. Your request has been captured locally and the Seclore team would follow up from here.</p>
+
+          <button class="submit-button" type="submit">Submit</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="ready-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#top">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  const form = document.querySelector("#seclore-contact-form");
+  const error = document.querySelector("[data-form-error]");
+  const success = document.querySelector("[data-form-success]");
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.classList.add("was-validated");
+      if (error) {
+        error.hidden = false;
+      }
+      if (success) {
+        success.hidden = true;
+      }
+      return;
+    }
+
+    form.classList.remove("was-validated");
+    if (error) {
+      error.hidden = true;
+    }
+    if (success) {
+      success.hidden = false;
+    }
+    form.reset();
+  });
+</script>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f0f1f3;
+    --paper: #ffffff;
+    --ink: #17151b;
+    --muted: #6d6872;
+    --purple: #5b2bd7;
+    --pink: #d91f52;
+    --dark: #1c0b1b;
+    --line: rgba(21, 21, 26, 0.12);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--ink);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  .contact-page .site-header {
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    display: flex;
+    gap: 16px;
+    min-height: 68px;
+    padding: 0 clamp(16px, 4vw, 32px);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .contact-page .site-logo {
+    color: var(--purple);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: auto;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .contact-page .nav-links {
+    background: #ffffff;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    display: none;
+    flex: 1 0 100%;
+    order: 3;
+    padding: 10px 0 16px;
+  }
+
+  .contact-page .nav-links.open {
+    align-items: stretch;
+    display: grid;
+  }
+
+  .contact-page .nav-links > a,
+  .contact-page .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #28272c;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    justify-content: space-between;
+    min-height: 48px;
+    padding: 0;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  .contact-page .nav-item {
+    display: grid;
+    position: static;
+  }
+
+  .contact-page .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    width: 8px;
+  }
+
+  .contact-page .mega-menu {
+    display: none;
+    opacity: 1;
+    position: static;
+    transform: none;
+  }
+
+  .contact-page .nav-item.is-open .mega-menu {
+    display: block;
+  }
+
+  .contact-page .mega-inner {
+    background: #f7f8fa;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 8px;
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr;
+    margin-bottom: 14px;
+    padding: 16px;
+  }
+
+  .contact-page .mega-columns,
+  .contact-page .mega-column,
+  .contact-page .mega-sublinks {
+    display: grid;
+    gap: 8px;
+  }
+
+  .contact-page .mega-title {
+    color: #0b5cad;
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact-page .mega-link,
+  .contact-page .mega-feature {
+    border-radius: 8px;
+    display: grid;
+    gap: 5px;
+    padding: 12px;
+    text-decoration: none;
+  }
+
+  .contact-page .mega-link strong,
+  .contact-page .mega-feature strong {
+    color: #101828;
+  }
+
+  .contact-page .mega-link small,
+  .contact-page .mega-sublinks a,
+  .contact-page .mega-feature em {
+    color: #667085;
+  }
+
+  .contact-page .mega-feature {
+    background: rgba(91, 43, 215, 0.08);
+  }
+
+  .contact-page .nav-utilities {
+    align-items: center;
+    display: flex;
+    gap: 14px;
+    margin-left: auto;
+  }
+
+  .contact-page .utility-link,
+  .contact-page .language-button,
+  .contact-page .utility-icon,
+  .contact-page .theme-toggle {
+    display: none;
+  }
+
+  .contact-page .demo-button,
+  .primary-button {
+    align-items: center;
+    background: var(--purple);
+    border-radius: 7px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 0.86rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+    text-decoration: none;
+  }
+
+  .contact-page .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: block;
+    height: 42px;
+    width: 42px;
+  }
+
+  .contact-page .nav-toggle span {
+    background: #25242a;
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  .contact-page .site-header {
+    flex-wrap: wrap;
+  }
+
+  .contact-page h1,
+  .contact-page h2,
+  .contact-page h3,
+  .contact-page p {
+    margin-top: 0;
+  }
+
+  .contact-page h1,
+  .contact-page h2,
+  .contact-page h3 {
+    font-weight: 430;
+    letter-spacing: 0;
+  }
+
+  .contact-shell {
+    background:
+      radial-gradient(circle at 70% 100%, rgba(233, 58, 48, 0.88), transparent 18%),
+      linear-gradient(rgba(28, 11, 27, 0.94), rgba(28, 11, 27, 0.94)),
+      url("https://www.seclore.com/wp-content/uploads/2025/01/Seclore_Wave_Pattern_Dark_1@1x-1.png");
+    background-position: center bottom;
+    background-size: cover;
+    color: #f7f3fa;
+    display: grid;
+    gap: clamp(42px, 9vw, 120px);
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.95fr);
+    min-height: 100vh;
+    padding: clamp(42px, 6vw, 74px) clamp(20px, 4vw, 56px) clamp(62px, 8vw, 96px);
+  }
+
+  .offices-column,
+  .contact-column {
+    min-width: 0;
+  }
+
+  .offices-column h1,
+  .contact-column h2 {
+    color: #ffffff;
+    font-size: clamp(3.1rem, 6.2vw, 5.15rem);
+    line-height: 0.95;
+    margin-bottom: 34px;
+  }
+
+  .intro,
+  .form-copy,
+  .help-links p {
+    color: #ece6ee;
+    font-size: clamp(1rem, 1.45vw, 1.25rem);
+    line-height: 1.48;
+  }
+
+  .intro {
+    max-width: 440px;
+  }
+
+  .office-list {
+    display: grid;
+    gap: 42px;
+    margin-top: 38px;
+    max-width: 520px;
+  }
+
+  .office-card img {
+    aspect-ratio: 1.68 / 1;
+    border-radius: 14px;
+    display: block;
+    margin-bottom: 28px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .office-card span {
+    color: rgba(255, 255, 255, 0.68);
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .office-card h2 {
+    color: #ffffff;
+    font-size: clamp(2.1rem, 3.2vw, 3rem);
+    line-height: 1;
+    margin-bottom: 26px;
+  }
+
+  .office-card address {
+    color: #f1edf3;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-style: normal;
+    line-height: 1.42;
+  }
+
+  .contact-column {
+    max-width: 590px;
+  }
+
+  .help-links {
+    display: grid;
+    gap: 22px;
+    margin-bottom: 36px;
+  }
+
+  .help-links p,
+  .form-copy {
+    margin-bottom: 0;
+  }
+
+  .help-links a {
+    color: #ffffff;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 18px;
+    margin-top: 36px;
+  }
+
+  .contact-form label {
+    display: grid;
+    gap: 8px;
+  }
+
+  .contact-form label span {
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 900;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    background: #f5f7fb;
+    border: 1px solid #c7ccd6;
+    border-radius: 0;
+    color: #1e1b24;
+    min-height: 44px;
+    padding: 0 12px;
+    width: 100%;
+  }
+
+  .contact-form textarea {
+    min-height: 82px;
+    padding: 12px;
+    resize: vertical;
+  }
+
+  .form-pair {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-form.was-validated input:invalid,
+  .contact-form.was-validated select:invalid,
+  .contact-form.was-validated textarea:invalid {
+    border-color: #ff6b8f;
+    box-shadow: 0 0 0 2px rgba(255, 107, 143, 0.28);
+  }
+
+  .human-check {
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex !important;
+    gap: 12px !important;
+    min-height: 74px;
+    padding: 18px;
+    width: min(100%, 360px);
+  }
+
+  .human-check input {
+    height: 18px;
+    min-height: 0;
+    width: 18px;
+  }
+
+  .human-check span {
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+  }
+
+  .form-error,
+  .form-success {
+    border-radius: 7px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    margin: 0;
+    padding: 12px 14px;
+  }
+
+  .form-error {
+    background: rgba(217, 31, 82, 0.22);
+    color: #ffffff;
+  }
+
+  .form-success {
+    background: rgba(29, 173, 128, 0.22);
+    color: #ffffff;
+  }
+
+  .submit-button {
+    background: var(--pink);
+    border: 0;
+    border-radius: 2px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 850;
+    justify-self: start;
+    min-height: 42px;
+    min-width: 98px;
+    padding: 0 24px;
+  }
+
+  .ready-section,
+  .contact-footer {
+    background: #ffffff;
+    padding-inline: clamp(18px, 4vw, 56px);
+  }
+
+  .ready-section {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 44px;
+    padding-top: 42px;
+  }
+
+  .ready-section h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 10px;
+  }
+
+  .ready-section p,
+  .contact-footer p {
+    color: var(--muted);
+    line-height: 1.58;
+  }
+
+  .ready-section .primary-button {
+    margin-top: 24px;
+    min-width: 170px;
+  }
+
+  .contact-footer {
+    padding-bottom: 42px;
+  }
+
+  .footer-lines {
+    border-block: 1px solid var(--line);
+    margin-bottom: 36px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .footer-lines details:last-child {
+    border-bottom: 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 850;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 9px;
+    margin: 30px 0;
+    max-width: 180px;
+  }
+
+  .store-row span {
+    background: #19121f;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 850;
+    padding: 10px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 26px;
+  }
+
+  .social-row a {
+    color: #303038;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .legal {
+    font-size: 0.9rem;
+    margin-top: 24px;
+  }
+
+  .legal a {
+    text-decoration: underline;
+  }
+
+  @media (min-width: 1180px) {
+    .contact-page .site-header {
+      flex-wrap: nowrap;
+    }
+
+    .contact-page .nav-links {
+      align-items: center;
+      border-top: 0;
+      display: flex;
+      flex: 1 1 auto;
+      gap: clamp(18px, 2.2vw, 34px);
+      justify-content: center;
+      min-width: 0;
+      order: initial;
+      padding: 0;
+    }
+
+    .contact-page .nav-links > a,
+    .contact-page .nav-trigger {
+      display: inline-flex;
+      min-height: 68px;
+      width: auto;
+    }
+
+    .contact-page .nav-item {
+      display: block;
+    }
+
+    .contact-page .mega-menu {
+      left: 22px;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      right: clamp(20px, 4vw, 42px);
+      top: calc(100% - 1px);
+      transform: translateY(12px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .contact-page .nav-item:hover .mega-menu,
+    .contact-page .nav-item:focus-within .mega-menu,
+    .contact-page .nav-item.is-open .mega-menu {
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .contact-page .mega-inner {
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+      grid-template-columns: minmax(0, 1fr) 320px;
+      min-height: 320px;
+      padding: 26px;
+    }
+
+    .contact-page .mega-columns {
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    }
+
+    .contact-page .nav-toggle {
+      display: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .contact-shell {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-column {
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .contact-shell {
+      gap: 56px;
+      padding-inline: 20px;
+    }
+
+    .offices-column h1,
+    .contact-column h2 {
+      font-size: 3.2rem;
+    }
+
+    .form-pair {
+      grid-template-columns: 1fr;
+    }
+
+    .ready-section,
+    .contact-footer {
+      padding-inline: 16px;
+    }
+  }
+</style>

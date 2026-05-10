@@ -1,0 +1,1519 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "http://127.0.0.1:5000";
+
+const interactionTabs = [
+  "AI Chat Protection",
+  "Internal AI Systems Protection",
+  "AI App Data Redaction",
+  "Data Sovereignty for AI"
+];
+
+const platformCards = [
+  {
+    title: "AI Privacy and Security",
+    intro: "Sanitize data to intelligently redact sensitive information before it leaves the enterprise.",
+    items: [
+      ["PII", "Names, IDs, financial data, health data, and credential signals"],
+      ["Company confidential", "Internal strategy, pricing, customer records, and source material"],
+      ["IP and trade secrets", "Designs, product plans, formulas, and proprietary research"],
+      ["M&A patterns", "Signals, documents, and negotiation artifacts tied to sensitive corporate actions"]
+    ]
+  },
+  {
+    title: "AI Governance",
+    intro: "Classify AI interactions by request context, user intent, risk level, and enterprise policy.",
+    items: [
+      ["Prompt risk", "Detect unsafe requests, sensitive context, and risky intent"],
+      ["User, team, and role", "Apply controls based on identity, group, location, and posture"],
+      ["Policy applied", "Route, redact, block, or preserve activity with evidence"],
+      ["AI mode", "Support approved copilots, private AI, and public AI usage"]
+    ]
+  }
+];
+
+const steps = [
+  ["01", "Detect", "Sensitive values, private context, and regulated data are identified in prompts, responses, and attachments."],
+  ["02", "Mask", "Sensitive elements are replaced with privacy-preserving tokens before AI systems process them."],
+  ["03", "Govern", "Every interaction is mapped to policy, user role, application, and AI usage mode."],
+  ["04", "Enable", "Approved AI usage continues with protected data, audit evidence, and enterprise controls."]
+];
+
+const deploymentCards = [
+  {
+    title: "ARMOR AI-DLP Portal",
+    badge: "Web chat protection",
+    text: "Deploy quickly to protect users as they work with public, private, and enterprise AI assistants.",
+    bullets: ["Prompt and response masking", "Policy-aware controls", "Audit-ready AI activity", "No endpoint disruption"]
+  },
+  {
+    title: "ARMOR AI-DLP (API)",
+    badge: "Embedded AI protection",
+    text: "Integrate protection directly into AI applications, agents, copilots, and internal automation flows.",
+    bullets: ["Context-rich inspection", "Low-latency redaction", "Custom policy integration", "Secure LLM and agent adoption"]
+  }
+];
+
+const industries = [
+  ["Healthcare", "Protect patient data, billing details, clinical notes, and provider information before AI interactions."],
+  ["Financial Services", "Safeguard account data, transaction signals, customer records, and analyst workflows."],
+  ["Government", "Control citizen data, mission-sensitive documents, and regulated public-sector information."],
+  ["Insurance", "Protect claims, policyholder information, underwriting data, and agent workflows."],
+  ["B2B SaaS", "Secure customer data, product telemetry, support context, and collaboration workflows."]
+];
+
+const compliance = [
+  ["HIPAA", "Mask and govern protected health information in AI-assisted workflows."],
+  ["GDPR", "Protect personal data before it reaches public, private, or embedded AI systems."],
+  ["DPDP Act 2023", "Support consent-aware handling and data minimization for personal information."],
+  ["PDPL", "Preserve privacy controls for regulated regional data interactions."],
+  ["CCPA / CPRA", "Detect and protect consumer data inside prompt and response flows."]
+];
+
+const platformRows = [
+  ["Discover", "Identify and classify sensitive data in real time as it enters AI interaction flows."],
+  ["Context", "Understand enterprise context, user role, request purpose, and policy posture."],
+  ["Enforce", "Mask, redact, block, or allow actions according to deterministic enterprise controls."],
+  ["Prove", "Maintain evidence, reporting, and audit detail for AI data governance."]
+];
+---
+
+<BaseLayout
+  title="ARMOR AI-DLP | seclore"
+  description="ARMOR AI-DLP protects sensitive enterprise data in AI prompts, responses, copilots, agents, and applications."
+>
+  <main id="top" class="aidlp-page">
+    <Nav />
+
+    <section class="aidlp-hero">
+      <div class="hero-copy">
+        <span class="eyebrow">ARMOR AI-DLP | New Generation DLP for AI</span>
+        <h1>Enable AI Safely<br />Embrace AI Freely.</h1>
+        <p>
+          Safely adopt AI without losing control of sensitive data. ARMOR AI-DLP protects
+          interactions across prompts, responses, copilots, agents, and AI applications.
+        </p>
+        <a class="primary-button" href="#demo">Book a Demo</a>
+      </div>
+      <div class="ai-flow" aria-label="AI-DLP protection flow preview">
+        <div class="flow-column left">
+          <span>Files</span>
+          <span>Chats</span>
+          <span>Apps</span>
+        </div>
+        <div class="flow-core">
+          <strong>ARMOR<br />AI-DLP</strong>
+        </div>
+        <div class="flow-column right">
+          <span>Private AI</span>
+          <span>Copilots</span>
+          <span>Public AI</span>
+        </div>
+        <div class="flow-card prompt">Prompt</div>
+        <div class="flow-card mask">Masked</div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <p>Trusted by industry leading enterprises</p>
+      <div class="logo-row" aria-label="Customer trust examples">
+        <span>MANULIFE</span>
+        <span>MAHINDRA</span>
+        <span>BMO</span>
+      </div>
+    </section>
+
+    <section class="interactions-section">
+      <div class="section-heading centered">
+        <h2>Built for the Interactions That Matter Most.</h2>
+      </div>
+      <div class="interaction-tabs" aria-label="AI-DLP interaction modes">
+        {interactionTabs.map((item, index) => <span class={index === 0 ? "active" : ""}>{item}</span>)}
+      </div>
+      <div class="interaction-panel">
+        <div class="chat-visual" aria-hidden="true">
+          <div class="chat-bubble user">Customer SSN: 468-92-1284</div>
+          <div class="shield-node">AI-DLP</div>
+          <div class="chat-bubble safe">Customer SSN: [masked]</div>
+        </div>
+        <div>
+          <h3>AI Chat Protection</h3>
+          <p>
+            Employees access public AI tools through the ARMOR AI-DLP Portal. Sensitive data such
+            as PII, PHI, financial records, IP, source material, and credentials is masked before it
+            reaches an AI service.
+          </p>
+          <p>
+            Productivity is preserved while enterprise policies, privacy controls, and evidence stay
+            intact.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="outcomes-section">
+      <div class="section-heading centered">
+        <h2>Two Outcomes. One Protection Layer.</h2>
+        <p>
+          ARMOR AI-DLP delivers AI privacy and AI governance in a single platform.
+        </p>
+      </div>
+      <div class="outcome-grid">
+        {platformCards.map((card) => (
+          <article class="outcome-card">
+            <h3>{card.title}</h3>
+            <p>{card.intro}</p>
+            <div class="mini-table">
+              {card.items.map(([label, text]) => (
+                <div>
+                  <strong>{label}</strong>
+                  <span>{text}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="next-gen-section">
+      <div class="section-heading centered">
+        <span class="eyebrow">What ARMOR AI-DLP is</span>
+        <h2>A Next-Generation DLP, Built for the AI Interaction Layer.</h2>
+      </div>
+      <div class="next-gen-grid">
+        <div class="orbital-visual" aria-hidden="true">
+          <span class="center-node">AI-DLP</span>
+          <span class="satellite one">Policy</span>
+          <span class="satellite two">Mask</span>
+          <span class="satellite three">Audit</span>
+          <span class="satellite four">Govern</span>
+        </div>
+        <div>
+          <h3>ARMOR AI-DLP enables safe AI use without blocking it.</h3>
+          <p>
+            Safely enabling AI means protecting prompts, responses, and under-your-control context
+            before data enters AI systems.
+          </p>
+          <p>
+            Unlike traditional DLP, ARMOR AI-DLP understands interaction context, applies policy at
+            the AI layer, and keeps business teams moving.
+          </p>
+          <p>
+            Your data stays private, controlled, and auditable without forcing teams to abandon the
+            tools they already use.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="works-section">
+      <div class="section-heading centered">
+        <h2>How It Works</h2>
+        <p>
+          Sensitive information is identified, masked, governed, and enabled across every AI
+          interaction.
+        </p>
+      </div>
+      <div class="step-grid">
+        {steps.map(([number, title, text]) => (
+          <article class="step-card">
+            <span>{number}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="deploy-section">
+      <div class="section-heading centered">
+        <h2>Two Ways to Deploy. One Protection Standard.</h2>
+        <p>Same AI-directional masking engine. Same governance-grade reporting.</p>
+      </div>
+      <div class="deploy-grid">
+        {deploymentCards.map((card) => (
+          <article class="deploy-card">
+            <span class="deploy-badge">{card.badge}</span>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+            <ul>
+              {card.bullets.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="industry-section">
+      <div class="section-heading centered">
+        <h2>Built for Organizations Where Data Governance Is Not Optional.</h2>
+      </div>
+      <div class="industry-grid">
+        {industries.map(([title, text]) => (
+          <article class="industry-card">
+            <div class="small-icon"></div>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="compliance-section">
+      <div class="section-heading centered">
+        <h2>Compliance Built In. Not Bolted On.</h2>
+        <p>
+          ARMOR AI-DLP addresses data masking and privacy requirements across major global
+          regulations.
+        </p>
+      </div>
+      <div class="compliance-grid">
+        {compliance.map(([title, text]) => (
+          <article>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="demo-band" id="demo">
+      <div class="demo-copy">
+        <h2>A New DLP for AI. See It in Action.</h2>
+        <p>
+          See how ARMOR AI-DLP helps enterprises safely adopt AI without losing control of sensitive
+          data.
+        </p>
+      </div>
+      <form class="aidlp-form" data-endpoint="/api/demo">
+        <h3>ARMOR AI-DLP Demo</h3>
+        <label>Email<input name="email" type="email" required /></label>
+        <label>First Name<input name="name" required minlength="2" /></label>
+        <label>Company Name<input name="company" required /></label>
+        <label>Job Title<input name="role" /></label>
+        <label>Phone Number<input name="phone" /></label>
+        <label>Comments<textarea name="message" rows="4"></textarea></label>
+        <button class="primary-button" type="submit">Schedule a Demo</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="platform-section">
+      <div class="section-heading centered">
+        <h2>Part of the ARMOR Platform.</h2>
+        <p>
+          ARMOR AI-DLP is Seclore's entry point for protecting AI prompts, responses, and generated
+          content. It works with the interaction layer between enterprise data and AI models.
+        </p>
+      </div>
+      <div class="platform-table">
+        {platformRows.map(([label, text]) => (
+          <div>
+            <strong>{label}</strong>
+            <span>{text}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <h2>Enable Safe AI Usage Across Your Enterprise.</h2>
+      <p>
+        See how ARMOR AI-DLP delivers AI adoption and data protection. Book a 30-minute demo with
+        the team.
+      </p>
+      <a class="primary-button" href="#demo">Request a Demo of ARMOR AI-DLP</a>
+    </section>
+  </main>
+
+  <script is:inline define:vars={{ apiBase }}>
+    document.querySelectorAll(".aidlp-form").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const status = form.querySelector(".form-status");
+        const button = form.querySelector("button[type='submit']");
+        const payload = Object.fromEntries(new FormData(form).entries());
+
+        status.textContent = "Sending...";
+        status.className = "form-status";
+        button.disabled = true;
+
+        try {
+          const response = await fetch(`${apiBase}${form.dataset.endpoint}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.message || "Request failed.");
+          form.reset();
+          status.textContent = data.message || "Submitted successfully.";
+          status.classList.add("success");
+        } catch (error) {
+          status.textContent = error.message || "Something went wrong.";
+          status.classList.add("error");
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f7f7fb;
+    --page-text: #21192d;
+    --page-muted: #5f566c;
+    --purple: #5b2bd7;
+    --purple-dark: #38178f;
+    --violet-soft: #f2edff;
+    --aqua: #16b8a6;
+    --amber: #ffb84d;
+    --rose: #e85a8a;
+    --card: #ffffff;
+    --line: rgba(91, 43, 215, 0.16);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: none;
+    --header-text: #27242b;
+    --header-muted: #27242b;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --demo-button-bg: #4f2bd6;
+    --demo-button-text: #ffffff;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
+    --page-bg: #07111f;
+    --page-text: #f4f0ff;
+    --page-muted: #c9bedb;
+    --violet-soft: #141026;
+    --card: #11192a;
+    --line: rgba(177, 145, 255, 0.24);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: none;
+    --header-text: #27242b;
+    --header-muted: #27242b;
+    --dropdown-bg: linear-gradient(135deg, rgba(9, 25, 44, 0.98), rgba(5, 17, 31, 0.98));
+    --dropdown-grid-line: rgba(45, 212, 255, 0.045);
+    --dropdown-border: rgba(151, 190, 230, 0.18);
+    --dropdown-link-hover: rgba(255, 255, 255, 0.055);
+    --dropdown-link-border: rgba(45, 212, 255, 0.22);
+    --dropdown-title: #7cf6c7;
+    --dropdown-text: #edf7ff;
+    --dropdown-muted: #9eb5ca;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(45, 212, 255, 0.18), rgba(124, 246, 199, 0.08)), rgba(255, 255, 255, 0.045);
+    --dropdown-feature-border: rgba(45, 212, 255, 0.22);
+    --demo-button-bg: #ffffff;
+    --demo-button-text: #07111f;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  .site-header {
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: block;
+    min-height: 166px;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .site-logo {
+    color: var(--purple);
+    font-size: clamp(1.55rem, 2.1vw, 2rem);
+    font-weight: 950;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    margin: 0;
+    position: absolute;
+    left: clamp(54px, 6vw, 112px);
+    top: 80px;
+    text-transform: uppercase;
+  }
+
+  .site-logo::after {
+    content: "™";
+    font-size: 0.28em;
+    margin-left: 2px;
+    vertical-align: top;
+  }
+
+  .nav-links,
+  .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .nav-links {
+    display: flex;
+    flex: 1 1 auto;
+    gap: clamp(28px, 3.5vw, 54px);
+    justify-content: center;
+    left: clamp(340px, 23vw, 430px);
+    min-width: 0;
+    position: absolute;
+    right: clamp(380px, 23vw, 430px);
+    top: 65px;
+  }
+
+  .nav-links > a,
+  .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: clamp(1rem, 1.1vw, 1.25rem);
+    font-weight: 800;
+    gap: 12px;
+    min-height: 54px;
+    padding: 0;
+  }
+
+  .nav-links > a:hover,
+  .nav-trigger:hover,
+  .nav-item:hover .nav-trigger,
+  .nav-item:focus-within .nav-trigger {
+    color: var(--header-text);
+  }
+
+  .nav-item {
+    position: static;
+  }
+
+  .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 10px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 10px;
+  }
+
+  .nav-item:hover .nav-caret,
+  .nav-item:focus-within .nav-caret,
+  .nav-item.is-open .nav-caret {
+    transform: rotate(225deg) translateY(-1px);
+  }
+
+  .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .nav-item:hover .mega-menu,
+  .nav-item:focus-within .mega-menu,
+  .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mega-inner {
+    background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .mega-column,
+  .mega-sublinks {
+    display: grid;
+  }
+
+  .mega-column {
+    gap: 10px;
+  }
+
+  .mega-title {
+    color: var(--dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mega-link,
+  .mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .mega-link strong {
+    color: var(--dropdown-text);
+  }
+
+  .mega-link small,
+  .mega-sublinks a {
+    color: var(--dropdown-muted);
+  }
+
+  .mega-link:hover,
+  .mega-link-group:hover {
+    background: var(--dropdown-link-hover);
+    border-color: var(--dropdown-link-border);
+  }
+
+  .mega-link-group {
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .mega-sublinks {
+    gap: 2px;
+    padding: 0 9px 8px 22px;
+  }
+
+  .mega-sublinks a {
+    font-size: 0.84rem;
+    padding: 5px 0;
+  }
+
+  .mega-feature {
+    align-content: end;
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .mega-feature span,
+  .mega-feature em {
+    color: var(--dropdown-title);
+  }
+
+  .mega-feature strong {
+    color: var(--dropdown-text);
+    font-size: 1.35rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .nav-utilities {
+    display: block;
+    flex: 0 0 auto;
+    height: 166px;
+    margin-left: 0;
+    position: absolute;
+    right: clamp(54px, 6.8vw, 128px);
+    top: 0;
+    width: 640px;
+  }
+
+  .utility-link,
+  .utility-label,
+  .language-button,
+  .utility-icon,
+  .theme-toggle {
+    color: var(--header-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .utility-link {
+    left: 0;
+    position: absolute;
+    top: 14px;
+    white-space: nowrap;
+  }
+
+  .utility-label {
+    display: inline-flex;
+    position: absolute;
+    top: 14px;
+  }
+
+  .utility-label:nth-of-type(1) {
+    left: 267px;
+  }
+
+  .utility-label:nth-of-type(2) {
+    left: 402px;
+  }
+
+  .utility-icon,
+  .language-button {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 8px;
+    padding: 0;
+  }
+
+  .utility-icon {
+    left: 338px;
+    position: absolute;
+    top: 10px;
+  }
+
+  .language-button {
+    left: 498px;
+    position: absolute;
+    top: 9px;
+  }
+
+  .theme-toggle {
+    display: none;
+  }
+
+  .search-icon {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 22px;
+    position: relative;
+    width: 22px;
+  }
+
+  .search-icon::after {
+    background: currentColor;
+    content: "";
+    height: 2px;
+    position: absolute;
+    right: -8px;
+    top: 16px;
+    transform: rotate(45deg);
+    width: 10px;
+  }
+
+  .globe-icon {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 26px;
+    position: relative;
+    width: 26px;
+  }
+
+  .globe-icon::before,
+  .globe-icon::after {
+    content: "";
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .globe-icon::before {
+    border-left: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    border-radius: 50%;
+    height: 22px;
+    width: 10px;
+  }
+
+  .globe-icon::after {
+    border-bottom: 2px solid currentColor;
+    border-top: 2px solid currentColor;
+    height: 9px;
+    width: 22px;
+  }
+
+  .demo-button,
+  .primary-button {
+    align-items: center;
+    background: #5531d1;
+    border: 0;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: clamp(1rem, 1.1vw, 1.22rem);
+    font-weight: 850;
+    justify-content: center;
+    min-height: 49px;
+    padding: 0 38px;
+  }
+
+  .demo-button {
+    min-width: 190px;
+    position: absolute;
+    right: 0;
+    top: 66px;
+  }
+
+  .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .nav-toggle span {
+    background: var(--header-text);
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  .aidlp-hero,
+  .trust-strip,
+  .interactions-section,
+  .outcomes-section,
+  .next-gen-section,
+  .works-section,
+  .deploy-section,
+  .industry-section,
+  .compliance-section,
+  .platform-section,
+  .final-cta,
+  .aidlp-footer {
+    padding: clamp(56px, 8vw, 96px) clamp(16px, 4vw, 52px);
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    font-weight: 500;
+    line-height: 0.96;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 450;
+    line-height: 1.05;
+  }
+
+  h3 {
+    font-size: 1.28rem;
+    line-height: 1.2;
+  }
+
+  p,
+  li {
+    color: var(--page-muted);
+    line-height: 1.6;
+  }
+
+  .eyebrow {
+    color: var(--purple);
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+
+  .section-heading {
+    margin: 0 auto 36px;
+    max-width: 920px;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
+  .aidlp-hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(22, 184, 166, 0.16), transparent 28%),
+      linear-gradient(180deg, var(--card), #f7f2ff);
+    display: grid;
+    gap: 42px;
+    grid-template-columns: minmax(0, 0.98fr) minmax(320px, 1.02fr);
+    min-height: 620px;
+  }
+
+  html[data-theme="dark"] .aidlp-hero {
+    background:
+      radial-gradient(circle at 86% 10%, rgba(22, 184, 166, 0.2), transparent 30%),
+      linear-gradient(180deg, #07111f, #17112c);
+  }
+
+  .hero-copy p {
+    max-width: 620px;
+  }
+
+  .ai-flow {
+    background: linear-gradient(145deg, #ffffff, #f8f4ff);
+    border: 1px solid #dfd2ff;
+    border-radius: 8px;
+    box-shadow: 0 28px 80px rgba(91, 43, 215, 0.14);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr 140px 1fr;
+    min-height: 360px;
+    padding: clamp(22px, 4vw, 38px);
+    position: relative;
+  }
+
+  html[data-theme="dark"] .ai-flow {
+    background: linear-gradient(145deg, #151d31, #21173a);
+  }
+
+  .flow-column {
+    align-content: center;
+    display: grid;
+    gap: 16px;
+  }
+
+  .flow-column span,
+  .flow-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 14px 35px rgba(91, 43, 215, 0.1);
+    color: var(--page-text);
+    font-weight: 800;
+    padding: 14px;
+  }
+
+  .flow-column.right span {
+    border-color: rgba(22, 184, 166, 0.28);
+  }
+
+  .flow-core {
+    align-self: center;
+    background: linear-gradient(135deg, var(--purple), #25115f);
+    border-radius: 8px;
+    color: #ffffff;
+    display: grid;
+    min-height: 92px;
+    place-items: center;
+    text-align: center;
+  }
+
+  .flow-card {
+    bottom: 24px;
+    font-size: 0.86rem;
+    position: absolute;
+  }
+
+  .flow-card.prompt {
+    left: 28%;
+  }
+
+  .flow-card.mask {
+    right: 18%;
+  }
+
+  .trust-strip,
+  .outcomes-section,
+  .works-section,
+  .industry-section,
+  .aidlp-footer {
+    background: var(--violet-soft);
+  }
+
+  .trust-strip {
+    padding-block: 34px;
+    text-align: center;
+  }
+
+  .logo-row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    justify-content: center;
+  }
+
+  .logo-row span {
+    color: var(--page-muted);
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .interaction-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 34px;
+  }
+
+  .interaction-tabs span,
+  .deploy-badge {
+    background: rgba(91, 43, 215, 0.08);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--purple);
+    font-size: 0.86rem;
+    font-weight: 850;
+    padding: 10px 14px;
+  }
+
+  .interaction-tabs .active {
+    background: var(--purple);
+    color: #ffffff;
+  }
+
+  .interaction-panel,
+  .next-gen-grid,
+  .demo-band {
+    align-items: center;
+    display: grid;
+    gap: 44px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .chat-visual,
+  .orbital-visual {
+    background: linear-gradient(145deg, #ffffff, #f6efff);
+    border: 1px solid #d8c9ff;
+    border-radius: 8px;
+    min-height: 330px;
+    padding: 28px;
+    position: relative;
+  }
+
+  html[data-theme="dark"] .chat-visual,
+  html[data-theme="dark"] .orbital-visual {
+    background: linear-gradient(145deg, #10192d, #21173a);
+  }
+
+  .chat-bubble {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 14px 35px rgba(91, 43, 215, 0.12);
+    font-weight: 800;
+    max-width: 250px;
+    padding: 16px;
+    position: absolute;
+  }
+
+  .chat-bubble.user {
+    left: 24px;
+    top: 56px;
+  }
+
+  .chat-bubble.safe {
+    bottom: 54px;
+    right: 24px;
+  }
+
+  .shield-node,
+  .center-node {
+    background: linear-gradient(135deg, var(--purple), #27116d);
+    border-radius: 8px;
+    color: #ffffff;
+    display: grid;
+    font-weight: 900;
+    min-height: 82px;
+    place-items: center;
+    position: absolute;
+    text-align: center;
+  }
+
+  .shield-node {
+    left: calc(50% - 50px);
+    top: calc(50% - 41px);
+    width: 100px;
+  }
+
+  .outcome-grid,
+  .deploy-grid {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .outcome-card,
+  .deploy-card,
+  .industry-card,
+  .compliance-grid article,
+  .step-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: clamp(24px, 4vw, 38px);
+  }
+
+  .outcome-card h3,
+  .deploy-card h3,
+  .compliance-grid h3 {
+    color: var(--purple);
+  }
+
+  .mini-table {
+    border: 1px solid var(--line);
+    display: grid;
+    margin-top: 24px;
+  }
+
+  .mini-table div {
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 150px 1fr;
+    padding: 14px;
+  }
+
+  .mini-table div:last-child {
+    border-bottom: 0;
+  }
+
+  .mini-table span {
+    color: var(--page-muted);
+  }
+
+  .next-gen-section,
+  .deploy-section,
+  .compliance-section,
+  .platform-section {
+    background: var(--card);
+  }
+
+  .orbital-visual {
+    overflow: hidden;
+  }
+
+  .orbital-visual::before {
+    border: 1px dashed rgba(91, 43, 215, 0.34);
+    border-radius: 50%;
+    content: "";
+    inset: 58px;
+    position: absolute;
+  }
+
+  .center-node {
+    height: 94px;
+    left: calc(50% - 47px);
+    top: calc(50% - 47px);
+    width: 94px;
+  }
+
+  .satellite {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 14px 35px rgba(91, 43, 215, 0.12);
+    color: var(--page-text);
+    font-weight: 850;
+    padding: 12px 14px;
+    position: absolute;
+  }
+
+  .satellite.one { left: 52px; top: 48px; }
+  .satellite.two { right: 48px; top: 76px; }
+  .satellite.three { bottom: 58px; left: 64px; }
+  .satellite.four { bottom: 42px; right: 70px; }
+
+  .step-grid,
+  .industry-grid,
+  .compliance-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .step-card {
+    min-height: 300px;
+  }
+
+  .step-card span {
+    color: var(--purple);
+    display: block;
+    font-size: 1.55rem;
+    font-weight: 850;
+    margin-bottom: 18px;
+  }
+
+  .deploy-card {
+    display: grid;
+    gap: 14px;
+  }
+
+  .deploy-card ul {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+  }
+
+  .deploy-card li::before {
+    color: var(--aqua);
+    content: "+ ";
+    font-weight: 900;
+  }
+
+  .industry-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .small-icon {
+    background: linear-gradient(135deg, rgba(91, 43, 215, 0.08), rgba(22, 184, 166, 0.24));
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    height: 42px;
+    margin-bottom: 20px;
+    width: 42px;
+  }
+
+  .compliance-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 auto;
+    max-width: 1120px;
+  }
+
+  .compliance-grid article:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .demo-band {
+    background: linear-gradient(135deg, #dbeaff, #f7f2ff);
+    padding: clamp(56px, 8vw, 96px) clamp(16px, 4vw, 52px);
+  }
+
+  html[data-theme="dark"] .demo-band {
+    background: linear-gradient(135deg, #0f2848, #21173a);
+  }
+
+  .demo-copy h2 {
+    font-size: clamp(3rem, 7vw, 6rem);
+  }
+
+  .aidlp-form {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 34px;
+  }
+
+  html[data-theme="dark"] .aidlp-form {
+    background: rgba(17, 25, 42, 0.9);
+  }
+
+  .aidlp-form h3 {
+    text-align: center;
+  }
+
+  .aidlp-form label {
+    color: var(--page-text);
+    display: grid;
+    font-size: 0.88rem;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .aidlp-form input,
+  .aidlp-form textarea {
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 4px;
+    color: #111827;
+    min-height: 40px;
+    padding: 10px;
+  }
+
+  .aidlp-form textarea {
+    resize: vertical;
+  }
+
+  .aidlp-form button {
+    margin-top: 12px;
+  }
+
+  .form-status {
+    min-height: 24px;
+  }
+
+  .form-status.success {
+    color: #087f6f;
+  }
+
+  .form-status.error {
+    color: #bd2b2b;
+  }
+
+  .platform-table {
+    border: 1px solid var(--line);
+    margin: 0 auto;
+    max-width: 1120px;
+  }
+
+  .platform-table div {
+    align-items: center;
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 180px 1fr;
+    padding: 18px 22px;
+  }
+
+  .platform-table div:last-child {
+    border-bottom: 0;
+  }
+
+  .platform-table strong {
+    color: var(--purple);
+  }
+
+  .platform-table span {
+    color: var(--page-muted);
+  }
+
+  .final-cta {
+    background: linear-gradient(135deg, rgba(91, 43, 215, 0.12), rgba(22, 184, 166, 0.08));
+    text-align: center;
+  }
+
+  .final-cta p {
+    margin-inline: auto;
+    max-width: 900px;
+  }
+
+  .aidlp-footer {
+    border-top: 1px solid var(--line);
+  }
+
+  .footer-lines {
+    border-block: 1px solid rgba(15, 23, 42, 0.22);
+    margin: 32px 0;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.16);
+    padding: 16px 0;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 1420px) {
+    .nav-toggle {
+      display: block;
+      margin-left: auto;
+      order: 1;
+    }
+
+    .site-header {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 68px;
+      padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    }
+
+    .site-logo {
+      order: 0;
+      position: static;
+    }
+
+    .nav-links {
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      left: auto;
+      order: 2;
+      padding: 10px 0 14px;
+      position: static;
+      right: auto;
+      top: auto;
+    }
+
+    .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .nav-links > a,
+    .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .nav-item {
+      display: grid;
+    }
+
+    .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .nav-item:hover .mega-menu,
+    .nav-item:focus-within .mega-menu {
+      display: none;
+    }
+
+    .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .nav-utilities {
+      align-items: stretch;
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      height: auto;
+      margin-left: 0;
+      order: 3;
+      padding-bottom: 16px;
+      right: auto;
+      top: auto;
+      width: auto;
+    }
+
+    .nav-links.open + .nav-utilities {
+      display: grid;
+    }
+
+    .utility-link,
+    .utility-label,
+    .utility-icon,
+    .language-button,
+    .demo-button {
+      position: static;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .aidlp-hero,
+    .interaction-panel,
+    .next-gen-grid,
+    .demo-band,
+    .outcome-grid,
+    .deploy-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .step-grid,
+    .industry-grid,
+    .compliance-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-flow {
+      grid-template-columns: 1fr;
+    }
+
+    .flow-card {
+      position: static;
+    }
+
+    .step-card {
+      min-height: auto;
+    }
+
+    .compliance-grid article:last-child {
+      grid-column: auto;
+    }
+
+    .mini-table div,
+    .platform-table div {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .chat-bubble,
+    .shield-node,
+    .center-node,
+    .satellite {
+      position: static;
+    }
+
+    .chat-visual,
+    .orbital-visual {
+      display: grid;
+      gap: 14px;
+      min-height: auto;
+    }
+
+    .orbital-visual::before {
+      display: none;
+    }
+  }
+</style>

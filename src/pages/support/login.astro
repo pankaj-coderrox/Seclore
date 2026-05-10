@@ -1,0 +1,118 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+---
+
+<BaseLayout title="Login | Seclore Support">
+  <main class="login-page">
+    <Nav />
+    <header>
+      <a class="logo" href="/">SECLORE<sup>TM</sup></a>
+      <a class="pill" href="/support/home/#contact">Contact Us</a>
+    </header>
+    <section class="login-card">
+      <a href="/support/home/">Back to Support Home</a>
+      <h1>Login</h1>
+      <form>
+        <label>
+          Email
+          <input type="email" autocomplete="email" />
+        </label>
+        <label>
+          Password
+          <input type="password" autocomplete="current-password" />
+        </label>
+        <button type="button">Login</button>
+      </form>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    background: #f6f6f6;
+    color: #161616;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+
+  :global(body::before) {
+    display: none;
+  }
+
+  header {
+    align-items: center;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    min-height: 95px;
+    padding: 22px clamp(24px, 4.4vw, 54px);
+  }
+
+  .logo {
+    color: #4d2dcc;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 0.78;
+  }
+
+  .logo sup {
+    font-size: 0.18em;
+    font-weight: 500;
+    margin-left: 5px;
+  }
+
+  .pill {
+    background: #5f3fd6;
+    border-radius: 999px;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 14px 27px;
+  }
+
+  .login-card {
+    background: #ffffff;
+    border: 1px solid #e2ddf6;
+    border-radius: 6px;
+    margin: 60px auto;
+    max-width: 460px;
+    padding: 28px;
+  }
+
+  .login-card > a {
+    color: #4d2dcc;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 24px 0;
+  }
+
+  label {
+    display: grid;
+    font-weight: 700;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  input {
+    border: 1px solid #d1c7ef;
+    font-size: 1rem;
+    min-height: 44px;
+    padding: 8px 10px;
+  }
+
+  button {
+    background: #5f3fd6;
+    border: 0;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 700;
+    min-height: 44px;
+    width: 100%;
+  }
+</style>

@@ -1,0 +1,1372 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "http://127.0.0.1:5000";
+
+const complianceCards = [
+  {
+    title: "Reduce compliance overhead",
+    text: "Automated classification makes it easier to comply with changing regulatory frameworks while reducing user and admin effort."
+  },
+  {
+    title: "Protect appropriately",
+    text: "Use classification context to apply encryption, watermarking, EDRM, blocking, and external sharing controls where they matter."
+  },
+  {
+    title: "Prove compliance",
+    text: "Audit trails, activity logs, and reporting dashboards help teams demonstrate compliance and close control gaps."
+  }
+];
+
+const capabilityCards = [
+  {
+    title: "Visual labels and dynamic watermarking",
+    text: "Add visible markers, headers, footers, and dynamic watermarks to classified assets so people handle sensitive data correctly."
+  },
+  {
+    title: "Classification of legacy and bulk data",
+    text: "Bulk-classify digital assets through DLP, discovery, and built-in classification capabilities that support retention policies."
+  },
+  {
+    title: "DLP-driven classification",
+    text: "Use trusted discovery tools to scan sensitive information and programmatically classify assets through connectors and APIs."
+  },
+  {
+    title: "Readable metadata classification tags",
+    text: "Add multi-level tags to document and email metadata so downstream DLP, CASB, DSPM, and EDRM tools can act."
+  },
+  {
+    title: "Email and file classification",
+    text: "Classify emails and files with suggested sensitivity labels based on each asset's content and data."
+  },
+  {
+    title: "Enterprise-wide visibility",
+    text: "Explore classification trends by label, user, policy, or file to find anomalies and improve governance."
+  }
+];
+
+const screenshotSlides = [
+  "User-driven document classification",
+  "Suggested classification",
+  "User-driven email classification",
+  "Dynamic watermarks and visual labels",
+  "Mandatory classification"
+];
+
+const relatedTopics = [
+  {
+    title: "Regulatory compliance",
+    text: "Simplified adherence to standards like GDPR, GLBA, SOX, DORA, PCI DSS, RBI Guidelines, SAMA, and more."
+  },
+  {
+    title: "Discovery and classification integrations",
+    text: "Leverage existing investments in discovery and classification systems to drive automatic persistent protection."
+  }
+];
+
+const relatedProducts = [
+  {
+    title: "Enterprise Digital Rights Management",
+    text: "Encrypt digital assets, limit access, allow or deny actions, track usage, and revoke access at any time."
+  },
+  {
+    title: "Risk Insights and Reporting",
+    text: "Use file and user activity insights to quickly address unauthorized access or non-compliance."
+  }
+];
+---
+
+<BaseLayout
+  title="Digital Asset Classification | seclore"
+  description="Classify sensitive digital assets based on sensitivity, business value, privacy, and regulatory requirements."
+>
+  <main id="top" class="classification-page">
+    <Nav />
+
+    <section class="classification-hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Data-Centric Security Platform</span>
+        <h1>Digital Asset Classification</h1>
+        <p>
+          Classify digital assets based on their sensitivity, business value, privacy, or regulatory
+          requirements.
+        </p>
+        <a class="primary-button" href="#demo">Get a Demo</a>
+      </div>
+      <div class="laptop-visual" aria-label="Classification interface preview">
+        <div class="screen">
+          <div class="toolbar"></div>
+          <div class="sheet">
+            {Array.from({ length: 9 }).map((_, index) => <span class={`row row-${index + 1}`}></span>)}
+          </div>
+          <div class="label-stack">
+            <span>Public</span>
+            <span>Internal</span>
+            <span>Confidential</span>
+          </div>
+        </div>
+        <div class="base"></div>
+      </div>
+    </section>
+
+    <section class="split-section">
+      <div>
+        <h2>Classify sensitive digital assets throughout your enterprise</h2>
+        <p>
+          Replace bulky legacy classification tools with agile, scalable classification that can be
+          rolled out across geographies, business units, and compliance requirements.
+        </p>
+        <p>
+          Integrate with discovery tools to automate, standardize, and scale classification across
+          documents, emails, and repositories.
+        </p>
+      </div>
+      <div class="motion-image" aria-label="Enterprise data movement visualization">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </section>
+
+    <section class="comply-section">
+      <div class="section-heading centered">
+        <h2>Classify to protect and comply</h2>
+        <p>
+          Classification is the first step in data-centric security because it helps enterprises
+          prioritize protection for their most sensitive assets and prove compliance.
+        </p>
+      </div>
+      <div class="compliance-grid">
+        {complianceCards.map((card) => (
+          <article class="compliance-card">
+            <div class="hex-icon"></div>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="capabilities-section">
+      <div class="section-heading centered">
+        <h2>Leverage asset classification to its fullest</h2>
+        <p>
+          Apply classification labels and sub-labels, explore trends, and integrate with discovery
+          engines to identify sensitive data and apply the right label.
+        </p>
+        <a class="secondary-button" href="#screenshots">Watch Classification Video</a>
+      </div>
+      <div class="capability-grid">
+        {capabilityCards.map((card) => (
+          <article class="capability-card">
+            <div class="line-icon"></div>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="screenshots-section" id="screenshots">
+      <div class="section-heading centered">
+        <h2>Product screenshots</h2>
+      </div>
+      <div class="screenshot-shell">
+        <div class="mock-window">
+          <div class="mock-sidebar">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="mock-content">
+            <div class="mock-title"></div>
+            <div class="classification-labels">
+              <strong>Suggested label</strong>
+              <span>Confidential - Regulatory</span>
+              <button type="button">Apply label</button>
+            </div>
+            <div class="mock-lines">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+        <div class="slide-controls" aria-label="Screenshot carousel controls">
+          <button type="button" aria-label="Previous screenshot">‹</button>
+          <button type="button" aria-label="Next screenshot">›</button>
+        </div>
+        <p>
+          Suggested classification prompts users with classification suggestions based on content,
+          while allowing another label and justification when needed.
+        </p>
+        <div class="slide-list">
+          {screenshotSlides.map((slide) => <span>{slide}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <blockquote>
+        "Shilpa shares over 1,000 documents back and forth each month, and 30+ authorized users
+        protect and share hundreds of confidential files with external agencies."
+      </blockquote>
+      <span>Shilpa Medicare</span>
+      <a class="secondary-button" href="#demo">Customer Story</a>
+      <div class="customer-row">
+        <strong>deccan</strong>
+        <strong>Eugenus</strong>
+        <strong>IDFC FIRST Bank</strong>
+      </div>
+    </section>
+
+    <section class="related-section">
+      <div class="section-heading centered">
+        <h2>Related topics</h2>
+        <p>
+          Add cybersecurity and regulatory compliance controls at the data level, where protection
+          is needed most.
+        </p>
+      </div>
+      <div class="related-grid">
+        {relatedTopics.map((item) => (
+          <article class="related-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <a href="#demo">Learn More</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="products-section">
+      <div class="section-heading centered">
+        <h2>Related products</h2>
+      </div>
+      <div class="related-grid">
+        {relatedProducts.map((item) => (
+          <article class="related-card product">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <a href="#demo">Learn More</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="demo-band" id="demo">
+      <div class="demo-copy">
+        <h2>Ready to get started?</h2>
+        <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      </div>
+      <form class="classification-form" data-endpoint="/api/demo">
+        <h3>Book a Demo</h3>
+        <label>Email<input name="email" type="email" required /></label>
+        <label>First Name<input name="name" required minlength="2" /></label>
+        <label>Company Name<input name="company" required /></label>
+        <label>Job Title<input name="role" /></label>
+        <label>Phone Number<input name="phone" /></label>
+        <label>Comments<textarea name="message" rows="4"></textarea></label>
+        <button class="primary-button" type="submit">Schedule a Demo</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script is:inline define:vars={{ apiBase }}>
+    document.querySelectorAll(".classification-form").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const status = form.querySelector(".form-status");
+        const button = form.querySelector("button[type='submit']");
+        const payload = Object.fromEntries(new FormData(form).entries());
+
+        status.textContent = "Sending...";
+        status.className = "form-status";
+        button.disabled = true;
+
+        try {
+          const response = await fetch(`${apiBase}${form.dataset.endpoint}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.message || "Request failed.");
+          form.reset();
+          status.textContent = data.message || "Submitted successfully.";
+          status.classList.add("success");
+        } catch (error) {
+          status.textContent = error.message || "Something went wrong.";
+          status.classList.add("error");
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f1f2f4;
+    --page-text: #17131f;
+    --page-muted: #5b5665;
+    --purple: #5b2bd7;
+    --purple-dark: #341184;
+    --rose: #ef3f5f;
+    --orange: #ff9900;
+    --plum: #8e1f4b;
+    --card: #ffffff;
+    --line: rgba(17, 19, 28, 0.08);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #07111f;
+    --header-muted: #2a2a2a;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --demo-button-bg: #4f2bd6;
+    --demo-button-text: #ffffff;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
+    --page-bg: #07111f;
+    --page-text: #f4f0ff;
+    --page-muted: #c9bedb;
+    --card: #11192a;
+    --line: rgba(177, 145, 255, 0.22);
+    --header-bg: #07111f;
+    --header-border: rgba(151, 190, 230, 0.18);
+    --header-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+    --header-text: #edf7ff;
+    --header-muted: #c5d6e8;
+    --dropdown-bg: linear-gradient(135deg, rgba(9, 25, 44, 0.98), rgba(5, 17, 31, 0.98));
+    --dropdown-grid-line: rgba(45, 212, 255, 0.045);
+    --dropdown-border: rgba(151, 190, 230, 0.18);
+    --dropdown-link-hover: rgba(255, 255, 255, 0.055);
+    --dropdown-link-border: rgba(45, 212, 255, 0.22);
+    --dropdown-title: #7cf6c7;
+    --dropdown-text: #edf7ff;
+    --dropdown-muted: #9eb5ca;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(45, 212, 255, 0.18), rgba(124, 246, 199, 0.08)), rgba(255, 255, 255, 0.045);
+    --dropdown-feature-border: rgba(45, 212, 255, 0.22);
+    --demo-button-bg: #ffffff;
+    --demo-button-text: #07111f;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  .site-header {
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: grid;
+    gap: 0 clamp(28px, 3.5vw, 70px);
+    grid-template-columns: minmax(230px, 280px) minmax(0, 1fr) auto;
+    grid-template-rows: 42px 122px;
+    min-height: 164px;
+    padding: 0 clamp(28px, 6vw, 126px);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .site-logo {
+    align-self: center;
+    color: var(--purple);
+    font-size: clamp(1.55rem, 1.7vw, 1.95rem);
+    font-weight: 900;
+    grid-column: 1;
+    grid-row: 2;
+    letter-spacing: 0.05em;
+    margin-right: 0;
+    text-transform: uppercase;
+  }
+
+  .nav-links,
+  .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .nav-links {
+    align-self: center;
+    flex: 1 1 auto;
+    gap: clamp(26px, 3.2vw, 56px);
+    grid-column: 2;
+    grid-row: 2;
+    justify-content: start;
+    min-width: 0;
+  }
+
+  .nav-links > a,
+  .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: clamp(1rem, 1.05vw, 1.2rem);
+    font-weight: 800;
+    gap: 8px;
+    min-height: 80px;
+    padding: 0;
+  }
+
+  .nav-links > a:hover,
+  .nav-trigger:hover,
+  .nav-item:hover .nav-trigger,
+  .nav-item:focus-within .nav-trigger {
+    color: var(--header-text);
+  }
+
+  .nav-item {
+    position: static;
+  }
+
+  .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 8px;
+  }
+
+  .nav-item:hover .nav-caret,
+  .nav-item:focus-within .nav-caret,
+  .nav-item.is-open .nav-caret {
+    transform: rotate(225deg) translateY(-1px);
+  }
+
+  .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .nav-item:hover .mega-menu,
+  .nav-item:focus-within .mega-menu,
+  .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mega-inner {
+    background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .mega-column,
+  .mega-sublinks {
+    display: grid;
+  }
+
+  .mega-column {
+    gap: 10px;
+  }
+
+  .mega-title {
+    color: var(--dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mega-link,
+  .mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .mega-link strong {
+    color: var(--dropdown-text);
+  }
+
+  .mega-link small,
+  .mega-sublinks a {
+    color: var(--dropdown-muted);
+  }
+
+  .mega-link:hover,
+  .mega-link-group:hover {
+    background: var(--dropdown-link-hover);
+    border-color: var(--dropdown-link-border);
+  }
+
+  .mega-link-group {
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .mega-sublinks {
+    gap: 2px;
+    padding: 0 9px 8px 22px;
+  }
+
+  .mega-sublinks a {
+    font-size: 0.84rem;
+    padding: 5px 0;
+  }
+
+  .mega-feature {
+    align-content: end;
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .mega-feature span,
+  .mega-feature em {
+    color: var(--dropdown-title);
+  }
+
+  .mega-feature strong {
+    color: var(--dropdown-text);
+    font-size: 1.35rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .nav-utilities {
+    align-self: center;
+    flex: 0 0 auto;
+    gap: clamp(14px, 1.3vw, 24px);
+    grid-column: 2 / 4;
+    grid-row: 1;
+    justify-self: end;
+    margin-left: 0;
+  }
+
+  .utility-link,
+  .utility-label,
+  .language-button,
+  .utility-icon,
+  .theme-toggle {
+    color: var(--header-muted);
+    font-size: clamp(0.85rem, 0.86vw, 1rem);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  .utility-link {
+    white-space: nowrap;
+  }
+
+  .utility-icon,
+  .language-button,
+  .theme-toggle {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 8px;
+    padding: 0;
+  }
+
+  .theme-toggle {
+    display: none;
+  }
+
+  .search-icon {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 17px;
+    position: relative;
+    width: 17px;
+  }
+
+  .search-icon::after {
+    background: currentColor;
+    content: "";
+    height: 2px;
+    position: absolute;
+    right: -6px;
+    top: 12px;
+    transform: rotate(45deg);
+    width: 8px;
+  }
+
+  .globe-icon {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 23px;
+    position: relative;
+    width: 23px;
+  }
+
+  .globe-icon::before,
+  .globe-icon::after {
+    content: "";
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .globe-icon::before {
+    border-left: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    border-radius: 50%;
+    height: 19px;
+    width: 9px;
+  }
+
+  .globe-icon::after {
+    border-top: 2px solid currentColor;
+    width: 19px;
+  }
+
+  .theme-toggle-track {
+    align-items: center;
+    background: rgba(127, 139, 155, 0.24);
+    border: 1px solid var(--header-border);
+    border-radius: 999px;
+    display: inline-flex;
+    height: 24px;
+    padding: 2px;
+    width: 44px;
+  }
+
+  .theme-toggle-thumb {
+    background: var(--header-text);
+    border-radius: 50%;
+    display: block;
+    height: 18px;
+    transform: translateX(18px);
+    transition: transform 180ms ease;
+    width: 18px;
+  }
+
+  html[data-theme="light"] .theme-toggle-thumb {
+    transform: translateX(0);
+  }
+
+  .demo-button,
+  .primary-button,
+  .secondary-button {
+    align-items: center;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.9rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 18px;
+  }
+
+  .demo-button,
+  .primary-button {
+    background: var(--demo-button-bg);
+    color: var(--demo-button-text);
+  }
+
+  .nav-utilities .demo-button {
+    border-radius: 8px;
+    font-size: clamp(0.95rem, 1vw, 1.12rem);
+    min-height: 50px;
+    min-width: 190px;
+    padding: 0 28px;
+    position: absolute;
+    right: clamp(28px, 6vw, 126px);
+    top: 66px;
+  }
+
+  .secondary-button {
+    background: #17131f;
+    color: #ffffff;
+  }
+
+  .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .nav-toggle span {
+    background: var(--header-text);
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  .classification-hero,
+  .split-section,
+  .comply-section,
+  .capabilities-section,
+  .screenshots-section,
+  .story-section,
+  .related-section,
+  .products-section,
+  .demo-band,
+  .classification-footer {
+    padding: clamp(56px, 8vw, 96px) clamp(16px, 4vw, 52px);
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 7vw, 6.3rem);
+    font-weight: 500;
+    line-height: 0.98;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4.4vw, 4.4rem);
+    font-weight: 450;
+    line-height: 1.05;
+  }
+
+  h3 {
+    font-size: 1.28rem;
+    line-height: 1.16;
+  }
+
+  p,
+  li {
+    color: var(--page-muted);
+    line-height: 1.6;
+  }
+
+  .eyebrow {
+    color: var(--purple);
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+
+  .classification-hero {
+    align-items: center;
+    background: var(--card);
+    display: grid;
+    gap: 42px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+    min-height: 560px;
+  }
+
+  .hero-copy p {
+    max-width: 600px;
+  }
+
+  .laptop-visual {
+    min-height: 330px;
+    perspective: 900px;
+    position: relative;
+  }
+
+  .screen {
+    background: linear-gradient(145deg, #ffffff, #f4efff);
+    border: 10px solid #f7f4ff;
+    border-radius: 12px;
+    box-shadow: 34px 28px 48px rgba(91, 43, 215, 0.22);
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr 130px;
+    min-height: 245px;
+    padding: 20px;
+    transform: rotateY(-18deg) rotateX(4deg);
+  }
+
+  html[data-theme="dark"] .screen {
+    background: linear-gradient(145deg, #151d31, #21173a);
+    border-color: #2b2350;
+  }
+
+  .toolbar {
+    background: linear-gradient(90deg, #6841dc, #f15f79);
+    border-radius: 999px;
+    grid-column: 1 / -1;
+    height: 10px;
+    width: 56%;
+  }
+
+  .sheet {
+    display: grid;
+    gap: 10px;
+  }
+
+  .sheet span {
+    background: linear-gradient(90deg, rgba(91, 43, 215, 0.18), rgba(239, 63, 95, 0.35));
+    border-radius: 999px;
+    height: 12px;
+  }
+
+  .sheet span:nth-child(2n) {
+    opacity: 0.6;
+    width: 80%;
+  }
+
+  .label-stack {
+    display: grid;
+    gap: 12px;
+  }
+
+  .label-stack span {
+    background: rgba(91, 43, 215, 0.08);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--purple);
+    font-size: 0.84rem;
+    font-weight: 900;
+    padding: 12px;
+  }
+
+  .base {
+    background: linear-gradient(90deg, #272038, #d6d0e8);
+    border-radius: 999px;
+    height: 18px;
+    margin: -12px auto 0;
+    width: 80%;
+  }
+
+  .split-section,
+  .demo-band {
+    align-items: center;
+    display: grid;
+    gap: 44px;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
+  }
+
+  .motion-image {
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0)),
+      linear-gradient(135deg, #0d5665, #f2d08b 46%, #4e73a8);
+    border-radius: 8px;
+    box-shadow: 0 24px 70px rgba(22, 45, 62, 0.18);
+    min-height: 330px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .motion-image span {
+    background: rgba(255, 255, 255, 0.72);
+    height: 3px;
+    left: -20%;
+    position: absolute;
+    transform: rotate(-18deg);
+    transform-origin: left center;
+    width: 150%;
+  }
+
+  .motion-image span:nth-child(1) { top: 24%; }
+  .motion-image span:nth-child(2) { top: 34%; opacity: 0.7; }
+  .motion-image span:nth-child(3) { top: 48%; opacity: 0.9; }
+  .motion-image span:nth-child(4) { top: 62%; opacity: 0.65; }
+  .motion-image span:nth-child(5) { top: 76%; opacity: 0.5; }
+
+  .section-heading {
+    margin: 0 auto 36px;
+    max-width: 980px;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
+  .compliance-grid,
+  .capability-grid,
+  .related-grid {
+    display: grid;
+    gap: 22px;
+  }
+
+  .compliance-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .capability-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .compliance-card,
+  .capability-card,
+  .related-card,
+  .classification-form {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: clamp(24px, 4vw, 38px);
+  }
+
+  .hex-icon,
+  .line-icon {
+    height: 44px;
+    margin-bottom: 20px;
+    width: 44px;
+  }
+
+  .hex-icon {
+    background: linear-gradient(135deg, var(--rose), var(--orange));
+    clip-path: polygon(25% 4%, 75% 4%, 100% 50%, 75% 96%, 25% 96%, 0 50%);
+  }
+
+  .compliance-card:nth-child(2) .hex-icon {
+    background: linear-gradient(135deg, var(--orange), #ffbf3d);
+  }
+
+  .compliance-card:nth-child(3) .hex-icon {
+    background: linear-gradient(135deg, var(--plum), #c32d67);
+  }
+
+  .line-icon {
+    border: 2px solid #ff4267;
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .line-icon::before,
+  .line-icon::after {
+    background: #ff4267;
+    content: "";
+    height: 2px;
+    left: 10px;
+    position: absolute;
+    right: 10px;
+  }
+
+  .line-icon::before {
+    top: 15px;
+  }
+
+  .line-icon::after {
+    bottom: 15px;
+  }
+
+  .comply-section,
+  .screenshots-section,
+  .related-section,
+  .classification-footer {
+    background: var(--page-bg);
+  }
+
+  .capabilities-section,
+  .products-section {
+    background: var(--card);
+  }
+
+  .screenshots-section {
+    padding-top: 36px;
+  }
+
+  .screenshot-shell {
+    margin: 0 auto;
+    max-width: 1120px;
+  }
+
+  .mock-window {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 22px 70px rgba(15, 23, 42, 0.1);
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    min-height: 390px;
+    overflow: hidden;
+  }
+
+  .mock-sidebar {
+    background: linear-gradient(180deg, #2f215f, #161126);
+    display: grid;
+    gap: 16px;
+    padding: 28px;
+  }
+
+  .mock-sidebar span {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    height: 14px;
+  }
+
+  .mock-content {
+    display: grid;
+    gap: 22px;
+    padding: 32px;
+  }
+
+  .mock-title,
+  .mock-lines span {
+    background: rgba(91, 43, 215, 0.12);
+    border-radius: 999px;
+    height: 18px;
+  }
+
+  .mock-title {
+    width: 56%;
+  }
+
+  .classification-labels {
+    background: #f7f4ff;
+    border: 1px solid #ddd1ff;
+    border-radius: 8px;
+    display: grid;
+    gap: 12px;
+    max-width: 420px;
+    padding: 20px;
+  }
+
+  html[data-theme="dark"] .classification-labels {
+    background: #17132d;
+  }
+
+  .classification-labels span {
+    color: var(--page-muted);
+  }
+
+  .classification-labels button {
+    background: var(--purple);
+    border: 0;
+    border-radius: 6px;
+    color: #ffffff;
+    font-weight: 850;
+    min-height: 38px;
+    width: 150px;
+  }
+
+  .mock-lines {
+    display: grid;
+    gap: 14px;
+  }
+
+  .mock-lines span:nth-child(2n) {
+    opacity: 0.55;
+    width: 76%;
+  }
+
+  .slide-controls {
+    display: flex;
+    gap: 10px;
+    margin: 24px 0 16px;
+  }
+
+  .slide-controls button {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--page-text);
+    height: 36px;
+    width: 36px;
+  }
+
+  .slide-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .slide-list span {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--page-muted);
+    font-size: 0.82rem;
+    font-weight: 800;
+    padding: 8px 12px;
+  }
+
+  .story-section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin: 0 clamp(16px, 4vw, 52px);
+    padding: clamp(28px, 5vw, 52px);
+  }
+
+  .story-section blockquote {
+    font-size: clamp(1.3rem, 2.4vw, 2.4rem);
+    line-height: 1.2;
+    margin: 0 0 22px;
+  }
+
+  .story-section > span {
+    color: var(--purple);
+    display: block;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .customer-row {
+    align-items: center;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+
+  .customer-row strong {
+    color: var(--purple);
+    font-size: clamp(1.15rem, 2vw, 1.7rem);
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .related-card {
+    background: transparent;
+    border-color: transparent;
+    min-height: 220px;
+  }
+
+  .related-card a {
+    color: var(--page-text);
+    font-weight: 900;
+  }
+
+  .demo-band {
+    background: var(--card);
+  }
+
+  .classification-form h3 {
+    text-align: center;
+  }
+
+  .classification-form label {
+    color: var(--page-text);
+    display: grid;
+    font-size: 0.88rem;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .classification-form input,
+  .classification-form textarea {
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 4px;
+    color: #111827;
+    min-height: 40px;
+    padding: 10px;
+  }
+
+  .classification-form textarea {
+    resize: vertical;
+  }
+
+  .classification-form button {
+    margin-top: 12px;
+  }
+
+  .form-status {
+    min-height: 24px;
+  }
+
+  .form-status.success {
+    color: #087f6f;
+  }
+
+  .form-status.error {
+    color: #bd2b2b;
+  }
+
+  .classification-footer {
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+
+  .footer-lines {
+    border-block: 1px solid rgba(15, 23, 42, 0.16);
+    margin-bottom: 32px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.12);
+    padding: 16px 0;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 1180px) {
+    .nav-toggle {
+      display: block;
+      margin-left: auto;
+      order: 1;
+    }
+
+    .site-header {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      min-height: 68px;
+      padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    }
+
+    .site-logo {
+      order: 0;
+    }
+
+    .nav-links {
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      order: 2;
+      padding: 10px 0 14px;
+    }
+
+    .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .nav-links > a,
+    .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .nav-item {
+      display: grid;
+    }
+
+    .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .nav-item:hover .mega-menu,
+    .nav-item:focus-within .mega-menu {
+      display: none;
+    }
+
+    .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .nav-utilities {
+      align-items: stretch;
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      margin-left: 0;
+      order: 3;
+      padding-bottom: 16px;
+    }
+
+    .nav-utilities .demo-button {
+      position: static;
+      right: auto;
+      top: auto;
+    }
+
+    .nav-links.open + .nav-utilities {
+      display: grid;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .classification-hero,
+    .split-section,
+    .demo-band,
+    .compliance-grid,
+    .capability-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mock-window {
+      grid-template-columns: 1fr;
+    }
+
+    .mock-sidebar {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

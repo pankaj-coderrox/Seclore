@@ -1,0 +1,751 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+---
+
+<BaseLayout
+  title="Submit a Ticket | Seclore Support"
+  description="Submit a support ticket to Seclore support."
+>
+  <main class="ticket-page">
+    <Nav />
+    <header class="support-header">
+      <a class="support-logo" href="/" aria-label="Seclore home">
+        SECL<span>ORE</span><sup>TM</sup>
+      </a>
+      <a class="contact-pill" href="#contact">Contact Us</a>
+    </header>
+
+    <nav class="portal-nav" aria-label="Support portal navigation">
+      <a href="/support/home/">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m3 11 9-8 9 8" />
+          <path d="M5 10v10h5v-6h4v6h5V10" />
+        </svg>
+        Support Home
+      </a>
+      <a href="/support/solutions/">Solutions</a>
+      <a href="/support/discussions/">Forums</a>
+      <span class="nav-spacer"></span>
+      <a href="/support/login/">Login</a>
+      <a class="ticket-button" href="/support/tickets/new/" aria-current="page">New Support Ticket</a>
+    </nav>
+
+    <section class="ticket-content">
+      <div class="ticket-form-wrap">
+        <h1>Submit a ticket</h1>
+
+        <form class="ticket-form" action="#" method="post">
+          <label class="form-row">
+            <span>Requester <strong>*</strong></span>
+            <input type="email" name="email" placeholder="Email" autocomplete="email" required />
+          </label>
+
+          <label class="form-row">
+            <span>Subject <strong>*</strong></span>
+            <input type="text" name="subject" required />
+          </label>
+
+          <label class="form-row description-row">
+            <span>Description <strong>*</strong></span>
+            <div class="editor-shell">
+              <div class="editor-toolbar" aria-label="Text formatting toolbar">
+                <button type="button" aria-label="Bold"><b>B</b></button>
+                <button type="button" aria-label="Italic"><i>I</i></button>
+                <button type="button" aria-label="Underline"><u>U</u></button>
+                <span class="toolbar-divider"></span>
+                <button type="button" aria-label="Bulleted list">
+                  <span class="list-icon bullets"></span>
+                </button>
+                <button type="button" aria-label="Numbered list">
+                  <span class="list-icon numbers"></span>
+                </button>
+                <span class="toolbar-divider"></span>
+                <button type="button" aria-label="Text color">
+                  <span class="text-tool">A</span>
+                </button>
+                <button type="button" aria-label="Highlight color">
+                  <span class="highlight-tool">A</span>
+                </button>
+                <span class="toolbar-divider"></span>
+                <button type="button" aria-label="Insert link">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1" /><path d="M14 11a5 5 0 0 0-7.1 0l-2 2A5 5 0 0 0 12 20.1l1.1-1.1" /></svg>
+                </button>
+                <button type="button" aria-label="Insert image">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4V5Z" /><path d="m8 14 2.5-3 2.5 3 1.5-1.8L18 16H6l2-2Z" /><circle cx="16" cy="9" r="1" /></svg>
+                </button>
+              </div>
+              <textarea name="description" required></textarea>
+            </div>
+          </label>
+
+          <div class="form-row attach-row">
+            <span></span>
+            <button class="attach-button" type="button">
+              Attach
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="form-row captcha-row">
+            <span></span>
+            <div class="captcha-box" aria-label="reCAPTCHA placeholder">
+              <div class="captcha-check"></div>
+              <div>
+                <strong>I'm not a robot</strong>
+                <small>For site owner: v1beta1 is deprecated.</small>
+                <a href="#">Take action.</a>
+              </div>
+              <div class="captcha-brand">
+                <div class="captcha-mark">↻</div>
+                <span>reCAPTCHA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="submit-button" type="submit">SUBMIT</button>
+            <a class="cancel-button" href="/support/home/">CANCEL</a>
+          </div>
+        </form>
+      </div>
+      <aside aria-hidden="true"></aside>
+    </section>
+
+    <a class="chat-button" href="/support/tickets/new/" aria-label="Chat with support">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 6h14v10H9l-4 4V6Z" />
+        <path d="M8 10h8M8 13h5" />
+      </svg>
+    </a>
+  </main>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    background: #ffffff;
+    color: #161616;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  :global(body::before) {
+    display: none;
+  }
+
+  .ticket-page {
+    --purple: #5f3fd6;
+    --accent: #4d2dcc;
+    --nav-purple: #6141d8;
+    background: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .support-header {
+    align-items: center;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    min-height: 94px;
+    padding: 22px clamp(24px, 4.4vw, 54px);
+  }
+
+  .support-logo {
+    color: var(--accent);
+    display: inline-flex;
+    font-size: clamp(2.2rem, 5vw, 4.1rem);
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 0.78;
+  }
+
+  .support-logo span {
+    color: inherit;
+  }
+
+  .support-logo sup {
+    font-size: 0.18em;
+    font-weight: 500;
+    line-height: 1;
+    margin-left: 5px;
+    transform: translateY(-0.25em);
+  }
+
+  .contact-pill,
+  .ticket-button {
+    align-items: center;
+    border-radius: 999px;
+    display: inline-flex;
+    font-weight: 700;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .contact-pill {
+    background: var(--purple);
+    color: #ffffff;
+    font-size: 1.02rem;
+    min-height: 47px;
+    padding: 0 27px;
+  }
+
+  .portal-nav {
+    align-items: center;
+    background: var(--nav-purple);
+    color: #ffffff;
+    display: flex;
+    min-height: 67px;
+    padding: 0 6px 0 43px;
+  }
+
+  .portal-nav a {
+    align-items: center;
+    display: inline-flex;
+    font-size: 1.3rem;
+    font-weight: 600;
+    gap: 10px;
+    min-height: 67px;
+    padding: 0 20px;
+  }
+
+  .portal-nav svg,
+  .chat-button svg,
+  .contact-block svg,
+  .editor-toolbar svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+  }
+
+  .portal-nav svg {
+    height: 23px;
+    opacity: 0.55;
+    width: 23px;
+  }
+
+  .nav-spacer {
+    flex: 1 1 auto;
+  }
+
+  .ticket-button {
+    background: #ffffff;
+    color: var(--purple);
+    font-size: 1.35rem;
+    margin-left: 12px;
+    min-height: 51px;
+    padding: 0 26px;
+  }
+
+  .ticket-content {
+    background: #f5f5f5;
+    display: grid;
+    grid-template-columns: minmax(0, 812px) 1fr;
+    min-height: 825px;
+  }
+
+  .ticket-content aside {
+    border-left: 1px solid #d7d7d7;
+    min-height: 79px;
+  }
+
+  .ticket-form-wrap {
+    padding: 34px 0 76px 25px;
+  }
+
+  .ticket-form-wrap h1 {
+    color: #222222;
+    font-size: 2.05rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.2;
+    margin: 0 0 34px;
+  }
+
+  .ticket-form {
+    max-width: 773px;
+  }
+
+  .form-row {
+    align-items: start;
+    display: grid;
+    gap: 27px;
+    grid-template-columns: 173px minmax(0, 573px);
+    margin-bottom: 38px;
+  }
+
+  .form-row > span {
+    color: #000000;
+    font-size: 1.12rem;
+    line-height: 40px;
+  }
+
+  .form-row strong {
+    color: #d60000;
+    font-size: 1.1rem;
+    margin-left: 5px;
+  }
+
+  .ticket-form input {
+    background: #ffffff;
+    border: 1px solid #c8c8c8;
+    border-radius: 0;
+    color: #222222;
+    font-size: 1.12rem;
+    height: 41px;
+    outline: 0;
+    padding: 7px 6px;
+    width: 100%;
+  }
+
+  .ticket-form input::placeholder {
+    color: #9fa4aa;
+    opacity: 1;
+  }
+
+  .description-row {
+    margin-bottom: 30px;
+  }
+
+  .editor-shell {
+    background: #ffffff;
+    border: 1px solid #bfbfbf;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .editor-toolbar {
+    align-items: center;
+    background: linear-gradient(#ffffff, #f6f6f6);
+    border-bottom: 1px solid #eeeeee;
+    display: flex;
+    height: 41px;
+    padding-left: 8px;
+  }
+
+  .editor-toolbar button {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #5f5f5f;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1rem;
+    height: 32px;
+    justify-content: center;
+    padding: 0;
+    width: 29px;
+  }
+
+  .editor-toolbar svg {
+    height: 21px;
+    stroke-width: 2.5;
+    width: 21px;
+  }
+
+  .toolbar-divider {
+    align-self: stretch;
+    border-left: 1px solid #e2e2e2;
+    margin: 0 5px;
+    width: 1px;
+  }
+
+  .list-icon {
+    display: block;
+    height: 16px;
+    position: relative;
+    width: 20px;
+  }
+
+  .list-icon::before,
+  .list-icon::after,
+  .bullets {
+    background:
+      linear-gradient(#666666, #666666) 7px 2px / 13px 2px no-repeat,
+      linear-gradient(#666666, #666666) 7px 7px / 13px 2px no-repeat,
+      linear-gradient(#666666, #666666) 7px 12px / 13px 2px no-repeat;
+  }
+
+  .bullets::before {
+    background:
+      radial-gradient(circle, #666666 0 2px, transparent 2px) 1px 1px / 5px 5px no-repeat,
+      radial-gradient(circle, #666666 0 2px, transparent 2px) 1px 6px / 5px 5px no-repeat,
+      radial-gradient(circle, #666666 0 2px, transparent 2px) 1px 11px / 5px 5px no-repeat;
+    content: "";
+    inset: 0;
+    position: absolute;
+  }
+
+  .numbers::before {
+    color: #666666;
+    content: "1 2 3";
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7px;
+    left: 0;
+    line-height: 5px;
+    position: absolute;
+    top: 1px;
+    width: 5px;
+  }
+
+  .text-tool {
+    border-bottom: 3px solid #666666;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .highlight-tool {
+    background: #777777;
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 1;
+    padding: 1px 3px;
+  }
+
+  .editor-shell textarea {
+    background: #ffffff;
+    border: 0;
+    color: #222222;
+    display: block;
+    height: 178px;
+    outline: 0;
+    padding: 10px;
+    resize: vertical;
+    width: 100%;
+  }
+
+  .attach-row {
+    margin-bottom: 30px;
+  }
+
+  .attach-button {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #0096df;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 1.3rem;
+    gap: 8px;
+    justify-self: start;
+    padding: 2px 14px;
+  }
+
+  .attach-button span {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #111111;
+    display: inline-block;
+    transform: translateY(2px);
+  }
+
+  .captcha-row {
+    margin-bottom: 28px;
+  }
+
+  .captcha-box {
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 34px 1fr 76px;
+    height: 95px;
+    padding: 12px 14px;
+    width: 377px;
+  }
+
+  .captcha-check {
+    border: 2px solid #555555;
+    height: 34px;
+    width: 34px;
+  }
+
+  .captcha-box strong {
+    color: #111111;
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin: 0 0 5px;
+  }
+
+  .captcha-box small,
+  .captcha-box a {
+    color: #555555;
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.1;
+  }
+
+  .captcha-box a {
+    text-decoration: underline;
+  }
+
+  .captcha-brand {
+    align-items: center;
+    color: #4a4a4a;
+    display: grid;
+    justify-items: center;
+  }
+
+  .captcha-mark {
+    color: #5575d7;
+    font-size: 2.6rem;
+    line-height: 1;
+  }
+
+  .captcha-brand span {
+    font-size: 0.75rem;
+  }
+
+  .form-actions {
+    border-top: 1px solid #dddddd;
+    display: flex;
+    gap: 6px;
+    margin-left: 0;
+    max-width: 773px;
+    padding: 15px 0 0 200px;
+  }
+
+  .submit-button,
+  .cancel-button {
+    align-items: center;
+    border-radius: 5px;
+    display: inline-flex;
+    font-size: 1rem;
+    height: 38px;
+    justify-content: center;
+    letter-spacing: 0.12em;
+    min-width: 128px;
+  }
+
+  .submit-button {
+    background: #123f77;
+    border: 1px solid #123f77;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .cancel-button {
+    background: #eeeeee;
+    border: 1px solid #d2d2d2;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.13);
+    color: #333333;
+  }
+
+  .chat-button {
+    align-items: center;
+    background: var(--accent);
+    border-radius: 22px;
+    bottom: 97px;
+    box-shadow: 0 5px 12px rgba(23, 7, 80, 0.35);
+    color: #ffffff;
+    display: inline-flex;
+    height: 76px;
+    justify-content: center;
+    position: fixed;
+    right: 6px;
+    width: 76px;
+    z-index: 5;
+  }
+
+  .chat-button svg {
+    height: 34px;
+    width: 34px;
+  }
+
+  .support-footer {
+    background: var(--purple);
+    color: #ffffff;
+    min-height: 501px;
+    padding: 40px 30px 78px;
+  }
+
+  .contact-block {
+    display: grid;
+    justify-items: start;
+    max-width: 720px;
+  }
+
+  .contact-block h2 {
+    font-size: 1.12rem;
+    margin: 0 0 15px;
+  }
+
+  .contact-block p {
+    color: #ffffff;
+    font-size: 1.04rem;
+    line-height: 1.35;
+    margin: 0 0 7px;
+  }
+
+  .contact-block a {
+    align-items: center;
+    display: inline-flex;
+    font-size: 1.12rem;
+    font-weight: 600;
+    gap: 12px;
+    margin: 0 0 30px;
+  }
+
+  .contact-block svg {
+    height: 25px;
+    width: 25px;
+  }
+
+  .connect-title {
+    margin-top: 10px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 28px;
+    margin: 4px 0 26px;
+  }
+
+  .social-links a {
+    align-items: center;
+    display: inline-flex;
+    font-size: 1.6rem;
+    font-weight: 900;
+    height: 26px;
+    justify-content: center;
+    margin: 0;
+    width: 26px;
+  }
+
+  .copyright {
+    color: #ffffff;
+    font-size: 1.28rem;
+    letter-spacing: 0;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 880px) {
+    .support-header,
+    .portal-nav {
+      padding-inline: 18px;
+    }
+
+    .support-header {
+      min-height: 82px;
+    }
+
+    .contact-pill {
+      font-size: 0.92rem;
+      min-height: 42px;
+      padding: 0 18px;
+    }
+
+    .portal-nav {
+      align-items: stretch;
+      flex-wrap: wrap;
+      padding-block: 8px;
+    }
+
+    .portal-nav a {
+      font-size: 1rem;
+      min-height: 45px;
+      padding: 0 12px;
+    }
+
+    .ticket-button {
+      font-size: 1rem;
+      margin-left: 0;
+    }
+
+    .nav-spacer {
+      display: none;
+    }
+
+    .ticket-content {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .ticket-content aside {
+      display: none;
+    }
+
+    .ticket-form-wrap {
+      padding: 28px 18px 60px;
+    }
+
+    .ticket-form {
+      max-width: none;
+    }
+
+    .form-row {
+      gap: 8px;
+      grid-template-columns: 1fr;
+      margin-bottom: 24px;
+    }
+
+    .form-row > span {
+      line-height: 1.3;
+    }
+
+    .captcha-box {
+      max-width: 100%;
+      width: 377px;
+    }
+
+    .form-actions {
+      padding-left: 0;
+    }
+
+    .chat-button {
+      border-radius: 18px;
+      height: 58px;
+      width: 58px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .support-header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .support-logo {
+      font-size: 2rem;
+    }
+
+    .ticket-form-wrap h1 {
+      font-size: 1.8rem;
+    }
+
+    .captcha-box {
+      gap: 10px;
+      grid-template-columns: 32px 1fr;
+      height: auto;
+      min-height: 95px;
+    }
+
+    .captcha-brand {
+      display: none;
+    }
+
+    .form-actions {
+      flex-direction: column;
+    }
+
+    .submit-button,
+    .cancel-button {
+      width: 100%;
+    }
+
+    .support-footer {
+      padding-inline: 20px;
+    }
+
+    .copyright {
+      font-size: 1rem;
+    }
+  }
+</style>

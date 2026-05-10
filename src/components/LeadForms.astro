@@ -1,0 +1,67 @@
+<section class="lead-section" id="demo">
+  <div class="section-heading reveal">
+    <span class="eyebrow">Start the conversation</span>
+    <h2>See how data-first security fits your enterprise.</h2>
+    <p>
+      Send a message or request a guided platform walkthrough. Submissions are stored through the
+      Express API when MongoDB is configured.
+    </p>
+  </div>
+
+  <div class="form-grid">
+    <form class="lead-form reveal" data-endpoint="/api/demo">
+      <div class="form-title">
+        <span>01</span>
+        <h3>Request Demo</h3>
+      </div>
+      <label>
+        Name
+        <input name="name" autocomplete="name" required minlength="2" />
+      </label>
+      <label>
+        Work email
+        <input name="email" type="email" autocomplete="email" required />
+      </label>
+      <label>
+        Company
+        <input name="company" autocomplete="organization" required />
+      </label>
+      <label>
+        Primary interest
+        <select name="interest">
+          <option>Data protection automation</option>
+          <option>External collaboration control</option>
+          <option>Compliance reporting</option>
+          <option>Platform integrations</option>
+        </select>
+      </label>
+      <button class="btn btn-primary" type="submit">Request Demo</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <form class="lead-form reveal" id="contact" data-endpoint="/api/contact">
+      <div class="form-title">
+        <span>02</span>
+        <h3>Contact</h3>
+      </div>
+      <label>
+        Name
+        <input name="name" autocomplete="name" required minlength="2" />
+      </label>
+      <label>
+        Work email
+        <input name="email" type="email" autocomplete="email" required />
+      </label>
+      <label>
+        Role
+        <input name="role" autocomplete="organization-title" />
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button class="btn btn-ghost" type="submit">Send Message</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>

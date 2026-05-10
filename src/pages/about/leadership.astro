@@ -1,0 +1,910 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const leaders = [
+  {
+    name: "Vishal Gauri",
+    role: "Chief Executive Officer",
+    image: "https://www.seclore.com/wp-content/uploads/Vishal-Gauri-900x900-1.jpg",
+    bio: "As CEO, Vishal drives direction and stakeholder management for the company at large. An experienced business leader and entrepreneur, having built successful companies in his prior roles, Vishal holds a PhD from the Ohio State University and a Bachelor of Technology degree from IIT Delhi."
+  },
+  {
+    name: "Parag Shah",
+    role: "Chief Financial Officer",
+    image: "https://www.seclore.com/wp-content/uploads/2025/01/Parag-Shah.jpeg",
+    bio: "As Global CFO, Parag leads the finance and legal functions at Seclore, he also oversees strategic initiatives such as global capital raising, corporate restructuring, complex procurement projects and acquisition opportunities."
+  },
+  {
+    name: "Justin Endres",
+    role: "Chief Revenue Officer",
+    image: "https://www.seclore.com/wp-content/uploads/2025/01/Justin-Endres.jpeg",
+    bio: "As CRO, Justin drives revenue growth, expanding the company's global market presence, and deepens channel relationships. Prior to joining Seclore, Justin held executive roles at prominent cybersecurity companies."
+  },
+  {
+    name: "Isaac Roybal",
+    role: "Chief Marketing Officer",
+    image: "https://www.seclore.com/wp-content/uploads/Isaac-Roybal-2025.jpg",
+    bio: "As Chief Marketing Officer, Isaac leads Seclore's messaging, go-to-market strategy and execution, brand awareness, and demand generation."
+  },
+  {
+    name: "Shraddha Reghe",
+    role: "VP of People Practices",
+    image: "https://www.seclore.com/wp-content/uploads/2025/01/Shraddha-Reghe-1.jpeg",
+    bio: "As VP of People Practices, Shraddha is responsible for shaping the company's HR approach and leading efforts to make Seclore a great place to work."
+  },
+  {
+    name: "Nilesh Bhojani",
+    role: "Chief Product and Technology Officer",
+    image: "https://www.seclore.com/wp-content/uploads/Nilesh-Bhojani-1.jpg",
+    bio: "As Chief Product and Technology Officer, Nilesh shapes Seclore's long-term product and technology vision, unifying strategy, execution, and innovation."
+  }
+];
+
+const directors = [
+  {
+    name: "Julie Claff",
+    role: "Partner Origami Capital Partners",
+    image: "https://www.seclore.com/wp-content/uploads/2025/01/Julie-Klaff.jpg"
+  },
+  {
+    name: "Rohit Razdan",
+    role: "Founder and Managing Director Tenacity Ventures",
+    image: "https://www.seclore.com/wp-content/uploads/2025/01/Rohit_Razdan.jpg"
+  },
+  {
+    name: "Ron Heinz",
+    role: "Founder and Managing Partner Oquirrh Ventures",
+    image: "https://www.seclore.com/wp-content/uploads/2025/01/Ron-Heinz.jpg"
+  },
+  {
+    name: "Raju Reddy",
+    role: "Executive Vice President for Global Services, Hitachi Consulting",
+    image: "https://www.seclore.com/wp-content/uploads/2025/01/Raju-Reddy.jpg"
+  },
+  {
+    name: "Rahul Chandra",
+    role: "Co-Founder and Managing Director Helion",
+    image: "https://www.seclore.com/wp-content/uploads/2025/01/Rahul-Chandra.jpg"
+  },
+  {
+    name: "Vishal Gauri",
+    role: "Chief Executive Officer",
+    image: "https://www.seclore.com/wp-content/uploads/Vishal-Gauri-900x900-1.jpg",
+    bio: leaders[0].bio
+  }
+];
+
+---
+
+<BaseLayout
+  title="Seclore Leadership | Meet the Team"
+  description="Meet Seclore's leadership team and board of directors."
+>
+  <main id="top" class="leadership-page">
+    <Nav />
+
+    <section class="leadership-hero">
+      <span>Meet the Team</span>
+      <h1>Seclore Leadership</h1>
+      <p>
+        Seclore's leadership team are visionaries, each with a track record of driving successful
+        strategy, building innovative and respected brands all on the foundation of an award winning
+        product customers love.
+      </p>
+    </section>
+
+    <section class="people-list" id="leadership">
+      <h2>Leadership</h2>
+      <div class="people-grid">
+        {leaders.map((person) => (
+          <article class="person-card">
+            <img src={person.image} alt={person.name} loading="lazy" />
+            <div class="person-meta">
+              <div>
+                <h3>{person.name}</h3>
+                <p>{person.role}</p>
+              </div>
+              <div class="person-actions">
+                <a href="#top" aria-label={`${person.name} on LinkedIn`}>in</a>
+                <details>
+                  <summary aria-label={`Read more about ${person.name}`}></summary>
+                  <p>{person.bio}</p>
+                </details>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="pager" aria-label="Leadership carousel controls">
+        <button type="button" aria-label="Previous leader">&larr;</button>
+        <button type="button" aria-label="Next leader">&rarr;</button>
+      </div>
+    </section>
+
+    <section class="people-list directors" id="board">
+      <h2>Board of Directors</h2>
+      <div class="people-grid">
+        {directors.map((person) => (
+          <article class="person-card">
+            <img src={person.image} alt={person.name} loading="lazy" />
+            <div class="person-meta">
+              <div>
+                <h3>{person.name}</h3>
+                <p>{person.role}</p>
+              </div>
+              <div class="person-actions">
+                {person.name === "Vishal Gauri" && <a href="#top" aria-label={`${person.name} on LinkedIn`}>in</a>}
+                {person.bio && (
+                  <details>
+                    <summary aria-label={`Read more about ${person.name}`}></summary>
+                    <p>{person.bio}</p>
+                  </details>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="pager" aria-label="Board carousel controls">
+        <button type="button" aria-label="Previous director">&larr;</button>
+        <button type="button" aria-label="Next director">&rarr;</button>
+      </div>
+    </section>
+
+    <section class="culture-section">
+      <div>
+        <h2>Join a culture that puts people first</h2>
+        <a class="secondary-button" href="#careers">Join Us</a>
+      </div>
+      <img
+        src="https://www.seclore.com/wp-content/uploads/Team-Seclore-fisheye-scaled.jpeg"
+        alt="Seclore team gathered together"
+        loading="lazy"
+      />
+    </section>
+
+    <section class="ready-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#top">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #eff0f2;
+    --paper: #ffffff;
+    --ink: #17151b;
+    --muted: #5d5b63;
+    --purple: #5b2bd7;
+    --pink: #d91f52;
+    --line: rgba(21, 21, 26, 0.24);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --demo-button-bg: #5b2bd7;
+    --demo-button-text: #ffffff;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--ink);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  .leadership-page .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .leadership-page .site-logo {
+    color: var(--purple);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: clamp(14px, 2vw, 28px);
+    text-transform: uppercase;
+  }
+
+  .leadership-page .nav-links,
+  .leadership-page .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .leadership-page .nav-links {
+    flex: 1 1 auto;
+    gap: clamp(18px, 2.2vw, 34px);
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .leadership-page .nav-links > a,
+  .leadership-page .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    gap: 8px;
+    min-height: 68px;
+    padding: 0;
+  }
+
+  .leadership-page .nav-links > a:hover,
+  .leadership-page .nav-trigger:hover,
+  .leadership-page .nav-item:hover .nav-trigger,
+  .leadership-page .nav-item:focus-within .nav-trigger {
+    color: var(--header-text);
+  }
+
+  .leadership-page .nav-item {
+    position: static;
+  }
+
+  .leadership-page .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 8px;
+  }
+
+  .leadership-page .nav-item:hover .nav-caret,
+  .leadership-page .nav-item:focus-within .nav-caret,
+  .leadership-page .nav-item.is-open .nav-caret {
+    transform: rotate(225deg) translateY(-1px);
+  }
+
+  .leadership-page .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .leadership-page .nav-item:hover .mega-menu,
+  .leadership-page .nav-item:focus-within .mega-menu,
+  .leadership-page .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .leadership-page .mega-inner {
+    background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .leadership-page .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .leadership-page .mega-column,
+  .leadership-page .mega-sublinks {
+    display: grid;
+  }
+
+  .leadership-page .mega-column {
+    gap: 10px;
+  }
+
+  .leadership-page .mega-title {
+    color: var(--dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .leadership-page .mega-link,
+  .leadership-page .mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .leadership-page .mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .leadership-page .mega-link strong {
+    color: var(--dropdown-text);
+  }
+
+  .leadership-page .mega-link small,
+  .leadership-page .mega-sublinks a {
+    color: var(--dropdown-muted);
+  }
+
+  .leadership-page .mega-link:hover,
+  .leadership-page .mega-link-group:hover {
+    background: var(--dropdown-link-hover);
+    border-color: var(--dropdown-link-border);
+  }
+
+  .leadership-page .mega-link-group {
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .leadership-page .mega-sublinks {
+    gap: 2px;
+    padding: 0 9px 8px 22px;
+  }
+
+  .leadership-page .mega-sublinks a {
+    font-size: 0.84rem;
+    padding: 5px 0;
+  }
+
+  .leadership-page .mega-feature {
+    align-content: end;
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .leadership-page .mega-feature span,
+  .leadership-page .mega-feature em {
+    color: var(--dropdown-title);
+  }
+
+  .leadership-page .mega-feature strong {
+    color: var(--dropdown-text);
+    font-size: 1.35rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .leadership-page .nav-utilities {
+    flex: 0 0 auto;
+    gap: clamp(12px, 1.5vw, 20px);
+    margin-left: clamp(12px, 2vw, 28px);
+  }
+
+  .leadership-page .utility-link,
+  .leadership-page .language-button,
+  .leadership-page .utility-icon,
+  .leadership-page .theme-toggle {
+    display: none;
+  }
+
+  .leadership-page .demo-button,
+  .primary-button,
+  .secondary-button {
+    align-items: center;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.86rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+  }
+
+  .leadership-page .demo-button,
+  .primary-button {
+    background: var(--purple);
+    color: #ffffff;
+  }
+
+  .secondary-button {
+    background: var(--pink);
+    color: #ffffff;
+  }
+
+  .leadership-page .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .leadership-page .nav-toggle span {
+    background: var(--header-text);
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  .leadership-page h1,
+  .leadership-page h2,
+  .leadership-page h3,
+  .leadership-page p {
+    margin-top: 0;
+  }
+
+  .leadership-page h1,
+  .leadership-page h2,
+  .leadership-page h3 {
+    color: var(--ink);
+    font-weight: 430;
+    letter-spacing: 0;
+  }
+
+  .leadership-hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 16% 76%, rgba(255, 255, 255, 0.35), transparent 31%),
+      linear-gradient(135deg, #c882e8 0%, #8925f5 44%, #5f0de8 100%);
+    color: #ffffff;
+    display: grid;
+    min-height: 455px;
+    padding: 88px clamp(18px, 4vw, 56px);
+    place-items: center;
+    text-align: center;
+  }
+
+  .leadership-hero span {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 900;
+    margin-bottom: 28px;
+  }
+
+  .leadership-hero h1 {
+    color: #ffffff;
+    font-size: clamp(3.3rem, 7vw, 5.9rem);
+    line-height: 1;
+    margin-bottom: 28px;
+  }
+
+  .leadership-hero p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.58;
+    margin: 0 auto;
+    max-width: 1080px;
+  }
+
+  .people-list {
+    padding: clamp(42px, 6vw, 72px) clamp(18px, 4vw, 56px) 26px;
+  }
+
+  .people-list h2,
+  .culture-section h2 {
+    font-size: clamp(2.7rem, 5.2vw, 4.4rem);
+    line-height: 1;
+    margin-bottom: 30px;
+  }
+
+  .people-grid {
+    display: grid;
+    gap: 48px clamp(58px, 12vw, 170px);
+    grid-template-columns: repeat(2, minmax(0, 330px));
+  }
+
+  .person-card {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 24px;
+  }
+
+  .person-card img {
+    aspect-ratio: 1 / 1;
+    border-radius: 7px;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+    width: 100%;
+  }
+
+  .person-meta {
+    align-items: start;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .person-meta h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .person-meta p {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .person-actions {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 14px;
+  }
+
+  .person-actions > a {
+    align-items: center;
+    background: #343236;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 0.78rem;
+    font-weight: 900;
+    height: 20px;
+    justify-content: center;
+    width: 20px;
+  }
+
+  .person-actions details {
+    position: relative;
+  }
+
+  .person-actions summary {
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    list-style: none;
+    position: relative;
+    width: 20px;
+  }
+
+  .person-actions summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .person-actions summary::before {
+    border-bottom: 2px solid #38343b;
+    border-right: 2px solid #38343b;
+    content: "";
+    height: 8px;
+    left: 5px;
+    position: absolute;
+    top: 4px;
+    transform: rotate(45deg);
+    width: 8px;
+  }
+
+  .person-actions details[open] summary::before {
+    top: 8px;
+    transform: rotate(225deg);
+  }
+
+  .person-actions details p {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    box-shadow: 0 16px 40px rgba(20, 18, 24, 0.12);
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.45;
+    padding: 14px;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    width: min(300px, 74vw);
+    z-index: 4;
+  }
+
+  .pager {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .pager button {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: #55515a;
+    height: 42px;
+    width: 42px;
+  }
+
+  .directors {
+    padding-top: 10px;
+  }
+
+  .culture-section {
+    align-items: center;
+    background: #ffffff;
+    display: grid;
+    gap: clamp(28px, 5vw, 72px);
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+    margin-top: clamp(52px, 7vw, 90px);
+    min-height: 410px;
+    padding: clamp(56px, 7vw, 90px) clamp(18px, 4vw, 56px);
+  }
+
+  .culture-section div {
+    max-width: 560px;
+  }
+
+  .culture-section img {
+    border-radius: 8px;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .ready-section,
+  .leadership-footer {
+    background: #ffffff;
+    padding-inline: clamp(18px, 4vw, 56px);
+  }
+
+  .ready-section {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 44px;
+    padding-top: 42px;
+  }
+
+  .ready-section h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 10px;
+  }
+
+  .ready-section p,
+  .leadership-footer p {
+    color: var(--muted);
+    line-height: 1.58;
+  }
+
+  .ready-section .primary-button {
+    margin-top: 24px;
+    min-width: 170px;
+  }
+
+  .leadership-footer {
+    padding-bottom: 42px;
+  }
+
+  .footer-lines {
+    border-block: 1px solid var(--line);
+    margin-bottom: 36px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .footer-lines details:last-child {
+    border-bottom: 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 850;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 9px;
+    margin: 30px 0;
+    max-width: 180px;
+  }
+
+  .store-row span {
+    background: #19121f;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 850;
+    padding: 10px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 26px;
+  }
+
+  .social-row a {
+    color: #303038;
+    font-weight: 900;
+  }
+
+  .legal {
+    font-size: 0.9rem;
+    margin-top: 24px;
+  }
+
+  .legal a {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1180px) {
+    .leadership-page .site-header {
+      flex-wrap: wrap;
+    }
+
+    .leadership-page .site-logo {
+      order: 0;
+    }
+
+    .leadership-page .nav-toggle {
+      display: block;
+      margin-left: auto;
+      order: 1;
+    }
+
+    .leadership-page .nav-links {
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      order: 2;
+      padding: 10px 0 14px;
+    }
+
+    .leadership-page .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .leadership-page .nav-links > a,
+    .leadership-page .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .leadership-page .nav-item {
+      display: grid;
+    }
+
+    .leadership-page .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .leadership-page .nav-item:hover .mega-menu,
+    .leadership-page .nav-item:focus-within .mega-menu {
+      display: none;
+    }
+
+    .leadership-page .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .leadership-page .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .leadership-page .nav-utilities {
+      align-items: stretch;
+      display: flex;
+      margin-left: auto;
+      order: 0;
+    }
+  }
+
+  @media (max-width: 780px) {
+    .people-grid {
+      gap: 38px 56px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .culture-section {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .leadership-hero {
+      min-height: 420px;
+      padding-top: 76px;
+    }
+
+    .leadership-hero h1 {
+      font-size: 3.25rem;
+    }
+
+    .people-list {
+      padding-inline: 16px;
+    }
+
+    .people-grid {
+      gap: 34px 36px;
+    }
+
+    .person-meta {
+      align-items: start;
+      gap: 10px;
+    }
+
+    .person-actions {
+      gap: 8px;
+    }
+
+    .person-meta h3 {
+      font-size: 0.9rem;
+    }
+
+    .person-meta p {
+      font-size: 0.78rem;
+    }
+
+    .culture-section,
+    .ready-section,
+    .leadership-footer {
+      padding-inline: 16px;
+    }
+  }
+</style>

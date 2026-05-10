@@ -1,0 +1,358 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const scaleCards = [
+  {
+    title: "Enterprise-scale protection",
+    text: "Automate protection workflows to achieve security throughout the enterprise. Handle huge workloads, protect legacy and bulk data, and stay secure.",
+    icon: "scale"
+  },
+  {
+    title: "Automation to reduce dependency on employees",
+    text: "Automate protection to standardize data security processes and reduce your dependency on employees for sensitivity and security control decisions.",
+    icon: "automation"
+  },
+  {
+    title: "Robust integrations",
+    text: "Integrate Seclore with multiple enterprise applications and security tools to achieve your desired outcomes -- security and compliance that's aligned with enterprise goals.",
+    icon: "plug"
+  }
+];
+
+const solutionCards = [
+  {
+    title: "APIs and SDKs",
+    text: "Integration with Seclore is seamless with APIs, SDKs, and documentation designed for ease of use, to help enterprises achieve security at scale.",
+    icon: "code"
+  },
+  {
+    title: "Policy federation & permission management",
+    text: "Seamlessly connect with your enterprise applications, federating permissions in real time so security stays effortless, automatic, and always up to date.",
+    icon: "policy"
+  },
+  {
+    title: "Activity report access for SIEM and reporting",
+    text: "Seclore offers the ability for management information systems (MIS) and enterprise business intelligence (BI) tools to consume activity reports through multiple mechanisms.",
+    icon: "chart"
+  },
+  {
+    title: "Professional services",
+    text: "Seclore's consulting and professional services team has a combined 50+ years of experience integrating Seclore with enterprise applications, and we are always ready to help with your integration needs from requirement discovery & definition to solution design and custom integration development.",
+    icon: "support",
+    cta: "Learn More"
+  }
+];
+---
+
+<BaseLayout
+  title="Custom Integrations | Seclore"
+  description="Integrate Seclore data-centric security with enterprise applications and security tools using APIs, SDKs, policy federation, and professional services."
+>
+  <main id="top" class="custom-page">
+    <Nav />
+
+    <section class="product-hero">
+      <span>Integrations</span>
+      <h1>Integrate Data-Centric Security with any Enterprise Application or Security Tool</h1>
+      <p>
+        Seclore integrates seamlessly with any enterprise application or security tool whether it's
+        homegrown or commercial, enabling enterprises to automatically classify, protect, and track
+        their sensitive, regulated data and IP based on enterprise security and compliance policies.
+      </p>
+      <a class="primary-button" href="#demo">Book a Demo</a>
+    </section>
+
+    <section class="intro-section">
+      <div class="photo-card">
+        <img src="/images/platform/custom-integrations/custom-integrations-lead.png" alt="Team collaborating in an office with workflow applications" loading="lazy" />
+      </div>
+      <div class="intro-copy">
+        <h2>Integrate to automate data-centric security</h2>
+        <p>
+          Integrate line of business (LoB) or security applications with Seclore's Orchestration
+          layer through robust APIs and SDKs, and embed data-centric protection directly into
+          workflows without disrupting user productivity.
+        </p>
+        <p>
+          End users can seamlessly continue using their trusted collaboration apps without altering
+          their workflow, while IT and InfoSec teams benefit from transparent protection that
+          integrates effortlessly with existing security investments.
+        </p>
+      </div>
+    </section>
+
+    <section class="scale-section">
+      <div class="section-heading centered">
+        <h2>Scalable and uniform data-centric security</h2>
+        <p>
+          Seamlessly incorporate Seclore data-centric security into your enterprise collaboration
+          and workflow applications like ERP, HRMS, CRM, PLM, PDM, and procurement management
+          solutions etc. Get more value from your investments in security tools like discovery,
+          classification, SIEM, and reporting by plugging into the Seclore orchestration layer.
+        </p>
+      </div>
+      <div class="scale-grid">
+        {scaleCards.map((card) => (
+          <article class="scale-card">
+            <div class={`hex-icon ${card.icon}`} aria-hidden="true"></div>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="solutions-section">
+      <div class="section-heading centered">
+        <h2>Integrated data-centric security and compliance solutions</h2>
+        <p>
+          Leverage clear documentation and robust support services to incorporate Seclore's
+          data-centric security platform into your organization's data security and compliance
+          operations. Ensure that your most sensitive data is always protected, visible, and under
+          organizational control.
+        </p>
+      </div>
+      <div class="solution-list">
+        {solutionCards.map((card) => (
+          <article class="solution-card">
+            <div class={`line-icon ${card.icon}`} aria-hidden="true"></div>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+            {card.cta && <a class="primary-button small" href="/solutions/professional-services/">{card.cta}</a>}
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="cta-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#top">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f6f6f7;
+    --page-text: #29282d;
+    --purple: #5b2bd7;
+    --purple-dark: #4515c7;
+    --line: #dedee5;
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: #ffffff;
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+  .custom-page h1,
+  .custom-page h2,
+  .custom-page h3,
+  .custom-page p { margin: 0; }
+
+  .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .site-logo { color: var(--purple); font-size: 1.35rem; font-weight: 950; letter-spacing: 0.04em; margin-right: clamp(14px, 2vw, 28px); text-transform: uppercase; }
+  .nav-links, .nav-utilities { align-items: center; display: flex; }
+  .nav-links { flex: 1 1 auto; gap: clamp(18px, 2.2vw, 34px); justify-content: center; min-width: 0; }
+  .nav-links > a, .nav-trigger { align-items: center; background: transparent; border: 0; color: var(--header-muted); cursor: pointer; display: inline-flex; font-size: 0.98rem; font-weight: 800; gap: 8px; min-height: 68px; padding: 0; }
+  .nav-links > a:hover, .nav-trigger:hover, .nav-item:hover .nav-trigger, .nav-item:focus-within .nav-trigger { color: var(--header-text); }
+  .nav-item { position: static; }
+  .nav-caret { border-bottom: 2px solid currentColor; border-right: 2px solid currentColor; display: inline-block; height: 8px; transform: rotate(45deg) translateY(-2px); transition: transform 180ms ease; width: 8px; }
+  .nav-item:hover .nav-caret, .nav-item:focus-within .nav-caret, .nav-item.is-open .nav-caret { transform: rotate(225deg) translateY(-1px); }
+  .mega-menu { left: 22px; opacity: 0; pointer-events: none; position: absolute; right: clamp(20px, 4vw, 42px); top: calc(100% - 1px); transform: translateY(12px); transition: opacity 180ms ease, transform 180ms ease; }
+  .nav-item:hover .mega-menu, .nav-item:focus-within .mega-menu, .nav-item.is-open .mega-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .mega-inner { background: var(--dropdown-bg); border: 1px solid var(--dropdown-border); border-radius: 8px; box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2); display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr) 320px; min-height: 320px; overflow: hidden; padding: 26px; }
+  .mega-columns { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+  .mega-column, .mega-sublinks { display: grid; }
+  .mega-column { gap: 10px; }
+  .mega-title { color: var(--dropdown-title); font-size: 0.76rem; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; }
+  .mega-link, .mega-link-group { border: 1px solid transparent; border-radius: 8px; }
+  .mega-link { display: grid; gap: 5px; padding: 13px; }
+  .mega-link strong { color: var(--dropdown-text); }
+  .mega-link small, .mega-sublinks a { color: var(--dropdown-muted); }
+  .mega-link:hover, .mega-link-group:hover { background: var(--dropdown-link-hover); border-color: var(--dropdown-link-border); }
+  .mega-link-group { display: grid; gap: 4px; padding: 4px; }
+  .mega-sublinks { gap: 2px; padding: 0 9px 8px 22px; }
+  .mega-sublinks a { font-size: 0.84rem; padding: 5px 0; }
+  .mega-feature { align-content: end; background: var(--dropdown-feature-bg); border: 1px solid var(--dropdown-feature-border); border-radius: 8px; display: grid; min-height: 268px; padding: 24px; }
+  .mega-feature span, .mega-feature em { color: var(--dropdown-title); }
+  .mega-feature strong { color: var(--dropdown-text); font-size: 1.35rem; line-height: 1.18; margin-top: auto; }
+  .nav-utilities { flex: 0 0 auto; gap: clamp(12px, 1.5vw, 20px); margin-left: clamp(12px, 2vw, 28px); }
+  .utility-link, .language-button, .utility-icon, .theme-toggle { color: var(--header-muted); display: none; font-size: 0.88rem; font-weight: 750; }
+  .demo-button, .primary-button { align-items: center; background: linear-gradient(135deg, var(--purple), var(--purple-dark)); border: 0; border-radius: 7px; color: #fff; cursor: pointer; display: inline-flex; font-size: 0.9rem; font-weight: 850; justify-content: center; min-height: 40px; padding: 0 18px; }
+  .primary-button.small { font-size: 0.82rem; min-height: 34px; padding-inline: 14px; width: max-content; }
+  .nav-toggle { background: transparent; border: 0; display: none; height: 42px; width: 42px; }
+  .nav-toggle span { background: var(--header-text); display: block; height: 2px; margin: 6px 0; width: 24px; }
+
+  .product-hero {
+    align-items: center;
+    background: radial-gradient(circle at 16% 82%, rgba(229, 175, 245, 0.86), transparent 36%), linear-gradient(125deg, #8736df 0%, #7d2dea 45%, #4a04dc 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 665px;
+    padding: 130px 20px 105px;
+    text-align: center;
+  }
+
+  .product-hero span { font-size: 0.86rem; font-weight: 850; margin-bottom: 2rem; }
+  .product-hero h1 { font-size: clamp(3rem, 6.8vw, 5.75rem); font-weight: 500; letter-spacing: 0; line-height: 1.03; max-width: 1120px; }
+  .product-hero p { font-size: clamp(0.98rem, 1.5vw, 1.15rem); line-height: 1.55; margin: 2.35rem auto 2.1rem; max-width: 1140px; }
+
+  .intro-section {
+    align-items: center;
+    background: #fff;
+    display: grid;
+    gap: clamp(3rem, 8vw, 8.5rem);
+    grid-template-columns: minmax(260px, 0.95fr) minmax(310px, 0.95fr);
+    margin: 0 auto;
+    max-width: 1120px;
+    padding: 142px 30px 150px;
+  }
+
+  .photo-card { align-self: center; aspect-ratio: 1.37; border-radius: 18px; overflow: hidden; }
+  .photo-card img { display: block; height: 100%; object-fit: cover; width: 100%; }
+  .intro-copy h2,
+  .section-heading h2 { color: #333136; font-size: clamp(2.25rem, 4.1vw, 4rem); font-weight: 500; letter-spacing: 0; line-height: 1.06; }
+  .intro-copy p { color: #1d1c24; font-size: 1.05rem; line-height: 1.66; margin-top: 2.1rem; }
+
+  .scale-section { background: #f4f4f5; padding: 86px 30px 108px; }
+  .solutions-section { background: #fff; padding: 112px 30px 118px; }
+  .section-heading.centered { margin: 0 auto; max-width: 1040px; text-align: center; }
+  .section-heading p { color: #292931; font-size: 1.02rem; line-height: 1.55; margin: 1.8rem auto 0; max-width: 1030px; }
+
+  .scale-grid {
+    display: grid;
+    gap: 34px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 62px auto 0;
+    max-width: 1120px;
+  }
+
+  .scale-card,
+  .solution-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+
+  .scale-card { min-height: 390px; padding: 46px 38px 42px; }
+  .scale-card h3 { color: #0d0d14; font-size: clamp(1.85rem, 3vw, 2.45rem); font-weight: 600; line-height: 1.02; margin-top: 1.7rem; }
+  .scale-card p { color: #30313a; font-size: 1rem; line-height: 1.62; margin-top: 1.8rem; }
+
+  .hex-icon { align-items: center; border-radius: 20px; display: flex; height: 72px; justify-content: center; position: relative; width: 72px; }
+  .hex-icon::before { background: #f9d997; clip-path: polygon(25% 4%, 75% 4%, 100% 50%, 75% 96%, 25% 96%, 0 50%); content: ""; inset: 0; position: absolute; }
+  .hex-icon.automation::before { background: var(--purple); }
+  .hex-icon.plug::before { background: #ffcfa5; }
+  .hex-icon::after { content: ""; position: absolute; }
+  .hex-icon.scale::after { border: 3px solid #fff; border-left: 0; border-top: 0; height: 22px; transform: rotate(-45deg); width: 22px; }
+  .hex-icon.automation::after { border: 3px solid #fff; border-radius: 6px; height: 26px; width: 26px; }
+  .hex-icon.plug::after { border: 3px solid #fff; border-radius: 999px; height: 28px; width: 28px; }
+
+  .solution-list { display: grid; gap: 30px; margin: 62px auto 0; max-width: 1120px; }
+  .solution-card { padding: 38px 38px 40px; }
+  .solution-card h3 { color: #15141d; font-size: 1.45rem; font-weight: 500; margin-top: 1.7rem; }
+  .solution-card p { color: #30313a; font-size: 1rem; line-height: 1.62; margin-top: 1.4rem; }
+  .solution-card .primary-button { margin-top: 1.5rem; }
+
+  .line-icon { height: 46px; position: relative; width: 46px; }
+  .line-icon::before,
+  .line-icon::after { content: ""; position: absolute; }
+  .line-icon.code::before { border: 4px solid var(--purple); border-radius: 4px; height: 29px; left: 4px; top: 6px; width: 36px; }
+  .line-icon.code::after { border-bottom: 4px solid #ef8d29; border-left: 4px solid #ef8d29; height: 13px; left: 16px; top: 13px; transform: rotate(45deg); width: 13px; }
+  .line-icon.policy::before { border: 4px solid var(--purple); border-radius: 6px; height: 33px; left: 6px; top: 5px; width: 27px; }
+  .line-icon.policy::after { border: 4px solid #ef8d29; border-radius: 50%; height: 13px; right: 2px; top: 1px; width: 13px; }
+  .line-icon.chart::before { border-bottom: 4px solid var(--purple); border-left: 4px solid var(--purple); height: 32px; left: 5px; top: 5px; width: 32px; }
+  .line-icon.chart::after { background: linear-gradient(90deg, #ef8d29 0 6px, transparent 6px 11px, var(--purple) 11px 17px, transparent 17px 22px, #7bb4ff 22px 28px); bottom: 9px; height: 28px; left: 13px; width: 28px; }
+  .line-icon.support::before { border: 4px solid var(--purple); border-bottom: 0; border-radius: 20px 20px 0 0; height: 25px; left: 6px; top: 4px; width: 31px; }
+  .line-icon.support::after { border: 4px solid #ef8d29; border-radius: 4px; box-shadow: 30px 0 0 -4px #fff, 30px 0 0 0 #ef8d29; height: 18px; left: 2px; top: 22px; width: 10px; }
+
+  .cta-section { background: #fff; padding: 55px 30px 65px; }
+  .cta-section h2,
+  .cta-section p,
+  .cta-section a { margin-left: auto; margin-right: auto; max-width: 1120px; }
+  .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 500; }
+  .cta-section p { color: #92939b; font-size: 1.16rem; line-height: 1.55; margin-top: 0.8rem; }
+  .cta-section .primary-button { margin-top: 2rem; }
+
+  .site-footer { background: #fff; color: #5f626b; padding: 0 30px 55px; }
+  .site-footer > * { margin-left: auto; margin-right: auto; max-width: 1120px; }
+  .footer-lines { border-top: 1px solid #cfcfd4; }
+  .footer-lines details { border-bottom: 1px solid #cfcfd4; color: #22222b; padding: 1.35rem 0; }
+  .footer-lines summary { cursor: pointer; font-size: 1.18rem; font-weight: 800; }
+  .footer-lines p { color: #656873; line-height: 1.6; margin-top: 0.75rem; }
+  .footer-logo { color: #5b2bd7; display: block; font-size: 2rem; font-weight: 900; letter-spacing: 1px; margin-top: 2.4rem; text-transform: uppercase; }
+  .site-footer p { font-size: 1.05rem; line-height: 1.65; margin-top: 1.4rem; }
+  .store-row { display: flex; flex-direction: column; gap: 10px; margin-top: 2.4rem; }
+  .store-row span { align-items: center; background: #17101b; border-radius: 6px; color: #fff; display: inline-flex; font-size: 0.9rem; font-weight: 800; height: 40px; justify-content: center; width: 168px; }
+  .social-row { border-top: 1px solid #d1d1d6; padding-top: 1.7rem; }
+  .legal a { text-decoration: underline; }
+
+  @media (max-width: 1280px) {
+    .nav-toggle { display: block; margin-left: 12px; order: 1; }
+    .site-header { flex-wrap: wrap; }
+    .site-logo { order: 0; }
+    .nav-links { background: var(--header-bg); border-top: 1px solid var(--header-border); display: none; flex: 1 0 100%; order: 2; padding: 10px 0 14px; }
+    .nav-links.open { align-items: stretch; display: grid; }
+    .nav-links > a, .nav-trigger { justify-content: space-between; min-height: 48px; width: 100%; }
+    .nav-item { display: grid; }
+    .mega-menu { display: none; opacity: 1; position: static; transform: none; }
+    .nav-item:hover .mega-menu, .nav-item:focus-within .mega-menu { display: none; }
+    .nav-item.is-open .mega-menu { display: block; }
+    .mega-inner { box-shadow: none; grid-template-columns: 1fr; min-height: 0; padding: 16px; }
+    .nav-utilities { align-items: stretch; display: flex; margin-left: auto; order: 0; }
+  }
+
+  @media (max-width: 900px) {
+    .product-hero { min-height: 560px; padding: 105px 20px 90px; }
+    .intro-section { gap: 3rem; grid-template-columns: 1fr; padding: 85px 20px; }
+    .photo-card { max-width: 460px; }
+    .scale-grid { grid-template-columns: 1fr; }
+    .scale-section,
+    .solutions-section { padding: 72px 20px; }
+    .scale-card { min-height: 0; padding: 34px 28px; }
+    .solution-card { padding: 32px 28px; }
+  }
+
+  @media (max-width: 560px) {
+    .product-hero h1 { font-size: 2.54rem; }
+    .intro-copy h2,
+    .section-heading h2 { font-size: 2.15rem; }
+  }
+</style>

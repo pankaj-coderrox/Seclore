@@ -1,0 +1,919 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const releases = [
+  {
+    date: "01 May 2026",
+    version: "3.34.5.0",
+    summary: [
+      "Fixed the issue where users received unexpected pop-ups while editing SAP Work Orders."
+    ],
+    components: ["Seclore for Windows 3.23.6.1"]
+  },
+  {
+    date: "01 Mar 2026",
+    version: "3.34.3.0",
+    summary: [
+      "Emails classified with Seclore Digital Asset Classification (DAC) will now be sent only when all attachments are classified.",
+      "Improved the efficiency of handling content policies in Seclore DAC while ensuring Excel performance is not hampered.",
+      "Added centralized suppression of the Seclore Outlook add-in for Exchange Online to prevent email-sending disruptions caused by browser or API changes.",
+      "Added support for browser-enforced local network access constraints.",
+      "Other fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.23.6.0",
+      "Seclore for Mac 3.9.14.0",
+      "Outlook Add-in for Exchange Online 3.1.1",
+      "Seclore for Android 3.18.0000.0",
+      "Seclore for Android-Intune 3.18.0004.0"
+    ]
+  },
+  {
+    date: "15 Feb 2026",
+    version: "3.34.2.0",
+    summary: [
+      "Fixed the issue where protected and unprotected Office files opened from SharePoint or OneDrive sync folders closed unexpectedly immediately after opening.",
+      "Enhanced Classification Migration to support files manually labeled with Seclore DAC after prior third-party classification.",
+      "Administrators can now configure recurring Classification Migration cycles through component configuration in the Policy Server portal."
+    ],
+    components: ["Seclore for Windows 3.23.5.0", "Classification Migration 3.1.0.0"]
+  },
+  {
+    date: "15 Jan 2026",
+    version: "3.34.1.0",
+    summary: ["Other fixes and upgrades."],
+    components: ["Seclore for Windows 3.23.4.0"]
+  },
+  {
+    date: "01 Jan 2026",
+    version: "3.34.0.0",
+    summary: [
+      "Added support for Adobe Acrobat 2024 to open protected PDF files without detached natively.",
+      "Improved stability of Seclore for Windows.",
+      "Upgraded Xcode and Intune wrapper versions.",
+      "The Insights dashboard now treats email domains as identical regardless of letter case, ensuring all users from the same domain are grouped together.",
+      "Added support for Apache Tomcat 9.0.111 in Policy Server, Seclore Online, Lite Viewer, Small Renderer and Document Server.",
+      "Directory SSO auto sign-in is now configurable via the Policy Server UI.",
+      "Other fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.23.3.0",
+      "Seclore for Mac 3.9.13.0",
+      "Seclore for iOS 3.19.0000",
+      "Seclore for iOS-Intune 3.19.0004",
+      "Seclore for Android 3.17.0000.0",
+      "Seclore for Android-Intune 3.17.0004.0",
+      "Policy Server 3.171.1.0",
+      "Seclore Online 3.86.0"
+    ]
+  },
+  {
+    date: "15 Dec 2025",
+    version: "3.33.2.0",
+    summary: [
+      "Fixed the issue where Office files were crashing when opened from SharePoint and OneDrive synced folders. Office files, both unprotected and protected, now open successfully, allowing uninterrupted access to files from Microsoft Office Monthly Enterprise Channel."
+    ],
+    components: ["Seclore for Windows 3.23.2.0"]
+  },
+  {
+    date: "1 Dec 2025",
+    version: "3.33.1.0",
+    summary: [
+      "Fixed the issue where Office files were crashing when opened from OneDrive and SharePoint synced folders.",
+      "Other fixes and upgrades."
+    ],
+    components: ["Seclore for Windows 3.23.1.0"]
+  },
+  {
+    date: "15 Nov 2025",
+    version: "3.33.0.0",
+    summary: [
+      "Seclore Digital Asset Classification Ribbon in Office applications is now configurable to display as a dropdown menu.",
+      "Seclore for iOS - Intune version is now available on the App Store for all users to download.",
+      "Improved the Agent installation report on Mac by improving data reporting and capturing additional data for components in the installation report.",
+      "Other fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.23.0.0",
+      "Seclore for iOS-Intune 3.18.01004",
+      "Seclore for Mac 3.9.12.0"
+    ]
+  },
+  {
+    date: "01 Nov 2025",
+    version: "3.32.7.0",
+    summary: [
+      "Optimized the initialization flow of DPM and DAC plugins to improve file opening performance in Microsoft Office applications.",
+      "Fixed an issue where unprotected PowerPoint files failed to open from a OneDrive Sync Folder when a protected file was already open.",
+      "Other fixes and upgrades."
+    ],
+    components: ["Seclore for Windows 3.22.5.0"]
+  },
+  {
+    date: "15 Oct 2025",
+    version: "3.32.6.0",
+    summary: [
+      "Native protected PDFs and HTML wrapped files now open reliably in their native apps on Windows 11.",
+      "Fixed an issue where Word became unresponsive while comparing two Seclore-classified Word files.",
+      "Fixed file explorer crash issues.",
+      "Fixed crash issues with Excel files containing page breaks and watermarks.",
+      "Other fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.22.4.0",
+      "Seclore for O365 3.12.2.0",
+      "Seclore Decryptor for Email 1.2.7.0"
+    ]
+  },
+  {
+    date: "15 Sept 2025",
+    version: "3.32.5.0",
+    summary: [
+      "Added support for Seclore Digital Asset Classification (DAC) in Outlook on the Web for Exchange On-Premises on Windows.",
+      "Fixed the issue where users were unable to open protected PowerPoint files from Microsoft 365 version 2508 and above.",
+      "Added support for DAC with Outlook add-in for On-Premises Exchange Server on macOS.",
+      "Updated status message displayed when user tries to unprotect files that were already unprotected.",
+      "Added support for migrating MIP-classified files to Seclore classification.",
+      "Other fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.22.3.0",
+      "Seclore for Mac 3.9.11.0",
+      "Classification Migration 3.0.4.0"
+    ]
+  },
+  {
+    date: "01 Sept 2025",
+    version: "3.32.4.0",
+    summary: [
+      "Installation reports are now shared more predictably and in real time when patches are downloaded, applied, or installed.",
+      "Added support for SAML 2.0 authentication protocol with authorization support for Active Directory, Azure AD, and FIM repository.",
+      "Added support for Eclipse Temurin Java 21.0.6 by Adoptium.",
+      "Added support for Apache Tomcat 9.0.107.",
+      "Added support for the missing certificate providers in the Seclore certificate store.",
+      "Upgraded Server SDK to support Eclipse Temurin Java 21 by Adoptium.",
+      "Other fixes and upgrades."
+    ],
+    components: [
+      "Policy Server 3.171.0.0",
+      "Seclore Online 3.85.0",
+      "Server SDK - Java 4.4.20.0",
+      "Repository Adaptor Migration Tool 2.1.3",
+      "Seclore for Android 3.16.0000.0",
+      "Seclore for Android-Intune 3.16.0004.0",
+      "Outlook add-in for Exchange Server 3.0",
+      "Seclore for SIEM 1.0.2.0"
+    ]
+  },
+  {
+    date: "01 Aug 2025",
+    version: "3.32.3.0",
+    summary: [
+      "Users can now access Seclore protected neutral CAD files without requiring licensed software through eDrawings Viewer.",
+      "Mac users can now sign in to Seclore directly from the Tray icon, allowing faster and more convenient access.",
+      "Improved the application interface by extending the UI behind system bars on Android.",
+      "Users can now view the version number of the Data Protection portal directly in the UI.",
+      "Added support for Apache Tomcat 9.0.105.",
+      "Added support for Eclipse Temurin Java 17 by Adoptium.",
+      "Other fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.22.2.0",
+      "Policy Server 3.170.0",
+      "Seclore for Mac 3.9.10.0",
+      "Seclore for Android 3.15.0000.0",
+      "Seclore for Android-Intune 3.15.0004.0",
+      "Seclore for SIEM 1.0.1.0",
+      "File Decryption Portal 3.0.3.0",
+      "Data Protection Portal 3.2.4.0",
+      "Repository Adaptor Migration Tool 2.1.2",
+      "Seclore Decryptor for Email 1.2.6.0"
+    ]
+  },
+  {
+    date: "15 July 2025",
+    version: "3.32.2.0",
+    summary: [
+      "Added prerequisites for both MIP and MIP info to a unified preinstall.bat script.",
+      "Fixed the issue where MS Copilot was not being blocked for protected documents on Mac.",
+      "Fixed the issue where protected data cannot be copied through Spotlight, maintaining content security.",
+      "Fixed the issue where files with file following extensions - txt, csv, jpg, png, tif, tiff - were not migrating to Seclore DAC in certain scenarios."
+    ],
+    components: [
+      "Seclore for Windows 3.22.1.0",
+      "Seclore for Mac 3.9.9.0",
+      "Classification Migration 3.0.3.0"
+    ]
+  },
+  {
+    date: "01 July 2025",
+    version: "3.32.1.0",
+    summary: [
+      "Fixed the issue where disabling ActiveX in Office apps triggered a pop-up warning message in Microsoft Outlook.",
+      "Classify Administrators can now update Watermark configurations through the Policy Server portal."
+    ],
+    components: [
+      "Seclore for Windows 3.22.0.2",
+      "Seclore for iOS 3.18.0000",
+      "Seclore for iOS-Intune 3.18.0004",
+      "Policy Server 3.178.0",
+      "Seclore Online 3.84.0",
+      "Seclore for Android-Intune 3.14.0004.0",
+      "Seclore for Android 3.14.0000.0",
+      "Email Auto Protector 3.4.7.0"
+    ]
+  },
+  {
+    date: "15 June 2025",
+    version: "3.32.0.1",
+    summary: ["Bug fixes and upgrades."],
+    components: ["Seclore for Windows 3.22.0.1", "Seclore for Mac 3.9.8.0"]
+  },
+  {
+    date: "01 June 2025",
+    version: "3.32.0.0",
+    summary: [
+      "Optimized the time taken to save protected files for users without screen capture rights when saving the protected file from Outlook.",
+      "Added support for Seclore Digital Asset Classification in Outlook on the Web and New Outlook on Windows using the Outlook Add-in for Exchange Online.",
+      "System Admins can now configure a component that allows users to sign in to the Seclore for iOS app through certificate-based authentication.",
+      "Bug fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.22.0.0",
+      "Seclore for iOS 3.17.0000",
+      "Seclore for iOS-Intune 3.17.00004",
+      "Seclore Decryption Server 3.1.2.0",
+      "Seclore Protector for Network Discoverer",
+      "Outlook Add-in for Exchange Online 3.1"
+    ]
+  },
+  {
+    date: "15 May 2025",
+    version: "3.31.8.0",
+    summary: [
+      "Extended SIEM data integration to include Seclore Digital Asset Classification (DAC) activity logs for enhanced visibility.",
+      "Global Security Administrators can disable the justification prompt when downgrading classification of files or emails or ignoring policy violations.",
+      "Bug fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.21.9.0",
+      "Policy Server 3.177.0",
+      "Seclore Online 3.83.0",
+      "Seclore for SIEM 1.0.0.0",
+      "Seclore for iOS 3.16.0000",
+      "Seclore for iOS-Intune 3.16.0004",
+      "Seclore for O365 3.12.1.0"
+    ]
+  },
+  {
+    date: "01 May 2025",
+    version: "3.31.7.0",
+    summary: [
+      "Added support for certificate-based authentication, allowing users to select a digital certificate instead of entering a password.",
+      "Improved the configuration to apply Seclore protection after the File server Migration label in Seclore protection-enabled document libraries on SharePoint.",
+      "Other fixes."
+    ],
+    components: [
+      "Seclore for Android 3.13.0000.0",
+      "Seclore for Android-Intune 3.13.0004.0",
+      "Seclore for iOS 3.15.0000",
+      "Seclore for iOS-Intune 3.15.0004",
+      "Seclore for O365 3.12.0.0",
+      "Seclore Decryptor for Email 1.2.5.0"
+    ]
+  },
+  {
+    date: "20 Apr 2025",
+    version: "3.31.6.0",
+    summary: [
+      "Global Security Administrators can disable the justification prompt when downgrading classification of files or emails for all users in a certain policy.",
+      "Other fixes."
+    ],
+    components: ["Seclore for Windows 3.21.8.0"]
+  },
+  {
+    date: "01 Apr 2025",
+    version: "3.31.5.0",
+    summary: [
+      "Introducing the ability to configure Microsoft Copilot for protected documents.",
+      "Global Security Administrators can disable the display of the butter bar on classified files and emails by configuring the component on the Policy Server portal.",
+      "Global Security Administrators can enable the display of the butter bar on unclassified emails by configuring the component on the Policy Server portal.",
+      "Classification of emails will now be retained when users reply to or forward classified emails from Mac.",
+      "Introduced an auto-purge feature for deleting activities and audit logs beyond the configured duration.",
+      "Added support for Apache Tomcat 9.0.98.",
+      "Other fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.21.7.0",
+      "Seclore for Mac 3.9.7.0",
+      "Policy Server 3.176.0",
+      "Seclore Online 3.82.0",
+      "Seclore Email Protector for M365 3.3.2.0",
+      "Outlook Add-in for Exchange Online 3.1"
+    ]
+  },
+  {
+    date: "21 Mar 2025",
+    version: "3.31.4.1",
+    summary: ["Bug fixes."],
+    components: ["Seclore for Windows 3.21.6.0", "Seclore for Mac 3.9.6.0"]
+  },
+  {
+    date: "01 Mar 2025",
+    version: "3.31.4.0",
+    summary: [
+      "Email Auto Protector rule name details will now be displayed in the activities report along with the rule ID.",
+      "Added support for Apache Tomcat 9.0.98.",
+      "Added support for Eclipse Temurin Java 17.0.14 by Adoptium.",
+      "Other fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.21.5.0",
+      "Seclore for Mac 3.9.5.0",
+      "Email Auto Protector 3.4.6.0",
+      "Seclore for Forcepoint DLP - Endpoint Protector",
+      "Seclore for Symantec DLP - Endpoint Protector"
+    ]
+  },
+  {
+    date: "01 Feb 2025",
+    version: "3.31.3.0",
+    summary: [
+      "Introducing the configuration to apply Seclore protection after the files are Microsoft labeled in Seclore protection-enabled document libraries on SharePoint.",
+      "Increased the capability of applying patches per instant for enhanced performance.",
+      "Added support for TLS 1.3 and WebView 2.",
+      "Other fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.21.4.0",
+      "Seclore for Mac 3.9.4.0",
+      "Seclore for O365 3.11.0.0",
+      "Server SDK - Java 4.4.18.0",
+      "App Connect Client 3.0.4.0",
+      "App Connect Server 3.0.4.0",
+      "App Connect Client for Windows",
+      "Seclore for Microsoft Sensitivity Labels"
+    ]
+  },
+  {
+    date: "01 Jan 2025",
+    version: "3.31.2.0",
+    summary: [
+      "Optimized the time required for classification policy updates to sync with the Seclore for Windows agent.",
+      "Added support for the missing certificate providers in the Seclore certificate store.",
+      "Added support for TLS version 1.3.",
+      "Upgraded Java to version 17.0.12.",
+      "Bug fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.21.3.0",
+      "Seclore for Mac 3.9.3.0",
+      "Policy Server 3.175.0",
+      "Seclore Online 3.81.0",
+      "Seclore Email Protector for M365 3.3.1.0",
+      "Seclore for Android 3.12.0000.0",
+      "Seclore for Android-Intune 3.12.0004.0",
+      "Seclore for iOS 3.14.0000",
+      "Seclore for iOS-Intune 3.14.0004"
+    ]
+  },
+  {
+    date: "01 Dec 2024",
+    version: "3.31.1.0",
+    summary: [
+      "Users can now send classified emails on Mac through Legacy/New Outlook and Outlook on the Web with Exchange Online when Seclore Digital Asset Classification (DAC) labels are published for them.",
+      "Global Security Administrators and System Administrators can now configure the component to disable email body protection for all users within their organization.",
+      "Bug fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.21.2.0",
+      "Seclore for Mac 3.9.2.0",
+      "Classification Migration 1.0.2.0",
+      "Outlook Add-in for Exchange Online 3.0",
+      "Email Auto Protector 3.4.5.0"
+    ]
+  },
+  {
+    date: "01 Nov 2024",
+    version: "3.31.0.0",
+    summary: [
+      "Global Security Administrators can now disable email body protection for Seclore-protected emails.",
+      "Added support for uploading attachments when users reply to protected emails via browser or mobile devices.",
+      "System Administrators can now configure the Secure Email size limit on the Policy Server portal.",
+      "Improved compatibility with Endpoint security solutions.",
+      "Added support for Apache Tomcat 9.0.93.",
+      "Bug fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.21.1.0",
+      "Policy Server 3.174.0",
+      "Seclore Online 3.80.0",
+      "Seclore Email Protector for M365 3.3.0",
+      "Rebranding Server 1.0.4.0",
+      "Seclore for Android 3.11.0000.0",
+      "Seclore for Android-Intune 3.11.0004.0",
+      "Seclore for iOS 3.13.0000",
+      "Seclore for iOS-Intune 3.13.0004"
+    ]
+  },
+  {
+    date: "01 Oct 2024",
+    version: "3.30.0.0",
+    summary: [
+      "Introducing EDRM protection for Interoperable design format files with granular permissions to ensure control of IP down the supply chain.",
+      "Introducing Seclore Digital Asset Classification (DAC) for Forcepoint DLP Endpoint Discovery and Symantec DLP Endpoint Discovery.",
+      "Bug fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.21.0.0",
+      "Hot Folder 3.3.0.0",
+      "Seclore for Forcepoint DLP - Endpoint Protector",
+      "Seclore for Symantec DLP - Endpoint Protector",
+      "Seclore for Android 3.10.0000.0",
+      "Seclore for Android-Intune 3.10.0004.0",
+      "Seclore Decryptor for Email 1.2.4.0"
+    ]
+  },
+  {
+    date: "01 Sept 2024",
+    version: "3.29.0.0",
+    summary: [
+      "Users will now be able to give permissions on a protected file to all external users at once by sharing permissions with a group named Allow any external user to access.",
+      "Added support for Apache Tomcat 9.0.89.",
+      "Bug fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.20.0.0",
+      "Policy Server 3.173.0",
+      "Seclore for Mac 3.9.1.0",
+      "Seclore Online 3.74.0",
+      "Seclore for O365 3.10.0.0",
+      "Email Auto Protector 3.4.4.0",
+      "Server SDK - Java 4.4.16.0",
+      "Seclore Configurator 3.11.0"
+    ]
+  },
+  {
+    date: "01 Aug 2024",
+    version: "3.28.7.0",
+    summary: [
+      "Added Seclore Digital Asset Classification (DAC) support for Cloud sync files and folders for Windows endpoint.",
+      "Users can now send Seclore protected emails in Outlook on the Web and One Outlook for Windows through the Outlook Send button.",
+      "Bug fixes and upgrades."
+    ],
+    components: [
+      "Seclore for Windows 3.20.7.0",
+      "Classification Migration 1.0.1.0",
+      "Seclore Email Protector for M365 3.2.0"
+    ]
+  },
+  {
+    date: "01 July 2024",
+    version: "3.28.6.0",
+    summary: ["Bug fixes and upgrades.", "Upgraded Java to version 17.0.10+7.", "Upgraded ServerSDK Java to version 4.4.17.0."],
+    components: ["Seclore for Windows 3.20.6.0", "Policy Server 3.172.0", "Seclore Online 3.73.0", "Seclore for Mac 3.9.0.0"]
+  },
+  {
+    date: "01 June 2024",
+    version: "3.28.5.0",
+    summary: ["Bug fixes and upgrades."],
+    components: ["Seclore for Windows 3.20.5.0"]
+  },
+  {
+    date: "15 May 2024",
+    version: "3.28.4.0",
+    summary: ["Bug fixes."],
+    components: ["Seclore for Windows 3.20.4.0"]
+  },
+  {
+    date: "01 May 2024",
+    version: "3.28.3.0",
+    summary: ["Bug fixes."],
+    components: ["Seclore for Windows 3.20.3.0"]
+  },
+  {
+    date: "01 April 2024",
+    version: "3.28.2.0",
+    summary: [
+      "Seclore Digital Asset Classification (DAC) label icon overlay is now visible in the primary label's color for files classified with the top six labels mapped to the user.",
+      "Users can now check status and renew offline access for protected files through the desktop portal of the agent.",
+      "Activities downloaded from Policy Server portal now feature a Country column, offering visibility into the geographical location of user activities.",
+      "Added support for One-Click Access for emails protected through Email Auto Protector.",
+      "Other upgrades and fixes."
+    ],
+    components: [
+      "Seclore for Windows 3.20.2.0",
+      "Policy Server 3.171.0",
+      "Seclore Online 3.72.0",
+      "Server SDK - Java 4.4.17.0",
+      "Email Auto Protector 3.4.3.0",
+      "Seclore Decryptor for Email 1.2.3.0",
+      "Seclore for iOS - Intune 3.12.0004",
+      "Seclore Decryption Server 3.1.1.0"
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Release Notes | Seclore Documentation Portal"
+  description="Release notes for Seclore platform versions and released components."
+>
+  <main class="docs-page">
+    <Nav />
+    <header class="docs-topbar">
+      <button type="button" aria-label="Search documentation">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5" />
+          <path d="m16 16 5 5" />
+        </svg>
+      </button>
+    </header>
+
+    <section class="docs-hero">
+      <div class="hero-copy">
+        <p>Documentation Portal <span>|</span> <strong>SECLORE</strong></p>
+        <nav aria-label="Documentation quick links">
+          <a href="#">Release Announcement</a>
+          <span>|</span>
+          <a href="#">Expected Behavior</a>
+          <span>|</span>
+          <a href="#">Supported Formats</a>
+        </nav>
+      </div>
+      <a class="docs-logo" href="/" aria-label="Seclore home">S</a>
+    </section>
+
+    <article class="release-notes">
+      <h1>Release Notes</h1>
+
+      {releases.map((release) => (
+        <section class="release-entry">
+          <h2>{release.date} (Seclore {release.version})</h2>
+          <div class="release-table">
+            <h3>Release summary</h3>
+            <h3>Components released</h3>
+            <div>
+              <ul>
+                {release.summary.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+            <div>
+              <ul>
+                {release.components.map((item) => (
+                  <li><a href="#">{item}</a></li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      ))}
+    </article>
+
+    <aside class="cookie-banner" id="cookie-banner" aria-label="Cookie notice">
+      <div>
+        <h2>About cookies on this site</h2>
+        <p>
+          We use cookies to collect and analyze information on site performance and usage. By
+          continuing to use our site, you accept our use of cookies.
+          <a href="#">Learn more</a>
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button class="allow-button" type="button" data-cookie-dismiss>ALLOW ALL COOKIES</button>
+        <button class="preference-button" type="button" data-cookie-dismiss>Set cookie preference</button>
+      </div>
+    </aside>
+
+    <script is:inline>
+      const banner = document.querySelector("#cookie-banner");
+      const dismissed = localStorage.getItem("docs-release-cookies");
+      if (dismissed === "accepted") {
+        banner?.remove();
+      }
+      document.querySelectorAll("[data-cookie-dismiss]").forEach((button) => {
+        button.addEventListener("click", () => {
+          localStorage.setItem("docs-release-cookies", "accepted");
+          banner?.remove();
+        });
+      });
+    </script>
+  </main>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    background: #ffffff;
+    color: #202020;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  :global(body::before) {
+    display: none;
+  }
+
+  .docs-page {
+    background: #ffffff;
+    min-height: 100vh;
+  }
+
+  .docs-topbar {
+    align-items: center;
+    background: #ffffff;
+    display: flex;
+    height: 38px;
+    justify-content: flex-end;
+    padding: 0 12px;
+  }
+
+  .docs-topbar button {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #4b4b4b;
+    cursor: pointer;
+    display: inline-flex;
+    height: 28px;
+    justify-content: center;
+    padding: 0;
+    width: 28px;
+  }
+
+  .docs-topbar svg {
+    fill: none;
+    height: 18px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+    width: 18px;
+  }
+
+  .docs-hero {
+    background: #6f35bd;
+    color: #ffffff;
+    height: 190px;
+    position: relative;
+  }
+
+  .hero-copy {
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 64px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  .hero-copy p {
+    color: #ffffff;
+    font-size: 0.96rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1;
+    margin: 0 0 18px;
+  }
+
+  .hero-copy strong {
+    font-size: 1.18rem;
+    letter-spacing: 0;
+  }
+
+  .hero-copy nav {
+    align-items: center;
+    display: flex;
+    gap: 13px;
+    justify-content: center;
+  }
+
+  .hero-copy a,
+  .hero-copy span {
+    color: #ffffff;
+    font-size: 0.82rem;
+  }
+
+  .docs-logo {
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 50%;
+    bottom: -46px;
+    color: #6d35c4;
+    display: inline-flex;
+    font-size: 5.6rem;
+    font-weight: 900;
+    height: 118px;
+    justify-content: center;
+    left: max(34px, calc(50% - 546px));
+    letter-spacing: 0;
+    line-height: 1;
+    position: absolute;
+    width: 118px;
+  }
+
+  .release-notes {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 105px 24px 80px;
+  }
+
+  .release-notes h1 {
+    color: #3c3c3c;
+    font-size: 2.55rem;
+    letter-spacing: 0;
+    line-height: 1.1;
+    margin: 0 0 74px;
+  }
+
+  .release-entry {
+    border-bottom: 1px solid #d8d8d8;
+    margin-bottom: 72px;
+    padding-bottom: 26px;
+  }
+
+  .release-entry h2 {
+    color: #111111;
+    font-size: 1.44rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.2;
+    margin: 0 0 16px;
+  }
+
+  .release-table {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.95fr);
+  }
+
+  .release-table h3 {
+    background: #e5e5e5;
+    color: #111111;
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin: 0;
+    padding: 8px 11px;
+  }
+
+  .release-table div {
+    border-right: 1px solid #e2e2e2;
+    min-height: 44px;
+    padding: 9px 12px 5px;
+  }
+
+  .release-table div:last-child {
+    border-right: 0;
+  }
+
+  .release-table ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .release-table li {
+    color: #1d1d1d;
+    font-size: 0.85rem;
+    line-height: 1.36;
+    margin: 0 0 5px;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .release-table li::before {
+    content: "+";
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .release-table a {
+    color: #555555;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .cookie-banner {
+    align-items: center;
+    background: #ffffff;
+    bottom: 0;
+    box-shadow: 0 -8px 22px rgba(0, 0, 0, 0.14);
+    display: grid;
+    gap: 22px;
+    grid-template-columns: 1fr auto;
+    left: 0;
+    padding: 18px 42px;
+    position: fixed;
+    right: 0;
+    z-index: 30;
+  }
+
+  .cookie-banner h2 {
+    color: #242424;
+    font-size: 1rem;
+    line-height: 1.2;
+    margin: 0 0 6px;
+  }
+
+  .cookie-banner p {
+    color: #222222;
+    font-size: 0.86rem;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .cookie-banner a {
+    color: #1f4f74;
+    margin-left: 4px;
+    text-decoration: underline;
+  }
+
+  .cookie-actions {
+    align-items: center;
+    display: flex;
+    gap: 18px;
+  }
+
+  .cookie-actions button {
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 700;
+    min-height: 40px;
+    padding: 0 21px;
+  }
+
+  .allow-button {
+    background: #2d6070;
+    border: 1px solid #2d6070;
+    color: #ffffff;
+  }
+
+  .preference-button {
+    background: #ffffff;
+    border: 0;
+    color: #333333;
+  }
+
+  @media (max-width: 760px) {
+    .docs-hero {
+      height: 170px;
+    }
+
+    .hero-copy {
+      left: 24px;
+      right: 24px;
+      transform: none;
+      white-space: normal;
+    }
+
+    .hero-copy nav {
+      flex-wrap: wrap;
+      row-gap: 8px;
+    }
+
+    .docs-logo {
+      height: 86px;
+      left: 24px;
+      width: 86px;
+      font-size: 4rem;
+    }
+
+    .release-notes {
+      padding-top: 82px;
+    }
+
+    .release-notes h1 {
+      font-size: 2.1rem;
+      margin-bottom: 50px;
+    }
+
+    .release-entry {
+      margin-bottom: 52px;
+    }
+
+    .release-table {
+      grid-template-columns: 1fr;
+    }
+
+    .release-table h3:nth-of-type(2) {
+      margin-top: 14px;
+    }
+
+    .release-table div {
+      border-right: 0;
+    }
+
+    .cookie-banner {
+      align-items: stretch;
+      grid-template-columns: 1fr;
+      padding: 18px;
+    }
+
+    .cookie-actions {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+</style>

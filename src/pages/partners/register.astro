@@ -1,0 +1,534 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "http://127.0.0.1:5000";
+
+const portalReasons = [
+  "Manage and secure sensitive information seamlessly.",
+  "Stay ahead with the latest trends and insights in data-centric security.",
+  "Leverage Seclore's innovative tools to meet evolving security challenges."
+];
+
+const accessItems = [
+  "An introduction to data-centric security.",
+  "Key trends and challenges in information protection.",
+  "Insights into Seclore's approach to securing your data."
+];
+
+---
+
+<BaseLayout
+  title="Become a Partner | seclore"
+  description="Become a Seclore partner and request access to the partner portal for resources, insights, and data-centric security tools."
+>
+  <main class="register-page" id="top">
+    <Nav />
+    <header class="simple-header">
+      <a class="simple-logo" href="/partners/" aria-label="Seclore partners">seclore</a>
+      <div class="header-actions">
+        <a class="demo-button" href="#demo">Book a Demo</a>
+        <button class="hamburger" type="button" aria-label="Open navigation">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <section class="register-hero">
+      <div class="register-copy">
+        <h1>Gain Access to the Partner Portal</h1>
+        <p>
+          Unlock tools, resources, and insights to enhance your partnership with us. Whether you're a
+          new or existing partner, accessing the portal is the first step to building smarter,
+          data-centric security solutions.
+        </p>
+
+        <h2>Why the Partner Portal?</h2>
+        <ul>
+          {portalReasons.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h2>How to Access</h2>
+        <p>Complete the form to register or log in and download exclusive resources, including:</p>
+        <ul>
+          {accessItems.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h2>Join Industry Leaders in Data Security</h2>
+        <p>Partner with us and join a network of trusted enterprises</p>
+        <strong>TRUSTED BY INDUSTRY-LEADING ENTERPRISES</strong>
+      </div>
+
+      <form class="partner-form" id="partner-register-form" novalidate>
+        <h2>Become a Partner</h2>
+
+        <fieldset>
+          <legend>How Can We Help?</legend>
+          <label>
+            Request Type<span>*</span>
+            <select name="requestType" required>
+              <option value="">Please Select</option>
+              <option value="Become a Partner">Become a Partner</option>
+              <option value="Partner Portal Access">Partner Portal Access</option>
+              <option value="Partner Program Inquiry">Partner Program Inquiry</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Tell Us About Your Company</legend>
+          <label>
+            Type of Partner<span>*</span>
+            <select name="partnerType" required>
+              <option value="">Please Select</option>
+              <option>Channel Partner</option>
+              <option>Distributor</option>
+              <option>Technology Partner</option>
+              <option>Service Provider</option>
+              <option>System Integrator</option>
+            </select>
+          </label>
+          <label>Company name<span>*</span><input name="company" placeholder="Please enter company name" required /></label>
+          <label>
+            Country<span>*</span>
+            <select name="country" required>
+              <option value="">Please Select</option>
+              <option>United States</option>
+              <option>India</option>
+              <option>United Kingdom</option>
+              <option>Germany</option>
+              <option>Singapore</option>
+              <option>United Arab Emirates</option>
+            </select>
+          </label>
+          <label>Company Website:<span>*</span><input name="website" type="url" placeholder="Please enter company website" required /></label>
+          <label>
+            Number of employees<span>*</span>
+            <select name="employees" required>
+              <option value="">Please Select</option>
+              <option>1-50</option>
+              <option>51-200</option>
+              <option>201-1000</option>
+              <option>1001-5000</option>
+              <option>5000+</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Tell Us About Yourself</legend>
+          <label>Email<span>*</span><input name="email" type="email" placeholder="Your work email" required /></label>
+          <label>First Name<span>*</span><input name="firstName" placeholder="Your first name" required /></label>
+          <label>Last Name<span>*</span><input name="lastName" placeholder="Your last name" required /></label>
+          <label>Phone number<span>*</span><input name="phone" type="tel" placeholder="Your work/mobile phone" required /></label>
+          <label>Job title<span>*</span><input name="jobTitle" placeholder="Your role / job title" required /></label>
+        </fieldset>
+
+        <button class="submit-button" type="submit">Submit</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="ready-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="demo-button" href="/partners/">Book a Demo</a>
+    </section>
+  </main>
+
+  <script is:inline define:vars={{ apiBase }}>
+    const partnerForm = document.querySelector("#partner-register-form");
+
+    partnerForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const status = partnerForm.querySelector(".form-status");
+      const button = partnerForm.querySelector("button[type='submit']");
+      const payload = Object.fromEntries(new FormData(partnerForm).entries());
+
+      status.textContent = "Submitting...";
+      status.className = "form-status";
+      button.disabled = true;
+
+      try {
+        const response = await fetch(`${apiBase}/api/partner-register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || "Please complete the required fields.");
+        }
+
+        partnerForm.reset();
+        status.textContent = data.message || "Partner request received.";
+        status.classList.add("success");
+      } catch (error) {
+        status.textContent = error.message || "Something went wrong.";
+        status.classList.add("error");
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --dark: #251126;
+    --purple: #5b2bd7;
+    --pink: #ee2355;
+    --text: #252a32;
+    --muted: #777a82;
+    --line: rgba(37, 42, 50, 0.22);
+    --field: #f2f6f9;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: #ffffff;
+    color: var(--text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  h1,
+  h2,
+  p {
+    margin-top: 0;
+  }
+
+  .simple-header {
+    align-items: center;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    min-height: 74px;
+    padding: 0 clamp(20px, 3vw, 34px);
+  }
+
+  .simple-logo,
+  .footer-logo {
+    color: var(--purple);
+    font-size: 1.55rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .header-actions {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+  }
+
+  .demo-button {
+    align-items: center;
+    background: var(--purple);
+    border-radius: 7px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 32px;
+  }
+
+  .hamburger {
+    background: transparent;
+    border: 0;
+    display: grid;
+    gap: 8px;
+    padding: 0;
+    width: 30px;
+  }
+
+  .hamburger span {
+    background: #2c3037;
+    display: block;
+    height: 3px;
+    width: 100%;
+  }
+
+  .register-hero {
+    align-items: start;
+    background: var(--dark);
+    color: #ffffff;
+    display: grid;
+    gap: clamp(42px, 7vw, 92px);
+    grid-template-columns: minmax(0, 0.92fr) minmax(380px, 0.9fr);
+    padding: clamp(62px, 7vw, 98px) clamp(20px, 3vw, 34px) 68px;
+  }
+
+  .register-copy {
+    max-width: 610px;
+  }
+
+  .register-copy h1 {
+    color: #ffffff;
+    font-size: clamp(3.45rem, 7vw, 6rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    margin-bottom: 56px;
+  }
+
+  .register-copy h2 {
+    color: #ffffff;
+    font-size: clamp(1rem, 1.5vw, 1.35rem);
+    font-weight: 850;
+    margin: 44px 0 18px;
+  }
+
+  .register-copy p,
+  .register-copy li {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1.06rem, 1.55vw, 1.35rem);
+    line-height: 1.45;
+  }
+
+  .register-copy ul {
+    display: grid;
+    gap: 8px;
+    margin: 0 0 34px;
+    padding-left: 28px;
+  }
+
+  .register-copy strong {
+    color: #ffffff;
+    display: block;
+    font-size: clamp(1rem, 1.35vw, 1.24rem);
+    line-height: 1.38;
+    margin-top: 44px;
+    text-align: center;
+  }
+
+  .partner-form {
+    background: #ffffff;
+    border-radius: 22px;
+    color: #304057;
+    padding: clamp(24px, 3vw, 42px);
+  }
+
+  .partner-form > h2 {
+    color: var(--dark);
+    font-size: clamp(1.6rem, 2.4vw, 2.35rem);
+    font-weight: 420;
+    margin-bottom: 28px;
+  }
+
+  .partner-form fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .partner-form legend {
+    color: #34455b;
+    font-size: 1.3rem;
+    font-weight: 850;
+    margin: 16px 0 18px;
+    padding: 0;
+  }
+
+  .partner-form label {
+    color: #304057;
+    display: grid;
+    font-size: 0.98rem;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+
+  .partner-form label span {
+    color: var(--pink);
+  }
+
+  .partner-form input,
+  .partner-form select {
+    background: var(--field);
+    border: 1px solid rgba(48, 64, 87, 0.2);
+    border-radius: 4px;
+    color: #1f2937;
+    min-height: 50px;
+    padding: 11px 14px;
+    width: 100%;
+  }
+
+  .partner-form input:focus,
+  .partner-form select:focus {
+    border-color: var(--pink);
+    outline: 3px solid rgba(238, 35, 85, 0.18);
+  }
+
+  .submit-button {
+    background: var(--pink);
+    border: 0;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.86rem;
+    font-weight: 850;
+    min-height: 52px;
+    padding: 0 34px;
+  }
+
+  .submit-button:disabled {
+    cursor: progress;
+    opacity: 0.7;
+  }
+
+  .form-status {
+    min-height: 22px;
+    margin: 14px 0 0;
+  }
+
+  .form-status.success {
+    color: #166534;
+  }
+
+  .form-status.error {
+    color: #b42318;
+  }
+
+  .ready-section {
+    background: #ffffff;
+    border-bottom: 1px solid var(--line);
+    padding: 44px clamp(20px, 3vw, 34px) 34px;
+  }
+
+  .ready-section h2 {
+    color: var(--text);
+    font-size: clamp(1.8rem, 3vw, 2.55rem);
+    font-weight: 420;
+    margin-bottom: 16px;
+  }
+
+  .ready-section p {
+    color: var(--muted);
+    font-size: 1.18rem;
+    margin-bottom: 30px;
+  }
+
+  .register-footer {
+    background: #ffffff;
+    padding: 0 clamp(20px, 3vw, 34px) 34px;
+  }
+
+  .footer-lines {
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 34px;
+  }
+
+  .footer-lines details {
+    border-top: 1px solid var(--line);
+    padding: 20px 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1.18rem;
+    font-weight: 850;
+  }
+
+  .footer-logo {
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  .register-footer p {
+    color: #58606c;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 10px;
+    margin: 40px 0;
+    max-width: 150px;
+  }
+
+  .store-row span {
+    background: #1a1221;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 850;
+    padding: 9px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 28px;
+  }
+
+  .social-row span {
+    color: #2c3037;
+    font-weight: 850;
+  }
+
+  .legal {
+    margin-top: 24px;
+  }
+
+  .legal a {
+    color: #58606c;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 980px) {
+    .register-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .register-copy {
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .simple-header {
+      padding-inline: 16px;
+    }
+
+    .demo-button {
+      min-height: 42px;
+      padding-inline: 18px;
+    }
+
+    .header-actions {
+      gap: 14px;
+    }
+
+    .register-hero,
+    .ready-section,
+    .register-footer {
+      padding-inline: 16px;
+    }
+
+    .partner-form {
+      border-radius: 16px;
+    }
+  }
+</style>

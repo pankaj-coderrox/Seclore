@@ -1,0 +1,968 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "http://127.0.0.1:5000";
+
+const trustLogos = ["SBI", "BSE", "MARUTI SUZUKI", "Aditya Birla", "IDFC"];
+
+const trustCards = [
+  {
+    title: "Regulatory compliance",
+    text: "Comply with global regulatory and privacy compliance obligations like GDPR, GLBA, PCI DSS, RBI, DPDP, and more."
+  },
+  {
+    title: "Data consolidation",
+    text: "Use a single platform for security and compliance needs across banker tools and third-party risk."
+  },
+  {
+    title: "Risk management",
+    text: "Get persistent protection and dynamic access controls to minimize risk of data breaches and compliance violations."
+  }
+];
+
+const offerings = [
+  {
+    title: "Data classification",
+    text: "Classify, label, and watermark sensitive data based on sensitivity, regulatory requirements, and business value."
+  },
+  {
+    title: "Email encryption",
+    text: "Classify, label, and protect sensitive emails and attachments to assure compliance, enforce time-limited access, and reduce human error."
+  },
+  {
+    title: "Risk insights, dashboards and reporting",
+    text: "Streamline compliance audits, meet stringent data privacy and regulatory requirements, and establish effective controls."
+  },
+  {
+    title: "M365 security",
+    text: "Enhance remote work and hybrid collaboration environments with persistent protection for data in SharePoint and Teams."
+  }
+];
+
+const relatedTopics = [
+  {
+    title: "Regulatory compliance",
+    text: "Simplified adherence to standards like GDPR, GLBA, SOX, DORA, PCI DSS, RBI Guidelines, SAMA, and more."
+  },
+  {
+    title: "Discovery and classification integrations",
+    text: "Leverage existing investments in data discovery and classification systems to drive automatic persistent data protection."
+  }
+];
+
+const resources = [
+  ["Whitepaper", "Banking & Financial Services", "Embracing Quantum's Cyber Security & Resilience Transformation"],
+  ["Case Study", "Banking & Financial Services", "IDFC First Bank"],
+  ["On-Demand Webinar", "Financial Services", "2023 Survey: Email Encryption Gaps in Financial Services Firms"]
+];
+---
+
+<BaseLayout
+  title="Financial Services | seclore"
+  description="Seclore data protection and compliance solutions for banking and financial services."
+>
+  <main id="top" class="financial-page">
+    <Nav />
+
+    <section class="financial-hero">
+      <div class="hero-copy">
+        <span>Financial Services</span>
+        <h1>Seclore for Banking and Financial Services</h1>
+        <p>
+          End-to-end data protection and compliance solutions designed to enable regulatory
+          compliance, minimize the impact of breaches, and reduce financial and reputational risk.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button alert" href="#demo">Book a Demo</a>
+          <a class="secondary-button" href="#resources">Download Datasheet</a>
+        </div>
+      </div>
+      <div class="tower-visual" aria-label="Financial district visual">
+        <span></span><span></span><span></span>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <h2>Trusted by industry-leading enterprises</h2>
+      <div class="trust-row">
+        {trustLogos.map((logo) => <span>{logo}</span>)}
+      </div>
+    </section>
+
+    <section class="split-section">
+      <div class="photo-card banker" aria-label="Banking customer protection visual">
+        <span></span><span></span><span></span>
+      </div>
+      <div>
+        <h2>Ensure compliance and stay ahead of cybersecurity threats</h2>
+        <p>
+          In banking, financial services, and insurance, data is a treasure trove of sensitive
+          customer information, financial transactions, and regulatory records.
+        </p>
+        <p>
+          Large institutions often rely on a broad mix of cloud-based and legacy tools. Seclore
+          integrates with existing applications to enforce data-centric controls wherever sensitive
+          data moves.
+        </p>
+        <a class="primary-button dark" href="#resources">Read the Whitepaper</a>
+      </div>
+    </section>
+
+    <section class="trust-reasons">
+      <div class="section-heading centered">
+        <h2>Why leading financial institutions trust seclore</h2>
+        <p>
+          Banks and financial services organizations need to protect sensitive data and comply with
+          regulations such as GDPR, PCI DSS, RBI, DPDP, and more.
+        </p>
+      </div>
+      <div class="card-grid three">
+        {trustCards.map((card) => (
+          <article class="feature-card">
+            <div class="hex-icon"></div>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="offerings-section">
+      <div class="section-heading centered">
+        <h2>Offerings for banking and financial services organizations</h2>
+      </div>
+      <div class="card-grid two">
+        {offerings.map((card) => (
+          <article class="offering-card">
+            <div class="line-icon"></div>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="demo-band" id="demo">
+      <div class="demo-copy">
+        <h2>Meet with a data-centric security expert</h2>
+        <p>
+          See our data-centric security platform in action and learn how to protect and control your
+          digital assets wherever they go.
+        </p>
+        <ul>
+          <li>Digital asset security for every user, device, app, and cloud</li>
+          <li>Granular access, usage, and privacy controls</li>
+          <li>Never losing control or visibility of your digital assets</li>
+        </ul>
+        <strong>MARUTI SUZUKI</strong>
+      </div>
+      <form class="financial-form" data-endpoint="/api/demo">
+        <h3>Seclore Demo</h3>
+        <label>Email<input name="email" type="email" required /></label>
+        <label>First Name<input name="name" required minlength="2" /></label>
+        <label>Last Name<input name="lastName" /></label>
+        <label>Company Name<input name="company" required /></label>
+        <label>Job Title<input name="role" /></label>
+        <label>Phone Number<input name="phone" /></label>
+        <label>Country<select name="country"><option>Please Select</option><option>United States</option><option>India</option></select></label>
+        <button class="primary-button" type="submit">Submit</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="story-section">
+      <article class="story-card">
+        <span>Auto Finance Company</span>
+        <blockquote>
+          "We rolled out user-initiated and automated rule-based protection for email messages and
+          attachments, including PDF attachments that contain customer PII. Data owners could now
+          track and revoke email access remotely."
+        </blockquote>
+        <strong>Security & Risk Management Team</strong>
+        <a class="primary-button dark" href="#resources">Customer Story</a>
+      </article>
+    </section>
+
+    <section class="related-section">
+      <div class="section-heading centered">
+        <h2>Related topics</h2>
+        <p>
+          Add a layer of cybersecurity orchestration and regulatory compliance controls at the
+          data-level to ensure protection anywhere data is used or stored.
+        </p>
+      </div>
+      <div class="related-grid">
+        {relatedTopics.map((item, index) => (
+          <article class="related-card">
+            {index === 1 && <div class="mini-server" aria-hidden="true"></div>}
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <a href="#demo">Learn More</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="resources-section" id="resources">
+      <div class="section-heading centered">
+        <h2>Banking, financial services, and insurance industry resources</h2>
+      </div>
+      <div class="resource-grid">
+        {resources.map(([type, tag, title]) => (
+          <article class="resource-card">
+            <span>{type}</span>
+            <em>{tag}</em>
+            <h3>{title}</h3>
+            <a href="#demo">View More</a>
+          </article>
+        ))}
+      </div>
+      <div class="slide-controls" aria-label="Resource carousel controls">
+        <button type="button" aria-label="Previous resource">‹</button>
+        <button type="button" aria-label="Next resource">›</button>
+      </div>
+    </section>
+  </main>
+
+  <script is:inline define:vars={{ apiBase }}>
+    document.querySelectorAll(".financial-form").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const status = form.querySelector(".form-status");
+        const button = form.querySelector("button[type='submit']");
+        const payload = Object.fromEntries(new FormData(form).entries());
+
+        status.textContent = "Sending...";
+        status.className = "form-status";
+        button.disabled = true;
+
+        try {
+          const response = await fetch(`${apiBase}${form.dataset.endpoint}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.message || "Request failed.");
+          form.reset();
+          status.textContent = data.message || "Submitted successfully.";
+          status.classList.add("success");
+        } catch (error) {
+          status.textContent = error.message || "Something went wrong.";
+          status.classList.add("error");
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #f2f3f5;
+    --page-text: #232128;
+    --page-muted: #636773;
+    --purple: #5b2bd7;
+    --wine: #2b1024;
+    --alert: #eb3157;
+    --orange: #ff9500;
+    --plum: #8d204e;
+    --card: #ffffff;
+    --line: rgba(29, 29, 34, 0.13);
+    --header-bg: #ffffff;
+    --header-border: rgba(15, 23, 42, 0.08);
+    --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --header-text: #25242a;
+    --header-muted: #28272c;
+    --dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --dropdown-border: rgba(15, 23, 42, 0.1);
+    --dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --dropdown-title: #0b5cad;
+    --dropdown-text: #101828;
+    --dropdown-muted: #667085;
+    --dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --demo-button-bg: #5b2bd7;
+    --demo-button-text: #ffffff;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button, input, textarea, select { font: inherit; }
+
+  .site-header {
+    align-items: center;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: var(--header-shadow);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .site-logo {
+    color: var(--purple);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: clamp(14px, 2vw, 28px);
+    text-transform: uppercase;
+  }
+
+  .nav-links,
+  .nav-utilities { align-items: center; display: flex; }
+
+  .nav-links {
+    flex: 1 1 auto;
+    gap: clamp(18px, 2.2vw, 34px);
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .nav-links > a,
+  .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    gap: 8px;
+    min-height: 68px;
+    padding: 0;
+  }
+
+  .nav-links > a:hover,
+  .nav-trigger:hover,
+  .nav-item:hover .nav-trigger,
+  .nav-item:focus-within .nav-trigger { color: var(--header-text); }
+
+  .nav-item { position: static; }
+
+  .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 8px;
+  }
+
+  .nav-item:hover .nav-caret,
+  .nav-item:focus-within .nav-caret,
+  .nav-item.is-open .nav-caret { transform: rotate(225deg) translateY(-1px); }
+
+  .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .nav-item:hover .mega-menu,
+  .nav-item:focus-within .mega-menu,
+  .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mega-inner {
+    background: var(--dropdown-bg), repeating-linear-gradient(135deg, var(--dropdown-grid-line) 0, var(--dropdown-grid-line) 1px, transparent 1px, transparent 20px);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .mega-column, .mega-sublinks { display: grid; }
+  .mega-column { gap: 10px; }
+
+  .mega-title {
+    color: var(--dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mega-link, .mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .mega-link strong { color: var(--dropdown-text); }
+  .mega-link small, .mega-sublinks a { color: var(--dropdown-muted); }
+
+  .mega-link:hover, .mega-link-group:hover {
+    background: var(--dropdown-link-hover);
+    border-color: var(--dropdown-link-border);
+  }
+
+  .mega-link-group { display: grid; gap: 4px; padding: 4px; }
+  .mega-sublinks { gap: 2px; padding: 0 9px 8px 22px; }
+  .mega-sublinks a { font-size: 0.84rem; padding: 5px 0; }
+
+  .mega-feature {
+    align-content: end;
+    background: var(--dropdown-feature-bg);
+    border: 1px solid var(--dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .mega-feature span, .mega-feature em { color: var(--dropdown-title); }
+  .mega-feature strong {
+    color: var(--dropdown-text);
+    font-size: 1.35rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .nav-utilities {
+    flex: 0 0 auto;
+    gap: clamp(12px, 1.5vw, 20px);
+    margin-left: clamp(12px, 2vw, 28px);
+  }
+
+  .utility-link, .language-button, .utility-icon, .theme-toggle { display: none; }
+
+  .demo-button,
+  .primary-button,
+  .secondary-button {
+    align-items: center;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.88rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 39px;
+    padding: 0 18px;
+  }
+
+  .demo-button, .primary-button {
+    background: var(--demo-button-bg);
+    color: var(--demo-button-text);
+  }
+
+  .primary-button.alert { background: var(--alert); }
+  .primary-button.dark { background: #211326; color: #ffffff; }
+
+  .secondary-button {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    color: #ffffff;
+  }
+
+  .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .nav-toggle span {
+    background: var(--header-text);
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  h1, h2, h3, p { margin-top: 0; }
+
+  h1 {
+    font-size: clamp(3rem, 6vw, 5.9rem);
+    font-weight: 500;
+    line-height: 0.98;
+    margin-bottom: 22px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 450;
+    line-height: 1.05;
+  }
+
+  p, li {
+    color: var(--page-muted);
+    line-height: 1.6;
+  }
+
+  .financial-hero {
+    align-items: center;
+    background: var(--wine);
+    color: #ffffff;
+    display: grid;
+    gap: 44px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+    padding: clamp(56px, 7vw, 86px) clamp(18px, 4vw, 52px);
+  }
+
+  .financial-hero span {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 850;
+    letter-spacing: 0.05em;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+
+  .financial-hero p { color: rgba(255, 255, 255, 0.82); max-width: 620px; }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+  }
+
+  .tower-visual {
+    background: linear-gradient(135deg, #f2d8b6, #ffffff 44%, #416e8e);
+    border-radius: 8px;
+    min-height: 330px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .tower-visual span {
+    background: rgba(255, 255, 255, 0.78);
+    height: 3px;
+    left: -10%;
+    position: absolute;
+    top: 28%;
+    transform: rotate(62deg);
+    width: 130%;
+  }
+
+  .tower-visual span:nth-child(2) { left: 12%; opacity: 0.66; top: 38%; }
+  .tower-visual span:nth-child(3) { left: 36%; opacity: 0.5; top: 48%; }
+
+  .trust-strip {
+    background: var(--page-bg);
+    padding: 48px clamp(18px, 4vw, 52px);
+    text-align: center;
+  }
+
+  .trust-strip h2 {
+    color: #a34462;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  .trust-row {
+    align-items: center;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .trust-row span {
+    color: rgba(36, 35, 41, 0.48);
+    font-weight: 900;
+  }
+
+  .split-section,
+  .demo-band {
+    align-items: center;
+    display: grid;
+    gap: clamp(30px, 5vw, 72px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    padding: clamp(58px, 8vw, 96px) clamp(18px, 4vw, 52px);
+  }
+
+  .split-section,
+  .offerings-section,
+  .story-section,
+  .resources-section,
+  .financial-footer { background: var(--card); }
+
+  .photo-card {
+    border-radius: 8px;
+    min-height: 320px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .photo-card span { position: absolute; }
+
+  .banker {
+    background: linear-gradient(135deg, #ead3b6, #ffffff 48%, #506e84);
+  }
+
+  .banker span {
+    background: linear-gradient(145deg, #68422e, #f1bd89);
+    border-radius: 50%;
+    height: 74px;
+    top: 34%;
+    width: 74px;
+  }
+
+  .banker span:nth-child(1) { left: 18%; }
+  .banker span:nth-child(2) { left: 43%; top: 26%; }
+  .banker span:nth-child(3) { right: 18%; top: 42%; }
+
+  .section-heading {
+    margin: 0 auto 36px;
+    max-width: 1040px;
+  }
+
+  .centered { text-align: center; }
+
+  .trust-reasons,
+  .related-section {
+    background: var(--page-bg);
+    padding: clamp(58px, 8vw, 96px) clamp(18px, 4vw, 52px);
+  }
+
+  .card-grid {
+    display: grid;
+    gap: 22px;
+    margin-inline: auto;
+    max-width: 1120px;
+  }
+
+  .card-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .card-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .feature-card,
+  .offering-card,
+  .financial-form,
+  .story-card,
+  .resource-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: clamp(24px, 4vw, 38px);
+  }
+
+  .hex-icon {
+    background: linear-gradient(135deg, var(--orange), var(--alert));
+    clip-path: polygon(25% 4%, 75% 4%, 100% 50%, 75% 96%, 25% 96%, 0 50%);
+    height: 44px;
+    margin-bottom: 20px;
+    width: 44px;
+  }
+
+  .feature-card:nth-child(2) .hex-icon { background: linear-gradient(135deg, var(--alert), #ff7a8c); }
+  .feature-card:nth-child(3) .hex-icon { background: linear-gradient(135deg, var(--plum), #c53772); }
+
+  .offerings-section,
+  .resources-section {
+    padding: clamp(58px, 8vw, 96px) clamp(18px, 4vw, 52px);
+  }
+
+  .line-icon {
+    border: 2px solid #ff4267;
+    border-radius: 12px;
+    height: 42px;
+    margin-bottom: 20px;
+    position: relative;
+    width: 42px;
+  }
+
+  .line-icon::before,
+  .line-icon::after {
+    background: #ff4267;
+    content: "";
+    height: 2px;
+    left: 10px;
+    position: absolute;
+    right: 10px;
+  }
+
+  .line-icon::before { top: 14px; }
+  .line-icon::after { bottom: 14px; }
+
+  .demo-band {
+    background: linear-gradient(135deg, #dceaff, #f2eaff);
+  }
+
+  .demo-copy ul { padding-left: 20px; }
+  .demo-copy strong { color: #32263d; display: block; margin-top: 24px; }
+
+  .financial-form h3 { text-align: center; }
+
+  .financial-form label {
+    color: var(--page-text);
+    display: grid;
+    font-size: 0.88rem;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .financial-form input,
+  .financial-form select {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(15, 23, 42, 0.16);
+    border-radius: 4px;
+    color: #111827;
+    min-height: 40px;
+    padding: 10px;
+  }
+
+  .form-status { min-height: 24px; }
+  .form-status.success { color: #087f6f; }
+  .form-status.error { color: #bd2b2b; }
+
+  .story-section,
+  .related-section,
+  .resources-section {
+    padding: clamp(58px, 8vw, 96px) clamp(18px, 4vw, 52px);
+  }
+
+  .story-card {
+    margin-inline: auto;
+    max-width: 1180px;
+  }
+
+  .story-card > span,
+  .resource-card span,
+  .resource-card em {
+    color: var(--page-muted);
+    display: block;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+  }
+
+  .story-card blockquote {
+    font-size: clamp(1.1rem, 2vw, 1.55rem);
+    line-height: 1.45;
+    margin: 0 0 24px;
+  }
+
+  .story-card strong {
+    color: var(--purple);
+    display: block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .related-grid {
+    display: grid;
+    gap: 36px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .related-card a,
+  .resource-card a {
+    color: var(--page-text);
+    font-weight: 900;
+  }
+
+  .mini-server {
+    background: linear-gradient(135deg, #111b28, #4b3424);
+    border-radius: 8px;
+    height: 210px;
+    margin-bottom: 24px;
+  }
+
+  .resource-grid {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-inline: auto;
+    max-width: 980px;
+  }
+
+  .resource-card {
+    min-height: 340px;
+  }
+
+  .slide-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .slide-controls button {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    height: 36px;
+    width: 36px;
+  }
+
+  .financial-footer {
+    border-top: 1px solid var(--line);
+    padding: 34px clamp(18px, 4vw, 52px);
+  }
+
+  .footer-lines {
+    border-block: 1px solid var(--line);
+    margin: 30px 0;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .footer-lines details:last-child { border-bottom: 0; }
+  .footer-lines summary { cursor: pointer; font-weight: 800; }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 9px;
+    margin: 26px 0;
+    max-width: 160px;
+  }
+
+  .store-row span {
+    background: #1a1421;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 10px 16px;
+  }
+
+  .legal {
+    border-top: 1px solid var(--line);
+    font-size: 0.86rem;
+    padding-top: 26px;
+  }
+
+  @media (max-width: 1180px) {
+    .nav-toggle {
+      display: block;
+      margin-left: auto;
+      order: 1;
+    }
+
+    .site-header { flex-wrap: wrap; }
+    .site-logo { order: 0; }
+
+    .nav-links {
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-border);
+      display: none;
+      flex: 1 0 100%;
+      order: 2;
+      padding: 10px 0 14px;
+    }
+
+    .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .nav-links > a,
+    .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .nav-item { display: grid; }
+
+    .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .nav-item:hover .mega-menu,
+    .nav-item:focus-within .mega-menu { display: none; }
+    .nav-item.is-open .mega-menu { display: block; }
+
+    .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .nav-utilities {
+      align-items: stretch;
+      display: flex;
+      margin-left: auto;
+      order: 0;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .financial-hero,
+    .split-section,
+    .demo-band,
+    .card-grid.three,
+    .card-grid.two,
+    .related-grid,
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .trust-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 520px) {
+    h1 { font-size: 2.75rem; }
+    h2 { font-size: 2rem; }
+    .tower-visual, .photo-card { min-height: 250px; }
+  }
+</style>

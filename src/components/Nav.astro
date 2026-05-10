@@ -1,0 +1,1155 @@
+---
+const navItems = [
+  {
+    label: "ARMOR",
+    brand: true,
+    columns: [
+      {
+        title: "ARMOR",
+        links: [
+          ["ARMOR", "/armor/"],
+          ["DSPM", "/armor/dspm/"],
+          ["AI-DLP", "/armor/aidlp/"],
+          ["Data Classification", "/platform/classification/"],
+          ["EDRM", "#platform"],
+          ["Insights", "#resources"],
+          ["Integrations", "/integrations/"]
+        ]
+      },
+      {
+        title: "Integrations",
+        links: [
+          {
+            label: "DLPs and CASBs",
+            href: "/integrations/dlp-casb/",
+            children: [
+              ["Broadcom (Symantec)", "/integrations/broadcom/"],
+              ["Forcepoint", "/integrations/forcepoint/"],
+              ["Skyhigh Security", "/integrations/skyhigh/"]
+            ]
+          },
+          {
+            label: "File Sharing and Storage",
+            href: "/integrations/file-storage/",
+            children: [
+              ["Microsoft 365", "/integrations/microsoft/"],
+              ["SharePoint", "/integrations/sharepoint/"],
+              ["File Servers", "/integrations/file-servers/"],
+              ["Content Storage and Collaboration Platforms", "/integrations/content-storage-and-collaboration-platforms/"]
+            ]
+          },
+          {
+            label: "Discovery and Classification",
+            href: "/integrations/discovery-classification/",
+            children: [
+              ["Microsoft Sensitivity Labels", "/platform/seclore-for-microsoft-sensitivity-labels/"],
+              ["Spirion", "/integrations/spirion/"]
+            ]
+          },
+          {
+            label: "Identity Providers",
+            href: "/platform/idp-sso/",
+            children: [
+              ["Okta", "/platform/idp-sso/"],
+              ["Microsoft Entra ID", "/platform/idp-sso/"],
+              ["Ping Identity", "/platform/idp-sso/"]
+            ]
+          },
+          {
+            label: "SIEM and BI Tools",
+            href: "/platform/siem/",
+            children: [
+              ["Splunk", "/platform/siem/"],
+              ["Microsoft Sentinel", "/platform/siem/"],
+              ["Power BI", "/platform/siem/"]
+            ]
+          },
+          {
+            label: "Custom Integrations",
+            href: "/platform/custom-integrations/",
+            children: [
+              ["REST APIs", "/platform/custom-integrations/"],
+              ["Partner connectors", "/platform/custom-integrations/"],
+              ["Implementation support", "/platform/custom-integrations/"]
+            ]
+          }
+        ]
+      }
+    ],
+    feature: {
+      title: "ARMOR",
+      text: "Data security built for enterprise collaboration.",
+      cta: "Explore ARMOR",
+      href: "/armor/"
+    }
+  },
+  {
+    label: "Solutions",
+    columns: [
+      {
+        title: "By Industry",
+        links: [
+          ["Financial Services", "/solutions/financial-services/"],
+          ["Manufacturing", "/solutions/manufacturing/"],
+          ["Semiconductor", "/solutions/semiconductor/"],
+          ["Government", "/solutions/government/"]
+        ]
+      },
+      {
+        title: "By Use Case",
+        links: [
+          ["External Threats", "/solutions/external-threats/"],
+          ["Third Party Risk Management", "#solutions"],
+          ["Internal Threats", "/solutions/internal-threats/"],
+          ["IP Protection", "/solutions/ip-protection/"],
+          ["CAD File Protection", "/solutions/cad-protection/"],
+          ["Regulatory Compliance", "/solutions/compliance/"]
+        ]
+      },
+      {
+        title: "Services",
+        links: [
+          ["Professional Services", "/solutions/professional-services/"],
+          ["Support Services", "/solutions/support-services/"],
+          ["Solution Consulting and Training", "/solutions/solution-consulting-training/"],
+          ["Implementation and System Integration", "/solutions/implementation-system-integration/"]
+        ]
+      }
+    ],
+    feature: {
+      title: "Solution Finder",
+      text: "Map your highest-risk sharing workflows to persistent data controls.",
+      cta: "Plan a use case",
+      href: "/solutions/"
+    }
+  },
+  {
+    label: "Pricing",
+    href: "/pricing/"
+  },
+  {
+    label: "Resources",
+    columns: [
+      {
+        title: "Resources",
+        links: [
+          ["Blog", "/resources/"],
+          ["Customer Case Studies", "/resources/customer-case-studies/"],
+          ["Whitepapers and Reports", "/resources/whitepapers-reports/"],
+          ["Webinars and Videos", "/resources/videos/"],
+          ["Release Notes", "/home/release-notes/"],
+          ["Datasheets", "/resources/datasheets/"],
+          ["Infographics", "/resources/infographics/"],
+          ["eBooks", "/resources/ebooks/"]
+        ]
+      },
+      {
+        title: "Featured",
+        links: [
+          ["AI data security brief", "#resources"],
+          ["Compliance readiness guide", "#resources"],
+          ["Enterprise sharing playbook", "#resources"],
+          ["Security leadership insights", "#resources"]
+        ]
+      }
+    ],
+    feature: {
+      title: "Executive Brief",
+      text: "A concise view of how data-centric controls support audit and AI adoption.",
+      cta: "View resources",
+      href: "/resources/"
+    }
+  },
+  {
+    label: "Partners",
+    columns: [
+      {
+        title: "Partners",
+        links: [
+          ["Register a Deal", "/partners/login/"],
+          ["Become a Partner", "/partners/register/"],
+          ["Partner Portal Login", "/partners/login/"],
+          ["Lead Referral", "/partners/lead-referral/"]
+        ]
+      },
+      {
+        title: "Programs",
+        links: [
+          ["Technology Alliances", "/partners/#technology"],
+          ["System Integrators", "/partners/#services"],
+          ["Channel Partners", "/partners/#channel"],
+          ["Cloud Marketplaces", "/partners/#overview"]
+        ]
+      }
+    ],
+    feature: {
+      title: "Partner Motion",
+      text: "Connect protection decisions to the tools your teams already use.",
+      cta: "Talk partnerships",
+      href: "/partners/"
+    }
+  },
+  {
+    label: "About",
+    columns: [
+      {
+        title: "Company",
+        links: [
+          ["Why Seclore", "/about/why-seclore/"],
+          ["Leadership", "/about/leadership/"],
+          ["Newsroom", "/about/newsroom/"],
+          ["Press Releases", "/about/press-releases/"],
+          ["Contact Us", "/about/contact-us/"],
+          ["Careers", "/about/careers/"]
+        ]
+      },
+      {
+        title: "Learn",
+        links: [
+          ["Security fundamentals", "#resources"],
+          ["Trust approach", "/about/why-seclore/"],
+          ["Compliance support", "#resources"],
+          ["Customer outcomes", "#about"]
+        ]
+      }
+    ],
+    feature: {
+      title: "Why seclore",
+      text: "Built around the idea that the data itself should become the control point.",
+      cta: "Why Seclore",
+      href: "/about/why-seclore/"
+    }
+  },
+  {
+    label: "Support",
+    columns: [
+      {
+        title: "Help",
+        links: [
+          ["Support Portal", "/support/home/"],
+          ["Docs", "#resources"],
+          ["Contact Support", "#contact"],
+          ["How to open a protected file", "/how-to-open-a-seclore-protected-file/"]
+        ]
+      },
+      {
+        title: "Services",
+        links: [
+          ["Get Started", "#contact"],
+          ["Customer Success", "#contact"],
+          ["Training", "#resources"],
+          ["Implementation Help", "#contact"]
+        ]
+      }
+    ],
+    feature: {
+      title: "Support",
+      text: "Get help with rollout, integrations, and policy operations.",
+      cta: "Contact support",
+      href: "/support/home/"
+    }
+  }
+];
+
+const mainItems = navItems;
+const currentPath = Astro.url.pathname;
+
+function isActive(href?: string) {
+  if (!href || href.startsWith("#")) {
+    return false;
+  }
+
+  const normalizedHref = href.endsWith("/") ? href : `${href}/`;
+  const normalizedPath = currentPath.endsWith("/") ? currentPath : `${currentPath}/`;
+  return normalizedPath === normalizedHref || (normalizedHref !== "/" && normalizedPath.startsWith(normalizedHref));
+}
+---
+
+<header class="seclore-nav">
+  <a class="seclore-nav__logo" href="/" aria-label="seclore home">seclore</a>
+
+  <nav class="seclore-nav__links" aria-label="Primary navigation">
+    {mainItems.map((item) => (
+      item.href || !item.columns || !item.feature ? (
+        <a class:list={[{ "is-active": isActive(item.href) }]} href={item.href ?? "#top"} aria-current={isActive(item.href) ? "page" : undefined}>{item.label}</a>
+      ) : (
+        <div class:list={["seclore-nav__item", { "is-active": item.columns.some((column) => column.links.some((link) => Array.isArray(link) ? isActive(link[1]) : isActive(link.href) || link.children.some(([, childHref]) => isActive(childHref)))) }]}>
+          <button class="seclore-nav__trigger" type="button" aria-expanded="false">
+            {item.label}
+            <span class="seclore-nav__caret" aria-hidden="true"></span>
+          </button>
+          <div class="seclore-nav__mega">
+            <div class="seclore-nav__mega-inner">
+              <div class="seclore-nav__mega-columns">
+                {item.columns.map((column) => (
+                  <div class="seclore-nav__mega-column">
+                    <span class="seclore-nav__mega-title">{column.title}</span>
+                    {column.links.map((link) => (
+                      Array.isArray(link) ? (
+                        <a class:list={["seclore-nav__mega-link", { "is-active": isActive(link[1]) }]} href={link[1]} aria-current={isActive(link[1]) ? "page" : undefined}>
+                          <strong>{link[0]}</strong>
+                          <small>Security controls that stay close to the data.</small>
+                        </a>
+                      ) : (
+                        <div class="seclore-nav__mega-link-group">
+                          <a class:list={["seclore-nav__mega-link", "seclore-nav__mega-parent-link", { "is-active": isActive(link.href) }]} href={link.href} aria-current={isActive(link.href) ? "page" : undefined}>
+                            <strong>{link.label}</strong>
+                            <small>Connected controls across enterprise systems.</small>
+                          </a>
+                          <div class="seclore-nav__mega-sublinks">
+                            {link.children.map(([childLabel, childHref]) => (
+                              <a class:list={[{ "is-active": isActive(childHref) }]} href={childHref} aria-current={isActive(childHref) ? "page" : undefined}>{childLabel}</a>
+                            ))}
+                          </div>
+                        </div>
+                      )
+                    ))}
+                  </div>
+                ))}
+              </div>
+              <a class="seclore-nav__mega-feature" href={item.feature.href}>
+                <span>{item.feature.title}</span>
+                <strong>{item.feature.text}</strong>
+                <em>{item.feature.cta}</em>
+              </a>
+            </div>
+          </div>
+        </div>
+      )
+    ))}
+  </nav>
+
+  <div class="seclore-nav__utilities" aria-label="Header utilities">
+    <a class="seclore-nav__utility-link seclore-nav__file-help" href="/how-to-open-a-seclore-protected-file/">How to open a seclore file</a>
+    <span class="seclore-nav__utility-label">Search</span>
+    <button class="seclore-nav__utility-icon" type="button" aria-label="Search">
+      <span class="seclore-nav__search-icon" aria-hidden="true"></span>
+    </button>
+    <span class="seclore-nav__utility-label">Language</span>
+    <button class="seclore-nav__language-button" type="button" aria-label="Language selector">
+      <span class="seclore-nav__globe-icon" aria-hidden="true"></span>
+    </button>
+    <button class="seclore-nav__theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+      <span class="seclore-nav__theme-toggle-track" aria-hidden="true">
+        <span class="seclore-nav__theme-toggle-thumb"></span>
+      </span>
+      <span class="seclore-nav__theme-toggle-text">Dark</span>
+    </button>
+  </div>
+
+  <a class="seclore-nav__demo-button" href="#demo">Book a Demo</a>
+
+  <button class="seclore-nav__toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<script>
+  const navToggle = document.querySelector(".seclore-nav__toggle");
+  const navLinks = document.querySelector(".seclore-nav__links");
+  const navTriggers = document.querySelectorAll(".seclore-nav__trigger");
+  const themeToggle = document.querySelector(".seclore-nav__theme-toggle");
+  const themeText = document.querySelector(".seclore-nav__theme-toggle-text");
+
+  function setTheme(theme: string) {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem("theme", theme);
+    const isDark = theme === "dark";
+    themeToggle?.setAttribute("aria-pressed", String(isDark));
+    themeToggle?.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    if (themeText) {
+      themeText.textContent = isDark ? "Dark" : "Light";
+    }
+  }
+
+  setTheme(document.documentElement.dataset.theme || "dark");
+
+  themeToggle?.addEventListener("click", () => {
+    const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+  });
+
+  navToggle?.addEventListener("click", () => {
+    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", String(!expanded));
+    navLinks?.classList.toggle("open");
+  });
+
+  navTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const item = trigger.closest(".seclore-nav__item");
+      const expanded = trigger.getAttribute("aria-expanded") === "true";
+
+      document.querySelectorAll(".seclore-nav__item.is-open").forEach((openItem) => {
+        if (openItem !== item) {
+          openItem.classList.remove("is-open");
+          openItem.querySelector(".seclore-nav__trigger")?.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      item?.classList.toggle("is-open", !expanded);
+      trigger.setAttribute("aria-expanded", String(!expanded));
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element) || !event.target.closest(".seclore-nav")) {
+      document.querySelectorAll(".seclore-nav__item.is-open").forEach((item) => {
+        item.classList.remove("is-open");
+        item.querySelector(".seclore-nav__trigger")?.setAttribute("aria-expanded", "false");
+      });
+    }
+  });
+
+  document.querySelectorAll(".seclore-nav__mega-link, .seclore-nav__mega-feature, .seclore-nav__mega-sublinks a, .seclore-nav__links > a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks?.classList.remove("open");
+      navToggle?.setAttribute("aria-expanded", "false");
+      document.querySelectorAll(".seclore-nav__item.is-open").forEach((item) => {
+        item.classList.remove("is-open");
+        item.querySelector(".seclore-nav__trigger")?.setAttribute("aria-expanded", "false");
+      });
+    });
+  });
+</script>
+
+<style is:global>
+  .seclore-nav,
+  .seclore-nav * {
+    box-sizing: border-box;
+  }
+
+  .seclore-nav {
+    --seclore-nav-header-bg: #ffffff;
+    --seclore-nav-header-border: rgba(15, 23, 42, 0.08);
+    --seclore-nav-header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
+    --seclore-nav-header-text: #07111f;
+    --seclore-nav-header-muted: #2a2a2a;
+    --seclore-nav-purple: #5630d6;
+    --seclore-nav-dropdown-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 252, 0.98));
+    --seclore-nav-dropdown-grid-line: rgba(10, 42, 75, 0.035);
+    --seclore-nav-dropdown-border: rgba(15, 23, 42, 0.1);
+    --seclore-nav-dropdown-link-hover: rgba(15, 76, 129, 0.055);
+    --seclore-nav-dropdown-link-border: rgba(15, 76, 129, 0.16);
+    --seclore-nav-dropdown-title: #0b5cad;
+    --seclore-nav-dropdown-text: #101828;
+    --seclore-nav-dropdown-muted: #667085;
+    --seclore-nav-dropdown-feature-bg: linear-gradient(160deg, rgba(15, 92, 173, 0.12), rgba(11, 140, 115, 0.08)), rgba(15, 76, 129, 0.04);
+    --seclore-nav-dropdown-feature-border: rgba(15, 76, 129, 0.14);
+    --seclore-nav-demo-button-bg: #5630d6;
+    --seclore-nav-demo-button-text: #ffffff;
+    --seclore-nav-shadow: 0 24px 80px rgba(0, 0, 0, 0.16);
+    align-items: center;
+    background: var(--seclore-nav-header-bg);
+    border-bottom: 1px solid var(--seclore-nav-header-border);
+    box-shadow: var(--seclore-nav-header-shadow);
+    color: var(--seclore-nav-header-text);
+    display: flex;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    gap: 18px;
+    left: 0;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .seclore-nav a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .seclore-nav button {
+    font: inherit;
+  }
+
+  .seclore-nav__logo,
+  .seclore-nav__links,
+  .seclore-nav__utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .seclore-nav__logo {
+    color: var(--seclore-nav-header-text);
+    flex: 0 0 auto;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 1;
+    margin-right: clamp(14px, 2vw, 28px);
+    white-space: nowrap;
+  }
+
+  .seclore-nav__links {
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    gap: clamp(18px, 2.2vw, 34px);
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .seclore-nav__links > a,
+  .seclore-nav__trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+    color: var(--seclore-nav-header-muted);
+    cursor: pointer;
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: 0.98rem;
+    font-weight: 800;
+    gap: 8px;
+    min-height: 68px;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  .seclore-nav__links > a:hover,
+  .seclore-nav__links > a.is-active,
+  .seclore-nav__trigger:hover,
+  .seclore-nav__item.is-active > .seclore-nav__trigger,
+  .seclore-nav__item:focus-within .seclore-nav__trigger,
+  .seclore-nav__item:hover .seclore-nav__trigger {
+    color: var(--seclore-nav-header-text);
+  }
+
+  .seclore-nav__item {
+    position: static;
+  }
+
+  .seclore-nav__caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 180ms ease;
+    width: 8px;
+  }
+
+  .seclore-nav__item:hover .seclore-nav__caret,
+  .seclore-nav__item:focus-within .seclore-nav__caret,
+  .seclore-nav__item.is-open .seclore-nav__caret {
+    transform: rotate(225deg) translateY(-1px);
+  }
+
+  .seclore-nav__utilities {
+    flex: 0 0 auto;
+    gap: clamp(12px, 1.5vw, 20px);
+    margin-left: clamp(12px, 2vw, 28px);
+  }
+
+  .seclore-nav__utility-link,
+  .seclore-nav__utility-label,
+  .seclore-nav__language-button,
+  .seclore-nav__utility-icon,
+  .seclore-nav__theme-toggle {
+    color: var(--seclore-nav-header-muted);
+    font-size: 0.88rem;
+    font-weight: 750;
+    white-space: nowrap;
+  }
+
+  .seclore-nav__utility-icon,
+  .seclore-nav__language-button,
+  .seclore-nav__theme-toggle {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 8px;
+    padding: 0;
+  }
+
+  .seclore-nav__theme-toggle {
+    font-weight: 800;
+  }
+
+  .seclore-nav__theme-toggle-track {
+    align-items: center;
+    background: rgba(127, 139, 155, 0.24);
+    border: 1px solid var(--seclore-nav-header-border);
+    border-radius: 999px;
+    display: inline-flex;
+    height: 24px;
+    padding: 2px;
+    transition: background 180ms ease, border-color 180ms ease;
+    width: 44px;
+  }
+
+  .seclore-nav__theme-toggle-thumb {
+    background: var(--seclore-nav-header-text);
+    border-radius: 50%;
+    display: block;
+    height: 18px;
+    transform: translateX(18px);
+    transition: background 180ms ease, transform 180ms ease;
+    width: 18px;
+  }
+
+  html[data-theme="light"] .seclore-nav__theme-toggle-thumb {
+    transform: translateX(0);
+  }
+
+  .seclore-nav__search-icon {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 17px;
+    position: relative;
+    width: 17px;
+  }
+
+  .seclore-nav__search-icon::after {
+    background: currentColor;
+    content: "";
+    height: 2px;
+    position: absolute;
+    right: -6px;
+    top: 12px;
+    transform: rotate(45deg);
+    width: 8px;
+  }
+
+  .seclore-nav__globe-icon {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    width: 20px;
+  }
+
+  .seclore-nav__globe-icon::before,
+  .seclore-nav__globe-icon::after {
+    content: "";
+    position: absolute;
+  }
+
+  .seclore-nav__globe-icon::before {
+    border-inline: 1px solid currentColor;
+    border-radius: 50%;
+    inset: 1px 5px;
+  }
+
+  .seclore-nav__globe-icon::after {
+    border-top: 1px solid currentColor;
+    left: 2px;
+    right: 2px;
+    top: 8px;
+  }
+
+  .seclore-nav__demo-button {
+    align-items: center;
+    background: var(--seclore-nav-demo-button-bg);
+    border-radius: 999px;
+    color: var(--seclore-nav-demo-button-text);
+    display: inline-flex;
+    font-size: 0.9rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 18px;
+    white-space: nowrap;
+  }
+
+  .seclore-nav__mega {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .seclore-nav__item:hover .seclore-nav__mega,
+  .seclore-nav__item:focus-within .seclore-nav__mega,
+  .seclore-nav__item.is-open .seclore-nav__mega {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .seclore-nav__mega-inner {
+    background:
+      var(--seclore-nav-dropdown-bg),
+      repeating-linear-gradient(
+        135deg,
+        var(--seclore-nav-dropdown-grid-line) 0,
+        var(--seclore-nav-dropdown-grid-line) 1px,
+        transparent 1px,
+        transparent 20px
+      );
+    border: 1px solid var(--seclore-nav-dropdown-border);
+    border-radius: 8px;
+    box-shadow: var(--seclore-nav-shadow);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .seclore-nav__mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .seclore-nav__mega-column {
+    display: grid;
+    gap: 10px;
+  }
+
+  .seclore-nav__mega-title {
+    color: var(--seclore-nav-dropdown-title);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .seclore-nav__mega-link,
+  .seclore-nav__mega-link-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .seclore-nav__mega-link {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+    transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  }
+
+  .seclore-nav__mega-link-group {
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .seclore-nav__mega-link:hover,
+  .seclore-nav__mega-link.is-active {
+    background: var(--seclore-nav-dropdown-link-hover);
+    border-color: var(--seclore-nav-dropdown-link-border);
+    transform: translateX(3px);
+  }
+
+  .seclore-nav__mega-link-group:hover {
+    background: var(--seclore-nav-dropdown-link-hover);
+    border-color: var(--seclore-nav-dropdown-link-border);
+  }
+
+  .seclore-nav__mega-link-group .seclore-nav__mega-link {
+    padding: 9px 9px 5px;
+  }
+
+  .seclore-nav__mega-link-group .seclore-nav__mega-link:hover {
+    background: transparent;
+    border-color: transparent;
+    transform: none;
+  }
+
+  .seclore-nav__mega-parent-link strong {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+  }
+
+  .seclore-nav__mega-parent-link strong::after {
+    border-bottom: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    content: "";
+    height: 6px;
+    transform: rotate(-45deg);
+    width: 6px;
+  }
+
+  .seclore-nav__mega-sublinks {
+    display: grid;
+    gap: 2px;
+    padding: 0 9px 8px 22px;
+  }
+
+  .seclore-nav__mega-sublinks a {
+    color: var(--seclore-nav-dropdown-muted);
+    font-size: 0.84rem;
+    line-height: 1.35;
+    padding: 5px 0;
+  }
+
+  .seclore-nav__mega-sublinks a:hover,
+  .seclore-nav__mega-sublinks a.is-active {
+    color: var(--seclore-nav-dropdown-text);
+  }
+
+  .seclore-nav__mega-link strong {
+    color: var(--seclore-nav-dropdown-text);
+    font-size: 0.98rem;
+  }
+
+  .seclore-nav__mega-link small {
+    color: var(--seclore-nav-dropdown-muted);
+    line-height: 1.45;
+  }
+
+  .seclore-nav__mega-feature {
+    align-content: end;
+    background: var(--seclore-nav-dropdown-feature-bg);
+    border: 1px solid var(--seclore-nav-dropdown-feature-border);
+    border-radius: 8px;
+    display: grid;
+    min-height: 268px;
+    padding: 24px;
+  }
+
+  .seclore-nav__mega-feature span {
+    color: var(--seclore-nav-dropdown-title);
+    font-size: 0.8rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .seclore-nav__mega-feature strong {
+    align-self: end;
+    color: var(--seclore-nav-dropdown-text);
+    font-size: 1.4rem;
+    line-height: 1.18;
+    margin-top: auto;
+  }
+
+  .seclore-nav__mega-feature em {
+    color: var(--seclore-nav-dropdown-title);
+    font-style: normal;
+    font-weight: 850;
+    margin-top: 18px;
+  }
+
+  .seclore-nav__toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    margin-left: auto;
+    width: 42px;
+  }
+
+  .seclore-nav__toggle span {
+    background: var(--seclore-nav-header-text);
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  @media (min-width: 1101px) {
+    .seclore-nav {
+      align-items: end;
+      display: grid;
+      gap: 0 clamp(28px, 4vw, 72px);
+      grid-template-columns: 260px minmax(0, 1fr) 190px;
+      grid-template-rows: 50px 88px;
+      min-height: 138px;
+      padding: 0 clamp(80px, 6.6vw, 120px);
+    }
+
+    .seclore-nav__logo {
+      align-self: center;
+      color: var(--seclore-nav-purple);
+      font-size: 2.25rem;
+      font-weight: 950;
+      grid-column: 1;
+      grid-row: 2;
+      letter-spacing: 0.05em;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .seclore-nav__logo::after {
+      content: "TM";
+      font-size: 0.45em;
+      margin-left: 3px;
+      vertical-align: super;
+    }
+
+    .seclore-nav__links {
+      align-self: center;
+      display: flex;
+      gap: clamp(26px, 3.2vw, 64px);
+      grid-column: 2;
+      grid-row: 2;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .seclore-nav__links > a,
+    .seclore-nav__trigger {
+      color: #2a2a2a;
+      font-size: clamp(0.98rem, 1vw, 1.1rem);
+      font-weight: 850;
+      min-height: 88px;
+    }
+
+    .seclore-nav__caret {
+      height: 7px;
+      width: 7px;
+    }
+
+    .seclore-nav__utilities {
+      align-self: start;
+      color: #4a4a4a;
+      display: flex;
+      gap: 14px;
+      grid-column: 2 / 4;
+      grid-row: 1;
+      justify-content: end;
+      margin: 0;
+      min-height: 50px;
+      width: 100%;
+    }
+
+    .seclore-nav__utility-link,
+    .seclore-nav__utility-label,
+    .seclore-nav__language-button,
+    .seclore-nav__utility-icon {
+      color: #4a4a4a;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .seclore-nav__file-help {
+      margin-right: 28px;
+    }
+
+    .seclore-nav__utility-label {
+      display: inline-flex;
+    }
+
+    .seclore-nav__search-icon {
+      height: 18px;
+      width: 18px;
+    }
+
+    .seclore-nav__globe-icon {
+      height: 22px;
+      width: 22px;
+    }
+
+    .seclore-nav__globe-icon::before {
+      inset: 1px 6px;
+    }
+
+    .seclore-nav__globe-icon::after {
+      left: 2px;
+      right: 2px;
+      top: 9px;
+    }
+
+    .seclore-nav__demo-button {
+      align-self: center;
+      background: var(--seclore-nav-purple);
+      border-radius: 7px;
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 850;
+      grid-column: 3;
+      grid-row: 2;
+      justify-self: end;
+      min-height: 48px;
+      min-width: 190px;
+      padding: 0 18px;
+    }
+
+    .seclore-nav__theme-toggle {
+      height: 28px;
+      overflow: hidden;
+      width: 28px;
+    }
+
+    .seclore-nav__theme-toggle-track {
+      height: 22px;
+      width: 22px;
+    }
+
+    .seclore-nav__theme-toggle-thumb {
+      height: 16px;
+      transform: translateX(0);
+      width: 16px;
+    }
+
+    .seclore-nav__theme-toggle-text {
+      display: none;
+    }
+
+    .seclore-nav__mega {
+      top: calc(100% - 1px);
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .seclore-nav {
+      flex-wrap: wrap;
+      gap: 10px;
+      min-height: 58px;
+      padding-block: 0;
+    }
+
+    .seclore-nav__toggle {
+      display: block;
+      flex: 0 0 auto;
+      margin-left: 0;
+      order: 2;
+    }
+
+    .seclore-nav__logo {
+      color: var(--seclore-nav-purple);
+      font-size: clamp(1.05rem, 5vw, 1.35rem);
+      font-weight: 950;
+      letter-spacing: 0.05em;
+      margin-right: auto;
+      order: 0;
+      text-transform: uppercase;
+    }
+
+    .seclore-nav__logo::after {
+      content: "TM";
+      font-size: 0.42em;
+      margin-left: 2px;
+      vertical-align: super;
+    }
+
+    .seclore-nav__links {
+      background: var(--seclore-nav-header-bg);
+      border-top: 1px solid var(--seclore-nav-header-border);
+      display: none;
+      flex: 1 0 100%;
+      gap: 8px;
+      justify-content: start;
+      order: 3;
+      padding: 10px 0 14px;
+    }
+
+    .seclore-nav__links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .seclore-nav__links > a,
+    .seclore-nav__trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      padding-inline: 0;
+      width: 100%;
+    }
+
+    .seclore-nav__item {
+      display: grid;
+    }
+
+    .seclore-nav__mega {
+      display: none;
+      left: auto;
+      opacity: 1;
+      pointer-events: auto;
+      position: static;
+      right: auto;
+      top: auto;
+      transform: none;
+      transition: none;
+    }
+
+    .seclore-nav__item:hover .seclore-nav__mega,
+    .seclore-nav__item:focus-within .seclore-nav__mega {
+      display: none;
+    }
+
+    .seclore-nav__item.is-open .seclore-nav__mega {
+      display: block;
+    }
+
+    .seclore-nav__mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .seclore-nav__mega-columns {
+      grid-template-columns: 1fr;
+    }
+
+    .seclore-nav__mega-feature {
+      min-height: 180px;
+    }
+
+    .seclore-nav__utilities {
+      align-items: stretch;
+      border-top: 1px solid var(--seclore-nav-header-border);
+      display: none;
+      flex: 1 0 100%;
+      gap: 12px;
+      margin-left: 0;
+      order: 4;
+      padding: 0 0 16px;
+    }
+
+    .seclore-nav__demo-button {
+      border-radius: 7px;
+      display: inline-flex;
+      flex: 0 0 auto;
+      font-size: 0.78rem;
+      min-height: 36px;
+      order: 1;
+      padding: 0 14px;
+    }
+
+    .seclore-nav__links.open + .seclore-nav__utilities {
+      display: grid;
+    }
+
+    .seclore-nav__utility-label {
+      display: none;
+    }
+
+    .seclore-nav__utility-link,
+    .seclore-nav__language-button,
+    .seclore-nav__utility-icon,
+    .seclore-nav__theme-toggle,
+    .seclore-nav__demo-button {
+      justify-content: space-between;
+      min-height: 44px;
+      width: 100%;
+    }
+
+    .seclore-nav__demo-button {
+      justify-content: center;
+      min-height: 36px;
+      width: auto;
+    }
+
+    .seclore-nav__utility-icon {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .seclore-nav {
+      padding-inline: 16px;
+    }
+  }
+</style>

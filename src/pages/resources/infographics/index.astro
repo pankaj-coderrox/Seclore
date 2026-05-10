@@ -1,0 +1,993 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const infographics = [
+  {
+    title: "Secure Collaboration in the BFSI Sector - The ASEAN Chapter",
+    category: "Data Security",
+    industry: "Banking & Financial Services",
+    image: "https://www.seclore.com/wp-content/uploads/secure-collaboration-in-the-bfsi-sector-the-asean-chapter.png",
+    link: "https://www.seclore.com/wp-content/uploads/Infographic_secure-collaboration-in-the-bfsi-sector-the-asean-chapter.pdf"
+  },
+  {
+    title: "Data Breaches in the Middle East Region",
+    category: "Compliance",
+    industry: "Government/Public Sector",
+    image: "https://www.seclore.com/wp-content/uploads/Data-Breaches-in-the-Middle-East-Region.png",
+    link: "https://www.seclore.com/wp-content/uploads/Infographic_Data_Breaches_in_Middle_East_Region_2021.pdf"
+  },
+  {
+    title: "Need for Rights Management Grows - Stats You Cannot Ignore",
+    category: "EDRM",
+    industry: "Any industry",
+    image: "",
+    link: "https://www.seclore.com/wp-content/uploads/2025/02/Data_Risk_03_Updated.pdf"
+  },
+  {
+    title: "Securing Sensitive Data on Microsoft 365",
+    category: "Partners & Integrations",
+    industry: "Any industry",
+    image: "https://www.seclore.com/wp-content/uploads/Securing-Sensitive-Data-on-Microsoft-365.png",
+    link: "https://www.seclore.com/wp-content/uploads/2025/02/Seclore-for-Microsoft-365-Infographic.pdf"
+  },
+  {
+    title: "Data Breaches in the African Region",
+    category: "Data Security",
+    industry: "Government/Public Sector",
+    image: "https://www.seclore.com/wp-content/uploads/2025/02/Blog-Infographic-Data-Breaches-in-the-African-Region.png",
+    link: "https://www.seclore.com/wp-content/uploads/Seclore-Data-Breach-in-African-Region.pdf"
+  },
+  {
+    title: "Is Someone from Your Organization Plotting Your Downfall?",
+    category: "Data Security",
+    industry: "Financial Services",
+    image: "https://www.seclore.com/wp-content/uploads/2022/05/Malicious-Insiders-Thumbnail.webp",
+    link: "https://www.seclore.com/wp-content/uploads/Seclore-Malicious-Insiders.pdf"
+  },
+  {
+    title: "Why Semiconductor Companies Are Prone to Intellectual Property Theft?",
+    category: "Data Security",
+    industry: "Semiconductor",
+    image: "https://www.seclore.com/wp-content/uploads/2022/11/IP-Theft-in-Semiconductor-Industry-Opt-1-1024x572-1.png",
+    link: "https://www.seclore.com/wp-content/uploads/2025/02/Seclore-Intellectual-Property-IP-Theft-in-Semiconductor-Industry.pdf"
+  },
+  {
+    title: "Who's Protecting the Data Entering Your Organization?",
+    category: "Compliance",
+    industry: "Any industry",
+    image: "https://www.seclore.com/wp-content/uploads/2022/06/Incoming-Data-Protection-thumbnail.webp",
+    link: "https://www.seclore.com/wp-content/uploads/2025/02/Incoming_Data_Protection.pdf"
+  },
+  {
+    title: "Need to Secure Your Digital Assets",
+    category: "Data Security",
+    industry: "Any industry",
+    image: "https://www.seclore.com/wp-content/uploads/Infographic-Need-to-Secure-Your-Digital-Assets.png",
+    link: "https://www.seclore.com/wp-content/uploads/Need-to-Secure-Your-Digital-Assets.pdf"
+  },
+  {
+    title: "Seclore and Symantec Data-Centric Security Solution",
+    category: "Partners & Integrations",
+    industry: "Any industry",
+    image: "https://www.seclore.com/wp-content/uploads/seclore-joint-solution-brief-symantec-cloud-dlp-300x195-1-1.png",
+    link: "https://www.seclore.com/wp-content/uploads/Seclore-Joint-Solution-Brief-Symantec-Cloud-DLP.pdf"
+  },
+  {
+    title: "Are you at Risk of Data Loss Because of Careless Insiders?",
+    category: "EDRM",
+    industry: "Any industry",
+    image: "https://www.seclore.com/wp-content/uploads/Insider-Threats.webp",
+    link: "https://www.seclore.com/wp-content/uploads/Seclore-Are-You-at-Risk-of-Data-Loss-Because-of-Careless-Insiders.pdf"
+  },
+  {
+    title: "Is your Organization Prone to Intellectual Property Theft?",
+    category: "Third Party Risk",
+    industry: "Any industry",
+    image: "https://www.seclore.com/wp-content/uploads/IP-Theft_infographic-1.png",
+    link: "https://www.seclore.com/wp-content/uploads/Seclore-Is-Your-Organization-Prone-to-IP-Theft.pdf"
+  },
+  {
+    title: "Is Your Semiconductor Data Safe from Malicious Insiders?",
+    category: "EDRM",
+    industry: "Semiconductor",
+    image: "https://www.seclore.com/wp-content/uploads/Malicious-Insiders-in-the-Semiconductor-Industry_2-1024x665-1.png",
+    link: "https://www.seclore.com/wp-content/uploads/Seclore-Insider-Threat-Protection-Semiconductors.pdf"
+  },
+  {
+    title: "Why Secure External Collaboration is the Future of Banking?",
+    category: "Third Party Risk",
+    industry: "Banking & Financial Services",
+    image: "https://www.seclore.com/wp-content/uploads/Infographic-Why-Secure-External-Collaboration-is-the-Future-of-Banking.png",
+    link: "https://www.seclore.com/wp-content/uploads/Why-Secure-External-Collaboration-is-the-Future-of-Banking.pdf"
+  },
+  {
+    title: "Why Email Security is More Important Now Than Ever Before?",
+    category: "Email Encryption",
+    industry: "Any industry",
+    image: "https://www.seclore.com/wp-content/uploads/email-secure.png",
+    link: "https://www.seclore.com/wp-content/uploads/2025/02/Seclore_Email-Secure_10-7-2023.pdf"
+  },
+  {
+    title: "[Updated] Data Breaches in the Middle East",
+    category: "Data Security",
+    industry: "Government/Public Sector",
+    image: "",
+    link: "https://www.seclore.com/wp-content/uploads/Seclore-Data-Breaches-in-the-Middle-East.pdf"
+  },
+  {
+    title: "Are You at Risk of Data Loss Because of Insiders",
+    category: "Data Security",
+    industry: "Any industry",
+    image: "https://www.seclore.com/wp-content/uploads/Insider-Threats.webp",
+    link: "https://www.seclore.com/wp-content/uploads/Seclore-Are-You-at-Risk-of-Data-Loss-Because-of-Careless-Insiders-1.pdf"
+  }
+];
+
+const industries = [...new Set(infographics.map((item) => item.industry).filter((item) => item !== "Any industry"))];
+const categories = [...new Set(infographics.map((item) => item.category))];
+
+const categoryLinks = [
+  ["Datasheets", "/resources/datasheets/"],
+  ["Infographics", "/resources/infographics/"],
+  ["Customer Case Studies", "/resources/customer-case-studies/"],
+  ["Whitepapers & Reports", "/resources/whitepapers-reports/"],
+  ["Videos", "/resources/videos/"],
+  ["eBooks", "/resources/"]
+];
+
+---
+
+<BaseLayout
+  title="Data-Centric Security Infographics | Seclore"
+  description="Explore Seclore data-centric security infographics about data protection, compliance, risk, and theft prevention."
+>
+  <main id="top" class="infographics-page">
+    <Nav />
+
+    <section class="infographics-hero">
+      <span>Resources</span>
+      <h1>Data-Centric Security<br />Infographics</h1>
+      <p>Learn how to improve data protection and compliance, prevent data theft, mitigate risk, and prevent unwanted or unauthorized activity.</p>
+    </section>
+
+    <section class="catalog" id="results">
+      <form class="filter-bar" aria-label="Filter infographics">
+        <strong>Filter by:</strong>
+        <select id="industry-filter" aria-label="Industry">
+          <option value="all">Any industry</option>
+          {industries.map((industry) => <option value={industry}>{industry}</option>)}
+        </select>
+        <select id="category-filter" aria-label="Category">
+          <option value="all">All categories</option>
+          {categories.map((category) => <option value={category}>{category}</option>)}
+        </select>
+        <label class="search-box">
+          <span aria-hidden="true"></span>
+          <input id="resource-search" type="search" placeholder="Enter keywords" aria-label="Enter keywords" />
+        </label>
+      </form>
+
+      <div class="results-row">
+        <strong>Results: <span data-result-count>{infographics.length}</span></strong>
+        <select id="sort-filter" aria-label="Sort infographics">
+          <option value="default">Sort by</option>
+          <option value="title">Title</option>
+          <option value="category">Category</option>
+          <option value="industry">Industry</option>
+        </select>
+      </div>
+
+      <div class="infographic-grid">
+        {infographics.map((item, index) => (
+          <article
+            class="infographic-card"
+            data-card
+            data-order={index}
+            data-title={item.title.toLowerCase()}
+            data-category={item.category}
+            data-industry={item.industry}
+          >
+            <a class="infographic-thumb" href={item.link} target="_blank" rel="noreferrer">
+              {item.image && <img src={item.image} alt="" loading="lazy" />}
+            </a>
+            <div class="infographic-card-copy">
+              <div class="meta-row">
+                <span>Infographic</span>
+                <span>{item.category}</span>
+                {item.industry !== "Any industry" && <span>{item.industry}</span>}
+              </div>
+              <h2>{item.title}</h2>
+              <a href={item.link} target="_blank" rel="noreferrer">Read More <span aria-hidden="true">-&gt;</span></a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p class="empty-state" data-empty-state hidden>No infographics match your filters.</p>
+
+      <nav class="pagination" aria-label="Infographics pagination">
+        <button class="current" type="button" data-page-button="1">1</button>
+        <button type="button" data-page-button="2">2</button>
+        <button type="button" data-next-page>Next</button>
+      </nav>
+    </section>
+
+    <section class="category-band" aria-label="Resource categories">
+      {categoryLinks.map(([item, href]) => (
+        <a href={href}>
+          {item}
+          <span aria-hidden="true">-&gt;</span>
+        </a>
+      ))}
+    </section>
+
+    <section class="ready-section" id="demo">
+      <h2>Ready to get started?</h2>
+      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+      <a class="primary-button" href="#top">Book a Demo</a>
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  const cards = Array.from(document.querySelectorAll("[data-card]"));
+  const grid = document.querySelector(".infographic-grid");
+  const industryFilter = document.querySelector("#industry-filter");
+  const categoryFilter = document.querySelector("#category-filter");
+  const searchInput = document.querySelector("#resource-search");
+  const sortFilter = document.querySelector("#sort-filter");
+  const countNode = document.querySelector("[data-result-count]");
+  const emptyState = document.querySelector("[data-empty-state]");
+  const pageButtons = Array.from(document.querySelectorAll("[data-page-button]"));
+  const nextButton = document.querySelector("[data-next-page]");
+  const perPage = 12;
+  let activePage = 1;
+
+  function getMatches() {
+    const industry = industryFilter ? industryFilter.value : "all";
+    const category = categoryFilter ? categoryFilter.value : "all";
+    const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
+    const sort = sortFilter ? sortFilter.value : "default";
+
+    const matches = cards.filter((card) => {
+      const industryMatch = industry === "all" || card.dataset.industry === industry;
+      const categoryMatch = category === "all" || card.dataset.category === category;
+      const searchMatch = !query || `${card.dataset.title} ${card.dataset.category} ${card.dataset.industry}`.toLowerCase().includes(query);
+      return industryMatch && categoryMatch && searchMatch;
+    });
+
+    matches.sort((a, b) => {
+      if (sort === "default") {
+        return Number(a.dataset.order) - Number(b.dataset.order);
+      }
+      return String(a.dataset[sort]).localeCompare(String(b.dataset[sort]));
+    });
+
+    return matches;
+  }
+
+  function renderCards() {
+    const matches = getMatches();
+    const maxPage = Math.max(1, Math.ceil(matches.length / perPage));
+    activePage = Math.min(activePage, maxPage);
+    const visible = new Set(matches.slice((activePage - 1) * perPage, activePage * perPage));
+
+    cards.forEach((card) => {
+      card.hidden = !visible.has(card);
+    });
+
+    matches.forEach((card) => {
+      grid?.appendChild(card);
+    });
+
+    pageButtons.forEach((button) => {
+      const page = Number(button.dataset.pageButton);
+      button.classList.toggle("current", page === activePage);
+      button.disabled = page > maxPage;
+    });
+
+    if (countNode) {
+      countNode.textContent = String(matches.length);
+    }
+
+    if (emptyState) {
+      emptyState.hidden = matches.length > 0;
+    }
+  }
+
+  [industryFilter, categoryFilter, searchInput, sortFilter].forEach((control) => {
+    control?.addEventListener(control === searchInput ? "input" : "change", () => {
+      activePage = 1;
+      renderCards();
+    });
+  });
+
+  pageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activePage = Number(button.dataset.pageButton);
+      renderCards();
+    });
+  });
+
+  nextButton?.addEventListener("click", () => {
+    const maxPage = Math.max(1, Math.ceil(getMatches().length / perPage));
+    activePage = activePage >= maxPage ? 1 : activePage + 1;
+    renderCards();
+  });
+
+  renderCards();
+</script>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --page-bg: #ffffff;
+    --page-soft: #f8f7f9;
+    --page-text: #24222b;
+    --page-muted: #77737e;
+    --purple: #5b2bd7;
+    --purple-dark: #4422ba;
+    --line: rgba(32, 29, 40, 0.12);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--page-text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  .infographics-page .site-header {
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    display: flex;
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 clamp(20px, 4vw, 42px) 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .infographics-page .site-logo {
+    color: var(--purple);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-right: clamp(14px, 2vw, 28px);
+    text-transform: uppercase;
+  }
+
+  .infographics-page .nav-links,
+  .infographics-page .nav-utilities {
+    align-items: center;
+    display: flex;
+  }
+
+  .infographics-page .nav-links {
+    flex: 1 1 auto;
+    gap: clamp(18px, 2.2vw, 34px);
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .infographics-page .nav-links > a,
+  .infographics-page .nav-trigger {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #28272c;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.98rem;
+    font-weight: 800;
+    gap: 8px;
+    min-height: 68px;
+    padding: 0;
+  }
+
+  .infographics-page .nav-item {
+    position: static;
+  }
+
+  .infographics-page .nav-caret {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    display: inline-block;
+    height: 8px;
+    transform: rotate(45deg) translateY(-2px);
+    width: 8px;
+  }
+
+  .infographics-page .mega-menu {
+    left: 22px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(20px, 4vw, 42px);
+    top: calc(100% - 1px);
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .infographics-page .nav-item:hover .mega-menu,
+  .infographics-page .nav-item:focus-within .mega-menu,
+  .infographics-page .nav-item.is-open .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .infographics-page .mega-inner {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 26px;
+  }
+
+  .infographics-page .mega-columns {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+
+  .infographics-page .mega-column,
+  .infographics-page .mega-sublinks {
+    display: grid;
+    gap: 8px;
+  }
+
+  .infographics-page .mega-title {
+    color: #0b5cad;
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .infographics-page .mega-link,
+  .infographics-page .mega-feature {
+    border-radius: 8px;
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+  }
+
+  .infographics-page .mega-link:hover {
+    background: rgba(15, 76, 129, 0.055);
+  }
+
+  .infographics-page .mega-link strong,
+  .infographics-page .mega-feature strong {
+    color: #101828;
+  }
+
+  .infographics-page .mega-link small,
+  .infographics-page .mega-sublinks a,
+  .infographics-page .mega-feature em {
+    color: #667085;
+  }
+
+  .infographics-page .mega-feature {
+    align-content: end;
+    background: rgba(91, 43, 215, 0.08);
+  }
+
+  .infographics-page .nav-utilities {
+    flex: 0 0 auto;
+    gap: 14px;
+    margin-left: auto;
+  }
+
+  .infographics-page .utility-link,
+  .infographics-page .language-button,
+  .infographics-page .utility-icon,
+  .infographics-page .theme-toggle {
+    display: none;
+  }
+
+  .infographics-page .demo-button,
+  .primary-button {
+    align-items: center;
+    background: var(--purple);
+    border-radius: 7px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 0.86rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+  }
+
+  .infographics-page .nav-toggle {
+    background: transparent;
+    border: 0;
+    display: none;
+    height: 42px;
+    width: 42px;
+  }
+
+  .infographics-page .nav-toggle span {
+    background: #25242a;
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    width: 24px;
+  }
+
+  .infographics-page h1,
+  .infographics-page h2,
+  .infographics-page h3,
+  .infographics-page p {
+    margin-top: 0;
+  }
+
+  .infographics-page h1,
+  .infographics-page h2,
+  .infographics-page h3 {
+    font-weight: 430;
+    letter-spacing: 0;
+  }
+
+  .infographics-hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 14% 76%, rgba(255, 255, 255, 0.34), transparent 32%),
+      linear-gradient(135deg, #c982e8 0%, #8b25f5 45%, #5d0de7 100%);
+    color: #ffffff;
+    display: grid;
+    min-height: 430px;
+    padding: 72px clamp(18px, 4vw, 56px);
+    place-items: center;
+    text-align: center;
+  }
+
+  .infographics-hero span {
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 900;
+    margin-bottom: 24px;
+  }
+
+  .infographics-hero h1 {
+    color: #ffffff;
+    font-size: clamp(3rem, 6.6vw, 5.4rem);
+    line-height: 0.96;
+    margin-bottom: 24px;
+  }
+
+  .infographics-hero p {
+    color: #ffffff;
+    line-height: 1.45;
+    max-width: 930px;
+  }
+
+  .catalog {
+    padding: clamp(36px, 6vw, 72px) clamp(18px, 4vw, 56px) clamp(70px, 8vw, 105px);
+  }
+
+  .filter-bar,
+  .results-row {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    margin: 0 auto;
+    max-width: 1180px;
+  }
+
+  .filter-bar {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .filter-bar strong,
+  .results-row strong {
+    font-size: 0.92rem;
+  }
+
+  .filter-bar select,
+  .filter-bar input,
+  .results-row select {
+    background: #f2f2f5;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: #716d78;
+    min-height: 42px;
+    padding: 0 14px;
+  }
+
+  .filter-bar select {
+    min-width: 210px;
+  }
+
+  .search-box {
+    align-items: center;
+    background: #f2f2f5;
+    border-radius: 5px;
+    display: flex;
+    flex: 1 1 280px;
+    min-height: 42px;
+    padding-left: 12px;
+  }
+
+  .search-box span {
+    border: 2px solid #aaa7b0;
+    border-radius: 50%;
+    display: inline-block;
+    height: 14px;
+    position: relative;
+    width: 14px;
+  }
+
+  .search-box span::after {
+    background: #aaa7b0;
+    content: "";
+    height: 7px;
+    position: absolute;
+    right: -5px;
+    top: 9px;
+    transform: rotate(45deg);
+    width: 2px;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .results-row {
+    justify-content: space-between;
+    margin-top: 36px;
+  }
+
+  .infographic-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 36px auto 0;
+    max-width: 1180px;
+  }
+
+  .infographic-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    min-height: 405px;
+    overflow: hidden;
+  }
+
+  .infographic-card[hidden] {
+    display: none;
+  }
+
+  .infographic-thumb {
+    align-items: center;
+    background: #ffffff;
+    display: flex;
+    min-height: 235px;
+    overflow: hidden;
+  }
+
+  .infographic-thumb img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.09;
+    width: 100%;
+  }
+
+  .infographic-card-copy {
+    display: grid;
+    padding: 28px;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .meta-row span {
+    background: #f0eff3;
+    border-radius: 999px;
+    color: #5d5965;
+    display: inline-flex;
+    font-size: 0.68rem;
+    font-weight: 900;
+    padding: 5px 8px;
+    text-transform: uppercase;
+  }
+
+  .infographic-card h2 {
+    font-size: clamp(1.12rem, 2vw, 1.42rem);
+    line-height: 1.18;
+    margin: 18px 0 28px;
+  }
+
+  .infographic-card a:last-child {
+    align-self: end;
+    font-size: 0.82rem;
+    font-weight: 850;
+  }
+
+  .empty-state {
+    color: var(--page-muted);
+    margin: 36px auto 0;
+    max-width: 1180px;
+    text-align: center;
+  }
+
+  .pagination {
+    align-items: center;
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-top: 54px;
+  }
+
+  .pagination button {
+    background: transparent;
+    border: 0;
+    color: #302e35;
+    cursor: pointer;
+    font-size: 0.86rem;
+    font-weight: 850;
+  }
+
+  .pagination button:disabled {
+    color: #aaa7af;
+    cursor: not-allowed;
+  }
+
+  .pagination .current {
+    background: #d9dde2;
+    border-radius: 4px;
+    padding: 8px 10px;
+  }
+
+  .category-band {
+    background: var(--purple-dark);
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: clamp(36px, 5vw, 58px) clamp(18px, 4vw, 56px);
+  }
+
+  .category-band a {
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    border-radius: 8px;
+    color: #ffffff;
+    display: flex;
+    font-size: 0.95rem;
+    font-weight: 850;
+    justify-content: space-between;
+    min-height: 62px;
+    padding: 0 24px;
+  }
+
+  .ready-section,
+  .resource-footer {
+    background: #ffffff;
+    padding-inline: clamp(18px, 4vw, 56px);
+  }
+
+  .ready-section {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 44px;
+    padding-top: 42px;
+  }
+
+  .ready-section h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 10px;
+  }
+
+  .ready-section p,
+  .resource-footer p {
+    color: var(--page-muted);
+    line-height: 1.58;
+  }
+
+  .ready-section .primary-button {
+    margin-top: 24px;
+    min-width: 170px;
+  }
+
+  .resource-footer {
+    padding-bottom: 42px;
+  }
+
+  .footer-lines {
+    border-block: 1px solid var(--line);
+    margin-bottom: 36px;
+  }
+
+  .footer-lines details {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+
+  .footer-lines details:last-child {
+    border-bottom: 0;
+  }
+
+  .footer-lines summary {
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 850;
+  }
+
+  .footer-logo {
+    color: var(--purple);
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 950;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .store-row {
+    display: grid;
+    gap: 9px;
+    margin: 30px 0;
+    max-width: 180px;
+  }
+
+  .store-row span {
+    background: #19121f;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 850;
+    padding: 10px 14px;
+  }
+
+  .social-row {
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 26px;
+  }
+
+  .social-row a {
+    color: #303038;
+    font-weight: 900;
+  }
+
+  .legal {
+    font-size: 0.9rem;
+    margin-top: 24px;
+  }
+
+  .legal a {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1180px) {
+    .infographics-page .site-header {
+      flex-wrap: wrap;
+    }
+
+    .infographics-page .nav-toggle {
+      display: block;
+      margin-left: auto;
+    }
+
+    .infographics-page .nav-links {
+      background: #ffffff;
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+      display: none;
+      flex: 1 0 100%;
+      order: 2;
+      padding: 10px 0 14px;
+    }
+
+    .infographics-page .nav-links.open {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .infographics-page .nav-links > a,
+    .infographics-page .nav-trigger {
+      justify-content: space-between;
+      min-height: 48px;
+      width: 100%;
+    }
+
+    .infographics-page .nav-item {
+      display: grid;
+    }
+
+    .infographics-page .mega-menu {
+      display: none;
+      opacity: 1;
+      position: static;
+      transform: none;
+    }
+
+    .infographics-page .nav-item.is-open .mega-menu {
+      display: block;
+    }
+
+    .infographics-page .mega-inner {
+      box-shadow: none;
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 16px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .filter-bar {
+      align-items: stretch;
+      display: grid;
+    }
+
+    .filter-bar select,
+    .search-box {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .infographic-grid,
+    .category-band {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .infographics-hero h1 {
+      font-size: 3rem;
+    }
+
+    .infographic-card {
+      min-height: 340px;
+    }
+
+    .infographic-thumb {
+      min-height: 170px;
+    }
+
+    .infographic-card-copy {
+      padding: 20px;
+    }
+
+    .infographic-card h2 {
+      font-size: 1rem;
+    }
+
+    .catalog,
+    .category-band,
+    .ready-section,
+    .resource-footer {
+      padding-inline: 16px;
+    }
+  }
+</style>
