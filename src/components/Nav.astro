@@ -410,9 +410,6 @@ function isNavItemActive(item) {
       return;
     }
 
-    navToggle?.setAttribute("aria-expanded", "false");
-    navToggle?.setAttribute("aria-label", "Open navigation");
-
     if (immediate || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       finishMobileMenuClose();
       return;
@@ -1579,6 +1576,19 @@ function isNavItemActive(item) {
       transform: rotate(-45deg);
     }
 
+    .seclore-nav.is-menu-closing .seclore-nav__toggle span:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    .seclore-nav.is-menu-closing .seclore-nav__toggle span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0.2);
+    }
+
+    .seclore-nav.is-menu-closing .seclore-nav__toggle span:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
     .seclore-nav__links {
       align-items: stretch;
       background: #ffffff;
@@ -1964,14 +1974,16 @@ function isNavItemActive(item) {
       position: sticky;
     }
 
-    .seclore-nav.is-menu-open {
+    .seclore-nav.is-menu-open,
+    .seclore-nav.is-menu-closing {
       align-content: start;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0;
+      column-gap: 17px;
       min-height: 100vh;
       overflow-x: hidden;
-      padding: 17px 24px 42px;
+      padding: 0 24px 42px;
+      row-gap: 0;
     }
 
     .seclore-nav__logo,
@@ -2038,7 +2050,8 @@ function isNavItemActive(item) {
       margin-top: 38px;
     }
 
-    .seclore-nav.is-menu-open .seclore-nav__links {
+    .seclore-nav.is-menu-open .seclore-nav__links,
+    .seclore-nav.is-menu-closing .seclore-nav__links {
       flex: 1 0 100%;
       margin-top: 42px;
       order: 3;
@@ -2057,7 +2070,8 @@ function isNavItemActive(item) {
       width: 11px;
     }
 
-    .seclore-nav.is-menu-open .seclore-nav__utilities {
+    .seclore-nav.is-menu-open .seclore-nav__utilities,
+    .seclore-nav.is-menu-closing .seclore-nav__utilities {
       flex: 1 0 100%;
       margin-top: 46px;
       order: 4;
@@ -2087,6 +2101,11 @@ function isNavItemActive(item) {
   @media (max-width: 380px) {
     .seclore-nav {
       gap: 16px;
+    }
+
+    .seclore-nav.is-menu-open,
+    .seclore-nav.is-menu-closing {
+      column-gap: 16px;
     }
 
     .seclore-nav__logo {
