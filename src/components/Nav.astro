@@ -187,8 +187,8 @@ const navItems = [
         title: "",
         links: [
           ["Support Portal", "/support/home/"],
-          ["Docs", "#resources"],
-          ["Contact Support", "#contact"]
+          ["Docs", "/support/solutions/"],
+          ["Contact Support", "/support/home/#contact"]
         ]
       }
     ],
@@ -212,9 +212,29 @@ function isActive(href?: string) {
     return false;
   }
 
-  const normalizedHref = href.endsWith("/") ? href : `${href}/`;
+  const cleanHref = href.split("#")[0];
+  const normalizedHref = cleanHref.endsWith("/") ? cleanHref : `${cleanHref}/`;
   const normalizedPath = currentPath.endsWith("/") ? currentPath : `${currentPath}/`;
   return normalizedPath === normalizedHref || (normalizedHref !== "/" && normalizedPath.startsWith(normalizedHref));
+}
+
+function isLinkActive(link) {
+  return Array.isArray(link)
+    ? isActive(link[1])
+    : isActive(link.href) || link.children.some(([, childHref]) => isActive(childHref));
+}
+
+function isNavItemActive(item) {
+  if (item.href) {
+    return isActive(item.href);
+  }
+
+  return Boolean(
+    item.feature && isActive(item.feature.href) ||
+    item.columns?.some((column) =>
+      isActive(column.href) || column.links.some((link) => isLinkActive(link))
+    )
+  );
 }
 ---
 
@@ -227,9 +247,9 @@ function isActive(href?: string) {
   <nav class="seclore-nav__links" aria-label="Primary navigation">
     {mainItems.map((item) => (
       item.href || !item.columns || !item.feature ? (
-        <a class:list={[{ "is-active": isActive(item.href) }]} href={item.href ?? "#top"} aria-current={isActive(item.href) ? "page" : undefined}>{item.label}</a>
+        <a class:list={[{ "is-active": isNavItemActive(item) }]} href={item.href ?? "#top"} aria-current={isNavItemActive(item) ? "page" : undefined}>{item.label}</a>
       ) : (
-        <div class:list={["seclore-nav__item", { "seclore-nav__item--wide": item.label === "ARMOR" || item.label === "Solutions", "seclore-nav__item--compact": item.label !== "ARMOR" && item.label !== "Solutions", "is-active": item.columns.some((column) => column.links.some((link) => Array.isArray(link) ? isActive(link[1]) : isActive(link.href) || link.children.some(([, childHref]) => isActive(childHref)))) }]}>
+        <div class:list={["seclore-nav__item", { "seclore-nav__item--wide": item.label === "ARMOR" || item.label === "Solutions", "seclore-nav__item--compact": item.label !== "ARMOR" && item.label !== "Solutions", "is-active": isNavItemActive(item) }]}>
           <button class="seclore-nav__trigger" type="button" aria-expanded="false">
             {item.label}
             <span class="seclore-nav__caret" aria-hidden="true"></span>
@@ -373,6 +393,10 @@ function isActive(href?: string) {
     navToggle?.setAttribute("aria-expanded", "false");
     navToggle?.setAttribute("aria-label", "Open navigation");
     document.body.classList.remove("seclore-nav-lock");
+    document.querySelectorAll(".seclore-nav__item.is-open").forEach((item) => {
+      item.classList.remove("is-open");
+      item.querySelector(".seclore-nav__trigger")?.setAttribute("aria-expanded", "false");
+    });
   }
 
   function setTheme(theme: string) {
@@ -420,6 +444,10 @@ function isActive(href?: string) {
     navToggle.setAttribute("aria-expanded", String(open));
     navToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
     document.body.classList.toggle("seclore-nav-lock", open);
+    if (open) {
+      closeSearchPanel();
+      closeLanguagePanel();
+    }
   });
 
   navTriggers.forEach((trigger) => {
@@ -436,6 +464,10 @@ function isActive(href?: string) {
 
       item?.classList.toggle("is-open", !expanded);
       trigger.setAttribute("aria-expanded", String(!expanded));
+
+      if (!expanded && window.matchMedia("(max-width: 1180px)").matches) {
+        window.setTimeout(() => item?.scrollIntoView({ block: "nearest", behavior: "smooth" }), 20);
+      }
     });
   });
 
@@ -450,15 +482,35 @@ function isActive(href?: string) {
     }
   });
 
-  document.querySelectorAll(".seclore-nav__mega-link, .seclore-nav__mega-feature, .seclore-nav__mega-sublinks a, .seclore-nav__links > a").forEach((link) => {
-    link.addEventListener("click", () => {
-      closeMobileMenu();
-      document.querySelectorAll(".seclore-nav__item.is-open").forEach((item) => {
-        item.classList.remove("is-open");
-        item.querySelector(".seclore-nav__trigger")?.setAttribute("aria-expanded", "false");
-      });
-    });
-  });
+  nav?.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+
+    const link = event.target.closest("a[href]");
+    if (!(link instanceof HTMLAnchorElement)) {
+      return;
+    }
+
+    const href = link.getAttribute("href");
+    const isModifiedClick = event instanceof MouseEvent && (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0);
+
+    if (!href || isModifiedClick) {
+      return;
+    }
+
+    if (window.matchMedia("(max-width: 1180px)").matches && nav.classList.contains("is-menu-open")) {
+      if (!href.startsWith("#")) {
+        event.preventDefault();
+        const destination = link.href;
+        closeMobileMenu();
+        window.location.assign(destination);
+        return;
+      }
+
+      window.setTimeout(closeMobileMenu, 0);
+    }
+  }, true);
 
   window.addEventListener("resize", () => {
     if (window.matchMedia("(min-width: 1181px)").matches) {
@@ -1500,7 +1552,7 @@ function isActive(href?: string) {
       overflow: hidden;
       padding: 0;
       transform: translateY(-8px);
-      transition: grid-template-rows 220ms ease, max-height 220ms ease, opacity 180ms ease, transform 180ms ease;
+      transition: grid-template-rows 150ms ease, max-height 150ms ease, opacity 120ms ease, transform 120ms ease;
       width: 100%;
     }
 
@@ -1510,6 +1562,21 @@ function isActive(href?: string) {
       opacity: 1;
       overflow: visible;
       transform: translateY(0);
+    }
+
+    .seclore-nav.is-menu-open .seclore-nav__links,
+    .seclore-nav.is-menu-open .seclore-nav__item,
+    .seclore-nav.is-menu-open .seclore-nav__mega,
+    .seclore-nav.is-menu-open .seclore-nav__mega-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .seclore-nav.is-menu-open .seclore-nav__links a {
+      pointer-events: auto;
+      position: relative;
+      touch-action: manipulation;
+      z-index: 3;
     }
 
     .seclore-nav__links > a,
@@ -1571,9 +1638,9 @@ function isActive(href?: string) {
     }
 
     .seclore-nav__mega {
-      display: block;
+      display: none;
       left: auto;
-      max-height: 0;
+      max-height: none;
       opacity: 1;
       overflow: hidden;
       pointer-events: auto;
@@ -1581,18 +1648,21 @@ function isActive(href?: string) {
       right: auto;
       top: auto;
       transform: none;
-      transition: max-height 240ms ease, opacity 180ms ease;
+      transition: none;
     }
 
     .seclore-nav__item:hover .seclore-nav__mega,
     .seclore-nav__item:focus-within .seclore-nav__mega {
-      max-height: 0;
-      opacity: 0;
+      display: none;
     }
 
     .seclore-nav__item.is-open .seclore-nav__mega {
-      max-height: 900px;
+      display: block;
+      max-height: min(70vh, 920px);
       opacity: 1;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
     }
 
     .seclore-nav__mega-inner {
@@ -1621,11 +1691,14 @@ function isActive(href?: string) {
     }
 
     .seclore-nav__mega-title {
+      align-items: center;
       color: #6b7280;
+      display: inline-flex;
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.06em;
       margin: 0 0 3px;
+      min-height: 30px;
       text-transform: uppercase;
     }
 
@@ -1638,6 +1711,7 @@ function isActive(href?: string) {
     .seclore-nav__mega-link {
       display: grid;
       gap: 2px;
+      min-height: 42px;
       padding: 8px 0;
       transition: color 160ms ease, transform 160ms ease;
     }
@@ -1686,9 +1760,12 @@ function isActive(href?: string) {
     }
 
     .seclore-nav__mega-sublinks a {
+      align-items: center;
       color: #5f6670;
+      display: flex;
       font-size: 0.9rem;
       line-height: 1.35;
+      min-height: 34px;
       padding: 5px 0;
     }
 

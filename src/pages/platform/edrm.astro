@@ -1,0 +1,134 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const controls = [
+  "Encrypt files wherever they travel",
+  "Limit view, edit, print, copy, and share actions",
+  "Revoke access after distribution",
+  "Track usage across internal and external users"
+];
+---
+
+<BaseLayout
+  title="Enterprise Digital Rights Management | seclore"
+  description="Protect sensitive documents and emails with persistent Enterprise Digital Rights Management controls."
+>
+  <main id="top" class="simple-route-page">
+    <Nav />
+
+    <section class="simple-route-hero">
+      <span>Data-Centric Security Platform</span>
+      <h1>Enterprise Digital Rights Management</h1>
+      <p>
+        Apply persistent controls to sensitive files so access, usage, and revocation remain under
+        your control after data leaves repositories, applications, or your organization.
+      </p>
+      <a class="simple-route-button" href="/demo/">Book a Demo</a>
+    </section>
+
+    <section class="simple-route-grid" aria-label="EDRM capabilities">
+      {controls.map((control) => (
+        <article>
+          <h2>{control}</h2>
+          <p>Keep protection attached to the data itself across people, partners, devices, and AI workflows.</p>
+        </article>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .simple-route-page {
+    background: #ffffff;
+    color: #101828;
+    min-height: 100vh;
+  }
+
+  .simple-route-hero {
+    padding: clamp(72px, 9vw, 128px) clamp(24px, 6vw, 84px) clamp(48px, 6vw, 78px);
+  }
+
+  .simple-route-hero span {
+    color: #5630d6;
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .simple-route-hero h1 {
+    font-size: clamp(2.6rem, 7vw, 5.8rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 0.98;
+    margin: 0 0 28px;
+    max-width: 920px;
+  }
+
+  .simple-route-hero p {
+    color: #3b3b44;
+    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+    line-height: 1.55;
+    max-width: 720px;
+  }
+
+  .simple-route-button {
+    align-items: center;
+    background: #5630d6;
+    border-radius: 7px;
+    color: #ffffff;
+    display: inline-flex;
+    font-weight: 800;
+    justify-content: center;
+    margin-top: 24px;
+    min-height: 48px;
+    padding: 0 22px;
+    text-decoration: none;
+  }
+
+  .simple-route-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 0 clamp(24px, 6vw, 84px) clamp(72px, 8vw, 112px);
+  }
+
+  .simple-route-grid article {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    min-height: 190px;
+    padding: 28px;
+  }
+
+  .simple-route-grid h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0 0 16px;
+  }
+
+  .simple-route-grid p {
+    color: #5b6472;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .simple-route-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .simple-route-hero {
+      padding-top: 54px;
+    }
+
+    .simple-route-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

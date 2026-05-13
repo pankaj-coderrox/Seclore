@@ -1,0 +1,129 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+const posts = [
+  ["AI, Company, Data Security", "The Debate About AI in the Enterprise Is Over. Here Is the Only Question That Matters."],
+  ["AI Risk, Data Security", "The Missing Link in Enterprise AI: Why Context and Behavior Are the New Security Perimeter"],
+  ["AI Risk, Data Security", "ChatGPT Read 400 Internal Company Files In 42 Milliseconds. Security Stacks Saw Nothing"],
+  ["Company, Compliance, Data Security", "Introducing Seclore ARMOR: Data Security Intelligence for the AI Enterprise"]
+];
+---
+
+<BaseLayout
+  title="Blog | seclore"
+  description="Read Seclore blog posts on data security, compliance, AI risk, and data-centric protection."
+>
+  <main id="top" class="blog-page">
+    <Nav />
+
+    <section class="blog-hero">
+      <span>Blog</span>
+      <h1>Data Security Insights</h1>
+      <p>
+        Read the latest thinking on AI risk, data security intelligence, compliance, and persistent
+        protection for enterprise data.
+      </p>
+    </section>
+
+    <section class="blog-grid" aria-label="Blog posts">
+      {posts.map(([category, title]) => (
+        <article>
+          <span>{category}</span>
+          <h2>{title}</h2>
+          <a href="/resources/">View Blog Post</a>
+        </article>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .blog-page {
+    background: #ffffff;
+    color: #111827;
+    min-height: 100vh;
+  }
+
+  .blog-hero {
+    padding: clamp(72px, 9vw, 128px) clamp(24px, 6vw, 84px) clamp(42px, 5vw, 68px);
+  }
+
+  .blog-hero span {
+    color: #5630d6;
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+
+  .blog-hero h1 {
+    font-size: clamp(2.6rem, 7vw, 5.6rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    margin: 0 0 24px;
+  }
+
+  .blog-hero p {
+    color: #374151;
+    font-size: clamp(1.05rem, 1.5vw, 1.32rem);
+    line-height: 1.55;
+    max-width: 710px;
+  }
+
+  .blog-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 0 clamp(24px, 6vw, 84px) clamp(72px, 8vw, 112px);
+  }
+
+  .blog-grid article {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    display: grid;
+    min-height: 300px;
+    padding: 28px;
+  }
+
+  .blog-grid span {
+    color: #6b7280;
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .blog-grid h2 {
+    align-self: end;
+    font-size: 1.28rem;
+    font-weight: 500;
+    line-height: 1.18;
+    margin: 36px 0 24px;
+  }
+
+  .blog-grid a {
+    color: #5630d6;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  @media (max-width: 1080px) {
+    .blog-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .blog-hero {
+      padding-top: 54px;
+    }
+
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
