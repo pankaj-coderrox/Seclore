@@ -3788,9 +3788,23 @@ const customerLogos = [
     }
   }
 
+  @media (max-width: 560px) {
+    main#top .home-hero .home-actions {
+      align-items: flex-start !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+    }
+
+    main#top .home-hero .home-actions .home-button {
+      width: 151px !important;
+    }
+  }
+
   @media (max-width: 380px) {
     main#top .home-hero .home-actions {
-      gap: 10px !important;
+      align-items: flex-start !important;
+      flex-direction: column !important;
+      gap: 16px !important;
     }
 
     main#top .customer-scroll-section {
@@ -3822,7 +3836,7 @@ const customerLogos = [
     main#top .home-hero .home-actions .home-button {
       font-size: 0.86rem;
       padding-inline: 10px;
-      width: min(158px, calc((100% - 10px) / 2)) !important;
+      width: 151px !important;
     }
 
     main#top .home-hero .home-actions .home-button.primary,

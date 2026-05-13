@@ -307,7 +307,10 @@ function isActive(href?: string) {
     </button>
   </div>
 
-  <a class="seclore-nav__demo-button" href="/demo/">Book a Demo</a>
+  <a class="seclore-nav__demo-button" href="/demo/">
+    <span class="seclore-nav__demo-label-full">Book a Demo</span>
+    <span class="seclore-nav__demo-label-mobile">Book a<br />Demo</span>
+  </a>
 
   <button class="seclore-nav__toggle" type="button" aria-label="Open navigation" aria-expanded="false">
     <span></span>
@@ -918,6 +921,10 @@ function isActive(href?: string) {
 
   .seclore-nav .seclore-nav__demo-button {
     color: #ffffff;
+  }
+
+  .seclore-nav__demo-label-mobile {
+    display: none;
   }
 
   .seclore-nav__mega {
@@ -1787,9 +1794,9 @@ function isActive(href?: string) {
       align-items: center;
       display: flex;
       flex-wrap: nowrap;
-      gap: 8px;
-      min-height: 58px;
-      padding-inline: 14px;
+      gap: 17px;
+      min-height: 89px;
+      padding: 0 24px;
       position: sticky;
     }
 
@@ -1803,25 +1810,36 @@ function isActive(href?: string) {
     .seclore-nav__logo {
       flex: 0 1 auto;
       justify-self: start;
-      max-width: 132px;
+      max-width: 105px;
     }
 
     .seclore-nav__logo img {
-      width: clamp(104px, 33vw, 128px);
+      width: clamp(94px, 27vw, 105px);
     }
 
     .seclore-nav__demo-button {
       display: inline-flex !important;
-      flex: 0 0 108px;
-      font-size: clamp(0.74rem, 3vw, 0.82rem);
+      flex: 0 0 147px;
+      font-size: 0.95rem;
       justify-self: end;
-      min-height: 36px;
+      line-height: 1.12;
+      min-height: 56px;
       min-width: 0;
       order: initial;
-      padding-inline: 10px;
+      padding-inline: 16px;
       position: static;
+      text-align: center;
       transform: none;
-      width: 108px;
+      white-space: normal;
+      width: 147px;
+    }
+
+    .seclore-nav__demo-label-full {
+      display: none;
+    }
+
+    .seclore-nav__demo-label-mobile {
+      display: block;
     }
 
     .seclore-nav__toggle {
@@ -1829,6 +1847,7 @@ function isActive(href?: string) {
       flex: 0 0 32px;
       height: 42px;
       justify-self: end;
+      margin-left: 25px;
       order: initial;
       position: static;
       transform: none;
@@ -1837,7 +1856,7 @@ function isActive(href?: string) {
     }
 
     .seclore-nav__toggle span {
-      width: 20px;
+      width: 22px;
     }
 
     .seclore-nav__links {
@@ -1862,6 +1881,29 @@ function isActive(href?: string) {
 
     .seclore-nav__caret {
       margin-right: 21px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .seclore-nav {
+      gap: 16px;
+    }
+
+    .seclore-nav__logo {
+      max-width: 94px;
+    }
+
+    .seclore-nav__logo img {
+      width: 94px;
+    }
+
+    .seclore-nav__demo-button {
+      flex-basis: 128px;
+      width: 128px;
+    }
+
+    .seclore-nav__toggle {
+      margin-left: 27px;
     }
   }
 
