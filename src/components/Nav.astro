@@ -351,7 +351,9 @@ function isNavItemActive(item) {
 
 <script>
   const nav = document.querySelector(".seclore-nav");
+  const navLogo = document.querySelector(".seclore-nav__logo");
   const navToggle = document.querySelector(".seclore-nav__toggle");
+  const navDemoButton = document.querySelector(".seclore-nav__demo-button");
   const navLinks = document.querySelector(".seclore-nav__links");
   const navTriggers = document.querySelectorAll(".seclore-nav__trigger");
   const searchPanel = document.querySelector(".seclore-nav__search-panel");
@@ -363,6 +365,54 @@ function isNavItemActive(item) {
   const themeText = document.querySelector(".seclore-nav__theme-toggle-text");
   const mobileMenuCloseDuration = 360;
   let mobileMenuCloseTimer: number | undefined;
+  const mobileMenuToggleLockProperties = [
+    "--seclore-logo-close-top",
+    "--seclore-logo-close-left",
+    "--seclore-logo-close-width",
+    "--seclore-logo-close-height",
+    "--seclore-toggle-close-top",
+    "--seclore-toggle-close-left",
+    "--seclore-toggle-close-width",
+    "--seclore-toggle-close-height",
+    "--seclore-demo-close-top",
+    "--seclore-demo-close-left",
+    "--seclore-demo-close-width",
+    "--seclore-demo-close-height",
+  ];
+
+  function lockMobileTogglePosition() {
+    if (navLogo instanceof HTMLElement) {
+      const logoRect = navLogo.getBoundingClientRect();
+      navLogo.style.setProperty("--seclore-logo-close-top", `${logoRect.top}px`);
+      navLogo.style.setProperty("--seclore-logo-close-left", `${logoRect.left}px`);
+      navLogo.style.setProperty("--seclore-logo-close-width", `${logoRect.width}px`);
+      navLogo.style.setProperty("--seclore-logo-close-height", `${logoRect.height}px`);
+    }
+
+    if (navDemoButton instanceof HTMLElement) {
+      const demoRect = navDemoButton.getBoundingClientRect();
+      navDemoButton.style.setProperty("--seclore-demo-close-top", `${demoRect.top}px`);
+      navDemoButton.style.setProperty("--seclore-demo-close-left", `${demoRect.left}px`);
+      navDemoButton.style.setProperty("--seclore-demo-close-width", `${demoRect.width}px`);
+      navDemoButton.style.setProperty("--seclore-demo-close-height", `${demoRect.height}px`);
+    }
+
+    if (navToggle instanceof HTMLElement) {
+      const rect = navToggle.getBoundingClientRect();
+      navToggle.style.setProperty("--seclore-toggle-close-top", `${rect.top}px`);
+      navToggle.style.setProperty("--seclore-toggle-close-left", `${rect.left}px`);
+      navToggle.style.setProperty("--seclore-toggle-close-width", `${rect.width}px`);
+      navToggle.style.setProperty("--seclore-toggle-close-height", `${rect.height}px`);
+    }
+  }
+
+  function clearMobileTogglePositionLock() {
+    mobileMenuToggleLockProperties.forEach((property) => {
+      if (navLogo instanceof HTMLElement) navLogo.style.removeProperty(property);
+      if (navToggle instanceof HTMLElement) navToggle.style.removeProperty(property);
+      if (navDemoButton instanceof HTMLElement) navDemoButton.style.removeProperty(property);
+    });
+  }
 
   function closeLanguagePanel() {
     nav?.classList.remove("is-language-open");
@@ -395,6 +445,7 @@ function isNavItemActive(item) {
     navLinks?.classList.remove("open");
     navToggle?.setAttribute("aria-expanded", "false");
     navToggle?.setAttribute("aria-label", "Open navigation");
+    clearMobileTogglePositionLock();
     document.body.classList.remove("seclore-nav-lock");
     document.querySelectorAll(".seclore-nav__item.is-open").forEach((item) => {
       item.classList.remove("is-open");
@@ -415,6 +466,7 @@ function isNavItemActive(item) {
       return;
     }
 
+    lockMobileTogglePosition();
     nav.classList.add("is-menu-closing");
     mobileMenuCloseTimer = window.setTimeout(finishMobileMenuClose, mobileMenuCloseDuration);
   }
@@ -465,6 +517,7 @@ function isNavItemActive(item) {
     }
 
     window.clearTimeout(mobileMenuCloseTimer);
+    lockMobileTogglePosition();
     nav?.classList.remove("is-menu-closing");
     nav?.classList.toggle("is-menu-open", open);
     navLinks?.classList.toggle("open", open);
@@ -1469,7 +1522,6 @@ function isNavItemActive(item) {
       gap: 0;
       min-height: 58px;
       padding: 0 18px;
-      transition: min-height 180ms ease;
     }
 
     .seclore-nav.is-menu-open {
@@ -1495,6 +1547,17 @@ function isNavItemActive(item) {
       order: 0;
     }
 
+    .seclore-nav.is-menu-open .seclore-nav__logo,
+    .seclore-nav.is-menu-closing .seclore-nav__logo {
+      height: var(--seclore-logo-close-height, auto);
+      left: var(--seclore-logo-close-left, 18px);
+      margin: 0;
+      position: fixed;
+      top: var(--seclore-logo-close-top, 0);
+      width: var(--seclore-logo-close-width, auto);
+      z-index: 3001;
+    }
+
     .seclore-nav__logo img {
       width: clamp(118px, 30vw, 150px);
     }
@@ -1517,6 +1580,19 @@ function isNavItemActive(item) {
       padding: 0 18px;
     }
 
+    .seclore-nav.is-menu-open .seclore-nav__demo-button,
+    .seclore-nav.is-menu-closing .seclore-nav__demo-button {
+      height: var(--seclore-demo-close-height, 36px);
+      left: var(--seclore-demo-close-left, auto);
+      margin: 0;
+      min-height: 0;
+      min-width: 0;
+      position: fixed;
+      top: var(--seclore-demo-close-top, 0);
+      width: var(--seclore-demo-close-width, 137px);
+      z-index: 3001;
+    }
+
     .seclore-nav__toggle {
       align-items: center;
       background: transparent;
@@ -1533,9 +1609,16 @@ function isNavItemActive(item) {
       width: 38px;
     }
 
+    .seclore-nav.is-menu-open .seclore-nav__toggle,
     .seclore-nav.is-menu-closing .seclore-nav__toggle {
-      animation: seclore-nav-close-spin 360ms cubic-bezier(0.22, 1, 0.36, 1);
+      height: var(--seclore-toggle-close-height, 46px);
+      left: var(--seclore-toggle-close-left, auto);
+      margin: 0;
+      position: fixed;
+      top: var(--seclore-toggle-close-top, 0);
       transform-origin: center;
+      width: var(--seclore-toggle-close-width, 38px);
+      z-index: 3002;
     }
 
     .seclore-nav__toggle:focus {
@@ -1573,19 +1656,6 @@ function isNavItemActive(item) {
     }
 
     .seclore-nav__toggle[aria-expanded="true"] span:nth-child(3) {
-      transform: rotate(-45deg);
-    }
-
-    .seclore-nav.is-menu-closing .seclore-nav__toggle span:nth-child(1) {
-      transform: rotate(45deg);
-    }
-
-    .seclore-nav.is-menu-closing .seclore-nav__toggle span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0.2);
-    }
-
-    .seclore-nav.is-menu-closing .seclore-nav__toggle span:nth-child(3) {
       transform: rotate(-45deg);
     }
 
@@ -1940,21 +2010,7 @@ function isNavItemActive(item) {
       display: none;
     }
 
-    @keyframes seclore-nav-close-spin {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(-90deg);
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      .seclore-nav.is-menu-closing .seclore-nav__toggle {
-        animation: none;
-      }
-
       .seclore-nav__links,
       .seclore-nav__toggle span,
       .seclore-nav__utilities {
@@ -1974,16 +2030,14 @@ function isNavItemActive(item) {
       position: sticky;
     }
 
-    .seclore-nav.is-menu-open,
-    .seclore-nav.is-menu-closing {
+    .seclore-nav.is-menu-open {
       align-content: start;
       align-items: center;
       flex-wrap: wrap;
-      column-gap: 17px;
+      gap: 0;
       min-height: 100vh;
       overflow-x: hidden;
-      padding: 0 24px 42px;
-      row-gap: 0;
+      padding: 17px 24px 42px;
     }
 
     .seclore-nav__logo,
@@ -2001,6 +2055,17 @@ function isNavItemActive(item) {
 
     .seclore-nav__logo img {
       width: clamp(94px, 27vw, 105px);
+    }
+
+    .seclore-nav.is-menu-open .seclore-nav__logo,
+    .seclore-nav.is-menu-closing .seclore-nav__logo {
+      height: var(--seclore-logo-close-height, auto);
+      left: var(--seclore-logo-close-left, 24px);
+      margin: 0;
+      position: fixed;
+      top: var(--seclore-logo-close-top, 0);
+      width: var(--seclore-logo-close-width, auto);
+      z-index: 3001;
     }
 
     .seclore-nav__demo-button {
@@ -2028,6 +2093,19 @@ function isNavItemActive(item) {
       display: block;
     }
 
+    .seclore-nav.is-menu-open .seclore-nav__demo-button,
+    .seclore-nav.is-menu-closing .seclore-nav__demo-button {
+      height: var(--seclore-demo-close-height, 56px);
+      left: var(--seclore-demo-close-left, auto);
+      margin: 0;
+      min-height: 0;
+      min-width: 0;
+      position: fixed;
+      top: var(--seclore-demo-close-top, 0);
+      width: var(--seclore-demo-close-width, 147px);
+      z-index: 3001;
+    }
+
     .seclore-nav__toggle {
       display: inline-grid !important;
       flex: 0 0 32px;
@@ -2041,6 +2119,17 @@ function isNavItemActive(item) {
       z-index: 3;
     }
 
+    .seclore-nav.is-menu-open .seclore-nav__toggle,
+    .seclore-nav.is-menu-closing .seclore-nav__toggle {
+      height: var(--seclore-toggle-close-height, 42px);
+      left: var(--seclore-toggle-close-left, auto);
+      margin: 0;
+      position: fixed;
+      top: var(--seclore-toggle-close-top, 0);
+      width: var(--seclore-toggle-close-width, 32px);
+      z-index: 3002;
+    }
+
     .seclore-nav__toggle span {
       width: 22px;
     }
@@ -2050,8 +2139,7 @@ function isNavItemActive(item) {
       margin-top: 38px;
     }
 
-    .seclore-nav.is-menu-open .seclore-nav__links,
-    .seclore-nav.is-menu-closing .seclore-nav__links {
+    .seclore-nav.is-menu-open .seclore-nav__links {
       flex: 1 0 100%;
       margin-top: 42px;
       order: 3;
@@ -2070,8 +2158,7 @@ function isNavItemActive(item) {
       width: 11px;
     }
 
-    .seclore-nav.is-menu-open .seclore-nav__utilities,
-    .seclore-nav.is-menu-closing .seclore-nav__utilities {
+    .seclore-nav.is-menu-open .seclore-nav__utilities {
       flex: 1 0 100%;
       margin-top: 46px;
       order: 4;
@@ -2101,11 +2188,6 @@ function isNavItemActive(item) {
   @media (max-width: 380px) {
     .seclore-nav {
       gap: 16px;
-    }
-
-    .seclore-nav.is-menu-open,
-    .seclore-nav.is-menu-closing {
-      column-gap: 16px;
     }
 
     .seclore-nav__logo {
