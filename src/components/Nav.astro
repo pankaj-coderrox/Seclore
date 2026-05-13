@@ -1747,14 +1747,18 @@ function isActive(href?: string) {
     }
 
     .seclore-nav__language-button::after {
-      border-left: 2px solid #252525;
-      border-top: 2px solid #252525;
+      border-bottom: 2px solid #252525;
+      border-right: 2px solid #252525;
       content: "";
       height: 8px;
       justify-self: end;
       margin-left: auto;
-      transform: rotate(45deg) translateY(2px);
+      transform: rotate(45deg) translateY(-2px);
       width: 8px;
+    }
+
+    .seclore-nav.is-language-open .seclore-nav__language-button::after {
+      transform: rotate(225deg) translateY(-1px);
     }
 
     .seclore-nav__search-icon {
@@ -1798,6 +1802,16 @@ function isActive(href?: string) {
       min-height: 89px;
       padding: 0 24px;
       position: sticky;
+    }
+
+    .seclore-nav.is-menu-open {
+      align-content: start;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 17px 24px 42px;
     }
 
     .seclore-nav__logo,
@@ -1862,6 +1876,32 @@ function isActive(href?: string) {
     .seclore-nav__links {
       grid-column: 1 / -1;
       margin-top: 38px;
+    }
+
+    .seclore-nav.is-menu-open .seclore-nav__links {
+      flex: 1 0 100%;
+      margin-top: 42px;
+      order: 3;
+      width: 100%;
+    }
+
+    .seclore-nav.is-menu-open .seclore-nav__links > a,
+    .seclore-nav.is-menu-open .seclore-nav__trigger {
+      font-size: 1.35rem;
+      min-height: 53px;
+    }
+
+    .seclore-nav.is-menu-open .seclore-nav__caret {
+      height: 11px;
+      margin-right: 17px;
+      width: 11px;
+    }
+
+    .seclore-nav.is-menu-open .seclore-nav__utilities {
+      flex: 1 0 100%;
+      margin-top: 46px;
+      order: 4;
+      width: 100%;
     }
 
     .seclore-nav__utilities,
