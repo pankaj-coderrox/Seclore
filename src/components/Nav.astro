@@ -6,21 +6,22 @@ const navItems = [
     columns: [
       {
         title: "ARMOR",
+        href: "/armor/",
         links: [
-          ["ARMOR", "/armor/"],
           ["DSPM", "/armor/dspm/"],
           ["AI-DLP", "/armor/aidlp/"],
           ["Data Classification", "/platform/classification/"],
-          ["EDRM", "#platform"],
-          ["Insights", "#resources"],
+          ["EDRM", "/platform/edrm/"],
+          ["Insights", "/framework/"],
           ["Integrations", "/integrations/"]
         ]
       },
       {
         title: "Integrations",
+        href: "/integrations/",
         links: [
           {
-            label: "DLPs and CASBs",
+            label: "DLPs & CASBs",
             href: "/integrations/dlp-casb/",
             children: [
               ["Broadcom (Symantec)", "/integrations/broadcom/"],
@@ -29,7 +30,7 @@ const navItems = [
             ]
           },
           {
-            label: "File Sharing and Storage",
+            label: "File Sharing & Storage",
             href: "/integrations/file-storage/",
             children: [
               ["Microsoft 365", "/integrations/microsoft/"],
@@ -39,7 +40,7 @@ const navItems = [
             ]
           },
           {
-            label: "Discovery and Classification",
+            label: "Discovery & Classification",
             href: "/integrations/discovery-classification/",
             children: [
               ["Microsoft Sensitivity Labels", "/platform/seclore-for-microsoft-sensitivity-labels/"],
@@ -49,29 +50,17 @@ const navItems = [
           {
             label: "Identity Providers",
             href: "/platform/idp-sso/",
-            children: [
-              ["Okta", "/platform/idp-sso/"],
-              ["Microsoft Entra ID", "/platform/idp-sso/"],
-              ["Ping Identity", "/platform/idp-sso/"]
-            ]
+            children: []
           },
           {
-            label: "SIEM and BI Tools",
+            label: "SIEM & BI Tools",
             href: "/platform/siem/",
-            children: [
-              ["Splunk", "/platform/siem/"],
-              ["Microsoft Sentinel", "/platform/siem/"],
-              ["Power BI", "/platform/siem/"]
-            ]
+            children: []
           },
           {
             label: "Custom Integrations",
             href: "/platform/custom-integrations/",
-            children: [
-              ["REST APIs", "/platform/custom-integrations/"],
-              ["Partner connectors", "/platform/custom-integrations/"],
-              ["Implementation support", "/platform/custom-integrations/"]
-            ]
+            children: []
           }
         ]
       }
@@ -98,9 +87,8 @@ const navItems = [
       {
         title: "By Use Case",
         links: [
-          ["External Threats", "/solutions/external-threats/"],
-          ["Third Party Risk Management", "#solutions"],
-          ["Internal Threats", "/solutions/internal-threats/"],
+          ["Third Party Risk Management", "/solutions/external-threats/"],
+          ["Insider Threat Protection", "/solutions/internal-threats/"],
           ["IP Protection", "/solutions/ip-protection/"],
           ["CAD File Protection", "/solutions/cad-protection/"],
           ["Regulatory Compliance", "/solutions/compliance/"]
@@ -111,7 +99,7 @@ const navItems = [
         links: [
           ["Professional Services", "/solutions/professional-services/"],
           ["Support Services", "/solutions/support-services/"],
-          ["Solution Consulting and Training", "/solutions/solution-consulting-training/"],
+          ["Solution Consulting & Training", "/solutions/solution-consulting-training/"],
           ["Implementation and System Integration", "/solutions/implementation-system-integration/"]
         ]
       }
@@ -131,25 +119,15 @@ const navItems = [
     label: "Resources",
     columns: [
       {
-        title: "Resources",
+        title: "",
         links: [
-          ["Blog", "/resources/"],
+          ["Blog", "/blog/"],
           ["Customer Case Studies", "/resources/customer-case-studies/"],
-          ["Whitepapers and Reports", "/resources/whitepapers-reports/"],
-          ["Webinars and Videos", "/resources/videos/"],
-          ["Release Notes", "/home/release-notes/"],
+          ["Whitepapers & Reports", "/resources/whitepapers-reports/"],
+          ["Webinars & Videos", "/resources/videos/"],
           ["Datasheets", "/resources/datasheets/"],
           ["Infographics", "/resources/infographics/"],
           ["eBooks", "/resources/ebooks/"]
-        ]
-      },
-      {
-        title: "Featured",
-        links: [
-          ["AI data security brief", "#resources"],
-          ["Compliance readiness guide", "#resources"],
-          ["Enterprise sharing playbook", "#resources"],
-          ["Security leadership insights", "#resources"]
         ]
       }
     ],
@@ -164,21 +142,12 @@ const navItems = [
     label: "Partners",
     columns: [
       {
-        title: "Partners",
+        title: "",
         links: [
-          ["Register a Deal", "/partners/login/"],
+          ["Register a Deal", "/partners/register-deal/"],
           ["Become a Partner", "/partners/register/"],
           ["Partner Portal Login", "/partners/login/"],
           ["Lead Referral", "/partners/lead-referral/"]
-        ]
-      },
-      {
-        title: "Programs",
-        links: [
-          ["Technology Alliances", "/partners/#technology"],
-          ["System Integrators", "/partners/#services"],
-          ["Channel Partners", "/partners/#channel"],
-          ["Cloud Marketplaces", "/partners/#overview"]
         ]
       }
     ],
@@ -193,7 +162,7 @@ const navItems = [
     label: "About",
     columns: [
       {
-        title: "Company",
+        title: "",
         links: [
           ["Why Seclore", "/about/why-seclore/"],
           ["Leadership", "/about/leadership/"],
@@ -201,15 +170,6 @@ const navItems = [
           ["Press Releases", "/about/press-releases/"],
           ["Contact Us", "/about/contact-us/"],
           ["Careers", "/about/careers/"]
-        ]
-      },
-      {
-        title: "Learn",
-        links: [
-          ["Security fundamentals", "#resources"],
-          ["Trust approach", "/about/why-seclore/"],
-          ["Compliance support", "#resources"],
-          ["Customer outcomes", "#about"]
         ]
       }
     ],
@@ -224,21 +184,11 @@ const navItems = [
     label: "Support",
     columns: [
       {
-        title: "Help",
+        title: "",
         links: [
           ["Support Portal", "/support/home/"],
           ["Docs", "#resources"],
-          ["Contact Support", "#contact"],
-          ["How to open a protected file", "/how-to-open-a-seclore-protected-file/"]
-        ]
-      },
-      {
-        title: "Services",
-        links: [
-          ["Get Started", "#contact"],
-          ["Customer Success", "#contact"],
-          ["Training", "#resources"],
-          ["Implementation Help", "#contact"]
+          ["Contact Support", "#contact"]
         ]
       }
     ],
@@ -253,6 +203,9 @@ const navItems = [
 
 const mainItems = navItems;
 const currentPath = Astro.url.pathname;
+const isArabicPage = currentPath === "/ar/" || currentPath.startsWith("/ar/");
+const englishLanguageHref = "/";
+const arabicLanguageHref = "/ar/";
 
 function isActive(href?: string) {
   if (!href || href.startsWith("#")) {
@@ -266,14 +219,17 @@ function isActive(href?: string) {
 ---
 
 <header class="seclore-nav">
-  <a class="seclore-nav__logo" href="/" aria-label="seclore home">seclore</a>
+  <a class="seclore-nav__logo" href="/" aria-label="seclore home">
+    <img src="/images/home/seclore-logo-2026.svg" alt="" decoding="async" />
+    <span>seclore</span>
+  </a>
 
   <nav class="seclore-nav__links" aria-label="Primary navigation">
     {mainItems.map((item) => (
       item.href || !item.columns || !item.feature ? (
         <a class:list={[{ "is-active": isActive(item.href) }]} href={item.href ?? "#top"} aria-current={isActive(item.href) ? "page" : undefined}>{item.label}</a>
       ) : (
-        <div class:list={["seclore-nav__item", { "is-active": item.columns.some((column) => column.links.some((link) => Array.isArray(link) ? isActive(link[1]) : isActive(link.href) || link.children.some(([, childHref]) => isActive(childHref)))) }]}>
+        <div class:list={["seclore-nav__item", { "seclore-nav__item--wide": item.label === "ARMOR" || item.label === "Solutions", "seclore-nav__item--compact": item.label !== "ARMOR" && item.label !== "Solutions", "is-active": item.columns.some((column) => column.links.some((link) => Array.isArray(link) ? isActive(link[1]) : isActive(link.href) || link.children.some(([, childHref]) => isActive(childHref)))) }]}>
           <button class="seclore-nav__trigger" type="button" aria-expanded="false">
             {item.label}
             <span class="seclore-nav__caret" aria-hidden="true"></span>
@@ -283,7 +239,11 @@ function isActive(href?: string) {
               <div class="seclore-nav__mega-columns">
                 {item.columns.map((column) => (
                   <div class="seclore-nav__mega-column">
-                    <span class="seclore-nav__mega-title">{column.title}</span>
+                    {"href" in column && column.href ? (
+                      <a class:list={["seclore-nav__mega-title", { "is-active": isActive(column.href) }]} href={column.href} aria-current={isActive(column.href) ? "page" : undefined}>{column.title}</a>
+                    ) : column.title ? (
+                      <span class="seclore-nav__mega-title">{column.title}</span>
+                    ) : null}
                     {column.links.map((link) => (
                       Array.isArray(link) ? (
                         <a class:list={["seclore-nav__mega-link", { "is-active": isActive(link[1]) }]} href={link[1]} aria-current={isActive(link[1]) ? "page" : undefined}>
@@ -321,14 +281,24 @@ function isActive(href?: string) {
 
   <div class="seclore-nav__utilities" aria-label="Header utilities">
     <a class="seclore-nav__utility-link seclore-nav__file-help" href="/how-to-open-a-seclore-protected-file/">How to open a seclore file</a>
-    <span class="seclore-nav__utility-label">Search</span>
-    <button class="seclore-nav__utility-icon" type="button" aria-label="Search">
+    <button class="seclore-nav__utility-label seclore-nav__search-open" type="button" aria-label="Open search">Search</button>
+    <button class="seclore-nav__utility-icon seclore-nav__search-open" type="button" aria-label="Open search">
       <span class="seclore-nav__search-icon" aria-hidden="true"></span>
     </button>
-    <span class="seclore-nav__utility-label">Language</span>
-    <button class="seclore-nav__language-button" type="button" aria-label="Language selector">
+    <button class="seclore-nav__utility-label seclore-nav__language-open" type="button" aria-label="Open language selector">Language</button>
+    <button class="seclore-nav__language-button seclore-nav__language-open" type="button" aria-label="Open language selector">
       <span class="seclore-nav__globe-icon" aria-hidden="true"></span>
     </button>
+    <div class="seclore-nav__language-menu" aria-hidden="true">
+      <a class:list={[{ "is-active": !isArabicPage }]} href={englishLanguageHref} lang="en" aria-current={!isArabicPage ? "true" : undefined}>
+        English
+        {!isArabicPage && <span class="seclore-nav__language-check" aria-hidden="true"></span>}
+      </a>
+      <a class:list={[{ "is-active": isArabicPage }]} href={arabicLanguageHref} lang="ar" dir="rtl" aria-current={isArabicPage ? "true" : undefined}>
+        العربية
+        {isArabicPage && <span class="seclore-nav__language-check" aria-hidden="true"></span>}
+      </a>
+    </div>
     <button class="seclore-nav__theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
       <span class="seclore-nav__theme-toggle-track" aria-hidden="true">
         <span class="seclore-nav__theme-toggle-thumb"></span>
@@ -337,21 +307,70 @@ function isActive(href?: string) {
     </button>
   </div>
 
-  <a class="seclore-nav__demo-button" href="#demo">Book a Demo</a>
+  <a class="seclore-nav__demo-button" href="/demo/">Book a Demo</a>
 
   <button class="seclore-nav__toggle" type="button" aria-label="Open navigation" aria-expanded="false">
     <span></span>
     <span></span>
     <span></span>
   </button>
+
+  <div class="seclore-nav__search-panel" aria-hidden="true">
+    <form class="seclore-nav__search-form" action="/resources/" role="search">
+      <label class="seclore-nav__search-field-label" for="seclore-nav-search">Search</label>
+      <input id="seclore-nav-search" name="search" type="search" placeholder="Enter keyword and search" autocomplete="off" />
+      <button class="seclore-nav__search-submit" type="submit" aria-label="Submit search">
+        <span class="seclore-nav__search-panel-icon" aria-hidden="true"></span>
+      </button>
+    </form>
+  </div>
 </header>
 
 <script>
+  const nav = document.querySelector(".seclore-nav");
   const navToggle = document.querySelector(".seclore-nav__toggle");
   const navLinks = document.querySelector(".seclore-nav__links");
   const navTriggers = document.querySelectorAll(".seclore-nav__trigger");
+  const searchPanel = document.querySelector(".seclore-nav__search-panel");
+  const searchOpeners = document.querySelectorAll(".seclore-nav__search-open");
+  const searchInput = document.querySelector<HTMLInputElement>("#seclore-nav-search");
+  const languagePanel = document.querySelector(".seclore-nav__language-menu");
+  const languageOpeners = document.querySelectorAll(".seclore-nav__language-open");
   const themeToggle = document.querySelector(".seclore-nav__theme-toggle");
   const themeText = document.querySelector(".seclore-nav__theme-toggle-text");
+
+  function closeLanguagePanel() {
+    nav?.classList.remove("is-language-open");
+    languagePanel?.setAttribute("aria-hidden", "true");
+  }
+
+  function closeSearchPanel() {
+    nav?.classList.remove("is-search-open");
+    searchPanel?.setAttribute("aria-hidden", "true");
+  }
+
+  function openSearchPanel() {
+    closeMobileMenu();
+    closeLanguagePanel();
+    nav?.classList.add("is-search-open");
+    searchPanel?.setAttribute("aria-hidden", "false");
+    window.setTimeout(() => searchInput?.focus(), 180);
+  }
+
+  function toggleLanguagePanel() {
+    closeSearchPanel();
+    const open = !nav?.classList.contains("is-language-open");
+    nav?.classList.toggle("is-language-open", open);
+    languagePanel?.setAttribute("aria-hidden", String(!open));
+  }
+
+  function closeMobileMenu() {
+    nav?.classList.remove("is-menu-open");
+    navLinks?.classList.remove("open");
+    navToggle?.setAttribute("aria-expanded", "false");
+    navToggle?.setAttribute("aria-label", "Open navigation");
+    document.body.classList.remove("seclore-nav-lock");
+  }
 
   function setTheme(theme: string) {
     document.documentElement.dataset.theme = theme;
@@ -371,10 +390,33 @@ function isActive(href?: string) {
     setTheme(nextTheme);
   });
 
+  searchOpeners.forEach((opener) => {
+    opener.addEventListener("click", (event) => {
+      event.stopPropagation();
+      if (nav?.classList.contains("is-search-open")) {
+        searchInput?.focus();
+        return;
+      }
+      openSearchPanel();
+    });
+  });
+
+  languageOpeners.forEach((opener) => {
+    opener.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleLanguagePanel();
+    });
+  });
+
   navToggle?.addEventListener("click", () => {
     const expanded = navToggle.getAttribute("aria-expanded") === "true";
-    navToggle.setAttribute("aria-expanded", String(!expanded));
-    navLinks?.classList.toggle("open");
+    const open = !expanded;
+
+    nav?.classList.toggle("is-menu-open", open);
+    navLinks?.classList.toggle("open", open);
+    navToggle.setAttribute("aria-expanded", String(open));
+    navToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    document.body.classList.toggle("seclore-nav-lock", open);
   });
 
   navTriggers.forEach((trigger) => {
@@ -396,6 +438,8 @@ function isActive(href?: string) {
 
   document.addEventListener("click", (event) => {
     if (!(event.target instanceof Element) || !event.target.closest(".seclore-nav")) {
+      closeSearchPanel();
+      closeLanguagePanel();
       document.querySelectorAll(".seclore-nav__item.is-open").forEach((item) => {
         item.classList.remove("is-open");
         item.querySelector(".seclore-nav__trigger")?.setAttribute("aria-expanded", "false");
@@ -405,13 +449,25 @@ function isActive(href?: string) {
 
   document.querySelectorAll(".seclore-nav__mega-link, .seclore-nav__mega-feature, .seclore-nav__mega-sublinks a, .seclore-nav__links > a").forEach((link) => {
     link.addEventListener("click", () => {
-      navLinks?.classList.remove("open");
-      navToggle?.setAttribute("aria-expanded", "false");
+      closeMobileMenu();
       document.querySelectorAll(".seclore-nav__item.is-open").forEach((item) => {
         item.classList.remove("is-open");
         item.querySelector(".seclore-nav__trigger")?.setAttribute("aria-expanded", "false");
       });
     });
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.matchMedia("(min-width: 1181px)").matches) {
+      closeMobileMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeSearchPanel();
+      closeLanguagePanel();
+    }
   });
 </script>
 
@@ -475,14 +531,26 @@ function isActive(href?: string) {
   }
 
   .seclore-nav__logo {
-    color: var(--seclore-nav-header-text);
     flex: 0 0 auto;
-    font-size: 1.35rem;
-    font-weight: 900;
-    letter-spacing: 0;
     line-height: 1;
     margin-right: clamp(14px, 2vw, 28px);
     white-space: nowrap;
+  }
+
+  .seclore-nav__logo img {
+    display: block;
+    height: auto;
+    width: clamp(126px, 14vw, 154px);
+  }
+
+  .seclore-nav__logo span {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
 
   .seclore-nav__links {
@@ -511,6 +579,10 @@ function isActive(href?: string) {
     white-space: nowrap;
   }
 
+  .seclore-nav__trigger:focus {
+    outline: 0;
+  }
+
   .seclore-nav__links > a:hover,
   .seclore-nav__links > a.is-active,
   .seclore-nav__trigger:hover,
@@ -522,6 +594,10 @@ function isActive(href?: string) {
 
   .seclore-nav__item {
     position: static;
+  }
+
+  .seclore-nav__item--compact {
+    position: relative;
   }
 
   .seclore-nav__caret {
@@ -544,6 +620,7 @@ function isActive(href?: string) {
     flex: 0 0 auto;
     gap: clamp(12px, 1.5vw, 20px);
     margin-left: clamp(12px, 2vw, 28px);
+    position: relative;
   }
 
   .seclore-nav__utility-link,
@@ -559,7 +636,8 @@ function isActive(href?: string) {
 
   .seclore-nav__utility-icon,
   .seclore-nav__language-button,
-  .seclore-nav__theme-toggle {
+  .seclore-nav__theme-toggle,
+  .seclore-nav__utility-label {
     align-items: center;
     background: transparent;
     border: 0;
@@ -567,6 +645,10 @@ function isActive(href?: string) {
     display: inline-flex;
     gap: 8px;
     padding: 0;
+  }
+
+  .seclore-nav__utility-label {
+    display: inline-flex;
   }
 
   .seclore-nav__theme-toggle {
@@ -619,6 +701,109 @@ function isActive(href?: string) {
     width: 8px;
   }
 
+  .seclore-nav__search-panel {
+    background: #281326;
+    display: block;
+    height: clamp(160px, 10.4vw, 195px);
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 50px;
+    top: 100%;
+    transform: translateY(-6px);
+    transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+    visibility: hidden;
+    z-index: -2;
+  }
+
+  .seclore-nav.is-search-open .seclore-nav__search-panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .seclore-nav__search-form {
+    align-items: center;
+    display: flex;
+    gap: clamp(26px, 2.8vw, 42px);
+    justify-content: center;
+    padding-top: clamp(46px, 3.25vw, 61px);
+    width: 100%;
+  }
+
+  .seclore-nav__search-field-label {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .seclore-nav__search-form input {
+    appearance: none;
+    background: #ffffff;
+    border: 2px solid #2f3132;
+    border-radius: 999px;
+    box-shadow: 0 0 0 2px #ffffff;
+    color: #1f2933;
+    font: inherit;
+    font-size: clamp(1rem, 1.1vw, 1.25rem);
+    font-weight: 400;
+    height: clamp(58px, 3.9vw, 72px);
+    outline: 0;
+    padding: 0 clamp(28px, 2.2vw, 36px);
+    width: clamp(520px, 46vw, 870px);
+  }
+
+  .seclore-nav__search-form input:focus {
+    border-color: #2f3132;
+    box-shadow: 0 0 0 2px #ffffff;
+    outline: 0;
+  }
+
+  .seclore-nav__search-form input::placeholder {
+    color: #a9adc0;
+    opacity: 1;
+  }
+
+  .seclore-nav__search-submit {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #333333;
+    cursor: pointer;
+    display: inline-flex;
+    height: clamp(52px, 3.4vw, 64px);
+    justify-content: center;
+    padding: 0;
+    width: clamp(52px, 3.4vw, 64px);
+  }
+
+  .seclore-nav__search-panel-icon {
+    border: 3px solid currentColor;
+    border-radius: 50%;
+    display: block;
+    height: clamp(38px, 2.8vw, 48px);
+    position: relative;
+    width: clamp(38px, 2.8vw, 48px);
+  }
+
+  .seclore-nav__search-panel-icon::after {
+    background: currentColor;
+    content: "";
+    height: 3px;
+    position: absolute;
+    right: -16px;
+    top: 36px;
+    transform: rotate(45deg);
+    transform-origin: center;
+    width: 26px;
+  }
+
   .seclore-nav__globe-icon {
     border: 2px solid currentColor;
     border-radius: 50%;
@@ -647,6 +832,76 @@ function isActive(href?: string) {
     top: 8px;
   }
 
+  .seclore-nav__language-menu {
+    background: #ffffff;
+    box-shadow: none;
+    display: grid;
+    gap: 0;
+    min-width: 132px;
+    opacity: 0;
+    padding: 0 0 10px 6px;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    transform: translateY(-3px);
+    transition: opacity 140ms ease, transform 140ms ease, visibility 140ms ease;
+    visibility: hidden;
+    z-index: 5;
+  }
+
+  .seclore-nav.is-language-open .seclore-nav__language-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .seclore-nav__language-menu::before {
+    background: #5630d6;
+    border-radius: 999px;
+    content: "";
+    height: 46px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 4px;
+  }
+
+  .seclore-nav__language-menu a {
+    align-items: center;
+    color: #272727;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 400;
+    justify-content: space-between;
+    line-height: 1;
+    min-height: 42px;
+    padding: 0 13px 0 16px;
+    white-space: nowrap;
+  }
+
+  .seclore-nav__language-menu a.is-active {
+    background: #f3f3f3;
+  }
+
+  .seclore-nav__language-menu a[lang="ar"] {
+    color: #686868;
+    font-size: 0.98rem;
+    justify-content: flex-end;
+    padding-top: 2px;
+  }
+
+  .seclore-nav__language-check {
+    border-bottom: 3px solid #111111;
+    border-right: 3px solid #111111;
+    display: block;
+    height: 18px;
+    margin-left: 22px;
+    transform: rotate(45deg) translateY(-2px);
+    width: 9px;
+  }
+
   .seclore-nav__demo-button {
     align-items: center;
     background: var(--seclore-nav-demo-button-bg);
@@ -661,15 +916,22 @@ function isActive(href?: string) {
     white-space: nowrap;
   }
 
+  .seclore-nav .seclore-nav__demo-button {
+    color: #ffffff;
+  }
+
   .seclore-nav__mega {
-    left: 22px;
+    background: #ffffff;
+    left: 0;
     opacity: 0;
     pointer-events: none;
     position: absolute;
-    right: clamp(20px, 4vw, 42px);
+    right: 0;
     top: calc(100% - 1px);
-    transform: translateY(12px);
-    transition: opacity 180ms ease, transform 180ms ease;
+    transform: translateY(8px);
+    transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+    visibility: hidden;
+    z-index: -1;
   }
 
   .seclore-nav__item:hover .seclore-nav__mega,
@@ -678,82 +940,82 @@ function isActive(href?: string) {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+    visibility: visible;
   }
 
   .seclore-nav__mega-inner {
-    background:
-      var(--seclore-nav-dropdown-bg),
-      repeating-linear-gradient(
-        135deg,
-        var(--seclore-nav-dropdown-grid-line) 0,
-        var(--seclore-nav-dropdown-grid-line) 1px,
-        transparent 1px,
-        transparent 20px
-      );
-    border: 1px solid var(--seclore-nav-dropdown-border);
-    border-radius: 8px;
-    box-shadow: var(--seclore-nav-shadow);
+    background: #ffffff;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
     display: grid;
-    gap: 24px;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    min-height: 320px;
-    overflow: hidden;
-    padding: 26px;
+    gap: 0;
+    grid-template-columns: 1fr;
+    min-height: 0;
+    overflow: visible;
+    padding: 0;
   }
 
   .seclore-nav__mega-columns {
     display: grid;
-    gap: 22px;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: clamp(48px, 7vw, 96px);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 0 24px 48px 8px;
   }
 
   .seclore-nav__mega-column {
     display: grid;
-    gap: 10px;
+    align-content: start;
+    gap: 0;
   }
 
   .seclore-nav__mega-title {
-    color: var(--seclore-nav-dropdown-title);
-    font-size: 0.76rem;
-    font-weight: 850;
-    letter-spacing: 0.08em;
-    margin-bottom: 4px;
-    text-transform: uppercase;
+    border-bottom: 1px solid #dddddd;
+    color: #171717;
+    display: block;
+    font-size: clamp(1.18rem, 1.35vw, 1.45rem);
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.2;
+    margin: 0 0 14px;
+    padding: 0 0 14px;
+    text-transform: none;
   }
 
   .seclore-nav__mega-link,
   .seclore-nav__mega-link-group {
-    border: 1px solid transparent;
-    border-radius: 8px;
+    border: 0;
+    border-radius: 0;
   }
 
   .seclore-nav__mega-link {
     display: grid;
-    gap: 5px;
-    padding: 13px;
-    transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+    gap: 0;
+    padding: 0 0 9px;
+    transition: color 160ms ease, transform 160ms ease;
   }
 
   .seclore-nav__mega-link-group {
     display: grid;
-    gap: 4px;
-    padding: 4px;
+    gap: 0;
+    padding: 0 0 23px;
   }
 
   .seclore-nav__mega-link:hover,
   .seclore-nav__mega-link.is-active {
-    background: var(--seclore-nav-dropdown-link-hover);
-    border-color: var(--seclore-nav-dropdown-link-border);
-    transform: translateX(3px);
+    background: transparent;
+    border-color: transparent;
+    color: #5630d6;
+    transform: none;
   }
 
   .seclore-nav__mega-link-group:hover {
-    background: var(--seclore-nav-dropdown-link-hover);
-    border-color: var(--seclore-nav-dropdown-link-border);
+    background: transparent;
+    border-color: transparent;
   }
 
   .seclore-nav__mega-link-group .seclore-nav__mega-link {
-    padding: 9px 9px 5px;
+    padding: 0 0 8px;
   }
 
   .seclore-nav__mega-link-group .seclore-nav__mega-link:hover {
@@ -769,73 +1031,43 @@ function isActive(href?: string) {
   }
 
   .seclore-nav__mega-parent-link strong::after {
-    border-bottom: 1.5px solid currentColor;
-    border-right: 1.5px solid currentColor;
-    content: "";
-    height: 6px;
-    transform: rotate(-45deg);
-    width: 6px;
+    display: none;
   }
 
   .seclore-nav__mega-sublinks {
     display: grid;
-    gap: 2px;
-    padding: 0 9px 8px 22px;
+    gap: 0;
+    padding: 0;
   }
 
   .seclore-nav__mega-sublinks a {
-    color: var(--seclore-nav-dropdown-muted);
-    font-size: 0.84rem;
-    line-height: 1.35;
-    padding: 5px 0;
+    color: #242424;
+    font-size: clamp(0.98rem, 1.15vw, 1.18rem);
+    font-weight: 400;
+    line-height: 1.25;
+    padding: 0 0 8px;
+    transition: color 160ms ease;
   }
 
   .seclore-nav__mega-sublinks a:hover,
   .seclore-nav__mega-sublinks a.is-active {
-    color: var(--seclore-nav-dropdown-text);
+    color: #5630d6;
   }
 
   .seclore-nav__mega-link strong {
-    color: var(--seclore-nav-dropdown-text);
-    font-size: 0.98rem;
+    color: #171717;
+    font-size: clamp(0.98rem, 1.15vw, 1.18rem);
+    font-weight: 700;
+    line-height: 1.25;
+    transition: color 160ms ease;
   }
 
   .seclore-nav__mega-link small {
-    color: var(--seclore-nav-dropdown-muted);
-    line-height: 1.45;
+    display: none;
   }
 
   .seclore-nav__mega-feature {
-    align-content: end;
-    background: var(--seclore-nav-dropdown-feature-bg);
-    border: 1px solid var(--seclore-nav-dropdown-feature-border);
-    border-radius: 8px;
-    display: grid;
-    min-height: 268px;
-    padding: 24px;
-  }
-
-  .seclore-nav__mega-feature span {
-    color: var(--seclore-nav-dropdown-title);
-    font-size: 0.8rem;
-    font-weight: 850;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .seclore-nav__mega-feature strong {
-    align-self: end;
-    color: var(--seclore-nav-dropdown-text);
-    font-size: 1.4rem;
-    line-height: 1.18;
-    margin-top: auto;
-  }
-
-  .seclore-nav__mega-feature em {
-    color: var(--seclore-nav-dropdown-title);
-    font-style: normal;
-    font-weight: 850;
-    margin-top: 18px;
+    display: none;
   }
 
   .seclore-nav__toggle {
@@ -855,52 +1087,65 @@ function isActive(href?: string) {
     width: 24px;
   }
 
-  @media (min-width: 1101px) {
+  @media (min-width: 1181px) {
     .seclore-nav {
       align-items: end;
       display: grid;
-      gap: 0 clamp(28px, 4vw, 72px);
-      grid-template-columns: 260px minmax(0, 1fr) 190px;
-      grid-template-rows: 50px 88px;
-      min-height: 138px;
-      padding: 0 clamp(80px, 6.6vw, 120px);
+      gap: 0 clamp(42px, 4vw, 54px);
+      grid-template-columns: 160px minmax(0, 1fr) 154px;
+      grid-template-rows: 42px 66px;
+      min-height: 108px;
+      padding: 0 24px;
     }
 
     .seclore-nav__logo {
       align-self: center;
-      color: var(--seclore-nav-purple);
-      font-size: 2.25rem;
-      font-weight: 950;
       grid-column: 1;
       grid-row: 2;
-      letter-spacing: 0.05em;
       margin: 0;
-      text-transform: uppercase;
     }
 
-    .seclore-nav__logo::after {
-      content: "TM";
-      font-size: 0.45em;
-      margin-left: 3px;
-      vertical-align: super;
+    .seclore-nav__logo img {
+      width: 154px;
     }
 
     .seclore-nav__links {
       align-self: center;
       display: flex;
-      gap: clamp(26px, 3.2vw, 64px);
+      gap: clamp(38px, 4vw, 54px);
       grid-column: 2;
       grid-row: 2;
-      justify-content: center;
+      justify-content: start;
       width: 100%;
     }
 
     .seclore-nav__links > a,
     .seclore-nav__trigger {
       color: #2a2a2a;
-      font-size: clamp(0.98rem, 1vw, 1.1rem);
-      font-weight: 850;
-      min-height: 88px;
+      font-size: clamp(0.96rem, 0.98vw, 1rem);
+      font-weight: 700;
+      min-height: 66px;
+      position: relative;
+    }
+
+    .seclore-nav__trigger::after {
+      background: #5630d6;
+      bottom: 0;
+      content: "";
+      height: 4px;
+      left: 50%;
+      opacity: 0;
+      position: absolute;
+      transform: translateX(-50%) scaleX(0.65);
+      transition: opacity 160ms ease, transform 160ms ease;
+      width: calc(100% + 22px);
+    }
+
+    .seclore-nav__item:hover > .seclore-nav__trigger::after,
+    .seclore-nav__item:focus-within > .seclore-nav__trigger::after,
+    .seclore-nav__item.is-open > .seclore-nav__trigger::after {
+      opacity: 1;
+      transform: translateX(-50%) scaleX(1);
     }
 
     .seclore-nav__caret {
@@ -917,7 +1162,7 @@ function isActive(href?: string) {
       grid-row: 1;
       justify-content: end;
       margin: 0;
-      min-height: 50px;
+      min-height: 42px;
       width: 100%;
     }
 
@@ -965,20 +1210,23 @@ function isActive(href?: string) {
       background: var(--seclore-nav-purple);
       border-radius: 7px;
       color: #ffffff;
-      font-size: 1.1rem;
-      font-weight: 850;
+      font-size: 0.98rem;
+      font-weight: 800;
       grid-column: 3;
       grid-row: 2;
       justify-self: end;
-      min-height: 48px;
-      min-width: 190px;
-      padding: 0 18px;
+      min-height: 40px;
+      min-width: 153px;
+      padding: 0 16px;
     }
 
     .seclore-nav__theme-toggle {
-      height: 28px;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
       overflow: hidden;
-      width: 28px;
+      position: absolute;
+      width: 1px;
     }
 
     .seclore-nav__theme-toggle-track {
@@ -999,157 +1247,660 @@ function isActive(href?: string) {
     .seclore-nav__mega {
       top: calc(100% - 1px);
     }
-  }
 
-  @media (max-width: 1100px) {
-    .seclore-nav {
-      flex-wrap: wrap;
-      gap: 10px;
-      min-height: 58px;
-      padding-block: 0;
+    .seclore-nav__item--wide .seclore-nav__mega {
+      left: 0;
+      right: 0;
     }
 
-    .seclore-nav__toggle {
+    .seclore-nav__item--wide .seclore-nav__mega-inner {
+      min-height: 255px;
+      padding-top: 0;
+    }
+
+    .seclore-nav__item--wide .seclore-nav__mega-columns {
+      padding-top: 0;
+    }
+
+    .seclore-nav__item--wide:first-of-type .seclore-nav__mega-columns {
+      grid-template-columns: minmax(270px, 34%) minmax(560px, 1fr);
+    }
+
+    .seclore-nav__item--wide:first-of-type .seclore-nav__mega-column:nth-child(2) {
+      column-gap: clamp(48px, 6vw, 86px);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(210px, 1fr));
+    }
+
+    .seclore-nav__item--wide:first-of-type .seclore-nav__mega-column:nth-child(2) .seclore-nav__mega-title {
+      grid-column: 1 / -1;
+    }
+
+    .seclore-nav__item--wide:first-of-type .seclore-nav__mega-column:nth-child(2) .seclore-nav__mega-link-group:nth-of-type(1) {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .seclore-nav__item--wide:first-of-type .seclore-nav__mega-column:nth-child(2) .seclore-nav__mega-link-group:nth-of-type(2) {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    .seclore-nav__item--wide:first-of-type .seclore-nav__mega-column:nth-child(2) .seclore-nav__mega-link-group:nth-of-type(3) {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .seclore-nav__item--wide:first-of-type .seclore-nav__mega-column:nth-child(2) .seclore-nav__mega-link-group:nth-of-type(4) {
+      grid-column: 2;
+      grid-row: 3;
+    }
+
+    .seclore-nav__item--wide:first-of-type .seclore-nav__mega-column:nth-child(2) .seclore-nav__mega-link-group:nth-of-type(5) {
+      grid-column: 2;
+      grid-row: 4;
+    }
+
+    .seclore-nav__item--wide:first-of-type .seclore-nav__mega-column:nth-child(2) .seclore-nav__mega-link-group:nth-of-type(6) {
+      grid-column: 2;
+      grid-row: 5;
+    }
+
+    .seclore-nav__item--wide:first-of-type .seclore-nav__mega-column:first-child .seclore-nav__mega-link strong,
+    .seclore-nav__item--wide:not(:first-of-type) .seclore-nav__mega-link strong {
+      font-weight: 400;
+    }
+
+    .seclore-nav__item--wide:not(:first-of-type) .seclore-nav__mega-columns {
+      grid-template-columns: repeat(3, minmax(240px, 1fr));
+      padding-right: 8px;
+    }
+
+    .seclore-nav__item--compact .seclore-nav__mega {
+      left: 50%;
+      min-width: max-content;
+      right: auto;
+      top: calc(100% - 1px);
+      transform: translate(-50%, 8px);
+      width: max-content;
+    }
+
+    .seclore-nav__item--compact:hover .seclore-nav__mega,
+    .seclore-nav__item--compact:focus-within .seclore-nav__mega,
+    .seclore-nav__item--compact.is-open .seclore-nav__mega {
+      transform: translate(-50%, 0);
+    }
+
+    .seclore-nav__item--compact .seclore-nav__mega-inner {
+      min-width: 220px;
+      padding: 24px 30px 25px;
+    }
+
+    .seclore-nav__item--compact .seclore-nav__mega-columns {
       display: block;
-      flex: 0 0 auto;
-      margin-left: 0;
-      order: 2;
+      padding: 0;
+    }
+
+    .seclore-nav__item--compact .seclore-nav__mega-title {
+      display: none;
+    }
+
+    .seclore-nav__item--compact .seclore-nav__mega-link {
+      padding: 0 0 10px;
+    }
+
+    .seclore-nav__item--compact .seclore-nav__mega-link strong {
+      font-size: clamp(1rem, 1.13vw, 1.18rem);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .seclore-nav__item--compact .seclore-nav__mega-column {
+      display: grid;
+      gap: 0;
+    }
+  }
+
+  @media (max-width: 1180px) {
+    body.seclore-nav-lock {
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    body.seclore-nav-lock main > :not(.seclore-nav),
+    body.seclore-nav-lock .seclore-footer {
+      visibility: hidden;
+    }
+
+    .seclore-nav {
+      align-content: start;
+      align-items: center;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+      box-shadow: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      min-height: 58px;
+      padding: 0 18px;
+      transition: min-height 180ms ease;
+    }
+
+    .seclore-nav.is-menu-open {
+      bottom: 0;
+      height: 100vh;
+      left: 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 3000;
     }
 
     .seclore-nav__logo {
-      color: var(--seclore-nav-purple);
-      font-size: clamp(1.05rem, 5vw, 1.35rem);
-      font-weight: 950;
-      letter-spacing: 0.05em;
-      margin-right: auto;
+      display: inline-flex;
+      margin: 0 auto 0 0;
       order: 0;
-      text-transform: uppercase;
     }
 
-    .seclore-nav__logo::after {
-      content: "TM";
-      font-size: 0.42em;
-      margin-left: 2px;
-      vertical-align: super;
+    .seclore-nav__logo img {
+      width: clamp(118px, 30vw, 150px);
+    }
+
+    .seclore-nav__demo-button {
+      align-items: center;
+      background: #5630d6;
+      border-radius: 7px;
+      color: #ffffff;
+      display: inline-flex;
+      flex: 0 0 auto;
+      font-size: 0.88rem;
+      font-weight: 800;
+      justify-content: center;
+      line-height: 1;
+      margin-left: auto;
+      min-height: 36px;
+      min-width: 137px;
+      order: 1;
+      padding: 0 18px;
+    }
+
+    .seclore-nav__toggle {
+      align-items: center;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      display: inline-grid;
+      flex: 0 0 38px;
+      height: 46px;
+      justify-items: center;
+      margin-left: 10px;
+      order: 2;
+      padding: 0;
+      position: relative;
+      width: 38px;
+    }
+
+    .seclore-nav__toggle:focus {
+      outline: 0;
+    }
+
+    .seclore-nav__toggle span {
+      background: #202020;
+      display: block;
+      grid-area: 1 / 1;
+      height: 2px;
+      margin: 0;
+      transform-origin: center;
+      transition: opacity 160ms ease, transform 180ms ease;
+      width: 24px;
+    }
+
+    .seclore-nav__toggle span:nth-child(1) {
+      transform: translateY(-7px);
+    }
+
+    .seclore-nav__toggle span:nth-child(3) {
+      transform: translateY(7px);
+    }
+
+    .seclore-nav__toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    .seclore-nav__toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0.2);
+    }
+
+    .seclore-nav__toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: rotate(-45deg);
     }
 
     .seclore-nav__links {
-      background: var(--seclore-nav-header-bg);
-      border-top: 1px solid var(--seclore-nav-header-border);
-      display: none;
+      align-items: stretch;
+      background: #ffffff;
+      display: grid;
       flex: 1 0 100%;
-      gap: 8px;
-      justify-content: start;
+      gap: 0;
+      grid-template-rows: 0fr;
+      justify-content: stretch;
+      margin-top: 38px;
+      max-height: 0;
+      opacity: 0;
       order: 3;
-      padding: 10px 0 14px;
+      overflow: hidden;
+      padding: 0;
+      transform: translateY(-8px);
+      transition: grid-template-rows 220ms ease, max-height 220ms ease, opacity 180ms ease, transform 180ms ease;
+      width: 100%;
     }
 
     .seclore-nav__links.open {
-      align-items: stretch;
-      display: grid;
+      grid-template-rows: 1fr;
+      max-height: none;
+      opacity: 1;
+      overflow: visible;
+      transform: translateY(0);
     }
 
     .seclore-nav__links > a,
     .seclore-nav__trigger {
+      align-items: center;
+      border-bottom: 1px solid rgba(17, 24, 39, 0.055);
+      border-radius: 0;
+      color: #2d2d2d;
+      display: flex;
+      font-size: 1.18rem;
+      font-weight: 800;
       justify-content: space-between;
+      letter-spacing: 0;
       min-height: 48px;
-      padding-inline: 0;
+      padding: 0;
+      text-align: left;
       width: 100%;
+    }
+
+    .seclore-nav .seclore-nav__trigger {
+      font-size: 1.18rem;
+      font-weight: 800;
+    }
+
+    .seclore-nav__links > a:focus,
+    .seclore-nav__trigger:focus {
+      outline: 0;
+    }
+
+    .seclore-nav__links > a:hover,
+    .seclore-nav__links > a.is-active,
+    .seclore-nav__trigger:hover,
+    .seclore-nav__item.is-active > .seclore-nav__trigger,
+    .seclore-nav__item:focus-within .seclore-nav__trigger,
+    .seclore-nav__item:hover .seclore-nav__trigger {
+      color: #202020;
     }
 
     .seclore-nav__item {
       display: grid;
     }
 
+    .seclore-nav__caret {
+      border-bottom-width: 2px;
+      border-right-width: 2px;
+      height: 9px;
+      margin-right: 23px;
+      transform: rotate(45deg) translateY(-2px);
+      width: 9px;
+    }
+
+    .seclore-nav__item:hover .seclore-nav__caret,
+    .seclore-nav__item:focus-within .seclore-nav__caret {
+      transform: rotate(45deg) translateY(-2px);
+    }
+
+    .seclore-nav__item.is-open .seclore-nav__caret {
+      transform: rotate(225deg) translateY(-1px);
+    }
+
     .seclore-nav__mega {
-      display: none;
+      display: block;
       left: auto;
+      max-height: 0;
       opacity: 1;
+      overflow: hidden;
       pointer-events: auto;
       position: static;
       right: auto;
       top: auto;
       transform: none;
-      transition: none;
+      transition: max-height 240ms ease, opacity 180ms ease;
     }
 
     .seclore-nav__item:hover .seclore-nav__mega,
     .seclore-nav__item:focus-within .seclore-nav__mega {
-      display: none;
+      max-height: 0;
+      opacity: 0;
     }
 
     .seclore-nav__item.is-open .seclore-nav__mega {
-      display: block;
+      max-height: 900px;
+      opacity: 1;
     }
 
     .seclore-nav__mega-inner {
+      background: #ffffff;
+      border: 0;
+      border-bottom: 1px solid rgba(17, 24, 39, 0.055);
+      border-radius: 0;
       box-shadow: none;
+      display: grid;
+      gap: 15px;
       grid-template-columns: 1fr;
       min-height: 0;
-      padding: 16px;
+      overflow: hidden;
+      padding: 15px 0 18px;
     }
 
     .seclore-nav__mega-columns {
+      display: grid;
+      gap: 16px;
       grid-template-columns: 1fr;
     }
 
+    .seclore-nav__mega-column {
+      display: grid;
+      gap: 6px;
+    }
+
+    .seclore-nav__mega-title {
+      color: #6b7280;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin: 0 0 3px;
+      text-transform: uppercase;
+    }
+
+    .seclore-nav__mega-link,
+    .seclore-nav__mega-link-group {
+      border: 0;
+      border-radius: 0;
+    }
+
+    .seclore-nav__mega-link {
+      display: grid;
+      gap: 2px;
+      padding: 8px 0;
+      transition: color 160ms ease, transform 160ms ease;
+    }
+
+    .seclore-nav__mega-link:hover,
+    .seclore-nav__mega-link.is-active {
+      background: transparent;
+      border-color: transparent;
+      transform: translateX(2px);
+    }
+
+    .seclore-nav__mega-link strong {
+      color: #242424;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .seclore-nav__mega-link small,
     .seclore-nav__mega-feature {
-      min-height: 180px;
+      display: none;
+    }
+
+    .seclore-nav__mega-link-group {
+      display: grid;
+      gap: 0;
+      padding: 0;
+    }
+
+    .seclore-nav__mega-link-group:hover {
+      background: transparent;
+      border-color: transparent;
+    }
+
+    .seclore-nav__mega-link-group .seclore-nav__mega-link {
+      padding: 8px 0 4px;
+    }
+
+    .seclore-nav__mega-parent-link strong::after {
+      display: none;
+    }
+
+    .seclore-nav__mega-sublinks {
+      display: grid;
+      gap: 0;
+      padding: 0 0 7px 14px;
+    }
+
+    .seclore-nav__mega-sublinks a {
+      color: #5f6670;
+      font-size: 0.9rem;
+      line-height: 1.35;
+      padding: 5px 0;
     }
 
     .seclore-nav__utilities {
       align-items: stretch;
-      border-top: 1px solid var(--seclore-nav-header-border);
+      background: #ffffff;
       display: none;
       flex: 1 0 100%;
-      gap: 12px;
-      margin-left: 0;
+      gap: 0;
+      grid-template-columns: auto 1fr;
+      margin: clamp(42px, 8vh, 70px) 0 0;
       order: 4;
-      padding: 0 0 16px;
-    }
-
-    .seclore-nav__demo-button {
-      border-radius: 7px;
-      display: inline-flex;
-      flex: 0 0 auto;
-      font-size: 0.78rem;
-      min-height: 36px;
-      order: 1;
-      padding: 0 14px;
-    }
-
-    .seclore-nav__links.open + .seclore-nav__utilities {
-      display: grid;
-    }
-
-    .seclore-nav__utility-label {
-      display: none;
-    }
-
-    .seclore-nav__utility-link,
-    .seclore-nav__language-button,
-    .seclore-nav__utility-icon,
-    .seclore-nav__theme-toggle,
-    .seclore-nav__demo-button {
-      justify-content: space-between;
-      min-height: 44px;
+      padding: 0 0 22px;
       width: 100%;
     }
 
-    .seclore-nav__demo-button {
-      justify-content: center;
-      min-height: 36px;
+    .seclore-nav.is-menu-open .seclore-nav__utilities {
+      display: grid;
+    }
+
+    .seclore-nav__file-help {
+      grid-column: 1 / -1;
+      margin: 0 0 36px;
+    }
+
+    .seclore-nav__utility-link,
+    .seclore-nav__utility-label,
+    .seclore-nav__language-button,
+    .seclore-nav__utility-icon {
+      align-items: center;
+      color: #626a74;
+      display: inline-flex;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      min-height: 38px;
+      text-transform: uppercase;
+    }
+
+    .seclore-nav__utility-icon,
+    .seclore-nav__language-button {
+      justify-content: start;
+      min-height: 38px;
       width: auto;
     }
 
     .seclore-nav__utility-icon {
-      justify-content: flex-start;
+      margin-left: 8px;
+    }
+
+    .seclore-nav__language-button {
+      justify-content: space-between;
+      justify-self: stretch;
+      margin-left: 8px;
+    }
+
+    .seclore-nav__language-button::after {
+      border-left: 2px solid #252525;
+      border-top: 2px solid #252525;
+      content: "";
+      height: 8px;
+      justify-self: end;
+      margin-left: auto;
+      transform: rotate(45deg) translateY(2px);
+      width: 8px;
+    }
+
+    .seclore-nav__search-icon {
+      border-width: 1.4px;
+      height: 15px;
+      width: 15px;
+    }
+
+    .seclore-nav__search-icon::after {
+      height: 1.4px;
+      right: -5px;
+      top: 11px;
+      width: 7px;
+    }
+
+    .seclore-nav__globe-icon {
+      border-width: 1.5px;
+      height: 18px;
+      width: 18px;
+    }
+
+    .seclore-nav__globe-icon::before {
+      inset: 1px 5px;
+    }
+
+    .seclore-nav__globe-icon::after {
+      top: 7px;
+    }
+
+    .seclore-nav__theme-toggle {
+      display: none;
     }
   }
 
   @media (max-width: 560px) {
     .seclore-nav {
-      padding-inline: 16px;
+      align-items: center;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 8px;
+      min-height: 58px;
+      padding-inline: 14px;
+      position: sticky;
+    }
+
+    .seclore-nav__logo,
+    .seclore-nav__demo-button,
+    .seclore-nav__toggle {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .seclore-nav__logo {
+      flex: 0 1 auto;
+      justify-self: start;
+      max-width: 132px;
+    }
+
+    .seclore-nav__logo img {
+      width: clamp(104px, 33vw, 128px);
+    }
+
+    .seclore-nav__demo-button {
+      display: inline-flex !important;
+      flex: 0 0 108px;
+      font-size: clamp(0.74rem, 3vw, 0.82rem);
+      justify-self: end;
+      min-height: 36px;
+      min-width: 0;
+      order: initial;
+      padding-inline: 10px;
+      position: static;
+      transform: none;
+      width: 108px;
+    }
+
+    .seclore-nav__toggle {
+      display: inline-grid !important;
+      flex: 0 0 32px;
+      height: 42px;
+      justify-self: end;
+      order: initial;
+      position: static;
+      transform: none;
+      width: 32px;
+      z-index: 3;
+    }
+
+    .seclore-nav__toggle span {
+      width: 20px;
+    }
+
+    .seclore-nav__links {
+      grid-column: 1 / -1;
+      margin-top: 38px;
+    }
+
+    .seclore-nav__utilities,
+    .seclore-nav__search-panel {
+      grid-column: 1 / -1;
+    }
+
+    .seclore-nav__links > a,
+    .seclore-nav__trigger {
+      font-size: 1.16rem;
+      min-height: 48px;
+    }
+
+    .seclore-nav .seclore-nav__trigger {
+      font-size: 1.16rem;
+    }
+
+    .seclore-nav__caret {
+      margin-right: 21px;
+    }
+  }
+
+  @media (min-width: 681px) and (max-width: 1180px) {
+    .seclore-nav {
+      min-height: 67px;
+      padding-inline: 28px;
+    }
+
+    .seclore-nav__logo img {
+      width: 165px;
+    }
+
+    .seclore-nav__demo-button {
+      font-size: 0.9rem;
+      min-height: 47px;
+      min-width: 182px;
+      padding-inline: 22px;
+    }
+
+    .seclore-nav__toggle {
+      flex-basis: 42px;
+      height: 48px;
+      margin-left: 20px;
+      width: 42px;
+    }
+  }
+
+  @media (max-width: 1180px) {
+    .seclore-nav:not(.is-menu-open) .seclore-nav__links {
+      display: none;
+      flex-basis: 0;
+      margin-top: 0;
+    }
+
+    .seclore-nav:not(.is-menu-open) .seclore-nav__utilities {
+      display: none;
+      margin-top: 0;
+      padding: 0;
     }
   }
 </style>

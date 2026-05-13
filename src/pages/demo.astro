@@ -1,0 +1,978 @@
+---
+const footerGroups = [
+  {
+    title: "Product",
+    links: [
+      ["ARMOR", "/armor/"],
+      ["DSPM", "/armor/dspm/"],
+      ["AI-DLP", "/armor/aidlp/"],
+      ["Data Classification", "/platform/classification/"],
+      ["Integrations", "/integrations/"],
+      ["Pricing", "/pricing/"],
+      ["Resources", "/resources/"]
+    ]
+  },
+  {
+    title: "Support",
+    links: [
+      ["Support Portal", "/support/home/"],
+      ["Solutions", "/support/solutions/"],
+      ["New Support Ticket", "/support/tickets/new/"],
+      ["Contact Support", "/support/home/#contact"],
+      ["How to open a Seclore File", "/how-to-open-a-seclore-protected-file/"]
+    ]
+  },
+  {
+    title: "About",
+    links: [
+      ["Why Seclore", "/about/why-seclore/"],
+      ["Leadership", "/about/leadership/"],
+      ["Newsroom", "/about/newsroom/"],
+      ["Press Releases", "/about/press-releases/"],
+      ["Contact Us", "/about/contact-us/"],
+      ["Careers", "/about/careers/"]
+    ]
+  },
+  {
+    title: "Regulations",
+    links: [
+      ["NIAP", "/solutions/government/"],
+      ["NCA", "/solutions/government/"],
+      ["PCI-DSS", "/solutions/financial-services/"],
+      ["ITAR", "/solutions/manufacturing/"],
+      ["GLBA", "/solutions/financial-services/"],
+      ["NIST", "/solutions/compliance/"],
+      ["GDPR", "/solutions/compliance/"],
+      ["DORA", "/solutions/financial-services/"]
+    ]
+  }
+];
+
+const appLinks = {
+  google: "https://play.google.com/store/apps/details?id=com.seclore.filesecure.android.lite&hl=en_US",
+  apple: "https://apps.apple.com/us/app/seclore/id526784478"
+};
+
+const footerSocials = [
+  ["Facebook", "https://www.facebook.com/Seclore", "f"],
+  ["LinkedIn", "https://www.linkedin.com/company/seclore", "in"],
+  ["X", "https://x.com/seclore", "x"],
+  ["YouTube", "https://www.youtube.com/@Seclore", "yt"],
+  ["Instagram", "https://www.instagram.com/seclore", "ig"],
+  ["Bluesky", "https://bsky.app/profile/seclore.bsky.social", "b"]
+];
+
+const countries = [
+  "United States",
+  "India",
+  "United Kingdom",
+  "Canada",
+  "Australia",
+  "Germany",
+  "France",
+  "Singapore",
+  "United Arab Emirates",
+  "Saudi Arabia",
+  "Qatar",
+  "Japan"
+];
+
+const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Book a personalized Seclore ARMOR demo." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Book a Demo | Seclore</title>
+  </head>
+  <body>
+    <main class="demo-page">
+      <header class="demo-header" aria-label="Demo page header">
+        <a class="demo-logo" href="/" aria-label="Seclore home">
+          <img src="/images/home/seclore-logo-2026.svg" alt="Seclore" decoding="async" />
+        </a>
+        <a class="back-home" href="/">
+          <span aria-hidden="true"></span>
+          Back to Home
+        </a>
+      </header>
+
+      <section class="hero-shell" aria-labelledby="demo-title">
+        <div class="hero-copy">
+          <h1 id="demo-title">Get a Personalized Demo</h1>
+          <p>See ARMOR in action! Learn how to enable safe use of Data and AI.</p>
+
+          <div class="trusted">
+            <h2>Trusted by industry-leading enterprises</h2>
+            <div class="trusted-logos" aria-label="Trusted enterprise logos">
+              <span class="logo-qib"><strong>QIB</strong><em>المصرف</em></span>
+              <span class="logo-pif"><strong>PIF</strong><em>Public Investment Fund</em></span>
+              <span class="logo-maf"><i></i><strong>MAF</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <form class="demo-form" id="start-here" data-endpoint="/api/demo">
+          <h2>Start Here</h2>
+          <div class="form-rule"></div>
+
+          <label>
+            Business Email<span>*</span>
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+
+          <label>
+            First Name<span>*</span>
+            <input name="firstName" autocomplete="given-name" required minlength="2" />
+          </label>
+
+          <label>
+            Last Name<span>*</span>
+            <input name="lastName" autocomplete="family-name" required minlength="2" />
+          </label>
+
+          <label>
+            Company name<span>*</span>
+            <input name="company" autocomplete="organization" required />
+          </label>
+
+          <label>
+            Job title<span>*</span>
+            <input name="role" autocomplete="organization-title" required />
+          </label>
+
+          <label>
+            Phone number<span>*</span>
+            <input name="phone" autocomplete="tel" required />
+          </label>
+
+          <label class="country-field">
+            Country<span>*</span>
+            <select name="country" required>
+              <option value="">Please Select</option>
+              {countries.map((country) => <option value={country}>{country}</option>)}
+            </select>
+          </label>
+
+          <button type="submit">Submit</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="ready-section" aria-labelledby="ready-title">
+        <h2 id="ready-title">Ready to get started?</h2>
+        <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
+        <a href="#start-here">Book a Demo</a>
+      </section>
+
+      <footer class="demo-footer">
+        <div class="footer-accordions">
+          {footerGroups.map((group) => (
+            <details>
+              <summary>
+                {group.title}
+                <span aria-hidden="true"></span>
+              </summary>
+              <div>
+                {group.links.map(([label, href]) => <a href={href}>{label}</a>)}
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <div class="footer-contact">
+          <a class="footer-logo" href="/" aria-label="Seclore home">
+            <img src="/images/home/seclore-logo-2026.svg" alt="Seclore" loading="lazy" decoding="async" />
+          </a>
+          <address>5201 Great America Parkway Suite 440 Santa Clara, CA 95054</address>
+          <p>
+            <a href="tel:18444732567">1-844-4-Seclore</a>
+            <a href="tel:18444732567">1-844-473-2567</a>
+          </p>
+          <a class="email-link" href="mailto:hello@seclore.com">hello@seclore.com</a>
+
+          <div class="store-badges" aria-label="Download Seclore apps">
+            <a class="store-badge google" href={appLinks.google} target="_blank" rel="noreferrer" aria-label="Get Seclore on Google Play">
+              <span aria-hidden="true"></span>
+              <b><small>GET IT ON</small>Google Play</b>
+            </a>
+            <a class="store-badge apple" href={appLinks.apple} target="_blank" rel="noreferrer" aria-label="Download Seclore on the App Store">
+              <span aria-hidden="true"></span>
+              <b><small>Download on the</small>App Store</b>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <nav class="socials" aria-label="Social media links">
+            {footerSocials.map(([label, href, icon]) => <a href={href} target="_blank" rel="noreferrer" aria-label={label}>{icon}</a>)}
+          </nav>
+          <p>&copy; 2026 Seclore. All Rights Reserved. <a href="https://license.seclore.com/licensingportal/static/html/privacy.html" target="_blank" rel="noreferrer">Legal</a></p>
+        </div>
+      </footer>
+    </main>
+
+    <script is:inline define:vars={{ apiBase }}>
+      const form = document.querySelector(".demo-form");
+      const status = form?.querySelector(".form-status");
+      const localHosts = new Set(["127.0.0.1", "localhost", "::1"]);
+
+      function resolveApiUrl(endpoint) {
+        const path = endpoint || "/api/demo";
+
+        if (/^https?:\/\//i.test(path)) {
+          return path;
+        }
+
+        const configuredBase = String(apiBase || "").replace(/\/$/, "");
+        const isLocalPage = localHosts.has(window.location.hostname);
+        const isLocalApiBase = /^https?:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/i.test(configuredBase);
+
+        if (configuredBase && (!isLocalApiBase || isLocalPage)) {
+          return `${configuredBase}${path.startsWith("/") ? "" : "/"}${path}`;
+        }
+
+        if (isLocalPage) {
+          return `http://127.0.0.1:5000${path.startsWith("/") ? "" : "/"}${path}`;
+        }
+
+        return path;
+      }
+
+      form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const submit = form.querySelector("button[type='submit']");
+        const data = new FormData(form);
+        const firstName = String(data.get("firstName") || "").trim();
+        const lastName = String(data.get("lastName") || "").trim();
+        const payload = {
+          name: `${firstName} ${lastName}`.trim(),
+          email: data.get("email"),
+          company: data.get("company"),
+          phone: data.get("phone"),
+          role: data.get("role"),
+          interest: "Personalized Demo",
+          message: `Country: ${data.get("country") || ""}`,
+          source: "demo-page"
+        };
+
+        submit?.setAttribute("disabled", "true");
+        if (status) {
+          status.textContent = "Submitting...";
+          status.className = "form-status";
+        }
+
+        try {
+          const response = await fetch(resolveApiUrl(form.dataset.endpoint), {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const result = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(result.message || "Please try again shortly.");
+          }
+
+          form.reset();
+          if (status) {
+            status.textContent = result.message || "Demo request received.";
+            status.classList.add("success");
+          }
+        } catch (error) {
+          if (status) {
+            status.textContent = error instanceof Error ? error.message : "Please try again shortly.";
+            status.classList.add("error");
+          }
+        } finally {
+          submit?.removeAttribute("disabled");
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --purple: #5630d6;
+    --text: #2b2b2d;
+    --muted: #77777a;
+    --line: #c9c9c9;
+    --field-bg: #f4f8fb;
+    --field-border: #cbd9e7;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: #ffffff;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #ffffff;
+    color: var(--text);
+    margin: 0;
+    min-width: 320px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  .demo-page {
+    background: #ffffff;
+    min-height: 100vh;
+    overflow: clip;
+    padding: 0 clamp(24px, 2.5vw, 38px);
+  }
+
+  .demo-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 0 0;
+  }
+
+  .demo-logo,
+  .footer-logo {
+    display: inline-flex;
+    line-height: 1;
+  }
+
+  .demo-logo img {
+    display: block;
+    width: 174px;
+  }
+
+  .back-home {
+    align-items: center;
+    color: #373737;
+    display: inline-flex;
+    font-size: 20px;
+    font-weight: 400;
+    gap: 17px;
+    line-height: 1;
+  }
+
+  .back-home span {
+    border-bottom: 4px solid #2d2d2d;
+    border-left: 4px solid #2d2d2d;
+    display: block;
+    height: 16px;
+    transform: rotate(45deg);
+    width: 16px;
+  }
+
+  .hero-shell {
+    display: grid;
+    gap: clamp(52px, 6.2vw, 108px);
+    grid-template-columns: minmax(390px, 0.91fr) minmax(430px, 0.84fr);
+    margin: 96px 0 0;
+    min-height: 1200px;
+  }
+
+  .hero-copy {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    min-height: 920px;
+  }
+
+  .hero-copy h1 {
+    color: #2d2d2f;
+    font-size: clamp(76px, 6.8vw, 91px);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.01;
+    margin: 0 0 34px;
+    max-width: 580px;
+  }
+
+  .hero-copy > p {
+    color: var(--purple);
+    font-size: clamp(34px, 3vw, 43px);
+    font-weight: 400;
+    line-height: 1.05;
+    margin: 0;
+    max-width: 520px;
+  }
+
+  .trusted {
+    align-self: start;
+    margin: 285px 0 0;
+  }
+
+  .trusted h2 {
+    color: #424244;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0 0 70px;
+  }
+
+  .trusted-logos {
+    align-items: center;
+    display: flex;
+    gap: clamp(88px, 10.5vw, 188px);
+    padding-left: 39px;
+  }
+
+  .trusted-logos span {
+    align-items: center;
+    color: #565656;
+    display: inline-flex;
+    filter: grayscale(1);
+    opacity: 0.72;
+  }
+
+  .logo-qib {
+    gap: 7px;
+  }
+
+  .logo-qib strong {
+    align-items: center;
+    background: #777;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    font-size: 10px;
+    height: 26px;
+    justify-content: center;
+    width: 26px;
+  }
+
+  .logo-qib em {
+    color: #555;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .logo-pif {
+    gap: 9px;
+  }
+
+  .logo-pif::before {
+    border: 2px solid #555;
+    border-radius: 50%;
+    content: "";
+    height: 26px;
+    width: 26px;
+  }
+
+  .logo-pif strong {
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .logo-pif em {
+    display: block;
+    font-size: 5px;
+    font-style: normal;
+    font-weight: 700;
+    margin-left: -41px;
+    margin-top: 24px;
+    position: absolute;
+  }
+
+  .logo-maf {
+    gap: 13px;
+  }
+
+  .logo-maf i {
+    background: #555;
+    display: inline-block;
+    height: 18px;
+    transform: skewX(-24deg);
+    width: 28px;
+  }
+
+  .logo-maf strong {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+
+  .demo-form {
+    color: #222225;
+    display: grid;
+    justify-self: end;
+    padding-top: 24px;
+    width: min(100%, 526px);
+  }
+
+  .demo-form h2 {
+    color: #262629;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .form-rule {
+    border-top: 1px solid #c7c7c7;
+    height: 1px;
+    margin: 35px 0 68px;
+    width: 100%;
+  }
+
+  .demo-form label {
+    color: #33363b;
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 14px;
+  }
+
+  .demo-form label span {
+    color: #ff2c2c;
+  }
+
+  .demo-form input,
+  .demo-form select {
+    background: var(--field-bg);
+    border: 1px solid var(--field-border);
+    border-radius: 3px;
+    color: #202327;
+    display: block;
+    height: 50px;
+    margin-top: 10px;
+    outline: none;
+    padding: 0 16px;
+    width: 100%;
+  }
+
+  .demo-form select {
+    appearance: auto;
+    color: #b7b7b7;
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .demo-form select:valid {
+    color: #202327;
+    font-size: 16px;
+  }
+
+  .country-field {
+    position: relative;
+  }
+
+  .country-field::after {
+    background: #ffffff;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    content: "";
+    display: block;
+    height: 76px;
+    margin-top: 21px;
+    width: 62%;
+  }
+
+  .demo-form button {
+    align-items: center;
+    background: var(--purple);
+    border: 0;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 15px;
+    font-weight: 800;
+    height: 48px;
+    justify-content: center;
+    justify-self: start;
+    margin-top: 17px;
+    min-width: 116px;
+    padding: 0 28px;
+  }
+
+  .demo-form button:disabled {
+    cursor: progress;
+    opacity: 0.65;
+  }
+
+  .form-status {
+    font-size: 14px;
+    margin: 12px 0 0;
+    min-height: 20px;
+  }
+
+  .form-status.success {
+    color: #167a38;
+  }
+
+  .form-status.error {
+    color: #b42318;
+  }
+
+  .ready-section {
+    margin: 0 0 34px;
+  }
+
+  .ready-section h2 {
+    color: #24272b;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 0 19px;
+  }
+
+  .ready-section p {
+    color: #8d8d8d;
+    font-size: 21px;
+    line-height: 1.42;
+    margin: 0 0 31px;
+  }
+
+  .ready-section a {
+    align-items: center;
+    background: var(--purple);
+    border-radius: 7px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 800;
+    height: 51px;
+    justify-content: center;
+    min-width: 192px;
+  }
+
+  .demo-footer {
+    border-top: 1px solid #9f9f9f;
+    padding-bottom: 32px;
+  }
+
+  .footer-accordions details {
+    border-bottom: 1px solid #b8b8b8;
+  }
+
+  .footer-accordions summary {
+    align-items: center;
+    color: #202328;
+    cursor: pointer;
+    display: flex;
+    font-size: 24px;
+    font-weight: 800;
+    justify-content: space-between;
+    list-style: none;
+    min-height: 86px;
+  }
+
+  .footer-accordions summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .footer-accordions summary span {
+    border-bottom: 3px solid #242629;
+    border-right: 3px solid #242629;
+    height: 13px;
+    transform: rotate(45deg);
+    transition: transform 160ms ease;
+    width: 13px;
+  }
+
+  .footer-accordions details[open] summary span {
+    transform: rotate(225deg);
+  }
+
+  .footer-accordions details div {
+    display: grid;
+    gap: 12px;
+    padding: 0 0 24px;
+  }
+
+  .footer-accordions a {
+    color: #52575f;
+    font-size: 18px;
+  }
+
+  .footer-contact {
+    padding: 41px 0 0;
+  }
+
+  .footer-logo img {
+    width: 204px;
+  }
+
+  .footer-contact address,
+  .footer-contact p,
+  .email-link {
+    color: #5f6671;
+    display: grid;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .footer-contact address {
+    margin: 38px 0 24px;
+  }
+
+  .footer-contact p {
+    gap: 2px;
+    margin: 0 0 26px;
+  }
+
+  .email-link {
+    margin-bottom: 84px;
+  }
+
+  .store-badges {
+    display: grid;
+    gap: 20px;
+    justify-items: start;
+  }
+
+  .store-badge {
+    align-items: center;
+    background: #211426;
+    border-radius: 5px;
+    color: #ffffff;
+    display: inline-flex;
+    gap: 9px;
+    min-height: 50px;
+    min-width: 172px;
+    padding: 7px 12px;
+  }
+
+  .store-badge b {
+    display: grid;
+    font-size: 20px;
+    line-height: 0.94;
+  }
+
+  .store-badge small {
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 800;
+  }
+
+  .store-badge.google > span {
+    border-bottom: 12px solid transparent;
+    border-left: 22px solid #34a853;
+    border-top: 12px solid transparent;
+    height: 0;
+    position: relative;
+    width: 0;
+  }
+
+  .store-badge.google > span::before,
+  .store-badge.google > span::after {
+    border-bottom: 8px solid transparent;
+    border-left: 14px solid #4285f4;
+    border-top: 8px solid transparent;
+    content: "";
+    left: -22px;
+    position: absolute;
+    top: -12px;
+  }
+
+  .store-badge.google > span::after {
+    border-left-color: #fbbc05;
+    top: -2px;
+  }
+
+  .store-badge.apple > span {
+    background: #ffffff;
+    border-radius: 45% 45% 48% 48%;
+    display: inline-block;
+    height: 25px;
+    position: relative;
+    width: 21px;
+  }
+
+  .store-badge.apple > span::before {
+    background: #ffffff;
+    border-radius: 999px 0;
+    content: "";
+    height: 10px;
+    left: 12px;
+    position: absolute;
+    top: -8px;
+    transform: rotate(35deg);
+    width: 8px;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #b9b9b9;
+    margin-top: 70px;
+    padding-top: 34px;
+  }
+
+  .socials {
+    align-items: center;
+    display: flex;
+    gap: 27px;
+    margin-bottom: 31px;
+  }
+
+  .socials a {
+    align-items: center;
+    color: #2c2e31;
+    display: inline-flex;
+    font-size: 19px;
+    font-weight: 900;
+    height: 22px;
+    justify-content: center;
+    min-width: 20px;
+    text-transform: lowercase;
+  }
+
+  .footer-bottom p {
+    color: #636a73;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .footer-bottom p a {
+    color: #33343a;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1050px) {
+    .hero-shell {
+      gap: 46px;
+      grid-template-columns: 1fr;
+      margin-top: 72px;
+      min-height: 0;
+    }
+
+    .hero-copy {
+      min-height: auto;
+    }
+
+    .trusted {
+      margin: 74px 0 0;
+    }
+
+    .demo-form {
+      justify-self: start;
+      padding-top: 0;
+      width: min(100%, 620px);
+    }
+
+    .ready-section {
+      margin-top: 88px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .demo-page {
+      padding-inline: 20px;
+    }
+
+    .demo-header {
+      padding-top: 20px;
+    }
+
+    .demo-logo img {
+      width: 138px;
+    }
+
+    .back-home {
+      font-size: 16px;
+      gap: 10px;
+    }
+
+    .back-home span {
+      border-width: 3px;
+      height: 12px;
+      width: 12px;
+    }
+
+    .hero-shell {
+      margin-top: 58px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(56px, 16vw, 76px);
+      max-width: 100%;
+    }
+
+    .hero-copy > p {
+      font-size: clamp(28px, 8vw, 38px);
+      max-width: 100%;
+    }
+
+    .trusted h2 {
+      margin-bottom: 36px;
+    }
+
+    .trusted-logos {
+      gap: 34px;
+      padding-left: 0;
+    }
+
+    .demo-form h2 {
+      font-size: 37px;
+    }
+
+    .form-rule {
+      margin: 28px 0 46px;
+    }
+
+    .country-field::after {
+      width: 78%;
+    }
+
+    .ready-section h2 {
+      font-size: 31px;
+    }
+
+    .ready-section p {
+      font-size: 18px;
+    }
+
+    .footer-accordions summary {
+      font-size: 22px;
+      min-height: 74px;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .demo-header {
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .demo-logo img {
+      width: 120px;
+    }
+
+    .hero-copy h1 {
+      font-size: 48px;
+    }
+
+    .hero-copy > p {
+      font-size: 26px;
+    }
+
+    .trusted-logos {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .country-field::after {
+      width: 100%;
+    }
+
+    .ready-section a {
+      width: 100%;
+    }
+  }
+</style>

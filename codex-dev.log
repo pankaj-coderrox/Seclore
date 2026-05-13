@@ -1,0 +1,49 @@
+
+> seclore-astro-security-site@1.0.0 dev
+> concurrently "npm:dev:frontend" "npm:dev:backend"
+
+[dev:backend] 
+[dev:backend] > seclore-astro-security-site@1.0.0 dev:backend
+[dev:backend] > node --watch server/index.js
+[dev:backend] 
+[dev:frontend] 
+[dev:frontend] > seclore-astro-security-site@1.0.0 dev:frontend
+[dev:frontend] > astro dev --host 127.0.0.1 --port 4321
+[dev:frontend] 
+[dev:backend] ✅ MongoDB connected successfully
+[dev:backend] node:events:487
+[dev:backend]       throw er; // Unhandled 'error' event
+[dev:backend]       ^
+[dev:backend] 
+[dev:backend] Error: listen EADDRINUSE: address already in use :::5000
+[dev:backend]     at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+[dev:backend]     at listenInCluster (node:net:2065:12)
+[dev:backend]     at Server.listen (node:net:2170:7)
+[dev:backend]     at app.listen (C:\Users\Acer\Documents\New project\node_modules\express\lib\application.js:635:24)
+[dev:backend]     at file:///C:/Users/Acer/Documents/New%20project/server/index.js:208:9
+[dev:backend]     at <anonymous>
+[dev:backend]     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+[dev:backend] Emitted 'error' event on Server instance at:
+[dev:backend]     at emitErrorNT (node:net:2044:8)
+[dev:backend]     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+[dev:backend]   code: 'EADDRINUSE',
+[dev:backend]   errno: -4091,
+[dev:backend]   syscall: 'listen',
+[dev:backend]   address: '::',
+[dev:backend]   port: 5000
+[dev:backend] }
+[dev:backend] 
+[dev:backend] Node.js v24.15.0
+[dev:backend] Failed running 'server/index.js'. Waiting for file changes before restarting...
+[dev:frontend] [2m15:06:39[22m [34m[types][39m Generated [2m3ms[22m
+[dev:frontend] [2m15:06:39[22m [34m[content][39m Syncing content
+[dev:frontend] [2m15:06:39[22m [34m[content][39m Synced content
+[dev:frontend] [2m15:06:39[22m [34m[vite][39m Port 4321 is in use, trying another one...
+[dev:frontend] 
+[dev:frontend] [42m[1m astro [22m[49m [32mv5.18.1[39m [2mready in[22m 593 [2mms[22m
+[dev:frontend] 
+[dev:frontend] [2m┃[22m Local    [36mhttp://127.0.0.1:4322/[39m
+[dev:frontend] 
+[dev:frontend] [2m15:06:39[22m [32mwatching for file changes...[39m
+[dev:frontend] [2m15:08:36[22m [34m[200][39m / [2m61ms[22m
+[dev:frontend] npm run dev:frontend exited with code 4294967295

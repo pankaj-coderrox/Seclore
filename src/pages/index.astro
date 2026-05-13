@@ -3,47 +3,65 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/Nav.astro";
 
 const heroCards = [
-  ["Understand Your Data", "Gain comprehensive visibility across all data repositories and interactions."],
-  ["Derive Context", "Make intelligent decisions based on who uses data, where it moves, and why."],
-  ["Enforce Automatically", "Classify data and enforce controls across people and AI workflows."],
-  ["Prove It Is Handled Correctly", "Maintain continuous evidence that controls are active and policy is measurable."]
+  ["Understand Your Data", "Gain comprehensive visibility across all data touchpoints and interactions", "data"],
+  ["Derive Context", "Make intelligent decisions based on who or what is using data, how it's used, and why", "context"],
+  ["Enforce Automatically", "Controls that allow granular access to data wherever it moves - without slowing work", "enforce"],
+  ["Prove It's Handled Correctly", "Maintain continuous visibility and proof across data usage, access, and activity to demonstrate compliance", "prove"]
 ];
 
 const armorPillars = [
-  ["Action, Not Just Visibility", "Protects against threats by applying controls across data systems."],
-  ["Built-In, Not Bolted-On", "Unified discovery and protection workflows work with the data itself."],
-  ["Ubiquitous, Not Bounded", "Protects data wherever it goes, both internal and external."],
-  ["Adaptive, Not Static", "Understands data context and adapts as usage changes."],
-  ["Anticipatory, Not Reactive", "Acts early and reduces risk before data exposure becomes damage."]
+  ["Action, Not Just Visibility", "Protects against threats by adaptively using context-aware policies."],
+  ["Built-In, Not Bolted-On", "AI data discovery embeds security intelligence directly into the data itself."],
+  ["Ubiquitous, Not Bounded", "Protects data wherever it goes, both inside and outside the enterprise."],
+  ["Adaptive, Not Static", "Understanding data's context and intent to manage rights at a granular level."],
+  ["Anticipatory, Not Reactive", "Audit every action and maintain full traceability across both AI and people-driven workflows."]
 ];
 
 const outcomes = [
-  ["Empower Teams", "Let people collaborate freely while maintaining intelligent, invisible protection."],
-  ["Turn Risk into Readiness", "Transform data security from a barrier into a competitive advantage."],
-  ["Enable AI Everywhere", "Deploy AI initiatives confidently across your organization without compromising security."],
-  ["Maintain Continuous Control", "Keep oversight of sensitive data regardless of where it travels or who accesses it."]
+  ["Empower Teams", "Let people collaborate freely while maintaining intelligent, invisible protection", "team"],
+  ["Turn Risk into Readiness", "Transform data security from a barrier into a competitive advantage", "shield"],
+  ["Enable AI Everywhere", "Deploy AI initiatives confidently across your organization without compromising security", "spark"],
+  ["Maintain Continuous Control", "Keep oversight of sensitive data regardless of where it travels or who accesses it", "control"]
 ];
 
 const useCases = [
-  ["Secure third-party and partner collaboration", "Maintain control over shared data even when it moves beyond your organization."],
-  ["Enable safe AI adoption across the business", "Adopt AI tools confidently while ensuring enterprise data remains protected."],
-  ["Reduce insider risk without disrupting work", "Monitor misuse without preventing everyday productivity across the organization."],
-  ["Support regulatory and audit readiness", "Demonstrate continuous control, clear visibility, and compliant policy enforcement."],
-  ["Protect sensitive intellectual property", "Keep oversight of sensitive engineering and business trade data as it moves."]
+  ["Secure third-party and partner collaboration", "Maintain control over shared data even when it moves beyond your organization", "shield"],
+  ["Enable safe AI adoption across the business", "Adopt AI tools confidently while ensuring enterprise data remains protected", "spark"],
+  ["Reduce insider risk without disrupting work", "Minimize internal data misuse while preserving everyday productivity across the organization", "team"],
+  ["Support regulatory and audit readiness", "Demonstrate continuous compliance readiness with clear visibility and consistent policy enforcement", "folder"],
+  ["Protect sensitive intellectual property", "Keep oversight of sensitive data regardless of where it travels or who accesses it", "lock"]
 ];
 
 const industries = [
-  ["Financial Services", "Protect sensitive financial data across banking, insurance, and capital markets workflows."],
-  ["Manufacturing", "Maintain control over critical information while enabling collaboration across the manufacturing ecosystem."],
-  ["Semiconductor", "Secure high-value chip designs, IP, and supply-chain collaboration."],
-  ["Government", "Enable secure data sharing while maintaining strict governance, sovereignty, and compliance."],
-  ["Other Regulated Industries", "Meet industry-specific security and compliance requirements."]
+  ["Financial Services", "Protect sensitive financial data across banking, insurance, and capital markets with persistent, policy-based controls", "card"],
+  ["Manufacturing", "Maintain control over critical information while enabling collaboration across the manufacturing ecosystem", "factory"],
+  ["Semiconductor", "Secure high-value chip designs, R&D data, and supply-chain information throughout the product lifecycle", "chip"],
+  ["Government", "Enable secure data sharing while maintaining strict governance, auditability, and national security compliance", "bank"],
+  ["Other Regulated Industries", "Meet industry-specific regulatory and data protection requirements with persistent, content-aware security", "shield"]
 ];
 
 const insights = [
-  ["The Debate Over AI in the Enterprise Is Over. Here Is the Only Question That Still Matters.", "AI, Company, Data Security"],
-  ["The Missing Link in Enterprise AI: Why Context and Behavior Are the New Security Perimeter", "AI Risk, Data Security"],
-  ["ChatGPT Read 400 Internal Company Files in 42 Milliseconds. Security Stacks Saw Nothing.", "AI Risk, Data Security"]
+  ["The Debate About AI in the Enterprise Is Over. Here Is the Only Question That Matters.", "AI, COMPANY, DATA SECURITY"],
+  ["The Missing Link in Enterprise AI: Why Context and Behavior Are the New Security Perimeter", "AI RISK, DATA SECURITY"],
+  ["ChatGPT Read 400 Internal Company Files in 42 Milliseconds. Security Stacks Saw Nothing.", "AI RISK, DATA SECURITY"]
+];
+
+const awards = [
+  ["CYBER DEFENSE AWARDS", "Top Infosec Innovation Winner", "2024", "trophy"],
+  ["THE CHANNEL CO.", "CRN Channel Chief Winner", "2025", "flame"],
+  ["THE CHANNEL CO.", "CRN Women of the Channel", "2024", "medal"],
+  ["BUSINESS INTELLIGENCE GROUP", "Fortress Cyber Security Award", "2024", "flag"]
+];
+
+const customerLogos = [
+  ["AMERICAN EXPRESS", "amex", ""],
+  ["adani", "adani", "/images/home/adani-40px.png"],
+  ["stc", "stc", "/images/home/stc-40px.png"],
+  ["SKYWORKS", "skyworks", "/images/home/skyworks-40px-gray.png"],
+  ["QIB", "qib", "/images/home/qatar-40px.png"],
+  ["flex.", "flex", ""],
+  ["EXOSTAR", "exostar", ""],
+  ["aramco", "aramco", ""]
 ];
 
 ---
@@ -57,25 +75,32 @@ const insights = [
         <span class="home-eyebrow">Data Security Intelligence</span>
         <h1>Embrace AI Fearlessly</h1>
         <p>
-          Trust and control your data and achieve compliance wherever people and AI work.
+          Trust and control your data and achieve compliance wherever people and AI work
         </p>
         <div class="home-actions">
-          <a class="home-button primary" href="#demo">Book a Demo</a>
+          <a class="home-button primary" href="/demo/">Book a Demo</a>
           <a class="home-button secondary" href="#platform">Explore Platform</a>
         </div>
-        <div class="home-trust">
-          <span>Trusted by industry-leading enterprises</span>
-          <strong>SKYW0RKS</strong>
-          <strong>MARUTI SUZUKI</strong>
-        </div>
+        <section class="customer-scroll-section" aria-labelledby="customer-scroll-title">
+          <h2 id="customer-scroll-title">Trusted by industry-leading enterprises</h2>
+          <div class="customer-scroll-shell">
+            <div class="customer-scroll-track" role="region" aria-label="Trusted customer logos" tabindex="0" data-logo-scroller>
+              {[...customerLogos, ...customerLogos].map(([label, id, src], index) => (
+                <span class={`customer-logo customer-logo--${id}`} aria-label={index >= customerLogos.length ? undefined : label} aria-hidden={index >= customerLogos.length ? "true" : undefined}>
+                  {src ? <img src={src} alt="" loading="lazy" decoding="async" /> : label}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
-      <div class="hero-photo reveal" aria-label="AI data security product visualization">
-        <div class="glass-stage">
-          <div class="data-column one"></div>
-          <div class="data-column two"></div>
-          <div class="data-column three"></div>
-          <div class="data-line"></div>
-        </div>
+      <div class="hero-photo reveal">
+        <img
+          src="/images/home/homepage-hero-2026.png"
+          alt="Seclore data security intelligence visualization"
+          decoding="async"
+          fetchpriority="high"
+        />
       </div>
     </section>
 
@@ -88,9 +113,9 @@ const insights = [
         </p>
       </div>
       <div class="home-card-grid four">
-        {heroCards.map(([title, text]) => (
+        {heroCards.map(([title, text, icon]) => (
           <article class="home-info-card reveal">
-            <span class="mini-icon"></span>
+            <span class={`mini-icon icon-${icon}`}></span>
             <h3>{title}</h3>
             <p>{text}</p>
           </article>
@@ -100,8 +125,8 @@ const insights = [
 
     <section class="armor-band">
       <div class="armor-panel reveal">
-        <div>
-          <span class="armor-logo">ARMOR</span>
+        <div class="armor-intro">
+          <span class="armor-logo"><span class="armor-mark"></span><strong>ARMOR</strong><small>POWERED BY SECLORE</small></span>
           <h2>Data Security Intelligence, built for AI</h2>
           <p>
             Secure data with a unified, integrated control model. Intelligence is embedded directly
@@ -123,17 +148,17 @@ const insights = [
     <section class="how-section">
       <h2>How Seclore ARMOR Works</h2>
       <div class="home-card-grid three">
-        <article class="home-info-card reveal"><span class="mini-icon"></span><h3>Discover Your Data</h3><p>Discover what data exists and why it matters. Access people and AI.</p></article>
-        <article class="home-info-card reveal"><span class="mini-icon"></span><h3>Control Data Persistently</h3><p>Apply intelligent, context-aware protection that moves with your data.</p></article>
-        <article class="home-info-card reveal"><span class="mini-icon"></span><h3>Prove Trust at Scale</h3><p>Demonstrate compliance and security posture with continuous evidence.</p></article>
+        <article class="home-info-card reveal"><span class="mini-icon icon-data"></span><h3>Discover Your Data</h3><p>Discover what data exists and why it matters. Across people and AI</p></article>
+        <article class="home-info-card reveal"><span class="mini-icon icon-control"></span><h3>Control Data Persistently</h3><p>Apply intelligent, context-aware protection that moves with your data</p></article>
+        <article class="home-info-card reveal"><span class="mini-icon icon-prove"></span><h3>Prove Trust at Scale</h3><p>Demonstrate compliance and security posture with continuous evidence</p></article>
       </div>
     </section>
 
     <section class="achieve-section">
       <h2>What Organizations Achieve With Seclore</h2>
       <div class="home-card-grid four">
-        {outcomes.map(([title, text]) => (
-          <article class="home-info-card reveal"><span class="mini-icon"></span><h3>{title}</h3><p>{text}</p></article>
+        {outcomes.map(([title, text, icon]) => (
+          <article class="home-info-card reveal"><span class={`mini-icon icon-${icon}`}></span><h3>{title}</h3><p>{text}</p></article>
         ))}
       </div>
     </section>
@@ -141,8 +166,8 @@ const insights = [
     <section class="usecase-section" id="solutions">
       <h2>Real-World Use Cases</h2>
       <div class="home-card-grid five">
-        {useCases.map(([title, text]) => (
-          <article class="home-info-card reveal"><span class="mini-icon"></span><h3>{title}</h3><p>{text}</p></article>
+        {useCases.map(([title, text, icon], index) => (
+          <article class="home-info-card reveal"><span class={`mini-icon icon-${icon}`}></span><h3>{title}</h3><p>{text}</p>{index === 0 && <a class="learn-link" href="/solutions/external-threats/">Learn More</a>}</article>
         ))}
       </div>
     </section>
@@ -152,8 +177,8 @@ const insights = [
         <h2>Trusted Across Regulated and IP-driven Industries</h2>
       </div>
       <div class="industry-grid">
-        {industries.map(([title, text]) => (
-          <article class="industry-card reveal"><span class="mini-icon"></span><h3>{title}</h3><p>{text}</p><a href="#demo">Explore +</a></article>
+        {industries.map(([title, text, icon]) => (
+          <article class="industry-card reveal"><span class={`mini-icon icon-${icon}`}></span><h3>{title}</h3><p>{text}</p><a href="#demo">Explore +</a></article>
         ))}
       </div>
     </section>
@@ -163,21 +188,32 @@ const insights = [
       <article class="quote-panel reveal">
         <span>AMERICAN AUTO CO.</span>
         <p>
-          "We use Seclore for our ERP-PG where we need to share confidential designs to suppliers
-          today, plus archive our specifications. From the moment a supplier receives access,
-          controls and requirements move with the data."
+          "We use Seclore for our RFP/RFQs where we need to share confidential designs to suppliers
+          (who also service our competitors). Once the contract is awarded, Seclore enables us to
+          revoke access to the CAD files and other requirement documents from the other suppliers -
+          drastically reducing the risk of competitive theft."
         </p>
-        <strong>Customer Story</strong>
+        <strong>LEADER, PROCUREMENT TEAM</strong>
+        <a class="story-button" href="/resources/customer-case-studies/">Customer Story</a>
       </article>
+      <div class="testimonial-tabs" aria-label="Customer stories">
+        <span class="is-active">AMERICAN AUTO CO.</span>
+        <span>CHEMICAL MANUFACTURER</span>
+        <span>CAPITAL EQUIPMENT MANUF</span>
+      </div>
     </section>
 
     <section class="awards-section">
       <h2>Award-Winning Enterprise Security</h2>
       <div class="award-grid">
-        <article>CRN Top 100 Cloud Security Winner</article>
-        <article>CRN Channel Chief Winner</article>
-        <article>CRN Women of the Channel</article>
-        <article>Fortress Cybersecurity Award</article>
+        {awards.map(([source, title, year, icon]) => (
+          <article>
+            <span class={`mini-icon icon-${icon}`}></span>
+            <small>{source}</small>
+            <strong>{title}</strong>
+            <em>{year}</em>
+          </article>
+        ))}
       </div>
     </section>
 
@@ -189,13 +225,14 @@ const insights = [
       <div class="insight-grid">
         {insights.map(([title, tag]) => (
           <article class="insight-card reveal">
-            <div class="insight-image"></div>
+            <span class="post-type">BLOG POST</span>
             <span>{tag}</span>
             <h3>{title}</h3>
             <a href="#resources">View Blog Post +</a>
           </article>
         ))}
       </div>
+      <div class="insight-controls" aria-hidden="true"><button type="button">←</button><button type="button">→</button></div>
     </section>
   </main>
 
@@ -213,6 +250,102 @@ const insights = [
     );
 
     document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
+
+    document.querySelectorAll("[data-logo-scroller]").forEach((scroller) => {
+      let isDragging = false;
+      let startX = 0;
+      let startScrollLeft = 0;
+      let pauseUntil = 0;
+      let lastFrame = performance.now();
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const pauseAutoScroll = (duration = 1800) => {
+        pauseUntil = performance.now() + duration;
+      };
+
+      const autoScroll = (time) => {
+        const halfWidth = scroller.scrollWidth / 2;
+
+        if (!prefersReducedMotion && !isDragging && time > pauseUntil && halfWidth > scroller.clientWidth) {
+          const elapsed = Math.min(time - lastFrame, 40);
+          scroller.scrollLeft += elapsed * 0.09;
+
+          if (scroller.scrollLeft >= halfWidth) {
+            scroller.scrollLeft -= halfWidth;
+          }
+        }
+
+        lastFrame = time;
+        requestAnimationFrame(autoScroll);
+      };
+
+      requestAnimationFrame(autoScroll);
+
+      scroller.addEventListener("pointerdown", (event) => {
+        if (!(event instanceof PointerEvent)) {
+          return;
+        }
+
+        pauseAutoScroll(2400);
+        isDragging = true;
+        startX = event.clientX;
+        startScrollLeft = scroller.scrollLeft;
+        scroller.classList.add("is-dragging");
+        scroller.setPointerCapture(event.pointerId);
+      });
+
+      scroller.addEventListener("pointermove", (event) => {
+        if (!isDragging || !(event instanceof PointerEvent)) {
+          return;
+        }
+
+        pauseAutoScroll(2400);
+        scroller.scrollLeft = startScrollLeft - (event.clientX - startX);
+      });
+
+      ["pointerup", "pointercancel", "mouseleave"].forEach((eventName) => {
+        scroller.addEventListener(eventName, (event) => {
+          isDragging = false;
+          scroller.classList.remove("is-dragging");
+          if (event instanceof PointerEvent && scroller.hasPointerCapture(event.pointerId)) {
+            scroller.releasePointerCapture(event.pointerId);
+          }
+        });
+      });
+
+      scroller.addEventListener("wheel", (event) => {
+        if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
+          return;
+        }
+
+        pauseAutoScroll(1800);
+        event.preventDefault();
+        scroller.scrollLeft += event.deltaY;
+      }, { passive: false });
+
+      scroller.addEventListener("keydown", (event) => {
+        const step = scroller.clientWidth * 0.72;
+
+        if (event.key === "ArrowRight") {
+          pauseAutoScroll(2400);
+          event.preventDefault();
+          scroller.scrollBy({ left: step, behavior: "smooth" });
+        } else if (event.key === "ArrowLeft") {
+          pauseAutoScroll(2400);
+          event.preventDefault();
+          scroller.scrollBy({ left: -step, behavior: "smooth" });
+        } else if (event.key === "Home") {
+          pauseAutoScroll(2400);
+          event.preventDefault();
+          scroller.scrollTo({ left: 0, behavior: "smooth" });
+        } else if (event.key === "End") {
+          pauseAutoScroll(2400);
+          event.preventDefault();
+          scroller.scrollTo({ left: scroller.scrollWidth, behavior: "smooth" });
+        }
+      });
+
+      scroller.addEventListener("focusin", () => pauseAutoScroll(600));
+    });
   </script>
 </BaseLayout>
 
@@ -284,15 +417,9 @@ const insights = [
     --green: #087f6f;
     --warning: #a76500;
     --shadow: 0 22px 70px rgba(15, 23, 42, 0.12);
-    --body-gradient: linear-gradient(180deg, #f8fbff, #eef5fc 42%, #f7fafc);
-    --body-grid: repeating-linear-gradient(
-      90deg,
-      rgba(11, 102, 216, 0.045) 0,
-      rgba(11, 102, 216, 0.045) 1px,
-      transparent 1px,
-      transparent 96px
-    );
-    --fixed-grid-line: rgba(11, 102, 216, 0.035);
+    --body-gradient: #ffffff;
+    --body-grid: linear-gradient(transparent, transparent);
+    --fixed-grid-line: transparent;
     --header-bg: #ffffff;
     --header-border: rgba(15, 23, 42, 0.08);
     --header-shadow: 0 10px 28px rgba(8, 19, 33, 0.05);
@@ -348,6 +475,10 @@ const insights = [
       linear-gradient(90deg, var(--fixed-grid-line) 1px, transparent 1px);
     background-size: 48px 48px;
     mask-image: linear-gradient(to bottom, black, transparent 70%);
+  }
+
+  html[data-theme="light"] body::before {
+    display: none;
   }
 
   a {
@@ -1546,17 +1677,17 @@ const insights = [
   html[data-theme="dark"] .testimonial-home,
   html[data-theme="dark"] .insights-home,
   html[data-theme="dark"] .site-footer {
-    background: #07111f;
-    color: var(--text);
+    background: #ffffff;
+    color: #251f2f;
   }
 
   .home-hero {
     align-items: center;
     display: grid;
-    gap: clamp(34px, 7vw, 96px);
-    grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
-    min-height: calc(100vh - 68px);
-    padding-top: clamp(34px, 6vw, 76px);
+    gap: clamp(30px, 5vw, 72px);
+    grid-template-columns: minmax(390px, 0.86fr) minmax(440px, 1.14fr);
+    min-height: calc(100vh - 108px);
+    padding: clamp(54px, 5.2vw, 86px) clamp(24px, 3.35vw, 48px) clamp(46px, 5vw, 76px);
   }
 
   .home-eyebrow {
@@ -1568,12 +1699,22 @@ const insights = [
   }
 
   .home-hero h1 {
-    color: inherit;
-    font-size: clamp(3.4rem, 7vw, 7rem);
-    font-weight: 500;
+    color: #261d2f;
+    font-size: clamp(4.6rem, 7vw, 7.65rem);
+    font-weight: 400;
     letter-spacing: 0;
-    line-height: 0.92;
-    margin-bottom: 24px;
+    line-height: 0.91;
+    margin: 0 0 30px;
+    max-width: 690px;
+  }
+
+  .home-hero-copy > p {
+    color: #3a313f;
+    font-size: clamp(1.28rem, 1.65vw, 1.85rem);
+    font-weight: 400;
+    line-height: 1.27;
+    margin: 0;
+    max-width: 590px;
   }
 
   .home-hero p,
@@ -1586,111 +1727,103 @@ const insights = [
     color: #635d6f;
   }
 
-  html[data-theme="dark"] .home-hero p,
   html[data-theme="dark"] .enable-copy p,
   html[data-theme="dark"] .home-info-card p,
   html[data-theme="dark"] .armor-panel p,
   html[data-theme="dark"] .industry-card p,
   html[data-theme="dark"] .quote-panel p,
   html[data-theme="dark"] .site-footer p {
-    color: var(--muted);
+    color: #635d6f;
   }
 
   .home-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin: 28px 0 58px;
+    gap: 18px;
+    margin: 34px 0 78px;
   }
 
   .home-button {
     align-items: center;
     border-radius: 7px;
     display: inline-flex;
-    font-weight: 850;
+    font-size: 1.05rem;
+    font-weight: 800;
     justify-content: center;
-    min-height: 42px;
-    padding: 0 18px;
+    line-height: 1;
+    min-height: 48px;
+    padding: 0 25px;
+    transition:
+      background 160ms ease,
+      border-color 160ms ease,
+      color 160ms ease;
   }
 
   .home-button.primary {
-    background: #5b2bd7;
+    background: #5630d6;
+    border: 1px solid #5630d6;
     color: #ffffff;
+    min-width: 154px;
   }
 
   .home-button.secondary {
-    border: 1px solid rgba(91, 43, 215, 0.32);
-    color: #5b2bd7;
+    background: #ffffff;
+    border: 1px solid #5630d6;
+    color: #5630d6;
+    min-width: 177px;
+  }
+
+  .home-button.primary:hover {
+    background: #4420bd;
+    border-color: #4420bd;
+  }
+
+  .home-button.secondary:hover {
+    background: #f7f4ff;
   }
 
   .home-trust {
     display: grid;
-    gap: 18px;
+    gap: 28px;
   }
 
   .home-trust span {
-    color: #7a7484;
-    font-size: 0.92rem;
+    color: #7b7384;
+    font-size: 0.95rem;
   }
 
-  .home-trust strong {
-    color: #2d2836;
-    display: inline-block;
-    font-size: 1rem;
-    margin-right: 24px;
+  .home-trust-logos {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(30px, 3.9vw, 56px);
+  }
+
+  .home-trust-logos img {
+    filter: grayscale(1);
+    height: 40px;
+    max-width: 253px;
+    object-fit: contain;
+    opacity: 0.62;
+    width: auto;
   }
 
   .hero-photo {
     align-items: center;
-    background:
-      linear-gradient(135deg, rgba(91, 43, 215, 0.1), rgba(91, 43, 215, 0)),
-      linear-gradient(180deg, #f5efff, #fff);
-    border-radius: 14px;
+    aspect-ratio: 1507 / 1536;
     display: flex;
-    min-height: min(62vw, 560px);
-    overflow: hidden;
-    padding: clamp(28px, 5vw, 58px);
+    justify-self: end;
+    min-height: 0;
+    padding: 0;
     position: relative;
+    width: min(100%, 760px);
   }
 
-  .hero-photo::before {
-    background: radial-gradient(circle, rgba(91, 43, 215, 0.18), transparent 58%);
-    content: "";
-    inset: -20%;
-    position: absolute;
+  .hero-photo img {
+    display: block;
+    height: auto;
+    width: 100%;
   }
-
-  .glass-stage {
-    aspect-ratio: 0.78 / 1;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.22));
-    border: 1px solid rgba(91, 43, 215, 0.18);
-    box-shadow: 0 28px 80px rgba(91, 43, 215, 0.18);
-    margin: auto;
-    position: relative;
-    width: min(360px, 86%);
-  }
-
-  .glass-stage::after {
-    background: linear-gradient(90deg, transparent, #5b2bd7, transparent);
-    content: "";
-    height: 8px;
-    left: 8%;
-    position: absolute;
-    right: 8%;
-    top: 50%;
-  }
-
-  .data-column {
-    background: rgba(255, 255, 255, 0.54);
-    border: 1px solid rgba(91, 43, 215, 0.26);
-    bottom: 18%;
-    position: absolute;
-    width: 18%;
-  }
-
-  .data-column.one { height: 52%; left: 18%; }
-  .data-column.two { height: 72%; left: 42%; }
-  .data-column.three { height: 44%; right: 16%; }
 
   .enable-section {
     align-items: start;
@@ -1747,8 +1880,8 @@ const insights = [
   html[data-theme="dark"] .home-info-card,
   html[data-theme="dark"] .industry-card,
   html[data-theme="dark"] .insight-card {
-    background: var(--panel);
-    border-color: var(--line);
+    background: #f8f7fb;
+    border-color: rgba(91, 43, 215, 0.08);
   }
 
   .mini-icon {
@@ -1778,7 +1911,9 @@ const insights = [
 
   html[data-theme="dark"] .armor-band,
   html[data-theme="dark"] .awards-section {
-    background: linear-gradient(135deg, #101d36, #21173a);
+    background:
+      linear-gradient(135deg, rgba(91, 43, 215, 0.12), rgba(91, 43, 215, 0.02)),
+      #eaf0ff;
   }
 
   .armor-panel {
@@ -1811,7 +1946,7 @@ const insights = [
   }
 
   html[data-theme="dark"] .armor-pillars article {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.72);
   }
 
   .how-section,
@@ -1863,7 +1998,7 @@ const insights = [
   }
 
   html[data-theme="dark"] .quote-panel {
-    background: var(--panel);
+    background: #f8f7fb;
   }
 
   .quote-panel span,
@@ -1894,7 +2029,7 @@ const insights = [
   }
 
   html[data-theme="dark"] .award-grid article {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.72);
   }
 
   .insights-heading {
@@ -1943,7 +2078,7 @@ const insights = [
   }
 
   html[data-theme="dark"] .insight-card a {
-    color: var(--text);
+    color: #251f2f;
   }
 
   .site-footer {
@@ -1975,11 +2110,63 @@ const insights = [
     .insight-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .home-hero {
+      padding-top: clamp(64px, 9vw, 92px);
+    }
+
+    .home-trust {
+      display: none;
+    }
   }
 
   @media (max-width: 680px) {
     .home-hero {
+      gap: 30px;
       min-height: auto;
+      padding-bottom: 52px;
+      padding-top: 68px;
+    }
+
+    .home-hero h1 {
+      max-width: 100%;
+    }
+
+    .home-hero-copy > p {
+      max-width: min(100%, 335px);
+      overflow-wrap: normal;
+      word-break: normal;
+    }
+
+    .home-actions {
+      align-items: center !important;
+      flex-direction: row !important;
+      gap: 8px;
+      margin: 30px 0 0;
+    }
+
+    .home-button {
+      flex: 0 0 auto;
+      font-size: 0.92rem;
+      min-height: 39px;
+      padding-inline: 12px;
+      width: auto !important;
+    }
+
+    .home-button.primary,
+    .home-button.secondary {
+      min-width: 0;
+    }
+
+    .enable-copy p,
+    .home-info-card p {
+      max-width: min(100%, 335px);
+      overflow-wrap: normal;
+      word-break: normal;
+    }
+
+    .hero-photo {
+      display: none;
     }
 
     .home-card-grid.four,
@@ -1995,6 +2182,31 @@ const insights = [
     .insights-heading {
       align-items: flex-start;
       flex-direction: column;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .home-actions {
+      align-items: stretch !important;
+      flex-direction: column !important;
+    }
+
+    .home-button {
+      width: 100% !important;
+    }
+  }
+
+  @media (min-width: 361px) and (max-width: 680px) {
+    .home-actions {
+      gap: 14px;
+    }
+
+    .home-button.primary {
+      min-width: 141px;
+    }
+
+    .home-button.secondary {
+      min-width: 164px;
     }
   }
 
@@ -2167,6 +2379,1455 @@ const insights = [
       display: inline-block;
       height: 20px;
       width: 20px;
+    }
+  }
+
+  main#top {
+    --seclore-purple: #5630d6;
+    --seclore-ink: #292330;
+    --seclore-muted: #51495b;
+    --seclore-soft: #f8f8f8;
+    --seclore-line: #dedbe6;
+    background: #ffffff;
+    color: var(--seclore-ink);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+  }
+
+  main#top .home-hero,
+  main#top .enable-section,
+  main#top .armor-band,
+  main#top .how-section,
+  main#top .achieve-section,
+  main#top .usecase-section,
+  main#top .industries-section,
+  main#top .testimonial-home,
+  main#top .awards-section,
+  main#top .insights-home {
+    color: var(--seclore-ink);
+    padding-left: clamp(28px, 2.45vw, 40px);
+    padding-right: clamp(28px, 2.45vw, 40px);
+  }
+
+  main#top .home-hero {
+    align-items: start;
+    background: #ffffff;
+    display: grid;
+    gap: clamp(48px, 5vw, 74px);
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.98fr);
+    min-height: 0;
+    padding-bottom: 70px;
+    padding-top: clamp(82px, 7vw, 104px);
+  }
+
+  main#top .home-eyebrow {
+    color: var(--seclore-purple);
+    display: block;
+    font-size: clamp(0.92rem, 1.12vw, 1.2rem);
+    font-weight: 500;
+    letter-spacing: 0;
+    margin: 0 0 34px;
+  }
+
+  main#top .home-hero h1 {
+    color: var(--seclore-ink);
+    font-size: clamp(4.45rem, 5.8vw, 5.25rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 0.96;
+    margin: 0 0 46px;
+    max-width: 480px;
+  }
+
+  main#top .home-hero-copy > p {
+    color: #3d3744;
+    font-size: clamp(1rem, 1.15vw, 1.18rem);
+    line-height: 1.45;
+    margin: 0;
+    max-width: 445px;
+  }
+
+  main#top .home-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 36px 0 198px;
+  }
+
+  main#top .home-button {
+    align-items: center;
+    border-radius: 6px;
+    display: inline-flex;
+    font-size: 0.92rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1;
+    min-height: 46px;
+    min-width: 184px;
+    padding: 0 22px;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  main#top .home-button.primary {
+    background: var(--seclore-purple);
+    border: 1px solid var(--seclore-purple);
+    color: #ffffff;
+  }
+
+  main#top .home-button.secondary {
+    background: #ffffff;
+    border: 1px solid var(--seclore-purple);
+    color: var(--seclore-purple);
+  }
+
+  main#top .home-button.primary:hover {
+    background: #4420bd;
+    border-color: #4420bd;
+    transform: translateY(-1px);
+  }
+
+  main#top .home-button.secondary:hover {
+    background: #f5f1ff;
+    transform: translateY(-1px);
+  }
+
+  main#top .customer-scroll-section {
+    background: #ffffff;
+    color: #2b2b2d;
+    margin-top: clamp(132px, 12vw, 170px);
+    overflow: hidden;
+    padding: 0 0 10px;
+    position: relative;
+    width: min(880px, calc(100vw - clamp(40px, 10vw, 144px)));
+    z-index: 2;
+  }
+
+  main#top .customer-scroll-section h2 {
+    color: #1f252d;
+    font-size: clamp(1.25rem, 1.7vw, 1.38rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.22;
+    margin: 0 0 clamp(54px, 5vw, 70px);
+    padding: 0;
+  }
+
+  main#top .customer-scroll-shell {
+    overflow: hidden;
+  }
+
+  main#top .customer-scroll-track {
+    align-items: center;
+    cursor: grab;
+    display: flex;
+    gap: clamp(48px, 6vw, 76px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 0 10px;
+    scrollbar-width: none;
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  main#top .customer-scroll-track:focus-visible {
+    outline: 2px solid var(--seclore-purple);
+    outline-offset: -2px;
+  }
+
+  main#top .customer-scroll-track.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+  }
+
+  main#top .customer-scroll-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  main#top .customer-logo {
+    align-items: center;
+    color: #545454;
+    display: inline-flex;
+    flex: 0 0 clamp(124px, 13vw, 170px);
+    filter: grayscale(1);
+    font-weight: 800;
+    height: 44px;
+    justify-content: center;
+    line-height: 1;
+    min-width: 0;
+    opacity: 0.86;
+    text-align: center;
+    text-transform: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  main#top .customer-logo img {
+    display: block;
+    filter: grayscale(1);
+    max-height: 40px;
+    max-width: 178px;
+    object-fit: contain;
+    opacity: 0.9;
+    width: auto;
+  }
+
+  main#top .customer-logo--flex {
+    flex-basis: clamp(116px, 12vw, 152px);
+    font-size: clamp(1.7rem, 2.7vw, 2.35rem);
+    font-style: italic;
+    letter-spacing: -0.08em;
+  }
+
+  main#top .customer-logo--exostar {
+    align-content: center;
+    display: inline-grid;
+    font-size: clamp(1.2rem, 1.65vw, 1.55rem);
+    font-style: italic;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+  }
+
+  main#top .customer-logo--exostar::after {
+    content: "We build trust.";
+    display: block;
+    font-size: 0.46em;
+    font-style: normal;
+    letter-spacing: 0;
+    margin-top: 4px;
+    text-align: right;
+  }
+
+  main#top .customer-logo--aramco {
+    font-size: clamp(1.55rem, 2.25vw, 2rem);
+    font-weight: 850;
+    letter-spacing: -0.04em;
+  }
+
+  main#top .customer-logo--aramco::after {
+    background: linear-gradient(135deg, #565656 0 48%, #7d7d7d 48% 100%);
+    content: "";
+    display: inline-block;
+    height: 28px;
+    margin-left: 10px;
+    width: 28px;
+  }
+
+  main#top .customer-logo--amex {
+    border: 2px solid currentColor;
+    flex-basis: clamp(112px, 11vw, 136px);
+    font-size: clamp(0.72rem, 1vw, 0.92rem);
+    line-height: 0.94;
+    padding: 4px 8px;
+    white-space: normal;
+  }
+
+  main#top .customer-logo--adani {
+    font-size: clamp(1.65rem, 2.45vw, 2.15rem);
+    letter-spacing: -0.04em;
+  }
+
+  main#top .customer-logo--ford {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    flex-basis: clamp(112px, 13vw, 162px);
+    font-family: Georgia, serif;
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    font-style: italic;
+    font-weight: 700;
+    height: 44px;
+    padding: 0 20px;
+  }
+
+  main#top .customer-logo--gm,
+  main#top .customer-logo--hdfc,
+  main#top .customer-logo--eugenus,
+  main#top .customer-logo--pif {
+    font-size: clamp(1.15rem, 1.75vw, 1.6rem);
+    letter-spacing: -0.02em;
+  }
+
+  main#top .home-trust {
+    display: grid;
+    gap: 76px;
+  }
+
+  main#top .home-trust span:first-child {
+    color: #3d3744;
+    font-size: 1rem;
+  }
+
+  main#top .home-trust-logos {
+    align-items: center;
+    display: flex;
+    gap: clamp(78px, 8vw, 118px);
+  }
+
+  main#top .home-trust-logos span {
+    color: #4f4c51;
+    display: inline-flex;
+    filter: grayscale(1);
+    font-weight: 700;
+    opacity: 0.82;
+  }
+
+  main#top .logo-jm {
+    border-left: 1px solid #c9c4c9;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    padding-left: 8px;
+  }
+
+  main#top .logo-ford {
+    border: 2px solid #4f4c51;
+    border-radius: 50%;
+    font-family: Georgia, serif;
+    font-size: 1.02rem;
+    font-style: italic;
+    line-height: 1;
+    padding: 2px 12px;
+  }
+
+  main#top .logo-flex {
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+  }
+
+  main#top .hero-photo {
+    aspect-ratio: auto;
+    border-radius: 24px;
+    display: block;
+    height: clamp(610px, 61vw, 780px);
+    justify-self: stretch;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  main#top .hero-photo img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+  }
+
+  main#top .enable-section {
+    align-items: start;
+    background: #ffffff;
+    display: grid;
+    gap: clamp(52px, 6vw, 86px);
+    grid-template-columns: minmax(260px, 0.62fr) minmax(0, 1.38fr);
+    padding-bottom: 66px;
+    padding-top: 0;
+  }
+
+  main#top .enable-copy h2,
+  main#top .how-section h2,
+  main#top .achieve-section h2,
+  main#top .usecase-section h2,
+  main#top .testimonial-home h2,
+  main#top .awards-section h2,
+  main#top .insights-heading h2,
+  main#top .industries-heading h2 {
+    color: var(--seclore-ink);
+    font-size: clamp(2.65rem, 4.25vw, 4.1rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  main#top .enable-copy p {
+    color: #1f1925;
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-top: 42px;
+    max-width: 320px;
+  }
+
+  main#top .home-card-grid {
+    display: grid;
+    gap: 40px;
+  }
+
+  main#top .enable-section .home-card-grid.four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  main#top .home-info-card,
+  main#top .industry-card,
+  main#top .insight-card {
+    background: var(--seclore-soft);
+    border: 1px solid transparent;
+    border-radius: 20px;
+    color: #100c16;
+    padding: 46px 40px;
+    text-align: left;
+  }
+
+  main#top .enable-section .home-info-card {
+    min-height: 448px;
+  }
+
+  main#top .home-info-card h3,
+  main#top .industry-card h3,
+  main#top .insight-card h3 {
+    color: #09050e;
+    font-size: clamp(1.35rem, 1.65vw, 1.65rem);
+    font-weight: 500;
+    line-height: 1.08;
+    margin: 52px 0 28px;
+  }
+
+  main#top .home-info-card p,
+  main#top .industry-card p,
+  main#top .insight-card p,
+  main#top .armor-panel p,
+  main#top .quote-panel p {
+    color: #2d2733;
+    font-size: 1rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  main#top .mini-icon {
+    background: transparent;
+    border: 1px solid rgba(86, 48, 214, 0.24);
+    border-radius: 10px;
+    display: inline-block;
+    height: 42px;
+    margin: 0;
+    position: relative;
+    width: 42px;
+  }
+
+  main#top .mini-icon::before,
+  main#top .mini-icon::after {
+    border-color: var(--seclore-purple);
+    content: "";
+    position: absolute;
+  }
+
+  main#top .icon-data::before {
+    border: 2px solid var(--seclore-purple);
+    border-radius: 50%;
+    height: 11px;
+    left: 8px;
+    top: 8px;
+    width: 24px;
+  }
+
+  main#top .icon-data::after {
+    border: 2px solid #ff8d3d;
+    border-radius: 50%;
+    border-top: 0;
+    height: 16px;
+    left: 8px;
+    top: 14px;
+    width: 24px;
+  }
+
+  main#top .icon-context::before,
+  main#top .icon-folder::before {
+    border: 2px solid var(--seclore-purple);
+    height: 25px;
+    left: 10px;
+    top: 8px;
+    width: 18px;
+  }
+
+  main#top .icon-context::after,
+  main#top .icon-folder::after {
+    background: #ff8d3d;
+    height: 2px;
+    left: 15px;
+    top: 17px;
+    width: 17px;
+  }
+
+  main#top .icon-enforce::before,
+  main#top .icon-team::before {
+    border: 2px solid var(--seclore-purple);
+    border-radius: 50%;
+    height: 9px;
+    left: 8px;
+    top: 8px;
+    width: 9px;
+    box-shadow: 17px 11px 0 -1px #ffffff, 17px 11px 0 1px var(--seclore-purple);
+  }
+
+  main#top .icon-enforce::after,
+  main#top .icon-team::after {
+    border-top: 2px solid #ff8d3d;
+    left: 16px;
+    top: 22px;
+    width: 16px;
+  }
+
+  main#top .icon-prove::before,
+  main#top .icon-shield::before,
+  main#top .icon-medal::before,
+  main#top .icon-lock::before {
+    border: 2px solid var(--seclore-purple);
+    border-radius: 10px 10px 14px 14px;
+    height: 24px;
+    left: 9px;
+    top: 8px;
+    transform: rotate(45deg);
+    width: 24px;
+  }
+
+  main#top .icon-prove::after,
+  main#top .icon-shield::after,
+  main#top .icon-medal::after,
+  main#top .icon-lock::after {
+    border-bottom: 2px solid #ff8d3d;
+    border-left: 2px solid #ff8d3d;
+    height: 6px;
+    left: 16px;
+    top: 17px;
+    transform: rotate(-45deg);
+    width: 12px;
+  }
+
+  main#top .icon-spark::before,
+  main#top .icon-flame::before {
+    border: 2px solid var(--seclore-purple);
+    height: 20px;
+    left: 10px;
+    top: 10px;
+    transform: rotate(45deg);
+    width: 20px;
+  }
+
+  main#top .icon-spark::after,
+  main#top .icon-flame::after {
+    border-top: 2px solid #ff8d3d;
+    left: 6px;
+    top: 20px;
+    transform: rotate(-35deg);
+    width: 30px;
+  }
+
+  main#top .icon-control::before {
+    border-top: 2px solid var(--seclore-purple);
+    box-shadow: 0 10px 0 0 var(--seclore-purple), 0 20px 0 0 var(--seclore-purple);
+    height: 0;
+    left: 7px;
+    top: 11px;
+    width: 28px;
+  }
+
+  main#top .icon-control::after {
+    background: #ffffff;
+    border: 2px solid #ff8d3d;
+    border-radius: 50%;
+    height: 5px;
+    left: 14px;
+    top: 8px;
+    width: 5px;
+    box-shadow: 11px 10px 0 0 #ffffff, 11px 10px 0 2px #ff8d3d;
+  }
+
+  main#top .icon-card::before,
+  main#top .icon-factory::before,
+  main#top .icon-chip::before,
+  main#top .icon-bank::before,
+  main#top .icon-trophy::before,
+  main#top .icon-flag::before {
+    border: 2px solid var(--seclore-purple);
+    height: 19px;
+    left: 9px;
+    top: 11px;
+    width: 23px;
+  }
+
+  main#top .icon-card::after,
+  main#top .icon-factory::after,
+  main#top .icon-chip::after,
+  main#top .icon-bank::after,
+  main#top .icon-trophy::after,
+  main#top .icon-flag::after {
+    border-top: 2px solid #ff8d3d;
+    left: 12px;
+    top: 20px;
+    width: 18px;
+  }
+
+  main#top .armor-band,
+  main#top .how-section {
+    background:
+      linear-gradient(180deg, rgba(194, 215, 255, 0.88), rgba(255, 245, 250, 0.8) 45%, rgba(215, 226, 255, 0.9)),
+      radial-gradient(circle at 50% 8%, rgba(255, 255, 255, 0.95), transparent 34%),
+      #dce7ff;
+  }
+
+  main#top .armor-band {
+    padding-bottom: 76px;
+    padding-top: 70px;
+  }
+
+  main#top .armor-panel {
+    align-items: start;
+    display: grid;
+    gap: clamp(38px, 4vw, 54px);
+    grid-template-columns: minmax(430px, 0.97fr) minmax(0, 1fr);
+    margin: 0;
+    max-width: none;
+  }
+
+  main#top .armor-intro {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.32)),
+      rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    box-shadow: inset 0 0 0 1px rgba(86, 48, 214, 0.12);
+    min-height: 930px;
+    padding: 105px 65px 72px;
+    text-align: center;
+  }
+
+  main#top .armor-logo {
+    align-items: center;
+    color: var(--seclore-purple);
+    display: inline-grid;
+    grid-template-columns: 58px auto;
+    margin: 0 0 58px;
+    text-align: left;
+  }
+
+  main#top .armor-logo strong {
+    font-size: clamp(3.5rem, 5vw, 5.2rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 0.8;
+  }
+
+  main#top .armor-logo small {
+    color: var(--seclore-purple);
+    font-size: 0.83rem;
+    font-weight: 700;
+    grid-column: 2;
+    letter-spacing: 0.08em;
+  }
+
+  main#top .armor-mark {
+    background: var(--seclore-purple);
+    border-radius: 12px;
+    display: block;
+    height: 46px;
+    width: 46px;
+  }
+
+  main#top .armor-intro h2 {
+    color: #05020a;
+    font-size: clamp(2.35rem, 3.4vw, 3.65rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.08;
+    margin: 0 0 56px;
+  }
+
+  main#top .armor-intro p {
+    color: #140f18;
+    font-size: clamp(1.08rem, 1.25vw, 1.25rem);
+    line-height: 1.55;
+    margin: 0 auto 52px;
+    max-width: 415px;
+  }
+
+  main#top .armor-intro p::after {
+    color: var(--seclore-purple);
+    content: "Discover → Context → Enforce → Prove";
+    display: block;
+    font-size: 1.18rem;
+    line-height: 1.2;
+    margin: 46px auto 0;
+    max-width: 360px;
+  }
+
+  main#top .armor-intro .home-button {
+    margin-top: 18px;
+    min-width: 305px;
+  }
+
+  main#top .armor-pillars {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  main#top .armor-pillars article {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 18px;
+    min-height: 325px;
+    padding: 42px 40px;
+  }
+
+  main#top .armor-pillars article:nth-child(5) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(100%, calc((100% - 40px) / 2));
+  }
+
+  main#top .armor-pillars h3 {
+    color: #09050e;
+    font-size: clamp(1.35rem, 1.55vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1.05;
+    margin: 0 0 20px;
+  }
+
+  main#top .armor-pillars p {
+    color: #2f2933;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  main#top .how-section {
+    padding-bottom: 86px;
+    padding-top: 0;
+    text-align: left;
+  }
+
+  main#top .how-section h2 {
+    margin-bottom: 42px;
+  }
+
+  main#top .how-section .home-card-grid.three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  main#top .how-section .home-info-card {
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.88);
+    min-height: 260px;
+  }
+
+  main#top .achieve-section,
+  main#top .usecase-section,
+  main#top .industries-section,
+  main#top .testimonial-home,
+  main#top .insights-home {
+    background: #ffffff;
+  }
+
+  main#top .achieve-section {
+    padding-bottom: 72px;
+    padding-top: 70px;
+    text-align: center;
+  }
+
+  main#top .achieve-section h2,
+  main#top .usecase-section h2,
+  main#top .testimonial-home h2,
+  main#top .awards-section h2 {
+    margin-bottom: 72px;
+    text-align: center;
+  }
+
+  main#top .achieve-section .home-card-grid.four {
+    background: radial-gradient(circle at 50% 45%, rgba(255, 221, 155, 0.45), transparent 42%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  main#top .achieve-section .home-info-card {
+    min-height: 300px;
+  }
+
+  main#top .usecase-section {
+    padding-bottom: 118px;
+    padding-top: 32px;
+  }
+
+  main#top .usecase-section .home-card-grid.five {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    text-align: left;
+  }
+
+  main#top .usecase-section .home-info-card {
+    border-color: #fac8df;
+    min-height: 320px;
+  }
+
+  main#top .usecase-section .home-info-card:nth-child(1),
+  main#top .usecase-section .home-info-card:nth-child(2) {
+    grid-column: span 3;
+  }
+
+  main#top .usecase-section .home-info-card:nth-child(n + 3) {
+    grid-column: span 2;
+  }
+
+  main#top .learn-link {
+    color: var(--seclore-purple);
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: 30px;
+  }
+
+  main#top .learn-link::after {
+    content: "→";
+    margin-left: 10px;
+  }
+
+  main#top .industries-section {
+    display: grid;
+    gap: 0;
+    grid-template-columns: minmax(280px, 0.58fr) minmax(0, 1.42fr);
+    padding-bottom: 126px;
+    padding-top: 30px;
+  }
+
+  main#top .industries-heading {
+    border-right: 1px solid #b9b5c0;
+    padding-right: 38px;
+  }
+
+  main#top .industries-heading h2 {
+    max-width: 350px;
+  }
+
+  main#top .industry-grid {
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  main#top .industry-card {
+    background: transparent;
+    border: 0;
+    border-right: 1px solid #b9b5c0;
+    border-radius: 0;
+    min-height: 430px;
+    padding: 38px 40px 50px;
+  }
+
+  main#top .industry-card:nth-child(2n) {
+    border-right: 0;
+  }
+
+  main#top .industry-card a {
+    color: var(--seclore-purple);
+    display: inline-flex;
+    font-size: 0.95rem;
+    margin-top: 24px;
+  }
+
+  main#top .testimonial-home {
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    text-align: center;
+  }
+
+  main#top .testimonial-home h2 {
+    padding-inline: clamp(28px, 2.45vw, 40px);
+  }
+
+  main#top .quote-panel {
+    background: #f8f8f8;
+    border-radius: 0;
+    margin: 0;
+    max-width: none;
+    min-height: 430px;
+    padding: 92px clamp(48px, 4vw, 62px) 48px;
+    text-align: left;
+  }
+
+  main#top .quote-panel span {
+    color: #38313c;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  main#top .quote-panel p {
+    color: #05020a;
+    font-size: 1.05rem;
+    line-height: 1.48;
+    margin: 88px 0 42px;
+    max-width: 1080px;
+  }
+
+  main#top .quote-panel strong {
+    color: var(--seclore-purple);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  main#top .story-button {
+    background: #251027;
+    border-radius: 5px;
+    color: #ffffff;
+    display: table;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin: 48px auto 0;
+    padding: 14px 22px;
+  }
+
+  main#top .testimonial-tabs {
+    background: #f8f8f8;
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0 clamp(48px, 4vw, 62px) 30px;
+    text-align: left;
+  }
+
+  main#top .testimonial-tabs span {
+    border-bottom: 1px solid #c7c4cd;
+    color: #746f78;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    padding-bottom: 22px;
+  }
+
+  main#top .testimonial-tabs .is-active {
+    border-color: var(--seclore-purple);
+    color: #3f3844;
+  }
+
+  main#top .awards-section {
+    background:
+      linear-gradient(135deg, rgba(237, 231, 255, 0.9), rgba(224, 232, 255, 0.95)),
+      #e7e7ff;
+    padding-bottom: 96px;
+    padding-top: 74px;
+  }
+
+  main#top .award-grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  main#top .award-grid article {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.64);
+    border: 1px solid #fac8df;
+    border-radius: 16px;
+    color: #0d0712;
+    display: grid;
+    justify-items: center;
+    min-height: 370px;
+    padding: 42px 28px;
+    text-align: center;
+  }
+
+  main#top .award-grid small {
+    color: var(--seclore-purple);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  main#top .award-grid strong {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.2;
+    max-width: 185px;
+  }
+
+  main#top .award-grid em {
+    color: #2b2530;
+    font-size: 0.9rem;
+    font-style: normal;
+  }
+
+  main#top .insights-home {
+    padding-bottom: 112px;
+    padding-top: 72px;
+  }
+
+  main#top .insights-heading {
+    align-items: start;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 46px;
+    text-align: left;
+  }
+
+  main#top .insights-heading a {
+    border: 1px solid var(--seclore-purple);
+    border-radius: 6px;
+    color: var(--seclore-purple);
+    font-size: 0.9rem;
+    font-weight: 600;
+    min-width: 186px;
+    padding: 14px 22px;
+    text-align: center;
+  }
+
+  main#top .insight-grid {
+    display: grid;
+    gap: clamp(44px, 9vw, 220px);
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    max-width: 940px;
+    text-align: left;
+  }
+
+  main#top .insight-card {
+    align-content: end;
+    background: #ffffff;
+    border: 1px solid #d8d5df;
+    border-radius: 16px;
+    display: grid;
+    min-height: 540px;
+    padding: 0 40px 45px;
+  }
+
+  main#top .insight-card .post-type,
+  main#top .insight-card span:not(.post-type) {
+    background: #f0eff2;
+    border-radius: 999px;
+    color: #111111;
+    display: table;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 12px;
+    padding: 8px 10px;
+  }
+
+  main#top .insight-card span:not(.post-type) {
+    text-align: center;
+  }
+
+  main#top .insight-card h3 {
+    color: #17111d;
+    font-size: 1.38rem;
+    font-weight: 400;
+    line-height: 1.08;
+    margin: 28px 0 28px;
+  }
+
+  main#top .insight-card a {
+    color: #0b0710;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  main#top .insight-controls {
+    display: flex;
+    gap: 28px;
+    margin-top: 70px;
+  }
+
+  main#top .insight-controls button {
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #bdb8c4;
+    border-radius: 50%;
+    color: #7c7682;
+    display: inline-flex;
+    height: 48px;
+    justify-content: center;
+    width: 48px;
+  }
+
+  @media (max-width: 1280px) {
+    main#top .home-hero {
+      grid-template-columns: minmax(0, 1fr) minmax(380px, 0.97fr);
+    }
+  }
+
+  @media (max-width: 980px) {
+    main#top .home-hero,
+    main#top .enable-section,
+    main#top .armor-panel,
+    main#top .industries-section {
+      grid-template-columns: 1fr !important;
+    }
+
+    main#top .hero-photo {
+      height: auto;
+    }
+
+    main#top .home-actions {
+      gap: 18px;
+      margin-bottom: 64px;
+    }
+
+    main#top .home-actions .home-button {
+      border-radius: 8px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      min-height: 50px;
+      padding: 0 28px;
+    }
+
+    main#top .home-actions .home-button.primary {
+      min-width: 189px;
+    }
+
+    main#top .home-actions .home-button.secondary {
+      min-width: 181px;
+    }
+
+    main#top .home-trust {
+      gap: 34px;
+    }
+
+    main#top .enable-section .home-card-grid.four,
+    main#top .how-section .home-card-grid.three,
+    main#top .achieve-section .home-card-grid.four,
+    main#top .armor-pillars,
+    main#top .industry-grid,
+    main#top .award-grid,
+    main#top .insight-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    main#top .usecase-section .home-card-grid.five {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    main#top .usecase-section .home-info-card {
+      grid-column: auto !important;
+    }
+
+    main#top .industries-heading,
+    main#top .industry-card {
+      border-right: 0;
+    }
+  }
+
+  @media (min-width: 681px) and (max-width: 980px) {
+    main#top .home-hero {
+      padding-top: 48px;
+    }
+
+    main#top .home-hero h1 {
+      font-size: clamp(3rem, 6.5vw, 3.45rem);
+      line-height: 1.02;
+      margin-bottom: 34px;
+      max-width: none;
+    }
+
+    main#top .home-hero-copy > p {
+      font-size: clamp(1.35rem, 2.8vw, 1.55rem);
+      line-height: 1.45;
+      max-width: 760px;
+    }
+
+    main#top .home-actions {
+      margin: 42px 0 64px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    main#top .home-hero,
+    main#top .enable-section,
+    main#top .armor-band,
+    main#top .how-section,
+    main#top .achieve-section,
+    main#top .usecase-section,
+    main#top .industries-section,
+    main#top .testimonial-home h2,
+    main#top .awards-section,
+    main#top .insights-home {
+      padding-left: clamp(18px, 6.15vw, 24px) !important;
+      padding-right: clamp(18px, 6.15vw, 24px) !important;
+    }
+
+    main#top .home-hero {
+      padding-top: 80px;
+    }
+
+    main#top .home-eyebrow {
+      font-size: 0.95rem;
+      margin-bottom: 26px;
+    }
+
+    main#top .home-hero h1 {
+      font-size: clamp(2.7rem, 11.1vw, 3rem) !important;
+      line-height: 1.03 !important;
+      margin-bottom: 28px;
+    }
+
+    main#top .home-hero-copy > p {
+      font-size: 0.98rem !important;
+      max-width: 315px;
+    }
+
+    main#top .home-actions {
+      flex-direction: row !important;
+      gap: 18px;
+      margin: 28px 0 96px;
+    }
+
+    main#top .home-button {
+      border-radius: 8px;
+      font-size: clamp(0.88rem, 3.2vw, 1rem);
+      min-height: 50px;
+      min-width: 0;
+      padding: 0 12px;
+      white-space: nowrap;
+      width: auto !important;
+    }
+
+    main#top .home-actions .home-button.primary,
+    main#top .home-actions .home-button.secondary {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    main#top .hero-photo {
+      display: block;
+      height: auto;
+    }
+
+    main#top .home-trust {
+      display: grid;
+    }
+
+    main#top .home-trust-logos {
+      gap: 42px;
+    }
+
+    main#top .enable-section .home-card-grid.four,
+    main#top .how-section .home-card-grid.three,
+    main#top .achieve-section .home-card-grid.four,
+    main#top .usecase-section .home-card-grid.five,
+    main#top .armor-pillars,
+    main#top .industry-grid,
+    main#top .award-grid,
+    main#top .insight-grid,
+    main#top .testimonial-tabs {
+      grid-template-columns: 1fr !important;
+    }
+
+    main#top .enable-copy h2,
+    main#top .how-section h2,
+    main#top .achieve-section h2,
+    main#top .usecase-section h2,
+    main#top .testimonial-home h2,
+    main#top .awards-section h2,
+    main#top .insights-heading h2,
+    main#top .industries-heading h2 {
+      font-size: clamp(2rem, 9vw, 2.8rem) !important;
+    }
+
+    main#top .home-info-card,
+    main#top .industry-card,
+    main#top .insight-card,
+    main#top .armor-pillars article {
+      min-height: 0;
+      padding: 34px 28px;
+    }
+
+    main#top .armor-intro {
+      min-height: 0;
+      padding: 72px 30px 58px;
+    }
+
+    main#top .armor-pillars article:nth-child(5) {
+      grid-column: auto;
+      justify-self: stretch;
+      width: 100%;
+    }
+
+    main#top .testimonial-tabs {
+      gap: 18px;
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+
+    main#top .quote-panel {
+      min-height: 0;
+      padding: 60px 28px 40px;
+    }
+
+    main#top .quote-panel p {
+      margin-top: 60px;
+    }
+
+    main#top .insights-heading {
+      align-items: start;
+      flex-direction: row;
+    }
+  }
+
+  main#top .home-hero .home-actions {
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 18px !important;
+    margin: 36px 0 0 !important;
+  }
+
+  main#top .home-hero .home-actions .home-button {
+    align-items: center;
+    border-radius: 8px;
+    display: inline-flex;
+    flex: 0 0 auto !important;
+    font-size: clamp(0.92rem, 2.55vw, 1.25rem);
+    font-weight: 600;
+    height: 50px;
+    justify-content: center;
+    line-height: 1;
+    max-width: none;
+    padding: 0 18px;
+    white-space: nowrap;
+    width: auto !important;
+  }
+
+  main#top .home-hero .home-actions .home-button.primary {
+    background: var(--seclore-purple);
+    border: 1px solid var(--seclore-purple);
+    color: #ffffff;
+    min-width: min(189px, calc((100vw - 54px) / 2));
+  }
+
+  main#top .home-hero .home-actions .home-button.secondary {
+    background: #ffffff;
+    border: 1px solid var(--seclore-purple);
+    color: var(--seclore-purple);
+    min-width: min(181px, calc((100vw - 54px) / 2));
+  }
+
+  main#top .home-hero .home-actions .home-button.primary:hover {
+    background: #4420bd;
+    border-color: #4420bd;
+    color: #ffffff;
+  }
+
+  main#top .home-hero .home-actions .home-button.secondary:hover {
+    background: #f5f1ff;
+    color: var(--seclore-purple);
+  }
+
+  @media (max-width: 680px) {
+    main#top .home-hero .home-actions {
+      justify-content: flex-start !important;
+      margin: 28px 0 0 !important;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    main#top .customer-scroll-section {
+      margin-top: 34px;
+      max-width: 100%;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      padding-bottom: 6px;
+      width: 100%;
+    }
+
+    main#top .customer-scroll-section h2 {
+      font-size: 1.25rem !important;
+      font-weight: 400;
+      line-height: 1.45 !important;
+      margin-bottom: 58px;
+      max-width: 100%;
+    }
+
+    main#top .customer-scroll-track {
+      gap: 34px;
+      padding-bottom: 8px;
+    }
+
+    main#top .customer-logo {
+      flex-basis: 104px;
+      height: 36px;
+    }
+
+    main#top .customer-logo img {
+      max-height: 32px;
+      max-width: 116px;
+    }
+
+    main#top .customer-logo--amex {
+      flex-basis: 96px;
+      font-size: 0.72rem;
+      letter-spacing: -0.04em;
+    }
+
+    main#top .customer-logo--flex,
+    main#top .customer-logo--exostar,
+    main#top .customer-logo--aramco {
+      flex-basis: 104px;
+    }
+
+    main#top .customer-logo--adani,
+    main#top .customer-logo--aramco {
+      font-size: 1.55rem;
+    }
+
+    main#top .customer-logo--stc {
+      flex-basis: 82px;
+    }
+
+    main#top .home-hero .home-actions .home-button {
+      font-size: clamp(0.86rem, 3.45vw, 1rem);
+      height: 50px;
+      min-height: 50px;
+      padding-inline: 12px;
+      width: min(168px, calc((100% - 18px) / 2)) !important;
+    }
+
+    main#top .home-hero .home-actions .home-button.primary {
+      min-width: 0 !important;
+    }
+
+    main#top .home-hero .home-actions .home-button.secondary {
+      min-width: 0 !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    main#top .home-hero .home-actions {
+      gap: 10px !important;
+    }
+
+    main#top .customer-scroll-section {
+      margin-top: 28px;
+    }
+
+    main#top .customer-scroll-track {
+      gap: 26px;
+    }
+
+    main#top .customer-logo {
+      flex-basis: 92px;
+    }
+
+    main#top .customer-logo img {
+      max-width: 104px;
+    }
+
+    main#top .customer-logo--amex {
+      flex-basis: 88px;
+    }
+
+    main#top .customer-logo--flex,
+    main#top .customer-logo--exostar,
+    main#top .customer-logo--aramco {
+      flex-basis: 92px;
+    }
+
+    main#top .home-hero .home-actions .home-button {
+      font-size: 0.86rem;
+      padding-inline: 10px;
+      width: min(158px, calc((100% - 10px) / 2)) !important;
+    }
+
+    main#top .home-hero .home-actions .home-button.primary,
+    main#top .home-hero .home-actions .home-button.secondary {
+      min-width: 0 !important;
     }
   }
 

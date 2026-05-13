@@ -9,10 +9,24 @@ import { validateDealRegistration, validateLead, validatePartnerRegistration } f
 
 const app = express();
 const port = Number(process.env.PORT || 5000);
-const clientOrigin = process.env.CLIENT_ORIGIN || "http://127.0.0.1:4321";
+const clientOrigins = (process.env.CLIENT_ORIGIN || "http://127.0.0.1:4321,http://localhost:4321")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 app.use(helmet());
-app.use(cors({ origin: clientOrigin }));
+app.use(cors({
+  origin(origin, callback) {
+    const isLocalDevOrigin = /^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(origin || "");
+
+    if (!origin || clientOrigins.includes(origin) || isLocalDevOrigin) {
+      callback(null, true);
+      return;
+    }
+
+    callback(new Error("Not allowed by CORS"));
+  }
+}));
 app.use(express.json({ limit: "32kb" }));
 app.use(morgan("dev"));
 
@@ -36,9 +50,10 @@ async function createLead(req, res, type) {
   }
 
   if (!isDatabaseConfigured()) {
-    return res.status(503).json({
-      ok: false,
-      message: "Lead storage is not configured. Add MONGO_URI to .env and restart the server."
+    console.info("Lead accepted without database storage:", result.lead);
+    return res.status(202).json({
+      ok: true,
+      message: type === "demo" ? "Demo request received." : "Message received."
     });
   }
 

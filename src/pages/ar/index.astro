@@ -1,0 +1,98 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+---
+
+<BaseLayout title="Seclore | ذكاء أمن البيانات" description="تجربة عربية مبسطة لموقع Seclore.">
+  <main id="top">
+    <Nav />
+
+    <section class="ar-hero" dir="rtl" lang="ar">
+      <div class="ar-hero-copy">
+        <span>ذكاء أمن البيانات</span>
+        <h1>اعتمد الذكاء الاصطناعي بثقة</h1>
+        <p>تحكم في بياناتك وحقق الامتثال أينما يعمل الأشخاص والذكاء الاصطناعي.</p>
+        <div class="ar-actions">
+          <a href="/demo/">احجز عرضا توضيحيا</a>
+          <a href="/armor/">استكشف المنصة</a>
+        </div>
+      </div>
+      <img src="/images/home/homepage-hero-2026.png" alt="" decoding="async" />
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .ar-hero {
+    align-items: center;
+    background: #07111f;
+    color: #ffffff;
+    display: grid;
+    gap: clamp(32px, 6vw, 86px);
+    grid-template-columns: minmax(0, 0.78fr) minmax(320px, 1fr);
+    min-height: calc(100vh - 108px);
+    padding: clamp(48px, 7vw, 96px) clamp(24px, 4vw, 64px);
+  }
+
+  .ar-hero-copy {
+    display: grid;
+    gap: 22px;
+    justify-items: start;
+  }
+
+  .ar-hero span {
+    color: #7c3cff;
+    font-weight: 800;
+  }
+
+  .ar-hero h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 400;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .ar-hero p {
+    color: #c7d2e0;
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 620px;
+  }
+
+  .ar-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .ar-actions a {
+    align-items: center;
+    border: 1px solid #5630d6;
+    border-radius: 7px;
+    color: #ffffff;
+    display: inline-flex;
+    font-weight: 800;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 22px;
+    text-decoration: none;
+  }
+
+  .ar-actions a:first-child {
+    background: #5630d6;
+  }
+
+  .ar-hero img {
+    border-radius: 24px;
+    display: block;
+    width: 100%;
+  }
+
+  @media (max-width: 900px) {
+    .ar-hero {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+  }
+</style>

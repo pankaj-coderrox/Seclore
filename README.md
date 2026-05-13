@@ -53,4 +53,8 @@ PUBLIC_API_BASE_URL=http://127.0.0.1:5000
 }
 ```
 
-The API validates required fields and returns JSON errors for invalid input. If `MONGO_URI` is not configured, lead endpoints return `503` with setup guidance.
+The API validates required fields and returns JSON errors for invalid input. If `MONGO_URI` is not configured, lead endpoints accept valid submissions with a success response and log the lead payload for local/deployment previews.
+
+## Netlify
+
+The static Astro build is Netlify-ready through `netlify.toml`. Demo submissions use `/api/demo` in production, which Netlify rewrites to `/.netlify/functions/demo`. Locally, `npm run dev` starts Astro and the Express API together, and the demo form posts to `http://127.0.0.1:5000/api/demo`. If `PUBLIC_API_BASE_URL` is set to a localhost URL, the deployed site ignores it and keeps using the Netlify rewrite so production browsers never fetch from their own localhost.
