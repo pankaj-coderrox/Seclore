@@ -458,8 +458,7 @@ function isNavItemActive(item) {
   });
 
   navToggle?.addEventListener("click", () => {
-    const expanded = navToggle.getAttribute("aria-expanded") === "true";
-    const open = !expanded;
+    const open = !nav?.classList.contains("is-menu-open");
 
     if (!open) {
       closeMobileMenu();
@@ -549,6 +548,7 @@ function isNavItemActive(item) {
     if (event.key === "Escape") {
       closeSearchPanel();
       closeLanguagePanel();
+      closeMobileMenu();
     }
   });
 </script>
@@ -1451,6 +1451,7 @@ function isNavItemActive(item) {
     body.seclore-nav-lock {
       overflow: hidden;
       touch-action: none;
+      width: 100%;
     }
 
     body.seclore-nav-lock main > :not(.seclore-nav),
@@ -1470,10 +1471,9 @@ function isNavItemActive(item) {
       min-height: 58px;
       padding: 0 18px;
       transition:
-        background-color 220ms ease,
-        border-color 220ms ease,
+        min-height 220ms cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 220ms ease,
-        min-height 220ms cubic-bezier(0.22, 1, 0.36, 1);
+        border-color 220ms ease;
     }
 
     .seclore-nav.is-menu-open,
@@ -1481,7 +1481,7 @@ function isNavItemActive(item) {
       bottom: 0;
       height: 100dvh;
       left: 0;
-      overflow-y: auto;
+      overflow: hidden;
       overscroll-behavior: contain;
       position: fixed;
       right: 0;
@@ -1605,9 +1605,11 @@ function isNavItemActive(item) {
 
     .seclore-nav__links.open {
       grid-template-rows: 1fr;
-      max-height: 2000px;
+      max-height: calc(100dvh - 122px);
       opacity: 1;
-      overflow: visible;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
       transform: translateY(0);
       transition-delay: 0s;
       visibility: visible;
@@ -1687,30 +1689,36 @@ function isNavItemActive(item) {
     }
 
     .seclore-nav__mega {
-      display: none;
+      display: grid;
+      grid-template-rows: 0fr;
       left: auto;
-      max-height: none;
-      opacity: 1;
+      max-height: 0;
+      opacity: 0;
       overflow: hidden;
-      pointer-events: auto;
+      pointer-events: none;
       position: static;
       right: auto;
       top: auto;
       transform: none;
-      transition: none;
+      transition:
+        grid-template-rows 240ms cubic-bezier(0.22, 1, 0.36, 1),
+        max-height 240ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 180ms ease;
     }
 
     .seclore-nav__item:hover .seclore-nav__mega,
     .seclore-nav__item:focus-within .seclore-nav__mega {
-      display: none;
+      max-height: 0;
+      opacity: 0;
     }
 
     .seclore-nav__item.is-open .seclore-nav__mega {
-      display: block;
+      grid-template-rows: 1fr;
       max-height: min(70vh, 920px);
       opacity: 1;
       overflow-y: auto;
       overscroll-behavior: contain;
+      pointer-events: auto;
       scrollbar-width: thin;
     }
 
@@ -1938,7 +1946,7 @@ function isNavItemActive(item) {
       flex-wrap: wrap;
       column-gap: 17px;
       row-gap: 0;
-      min-height: 100vh;
+      min-height: 100dvh;
       overflow-x: hidden;
       padding: 17px 24px 42px;
     }
@@ -2010,6 +2018,7 @@ function isNavItemActive(item) {
     .seclore-nav.is-menu-open .seclore-nav__links,
     .seclore-nav.is-menu-closing .seclore-nav__links {
       flex: 1 0 100%;
+      max-height: calc(100dvh - 185px);
       margin-top: 42px;
       order: 3;
       width: 100%;
