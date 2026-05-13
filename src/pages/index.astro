@@ -3629,8 +3629,22 @@ const customerLogos = [
     }
 
     main#top .armor-intro {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
       min-height: 0;
       padding: 72px 30px 58px;
+      text-align: center;
+    }
+
+    main#top .armor-intro .home-button {
+      justify-content: center;
+      margin: 18px auto 0;
+      max-width: 305px;
+      min-width: 0;
+      padding-inline: 18px;
+      text-align: center;
+      width: min(100%, 305px) !important;
     }
 
     main#top .armor-pillars article:nth-child(5) {
