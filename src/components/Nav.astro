@@ -301,10 +301,16 @@ function isNavItemActive(item) {
 
   <div class="seclore-nav__utilities" aria-label="Header utilities">
     <a class="seclore-nav__utility-link seclore-nav__file-help" href="/how-to-open-a-seclore-protected-file/">How to open a seclore file</a>
-    <button class="seclore-nav__utility-label seclore-nav__search-open" type="button" aria-label="Open search">Search</button>
-    <button class="seclore-nav__utility-icon seclore-nav__search-open" type="button" aria-label="Open search">
+    <button class="seclore-nav__utility-label seclore-nav__search-open" type="button" aria-label="Open search">
+      <span>Search</span>
       <span class="seclore-nav__search-icon" aria-hidden="true"></span>
     </button>
+    <div class="seclore-nav__mobile-search-panel" aria-hidden="true">
+      <form class="seclore-nav__mobile-search-form" action="/resources/" role="search">
+        <label class="seclore-nav__search-field-label" for="seclore-nav-mobile-search">Search</label>
+        <input id="seclore-nav-mobile-search" name="search" type="search" placeholder="Enter keyword and search" autocomplete="off" />
+      </form>
+    </div>
     <button class="seclore-nav__utility-label seclore-nav__language-open" type="button" aria-label="Open language selector">Language</button>
     <button class="seclore-nav__language-button seclore-nav__language-open" type="button" aria-label="Open language selector">
       <span class="seclore-nav__globe-icon" aria-hidden="true"></span>
@@ -357,8 +363,10 @@ function isNavItemActive(item) {
   const navLinks = document.querySelector(".seclore-nav__links");
   const navTriggers = document.querySelectorAll(".seclore-nav__trigger");
   const searchPanel = document.querySelector(".seclore-nav__search-panel");
+  const mobileSearchPanel = document.querySelector(".seclore-nav__mobile-search-panel");
   const searchOpeners = document.querySelectorAll(".seclore-nav__search-open");
   const searchInput = document.querySelector<HTMLInputElement>("#seclore-nav-search");
+  const mobileSearchInput = document.querySelector<HTMLInputElement>("#seclore-nav-mobile-search");
   const languagePanel = document.querySelector(".seclore-nav__language-menu");
   const languageOpeners = document.querySelectorAll(".seclore-nav__language-open");
   const themeToggle = document.querySelector(".seclore-nav__theme-toggle");
@@ -422,14 +430,26 @@ function isNavItemActive(item) {
   function closeSearchPanel() {
     nav?.classList.remove("is-search-open");
     searchPanel?.setAttribute("aria-hidden", "true");
+    mobileSearchPanel?.setAttribute("aria-hidden", "true");
+  }
+
+  function focusSearchInput(input: HTMLInputElement | null, preventScroll = false) {
+    window.setTimeout(() => input?.focus({ preventScroll }), 180);
   }
 
   function openSearchPanel() {
+    const isMobileMenu = window.matchMedia("(max-width: 1180px)").matches && nav?.classList.contains("is-menu-open");
+    if (isMobileMenu) {
+      closeLanguagePanel();
+      mobileSearchPanel?.setAttribute("aria-hidden", "false");
+      focusSearchInput(mobileSearchInput, true);
+      return;
+    }
     closeMobileMenu();
     closeLanguagePanel();
     nav?.classList.add("is-search-open");
     searchPanel?.setAttribute("aria-hidden", "false");
-    window.setTimeout(() => searchInput?.focus(), 180);
+    focusSearchInput(searchInput);
   }
 
   function toggleLanguagePanel() {
@@ -443,6 +463,7 @@ function isNavItemActive(item) {
     nav?.classList.remove("is-menu-open");
     nav?.classList.remove("is-menu-closing");
     navLinks?.classList.remove("open");
+    mobileSearchPanel?.setAttribute("aria-hidden", "true");
     navToggle?.setAttribute("aria-expanded", "false");
     navToggle?.setAttribute("aria-label", "Open navigation");
     clearMobileTogglePositionLock();
@@ -492,8 +513,10 @@ function isNavItemActive(item) {
   searchOpeners.forEach((opener) => {
     opener.addEventListener("click", (event) => {
       event.stopPropagation();
+      const isMobileMenu =
+        window.matchMedia("(max-width: 1180px)").matches && nav?.classList.contains("is-menu-open");
       if (nav?.classList.contains("is-search-open")) {
-        searchInput?.focus();
+        (isMobileMenu ? mobileSearchInput : searchInput)?.focus({ preventScroll: isMobileMenu });
         return;
       }
       openSearchPanel();
@@ -520,7 +543,11 @@ function isNavItemActive(item) {
     lockMobileTogglePosition();
     nav?.classList.remove("is-menu-closing");
     nav?.classList.toggle("is-menu-open", open);
+    if (nav) {
+      nav.scrollTop = 0;
+    }
     navLinks?.classList.toggle("open", open);
+    mobileSearchPanel?.setAttribute("aria-hidden", String(!open));
     navToggle.setAttribute("aria-expanded", String(open));
     navToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
     document.body.classList.toggle("seclore-nav-lock", open);
@@ -850,6 +877,10 @@ function isNavItemActive(item) {
     transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
     visibility: hidden;
     z-index: -2;
+  }
+
+  .seclore-nav__mobile-search-panel {
+    display: none;
   }
 
   .seclore-nav.is-search-open .seclore-nav__search-panel {
@@ -1937,7 +1968,7 @@ function isNavItemActive(item) {
       display: none;
       flex: 1 0 100%;
       gap: 0;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 1fr;
       margin: clamp(42px, 8vh, 70px) 0 0;
       order: 4;
       padding: 0 0 22px;
@@ -1959,7 +1990,7 @@ function isNavItemActive(item) {
 
     .seclore-nav__file-help {
       grid-column: 1 / -1;
-      margin: 0 0 36px;
+      margin: 0 0 22px;
     }
 
     .seclore-nav__utility-link,
@@ -1967,59 +1998,88 @@ function isNavItemActive(item) {
     .seclore-nav__language-button,
     .seclore-nav__utility-icon {
       align-items: center;
-      color: #626a74;
+      color: #2d2d2d;
       display: inline-flex;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      line-height: 1;
-      min-height: 38px;
-      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 300;
+      gap: 6px;
+      letter-spacing: 0;
+      line-height: 1.5;
+      min-height: 54px;
+      padding: 16px 0;
+      text-transform: none;
     }
 
-    .seclore-nav__utility-icon,
+    .seclore-nav__utility-link {
+      min-height: 51px;
+    }
+
+    .seclore-nav__utility-label,
     .seclore-nav__language-button {
+      background: transparent;
+      border: 0;
+      cursor: pointer;
       justify-content: start;
-      min-height: 38px;
-      width: auto;
-    }
-
-    .seclore-nav__utility-icon {
-      margin-left: 8px;
+      text-align: left;
+      width: 100%;
     }
 
     .seclore-nav__language-button {
-      justify-content: space-between;
-      justify-self: stretch;
-      margin-left: 8px;
+      display: none;
     }
 
-    .seclore-nav__language-button::after {
-      border-bottom: 2px solid #252525;
-      border-right: 2px solid #252525;
-      content: "";
-      height: 8px;
-      justify-self: end;
-      margin-left: auto;
-      transform: rotate(45deg) translateY(-2px);
-      width: 8px;
+    .seclore-nav__utility-label.seclore-nav__language-open {
+      margin-top: 16px;
     }
 
-    .seclore-nav.is-language-open .seclore-nav__language-button::after {
-      transform: rotate(225deg) translateY(-1px);
+    .seclore-nav__mobile-search-panel {
+      background: #ffffff;
+      display: block;
+      grid-column: 1 / -1;
+      min-height: 79px;
+      padding: 4px 20px 20px;
+      width: 100%;
+    }
+
+    .seclore-nav__mobile-search-form {
+      display: block;
+      width: 100%;
+    }
+
+    .seclore-nav__mobile-search-form input {
+      appearance: none;
+      background: #ffffff;
+      border: 0;
+      border-radius: 24px;
+      color: #2d2d2d;
+      display: block;
+      font: inherit;
+      font-size: 0.875rem;
+      font-weight: 300;
+      height: 39px;
+      line-height: 1.5;
+      outline: 0;
+      padding: 0 16px;
+      width: 100%;
+    }
+
+    .seclore-nav__mobile-search-form input::placeholder {
+      color: #a8a8b5;
+      opacity: 1;
     }
 
     .seclore-nav__search-icon {
-      border-width: 1.4px;
-      height: 15px;
-      width: 15px;
+      border-width: 1.2px;
+      flex: 0 0 auto;
+      height: 17px;
+      width: 17px;
     }
 
     .seclore-nav__search-icon::after {
-      height: 1.4px;
-      right: -5px;
-      top: 11px;
-      width: 7px;
+      height: 1.2px;
+      right: -6px;
+      top: 12px;
+      width: 8px;
     }
 
     .seclore-nav__globe-icon {
