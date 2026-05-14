@@ -442,7 +442,6 @@ function isNavItemActive(item) {
     if (isMobileMenu) {
       closeLanguagePanel();
       mobileSearchPanel?.setAttribute("aria-hidden", "false");
-      focusSearchInput(mobileSearchInput, true);
       return;
     }
     closeMobileMenu();
@@ -1559,7 +1558,7 @@ function isNavItemActive(item) {
       bottom: 0;
       height: 100vh;
       left: 0;
-      overflow-y: auto;
+      overflow: hidden;
       overscroll-behavior: contain;
       position: fixed;
       right: 0;
@@ -1838,11 +1837,11 @@ function isNavItemActive(item) {
     .seclore-nav__item.is-open .seclore-nav__mega {
       grid-template-rows: 1fr;
       margin-top: 18px;
-      max-height: min(72vh, 920px);
+      max-height: none;
       opacity: 1;
-      overflow-y: auto;
+      overflow: hidden;
       overscroll-behavior: contain;
-      scrollbar-width: thin;
+      scrollbar-width: none;
       transform: translateY(0);
       transition:
         grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -2024,6 +2023,11 @@ function isNavItemActive(item) {
       width: 100%;
     }
 
+    .seclore-nav__utility-label:focus,
+    .seclore-nav__language-button:focus {
+      outline: 0;
+    }
+
     .seclore-nav__language-button {
       display: none;
     }
@@ -2034,11 +2038,15 @@ function isNavItemActive(item) {
 
     .seclore-nav__mobile-search-panel {
       background: #ffffff;
-      display: block;
+      display: none;
       grid-column: 1 / -1;
       min-height: 79px;
       padding: 4px 20px 20px;
       width: 100%;
+    }
+
+    .seclore-nav__mobile-search-panel[aria-hidden="false"] {
+      display: block;
     }
 
     .seclore-nav__mobile-search-form {
@@ -2126,7 +2134,7 @@ function isNavItemActive(item) {
       flex-wrap: wrap;
       gap: 0;
       min-height: 100vh;
-      overflow-x: hidden;
+      overflow: hidden;
       padding: 17px 24px 42px;
     }
 
