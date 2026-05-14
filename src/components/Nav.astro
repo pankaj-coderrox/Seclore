@@ -244,6 +244,7 @@ function isNavItemActive(item) {
     <span>seclore</span>
   </a>
 
+  <div class="seclore-nav__mobile-scroll">
   <nav class="seclore-nav__links" aria-label="Primary navigation">
     {mainItems.map((item) => (
       item.href || !item.columns || !item.feature ? (
@@ -336,6 +337,7 @@ function isNavItemActive(item) {
       <span class="seclore-nav__theme-toggle-text">Dark</span>
     </button>
   </div>
+  </div>
 
   <a class="seclore-nav__demo-button" href="/demo/">
     <span class="seclore-nav__demo-label-full">Book a Demo</span>
@@ -364,6 +366,7 @@ function isNavItemActive(item) {
   const navLogo = document.querySelector(".seclore-nav__logo");
   const navToggle = document.querySelector(".seclore-nav__toggle");
   const navDemoButton = document.querySelector(".seclore-nav__demo-button");
+  const navScrollPanel = document.querySelector(".seclore-nav__mobile-scroll");
   const navLinks = document.querySelector(".seclore-nav__links");
   const navTriggers = document.querySelectorAll(".seclore-nav__trigger");
   const searchPanel = document.querySelector(".seclore-nav__search-panel");
@@ -377,6 +380,8 @@ function isNavItemActive(item) {
   const themeText = document.querySelector(".seclore-nav__theme-toggle-text");
   const mobileMenuCloseDuration = 360;
   let mobileMenuCloseTimer: number | undefined;
+  let bodyScrollLocked = false;
+  let previousBodyOverflow = "";
   const mobileMenuToggleLockProperties = [
     "--seclore-logo-close-top",
     "--seclore-logo-close-left",
@@ -426,6 +431,20 @@ function isNavItemActive(item) {
     });
   }
 
+  function setBodyScrollLock(locked: boolean) {
+    if (locked && !bodyScrollLocked) {
+      previousBodyOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      bodyScrollLocked = true;
+      return;
+    }
+
+    if (!locked && bodyScrollLocked) {
+      document.body.style.overflow = previousBodyOverflow;
+      bodyScrollLocked = false;
+    }
+  }
+
   function closeLanguagePanel() {
     nav?.classList.remove("is-language-open");
     languagePanel?.setAttribute("aria-hidden", "true");
@@ -473,6 +492,7 @@ function isNavItemActive(item) {
     navToggle?.setAttribute("aria-label", "Open navigation");
     clearMobileTogglePositionLock();
     document.body.classList.remove("seclore-nav-lock");
+    setBodyScrollLock(false);
     document.querySelectorAll(".seclore-nav__item.is-open").forEach((item) => {
       item.classList.remove("is-open");
       item.querySelector(".seclore-nav__trigger")?.setAttribute("aria-expanded", "false");
@@ -555,11 +575,13 @@ function isNavItemActive(item) {
     if (nav) {
       nav.scrollTop = 0;
     }
+    navScrollPanel?.scrollTo({ top: 0, behavior: "auto" });
     navLinks?.classList.toggle("open", open);
-    mobileSearchPanel?.setAttribute("aria-hidden", String(!open));
+    mobileSearchPanel?.setAttribute("aria-hidden", "true");
     navToggle.setAttribute("aria-expanded", String(open));
     navToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
     document.body.classList.toggle("seclore-nav-lock", open);
+    setBodyScrollLock(open);
     if (open) {
       closeSearchPanel();
       closeLanguagePanel();
@@ -580,10 +602,6 @@ function isNavItemActive(item) {
 
       item?.classList.toggle("is-open", !expanded);
       trigger.setAttribute("aria-expanded", String(!expanded));
-
-      if (!expanded && window.matchMedia("(max-width: 1180px)").matches) {
-        window.setTimeout(() => item?.scrollIntoView({ block: "nearest", behavior: "smooth" }), 20);
-      }
     });
   });
 
@@ -646,6 +664,10 @@ function isNavItemActive(item) {
   .seclore-nav,
   .seclore-nav * {
     box-sizing: border-box;
+  }
+
+  .seclore-nav__mobile-scroll {
+    display: contents;
   }
 
   .seclore-nav {
@@ -1548,7 +1570,6 @@ function isNavItemActive(item) {
   @media (max-width: 1180px) {
     body.seclore-nav-lock {
       overflow: hidden;
-      touch-action: none;
     }
 
     body.seclore-nav-lock main > :not(.seclore-nav),
@@ -1570,20 +1591,20 @@ function isNavItemActive(item) {
     }
 
     .seclore-nav.is-menu-open {
-      bottom: 0;
-      height: 100vh;
-      left: 0;
-      overflow-y: auto;
-      overscroll-behavior: contain;
+      height: 100dvh;
+      inset: 0;
+      overflow: hidden;
       position: fixed;
-      right: 0;
-      top: 0;
-      z-index: 3000;
+      z-index: 9999;
     }
 
     .seclore-nav.is-menu-closing {
+      height: 100dvh;
+      inset: 0;
       overflow: hidden;
       pointer-events: none;
+      position: fixed;
+      z-index: 9999;
     }
 
     .seclore-nav__logo {
@@ -1600,7 +1621,7 @@ function isNavItemActive(item) {
       position: fixed;
       top: var(--seclore-logo-close-top, 0);
       width: var(--seclore-logo-close-width, auto);
-      z-index: 3001;
+      z-index: 10000;
     }
 
     .seclore-nav__logo img {
@@ -1635,7 +1656,7 @@ function isNavItemActive(item) {
       position: fixed;
       top: var(--seclore-demo-close-top, 0);
       width: var(--seclore-demo-close-width, 137px);
-      z-index: 3001;
+      z-index: 10000;
     }
 
     .seclore-nav__toggle {
@@ -1663,7 +1684,7 @@ function isNavItemActive(item) {
       top: var(--seclore-toggle-close-top, 0);
       transform-origin: center;
       width: var(--seclore-toggle-close-width, 38px);
-      z-index: 3002;
+      z-index: 10001;
     }
 
     .seclore-nav__toggle:focus {
@@ -1704,6 +1725,20 @@ function isNavItemActive(item) {
       transform: rotate(-45deg);
     }
 
+    .seclore-nav.is-menu-open .seclore-nav__mobile-scroll {
+      display: block;
+      flex: 1 0 100%;
+      height: 100dvh;
+      order: 3;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: clamp(102px, 13vh, 126px) 0 42px;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+
     .seclore-nav__links {
       align-items: stretch;
       background: #ffffff;
@@ -1724,6 +1759,10 @@ function isNavItemActive(item) {
         max-height 180ms cubic-bezier(0.22, 1, 0.36, 1),
         opacity 300ms cubic-bezier(0.22, 1, 0.36, 1);
       width: 100%;
+    }
+
+    .seclore-nav.is-menu-open .seclore-nav__links {
+      margin-top: 0;
     }
 
     .seclore-nav__links.open {
@@ -2172,8 +2211,9 @@ function isNavItemActive(item) {
       align-items: center;
       flex-wrap: wrap;
       gap: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
+      height: 100dvh;
+      min-height: 100dvh;
+      overflow: hidden;
       padding: 17px 24px 42px;
     }
 
@@ -2202,7 +2242,7 @@ function isNavItemActive(item) {
       position: fixed;
       top: var(--seclore-logo-close-top, 0);
       width: var(--seclore-logo-close-width, auto);
-      z-index: 3001;
+      z-index: 10000;
     }
 
     .seclore-nav__demo-button {
@@ -2240,7 +2280,7 @@ function isNavItemActive(item) {
       position: fixed;
       top: var(--seclore-demo-close-top, 0);
       width: var(--seclore-demo-close-width, 147px);
-      z-index: 3001;
+      z-index: 10000;
     }
 
     .seclore-nav__toggle {
@@ -2264,7 +2304,7 @@ function isNavItemActive(item) {
       position: fixed;
       top: var(--seclore-toggle-close-top, 0);
       width: var(--seclore-toggle-close-width, 32px);
-      z-index: 3002;
+      z-index: 10001;
     }
 
     .seclore-nav__toggle span {
@@ -2278,9 +2318,14 @@ function isNavItemActive(item) {
 
     .seclore-nav.is-menu-open .seclore-nav__links {
       flex: 1 0 100%;
-      margin-top: 106px;
+      margin-top: 0;
       order: 3;
       width: 100%;
+    }
+
+    .seclore-nav.is-menu-open .seclore-nav__mobile-scroll {
+      padding-bottom: 42px;
+      padding-top: 106px;
     }
 
     .seclore-nav.is-menu-open .seclore-nav__links > a,
