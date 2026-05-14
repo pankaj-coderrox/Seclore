@@ -1667,7 +1667,7 @@ function isNavItemActive(item) {
       gap: 0;
       grid-template-rows: 0fr;
       justify-content: stretch;
-      margin-top: 38px;
+      margin-top: clamp(102px, 13vh, 126px);
       max-height: 0;
       opacity: 0;
       order: 3;
@@ -1804,7 +1804,7 @@ function isNavItemActive(item) {
 
     .seclore-nav__item.is-open .seclore-nav__mega {
       grid-template-rows: 1fr;
-      margin-top: 10px;
+      margin-top: 18px;
       max-height: min(72vh, 920px);
       opacity: 1;
       overflow-y: auto;
@@ -1832,7 +1832,7 @@ function isNavItemActive(item) {
       grid-template-columns: 1fr;
       min-height: 0;
       overflow: hidden;
-      padding: 19px 16px 23px;
+      padding: 20px 16px 24px;
     }
 
     .seclore-nav__mega-columns {
@@ -2164,12 +2164,12 @@ function isNavItemActive(item) {
 
     .seclore-nav__links {
       grid-column: 1 / -1;
-      margin-top: 38px;
+      margin-top: 106px;
     }
 
     .seclore-nav.is-menu-open .seclore-nav__links {
       flex: 1 0 100%;
-      margin-top: 42px;
+      margin-top: 106px;
       order: 3;
       width: 100%;
     }
@@ -2182,7 +2182,7 @@ function isNavItemActive(item) {
 
     .seclore-nav__mega-inner {
       gap: 16px;
-      padding: 16px 14px 20px;
+      padding: 18px 14px 21px;
     }
 
     .seclore-nav__mega-columns {
