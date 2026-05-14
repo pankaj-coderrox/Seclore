@@ -1558,7 +1558,7 @@ function isNavItemActive(item) {
       bottom: 0;
       height: 100vh;
       left: 0;
-      overflow: hidden;
+      overflow-y: auto;
       overscroll-behavior: contain;
       position: fixed;
       right: 0;
@@ -1813,13 +1813,12 @@ function isNavItemActive(item) {
       position: static;
       right: auto;
       top: auto;
-      transform: translateY(-8px);
+      transform: none;
       transition:
         grid-template-rows 280ms cubic-bezier(0.22, 1, 0.36, 1),
         max-height 280ms cubic-bezier(0.22, 1, 0.36, 1),
         margin-top 260ms cubic-bezier(0.22, 1, 0.36, 1),
         opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
         visibility 0s linear 280ms;
       visibility: hidden;
     }
@@ -1830,25 +1829,24 @@ function isNavItemActive(item) {
       margin-top: 0;
       max-height: 0;
       opacity: 0;
-      transform: translateY(-8px);
+      transform: none;
       visibility: hidden;
     }
 
     .seclore-nav__item.is-open .seclore-nav__mega {
       grid-template-rows: 1fr;
       margin-top: 18px;
-      max-height: none;
+      max-height: min(72vh, 920px);
       opacity: 1;
-      overflow: hidden;
+      overflow-y: auto;
       overscroll-behavior: contain;
-      scrollbar-width: none;
-      transform: translateY(0);
+      scrollbar-width: thin;
+      transform: none;
       transition:
         grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1),
         max-height 320ms cubic-bezier(0.22, 1, 0.36, 1),
         margin-top 300ms cubic-bezier(0.22, 1, 0.36, 1),
         opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
         visibility 0s;
       visibility: visible;
     }
@@ -2134,7 +2132,7 @@ function isNavItemActive(item) {
       flex-wrap: wrap;
       gap: 0;
       min-height: 100vh;
-      overflow: hidden;
+      overflow-x: hidden;
       padding: 17px 24px 42px;
     }
 
