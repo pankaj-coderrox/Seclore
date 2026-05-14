@@ -311,7 +311,11 @@ function isNavItemActive(item) {
         <input id="seclore-nav-mobile-search" name="search" type="search" placeholder="Enter keyword and search" autocomplete="off" />
       </form>
     </div>
-    <button class="seclore-nav__utility-label seclore-nav__language-open" type="button" aria-label="Open language selector">Language</button>
+    <button class="seclore-nav__utility-label seclore-nav__language-open" type="button" aria-label="Open language selector">
+      <span>Language</span>
+      <span class="seclore-nav__globe-icon seclore-nav__utility-globe" aria-hidden="true"></span>
+      <span class="seclore-nav__language-caret" aria-hidden="true"></span>
+    </button>
     <button class="seclore-nav__language-button seclore-nav__language-open" type="button" aria-label="Open language selector">
       <span class="seclore-nav__globe-icon" aria-hidden="true"></span>
     </button>
@@ -429,6 +433,7 @@ function isNavItemActive(item) {
 
   function closeSearchPanel() {
     nav?.classList.remove("is-search-open");
+    nav?.classList.remove("is-mobile-search-open");
     searchPanel?.setAttribute("aria-hidden", "true");
     mobileSearchPanel?.setAttribute("aria-hidden", "true");
   }
@@ -441,6 +446,7 @@ function isNavItemActive(item) {
     const isMobileMenu = window.matchMedia("(max-width: 1180px)").matches && nav?.classList.contains("is-menu-open");
     if (isMobileMenu) {
       closeLanguagePanel();
+      nav?.classList.add("is-mobile-search-open");
       mobileSearchPanel?.setAttribute("aria-hidden", "false");
       return;
     }
@@ -516,6 +522,10 @@ function isNavItemActive(item) {
         window.matchMedia("(max-width: 1180px)").matches && nav?.classList.contains("is-menu-open");
       if (nav?.classList.contains("is-search-open")) {
         (isMobileMenu ? mobileSearchInput : searchInput)?.focus({ preventScroll: isMobileMenu });
+        return;
+      }
+      if (isMobileMenu && nav?.classList.contains("is-mobile-search-open")) {
+        mobileSearchInput?.focus({ preventScroll: true });
         return;
       }
       openSearchPanel();
@@ -1065,6 +1075,11 @@ function isNavItemActive(item) {
     margin-left: 22px;
     transform: rotate(45deg) translateY(-2px);
     width: 9px;
+  }
+
+  .seclore-nav__utility-globe,
+  .seclore-nav__language-caret {
+    display: none;
   }
 
   .seclore-nav__demo-button {
@@ -1719,6 +1734,10 @@ function isNavItemActive(item) {
       transform: none;
     }
 
+    .seclore-nav.is-menu-open .seclore-nav__links > a[href="/pricing/"] {
+      display: none;
+    }
+
     .seclore-nav.is-menu-closing .seclore-nav__links {
       opacity: 0;
       pointer-events: none;
@@ -1991,7 +2010,7 @@ function isNavItemActive(item) {
       line-height: 1.5;
       min-height: 54px;
       padding: 16px 0;
-      text-transform: none;
+      text-transform: uppercase;
     }
 
     .seclore-nav__utility-link {
@@ -2018,12 +2037,39 @@ function isNavItemActive(item) {
     }
 
     .seclore-nav__utility-label.seclore-nav__language-open {
+      align-items: center;
+      display: grid;
+      gap: 8px;
+      grid-template-columns: auto auto 1fr auto;
+      justify-content: stretch;
       margin-top: 16px;
+      width: 100%;
+    }
+
+    .seclore-nav__utility-label.seclore-nav__language-open .seclore-nav__utility-globe {
+      display: inline-block;
+      height: 23px;
+      width: 23px;
+    }
+
+    .seclore-nav__language-caret {
+      border-bottom: 4px solid currentColor;
+      border-right: 4px solid currentColor;
+      display: block;
+      height: 16px;
+      justify-self: end;
+      margin-right: 6px;
+      transform: rotate(45deg) translateY(-3px);
+      width: 16px;
+    }
+
+    .seclore-nav.is-language-open .seclore-nav__language-caret {
+      transform: rotate(225deg) translateY(-1px);
     }
 
     .seclore-nav__mobile-search-panel {
       background: #ffffff;
-      display: none !important;
+      display: none;
       grid-column: 1 / -1;
       min-height: 79px;
       padding: 4px 20px 20px;
@@ -2031,7 +2077,15 @@ function isNavItemActive(item) {
     }
 
     .seclore-nav__mobile-search-panel[aria-hidden="false"] {
-      display: block !important;
+      display: block;
+    }
+
+    .seclore-nav:not(.is-mobile-search-open) .seclore-nav__mobile-search-panel {
+      display: none;
+    }
+
+    .seclore-nav.is-mobile-search-open .seclore-nav__mobile-search-panel {
+      display: block;
     }
 
     .seclore-nav__mobile-search-form {
