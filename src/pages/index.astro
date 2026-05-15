@@ -4069,16 +4069,38 @@ const customerLogos = [
   }
 
   main#top .customer-scroll-shell {
-    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-image: none;
+    mask-image: none;
+    position: relative;
+  }
+
+  main#top .customer-scroll-shell::before,
+  main#top .customer-scroll-shell::after {
+    background: #ffffff;
+    content: "";
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: clamp(14px, 4vw, 34px);
+    z-index: 2;
+  }
+
+  main#top .customer-scroll-shell::before {
+    left: 0;
+  }
+
+  main#top .customer-scroll-shell::after {
+    right: 0;
   }
 
   main#top .customer-logo {
-    background: rgba(255, 255, 255, 0.74);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 999px;
-    box-shadow: 0 8px 20px rgba(16, 24, 40, 0.04);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
     color: #475467;
-    padding-inline: 20px;
+    padding-inline: 0;
   }
 
   main#top .enable-section,
@@ -4569,10 +4591,57 @@ const customerLogos = [
     padding-right: clamp(24px, 4vw, 64px) !important;
   }
 
+  @media (min-width: 981px) {
+    main#top .home-hero {
+      align-items: start !important;
+      column-gap: clamp(44px, 5.6vw, 96px) !important;
+      grid-template-columns: minmax(430px, 0.92fr) minmax(460px, 1.08fr) !important;
+      min-height: 0 !important;
+      padding-bottom: clamp(54px, 6vw, 86px) !important;
+      padding-top: clamp(50px, 5.8vw, 82px) !important;
+    }
+
+    main#top .home-hero .home-hero-copy {
+      align-self: start !important;
+      max-width: 650px !important;
+    }
+
+    main#top .home-hero .hero-photo {
+      align-self: start !important;
+      aspect-ratio: auto !important;
+      height: clamp(520px, 43vw, 650px) !important;
+      justify-self: end !important;
+      max-width: min(720px, 50vw) !important;
+      min-height: 0 !important;
+      width: min(720px, 50vw) !important;
+    }
+
+    main#top .home-hero .hero-photo img {
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      width: 100% !important;
+    }
+  }
+
   @media (max-width: 1180px) {
     main#top .home-hero {
       padding-left: clamp(22px, 5vw, 32px) !important;
       padding-right: clamp(22px, 5vw, 32px) !important;
+    }
+  }
+
+  @media (min-width: 981px) and (max-width: 1180px) {
+    main#top .home-hero {
+      column-gap: clamp(28px, 4vw, 48px) !important;
+      grid-template-columns: minmax(390px, 0.94fr) minmax(420px, 1.06fr) !important;
+      padding-top: clamp(42px, 5vw, 64px) !important;
+    }
+
+    main#top .home-hero .hero-photo {
+      height: clamp(500px, 48vw, 590px) !important;
+      max-width: min(560px, 48vw) !important;
+      width: min(560px, 48vw) !important;
     }
   }
 
