@@ -2855,7 +2855,7 @@ function isNavItemActive(item: NavItem) {
   @media (max-width: 560px) {
     .seclore-nav {
       gap: 12px !important;
-      min-height: 72px !important;
+      min-height: 84px !important;
       padding-left: 22px !important;
       padding-right: 22px !important;
     }
@@ -2927,7 +2927,8 @@ function isNavItemActive(item: NavItem) {
   @media (max-width: 1180px) {
     .seclore-nav {
       --seclore-mobile-toggle-size: 42px;
-      --seclore-mobile-toggle-top: calc((68px - var(--seclore-mobile-toggle-size)) / 2);
+      --seclore-mobile-header-height: 68px;
+      --seclore-mobile-toggle-top: calc((var(--seclore-mobile-header-height) - var(--seclore-mobile-toggle-size)) / 2);
       --seclore-mobile-toggle-right: clamp(18px, 4vw, 32px);
     }
 
@@ -2974,9 +2975,9 @@ function isNavItemActive(item: NavItem) {
       background: #ffffff !important;
       display: block !important;
       flex: 1 1 auto !important;
-      height: calc(100dvh - 72px) !important;
-      margin-top: 72px !important;
-      max-height: calc(100dvh - 72px) !important;
+      height: calc(100dvh - var(--seclore-mobile-header-height)) !important;
+      margin-top: var(--seclore-mobile-header-height) !important;
+      max-height: calc(100dvh - var(--seclore-mobile-header-height)) !important;
       min-height: 0 !important;
       overflow-x: hidden !important;
       overflow-y: auto !important;
@@ -3040,7 +3041,8 @@ function isNavItemActive(item: NavItem) {
 
   @media (max-width: 560px) {
     .seclore-nav {
-      --seclore-mobile-toggle-top: 15px;
+      --seclore-mobile-header-height: 84px;
+      --seclore-mobile-toggle-top: 21px;
       --seclore-mobile-toggle-right: 22px;
     }
   }
