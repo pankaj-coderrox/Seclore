@@ -73,7 +73,10 @@ const customerLogos = [
     <section class="home-hero">
       <div class="home-hero-copy reveal">
         <span class="home-eyebrow">Data Security Intelligence</span>
-        <h1>Embrace AI Fearlessly</h1>
+        <h1>
+          <span>Embrace AI</span>
+          <span>Fearlessly</span>
+        </h1>
         <p>
           Trust and control your data and achieve compliance wherever people and AI work
         </p>
@@ -237,6 +240,31 @@ const customerLogos = [
   </main>
 
   <script is:inline>
+    const scrollStorageKey = "seclore-home-scroll-y";
+    const navigationEntry = performance.getEntriesByType("navigation")[0];
+    const shouldRestoreScroll = navigationEntry?.type === "reload";
+
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    const savePageScroll = () => {
+      sessionStorage.setItem(scrollStorageKey, String(window.scrollY));
+    };
+
+    if (shouldRestoreScroll) {
+      const savedScrollY = Number(sessionStorage.getItem(scrollStorageKey) || "0");
+
+      if (savedScrollY > 0) {
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: savedScrollY, left: 0, behavior: "auto" });
+        });
+      }
+    }
+
+    window.addEventListener("scroll", savePageScroll, { passive: true });
+    window.addEventListener("pagehide", savePageScroll);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -3909,6 +3937,10 @@ const customerLogos = [
     max-width: 780px;
   }
 
+  main#top .home-hero h1 span {
+    display: block;
+  }
+
   main#top .home-hero-copy > p {
     color: #536172;
     font-size: clamp(1.12rem, 1.45vw, 1.34rem);
@@ -4180,6 +4212,253 @@ const customerLogos = [
       50% {
         transform: translateY(-10px);
       }
+    }
+  }
+
+  /* Match the reference hero CTA buttons */
+  main#top .home-hero {
+    align-items: stretch !important;
+    background: #ffffff !important;
+  }
+
+  main#top .home-hero::before {
+    display: none !important;
+  }
+
+  main#top .home-hero .hero-photo,
+  main#top .home-hero .hero-photo img {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  main#top .home-hero .hero-photo {
+    aspect-ratio: 1.38 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+    box-shadow: none !important;
+    height: auto !important;
+    justify-self: end;
+    max-width: 620px;
+    overflow: hidden !important;
+    padding: 0 !important;
+    width: min(100%, 620px);
+  }
+
+  main#top .home-hero .hero-photo img {
+    border: 0 !important;
+    border-radius: 16px !important;
+    box-shadow: none !important;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+  }
+
+  @media (min-width: 981px) {
+    main#top .home-hero .home-hero-copy {
+      align-self: start;
+    }
+
+    main#top .home-hero .hero-photo {
+      align-self: stretch !important;
+      aspect-ratio: auto !important;
+      height: auto !important;
+      min-height: 100%;
+    }
+  }
+
+  main#top .home-hero h1 {
+    color: #080d1d !important;
+    font-size: clamp(3.4rem, 5.8vw, 5.35rem) !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 0.96 !important;
+    max-width: 640px !important;
+  }
+
+  main#top .home-hero .home-eyebrow {
+    background: #ffffff !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    color: #5630d6 !important;
+    padding: 0 !important;
+  }
+
+  main#top .home-hero .customer-scroll-section h2 {
+    color: #3f4654 !important;
+    font-size: clamp(0.92rem, 1.08vw, 1.02rem) !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.45 !important;
+    margin: 0 0 22px !important;
+    max-width: 320px;
+    text-transform: none !important;
+  }
+
+  main#top .home-hero .customer-scroll-section {
+    margin-top: clamp(56px, 7vw, 86px) !important;
+  }
+
+  main#top .home-hero .customer-scroll-shell {
+    margin-left: 0 !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  main#top .home-hero .customer-scroll-track {
+    justify-content: flex-start !important;
+    padding-left: 0 !important;
+  }
+
+  main#top .home-hero .home-actions {
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 16px !important;
+    margin: 34px 0 0 !important;
+  }
+
+  main#top .home-hero .home-actions .home-button {
+    align-items: center;
+    border-radius: 6px !important;
+    display: inline-flex;
+    flex: 0 0 auto !important;
+    font-size: 0.98rem !important;
+    font-weight: 800 !important;
+    height: 50px !important;
+    justify-content: center;
+    line-height: 1;
+    min-height: 50px !important;
+    padding: 0 26px !important;
+    text-align: center;
+    text-decoration: none;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+    white-space: nowrap;
+    width: auto !important;
+  }
+
+  main#top .home-hero .home-actions .home-button.primary {
+    background: #5630d6 !important;
+    border: 1px solid #5630d6 !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    min-width: 154px !important;
+    width: 154px !important;
+  }
+
+  main#top .home-hero .home-actions .home-button.secondary {
+    background: #ffffff !important;
+    border: 1px solid #5630d6 !important;
+    box-shadow: none !important;
+    color: #5630d6 !important;
+    min-width: 154px !important;
+    width: 154px !important;
+  }
+
+  main#top .home-hero .home-actions .home-button.primary:hover,
+  main#top .home-hero .home-actions .home-button.primary:focus-visible {
+    background: #4420bd !important;
+    border-color: #4420bd !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+  }
+
+  main#top .home-hero .home-actions .home-button.secondary:hover,
+  main#top .home-hero .home-actions .home-button.secondary:focus-visible {
+    background: #f7f4ff !important;
+    border-color: #5630d6 !important;
+    color: #5630d6 !important;
+    transform: translateY(-1px);
+  }
+
+  main#top .home-hero .home-actions .home-button:focus-visible {
+    outline: 3px solid rgba(86, 48, 214, 0.22);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 560px) {
+    main#top .home-hero {
+      align-items: start !important;
+    }
+
+    main#top .home-hero h1 {
+      font-size: clamp(2.45rem, 10.8vw, 3rem) !important;
+      line-height: 1 !important;
+      max-width: 320px !important;
+    }
+
+    main#top .home-hero .customer-scroll-section h2 {
+      font-size: 0.95rem !important;
+      margin-bottom: 20px !important;
+      max-width: 260px;
+    }
+
+    main#top .home-hero .customer-scroll-section {
+      margin-top: 48px !important;
+      max-width: 308px !important;
+      overflow: hidden !important;
+      width: min(100%, 308px) !important;
+    }
+
+    main#top .home-hero .customer-scroll-shell {
+      margin-left: 0 !important;
+      max-width: 100% !important;
+      overflow: hidden !important;
+      width: 100% !important;
+    }
+
+    main#top .home-hero .customer-scroll-track {
+      justify-content: flex-start !important;
+      padding-left: 0 !important;
+    }
+
+    main#top .home-hero .hero-photo {
+      aspect-ratio: 1.38 !important;
+      border-radius: 14px !important;
+      justify-self: start;
+      max-width: 308px;
+      width: min(100%, 308px) !important;
+    }
+
+    main#top .home-hero .hero-photo img {
+      border-radius: 14px !important;
+    }
+
+    main#top .home-hero .home-actions {
+      align-items: flex-start !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+    }
+
+    main#top .home-hero .home-actions .home-button {
+      min-width: 0 !important;
+      width: 151px !important;
+    }
+  }
+
+  /* Keep the header and hero visually aligned on a white first viewport */
+  main#top {
+    background: #ffffff !important;
+  }
+
+  main#top .home-hero {
+    background: #ffffff !important;
+    padding-left: clamp(24px, 4vw, 64px) !important;
+    padding-right: clamp(24px, 4vw, 64px) !important;
+  }
+
+  @media (max-width: 1180px) {
+    main#top .home-hero {
+      padding-left: clamp(22px, 5vw, 32px) !important;
+      padding-right: clamp(22px, 5vw, 32px) !important;
     }
   }
 </style>
