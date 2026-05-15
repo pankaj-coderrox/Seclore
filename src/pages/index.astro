@@ -287,6 +287,62 @@ const customerLogos = [
 
     document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
 
+    const syncHeroEyebrowLength = () => {
+      const eyebrow = document.querySelector(".home-hero .home-eyebrow");
+      const titleLine = document.querySelector(".home-hero h1 span");
+
+      if (!(eyebrow instanceof HTMLElement) || !(titleLine instanceof HTMLElement)) {
+        return;
+      }
+
+      const measureInlineWidth = (element) => {
+        const clone = element.cloneNode(true);
+
+        if (!(clone instanceof HTMLElement)) {
+          return 0;
+        }
+
+        const styles = window.getComputedStyle(element);
+        clone.style.display = "inline-block";
+        clone.style.fontFamily = styles.fontFamily;
+        clone.style.fontSize = styles.fontSize;
+        clone.style.fontStyle = styles.fontStyle;
+        clone.style.fontWeight = styles.fontWeight;
+        clone.style.letterSpacing = styles.letterSpacing;
+        clone.style.lineHeight = styles.lineHeight;
+        clone.style.left = "-9999px";
+        clone.style.position = "absolute";
+        clone.style.textAlign = "left";
+        clone.style.textAlignLast = "auto";
+        clone.style.transform = "none";
+        clone.style.visibility = "hidden";
+        clone.style.whiteSpace = "nowrap";
+        clone.style.width = "auto";
+        document.body.appendChild(clone);
+        const width = clone.getBoundingClientRect().width;
+        clone.remove();
+        return width;
+      };
+
+      eyebrow.style.fontSize = "";
+
+      if (!window.matchMedia("(max-width: 560px)").matches) {
+        return;
+      }
+
+      const targetWidth = measureInlineWidth(titleLine);
+      const currentWidth = measureInlineWidth(eyebrow);
+      const currentSize = Number.parseFloat(window.getComputedStyle(eyebrow).fontSize);
+
+      if (targetWidth > 0 && currentWidth > 0 && currentSize > 0) {
+        eyebrow.style.fontSize = `${currentSize * (targetWidth / currentWidth)}px`;
+      }
+    };
+
+    syncHeroEyebrowLength();
+    window.addEventListener("load", syncHeroEyebrowLength);
+    window.addEventListener("resize", syncHeroEyebrowLength);
+
     document.querySelectorAll("[data-logo-scroller]").forEach((scroller) => {
       let isDragging = false;
       let startX = 0;
@@ -4418,13 +4474,13 @@ const customerLogos = [
     }
 
     main#top .home-hero h1 {
-      font-size: clamp(3rem, 13.2vw, 3.65rem) !important;
+      font-size: clamp(2.82rem, 12.4vw, 3.42rem) !important;
       line-height: 0.98 !important;
       max-width: 340px !important;
     }
 
     main#top .home-hero .home-eyebrow {
-      font-size: clamp(1rem, 4.55vw, 1.1rem) !important;
+      font-size: clamp(1.2rem, 5.62vw, 1.34rem) !important;
       font-weight: 700 !important;
       line-height: 1.12 !important;
       max-width: 320px !important;
