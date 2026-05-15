@@ -517,22 +517,27 @@ const footerSocials = [
   }
 
   .seclore-footer__ready a {
-    background: linear-gradient(135deg, #5730d6, #1c55d8);
-    border-radius: 8px;
-    box-shadow: 0 14px 32px rgba(87, 48, 214, 0.24);
+    background: #5730d6;
+    border: 1px solid #5730d6;
+    border-radius: 7px;
+    box-shadow: none;
     font-family: Inter, "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.94rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 650;
     letter-spacing: 0;
-    min-height: 46px;
+    min-height: 52px;
+    min-width: 154px;
+    padding: 0 28px;
     transition:
-      box-shadow 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease,
       transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+    width: fit-content;
   }
 
   .seclore-footer__ready a:hover {
-    background: linear-gradient(135deg, #4623bd, #1849bd);
-    box-shadow: 0 18px 42px rgba(87, 48, 214, 0.3);
+    background: #4623bd;
+    border-color: #4623bd;
     transform: translateY(-2px);
   }
 
@@ -671,7 +676,7 @@ const footerSocials = [
     }
 
     .seclore-footer__ready a {
-      width: 100%;
+      width: fit-content;
     }
 
     .seclore-footer__panel,
