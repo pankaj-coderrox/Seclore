@@ -2925,6 +2925,12 @@ function isNavItemActive(item: NavItem) {
 
   /* Mobile menu scroll model: body locked, one full-screen menu scroller */
   @media (max-width: 1180px) {
+    .seclore-nav {
+      --seclore-mobile-toggle-size: 42px;
+      --seclore-mobile-toggle-top: calc((68px - var(--seclore-mobile-toggle-size)) / 2);
+      --seclore-mobile-toggle-right: clamp(18px, 4vw, 32px);
+    }
+
     body.seclore-nav-lock,
     html:has(body.seclore-nav-lock) {
       overscroll-behavior: none;
@@ -2942,6 +2948,25 @@ function isNavItemActive(item: NavItem) {
       min-height: 100dvh !important;
       overflow: hidden !important;
       position: fixed !important;
+    }
+
+    .seclore-nav__toggle {
+      flex: 0 0 var(--seclore-mobile-toggle-size) !important;
+      height: var(--seclore-mobile-toggle-size) !important;
+      width: var(--seclore-mobile-toggle-size) !important;
+    }
+
+    .seclore-nav.is-menu-open .seclore-nav__toggle,
+    .seclore-nav.is-menu-closing .seclore-nav__toggle {
+      height: var(--seclore-mobile-toggle-size) !important;
+      left: auto !important;
+      margin: 0 !important;
+      position: fixed !important;
+      right: var(--seclore-mobile-toggle-right) !important;
+      top: var(--seclore-mobile-toggle-top) !important;
+      transform: translate3d(0, 0, 0) !important;
+      width: var(--seclore-mobile-toggle-size) !important;
+      z-index: 10001 !important;
     }
 
     .seclore-nav.is-menu-open .seclore-nav__mobile-scroll,
@@ -3010,6 +3035,13 @@ function isNavItemActive(item: NavItem) {
       flex: 0 0 auto !important;
       margin-top: 34px !important;
       padding: 0 22px max(24px, env(safe-area-inset-bottom)) !important;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .seclore-nav {
+      --seclore-mobile-toggle-top: 15px;
+      --seclore-mobile-toggle-right: 22px;
     }
   }
 </style>

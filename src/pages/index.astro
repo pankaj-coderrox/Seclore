@@ -77,8 +77,16 @@ const customerLogos = [
           <span>Embrace AI</span>
           <span>Fearlessly</span>
         </h1>
-        <p>
-          Trust and control your data and achieve compliance wherever people and AI work
+        <p aria-label="Trust and control your data and achieve compliance wherever people and AI work">
+          <span class="home-subtitle-desktop">
+            Trust and control your data and achieve compliance wherever people and AI work
+          </span>
+          <span class="home-subtitle-mobile" aria-hidden="true">
+            <span>Trust and control your</span>
+            <span>data and achieve</span>
+            <span>compliance wherever</span>
+            <span>people and AI work</span>
+          </span>
         </p>
         <div class="home-actions">
           <a class="home-button primary" href="/demo/">Book a Demo</a>
@@ -295,7 +303,7 @@ const customerLogos = [
 
         if (!prefersReducedMotion && !isDragging && time > pauseUntil && halfWidth > scroller.clientWidth) {
           const elapsed = Math.min(time - lastFrame, 40);
-          scroller.scrollLeft += elapsed * 0.09;
+          scroller.scrollLeft += elapsed * 0.045;
 
           if (scroller.scrollLeft >= halfWidth) {
             scroller.scrollLeft -= halfWidth;
@@ -4278,6 +4286,20 @@ const customerLogos = [
     max-width: 640px !important;
   }
 
+  main#top .home-hero .home-hero-copy > p {
+    color: #4d5668 !important;
+    font-family: Inter, "Segoe UI", Arial, sans-serif !important;
+    font-size: clamp(1.02rem, 1.25vw, 1.18rem) !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.55 !important;
+    max-width: 500px !important;
+  }
+
+  main#top .home-hero .home-subtitle-mobile {
+    display: none;
+  }
+
   main#top .home-hero .home-eyebrow {
     background: #ffffff !important;
     border: 0 !important;
@@ -4398,6 +4420,24 @@ const customerLogos = [
       max-width: 320px !important;
     }
 
+    main#top .home-hero .home-hero-copy > p {
+      font-size: 1rem !important;
+      line-height: 1.6 !important;
+      max-width: 304px !important;
+    }
+
+    main#top .home-hero .home-subtitle-desktop {
+      display: none !important;
+    }
+
+    main#top .home-hero .home-subtitle-mobile {
+      display: block !important;
+    }
+
+    main#top .home-hero .home-subtitle-mobile > span {
+      display: block;
+    }
+
     main#top .home-hero .customer-scroll-section h2 {
       font-size: 0.95rem !important;
       margin-bottom: 20px !important;
@@ -4465,6 +4505,53 @@ const customerLogos = [
     main#top .home-hero {
       padding-left: clamp(22px, 5vw, 32px) !important;
       padding-right: clamp(22px, 5vw, 32px) !important;
+    }
+  }
+
+  /* Reference-like customer logo marquee sizing and pace */
+  main#top .home-hero .customer-scroll-track {
+    gap: clamp(34px, 4.4vw, 58px) !important;
+  }
+
+  main#top .home-hero .customer-logo {
+    flex: 0 0 clamp(126px, 12vw, 156px) !important;
+    height: clamp(40px, 4vw, 48px) !important;
+    opacity: 0.78 !important;
+  }
+
+  main#top .home-hero .customer-logo img {
+    max-height: clamp(26px, 2.9vw, 34px) !important;
+    max-width: clamp(104px, 10.8vw, 136px) !important;
+  }
+
+  main#top .home-hero .customer-logo--amex,
+  main#top .home-hero .customer-logo--flex,
+  main#top .home-hero .customer-logo--exostar,
+  main#top .home-hero .customer-logo--aramco,
+  main#top .home-hero .customer-logo--ford,
+  main#top .home-hero .customer-logo--stc {
+    flex-basis: clamp(126px, 12vw, 156px) !important;
+  }
+
+  @media (max-width: 560px) {
+    main#top .home-hero .customer-scroll-track {
+      gap: 28px !important;
+    }
+
+    main#top .home-hero .customer-logo,
+    main#top .home-hero .customer-logo--amex,
+    main#top .home-hero .customer-logo--flex,
+    main#top .home-hero .customer-logo--exostar,
+    main#top .home-hero .customer-logo--aramco,
+    main#top .home-hero .customer-logo--ford,
+    main#top .home-hero .customer-logo--stc {
+      flex-basis: 108px !important;
+      height: 40px !important;
+    }
+
+    main#top .home-hero .customer-logo img {
+      max-height: 28px !important;
+      max-width: 96px !important;
     }
   }
 </style>
