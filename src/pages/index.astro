@@ -93,7 +93,7 @@ const customerLogos = [
           <a class="home-button secondary" href="#platform">Explore Platform</a>
         </div>
         <section class="customer-scroll-section" aria-labelledby="customer-scroll-title">
-          <h2 id="customer-scroll-title">Trusted by industry-leading enterprises</h2>
+          <h2 id="customer-scroll-title">Trusted by industry&#8209;leading enterprises</h2>
           <div class="customer-scroll-shell">
             <div class="customer-scroll-track" role="region" aria-label="Trusted customer logos" tabindex="0" data-logo-scroller>
               {[...customerLogos, ...customerLogos].map(([label, id, src], index) => (
@@ -4289,7 +4289,7 @@ const customerLogos = [
   main#top .home-hero .home-hero-copy > p {
     color: #4d5668 !important;
     font-family: Inter, "Segoe UI", Arial, sans-serif !important;
-    font-size: clamp(1.02rem, 1.25vw, 1.18rem) !important;
+    font-size: clamp(1.08rem, 1.34vw, 1.24rem) !important;
     font-weight: 400 !important;
     letter-spacing: 0 !important;
     line-height: 1.55 !important;
@@ -4305,17 +4305,20 @@ const customerLogos = [
     border: 0 !important;
     border-radius: 0 !important;
     color: #5630d6 !important;
+    display: block !important;
+    letter-spacing: 0 !important;
     padding: 0 !important;
+    text-transform: none !important;
   }
 
   main#top .home-hero .customer-scroll-section h2 {
     color: #3f4654 !important;
-    font-size: clamp(0.92rem, 1.08vw, 1.02rem) !important;
+    font-size: clamp(1.18rem, 1.65vw, 1.38rem) !important;
     font-weight: 400 !important;
     letter-spacing: 0 !important;
-    line-height: 1.45 !important;
+    line-height: 1.32 !important;
     margin: 0 0 22px !important;
-    max-width: 320px;
+    max-width: 420px;
     text-transform: none !important;
   }
 
@@ -4420,9 +4423,17 @@ const customerLogos = [
       max-width: 320px !important;
     }
 
+    main#top .home-hero .home-eyebrow {
+      font-size: clamp(1.02rem, 4.85vw, 1.18rem) !important;
+      font-weight: 700 !important;
+      line-height: 1.12 !important;
+      max-width: 320px !important;
+      white-space: normal !important;
+    }
+
     main#top .home-hero .home-hero-copy > p {
-      font-size: 1rem !important;
-      line-height: 1.6 !important;
+      font-size: 1.08rem !important;
+      line-height: 1.55 !important;
       max-width: 304px !important;
     }
 
@@ -4439,9 +4450,10 @@ const customerLogos = [
     }
 
     main#top .home-hero .customer-scroll-section h2 {
-      font-size: 0.95rem !important;
-      margin-bottom: 20px !important;
-      max-width: 260px;
+      font-size: 1.24rem !important;
+      line-height: 1.35 !important;
+      margin-bottom: 22px !important;
+      max-width: 304px;
     }
 
     main#top .home-hero .customer-scroll-section {
