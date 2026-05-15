@@ -164,4 +164,222 @@ const {
       width: 100%;
     }
   }
+
+  :root {
+    --premium-bg: #f7f9fc;
+    --premium-surface: rgba(255, 255, 255, 0.92);
+    --premium-surface-solid: #ffffff;
+    --premium-text: #0b1020;
+    --premium-muted: #5f6b7a;
+    --premium-soft: #eef3fb;
+    --premium-line: rgba(15, 23, 42, 0.1);
+    --premium-line-strong: rgba(15, 23, 42, 0.16);
+    --premium-purple: #5730d6;
+    --premium-indigo: #1c55d8;
+    --premium-cyan: #14a8d4;
+    --premium-teal: #07a68d;
+    --premium-radius: 8px;
+    --premium-radius-lg: 14px;
+    --premium-shadow: 0 20px 58px rgba(20, 28, 45, 0.12);
+    --premium-shadow-soft: 0 12px 34px rgba(20, 28, 45, 0.08);
+    --premium-section-x: clamp(18px, 4.2vw, 64px);
+    --premium-section-y: clamp(64px, 9vw, 118px);
+  }
+
+  html {
+    background: var(--premium-bg);
+    scroll-padding-top: 112px;
+  }
+
+  body {
+    color: var(--premium-text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    text-rendering: geometricPrecision;
+  }
+
+  body,
+  main {
+    background-color: var(--premium-bg);
+  }
+
+  ::selection {
+    background: rgba(87, 48, 214, 0.18);
+    color: var(--premium-text);
+  }
+
+  :where(a, button, input, textarea, select, summary) {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :where(a, button, summary, input, textarea, select):focus-visible {
+    outline: 3px solid rgba(87, 48, 214, 0.28);
+    outline-offset: 3px;
+  }
+
+  main :where(section, .section, [class$="-section"], [class*="-section "], [class$="-hero"], [class*="-hero "], [class$="-band"], [class*="-band "]) {
+    padding-left: var(--premium-section-x);
+    padding-right: var(--premium-section-x);
+  }
+
+  main :where(section:not([class*="hero"]), .section, [class$="-section"], [class*="-section "], [class$="-band"], [class*="-band "]) {
+    padding-bottom: var(--premium-section-y);
+    padding-top: var(--premium-section-y);
+  }
+
+  main :where(h1, h2, h3, h4, h5, h6) {
+    color: inherit;
+    font-family: inherit !important;
+    letter-spacing: 0 !important;
+    margin-top: 0;
+    text-wrap: balance;
+  }
+
+  main :where(h1) {
+    font-size: clamp(3rem, 6.4vw, 6.35rem);
+    font-weight: 650;
+    line-height: 0.96;
+  }
+
+  main :where(h2) {
+    font-size: clamp(2.1rem, 4.25vw, 4.25rem);
+    font-weight: 580;
+    line-height: 1.04;
+  }
+
+  main :where(h3) {
+    font-size: clamp(1.16rem, 1.7vw, 1.5rem);
+    font-weight: 650;
+    line-height: 1.2;
+  }
+
+  main :where(p, li) {
+    color: var(--premium-muted);
+    font-size: clamp(1rem, 1.12vw, 1.11rem);
+    line-height: 1.66;
+  }
+
+  main :where(.eyebrow, [class$="eyebrow"], [class*="eyebrow "], .post-type) {
+    color: var(--premium-purple);
+    font-size: 0.78rem;
+    font-weight: 760;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase;
+  }
+
+  main :where(.primary-button, .secondary-button, .home-button, .btn, .demo-button, [class$="-button"], button[type="submit"]) {
+    border-radius: var(--premium-radius) !important;
+    box-shadow: none;
+    min-height: 46px;
+    transition:
+      transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
+  }
+
+  main :where(.primary-button, .home-button.primary, .btn-primary, button[type="submit"]) {
+    background: linear-gradient(135deg, var(--premium-purple), var(--premium-indigo)) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+  }
+
+  main :where(.secondary-button, .home-button.secondary, .btn-ghost) {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border: 1px solid var(--premium-line-strong) !important;
+    color: var(--premium-text) !important;
+  }
+
+  main :where(.primary-button, .secondary-button, .home-button, .btn, [class$="-button"], button[type="submit"]):hover {
+    box-shadow: var(--premium-shadow-soft);
+    transform: translateY(-2px);
+  }
+
+  main :where(.home-info-card, .industry-card, .insight-card, .resource-card, .feature-card, .offering-card, .related-card, .learn-card, .story-card, .quote-panel, .lead-form, .compliance-form) {
+    background: var(--premium-surface) !important;
+    border: 1px solid var(--premium-line) !important;
+    border-radius: var(--premium-radius-lg) !important;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.85) inset;
+    transition:
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 220ms ease;
+  }
+
+  main :where(.home-info-card, .industry-card, .insight-card, .resource-card, .feature-card, .offering-card, .related-card, .learn-card):hover {
+    border-color: rgba(87, 48, 214, 0.24) !important;
+    box-shadow: var(--premium-shadow);
+    transform: translateY(-4px);
+  }
+
+  main :where(img) {
+    display: block;
+    height: auto;
+  }
+
+  main :where(.photo-card img, .hero-photo img, .intro-photo img, .feature-photo img, .motion-image img, .resource-card img, .partner-card img) {
+    border-radius: inherit;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  main :where(input, select, textarea) {
+    background: #ffffff;
+    border: 1px solid var(--premium-line-strong);
+    border-radius: var(--premium-radius);
+    color: var(--premium-text);
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      background-color 180ms ease;
+  }
+
+  main :where(input, select, textarea):focus {
+    border-color: rgba(87, 48, 214, 0.55);
+    box-shadow: 0 0 0 4px rgba(87, 48, 214, 0.12);
+    outline: 0;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1180px) {
+    html {
+      scroll-padding-top: 76px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    :root {
+      --premium-section-y: clamp(52px, 13vw, 76px);
+    }
+
+    main :where(.hero-actions, .home-actions, .nav-actions) {
+      gap: 12px !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 1ms !important;
+    }
+  }
 </style>
