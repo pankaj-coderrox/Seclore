@@ -41,9 +41,9 @@ const industries = [
 ];
 
 const insights = [
-  ["The Debate About AI in the Enterprise Is Over. Here Is the Only Question That Matters.", "AI, COMPANY, DATA SECURITY"],
-  ["The Missing Link in Enterprise AI: Why Context and Behavior Are the New Security Perimeter", "AI RISK, DATA SECURITY"],
-  ["ChatGPT Read 400 Internal Company Files in 42 Milliseconds. Security Stacks Saw Nothing.", "AI RISK, DATA SECURITY"]
+  ["The Debate About AI in the Enterprise Is Over. Here Is the Only Question That Matters.", "AI, COMPANY, DATA SECURITY", "/images/integrations/dlp-casb/debate-ai.png"],
+  ["The Missing Link in Enterprise AI: Why Context and Behavior Are the New Security Perimeter", "AI RISK, DATA SECURITY", "/images/integrations/dlp-casb/ai-perimeter.png"],
+  ["ChatGPT Read 400 Internal Company Files in 42 Milliseconds. Security Stacks Saw Nothing.", "AI RISK, DATA SECURITY", "/images/integrations/dlp-casb/ai-readiness.png"]
 ];
 
 const awards = [
@@ -134,34 +134,37 @@ const customerLogos = [
       </div>
     </section>
 
-    <section class="armor-band">
-      <div class="armor-panel reveal">
-        <div class="armor-intro">
-          <span class="armor-logo"><span class="armor-mark"></span><strong>ARMOR</strong><small>POWERED BY SECLORE</small></span>
-          <h2>Data Security Intelligence, built for AI</h2>
-          <p>
-            Secure data with a unified, integrated control model. Intelligence is embedded directly
-            into data, repositories, apps, users, partners, and AI agents.
-          </p>
-          <a class="home-button primary" href="/armor/dspm/">Explore ARMOR in Detail</a>
+    <section class="armor-experience">
+      <div class="armor-experience-inner">
+        <div class="armor-band">
+          <div class="armor-panel reveal">
+            <div class="armor-intro armor-visual">
+              <img
+                src="/images/armor/armor-card-visual.png"
+                alt="ARMOR powered by Seclore data security intelligence built for AI"
+                loading="lazy"
+              />
+              <a class="armor-image-cta" href="/armor/dspm/" aria-label="Explore ARMOR in Detail"></a>
+            </div>
+            <div class="armor-pillars">
+              {armorPillars.map(([title, text]) => (
+                <article>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
-        <div class="armor-pillars">
-          {armorPillars.map(([title, text]) => (
-            <article>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
 
-    <section class="how-section">
-      <h2>How Seclore ARMOR Works</h2>
-      <div class="home-card-grid three">
-        <article class="home-info-card reveal"><span class="mini-icon icon-data"></span><h3>Discover Your Data</h3><p>Discover what data exists and why it matters. Across people and AI</p></article>
-        <article class="home-info-card reveal"><span class="mini-icon icon-control"></span><h3>Control Data Persistently</h3><p>Apply intelligent, context-aware protection that moves with your data</p></article>
-        <article class="home-info-card reveal"><span class="mini-icon icon-prove"></span><h3>Prove Trust at Scale</h3><p>Demonstrate compliance and security posture with continuous evidence</p></article>
+        <div class="how-section">
+          <h2>How Seclore ARMOR Works</h2>
+          <div class="home-card-grid three">
+            <article class="home-info-card reveal"><span class="mini-icon icon-data"></span><h3>Discover Your Data</h3><p>Discover what data exists and why it matters. Across people and AI</p></article>
+            <article class="home-info-card reveal"><span class="mini-icon icon-control"></span><h3>Control Data Persistently</h3><p>Apply intelligent, context-aware protection that moves with your data</p></article>
+            <article class="home-info-card reveal"><span class="mini-icon icon-prove"></span><h3>Prove Trust at Scale</h3><p>Demonstrate compliance and security posture with continuous evidence</p></article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -234,12 +237,17 @@ const customerLogos = [
         <a href="#resources">View All Resources</a>
       </div>
       <div class="insight-grid">
-        {insights.map(([title, tag]) => (
+        {insights.map(([title, tag, image]) => (
           <article class="insight-card reveal">
-            <span class="post-type">BLOG POST</span>
-            <span>{tag}</span>
-            <h3>{title}</h3>
-            <a href="#resources">View Blog Post +</a>
+            <div class="insight-media">
+              <img src={image} alt="" loading="lazy" decoding="async" />
+            </div>
+            <div class="insight-body">
+              <span class="post-type">BLOG POST</span>
+              <span>{tag}</span>
+              <h3>{title}</h3>
+              <a href="#resources">View Blog Post +</a>
+            </div>
           </article>
         ))}
       </div>
@@ -3326,6 +3334,14 @@ const customerLogos = [
     padding-inline: clamp(28px, 2.45vw, 40px);
   }
 
+  @media (min-width: 681px) {
+    main#top .testimonial-home h2 {
+      font-size: clamp(2rem, 3vw, 3.35rem) !important;
+      max-width: none !important;
+      white-space: nowrap !important;
+    }
+  }
+
   main#top .quote-panel {
     background: #f8f8f8;
     border-radius: 0;
@@ -4159,25 +4175,437 @@ const customerLogos = [
     padding: clamp(26px, 3vw, 38px);
   }
 
+  @media (min-width: 981px) {
+    main#top .enable-section {
+      align-items: start !important;
+      column-gap: clamp(56px, 7vw, 108px) !important;
+      grid-template-columns: minmax(280px, 0.72fr) minmax(620px, 1.28fr) !important;
+      padding-bottom: clamp(28px, 3vw, 46px) !important;
+      padding-top: clamp(48px, 5vw, 72px) !important;
+    }
+
+    main#top .enable-copy {
+      max-width: 360px !important;
+      padding-top: clamp(8px, 1.2vw, 18px);
+    }
+
+    main#top .enable-copy h2 {
+      font-size: clamp(3.2rem, 4.7vw, 5rem) !important;
+      line-height: 0.96 !important;
+      max-width: 340px !important;
+    }
+
+    main#top .enable-copy p {
+      font-size: 1.04rem !important;
+      line-height: 1.62 !important;
+      margin-top: clamp(28px, 3vw, 42px) !important;
+      max-width: 330px !important;
+    }
+
+    main#top .enable-section .home-card-grid.four {
+      align-self: start !important;
+      display: grid !important;
+      gap: clamp(18px, 2vw, 28px) !important;
+      grid-template-columns: repeat(2, minmax(260px, 1fr)) !important;
+      max-width: 780px !important;
+      width: 100% !important;
+    }
+
+    main#top .enable-section .home-info-card {
+      border-radius: 12px !important;
+      min-height: clamp(230px, 18vw, 286px) !important;
+      padding: clamp(24px, 2.4vw, 34px) !important;
+    }
+
+    main#top .enable-section .home-info-card .mini-icon {
+      height: 34px !important;
+      margin-bottom: clamp(28px, 3vw, 42px) !important;
+      width: 34px !important;
+    }
+
+    main#top .enable-section .home-info-card h3 {
+      font-size: clamp(1.28rem, 1.55vw, 1.58rem) !important;
+      line-height: 1.12 !important;
+      margin: 0 0 16px !important;
+    }
+
+    main#top .enable-section .home-info-card p {
+      font-size: 0.96rem !important;
+      line-height: 1.55 !important;
+      margin: 0 !important;
+    }
+  }
+
+  @media (min-width: 760px) and (max-width: 980px) {
+    main#top .enable-section {
+      align-items: start !important;
+      column-gap: clamp(28px, 4vw, 44px) !important;
+      display: grid !important;
+      grid-template-columns: minmax(230px, 0.55fr) minmax(0, 1.45fr) !important;
+      padding-bottom: 28px !important;
+      padding-top: 52px !important;
+    }
+
+    main#top .enable-copy {
+      max-width: 250px !important;
+    }
+
+    main#top .enable-copy h2 {
+      font-size: clamp(2.6rem, 5.5vw, 3.25rem) !important;
+      line-height: 0.98 !important;
+      max-width: 240px !important;
+    }
+
+    main#top .enable-copy p {
+      font-size: 0.98rem !important;
+      line-height: 1.58 !important;
+      margin-top: 28px !important;
+      max-width: 240px !important;
+    }
+
+    main#top .enable-section .home-card-grid.four {
+      gap: 18px !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      width: 100% !important;
+    }
+
+    main#top .enable-section .home-info-card {
+      border-radius: 12px !important;
+      min-height: 224px !important;
+      padding: 24px !important;
+    }
+
+    main#top .enable-section .home-info-card .mini-icon {
+      height: 32px !important;
+      margin-bottom: 32px !important;
+      width: 32px !important;
+    }
+
+    main#top .enable-section .home-info-card h3 {
+      font-size: clamp(1.12rem, 2.4vw, 1.34rem) !important;
+      line-height: 1.15 !important;
+      margin: 0 0 14px !important;
+    }
+
+    main#top .enable-section .home-info-card p {
+      font-size: 0.92rem !important;
+      line-height: 1.5 !important;
+      margin: 0 !important;
+    }
+  }
+
   main#top .mini-icon {
     box-shadow: 0 12px 26px rgba(87, 48, 214, 0.14);
   }
 
-  main#top .armor-band {
+  main#top .armor-experience {
     background:
-      linear-gradient(135deg, #eef3ff 0%, #fff6f8 56%, #f4fbff 100%);
+      radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.72), transparent 24%),
+      radial-gradient(circle at 48% 52%, rgba(255, 226, 236, 0.78), transparent 34%),
+      radial-gradient(circle at 86% 18%, rgba(235, 241, 255, 0.9), transparent 32%),
+      linear-gradient(180deg, #dbe8ff 0%, #f7eaf3 58%, #dfe9ff 100%);
+    overflow: hidden;
+    padding: clamp(42px, 6vw, 84px) 0 clamp(58px, 7vw, 96px);
+    position: relative;
+  }
+
+  main#top .armor-experience::before {
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0)),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.32) 0 22px,
+        rgba(176, 199, 255, 0.22) 22px 31px,
+        rgba(255, 255, 255, 0.08) 31px 52px
+      );
+    bottom: 26%;
+    content: "";
+    height: clamp(132px, 18vw, 245px);
+    left: -10%;
+    opacity: 0.46;
+    position: absolute;
+    right: -10%;
+    transform: perspective(820px) rotateX(58deg) translateY(20%);
+    transform-origin: bottom center;
+  }
+
+  main#top .armor-experience::after {
+    background:
+      radial-gradient(ellipse at center, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0) 68%);
+    bottom: 12%;
+    content: "";
+    height: 280px;
+    left: 8%;
+    opacity: 0.64;
+    position: absolute;
+    right: 8%;
+  }
+
+  main#top .armor-experience-inner {
+    margin: 0 auto;
+    max-width: 1220px;
+    padding: 0 clamp(24px, 4vw, 42px);
+    position: relative;
+    z-index: 1;
+  }
+
+  main#top .armor-band {
+    background: transparent !important;
   }
 
   main#top .armor-panel {
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 22px;
-    box-shadow: 0 28px 80px rgba(35, 24, 68, 0.12);
-    overflow: hidden;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
   }
 
   main#top .armor-intro,
   main#top .armor-pillars article {
-    background: rgba(255, 255, 255, 0.68);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(14px);
+  }
+
+  main#top .armor-visual {
+    color: inherit !important;
+    display: flex !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: relative !important;
+    text-decoration: none !important;
+  }
+
+  main#top .armor-visual img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+  }
+
+  main#top .armor-image-cta {
+    border-radius: 10px;
+    bottom: 6.8%;
+    height: 9.3%;
+    left: 25%;
+    position: absolute;
+    right: 25%;
+    z-index: 2;
+  }
+
+  main#top .armor-image-cta:focus-visible {
+    outline: 3px solid rgba(87, 48, 214, 0.48);
+    outline-offset: 4px;
+  }
+
+  main#top .armor-experience .how-section {
+    background: transparent !important;
+    padding-bottom: 0 !important;
+  }
+
+  @media (min-width: 981px) {
+    main#top .armor-band {
+      padding: 0 !important;
+    }
+
+    main#top .armor-panel {
+      align-items: stretch !important;
+      display: grid !important;
+      gap: clamp(42px, 5vw, 78px) !important;
+      grid-template-columns: minmax(420px, 0.9fr) minmax(600px, 1.1fr) !important;
+      max-width: none !important;
+      overflow: visible !important;
+      padding: 0 !important;
+    }
+
+    main#top .armor-intro {
+      align-items: flex-start !important;
+      border: 1px solid rgba(87, 48, 214, 0.16) !important;
+      border-radius: 20px !important;
+      box-shadow: 0 26px 72px rgba(35, 24, 68, 0.12) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      min-height: clamp(540px, 48vw, 660px) !important;
+      text-align: left !important;
+    }
+
+    main#top .armor-visual {
+      align-self: stretch !important;
+      aspect-ratio: 4 / 5 !important;
+      justify-self: end !important;
+      max-height: 610px !important;
+      max-width: 510px !important;
+      min-height: 0 !important;
+      width: min(100%, 510px) !important;
+    }
+
+    main#top .armor-logo {
+      margin-bottom: clamp(32px, 3.6vw, 48px) !important;
+    }
+
+    main#top .armor-logo strong {
+      font-size: clamp(3rem, 4.2vw, 4.7rem) !important;
+    }
+
+    main#top .armor-intro h2 {
+      font-size: clamp(2.2rem, 3.2vw, 3.35rem) !important;
+      line-height: 1.06 !important;
+      margin-bottom: clamp(28px, 3vw, 42px) !important;
+      max-width: 460px !important;
+    }
+
+    main#top .armor-intro p {
+      font-size: clamp(1rem, 1.2vw, 1.16rem) !important;
+      line-height: 1.58 !important;
+      margin: 0 0 clamp(34px, 3.4vw, 48px) !important;
+      max-width: 430px !important;
+    }
+
+    main#top .armor-intro p::after {
+      font-size: 1.04rem !important;
+      margin: clamp(30px, 3vw, 42px) 0 0 !important;
+      max-width: 390px !important;
+    }
+
+    main#top .armor-intro .home-button {
+      margin-top: 0 !important;
+      min-width: 258px !important;
+    }
+
+    main#top .armor-pillars {
+      align-content: stretch !important;
+      align-self: center !important;
+      display: grid !important;
+      gap: clamp(16px, 1.7vw, 24px) !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+      max-height: 620px !important;
+      padding: clamp(16px, 2vw, 24px) 0 !important;
+    }
+
+    main#top .armor-pillars article {
+      border-radius: 14px !important;
+      min-height: 0 !important;
+      padding: clamp(24px, 2.4vw, 34px) !important;
+    }
+
+    main#top .armor-pillars article:nth-child(5) {
+      grid-column: 1 / -1 !important;
+      justify-self: center !important;
+      min-height: 0 !important;
+      width: calc(50% - clamp(8px, 0.85vw, 12px)) !important;
+    }
+
+    main#top .armor-pillars h3 {
+      font-size: clamp(1.2rem, 1.45vw, 1.48rem) !important;
+      line-height: 1.12 !important;
+      margin-bottom: 14px !important;
+    }
+
+    main#top .armor-pillars p {
+      font-size: 0.95rem !important;
+      line-height: 1.5 !important;
+      margin: 0 !important;
+    }
+  }
+
+  @media (min-width: 760px) and (max-width: 980px) {
+    main#top .armor-experience {
+      padding-top: 36px !important;
+    }
+
+    main#top .armor-band {
+      padding: 0 !important;
+    }
+
+    main#top .armor-panel {
+      display: grid !important;
+      gap: 22px !important;
+      grid-template-columns: minmax(330px, 0.9fr) minmax(0, 1.1fr) !important;
+      overflow: visible !important;
+      padding: 0 16px !important;
+    }
+
+    main#top .armor-intro {
+      border: 1px solid rgba(87, 48, 214, 0.16) !important;
+      border-radius: 18px !important;
+      box-shadow: 0 20px 54px rgba(35, 24, 68, 0.12) !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      text-align: left !important;
+    }
+
+    main#top .armor-visual {
+      align-self: stretch !important;
+      aspect-ratio: 4 / 5 !important;
+      justify-self: end !important;
+      max-height: 520px !important;
+      width: min(100%, 390px) !important;
+    }
+
+    main#top .armor-logo {
+      margin-bottom: 30px !important;
+    }
+
+    main#top .armor-logo strong {
+      font-size: 3rem !important;
+    }
+
+    main#top .armor-intro h2 {
+      font-size: clamp(1.9rem, 4vw, 2.45rem) !important;
+      margin-bottom: 24px !important;
+    }
+
+    main#top .armor-intro p {
+      font-size: 0.96rem !important;
+      margin-bottom: 30px !important;
+      max-width: 270px !important;
+    }
+
+    main#top .armor-intro p::after {
+      display: none !important;
+    }
+
+    main#top .armor-intro .home-button {
+      min-width: 0 !important;
+      width: 100% !important;
+    }
+
+    main#top .armor-pillars {
+      align-content: stretch !important;
+      align-self: center !important;
+      gap: 14px !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+      padding: 8px 0 !important;
+    }
+
+    main#top .armor-pillars article {
+      border-radius: 12px !important;
+      min-height: 0 !important;
+      padding: 20px !important;
+    }
+
+    main#top .armor-pillars article:nth-child(5) {
+      grid-column: 1 / -1 !important;
+      justify-self: center !important;
+      min-height: 0 !important;
+      width: calc(50% - 7px) !important;
+    }
+
+    main#top .armor-pillars h3 {
+      font-size: 1.05rem !important;
+      margin-bottom: 10px !important;
+    }
+
+    main#top .armor-pillars p {
+      font-size: 0.86rem !important;
+      line-height: 1.42 !important;
+      margin: 0 !important;
+    }
   }
 
   main#top .armor-intro h2,
@@ -4185,13 +4613,711 @@ const customerLogos = [
     color: #0b1020;
   }
 
+  main#top .how-section {
+    padding-top: clamp(86px, 10vw, 142px) !important;
+    text-align: left !important;
+  }
+
+  main#top .how-section h2 {
+    margin: 0 0 clamp(22px, 2.6vw, 34px) !important;
+    max-width: 760px !important;
+  }
+
+  main#top .how-section .home-card-grid.three {
+    align-items: stretch !important;
+    display: grid !important;
+    gap: clamp(16px, 1.8vw, 22px) !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    width: 100% !important;
+  }
+
+  main#top .how-section .home-info-card {
+    align-content: start !important;
+    background: rgba(255, 255, 255, 0.72) !important;
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.88) !important;
+    border-radius: 12px !important;
+    min-height: clamp(178px, 16vw, 214px) !important;
+    padding: clamp(20px, 2.2vw, 26px) !important;
+  }
+
+  main#top .how-section .home-info-card .mini-icon {
+    height: 34px !important;
+    margin-bottom: clamp(28px, 3.2vw, 42px) !important;
+    width: 34px !important;
+  }
+
+  main#top .how-section .home-info-card h3 {
+    font-size: clamp(1.22rem, 1.6vw, 1.45rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 18px !important;
+  }
+
+  main#top .how-section .home-info-card p {
+    font-size: clamp(0.94rem, 1vw, 1rem) !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+  }
+
+  @media (min-width: 760px) and (max-width: 980px) {
+    main#top .how-section {
+      padding-bottom: 42px !important;
+      padding-top: 74px !important;
+    }
+
+    main#top .how-section h2 {
+      font-size: clamp(2.35rem, 5vw, 3rem) !important;
+      margin-bottom: 22px !important;
+    }
+
+    main#top .how-section .home-card-grid.three {
+      gap: 14px !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+
+    main#top .how-section .home-info-card {
+      min-height: 176px !important;
+      padding: 18px !important;
+    }
+
+    main#top .how-section .home-info-card .mini-icon {
+      height: 30px !important;
+      margin-bottom: 26px !important;
+      width: 30px !important;
+    }
+
+    main#top .how-section .home-info-card h3 {
+      font-size: clamp(1.02rem, 2vw, 1.18rem) !important;
+      margin-bottom: 14px !important;
+    }
+
+    main#top .how-section .home-info-card p {
+      font-size: 0.86rem !important;
+      line-height: 1.45 !important;
+    }
+  }
+
+  main#top .achieve-section {
+    background: #ffffff !important;
+    padding-bottom: clamp(28px, 3vw, 44px) !important;
+    padding-top: clamp(58px, 6vw, 88px) !important;
+    text-align: center !important;
+  }
+
+  main#top .achieve-section h2 {
+    font-size: clamp(2.55rem, 4.4vw, 4.35rem) !important;
+    line-height: 1.05 !important;
+    margin: 0 auto clamp(30px, 3.6vw, 48px) !important;
+    max-width: 980px !important;
+    text-align: center !important;
+  }
+
+  main#top .achieve-section .home-card-grid.four {
+    background:
+      radial-gradient(circle at 50% 48%, rgba(255, 224, 154, 0.34), transparent 44%) !important;
+    display: grid !important;
+    gap: clamp(20px, 2vw, 28px) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    margin: 0 auto !important;
+    max-width: 1040px !important;
+    width: 100% !important;
+  }
+
+  main#top .achieve-section .home-info-card {
+    align-content: start !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    min-height: clamp(196px, 16vw, 232px) !important;
+    padding: clamp(26px, 2.8vw, 34px) !important;
+    text-align: left !important;
+  }
+
+  main#top .achieve-section .home-info-card .mini-icon {
+    height: 36px !important;
+    margin-bottom: clamp(34px, 3.6vw, 48px) !important;
+    width: 36px !important;
+  }
+
+  main#top .achieve-section .home-info-card h3 {
+    font-size: clamp(1.25rem, 1.65vw, 1.48rem) !important;
+    line-height: 1.14 !important;
+    margin: 0 0 16px !important;
+  }
+
+  main#top .achieve-section .home-info-card p {
+    font-size: clamp(0.95rem, 1.05vw, 1.02rem) !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+    max-width: 410px !important;
+  }
+
+  @media (min-width: 760px) and (max-width: 980px) {
+    main#top .achieve-section {
+      padding-bottom: 28px !important;
+      padding-top: 54px !important;
+    }
+
+    main#top .achieve-section h2 {
+      font-size: clamp(2.25rem, 4.8vw, 3.05rem) !important;
+      margin-bottom: 28px !important;
+      max-width: 820px !important;
+    }
+
+    main#top .achieve-section .home-card-grid.four {
+      gap: 18px !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      max-width: 880px !important;
+    }
+
+    main#top .achieve-section .home-info-card {
+      min-height: 194px !important;
+      padding: 24px !important;
+    }
+
+    main#top .achieve-section .home-info-card .mini-icon {
+      height: 32px !important;
+      margin-bottom: 34px !important;
+      width: 32px !important;
+    }
+
+    main#top .achieve-section .home-info-card h3 {
+      font-size: clamp(1.12rem, 2.2vw, 1.32rem) !important;
+      margin-bottom: 14px !important;
+    }
+
+    main#top .achieve-section .home-info-card p {
+      font-size: 0.92rem !important;
+      line-height: 1.48 !important;
+    }
+  }
+
+  main#top .usecase-section {
+    background: #ffffff !important;
+    padding-bottom: clamp(70px, 7vw, 112px) !important;
+    padding-top: clamp(16px, 2vw, 28px) !important;
+    text-align: center !important;
+  }
+
+  main#top .usecase-section h2 {
+    font-size: clamp(2.55rem, 4.4vw, 4.35rem) !important;
+    line-height: 1.05 !important;
+    margin: 0 auto clamp(30px, 3.8vw, 52px) !important;
+    max-width: 900px !important;
+    text-align: center !important;
+  }
+
+  main#top .usecase-section .home-card-grid.five {
+    background:
+      radial-gradient(circle at 50% 46%, rgba(255, 224, 154, 0.18), transparent 40%),
+      radial-gradient(circle at 22% 60%, rgba(255, 224, 238, 0.34), transparent 34%),
+      radial-gradient(circle at 82% 26%, rgba(238, 243, 255, 0.56), transparent 30%) !important;
+    display: grid !important;
+    gap: clamp(20px, 2vw, 28px) !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    margin: 0 auto !important;
+    max-width: 1080px !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  main#top .usecase-section .home-info-card {
+    align-content: start !important;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 250, 253, 0.94)) !important;
+    border: 1px solid rgba(250, 200, 223, 0.95) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 18px 48px rgba(87, 48, 214, 0.035) !important;
+    min-height: clamp(214px, 18vw, 270px) !important;
+    padding: clamp(24px, 2.7vw, 34px) !important;
+  }
+
+  main#top .usecase-section .home-info-card:hover {
+    border-color: rgba(244, 153, 202, 0.92) !important;
+    box-shadow: 0 22px 58px rgba(87, 48, 214, 0.07) !important;
+    transform: translateY(-2px);
+  }
+
+  main#top .usecase-section .home-info-card:nth-child(1),
+  main#top .usecase-section .home-info-card:nth-child(2) {
+    grid-column: span 3 !important;
+  }
+
+  main#top .usecase-section .home-info-card:nth-child(n + 3) {
+    grid-column: span 2 !important;
+  }
+
+  main#top .usecase-section .home-info-card .mini-icon {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(247, 241, 255, 0.96)) !important;
+    border-color: rgba(108, 63, 231, 0.18) !important;
+    box-shadow: 0 14px 32px rgba(86, 48, 214, 0.14) !important;
+    height: 36px !important;
+    margin-bottom: clamp(34px, 3.4vw, 48px) !important;
+    width: 36px !important;
+  }
+
+  main#top .usecase-section .home-info-card h3 {
+    color: #111827 !important;
+    font-size: clamp(1.2rem, 1.55vw, 1.42rem) !important;
+    line-height: 1.15 !important;
+    margin: 0 0 16px !important;
+    max-width: 460px !important;
+  }
+
+  main#top .usecase-section .home-info-card p {
+    color: #667085 !important;
+    font-size: clamp(0.94rem, 1vw, 1rem) !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+    max-width: 430px !important;
+  }
+
+  main#top .usecase-section .learn-link {
+    color: #5630d6 !important;
+    margin-top: 24px !important;
+  }
+
+  @media (min-width: 760px) and (max-width: 980px) {
+    main#top .usecase-section {
+      padding-bottom: 68px !important;
+      padding-top: 18px !important;
+    }
+
+    main#top .usecase-section h2 {
+      font-size: clamp(2.25rem, 4.8vw, 3.05rem) !important;
+      margin-bottom: 28px !important;
+      max-width: 760px !important;
+    }
+
+    main#top .usecase-section .home-card-grid.five {
+      gap: 18px !important;
+      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+      max-width: 900px !important;
+    }
+
+    main#top .usecase-section .home-info-card {
+      min-height: 216px !important;
+      padding: 22px !important;
+    }
+
+    main#top .usecase-section .home-info-card:nth-child(1),
+    main#top .usecase-section .home-info-card:nth-child(2) {
+      grid-column: span 3 !important;
+    }
+
+    main#top .usecase-section .home-info-card:nth-child(n + 3) {
+      grid-column: span 2 !important;
+    }
+
+    main#top .usecase-section .home-info-card .mini-icon {
+      height: 32px !important;
+      margin-bottom: 30px !important;
+      width: 32px !important;
+    }
+
+    main#top .usecase-section .home-info-card h3 {
+      font-size: clamp(1.02rem, 2vw, 1.22rem) !important;
+      margin-bottom: 14px !important;
+    }
+
+    main#top .usecase-section .home-info-card p {
+      font-size: 0.88rem !important;
+      line-height: 1.46 !important;
+    }
+  }
+
+  main#top .industries-section {
+    align-items: start !important;
+    background: #ffffff !important;
+    column-gap: clamp(44px, 6vw, 86px) !important;
+    display: grid !important;
+    grid-template-columns: minmax(280px, 0.52fr) minmax(0, 1.48fr) !important;
+    padding-bottom: clamp(76px, 7vw, 118px) !important;
+    padding-top: clamp(32px, 4vw, 56px) !important;
+  }
+
+  main#top .industries-heading {
+    border-right: 1px solid rgba(15, 23, 42, 0.16) !important;
+    min-height: 100% !important;
+    padding-right: clamp(28px, 3.2vw, 42px) !important;
+  }
+
+  main#top .industries-heading h2 {
+    color: #0b1020 !important;
+    font-size: clamp(2.45rem, 4vw, 4rem) !important;
+    font-weight: 620 !important;
+    line-height: 1.04 !important;
+    margin: 0 !important;
+    max-width: 420px !important;
+  }
+
+  main#top .industry-grid {
+    display: grid !important;
+    gap: 0 !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+  }
+
+  main#top .industry-card {
+    align-content: start !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-right: 1px solid rgba(15, 23, 42, 0.14) !important;
+    border-radius: 0 !important;
+    min-height: clamp(260px, 22vw, 340px) !important;
+    padding: clamp(28px, 3vw, 42px) clamp(24px, 3vw, 40px) !important;
+    text-align: left !important;
+  }
+
+  main#top .industry-card:nth-child(2n) {
+    border-right: 0 !important;
+  }
+
+  main#top .industry-card:nth-child(5) {
+    border-right: 0 !important;
+    grid-column: 1 / -1 !important;
+    min-height: clamp(210px, 18vw, 260px) !important;
+  }
+
+  main#top .industry-card .mini-icon {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(247, 241, 255, 0.96)) !important;
+    border-color: rgba(108, 63, 231, 0.18) !important;
+    box-shadow: 0 14px 32px rgba(86, 48, 214, 0.12) !important;
+    height: 36px !important;
+    margin-bottom: clamp(38px, 4vw, 56px) !important;
+    width: 36px !important;
+  }
+
+  main#top .industry-card .mini-icon::before,
+  main#top .industry-card .mini-icon::after {
+    box-sizing: border-box;
+  }
+
+  main#top .industry-card .icon-card::before {
+    border: 2px solid #5630d6 !important;
+    border-radius: 2px !important;
+    height: 18px !important;
+    left: 7px !important;
+    top: 9px !important;
+    width: 22px !important;
+  }
+
+  main#top .industry-card .icon-card::after {
+    border-top: 2px solid #ff8d3d !important;
+    left: 10px !important;
+    top: 16px !important;
+    width: 16px !important;
+  }
+
+  main#top .industry-card .icon-factory::before {
+    border: 2px solid #5630d6 !important;
+    border-radius: 2px !important;
+    border-top: 0 !important;
+    height: 18px !important;
+    left: 7px !important;
+    top: 12px !important;
+    width: 23px !important;
+  }
+
+  main#top .industry-card .icon-factory::after {
+    border-color: #ff8d3d !important;
+    border-style: solid !important;
+    border-width: 0 0 2px 2px !important;
+    height: 10px !important;
+    left: 9px !important;
+    top: 8px !important;
+    transform: skewX(-28deg) !important;
+    width: 18px !important;
+  }
+
+  main#top .industry-card .icon-chip::before {
+    border: 2px solid #5630d6 !important;
+    border-radius: 3px !important;
+    height: 18px !important;
+    left: 9px !important;
+    top: 9px !important;
+    width: 18px !important;
+    box-shadow:
+      -5px 3px 0 -4px #5630d6,
+      -5px 9px 0 -4px #5630d6,
+      5px 3px 0 -4px #5630d6,
+      5px 9px 0 -4px #5630d6 !important;
+  }
+
+  main#top .industry-card .icon-chip::after {
+    border: 1.5px solid #ff8d3d !important;
+    height: 6px !important;
+    left: 14px !important;
+    top: 14px !important;
+    width: 6px !important;
+  }
+
+  main#top .industry-card .icon-bank::before {
+    border: 0 !important;
+    border-top: 2px solid #5630d6 !important;
+    box-shadow:
+      0 16px 0 0 #5630d6,
+      4px 5px 0 0 #5630d6,
+      10px 5px 0 0 #5630d6,
+      16px 5px 0 0 #5630d6 !important;
+    height: 2px !important;
+    left: 8px !important;
+    top: 10px !important;
+    width: 21px !important;
+  }
+
+  main#top .industry-card .icon-bank::after {
+    border-left: 10px solid transparent !important;
+    border-right: 10px solid transparent !important;
+    border-top: 0 !important;
+    border-bottom: 6px solid #ff8d3d !important;
+    height: 0 !important;
+    left: 8px !important;
+    top: 5px !important;
+    width: 0 !important;
+  }
+
+  main#top .industry-card .icon-shield::before {
+    border: 2px solid #5630d6 !important;
+    border-radius: 10px 10px 14px 14px !important;
+    height: 22px !important;
+    left: 8px !important;
+    top: 7px !important;
+    transform: rotate(45deg) !important;
+    width: 22px !important;
+  }
+
+  main#top .industry-card .icon-shield::after {
+    border-bottom: 2px solid #ff8d3d !important;
+    border-left: 2px solid #ff8d3d !important;
+    height: 6px !important;
+    left: 14px !important;
+    top: 15px !important;
+    transform: rotate(-45deg) !important;
+    width: 12px !important;
+  }
+
+  main#top .industry-card h3 {
+    color: #0b1020 !important;
+    font-size: clamp(1.25rem, 1.65vw, 1.52rem) !important;
+    line-height: 1.15 !important;
+    margin: 0 0 16px !important;
+  }
+
+  main#top .industry-card p {
+    color: #667085 !important;
+    font-size: clamp(0.94rem, 1vw, 1rem) !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+    max-width: 500px !important;
+  }
+
+  main#top .industry-card a {
+    color: #5630d6 !important;
+    font-size: 0.95rem !important;
+    font-weight: 650 !important;
+    margin-top: 24px !important;
+  }
+
+  @media (min-width: 760px) and (max-width: 980px) {
+    main#top .industries-section {
+      column-gap: 0 !important;
+      grid-template-columns: 1fr !important;
+      padding-bottom: 72px !important;
+      padding-top: 34px !important;
+    }
+
+    main#top .industries-heading {
+      border-right: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    main#top .industries-heading h2 {
+      font-size: clamp(2.25rem, 4.8vw, 3.1rem) !important;
+      margin-bottom: 28px !important;
+      max-width: 760px !important;
+    }
+
+    main#top .industry-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    main#top .industry-card {
+      min-height: 230px !important;
+      padding: 24px !important;
+    }
+
+    main#top .industry-card:nth-child(5) {
+      min-height: 190px !important;
+    }
+
+    main#top .industry-card .mini-icon {
+      height: 32px !important;
+      margin-bottom: 34px !important;
+      width: 32px !important;
+    }
+
+    main#top .industry-card h3 {
+      font-size: clamp(1.12rem, 2.2vw, 1.32rem) !important;
+      margin-bottom: 14px !important;
+    }
+
+    main#top .industry-card p {
+      font-size: 0.9rem !important;
+      line-height: 1.48 !important;
+    }
+  }
+
   main#top .industry-card {
     border-color: rgba(15, 23, 42, 0.08) !important;
+  }
+
+  main#top .industries-section {
+    column-gap: 0 !important;
+    grid-template-columns: 1fr !important;
+    padding-top: clamp(34px, 4.2vw, 58px) !important;
+  }
+
+  main#top .industries-heading {
+    border-right: 0 !important;
+    min-height: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  main#top .industries-heading h2 {
+    margin: 0 0 clamp(28px, 3.4vw, 48px) !important;
+    max-width: 760px !important;
+  }
+
+  main#top .industry-grid {
+    display: grid !important;
+    gap: 0 !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    max-width: 1120px !important;
+    width: 100% !important;
+  }
+
+  main#top .industry-card {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    min-height: clamp(220px, 18vw, 280px) !important;
+    padding: clamp(28px, 3vw, 42px) clamp(22px, 2.8vw, 38px) !important;
+  }
+
+  main#top .industry-card:nth-child(1),
+  main#top .industry-card:nth-child(2) {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.14) !important;
+    grid-column: span 3 !important;
+  }
+
+  main#top .industry-card:nth-child(1) {
+    border-right: 1px solid rgba(15, 23, 42, 0.14) !important;
+  }
+
+  main#top .industry-card:nth-child(n + 3) {
+    border-right: 1px solid rgba(15, 23, 42, 0.14) !important;
+    grid-column: span 2 !important;
+  }
+
+  main#top .industry-card:nth-child(5) {
+    border-right: 0 !important;
+    grid-column: span 2 !important;
+    min-height: clamp(220px, 18vw, 280px) !important;
+  }
+
+  @media (min-width: 760px) and (max-width: 980px) {
+    main#top .industries-heading h2 {
+      margin-bottom: 28px !important;
+      max-width: 760px !important;
+    }
+
+    main#top .industry-grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    }
+
+    main#top .industry-card:nth-child(1),
+    main#top .industry-card:nth-child(2) {
+      grid-column: span 3 !important;
+    }
+
+    main#top .industry-card:nth-child(n + 3),
+    main#top .industry-card:nth-child(5) {
+      grid-column: span 2 !important;
+    }
+  }
+
+  @media (min-width: 860px) {
+    main#top .industries-section {
+      align-items: stretch !important;
+      column-gap: 0 !important;
+      display: grid !important;
+      grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1.58fr) !important;
+      padding-top: clamp(38px, 4vw, 62px) !important;
+    }
+
+    main#top .industries-heading {
+      border-bottom: 1px solid rgba(15, 23, 42, 0.14) !important;
+      border-right: 1px solid rgba(15, 23, 42, 0.14) !important;
+      display: flex !important;
+      min-height: clamp(220px, 18vw, 280px) !important;
+      padding: clamp(28px, 3vw, 42px) clamp(26px, 3vw, 44px) clamp(28px, 3vw, 42px) 0 !important;
+    }
+
+    main#top .industries-heading h2 {
+      align-self: flex-start !important;
+      font-size: clamp(1.95rem, 3.5vw, 3.6rem) !important;
+      line-height: 1.05 !important;
+      margin: 0 !important;
+      max-width: 420px !important;
+    }
+
+    main#top .industry-grid {
+      max-width: none !important;
+    }
+
+    main#top .industry-card:nth-child(1),
+    main#top .industry-card:nth-child(2) {
+      min-height: clamp(220px, 18vw, 280px) !important;
+    }
+
+    main#top .industry-card:nth-child(1) {
+      border-right: 1px solid rgba(15, 23, 42, 0.14) !important;
+    }
   }
 
   main#top .quote-panel {
     background:
       linear-gradient(135deg, #f7f9fc, #eef3ff) !important;
+  }
+
+  main#top .industries-section {
+    padding-bottom: clamp(42px, 5vw, 72px) !important;
+  }
+
+  main#top .testimonial-home h2 {
+    margin-bottom: clamp(28px, 3.5vw, 42px) !important;
+  }
+
+  main#top .quote-panel {
+    min-height: 0 !important;
+    padding-bottom: clamp(34px, 4vw, 46px) !important;
+    padding-top: clamp(46px, 5vw, 64px) !important;
+  }
+
+  main#top .quote-panel p {
+    margin: clamp(42px, 4.5vw, 58px) 0 clamp(28px, 3vw, 38px) !important;
+  }
+
+  main#top .story-button {
+    margin-top: clamp(30px, 3.5vw, 40px) !important;
+  }
+
+  main#top .testimonial-tabs {
+    padding-bottom: clamp(18px, 2.5vw, 26px) !important;
   }
 
   main#top .story-button,
@@ -4224,14 +5350,233 @@ const customerLogos = [
     box-shadow: 0 16px 42px rgba(16, 24, 40, 0.08);
   }
 
+  main#top .award-grid .mini-icon {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 242, 255, 0.94)) !important;
+    border-color: rgba(86, 48, 214, 0.22) !important;
+    box-shadow: 0 12px 26px rgba(86, 48, 214, 0.12) !important;
+  }
+
+  main#top .award-grid .icon-trophy::before {
+    border: 2px solid var(--seclore-purple) !important;
+    border-radius: 3px 3px 8px 8px !important;
+    height: 15px !important;
+    left: 10px !important;
+    top: 8px !important;
+    width: 22px !important;
+  }
+
+  main#top .award-grid .icon-trophy::after {
+    border: 0 !important;
+    border-bottom: 2px solid #ff8d3d !important;
+    border-left: 2px solid #ff8d3d !important;
+    border-right: 2px solid #ff8d3d !important;
+    height: 13px !important;
+    left: 15px !important;
+    top: 21px !important;
+    width: 12px !important;
+  }
+
+  main#top .award-grid .icon-flame::before {
+    border: 2px solid var(--seclore-purple) !important;
+    border-radius: 2px !important;
+    height: 20px !important;
+    left: 12px !important;
+    top: 8px !important;
+    transform: rotate(45deg) !important;
+    width: 20px !important;
+  }
+
+  main#top .award-grid .icon-flame::after {
+    border: 0 !important;
+    border-bottom: 2px solid #ff8d3d !important;
+    border-left: 2px solid #ff8d3d !important;
+    height: 11px !important;
+    left: 13px !important;
+    top: 15px !important;
+    transform: rotate(-45deg) !important;
+    width: 20px !important;
+  }
+
+  main#top .award-grid .icon-medal::before {
+    border: 2px solid var(--seclore-purple) !important;
+    border-radius: 50% !important;
+    height: 18px !important;
+    left: 12px !important;
+    top: 13px !important;
+    transform: none !important;
+    width: 18px !important;
+  }
+
+  main#top .award-grid .icon-medal::after {
+    border: 0 !important;
+    border-left: 2px solid #ff8d3d !important;
+    border-top: 2px solid #ff8d3d !important;
+    height: 12px !important;
+    left: 17px !important;
+    top: 8px !important;
+    transform: rotate(45deg) !important;
+    width: 12px !important;
+  }
+
+  main#top .award-grid .icon-flag::before {
+    border: 2px solid var(--seclore-purple) !important;
+    border-radius: 2px !important;
+    height: 18px !important;
+    left: 13px !important;
+    top: 8px !important;
+    width: 18px !important;
+  }
+
+  main#top .award-grid .icon-flag::after {
+    border: 0 !important;
+    border-left: 2px solid #ff8d3d !important;
+    box-shadow:
+      7px 0 0 0 #ff8d3d,
+      14px 0 0 0 #ff8d3d,
+      0 14px 0 0 #ff8d3d,
+      7px 14px 0 0 #ff8d3d,
+      14px 14px 0 0 #ff8d3d !important;
+    height: 14px !important;
+    left: 13px !important;
+    top: 16px !important;
+    width: 0 !important;
+  }
+
+  @media (min-width: 681px) {
+    main#top .awards-section {
+      padding-bottom: clamp(56px, 6vw, 82px) !important;
+      padding-top: clamp(52px, 6vw, 78px) !important;
+    }
+
+    main#top .awards-section h2 {
+      margin-bottom: clamp(34px, 4vw, 52px) !important;
+      white-space: nowrap !important;
+    }
+
+    main#top .award-grid {
+      display: grid !important;
+      gap: clamp(14px, 1.7vw, 22px) !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      width: 100% !important;
+    }
+
+    main#top .award-grid article {
+      border-radius: 14px !important;
+      min-height: clamp(220px, 25vw, 310px) !important;
+      padding: clamp(24px, 2.6vw, 34px) clamp(14px, 1.9vw, 24px) !important;
+    }
+
+    main#top .award-grid article .mini-icon {
+      height: 34px !important;
+      margin-bottom: clamp(22px, 2.4vw, 34px) !important;
+      width: 34px !important;
+    }
+
+    main#top .award-grid small {
+      font-size: clamp(0.66rem, 0.9vw, 0.76rem) !important;
+      line-height: 1.2 !important;
+    }
+
+    main#top .award-grid strong {
+      font-size: clamp(0.98rem, 1.35vw, 1.22rem) !important;
+      line-height: 1.16 !important;
+      max-width: 190px !important;
+    }
+
+    main#top .award-grid em {
+      font-size: 0.88rem !important;
+    }
+  }
+
   main#top .insight-grid {
     gap: clamp(18px, 2.2vw, 28px);
     max-width: none;
   }
 
+  main#top .insights-home {
+    padding-bottom: clamp(48px, 5vw, 70px) !important;
+    padding-top: clamp(42px, 5vw, 64px) !important;
+  }
+
+  main#top .insights-heading {
+    margin-bottom: clamp(28px, 3.2vw, 42px) !important;
+  }
+
+  @media (min-width: 681px) {
+    main#top .insights-heading {
+      align-items: center !important;
+      gap: clamp(24px, 4vw, 56px) !important;
+    }
+
+    main#top .insights-heading h2 {
+      flex: 1 1 auto !important;
+      font-size: clamp(2rem, 3vw, 3.35rem) !important;
+      max-width: none !important;
+      white-space: nowrap !important;
+    }
+
+    main#top .insights-heading a {
+      flex: 0 0 auto !important;
+    }
+
+    main#top .insight-grid {
+      gap: clamp(14px, 2vw, 24px) !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      width: 100% !important;
+    }
+  }
+
   main#top .insight-card {
-    min-height: clamp(360px, 42vw, 500px);
-    padding: clamp(26px, 3vw, 40px);
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: clamp(350px, 36vw, 430px) !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  main#top .insight-media {
+    aspect-ratio: 16 / 9;
+    background:
+      linear-gradient(135deg, rgba(86, 48, 214, 0.08), rgba(255, 141, 61, 0.08)),
+      #f7f9fc;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+    width: 100%;
+  }
+
+  main#top .insight-media img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+  }
+
+  main#top .insight-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: clamp(18px, 1.8vw, 26px);
+  }
+
+  main#top .insight-card .post-type,
+  main#top .insight-card span:not(.post-type) {
+    margin-bottom: 10px !important;
+  }
+
+  main#top .insight-card h3 {
+    font-size: clamp(1rem, 1.35vw, 1.2rem) !important;
+    line-height: 1.18 !important;
+    margin: clamp(14px, 1.6vw, 22px) 0 clamp(16px, 1.8vw, 24px) !important;
+  }
+
+  main#top .insight-card a {
+    margin-top: auto;
+  }
+
+  main#top .insight-controls {
+    margin-top: clamp(30px, 4vw, 46px) !important;
   }
 
   @media (max-width: 980px) {
@@ -4593,6 +5938,7 @@ const customerLogos = [
 
   @media (min-width: 981px) {
     main#top .home-hero {
+      --home-hero-image-height: clamp(520px, 43vw, 650px);
       align-items: start !important;
       column-gap: clamp(44px, 5.6vw, 96px) !important;
       grid-template-columns: minmax(430px, 0.92fr) minmax(460px, 1.08fr) !important;
@@ -4603,13 +5949,17 @@ const customerLogos = [
 
     main#top .home-hero .home-hero-copy {
       align-self: start !important;
-      max-width: 650px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: var(--home-hero-image-height) !important;
+      max-width: min(720px, 50vw) !important;
+      width: min(720px, 50vw) !important;
     }
 
     main#top .home-hero .hero-photo {
       align-self: start !important;
       aspect-ratio: auto !important;
-      height: clamp(520px, 43vw, 650px) !important;
+      height: var(--home-hero-image-height) !important;
       justify-self: end !important;
       max-width: min(720px, 50vw) !important;
       min-height: 0 !important;
@@ -4620,6 +5970,13 @@ const customerLogos = [
       height: 100% !important;
       object-fit: cover !important;
       object-position: center !important;
+      width: 100% !important;
+    }
+
+    main#top .home-hero .customer-scroll-section {
+      margin-top: auto !important;
+      max-width: 100% !important;
+      padding-top: clamp(42px, 5vw, 72px) !important;
       width: 100% !important;
     }
   }
@@ -4633,15 +5990,134 @@ const customerLogos = [
 
   @media (min-width: 981px) and (max-width: 1180px) {
     main#top .home-hero {
+      --home-hero-image-height: clamp(500px, 48vw, 590px);
       column-gap: clamp(28px, 4vw, 48px) !important;
       grid-template-columns: minmax(390px, 0.94fr) minmax(420px, 1.06fr) !important;
       padding-top: clamp(42px, 5vw, 64px) !important;
     }
 
     main#top .home-hero .hero-photo {
-      height: clamp(500px, 48vw, 590px) !important;
+      height: var(--home-hero-image-height) !important;
       max-width: min(560px, 48vw) !important;
       width: min(560px, 48vw) !important;
+    }
+  }
+
+  @media (min-width: 760px) and (max-width: 980px) {
+    main#top .home-hero {
+      --home-hero-image-height: clamp(470px, 61vw, 560px);
+      align-items: start !important;
+      column-gap: clamp(24px, 4vw, 36px) !important;
+      grid-template-columns: minmax(360px, 0.96fr) minmax(300px, 1.04fr) !important;
+      min-height: 0 !important;
+      padding-top: clamp(36px, 4.8vw, 54px) !important;
+    }
+
+    main#top .home-hero .home-hero-copy {
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: var(--home-hero-image-height) !important;
+      max-width: 390px !important;
+      width: min(390px, 43vw) !important;
+    }
+
+    main#top .home-hero h1 {
+      font-size: clamp(3.05rem, 6vw, 3.75rem) !important;
+      max-width: 390px !important;
+    }
+
+    main#top .home-hero .home-hero-copy > p {
+      font-size: clamp(1rem, 1.8vw, 1.1rem) !important;
+      max-width: 370px !important;
+    }
+
+    main#top .home-hero .customer-scroll-section {
+      margin-top: auto !important;
+      max-width: 100% !important;
+      padding-top: 42px !important;
+      width: 100% !important;
+    }
+
+    main#top .home-hero .hero-photo {
+      align-self: start !important;
+      aspect-ratio: auto !important;
+      height: var(--home-hero-image-height) !important;
+      justify-self: end !important;
+      max-width: min(390px, 43vw) !important;
+      min-height: 0 !important;
+      width: min(390px, 43vw) !important;
+    }
+
+    main#top .home-hero .hero-photo img {
+      height: 100% !important;
+      object-fit: cover !important;
+      width: 100% !important;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 759px) {
+    main#top .home-hero {
+      --home-hero-image-height: clamp(420px, 66vw, 500px);
+      align-items: start !important;
+      column-gap: 18px !important;
+      grid-template-columns: minmax(315px, 1fr) minmax(245px, 0.84fr) !important;
+      min-height: 0 !important;
+      padding-left: 32px !important;
+      padding-right: 32px !important;
+      padding-top: 34px !important;
+    }
+
+    main#top .home-hero .home-hero-copy {
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: var(--home-hero-image-height) !important;
+      max-width: 330px !important;
+      width: min(330px, 46vw) !important;
+    }
+
+    main#top .home-hero h1 {
+      font-size: clamp(2.72rem, 6.6vw, 3.08rem) !important;
+      max-width: 330px !important;
+    }
+
+    main#top .home-hero .home-hero-copy > p {
+      font-size: 0.98rem !important;
+      max-width: 315px !important;
+    }
+
+    main#top .home-hero .home-actions {
+      align-items: center !important;
+      flex-direction: row !important;
+      gap: 12px !important;
+      width: auto !important;
+    }
+
+    main#top .home-hero .home-actions .home-button {
+      min-width: 0 !important;
+      width: 142px !important;
+    }
+
+    main#top .home-hero .customer-scroll-section {
+      margin-top: auto !important;
+      max-width: 100% !important;
+      padding-top: 34px !important;
+      width: 100% !important;
+    }
+
+    main#top .home-hero .hero-photo {
+      align-self: start !important;
+      aspect-ratio: auto !important;
+      height: var(--home-hero-image-height) !important;
+      justify-self: end !important;
+      max-width: min(290px, 40vw) !important;
+      min-height: 0 !important;
+      width: min(290px, 40vw) !important;
+    }
+
+    main#top .home-hero .hero-photo img {
+      height: 100% !important;
+      object-fit: cover !important;
+      width: 100% !important;
     }
   }
 
