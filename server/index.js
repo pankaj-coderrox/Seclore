@@ -3,14 +3,23 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import { connectDatabase, databaseState, isDatabaseConfigured } from "./db.js";
+import { connectDatabase, databaseErrorMessage, databaseState, isDatabaseConfigured } from "./db.js";
 import { Lead } from "./models/Lead.js";
 import { verifyRecaptchaToken } from "./recaptcha.js";
 import { validateDealRegistration, validateLead, validatePartnerRegistration } from "./validation.js";
 
 const app = express();
 const port = Number(process.env.PORT || 5000);
-const clientOrigins = (process.env.CLIENT_ORIGIN || "http://127.0.0.1:4321,http://localhost:4321")
+const clientOrigins = [
+  process.env.CLIENT_ORIGIN,
+  process.env.URL,
+  process.env.DEPLOY_URL,
+  process.env.DEPLOY_PRIME_URL,
+  "http://127.0.0.1:4321",
+  "http://localhost:4321"
+]
+  .filter(Boolean)
+  .join(",")
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
@@ -18,7 +27,7 @@ const clientOrigins = (process.env.CLIENT_ORIGIN || "http://127.0.0.1:4321,http:
 app.use(helmet());
 app.use(cors({
   origin(origin, callback) {
-    const isLocalDevOrigin = /^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(origin || "");
+    const isLocalDevOrigin = /^http:\/\/(127\.0\.0\.1|localhost|10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2}):\d+$/.test(origin || "");
 
     if (!origin || clientOrigins.includes(origin) || isLocalDevOrigin) {
       callback(null, true);
@@ -83,7 +92,7 @@ async function createLead(req, res, type) {
     console.error(error);
     return res.status(500).json({
       ok: false,
-      message: "We could not save your request. Please try again shortly."
+      message: databaseErrorMessage(error)
     });
   }
 }
@@ -158,7 +167,7 @@ app.post("/api/partner-register", async (req, res) => {
     console.error(error);
     return res.status(500).json({
       ok: false,
-      message: "We could not save your request. Please try again shortly."
+      message: databaseErrorMessage(error)
     });
   }
 });
@@ -194,7 +203,7 @@ app.post("/api/register-deal", async (req, res) => {
     console.error(error);
     return res.status(500).json({
       ok: false,
-      message: "We could not save your deal registration. Please try again shortly."
+      message: databaseErrorMessage(error)
     });
   }
 });
@@ -211,7 +220,7 @@ app.use((error, _req, res, _next) => {
 connectDatabase()
   .then(() => {
     if (isDatabaseConfigured()) {
-      console.log("✅ MongoDB connected successfully");
+      console.log("MongoDB connected successfully");
     }
   })
   .catch((error) => {

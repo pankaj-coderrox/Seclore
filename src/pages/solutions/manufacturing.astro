@@ -2,7 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/Nav.astro";
 
-const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "http://127.0.0.1:5000";
+const apiBase = import.meta.env.PUBLIC_API_BASE_URL || (import.meta.env.DEV ? "http://127.0.0.1:5000" : "");
 
 const trustLogos = ["100K", "GRAINGER", "aramco", "MAHINDRA", "EXIDE"];
 

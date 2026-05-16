@@ -14,10 +14,14 @@ export function validateLead(body, type) {
     role: asString(body.role),
     interest: asString(body.interest),
     message: asString(body.message),
-    source: asString(body.source) || "website"
+    source: asString(body.source) || "website",
+    metadata: {
+      country: asString(body.country)
+    }
   };
 
   const errors = {};
+  const phonePattern = /^[+()\d\s.-]{7,30}$/;
 
   if (!lead.name || lead.name.length < 2) {
     errors.name = "Name must be at least 2 characters.";
@@ -29,6 +33,24 @@ export function validateLead(body, type) {
 
   if (type === "demo" && !lead.company) {
     errors.company = "Company is required for demo requests.";
+  }
+
+  if (type === "demo" && lead.source === "demo-page") {
+    if (!lead.role) {
+      errors.role = "Job title is required.";
+    }
+
+    if (!lead.phone) {
+      errors.phone = "Phone number is required.";
+    }
+
+    if (!lead.metadata.country) {
+      errors.country = "Country is required.";
+    }
+  }
+
+  if (lead.phone && !phonePattern.test(lead.phone)) {
+    errors.phone = "Enter a valid phone number.";
   }
 
   if (type === "contact" && !lead.message) {
