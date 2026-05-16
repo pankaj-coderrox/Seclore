@@ -78,6 +78,7 @@ const countries = [
 ];
 
 const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
+const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 ---
 
 <!doctype html>
@@ -88,6 +89,7 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Book a Demo | Seclore</title>
+    <script is:inline src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
     <main class="demo-page">
@@ -103,15 +105,38 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
 
       <section class="hero-shell" aria-labelledby="demo-title">
         <div class="hero-copy">
-          <h1 id="demo-title">Get a Personalized Demo</h1>
-          <p>See ARMOR in action! Learn how to enable safe use of Data and AI.</p>
+          <h1 id="demo-title">
+            <span>Get a</span>
+            <span>Personalized</span>
+            <span>Demo</span>
+          </h1>
+          <p class="demo-hero-subtitle">
+            <span>See ARMOR in action! Learn</span>
+            <span>how to enable safe use of</span>
+            <span>Data and AI.</span>
+          </p>
 
           <div class="trusted">
             <h2>Trusted by industry-leading enterprises</h2>
-            <div class="trusted-logos" aria-label="Trusted enterprise logos">
-              <span class="logo-qib"><strong>QIB</strong><em>المصرف</em></span>
-              <span class="logo-pif"><strong>PIF</strong><em>Public Investment Fund</em></span>
-              <span class="logo-maf"><i></i><strong>MAF</strong></span>
+            <div class="trusted-logos" role="region" aria-label="Trusted enterprise customers" tabindex="0" data-demo-logo-scroller>
+              <div class="trusted-logos__track">
+                <span>adani</span>
+                <span>stc</span>
+                <span>SKYWorks</span>
+                <span>MARUTI SUZUKI</span>
+                <span>linde</span>
+                <span>HDFC BANK</span>
+                <span>FORD</span>
+                <span>FLEX</span>
+                <span aria-hidden="true">adani</span>
+                <span aria-hidden="true">stc</span>
+                <span aria-hidden="true">SKYWorks</span>
+                <span aria-hidden="true">MARUTI SUZUKI</span>
+                <span aria-hidden="true">linde</span>
+                <span aria-hidden="true">HDFC BANK</span>
+                <span aria-hidden="true">FORD</span>
+                <span aria-hidden="true">FLEX</span>
+              </div>
             </div>
           </div>
         </div>
@@ -158,6 +183,10 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
             </select>
           </label>
 
+          <div class="captcha-widget">
+            <div class="g-recaptcha" data-sitekey={recaptchaSiteKey}></div>
+          </div>
+
           <button type="submit">Submit</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
@@ -201,8 +230,11 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
               <b><small>GET IT ON</small>Google Play</b>
             </a>
             <a class="store-badge apple" href={appLinks.apple} target="_blank" rel="noreferrer" aria-label="Download Seclore on the App Store">
-              <span aria-hidden="true"></span>
-              <b><small>Download on the</small>App Store</b>
+              <svg aria-hidden="true" viewBox="0 0 24 28" focusable="false">
+                <path d="M18.7 14.7c0-3.1 2.5-4.6 2.6-4.7-1.4-2.1-3.6-2.4-4.4-2.4-1.9-.2-3.6 1.1-4.6 1.1-.9 0-2.4-1.1-4-1-2 0-3.9 1.2-5 3-2.1 3.7-.5 9.2 1.5 12.2 1 1.5 2.2 3.1 3.8 3 1.5-.1 2.1-1 4-1s2.4 1 4 1c1.6 0 2.7-1.5 3.7-2.9 1.2-1.7 1.7-3.4 1.7-3.5-.1-.1-3.3-1.3-3.3-4.8Z" />
+                <path d="M15.7 5.6c.8-1 1.4-2.4 1.2-3.8-1.2 0-2.6.8-3.4 1.8-.8.9-1.4 2.3-1.2 3.7 1.3.1 2.6-.7 3.4-1.7Z" />
+              </svg>
+              <b><small>Download on the</small> App Store</b>
             </a>
           </div>
         </div>
@@ -216,7 +248,7 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
       </footer>
     </main>
 
-    <script is:inline define:vars={{ apiBase }}>
+    <script is:inline define:vars={{ apiBase, recaptchaSiteKey }}>
       const form = document.querySelector(".demo-form");
       const status = form?.querySelector(".form-status");
       const localHosts = new Set(["127.0.0.1", "localhost", "::1"]);
@@ -249,6 +281,16 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
         const data = new FormData(form);
         const firstName = String(data.get("firstName") || "").trim();
         const lastName = String(data.get("lastName") || "").trim();
+        const recaptchaToken = String(data.get("g-recaptcha-response") || window.grecaptcha?.getResponse?.() || "").trim();
+
+        if (recaptchaSiteKey && !recaptchaToken) {
+          if (status) {
+            status.textContent = "Please complete the reCAPTCHA.";
+            status.className = "form-status error";
+          }
+          return;
+        }
+
         const payload = {
           name: `${firstName} ${lastName}`.trim(),
           email: data.get("email"),
@@ -257,6 +299,7 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
           role: data.get("role"),
           interest: "Personalized Demo",
           message: `Country: ${data.get("country") || ""}`,
+          recaptchaToken,
           source: "demo-page"
         };
 
@@ -279,6 +322,7 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
           }
 
           form.reset();
+          window.grecaptcha?.reset?.();
           if (status) {
             status.textContent = result.message || "Demo request received.";
             status.classList.add("success");
@@ -291,6 +335,69 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
         } finally {
           submit?.removeAttribute("disabled");
         }
+      });
+
+      document.querySelectorAll("[data-demo-logo-scroller]").forEach((scroller) => {
+        let isDragging = false;
+        let startX = 0;
+        let startScrollLeft = 0;
+        let pauseUntil = 0;
+        let lastFrame = performance.now();
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const pauseAutoScroll = (duration = 1800) => {
+          pauseUntil = performance.now() + duration;
+        };
+
+        const autoScroll = (time) => {
+          const halfWidth = scroller.scrollWidth / 2;
+
+          if (!prefersReducedMotion && !isDragging && time > pauseUntil && halfWidth > scroller.clientWidth) {
+            const elapsed = Math.min(time - lastFrame, 40);
+            scroller.scrollLeft += elapsed * 0.052;
+
+            if (scroller.scrollLeft >= halfWidth) {
+              scroller.scrollLeft -= halfWidth;
+            }
+          }
+
+          lastFrame = time;
+          requestAnimationFrame(autoScroll);
+        };
+
+        requestAnimationFrame(autoScroll);
+
+        scroller.addEventListener("pointerdown", (event) => {
+          if (!(event instanceof PointerEvent)) {
+            return;
+          }
+
+          pauseAutoScroll(2400);
+          isDragging = true;
+          startX = event.clientX;
+          startScrollLeft = scroller.scrollLeft;
+          scroller.classList.add("is-dragging");
+          scroller.setPointerCapture(event.pointerId);
+        });
+
+        scroller.addEventListener("pointermove", (event) => {
+          if (!isDragging || !(event instanceof PointerEvent)) {
+            return;
+          }
+
+          pauseAutoScroll(2400);
+          scroller.scrollLeft = startScrollLeft - (event.clientX - startX);
+        });
+
+        ["pointerup", "pointercancel", "mouseleave"].forEach((eventName) => {
+          scroller.addEventListener(eventName, (event) => {
+            isDragging = false;
+            scroller.classList.remove("is-dragging");
+
+            if (event instanceof PointerEvent && scroller.hasPointerCapture(event.pointerId)) {
+              scroller.releasePointerCapture(event.pointerId);
+            }
+          });
+        });
       });
     </script>
   </body>
@@ -380,16 +487,17 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
 
   .hero-shell {
     display: grid;
-    gap: clamp(52px, 6.2vw, 108px);
-    grid-template-columns: minmax(390px, 0.91fr) minmax(430px, 0.84fr);
+    align-items: start;
+    gap: clamp(34px, 5vw, 92px);
+    grid-template-columns: minmax(0, 0.96fr) minmax(360px, 0.82fr);
     margin: 96px 0 0;
-    min-height: 1200px;
+    min-height: 0;
   }
 
   .hero-copy {
     display: grid;
-    grid-template-rows: auto auto 1fr;
-    min-height: 920px;
+    grid-template-rows: auto auto auto;
+    min-height: 0;
   }
 
   .hero-copy h1 {
@@ -397,9 +505,14 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
     font-size: clamp(76px, 6.8vw, 91px);
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 1.01;
-    margin: 0 0 34px;
+    line-height: 0.98;
+    margin: 0 0 38px;
     max-width: 580px;
+  }
+
+  .hero-copy h1 span {
+    display: block;
+    white-space: nowrap;
   }
 
   .hero-copy > p {
@@ -411,131 +524,110 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
     max-width: 520px;
   }
 
+  .demo-hero-subtitle span {
+    display: block;
+    white-space: nowrap;
+  }
+
   .trusted {
     align-self: start;
-    margin: 285px 0 0;
+    margin: clamp(104px, 11vw, 136px) 0 0;
+    max-width: min(100%, 440px);
   }
 
   .trusted h2 {
-    color: #424244;
-    font-size: 22px;
+    color: #2f333b;
+    font-size: clamp(21px, 1.65vw, 24px);
     font-weight: 400;
-    line-height: 1.25;
-    margin: 0 0 70px;
+    letter-spacing: 0;
+    line-height: 1.28;
+    margin: 0 0 52px;
   }
 
   .trusted-logos {
+    cursor: grab;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 0 8px;
+    scroll-behavior: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+
+  .trusted-logos::-webkit-scrollbar {
+    display: none;
+  }
+
+  .trusted-logos:focus-visible {
+    outline: 2px solid rgba(86, 48, 214, 0.38);
+    outline-offset: 8px;
+  }
+
+  .trusted-logos.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  .trusted-logos__track {
     align-items: center;
     display: flex;
-    gap: clamp(88px, 10.5vw, 188px);
-    padding-left: 39px;
+    gap: clamp(76px, 8vw, 108px);
+    min-width: max-content;
+    width: max-content;
   }
 
   .trusted-logos span {
-    align-items: center;
-    color: #565656;
-    display: inline-flex;
-    filter: grayscale(1);
-    opacity: 0.72;
-  }
-
-  .logo-qib {
-    gap: 7px;
-  }
-
-  .logo-qib strong {
-    align-items: center;
-    background: #777;
-    border-radius: 50%;
-    color: #fff;
-    display: inline-flex;
-    font-size: 10px;
-    height: 26px;
-    justify-content: center;
-    width: 26px;
-  }
-
-  .logo-qib em {
-    color: #555;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-  }
-
-  .logo-pif {
-    gap: 9px;
-  }
-
-  .logo-pif::before {
-    border: 2px solid #555;
-    border-radius: 50%;
-    content: "";
-    height: 26px;
-    width: 26px;
-  }
-
-  .logo-pif strong {
-    font-size: 26px;
-    line-height: 1;
-  }
-
-  .logo-pif em {
-    display: block;
-    font-size: 5px;
-    font-style: normal;
-    font-weight: 700;
-    margin-left: -41px;
-    margin-top: 24px;
-    position: absolute;
-  }
-
-  .logo-maf {
-    gap: 13px;
-  }
-
-  .logo-maf i {
-    background: #555;
+    color: #3d3f44;
     display: inline-block;
-    height: 18px;
-    transform: skewX(-24deg);
-    width: 28px;
+    flex: 0 0 auto;
+    font-size: clamp(24px, 2.35vw, 32px);
+    font-weight: 820;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    opacity: 0.78;
+    white-space: nowrap;
   }
 
-  .logo-maf strong {
-    font-size: 24px;
-    letter-spacing: 1px;
+  .trusted-logos span:nth-child(2n + 1) {
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
   }
 
   .demo-form {
     color: #222225;
     display: grid;
     justify-self: end;
-    padding-top: 24px;
-    width: min(100%, 526px);
+    padding-top: 18px;
+    width: min(100%, 510px);
   }
 
   .demo-form h2 {
     color: #262629;
-    font-size: 42px;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 36px;
     font-weight: 400;
-    line-height: 1;
+    letter-spacing: 0;
+    line-height: 1.05;
     margin: 0;
   }
 
   .form-rule {
     border-top: 1px solid #c7c7c7;
     height: 1px;
-    margin: 35px 0 68px;
+    margin: 24px 0 34px;
     width: 100%;
   }
 
   .demo-form label {
     color: #33363b;
     display: block;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.1;
-    margin: 0 0 14px;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 650;
+    letter-spacing: 0;
+    line-height: 1.18;
+    margin: 0 0 12px;
   }
 
   .demo-form label span {
@@ -549,17 +641,20 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
     border-radius: 3px;
     color: #202327;
     display: block;
-    height: 50px;
-    margin-top: 10px;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    height: 44px;
+    margin-top: 7px;
     outline: none;
-    padding: 0 16px;
+    padding: 0 13px;
     width: 100%;
   }
 
   .demo-form select {
     appearance: auto;
     color: #b7b7b7;
-    font-size: 22px;
+    font-size: 15px;
     font-weight: 400;
   }
 
@@ -573,31 +668,48 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
   }
 
   .country-field::after {
-    background: #ffffff;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-    content: "";
-    display: block;
-    height: 76px;
-    margin-top: 21px;
-    width: 62%;
+    display: none;
+  }
+
+  .captcha-widget {
+    display: flex;
+    justify-self: start;
+    margin: 4px 0 20px;
+    max-width: 100%;
+    min-height: 78px;
+    overflow: visible;
+  }
+
+  .captcha-widget .g-recaptcha {
+    max-width: 100%;
+    transform-origin: left top;
   }
 
   .demo-form button {
     align-items: center;
     background: var(--purple);
     border: 0;
-    border-radius: 3px;
+    border-radius: 7px;
     color: #ffffff;
     cursor: pointer;
     display: inline-flex;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
     font-size: 15px;
     font-weight: 800;
     height: 48px;
     justify-content: center;
     justify-self: start;
-    margin-top: 17px;
-    min-width: 116px;
-    padding: 0 28px;
+    margin-top: 0;
+    min-width: 124px;
+    padding: 0 30px;
+    transition:
+      background-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .demo-form button:hover {
+    background: #4623bd;
+    transform: translateY(-1px);
   }
 
   .demo-form button:disabled {
@@ -641,23 +753,38 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
   .ready-section a {
     align-items: center;
     background: var(--purple);
+    border: 1px solid var(--purple);
     border-radius: 7px;
     color: #ffffff;
     display: inline-flex;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
     font-size: 16px;
-    font-weight: 800;
-    height: 51px;
+    font-weight: 650;
+    height: 52px;
     justify-content: center;
-    min-width: 192px;
+    line-height: 1;
+    min-width: 154px;
+    padding: 0 28px;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+    width: fit-content;
+  }
+
+  .ready-section a:hover {
+    background: #4623bd;
+    border-color: #4623bd;
+    transform: translateY(-1px);
   }
 
   .demo-footer {
     border-top: 1px solid #9f9f9f;
-    padding-bottom: 32px;
+    padding: 3px 0 32px;
   }
 
   .footer-accordions details {
-    border-bottom: 1px solid #b8b8b8;
+    border-bottom: 1px solid rgba(32, 35, 40, 0.22);
   }
 
   .footer-accordions summary {
@@ -665,11 +792,20 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
     color: #202328;
     cursor: pointer;
     display: flex;
-    font-size: 24px;
-    font-weight: 800;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(22px, 2.4vw, 27px);
+    font-weight: 500;
     justify-content: space-between;
+    letter-spacing: 0;
     list-style: none;
-    min-height: 86px;
+    line-height: 1;
+    min-height: 84px;
+    padding: 0 4px;
+    transition: color 180ms ease;
+  }
+
+  .footer-accordions summary:hover {
+    color: var(--purple);
   }
 
   .footer-accordions summary::-webkit-details-marker {
@@ -677,9 +813,10 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
   }
 
   .footer-accordions summary span {
-    border-bottom: 3px solid #242629;
-    border-right: 3px solid #242629;
-    height: 13px;
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    flex: 0 0 auto;
+    height: 12px;
     transform: rotate(45deg);
     transition: transform 160ms ease;
     width: 13px;
@@ -691,13 +828,24 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
 
   .footer-accordions details div {
     display: grid;
-    gap: 12px;
-    padding: 0 0 24px;
+    gap: 11px;
+    padding: 0 4px 28px;
   }
 
   .footer-accordions a {
-    color: #52575f;
-    font-size: 18px;
+    color: #5e6470;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.28;
+    transition:
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .footer-accordions a:hover {
+    color: var(--purple);
+    transform: translateX(4px);
   }
 
   .footer-contact {
@@ -787,25 +935,12 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
     top: -2px;
   }
 
-  .store-badge.apple > span {
-    background: #ffffff;
-    border-radius: 45% 45% 48% 48%;
-    display: inline-block;
-    height: 25px;
-    position: relative;
-    width: 21px;
-  }
-
-  .store-badge.apple > span::before {
-    background: #ffffff;
-    border-radius: 999px 0;
-    content: "";
-    height: 10px;
-    left: 12px;
-    position: absolute;
-    top: -8px;
-    transform: rotate(35deg);
-    width: 8px;
+  .store-badge.apple svg {
+    display: block;
+    fill: #ffffff;
+    flex: 0 0 auto;
+    height: 30px;
+    width: 26px;
   }
 
   .footer-bottom {
@@ -844,7 +979,7 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
     text-decoration: underline;
   }
 
-  @media (max-width: 1050px) {
+  @media (max-width: 860px) {
     .hero-shell {
       gap: 46px;
       grid-template-columns: 1fr;
@@ -857,17 +992,17 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
     }
 
     .trusted {
-      margin: 74px 0 0;
+      margin: 92px 0 0;
     }
 
     .demo-form {
       justify-self: start;
       padding-top: 0;
-      width: min(100%, 620px);
+      width: min(100%, 520px);
     }
 
     .ready-section {
-      margin-top: 88px;
+      margin-top: 42px;
     }
   }
 
@@ -901,6 +1036,7 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
 
     .hero-copy h1 {
       font-size: clamp(56px, 16vw, 76px);
+      line-height: 1;
       max-width: 100%;
     }
 
@@ -910,24 +1046,31 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
     }
 
     .trusted h2 {
+      color: #3f4147;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.3;
       margin-bottom: 36px;
     }
 
     .trusted-logos {
-      gap: 34px;
       padding-left: 0;
     }
 
+    .trusted-logos__track {
+      gap: 34px;
+    }
+
+    .trusted-logos span {
+      font-size: 22px;
+    }
+
     .demo-form h2 {
-      font-size: 37px;
+      font-size: 34px;
     }
 
     .form-rule {
-      margin: 28px 0 46px;
-    }
-
-    .country-field::after {
-      width: 78%;
+      margin: 22px 0 30px;
     }
 
     .ready-section h2 {
@@ -955,24 +1098,37 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
     }
 
     .hero-copy h1 {
-      font-size: 48px;
+      font-size: clamp(45px, 12.8vw, 52px);
+      line-height: 1.02;
     }
 
     .hero-copy > p {
-      font-size: 26px;
+      font-size: 20px;
+      line-height: 1.18;
     }
 
-    .trusted-logos {
-      align-items: flex-start;
-      flex-direction: column;
+    .trusted {
+      margin-top: 76px;
     }
 
-    .country-field::after {
-      width: 100%;
+    .trusted h2 {
+      font-size: 21px;
+      line-height: 1.34;
+      margin-bottom: 34px;
+      max-width: 280px;
     }
 
-    .ready-section a {
-      width: 100%;
+    .demo-form h2 {
+      font-size: 32px;
     }
+
+    .captcha-widget {
+      min-height: 72px;
+    }
+
+    .captcha-widget .g-recaptcha {
+      transform: scale(0.88);
+    }
+
   }
 </style>

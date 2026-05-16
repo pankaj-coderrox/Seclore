@@ -1,5 +1,6 @@
 import { connectDatabase, isDatabaseConfigured } from "../../server/db.js";
 import { Lead } from "../../server/models/Lead.js";
+import { verifyRecaptchaToken } from "../../server/recaptcha.js";
 import { validateLead } from "../../server/validation.js";
 
 const headers = {
@@ -41,6 +42,16 @@ export async function handler(event) {
       ok: false,
       message: "Please correct the highlighted fields.",
       errors: result.errors
+    });
+  }
+
+  const recaptcha = await verifyRecaptchaToken(body.recaptchaToken, event.headers["x-forwarded-for"]);
+
+  if (!recaptcha.ok) {
+    return json(400, {
+      ok: false,
+      message: recaptcha.message || "Please complete the reCAPTCHA.",
+      errors: { recaptcha: recaptcha.message || "Please complete the reCAPTCHA." }
     });
   }
 

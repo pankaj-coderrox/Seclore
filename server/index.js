@@ -5,6 +5,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import { connectDatabase, databaseState, isDatabaseConfigured } from "./db.js";
 import { Lead } from "./models/Lead.js";
+import { verifyRecaptchaToken } from "./recaptcha.js";
 import { validateDealRegistration, validateLead, validatePartnerRegistration } from "./validation.js";
 
 const app = express();
@@ -47,6 +48,18 @@ async function createLead(req, res, type) {
       message: "Please correct the highlighted fields.",
       errors: result.errors
     });
+  }
+
+  if (type === "demo") {
+    const recaptcha = await verifyRecaptchaToken(req.body?.recaptchaToken, req.ip);
+
+    if (!recaptcha.ok) {
+      return res.status(400).json({
+        ok: false,
+        message: recaptcha.message || "Please complete the reCAPTCHA.",
+        errors: { recaptcha: recaptcha.message || "Please complete the reCAPTCHA." }
+      });
+    }
   }
 
   if (!isDatabaseConfigured()) {
