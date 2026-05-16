@@ -732,15 +732,27 @@ const useCases = [
     align-items: center;
     background: #5531d1;
     border: 0;
-    border-radius: 8px;
+    border-radius: 7px;
     color: #ffffff;
     cursor: pointer;
     display: inline-flex;
-    font-size: clamp(1rem, 1.1vw, 1.22rem);
-    font-weight: 850;
+    font-size: 0.94rem;
+    font-weight: 700;
     justify-content: center;
-    min-height: 49px;
-    padding: 0 38px;
+    line-height: 1.15;
+    min-height: 42px;
+    padding: 0 22px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .dspm-page .hero-copy > .primary-button,
+  .dspm-page .dspm-form > .primary-button,
+  .dspm-page .final-cta > .primary-button {
+    border-radius: 7px !important;
+    min-height: 42px !important;
+    padding: 0 22px !important;
+    width: auto !important;
   }
 
   .demo-button {
@@ -1346,6 +1358,24 @@ const useCases = [
 
     .comparison-table {
       grid-template-columns: 1fr;
+    }
+
+    .dspm-page .hero-copy > .primary-button,
+    .dspm-page .dspm-form > .primary-button,
+    .dspm-page .final-cta > .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .dspm-page .hero-copy > .primary-button,
+    .dspm-page .dspm-form > .primary-button,
+    .dspm-page .final-cta > .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px !important;
+      padding: 0 18px !important;
+      white-space: normal;
     }
   }
 </style>

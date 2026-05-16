@@ -174,7 +174,8 @@ const {
     --premium-soft: #eef3fb;
     --premium-line: rgba(15, 23, 42, 0.1);
     --premium-line-strong: rgba(15, 23, 42, 0.16);
-    --premium-purple: #5730d6;
+    --premium-purple: #5630d6;
+    --premium-purple-hover: #4623bd;
     --premium-indigo: #1c55d8;
     --premium-cyan: #14a8d4;
     --premium-teal: #07a68d;
@@ -271,7 +272,7 @@ const {
   main :where(.primary-button, .secondary-button, .home-button, .btn, .demo-button, [class$="-button"], button[type="submit"]) {
     border-radius: var(--premium-radius) !important;
     box-shadow: none;
-    min-height: 46px;
+    min-height: 42px;
     transition:
       transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
       box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -280,10 +281,22 @@ const {
       color 180ms ease;
   }
 
-  main :where(.primary-button, .home-button.primary, .btn-primary, button[type="submit"]) {
-    background: linear-gradient(135deg, var(--premium-purple), var(--premium-indigo)) !important;
+  main :where(a.primary-button, button.primary-button, .home-button.primary, .btn-primary, .demo-button, button[type="submit"]) {
+    align-items: center !important;
+    background: var(--premium-purple) !important;
     border-color: transparent !important;
     color: #ffffff !important;
+    display: inline-flex !important;
+    font-family: Inter, "Segoe UI", Arial, sans-serif !important;
+    font-size: 0.94rem !important;
+    font-weight: 700 !important;
+    justify-content: center !important;
+    line-height: 1.15 !important;
+    min-height: 42px !important;
+    padding: 0 22px !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    white-space: nowrap;
   }
 
   main :where(.secondary-button, .home-button.secondary, .btn-ghost) {
@@ -293,8 +306,12 @@ const {
   }
 
   main :where(.primary-button, .secondary-button, .home-button, .btn, [class$="-button"], button[type="submit"]):hover {
-    box-shadow: var(--premium-shadow-soft);
-    transform: translateY(-2px);
+    box-shadow: none;
+    transform: translateY(-1px);
+  }
+
+  main :where(a.primary-button, button.primary-button, .home-button.primary, .btn-primary, .demo-button, button[type="submit"]):hover {
+    background: var(--premium-purple-hover) !important;
   }
 
   main :where(.home-info-card, .industry-card, .insight-card, .resource-card, .feature-card, .offering-card, .related-card, .learn-card, .story-card, .quote-panel, .lead-form, .compliance-form) {

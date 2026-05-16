@@ -433,9 +433,12 @@ const resources = [
   }
 
   .primary-button.small {
-    font-size: 0.82rem;
-    min-height: 34px;
-    padding-inline: 14px;
+    font-size: 0.9rem;
+    line-height: 1;
+    min-height: 40px;
+    padding: 0 18px;
+    white-space: nowrap;
+    width: fit-content;
   }
 
   .nav-toggle {
@@ -990,6 +993,11 @@ const resources = [
       margin-right: auto;
       max-width: 365px;
     }
+
+    .forcepoint-page .intro-copy .primary-button.small {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 560px) {
@@ -1004,6 +1012,13 @@ const resources = [
 
     .hero-actions {
       gap: 12px;
+    }
+
+    .forcepoint-page .intro-copy .primary-button.small {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
     }
   }
 </style>

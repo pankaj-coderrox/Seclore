@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Nav from "@components/Nav.astro";
 ---
 
 <BaseLayout
@@ -8,27 +7,34 @@ import Nav from "@components/Nav.astro";
   description="Submit a support ticket to Seclore support."
 >
   <main class="ticket-page">
-    <Nav />
-    <header class="support-header">
-      <a class="support-logo" href="/" aria-label="Seclore home">
-        SECL<span>ORE</span><sup>TM</sup>
+    <header class="support-header" aria-label="Seclore support header">
+      <a class="support-logo" href="/support/home/" aria-label="Seclore support home">
+        <img src="/images/home/seclore-logo-2026.svg" alt="Seclore" loading="eager" decoding="async" />
       </a>
-      <a class="contact-pill" href="#contact">Contact Us</a>
+      <a class="contact-pill" href="mailto:support@seclore.com">Contact Us</a>
     </header>
 
     <nav class="portal-nav" aria-label="Support portal navigation">
-      <a href="/support/home/">
+      <a class="support-home-link" href="/support/home/">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="m3 11 9-8 9 8" />
           <path d="M5 10v10h5v-6h4v6h5V10" />
         </svg>
         Support Home
       </a>
-      <a href="/support/solutions/">Solutions</a>
-      <a href="/support/discussions/">Forums</a>
       <span class="nav-spacer"></span>
-      <a href="/support/login/">Login</a>
-      <a class="ticket-button" href="/support/tickets/new/" aria-current="page">New Support Ticket</a>
+      <div class="portal-menu">
+        <button class="portal-menu-toggle" type="button" aria-label="Open support menu" aria-expanded="false" aria-controls="support-portal-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="portal-menu-panel" id="support-portal-menu" hidden>
+          <a href="/support/solutions/">Solutions</a>
+          <a href="/support/discussions/">Forums</a>
+          <a class="active" href="/support/tickets/new/" aria-current="page">New Support Ticket</a>
+        </div>
+      </div>
     </nav>
 
     <section class="ticket-content">
@@ -69,10 +75,17 @@ import Nav from "@components/Nav.astro";
                 </button>
                 <span class="toolbar-divider"></span>
                 <button type="button" aria-label="Insert link">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1" /><path d="M14 11a5 5 0 0 0-7.1 0l-2 2A5 5 0 0 0 12 20.1l1.1-1.1" /></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1" />
+                    <path d="M14 11a5 5 0 0 0-7.1 0l-2 2A5 5 0 0 0 12 20.1l1.1-1.1" />
+                  </svg>
                 </button>
                 <button type="button" aria-label="Insert image">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4V5Z" /><path d="m8 14 2.5-3 2.5 3 1.5-1.8L18 16H6l2-2Z" /><circle cx="16" cy="9" r="1" /></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 5h16v14H4V5Z" />
+                    <path d="m8 14 2.5-3 2.5 3 1.5-1.8L18 16H6l2-2Z" />
+                    <circle cx="16" cy="9" r="1" />
+                  </svg>
                 </button>
               </div>
               <textarea name="description" required></textarea>
@@ -97,7 +110,7 @@ import Nav from "@components/Nav.astro";
                 <a href="#">Take action.</a>
               </div>
               <div class="captcha-brand">
-                <div class="captcha-mark">↻</div>
+                <div class="captcha-mark">re</div>
                 <span>reCAPTCHA</span>
               </div>
             </div>
@@ -118,6 +131,37 @@ import Nav from "@components/Nav.astro";
         <path d="M8 10h8M8 13h5" />
       </svg>
     </a>
+
+    <script>
+      const portalMenu = document.querySelector(".portal-menu");
+      const portalMenuButton = document.querySelector(".portal-menu-toggle");
+      const portalMenuPanel = document.querySelector(".portal-menu-panel");
+
+      function setPortalMenuOpen(open: boolean) {
+        if (portalMenuButton instanceof HTMLButtonElement && portalMenuPanel instanceof HTMLElement) {
+          portalMenuButton.setAttribute("aria-expanded", String(open));
+          portalMenuPanel.hidden = !open;
+        }
+      }
+
+      portalMenuButton?.addEventListener("click", () => {
+        if (portalMenuButton instanceof HTMLButtonElement) {
+          setPortalMenuOpen(portalMenuButton.getAttribute("aria-expanded") !== "true");
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (portalMenu instanceof HTMLElement && event.target instanceof Node && !portalMenu.contains(event.target)) {
+          setPortalMenuOpen(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          setPortalMenuOpen(false);
+        }
+      });
+    </script>
   </main>
 </BaseLayout>
 
@@ -126,6 +170,7 @@ import Nav from "@components/Nav.astro";
     background: #ffffff;
     color: #161616;
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
   }
 
   :global(body::before) {
@@ -135,10 +180,15 @@ import Nav from "@components/Nav.astro";
   .ticket-page {
     --purple: #5f3fd6;
     --accent: #4d2dcc;
-    --nav-purple: #6141d8;
+    --line: #d8c8ff;
     background: #ffffff;
     min-height: 100vh;
     overflow-x: hidden;
+  }
+
+  .ticket-page,
+  .ticket-page * {
+    box-sizing: border-box;
   }
 
   .support-header {
@@ -146,71 +196,38 @@ import Nav from "@components/Nav.astro";
     background: #ffffff;
     display: flex;
     justify-content: space-between;
-    min-height: 94px;
-    padding: 22px clamp(24px, 4.4vw, 54px);
+    min-height: 108px;
+    padding: 18px clamp(22px, 4.8vw, 64px);
   }
 
   .support-logo {
-    color: var(--accent);
     display: inline-flex;
-    font-size: clamp(2.2rem, 5vw, 4.1rem);
-    font-weight: 900;
-    letter-spacing: 0;
-    line-height: 0.78;
-  }
-
-  .support-logo span {
-    color: inherit;
-  }
-
-  .support-logo sup {
-    font-size: 0.18em;
-    font-weight: 500;
     line-height: 1;
-    margin-left: 5px;
-    transform: translateY(-0.25em);
   }
 
-  .contact-pill,
-  .ticket-button {
-    align-items: center;
-    border-radius: 999px;
-    display: inline-flex;
-    font-weight: 700;
-    justify-content: center;
-    white-space: nowrap;
+  .support-logo img {
+    display: block;
+    height: auto;
+    width: clamp(260px, 38vw, 520px);
   }
 
   .contact-pill {
+    align-items: center;
     background: var(--purple);
+    border-radius: 999px;
     color: #ffffff;
+    display: inline-flex;
     font-size: 1.02rem;
+    font-weight: 700;
+    justify-content: center;
     min-height: 47px;
     padding: 0 27px;
-  }
-
-  .portal-nav {
-    align-items: center;
-    background: var(--nav-purple);
-    color: #ffffff;
-    display: flex;
-    min-height: 67px;
-    padding: 0 6px 0 43px;
-  }
-
-  .portal-nav a {
-    align-items: center;
-    display: inline-flex;
-    font-size: 1.3rem;
-    font-weight: 600;
-    gap: 10px;
-    min-height: 67px;
-    padding: 0 20px;
+    text-decoration: none;
+    white-space: nowrap;
   }
 
   .portal-nav svg,
   .chat-button svg,
-  .contact-block svg,
   .editor-toolbar svg {
     fill: none;
     stroke: currentColor;
@@ -219,9 +236,39 @@ import Nav from "@components/Nav.astro";
     stroke-width: 2;
   }
 
+  .portal-nav {
+    align-items: center;
+    background: var(--purple);
+    color: #ffffff;
+    display: flex;
+    gap: 0;
+    min-height: 67px;
+    padding: 0 6px 0 0;
+  }
+
+  .portal-nav a {
+    align-items: center;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 1.3rem;
+    font-weight: 600;
+    gap: 10px;
+    min-height: 67px;
+    padding: 0 20px;
+    text-decoration: none;
+  }
+
+  .portal-nav a.active {
+    background: #4a2abd;
+  }
+
+  .portal-nav > a {
+    background: transparent;
+  }
+
   .portal-nav svg {
     height: 23px;
-    opacity: 0.55;
+    opacity: 0.8;
     width: 23px;
   }
 
@@ -229,13 +276,66 @@ import Nav from "@components/Nav.astro";
     flex: 1 1 auto;
   }
 
-  .ticket-button {
-    background: #ffffff;
-    color: var(--purple);
-    font-size: 1.35rem;
-    margin-left: 12px;
-    min-height: 51px;
-    padding: 0 26px;
+  .portal-menu {
+    align-self: stretch;
+    display: inline-flex;
+    margin-left: auto;
+    position: relative;
+  }
+
+  .portal-menu-toggle {
+    align-items: center;
+    align-self: stretch;
+    background: transparent;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    min-height: 67px;
+    padding: 0 22px;
+  }
+
+  .portal-menu-toggle span {
+    background: currentColor;
+    border-radius: 999px;
+    display: block;
+    height: 2px;
+    width: 25px;
+  }
+
+  .portal-menu-toggle:hover,
+  .portal-menu-toggle[aria-expanded="true"] {
+    background: #4a2abd;
+  }
+
+  .portal-menu-panel {
+    background: var(--purple);
+    box-shadow: 0 16px 32px rgba(20, 11, 72, 0.2);
+    min-width: 220px;
+    padding: 8px 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 20;
+  }
+
+  .portal-menu-panel[hidden] {
+    display: none;
+  }
+
+  .portal-menu-panel a {
+    color: #ffffff;
+    font-size: 1rem;
+    min-height: 44px;
+    padding: 0 18px;
+    white-space: nowrap;
+  }
+
+  .portal-menu-panel a:hover {
+    background: #4a2abd;
   }
 
   .ticket-content {
@@ -321,6 +421,7 @@ import Nav from "@components/Nav.astro";
     border-bottom: 1px solid #eeeeee;
     display: flex;
     height: 41px;
+    overflow-x: auto;
     padding-left: 8px;
   }
 
@@ -331,6 +432,7 @@ import Nav from "@components/Nav.astro";
     color: #5f5f5f;
     cursor: pointer;
     display: inline-flex;
+    flex: 0 0 auto;
     font-family: Georgia, "Times New Roman", serif;
     font-size: 1rem;
     height: 32px;
@@ -348,6 +450,7 @@ import Nav from "@components/Nav.astro";
   .toolbar-divider {
     align-self: stretch;
     border-left: 1px solid #e2e2e2;
+    flex: 0 0 auto;
     margin: 0 5px;
     width: 1px;
   }
@@ -494,7 +597,8 @@ import Nav from "@components/Nav.astro";
 
   .captcha-mark {
     color: #5575d7;
-    font-size: 2.6rem;
+    font-size: 1.7rem;
+    font-weight: 700;
     line-height: 1;
   }
 
@@ -521,6 +625,7 @@ import Nav from "@components/Nav.astro";
     justify-content: center;
     letter-spacing: 0.12em;
     min-width: 128px;
+    text-decoration: none;
   }
 
   .submit-button {
@@ -558,73 +663,6 @@ import Nav from "@components/Nav.astro";
     width: 34px;
   }
 
-  .support-footer {
-    background: var(--purple);
-    color: #ffffff;
-    min-height: 501px;
-    padding: 40px 30px 78px;
-  }
-
-  .contact-block {
-    display: grid;
-    justify-items: start;
-    max-width: 720px;
-  }
-
-  .contact-block h2 {
-    font-size: 1.12rem;
-    margin: 0 0 15px;
-  }
-
-  .contact-block p {
-    color: #ffffff;
-    font-size: 1.04rem;
-    line-height: 1.35;
-    margin: 0 0 7px;
-  }
-
-  .contact-block a {
-    align-items: center;
-    display: inline-flex;
-    font-size: 1.12rem;
-    font-weight: 600;
-    gap: 12px;
-    margin: 0 0 30px;
-  }
-
-  .contact-block svg {
-    height: 25px;
-    width: 25px;
-  }
-
-  .connect-title {
-    margin-top: 10px;
-  }
-
-  .social-links {
-    display: flex;
-    gap: 28px;
-    margin: 4px 0 26px;
-  }
-
-  .social-links a {
-    align-items: center;
-    display: inline-flex;
-    font-size: 1.6rem;
-    font-weight: 900;
-    height: 26px;
-    justify-content: center;
-    margin: 0;
-    width: 26px;
-  }
-
-  .copyright {
-    color: #ffffff;
-    font-size: 1.28rem;
-    letter-spacing: 0;
-    margin-top: 4px;
-  }
-
   @media (max-width: 880px) {
     .support-header,
     .portal-nav {
@@ -633,33 +671,25 @@ import Nav from "@components/Nav.astro";
 
     .support-header {
       min-height: 82px;
+      padding-block: 14px;
     }
 
-    .contact-pill {
-      font-size: 0.92rem;
-      min-height: 42px;
-      padding: 0 18px;
+    .support-header .contact-pill {
+      display: none;
+    }
+
+    .support-logo img {
+      width: clamp(220px, 58vw, 360px);
     }
 
     .portal-nav {
-      align-items: stretch;
-      flex-wrap: wrap;
-      padding-block: 8px;
+      min-height: 64px;
     }
 
     .portal-nav a {
-      font-size: 1rem;
-      min-height: 45px;
-      padding: 0 12px;
-    }
-
-    .ticket-button {
-      font-size: 1rem;
-      margin-left: 0;
-    }
-
-    .nav-spacer {
-      display: none;
+      font-size: 1.18rem;
+      min-height: 64px;
+      padding: 0 18px;
     }
 
     .ticket-content {
@@ -707,13 +737,28 @@ import Nav from "@components/Nav.astro";
 
   @media (max-width: 520px) {
     .support-header {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 16px;
+      align-items: center;
+      justify-content: center;
+      min-height: 72px;
+      padding: 12px 16px;
     }
 
     .support-logo {
-      font-size: 2rem;
+      max-width: 100%;
+      width: min(82vw, 300px);
+    }
+
+    .support-logo img {
+      width: 100%;
+    }
+
+    .portal-nav a {
+      padding-left: 18px;
+      padding-right: 12px;
+    }
+
+    .portal-menu-toggle {
+      padding: 0 18px;
     }
 
     .ticket-form-wrap h1 {
@@ -738,14 +783,6 @@ import Nav from "@components/Nav.astro";
     .submit-button,
     .cancel-button {
       width: 100%;
-    }
-
-    .support-footer {
-      padding-inline: 20px;
-    }
-
-    .copyright {
-      font-size: 1rem;
     }
   }
 </style>

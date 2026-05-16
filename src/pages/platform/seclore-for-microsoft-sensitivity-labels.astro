@@ -224,8 +224,32 @@ const resources = [
   .mega-feature strong { color: var(--dropdown-text); font-size: 1.35rem; line-height: 1.18; margin-top: auto; }
   .nav-utilities { flex: 0 0 auto; gap: clamp(12px, 1.5vw, 20px); margin-left: clamp(12px, 2vw, 28px); }
   .utility-link, .language-button, .utility-icon, .theme-toggle { color: var(--header-muted); display: none; font-size: 0.88rem; font-weight: 750; }
-  .demo-button, .primary-button { align-items: center; background: linear-gradient(135deg, var(--purple), var(--purple-dark)); border: 0; border-radius: 7px; color: #fff; cursor: pointer; display: inline-flex; font-size: 0.9rem; font-weight: 850; justify-content: center; min-height: 40px; padding: 0 18px; }
-  .primary-button.small { font-size: 0.82rem; min-height: 38px; padding: 0 18px; }
+  .demo-button,
+  .primary-button {
+    align-items: center;
+    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+    border: 0;
+    border-radius: 7px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.9rem;
+    font-weight: 850;
+    justify-content: center;
+    line-height: 1;
+    min-height: 40px;
+    padding: 0 18px;
+    white-space: nowrap;
+    width: fit-content;
+  }
+
+  .primary-button.small {
+    font-size: 0.9rem;
+    min-height: 40px;
+    padding: 0 18px;
+    white-space: nowrap;
+    width: fit-content;
+  }
   .nav-toggle { background: transparent; border: 0; display: none; height: 42px; width: 42px; }
   .nav-toggle span { background: var(--header-text); display: block; height: 2px; margin: 6px 0; width: 24px; }
 
@@ -338,6 +362,12 @@ const resources = [
     .protection-section, .resources-section { padding: 72px 20px; }
     .resource-grid { grid-template-columns: 1fr; }
     .demo-section { min-height: 430px; }
+    .labels-page .product-hero > .primary-button,
+    .labels-page .intro-copy .primary-button.small,
+    .labels-page .cta-section > .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 560px) {
@@ -345,5 +375,13 @@ const resources = [
     .intro-copy h2, .section-heading h2, .demo-section h2 { font-size: 2.1rem; }
     .protection-card { padding: 30px 26px; }
     .resource-body { padding: 145px 30px 34px; }
+    .labels-page .product-hero > .primary-button,
+    .labels-page .intro-copy .primary-button.small,
+    .labels-page .cta-section > .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
   }
 </style>

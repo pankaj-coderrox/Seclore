@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Nav from "@components/Nav.astro";
 
 const quickLinks = [
   {
@@ -61,18 +60,15 @@ const iconPaths = {
   description="Seclore support portal home for solutions, forums, support tickets, escalation, and contact details."
 >
   <main class="support-page">
-    <Nav />
-    <header class="support-header">
-      <a class="support-logo" href="/" aria-label="Seclore home">
-        SECL<span>ORE</span><sup>TM</sup>
+    <header class="support-header" aria-label="Seclore support header">
+      <a class="support-logo" href="/support/home/" aria-label="Seclore support home">
+        <img src="/images/home/seclore-logo-2026.svg" alt="Seclore" loading="eager" decoding="async" />
       </a>
-      <a class="contact-pill" href="#contact">Contact Us</a>
+      <a class="contact-pill" href="mailto:support@seclore.com">Contact Us</a>
     </header>
-
     <section class="support-hero">
       <h1>
-        Welcome to the Seclore Support Portal
-        <span>How can we help?</span>
+        Welcome to the Seclore support portal.
       </h1>
     </section>
 
@@ -84,11 +80,20 @@ const iconPaths = {
         </svg>
         Support Home
       </a>
-      <a href="/support/solutions/">Solutions</a>
-      <a href="/support/discussions/">Forums</a>
       <span class="nav-spacer"></span>
-      <a href="/support/login/">Login</a>
-      <a class="ticket-button" href="/support/tickets/new/">New Support Ticket</a>
+      <div class="portal-menu">
+        <button class="portal-menu-toggle" type="button" aria-label="Open support menu" aria-expanded="false" aria-controls="support-portal-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="portal-menu-panel" id="support-portal-menu" hidden>
+          <a href="/support/solutions/">Solutions</a>
+          <a href="/support/discussions/">Forums</a>
+          <a href="/support/login/">Login</a>
+          <a href="/support/tickets/new/">New Support Ticket</a>
+        </div>
+      </div>
     </nav>
 
     <section class="search-band" aria-label="Search support content">
@@ -109,6 +114,7 @@ const iconPaths = {
           class="quick-link"
           id={item.title === "Solutions" ? "solutions" : item.title === "Forums" ? "forums" : item.title === "Tickets" ? "ticket" : "escalate-ticket"}
           href={item.href}
+          aria-label={`${item.title}: ${item.text}`}
           data-escalate={item.modal ? "true" : undefined}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -142,7 +148,7 @@ const iconPaths = {
       role="dialog"
       hidden
     >
-      <button class="modal-close" type="button" aria-label="Close escalation dialog">x</button>
+      <button class="modal-close" type="button" aria-label="Close escalation dialog">×</button>
       <h2 id="escalate-title">Escalate Ticket</h2>
       <p>
         Anyone can escalate a ticket by sending an email to
@@ -158,6 +164,16 @@ const iconPaths = {
       const modalBackdrop = document.querySelector("[data-modal-backdrop]");
       const chatButton = document.querySelector(".chat-button");
       const chatPanel = document.querySelector(".chat-panel");
+      const portalMenu = document.querySelector(".portal-menu");
+      const portalMenuButton = document.querySelector(".portal-menu-toggle");
+      const portalMenuPanel = document.querySelector(".portal-menu-panel");
+
+      function setPortalMenuOpen(open: boolean) {
+        if (portalMenuButton instanceof HTMLButtonElement && portalMenuPanel instanceof HTMLElement) {
+          portalMenuButton.setAttribute("aria-expanded", String(open));
+          portalMenuPanel.hidden = !open;
+        }
+      }
 
       function setModalOpen(open: boolean) {
         if (escalateModal instanceof HTMLElement && modalBackdrop instanceof HTMLElement) {
@@ -170,19 +186,48 @@ const iconPaths = {
       document.querySelectorAll("[data-escalate]").forEach((link) => {
         link.addEventListener("click", (event) => {
           event.preventDefault();
+          history.replaceState(null, "", "#escalate-ticket");
           setModalOpen(true);
         });
       });
 
-      document.querySelector(".modal-close")?.addEventListener("click", () => setModalOpen(false));
-      modalBackdrop?.addEventListener("click", () => setModalOpen(false));
+      function closeEscalateModal() {
+        setModalOpen(false);
+        if (location.hash === "#escalate-ticket") {
+          history.replaceState(null, "", location.pathname + location.search);
+        }
+      }
+
+      if (location.hash === "#escalate-ticket") {
+        setModalOpen(true);
+      }
+
+      window.addEventListener("hashchange", () => {
+        setModalOpen(location.hash === "#escalate-ticket");
+      });
+
+      document.querySelector(".modal-close")?.addEventListener("click", closeEscalateModal);
+      modalBackdrop?.addEventListener("click", closeEscalateModal);
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
-          setModalOpen(false);
+          closeEscalateModal();
+          setPortalMenuOpen(false);
           if (chatPanel instanceof HTMLElement && chatButton instanceof HTMLElement) {
             chatPanel.hidden = true;
             chatButton.setAttribute("aria-expanded", "false");
           }
+        }
+      });
+
+      portalMenuButton?.addEventListener("click", () => {
+        if (portalMenuButton instanceof HTMLButtonElement) {
+          setPortalMenuOpen(portalMenuButton.getAttribute("aria-expanded") !== "true");
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (portalMenu instanceof HTMLElement && event.target instanceof Node && !portalMenu.contains(event.target)) {
+          setPortalMenuOpen(false);
         }
       });
 
@@ -209,6 +254,7 @@ const iconPaths = {
     background: #ffffff;
     color: #08010f;
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
   }
 
   :global(body::before) {
@@ -230,34 +276,29 @@ const iconPaths = {
     overflow-x: hidden;
   }
 
+  .support-page,
+  .support-page * {
+    box-sizing: border-box;
+  }
+
   .support-header {
     align-items: center;
     background: #ffffff;
     display: flex;
     justify-content: space-between;
-    min-height: 95px;
-    padding: 22px clamp(24px, 4.4vw, 54px);
+    min-height: 108px;
+    padding: 18px clamp(22px, 4.8vw, 64px);
   }
 
   .support-logo {
-    color: var(--accent);
     display: inline-flex;
-    font-size: clamp(2.2rem, 5vw, 4.1rem);
-    font-weight: 900;
-    letter-spacing: 0;
-    line-height: 0.78;
-  }
-
-  .support-logo span {
-    color: inherit;
-  }
-
-  .support-logo sup {
-    font-size: 0.18em;
-    font-weight: 500;
     line-height: 1;
-    margin-left: 5px;
-    transform: translateY(-0.25em);
+  }
+
+  .support-logo img {
+    display: block;
+    height: auto;
+    width: clamp(260px, 38vw, 520px);
   }
 
   .contact-pill,
@@ -276,6 +317,7 @@ const iconPaths = {
     font-size: 1.02rem;
     min-height: 47px;
     padding: 0 27px;
+    text-decoration: none;
   }
 
   .support-hero {
@@ -285,23 +327,27 @@ const iconPaths = {
       linear-gradient(120deg, #882bff 0%, #a64ef0 37%, #7200cc 68%, #130071 100%);
     display: flex;
     justify-content: center;
-    min-height: 439px;
-    padding: 64px 24px;
+    min-height: 372px;
+    padding: 72px 24px 66px;
     text-align: center;
   }
 
   .support-hero h1 {
     color: #ffffff;
-    font-size: clamp(2.5rem, 5vw, 4.1rem);
-    font-weight: 800;
+    font-size: clamp(2.1rem, 4.4vw, 3.35rem);
+    font-weight: 500;
     letter-spacing: 0;
-    line-height: 1.04;
+    line-height: 1.16;
     margin: 0;
-    max-width: 1120px;
+    max-width: 960px;
   }
 
   .support-hero span {
     display: block;
+    font-size: clamp(2rem, 4.8vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.08;
+    margin-top: 14px;
   }
 
   .portal-nav {
@@ -311,20 +357,89 @@ const iconPaths = {
     display: flex;
     gap: 0;
     min-height: 67px;
-    padding: 0 6px 0 24px;
+    padding: 0 6px 0 0;
   }
 
   .portal-nav a {
     align-items: center;
+    color: #ffffff;
     display: inline-flex;
     font-size: 1.3rem;
     font-weight: 600;
     gap: 10px;
     min-height: 67px;
     padding: 0 20px;
+    text-decoration: none;
   }
 
   .portal-nav a.active {
+    background: transparent;
+    color: #ffffff;
+  }
+
+  .portal-nav a.active svg {
+    opacity: 1;
+  }
+
+  .portal-menu {
+    align-self: stretch;
+    display: inline-flex;
+    margin-left: auto;
+    position: relative;
+  }
+
+  .portal-menu-toggle {
+    align-items: center;
+    align-self: stretch;
+    background: transparent;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    min-height: 67px;
+    padding: 0 22px;
+  }
+
+  .portal-menu-toggle span {
+    background: currentColor;
+    border-radius: 999px;
+    display: block;
+    height: 2px;
+    width: 25px;
+  }
+
+  .portal-menu-toggle:hover,
+  .portal-menu-toggle[aria-expanded="true"] {
+    background: #4a2abd;
+  }
+
+  .portal-menu-panel {
+    background: var(--purple);
+    box-shadow: 0 16px 32px rgba(20, 11, 72, 0.2);
+    min-width: 220px;
+    padding: 8px 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 20;
+  }
+
+  .portal-menu-panel[hidden] {
+    display: none;
+  }
+
+  .portal-menu-panel a {
+    color: #ffffff;
+    font-size: 1rem;
+    min-height: 44px;
+    padding: 0 18px;
+    white-space: nowrap;
+  }
+
+  .portal-menu-panel a:hover {
     background: #4a2abd;
   }
 
@@ -406,9 +521,24 @@ const iconPaths = {
 
   .quick-link {
     color: #07000c;
+    cursor: pointer;
     display: grid;
     justify-items: center;
+    padding: 14px 18px 18px;
+    text-decoration: none;
     text-align: center;
+    transition:
+      background-color 180ms ease,
+      box-shadow 180ms ease,
+      transform 180ms ease;
+  }
+
+  .quick-link:hover,
+  .quick-link:focus-visible {
+    background: rgba(255, 255, 255, 0.42);
+    box-shadow: 0 16px 32px rgba(69, 36, 158, 0.12);
+    outline: none;
+    transform: translateY(-2px);
   }
 
   .quick-link svg {
@@ -504,12 +634,13 @@ const iconPaths = {
     border: 0;
     color: inherit;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+    font-weight: 300;
     line-height: 1;
     padding: 0;
     position: absolute;
     right: 16px;
-    top: 14px;
+    top: 12px;
   }
 
   .modal-backdrop {
@@ -521,12 +652,12 @@ const iconPaths = {
 
   .escalate-modal {
     background: #ffffff;
-    border-radius: 4px;
+    border-radius: 3px;
     box-shadow: 0 24px 64px rgba(0, 0, 0, 0.26);
     color: #252525;
     left: 50%;
-    max-width: 520px;
-    padding: 28px 30px 30px;
+    max-width: 560px;
+    padding: 30px 32px 32px;
     position: fixed;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -555,12 +686,13 @@ const iconPaths = {
 
   .continue-button {
     background: var(--accent);
-    border-radius: 999px;
+    border-radius: 3px;
     color: #ffffff;
     display: inline-flex;
     font-weight: 700;
     min-height: 42px;
-    padding: 10px 22px;
+    padding: 10px 24px;
+    text-decoration: none;
   }
 
   .support-footer {
@@ -652,12 +784,15 @@ const iconPaths = {
 
     .support-header {
       min-height: 82px;
+      padding-block: 14px;
     }
 
-    .contact-pill {
-      font-size: 0.92rem;
-      min-height: 42px;
-      padding: 0 18px;
+    .support-header .contact-pill {
+      display: none;
+    }
+
+    .support-logo img {
+      width: clamp(220px, 58vw, 360px);
     }
 
     .support-hero {
@@ -674,6 +809,15 @@ const iconPaths = {
       font-size: 1rem;
       min-height: 45px;
       padding: 0 12px;
+    }
+
+    .portal-menu-toggle {
+      min-height: 45px;
+      padding-inline: 16px;
+    }
+
+    .portal-menu-panel {
+      min-width: 205px;
     }
 
     .nav-spacer {
@@ -707,13 +851,19 @@ const iconPaths = {
 
   @media (max-width: 520px) {
     .support-header {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 16px;
+      align-items: center;
+      justify-content: center;
+      min-height: 72px;
+      padding: 12px 16px;
     }
 
     .support-logo {
-      font-size: 2rem;
+      max-width: 100%;
+      width: min(82vw, 300px);
+    }
+
+    .support-logo img {
+      width: 100%;
     }
 
     .support-hero h1 {

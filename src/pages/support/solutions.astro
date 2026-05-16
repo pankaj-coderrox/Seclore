@@ -1,43 +1,176 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Nav from "@components/Nav.astro";
 
-const categories = [
-  ["Getting Started", "Install Seclore agents, sign in, and open protected files."],
-  ["Protected Files", "Troubleshoot access, permissions, printing, copy, and offline use."],
-  ["Classification", "Use Seclore Digital Asset Classification labels and policies."],
-  ["Administrators", "Manage policy server settings, users, components, and reports."]
+const knowledgeBaseSections = [
+  {
+    title: "Seclore Desktop Client",
+    count: 42,
+    href: "/support/search/?term=Seclore%20Desktop%20Client",
+    articles: [
+      "'No access' pop up while opening the protected file.",
+      "Buffer File Message Appears When Opening Protected PDF Files Despite Desktop Client Installation",
+      "Classification migration error Pop-Up on Windows Restart for Seclore DC Installed Machines",
+      "Classification Related FAQ",
+      "Copy/Paste Issue (Windows)"
+    ]
+  },
+  {
+    title: "VPN Issues",
+    count: 5,
+    href: "/support/search/?term=VPN%20Issues",
+    articles: [
+      "AWS tunnel pre-shared key mismatch error.",
+      "Trouble Logging into PS Despite Working VPN",
+      "AWS tunnel received DELETE for Phase 2 SA with SPI: xxxx",
+      "Peer is not responsive - Declaring peer dead (DPD issue)",
+      "Script to generate ICMP packets inside VPN tunnels"
+    ]
+  },
+  {
+    title: "SSL Certificate",
+    count: 17,
+    href: "/support/search/?term=SSL%20Certificate",
+    articles: [
+      "Where to check for SSL Certificate Chain",
+      "How to convert key file to pfx format",
+      "Check if a Certificate and a Private Key matches",
+      "Check if a CSR and a Certificate match",
+      "How to import SSL Certificate in JVM for connection to Active Directory (over SSL)"
+    ]
+  },
+  {
+    title: "Seclore Policy Server",
+    count: 19,
+    href: "/support/search/?term=Seclore%20Policy%20Server",
+    articles: [
+      "Placing installers and upgrade patches for DC, adminless and MAC",
+      "Cannot revoke license (-220192)",
+      "OTP or Alert mails are not getting delivered (Cloud)",
+      "OTP or Alert mails are not getting delivered (On-Premise setup)",
+      "Troubleshoot Policy Server Errors"
+    ]
+  },
+  {
+    title: "HotFolder",
+    count: 3,
+    href: "/support/search/?term=HotFolder",
+    articles: [
+      "Unable to protect file in Hot folder",
+      "Error while reading configuration file - HotFolder",
+      "Hotfolder Service not Starting"
+    ]
+  },
+  {
+    title: "Seclore Email Auto Protector (MTA)",
+    count: 1,
+    href: "/support/search/?term=Seclore%20Email%20Auto%20Protector",
+    articles: [
+      "BCC Recipients do not get permissions to an email when protected through Seclore Email Auto Protector (MTA)"
+    ]
+  }
 ];
 ---
 
-<BaseLayout title="Solutions | Seclore Support">
-  <main class="support-simple-page">
-    <Nav />
-    <header>
-      <a class="logo" href="/">SECLORE<sup>TM</sup></a>
-      <a class="pill" href="/support/home/#contact">Contact Us</a>
+<BaseLayout
+  title="Solutions | Seclore Support"
+  description="Explore Seclore support knowledge base articles, how-to guides, and troubleshooting solutions."
+>
+  <main class="solutions-page">
+    <header class="support-header" aria-label="Seclore support header">
+      <a class="support-logo" href="/support/home/" aria-label="Seclore support home">
+        <img src="/images/home/seclore-logo-2026.svg" alt="Seclore" loading="eager" decoding="async" />
+      </a>
+      <a class="contact-pill" href="mailto:support@seclore.com">Contact Us</a>
     </header>
-    <nav>
-      <a href="/support/home/">Support Home</a>
-      <a class="active" href="/support/solutions/">Solutions</a>
-      <a href="/support/discussions/">Forums</a>
-      <span></span>
-      <a href="/support/login/">Login</a>
-      <a class="ticket" href="/support/tickets/new/">New Support Ticket</a>
+    <nav class="portal-nav" aria-label="Support portal navigation">
+      <a class="support-home-link" href="/support/home/">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m3 11 9-8 9 8" />
+          <path d="M5 10v10h5v-6h4v6h5V10" />
+        </svg>
+        Support Home
+      </a>
+      <span class="nav-spacer"></span>
+      <div class="portal-menu">
+        <button class="portal-menu-toggle" type="button" aria-label="Open support menu" aria-expanded="false" aria-controls="support-portal-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="portal-menu-panel" id="support-portal-menu" hidden>
+          <a class="active" href="/support/solutions/" aria-current="page">Solutions</a>
+          <a href="/support/discussions/">Forums</a>
+          <a href="/support/tickets/new/">New Support Ticket</a>
+        </div>
+      </div>
     </nav>
-    <section class="content">
-      <h1>Solutions</h1>
-      <p>Find answers to common Seclore support questions and product workflows.</p>
-      <div class="grid">
-        {categories.map(([title, text]) => (
-          <article>
-            <h2>{title}</h2>
-            <p>{text}</p>
-            <a href="/support/search/">View articles</a>
+
+    <section class="search-band" aria-label="Search support content">
+      <form class="support-search" action="/support/search/" method="get">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5" />
+          <path d="m16 16 5 5" />
+        </svg>
+        <input type="search" name="term" placeholder="Enter your search term here..." />
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <section class="knowledge-content" aria-label="Knowledge Base Articles">
+      <div class="knowledge-heading">
+        <h1>Knowledge base</h1>
+        <p>Explore How-To's and learn best practices from our knowledge base.</p>
+      </div>
+      <h2>Knowledge Base Articles</h2>
+      <div class="article-list">
+        {knowledgeBaseSections.map((section) => (
+          <article class="kb-section">
+            <h3>
+              <a href={section.href}>{section.title} <span>{section.count}</span></a>
+            </h3>
+            <ul>
+              {section.articles.map((article) => (
+                <li>
+                  <a href={`/support/search/?term=${encodeURIComponent(article)}`}>{article}</a>
+                </li>
+              ))}
+            </ul>
+            <a class="see-all" href={section.href}>See all {section.count} articles</a>
           </article>
         ))}
       </div>
     </section>
+
+    <script>
+      const portalMenu = document.querySelector(".portal-menu");
+      const portalMenuButton = document.querySelector(".portal-menu-toggle");
+      const portalMenuPanel = document.querySelector(".portal-menu-panel");
+
+      function setPortalMenuOpen(open: boolean) {
+        if (portalMenuButton instanceof HTMLButtonElement && portalMenuPanel instanceof HTMLElement) {
+          portalMenuButton.setAttribute("aria-expanded", String(open));
+          portalMenuPanel.hidden = !open;
+        }
+      }
+
+      portalMenuButton?.addEventListener("click", () => {
+        if (portalMenuButton instanceof HTMLButtonElement) {
+          setPortalMenuOpen(portalMenuButton.getAttribute("aria-expanded") !== "true");
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (portalMenu instanceof HTMLElement && event.target instanceof Node && !portalMenu.contains(event.target)) {
+          setPortalMenuOpen(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          setPortalMenuOpen(false);
+        }
+      });
+    </script>
   </main>
 </BaseLayout>
 
@@ -53,128 +186,397 @@ const categories = [
     display: none;
   }
 
-  header {
+  .solutions-page {
+    --purple: #5f3fd6;
+    --deep-purple: #25007d;
+    --line: #d8c8ff;
+    background: #f6f6f6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .solutions-page,
+  .solutions-page * {
+    box-sizing: border-box;
+  }
+
+  .support-header {
     align-items: center;
     background: #ffffff;
     display: flex;
     justify-content: space-between;
-    min-height: 95px;
-    padding: 22px clamp(24px, 4.4vw, 54px);
+    min-height: 108px;
+    padding: 18px clamp(22px, 4.8vw, 64px);
   }
 
-  .logo {
-    color: #4d2dcc;
-    font-size: clamp(2.2rem, 5vw, 4rem);
-    font-weight: 900;
-    letter-spacing: 0;
-    line-height: 0.78;
+  .support-logo {
+    display: inline-flex;
+    line-height: 1;
   }
 
-  .logo sup {
-    font-size: 0.18em;
-    font-weight: 500;
-    margin-left: 5px;
+  .support-logo img {
+    display: block;
+    height: auto;
+    width: clamp(260px, 38vw, 520px);
   }
 
-  .pill,
-  .ticket {
-    background: #5f3fd6;
+  .contact-pill {
+    align-items: center;
+    background: var(--purple);
     border-radius: 999px;
     color: #ffffff;
+    display: inline-flex;
+    font-size: 1.02rem;
     font-weight: 700;
-    padding: 14px 27px;
+    justify-content: center;
+    min-height: 47px;
+    padding: 0 27px;
+    text-decoration: none;
+    white-space: nowrap;
   }
 
-  nav {
+  .portal-nav svg,
+  .support-search svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+  }
+
+  .portal-nav {
     align-items: center;
-    background: #5f3fd6;
+    background: var(--purple);
     color: #ffffff;
     display: flex;
-    gap: 26px;
+    gap: 0;
     min-height: 67px;
-    padding: 0 32px;
+    padding: 0 6px 0 0;
   }
 
-  nav span {
+  .portal-nav a {
+    align-items: center;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 1.3rem;
+    font-weight: 600;
+    gap: 10px;
+    min-height: 67px;
+    padding: 0 20px;
+    text-decoration: none;
+  }
+
+  .portal-nav a.active {
+    background: #4a2abd;
+    color: #ffffff;
+  }
+
+  .portal-nav > a {
+    background: transparent;
+  }
+
+  .portal-nav svg {
+    height: 23px;
+    opacity: 0.8;
+    width: 23px;
+  }
+
+  .nav-spacer {
+    flex: 1 1 auto;
+  }
+
+  .portal-menu {
+    align-self: stretch;
+    display: inline-flex;
+    margin-left: auto;
+    position: relative;
+  }
+
+  .portal-menu-toggle {
+    align-items: center;
+    align-self: stretch;
+    background: transparent;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    min-height: 67px;
+    padding: 0 22px;
+  }
+
+  .portal-menu-toggle span {
+    background: currentColor;
+    border-radius: 999px;
+    display: block;
+    height: 2px;
+    width: 25px;
+  }
+
+  .portal-menu-toggle:hover,
+  .portal-menu-toggle[aria-expanded="true"] {
+    background: #4a2abd;
+  }
+
+  .portal-menu-panel {
+    background: var(--purple);
+    box-shadow: 0 16px 32px rgba(20, 11, 72, 0.2);
+    min-width: 220px;
+    padding: 8px 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 20;
+  }
+
+  .portal-menu-panel[hidden] {
+    display: none;
+  }
+
+  .portal-menu-panel a {
+    color: #ffffff;
+    font-size: 1rem;
+    min-height: 44px;
+    padding: 0 18px;
+    white-space: nowrap;
+  }
+
+  .portal-menu-panel a:hover {
+    background: #4a2abd;
+  }
+
+  .search-band {
+    background: #ffffff;
+    border-top: 1px solid #140817;
+    padding: 24px clamp(20px, 4vw, 48px);
+  }
+
+  .support-search {
+    align-items: center;
+    border: 2px solid var(--line);
+    color: #623ee0;
+    display: flex;
+    gap: 16px;
+    margin: 0 auto;
+    max-width: 1160px;
+    min-height: 64px;
+    padding: 0 20px;
+  }
+
+  .support-search svg {
+    flex: 0 0 auto;
+    height: 26px;
+    width: 26px;
+  }
+
+  .support-search input {
+    background: transparent;
+    border: 0;
+    color: #4e2ed0;
     flex: 1;
+    font-size: 1.25rem;
+    min-width: 0;
+    outline: 0;
   }
 
-  nav a {
-    font-size: 1.15rem;
+  .support-search input::placeholder {
+    color: #9d7cf0;
+    opacity: 1;
+  }
+
+  .support-search button {
+    background: transparent;
+    border: 0;
+    color: var(--purple);
+    cursor: pointer;
+    font-size: 1rem;
     font-weight: 700;
   }
 
-  nav .active {
-    text-decoration: underline;
-    text-underline-offset: 7px;
-  }
-
-  nav .ticket {
+  .knowledge-content {
     background: #ffffff;
-    color: #5f3fd6;
-    padding: 12px 24px;
-  }
-
-  .content {
     margin: 0 auto;
     max-width: 980px;
-    padding: 54px 24px 90px;
+    padding: 34px 24px 80px;
   }
 
-  h1 {
-    font-size: 2.4rem;
+  .knowledge-heading {
+    margin: 0 0 28px;
+  }
+
+  .knowledge-heading h1 {
+    color: #151515;
+    font-size: clamp(1.65rem, 3vw, 2.15rem);
     font-weight: 500;
+    line-height: 1.18;
+    margin: 0 0 8px;
+  }
+
+  .knowledge-heading p {
+    color: #5c5c5c;
+    font-size: clamp(1rem, 1.7vw, 1.18rem);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .knowledge-content h2 {
+    border-bottom: 1px solid #dfdfdf;
+    color: #252525;
+    font-size: 1.18rem;
+    font-weight: 700;
+    margin: 0 0 26px;
+    padding-bottom: 16px;
+  }
+
+  .article-list {
+    display: grid;
+    gap: 28px;
+  }
+
+  .kb-section {
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 24px;
+  }
+
+  .kb-section h3 {
+    font-size: 1.08rem;
     margin: 0 0 12px;
   }
 
-  .content > p {
-    color: #3a3a3a;
-    font-size: 1.18rem;
-    margin: 0 0 34px;
-  }
-
-  .grid {
-    display: grid;
-    gap: 18px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  article {
-    background: #ffffff;
-    border: 1px solid #e2ddf6;
-    border-radius: 6px;
-    padding: 24px;
-  }
-
-  h2 {
-    color: #5f3fd6;
-    margin: 0 0 10px;
-  }
-
-  article p {
+  .kb-section h3 a {
     color: #222222;
-    line-height: 1.45;
+    font-weight: 700;
+    text-decoration: none;
   }
 
-  article a {
-    color: #4d2dcc;
+  .kb-section h3 span {
+    color: #777777;
+    font-weight: 600;
+  }
+
+  .kb-section ul {
+    display: grid;
+    gap: 9px;
+    list-style: none;
+    margin: 0 0 14px;
+    padding: 0;
+  }
+
+  .kb-section li {
+    color: #6e6e6e;
+    line-height: 1.45;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .kb-section li::before {
+    background: #bdbdbd;
+    border-radius: 50%;
+    content: "";
+    height: 5px;
+    left: 3px;
+    position: absolute;
+    top: 0.62em;
+    width: 5px;
+  }
+
+  .kb-section li a,
+  .see-all {
+    color: #4d4d4d;
+    text-decoration: none;
+  }
+
+  .kb-section li a:hover,
+  .kb-section h3 a:hover,
+  .see-all:hover {
+    color: var(--purple);
+    text-decoration: underline;
+  }
+
+  .see-all {
+    display: inline-flex;
+    font-size: 0.95rem;
     font-weight: 700;
   }
 
-  @media (max-width: 760px) {
-    header,
-    nav {
-      align-items: flex-start;
-      flex-wrap: wrap;
-      padding: 18px;
+  @media (max-width: 780px) {
+    .support-header,
+    .portal-nav {
+      padding-inline: 18px;
     }
 
-    nav span {
+    .support-header {
+      min-height: 82px;
+      padding-block: 14px;
+    }
+
+    .support-header .contact-pill {
       display: none;
     }
 
-    .grid {
-      grid-template-columns: 1fr;
+    .support-logo img {
+      width: clamp(220px, 58vw, 360px);
+    }
+
+    .portal-nav {
+      min-height: 64px;
+    }
+
+    .portal-nav a {
+      font-size: 1.18rem;
+      min-height: 64px;
+      padding: 0 18px;
+    }
+
+    .search-band {
+      padding: 18px 16px;
+    }
+
+    .support-search {
+      gap: 12px;
+      min-height: 58px;
+      padding: 0 14px;
+    }
+
+    .support-search input {
+      font-size: 1rem;
+    }
+
+    .knowledge-content {
+      padding: 28px 18px 60px;
+    }
+  }
+
+  @media (max-width: 460px) {
+    .support-header {
+      align-items: center;
+      justify-content: center;
+      min-height: 72px;
+      padding: 12px 16px;
+    }
+
+    .support-logo {
+      max-width: 100%;
+      width: min(82vw, 300px);
+    }
+
+    .support-logo img {
+      width: 100%;
+    }
+
+    .portal-nav a {
+      padding-left: 18px;
+      padding-right: 12px;
+    }
+
+    .portal-menu-toggle {
+      padding: 0 18px;
+    }
+
+    .support-search button {
+      display: none;
     }
   }
 </style>

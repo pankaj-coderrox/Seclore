@@ -484,11 +484,14 @@ const resources = [
     color: var(--demo-button-text);
     cursor: pointer;
     display: inline-flex;
-    font-size: 0.9rem;
-    font-weight: 850;
+    font-size: 0.94rem;
+    font-weight: 700;
     justify-content: center;
-    min-height: 40px;
-    padding: 0 18px;
+    line-height: 1.15;
+    min-height: 42px;
+    padding: 0 22px;
+    text-decoration: none;
+    white-space: nowrap;
   }
 
   .nav-toggle {
@@ -509,23 +512,34 @@ const resources = [
 
   .primary-button {
     align-items: center;
-    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+    background: var(--purple);
     border: 0;
-    border-radius: 6px;
+    border-radius: 7px;
     color: #fff;
     display: inline-flex;
-    font-size: 0.92rem;
-    font-weight: 800;
+    font-size: 0.94rem;
+    font-weight: 700;
     justify-content: center;
+    line-height: 1.15;
     min-height: 42px;
-    padding: 0.8rem 1.45rem;
+    padding: 0 22px;
     text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .dlp-casb-page .dlp-hero > .primary-button,
+  .dlp-casb-page .split-copy > .primary-button,
+  .dlp-casb-page .cta-section > .primary-button {
+    border-radius: 7px !important;
+    min-height: 42px !important;
+    padding: 0 22px !important;
+    width: auto !important;
   }
 
   .primary-button.small {
-    font-size: 0.82rem;
-    min-height: 36px;
-    padding: 0.68rem 1.1rem;
+    font-size: 0.9rem;
+    min-height: 40px;
+    padding: 0 18px;
   }
 
   .dlp-hero {
@@ -1138,6 +1152,13 @@ const resources = [
       margin-right: auto;
       max-width: 365px;
     }
+
+    .dlp-casb-page .dlp-hero > .primary-button,
+    .dlp-casb-page .split-copy > .primary-button,
+    .dlp-casb-page .cta-section > .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 560px) {
@@ -1157,6 +1178,15 @@ const resources = [
     .benefit-card,
     .resource-body {
       padding: 30px 24px;
+    }
+
+    .dlp-casb-page .dlp-hero > .primary-button,
+    .dlp-casb-page .split-copy > .primary-button,
+    .dlp-casb-page .cta-section > .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px !important;
+      padding: 0 18px !important;
+      white-space: normal;
     }
   }
 </style>

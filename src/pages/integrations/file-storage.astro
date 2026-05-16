@@ -280,8 +280,11 @@ const resources = [
     font-size: 0.9rem;
     font-weight: 850;
     justify-content: center;
+    line-height: 1;
     min-height: 40px;
     padding: 0 18px;
+    white-space: nowrap;
+    width: fit-content;
   }
 
   .nav-toggle { background: transparent; border: 0; display: none; height: 42px; width: 42px; }
@@ -388,11 +391,23 @@ const resources = [
     .storage-grid, .resource-grid { grid-template-columns: 1fr; }
     .resource-grid { margin-left: auto; margin-right: auto; max-width: 365px; }
     .storage-card { min-height: 0; padding: 36px 28px; }
+    .file-storage-page .product-hero > .primary-button,
+    .file-storage-page .cta-section > .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 560px) {
     .product-hero h1 { font-size: 2.7rem; }
     .intro-copy h2, .section-heading h2 { font-size: 2.2rem; }
     .band-section h2 { font-size: 2rem; }
+    .file-storage-page .product-hero > .primary-button,
+    .file-storage-page .cta-section > .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
   }
 </style>

@@ -714,11 +714,23 @@ const relatedProducts = [
     border-radius: 7px;
     cursor: pointer;
     display: inline-flex;
-    font-size: 0.9rem;
-    font-weight: 850;
+    font-size: 0.94rem;
+    font-weight: 700;
     justify-content: center;
+    line-height: 1.15;
     min-height: 42px;
-    padding: 0 18px;
+    padding: 0 22px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .classification-page .hero-copy > .primary-button,
+  .classification-page .story-section > .secondary-button,
+  .classification-page .classification-form > .primary-button {
+    border-radius: 7px !important;
+    min-height: 42px !important;
+    padding: 0 22px !important;
+    width: auto !important;
   }
 
   .demo-button,
@@ -1367,6 +1379,24 @@ const relatedProducts = [
 
     .mock-sidebar {
       grid-template-columns: repeat(4, 1fr);
+    }
+
+    .classification-page .hero-copy > .primary-button,
+    .classification-page .story-section > .secondary-button,
+    .classification-page .classification-form > .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .classification-page .hero-copy > .primary-button,
+    .classification-page .story-section > .secondary-button,
+    .classification-page .classification-form > .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px !important;
+      padding: 0 18px !important;
+      white-space: normal;
     }
   }
 </style>
