@@ -77,7 +77,11 @@ const countries = [
   "Japan"
 ];
 
-const apiBase = import.meta.env.PUBLIC_API_BASE_URL || "";
+const configuredApiBase = String(import.meta.env.PUBLIC_API_BASE_URL || "").replace(/\/$/, "");
+const localApiBasePattern = /^https?:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/i;
+const apiBase = import.meta.env.DEV
+  ? configuredApiBase || "http://127.0.0.1:5000"
+  : localApiBasePattern.test(configuredApiBase) ? "" : configuredApiBase;
 const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 ---
 
@@ -273,6 +277,13 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
           return `${configuredBase}${path.startsWith("/") ? "" : "/"}${path}`;
         }
 
+        if (configuredBase && isLocalApiBase && !isLocalPage && !isPrivateDevPage) {
+          console.warn("[Demo form] Ignoring local API base URL on production page.", {
+            apiBase: configuredBase,
+            pageHost: window.location.hostname
+          });
+        }
+
         if (isLocalPage || isPrivateDevPage) {
           const apiHost = isPrivateDevPage ? window.location.hostname : "127.0.0.1";
           return `http://${apiHost}:5000${path.startsWith("/") ? "" : "/"}${path}`;
@@ -327,8 +338,11 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
           status.className = "form-status";
         }
 
+        let requestUrl = form.dataset.endpoint || "/api/demo";
+
         try {
-          const response = await fetch(resolveApiUrl(form.dataset.endpoint), {
+          requestUrl = resolveApiUrl(form.dataset.endpoint);
+          const response = await fetch(requestUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
@@ -336,6 +350,11 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
           const result = await response.json().catch(() => ({}));
 
           if (!response.ok) {
+            console.error("[Demo form] API request failed.", {
+              url: requestUrl,
+              status: response.status,
+              response: result
+            });
             throw new Error(result.message || "We could not send the request. Please check the API server and try again.");
           }
 
@@ -346,6 +365,10 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
             status.classList.add("success");
           }
         } catch (error) {
+          console.error("[Demo form] Submit request error.", {
+            url: requestUrl,
+            error
+          });
           if (status) {
             const isNetworkError = error instanceof TypeError;
             status.textContent = isNetworkError
