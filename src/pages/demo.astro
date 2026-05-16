@@ -93,7 +93,39 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Book a Demo | Seclore</title>
-    <script is:inline src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script is:inline>
+      window.renderDemoRecaptcha = () => {
+        const widget = document.querySelector(".g-recaptcha");
+        const wrapper = widget?.closest(".captcha-widget");
+
+        if (widget && window.grecaptcha && !widget.dataset.widgetId) {
+          try {
+            widget.dataset.widgetId = window.grecaptcha.render(widget, {
+              sitekey: widget.dataset.sitekey
+            });
+            wrapper?.classList.add("is-rendered");
+          } catch (error) {
+            console.error("[Demo form] reCAPTCHA render failed.", error);
+          }
+        }
+      };
+
+      window.onDemoRecaptchaLoad = () => {
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", window.renderDemoRecaptcha, { once: true });
+          return;
+        }
+
+        window.renderDemoRecaptcha();
+      };
+    </script>
+    <script
+      is:inline
+      src="https://www.google.com/recaptcha/api.js?onload=onDemoRecaptchaLoad&render=explicit"
+      async
+      defer
+      onerror="this.onerror=null;this.src='https://www.recaptcha.net/recaptcha/api.js?onload=onDemoRecaptchaLoad&render=explicit';"
+    ></script>
   </head>
   <body>
     <main class="demo-page">
@@ -189,6 +221,11 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
 
           <div class="captcha-widget">
             <div class="g-recaptcha" data-sitekey={recaptchaSiteKey}></div>
+            <div class="recaptcha-fallback" aria-hidden="true">
+              <span></span>
+              <strong>reCAPTCHA</strong>
+              <small>Loading verification...</small>
+            </div>
           </div>
 
           <button type="submit">Submit</button>
@@ -305,8 +342,10 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
         const data = new FormData(form);
         const firstName = String(data.get("firstName") || "").trim();
         const lastName = String(data.get("lastName") || "").trim();
+        const recaptchaWidget = form.querySelector(".g-recaptcha");
+        const recaptchaWidgetId = recaptchaWidget?.dataset.widgetId ? Number(recaptchaWidget.dataset.widgetId) : undefined;
         const recaptchaReady = !recaptchaSiteKey || Boolean(window.grecaptcha?.getResponse);
-        const recaptchaToken = String(data.get("g-recaptcha-response") || window.grecaptcha?.getResponse?.() || "").trim();
+        const recaptchaToken = String(data.get("g-recaptcha-response") || window.grecaptcha?.getResponse?.(recaptchaWidgetId) || "").trim();
 
         if (recaptchaSiteKey && (!recaptchaReady || !recaptchaToken)) {
           if (status) {
@@ -359,7 +398,7 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
           }
 
           form.reset();
-          window.grecaptcha?.reset?.();
+          window.grecaptcha?.reset?.(recaptchaWidgetId);
           if (status) {
             status.textContent = result.message || "Demo request received.";
             status.classList.add("success");
@@ -645,8 +684,8 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
     color: #222225;
     display: grid;
     justify-self: end;
-    padding-top: 18px;
-    width: min(100%, 510px);
+    padding: 18px clamp(16px, 1.65vw, 26px) 0;
+    width: min(100%, 560px);
   }
 
   .demo-form h2 {
@@ -730,6 +769,49 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
   .captcha-widget .g-recaptcha {
     max-width: 100%;
     transform-origin: left top;
+  }
+
+  .captcha-widget.is-rendered .recaptcha-fallback {
+    display: none;
+  }
+
+  .recaptcha-fallback {
+    align-items: center;
+    background: #f9f9f9;
+    border: 1px solid #d7d7d7;
+    border-radius: 3px;
+    color: #3c4043;
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    min-height: 74px;
+    padding: 12px 14px;
+    width: 304px;
+  }
+
+  .recaptcha-fallback span {
+    background: #ffffff;
+    border: 2px solid #6f7378;
+    display: block;
+    height: 26px;
+    width: 26px;
+  }
+
+  .recaptcha-fallback strong,
+  .recaptcha-fallback small {
+    grid-column: 2;
+    margin-left: 12px;
+  }
+
+  .recaptcha-fallback strong {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .recaptcha-fallback small {
+    color: #777;
+    font-size: 10px;
+    line-height: 1.2;
   }
 
   .demo-form button {
@@ -1044,8 +1126,8 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
 
     .demo-form {
       justify-self: start;
-      padding-top: 0;
-      width: min(100%, 520px);
+      padding: 0 clamp(14px, 3vw, 22px);
+      width: min(100%, 560px);
     }
 
     .ready-section {
@@ -1167,6 +1249,10 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTA
 
     .demo-form h2 {
       font-size: 32px;
+    }
+
+    .demo-form {
+      padding-inline: 4px;
     }
 
     .captcha-widget {
