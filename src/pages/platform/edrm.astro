@@ -18,13 +18,27 @@ const controls = [
     <Nav />
 
     <section class="simple-route-hero">
-      <span>Data-Centric Security Platform</span>
-      <h1>Enterprise Digital Rights Management</h1>
-      <p>
-        Apply persistent controls to sensitive files so access, usage, and revocation remain under
-        your control after data leaves repositories, applications, or your organization.
-      </p>
-      <a class="simple-route-button" href="/demo/">Book a Demo</a>
+      <div class="hero-copy">
+        <span>Data-Centric Security Platform</span>
+        <h1>Enterprise Digital Rights Management</h1>
+        <p>
+          Apply persistent controls to sensitive files so access, usage, and revocation remain under
+          your control after data leaves repositories, applications, or your organization.
+        </p>
+        <a class="simple-route-button" href="/demo/">Book a Demo</a>
+      </div>
+      <figure
+        class="edrm-visual"
+        aria-label="Enterprise Digital Rights Management intelligence preview"
+        style="background:none;border:0;box-shadow:none;display:block;min-height:0;padding:0;"
+      >
+        <img
+          src="/images/platform/edrm-hero-laptop.png"
+          alt="Laptop showing enterprise data classification and protection intelligence"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
     </section>
 
     <section class="simple-route-grid" aria-label="EDRM capabilities">
@@ -46,7 +60,13 @@ const controls = [
   }
 
   .simple-route-hero {
-    padding: clamp(72px, 9vw, 128px) clamp(24px, 6vw, 84px) clamp(48px, 6vw, 78px);
+    align-items: center;
+    display: grid;
+    gap: clamp(52px, 5vw, 76px);
+    grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+    margin: 0 auto;
+    max-width: 1190px;
+    padding: 68px 24px 104px;
   }
 
   .simple-route-hero span {
@@ -60,19 +80,19 @@ const controls = [
   }
 
   .simple-route-hero h1 {
-    font-size: clamp(2.6rem, 7vw, 5.8rem);
-    font-weight: 400;
+    font-size: clamp(3.4rem, 5.8vw, 5.8rem);
+    font-weight: 500;
     letter-spacing: 0;
-    line-height: 0.98;
+    line-height: 1;
     margin: 0 0 28px;
     max-width: 920px;
   }
 
   .simple-route-hero p {
     color: #3b3b44;
-    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+    font-size: 1.22rem;
     line-height: 1.55;
-    max-width: 720px;
+    max-width: 600px;
   }
 
   .simple-route-button {
@@ -89,11 +109,34 @@ const controls = [
     text-decoration: none;
   }
 
+  .edrm-visual {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    display: block;
+    justify-self: end;
+    margin: 0;
+    max-width: 760px;
+    min-height: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .edrm-visual img {
+    display: block;
+    height: auto;
+    object-fit: contain;
+    transform: translateX(18px);
+    width: 100%;
+  }
+
   .simple-route-grid {
     display: grid;
     gap: 22px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    padding: 0 clamp(24px, 6vw, 84px) clamp(72px, 8vw, 112px);
+    margin: 0 auto;
+    max-width: 1190px;
+    padding: 0 24px 96px;
   }
 
   .simple-route-grid article {
@@ -117,18 +160,110 @@ const controls = [
   }
 
   @media (max-width: 900px) {
+    .simple-route-hero {
+      grid-template-columns: 1fr;
+      padding: 56px 20px 76px;
+    }
+
+    .simple-route-hero h1 {
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.1;
+      max-width: 340px;
+      width: calc(100vw - 32px);
+    }
+
+    .simple-route-hero p {
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 312px;
+    }
+
+    .simple-route-button {
+      min-height: 42px;
+    }
+
+    .edrm-visual {
+      justify-self: stretch;
+      max-width: none;
+      overflow: visible;
+    }
+
     .simple-route-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding: 0 20px 76px;
     }
   }
 
   @media (max-width: 560px) {
     .simple-route-hero {
-      padding-top: 54px;
+      gap: 76px;
+      padding-top: 56px;
+    }
+
+    .simple-route-hero span {
+      font-size: 0.88rem;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      max-width: 320px;
+    }
+
+    .edrm-visual {
+      margin-left: -20px;
+      margin-top: -36px;
+      width: calc(100% + 40px);
+    }
+
+    .edrm-visual img {
+      transform: none;
     }
 
     .simple-route-grid {
       grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<style is:inline>
+  .simple-route-page .edrm-visual {
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    display: block !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+
+  .simple-route-page .edrm-visual img {
+    display: block !important;
+    height: auto !important;
+    object-fit: contain !important;
+    width: 100% !important;
+  }
+
+  @media (min-width: 901px) {
+    .simple-route-page .edrm-visual {
+      max-width: min(760px, 53vw) !important;
+    }
+
+    .simple-route-page .edrm-visual img {
+      transform: translateX(18px);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .simple-route-page .simple-route-hero {
+      gap: 48px !important;
+    }
+
+    .simple-route-page .edrm-visual {
+      margin-left: calc(50% - 50vw + 8px) !important;
+      margin-top: -26px !important;
+      width: calc(100vw - 16px) !important;
+    }
+
+    .simple-route-page .edrm-visual img {
+      transform: none !important;
     }
   }
 </style>

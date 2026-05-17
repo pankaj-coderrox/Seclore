@@ -790,18 +790,21 @@ const useCases = [
     align-items: center;
     background: var(--card);
     display: grid;
-    gap: 40px;
+    gap: clamp(48px, 5vw, 76px);
     grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
-    min-height: 520px;
+    min-height: 0;
+    margin: 0 auto;
+    max-width: 1190px;
+    padding: 68px 24px 104px;
   }
 
   .brand-kicker {
     display: block;
-    font-size: clamp(3rem, 7vw, 6rem);
+    font-size: clamp(3.7rem, 6.1vw, 5.9rem);
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 1;
-    margin-bottom: 20px;
+    line-height: 0.96;
+    margin-bottom: 26px;
   }
 
   h1,
@@ -812,10 +815,10 @@ const useCases = [
   }
 
   h1 {
-    font-size: clamp(3.1rem, 6vw, 5.6rem);
+    font-size: clamp(3.5rem, 5.8vw, 5.65rem);
     font-weight: 500;
-    line-height: 0.98;
-    margin-bottom: 24px;
+    line-height: 1;
+    margin-bottom: 28px;
   }
 
   h2 {
@@ -836,7 +839,13 @@ const useCases = [
   }
 
   .hero-copy p {
-    max-width: 620px;
+    font-size: 1.24rem;
+    line-height: 1.55;
+    max-width: 600px;
+  }
+
+  .hero-copy > .primary-button {
+    margin-top: 28px;
   }
 
   .dashboard-shell {
@@ -853,8 +862,10 @@ const useCases = [
     border: 0;
     border-radius: 18px;
     box-shadow: 0 26px 70px rgba(86, 48, 214, 0.14);
+    justify-self: end;
     overflow: hidden;
     padding: 0;
+    width: min(100%, 620px);
   }
 
   .dashboard-shell.image-shell img {
@@ -1463,6 +1474,48 @@ const useCases = [
     .dspm-page .final-cta > .primary-button {
       max-width: 100%;
       width: fit-content !important;
+    }
+
+    .dspm-hero {
+      gap: 76px;
+      min-height: 0;
+      padding: 56px 20px 76px;
+    }
+
+    .dashboard-shell.image-shell {
+      justify-self: stretch;
+      width: 100%;
+    }
+
+    .brand-kicker {
+      font-size: 40px;
+      line-height: 1.05;
+      margin-bottom: 26px;
+    }
+
+    .dspm-page h1 {
+      font-size: 38px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      max-width: 340px;
+      width: calc(100vw - 32px);
+    }
+
+    .hero-copy p {
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 300px;
+    }
+
+    .dspm-page .hero-copy > .primary-button {
+      margin-top: 8px;
+      min-height: 42px !important;
+      min-width: 116px;
+    }
+
+    .dashboard-shell.image-shell {
+      border-radius: 18px;
     }
   }
 

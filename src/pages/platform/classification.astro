@@ -855,16 +855,26 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
     align-items: center;
     background: var(--card);
     display: grid;
-    gap: 42px;
+    gap: clamp(52px, 5vw, 76px);
     grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
-    min-height: 560px;
+    margin: 0 auto;
+    max-width: 1190px;
+    min-height: 0;
+    padding: 68px 24px 104px;
   }
 
   .hero-copy p {
+    font-size: 1.22rem;
+    line-height: 1.55;
     max-width: 600px;
   }
 
+  .hero-copy > .primary-button {
+    margin-top: 28px;
+  }
+
   .laptop-visual {
+    justify-self: end;
     margin: 0;
     min-width: 0;
   }
@@ -873,7 +883,7 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
     display: block;
     height: auto;
     object-fit: contain;
-    width: 80%;
+    width: min(100%, 680px);
     max-width: 720px;
     margin-left: auto;
   }
@@ -1467,6 +1477,49 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
     .classification-page .classification-form > .primary-button {
       max-width: 100%;
       width: fit-content !important;
+    }
+
+    .classification-hero {
+      gap: 88px;
+      padding: 56px 20px 76px;
+    }
+
+    .classification-page h1 {
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      max-width: 340px;
+      width: calc(100vw - 32px);
+    }
+
+    .classification-page .eyebrow {
+      font-size: 0.88rem;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      max-width: 320px;
+    }
+
+    .hero-copy p {
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 312px;
+    }
+
+    .hero-copy > .primary-button {
+      margin-top: 8px;
+      min-height: 42px !important;
+      min-width: 116px;
+    }
+
+    .laptop-visual {
+      justify-self: stretch;
+    }
+
+    .laptop-visual img {
+      margin-left: auto;
+      margin-right: auto;
+      width: min(100%, 330px);
     }
   }
 

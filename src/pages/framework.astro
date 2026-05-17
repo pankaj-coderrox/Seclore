@@ -8,6 +8,7 @@ const insightCards = [
   ["Enforce", "Apply protection, classification, and access controls with the right level of friction."],
   ["Prove", "Maintain evidence, audit trails, and reporting for security and compliance teams."]
 ];
+
 ---
 
 <BaseLayout
@@ -18,18 +19,37 @@ const insightCards = [
     <Nav />
 
     <section class="framework-hero">
-      <span>Insights</span>
-      <h1>Data Intelligence Framework</h1>
-      <p>
-        Bring discovery, context, enforcement, and proof together so sensitive data can be trusted
-        and controlled wherever people and AI work.
-      </p>
-      <a href="/resources/" class="framework-button">Explore Resources</a>
+      <div class="framework-copy">
+        <span>Data Security Intelligence</span>
+        <h1>Data Security Intelligence Framework</h1>
+        <p>
+          Turn protected file activity and classification telemetry into clear, visual insights so
+          security, compliance, and business teams can see how sensitive data moves.
+        </p>
+        <a
+          href="/resources/"
+          class="framework-button"
+          style="background:#5630d6;border-color:#5630d6;color:#ffffff;"
+        >
+          Explore Resources
+        </a>
+      </div>
+
+      <figure class="framework-visual" aria-label="Data security intelligence dashboard preview">
+        <img
+          src="/images/framework/data-security-framework-monitor.png"
+          alt="Monitor showing Seclore data security intelligence dashboard bars"
+          loading="eager"
+          decoding="async"
+          style="display:block;height:auto;object-fit:contain;width:100%;"
+        />
+      </figure>
     </section>
 
     <section class="framework-grid" aria-label="Framework steps">
-      {insightCards.map(([title, text]) => (
+      {insightCards.map(([title, text], index) => (
         <article>
+          <span class="step-number">{String(index + 1).padStart(2, "0")}</span>
           <h2>{title}</h2>
           <p>{text}</p>
         </article>
@@ -40,14 +60,20 @@ const insightCards = [
 
 <style>
   .framework-page {
-    background: #f8f8fb;
-    color: #111827;
+    background: #ffffff;
+    color: #101828;
     min-height: 100vh;
   }
 
   .framework-hero {
+    align-items: center;
     background: #ffffff;
-    padding: clamp(72px, 9vw, 128px) clamp(24px, 6vw, 84px);
+    display: grid;
+    gap: clamp(48px, 5.8vw, 84px);
+    grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
+    margin: 0 auto;
+    max-width: 1190px;
+    padding: 68px 24px 92px;
   }
 
   .framework-hero span {
@@ -56,31 +82,33 @@ const insightCards = [
     font-size: 0.82rem;
     font-weight: 800;
     letter-spacing: 0.08em;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     text-transform: uppercase;
   }
 
   .framework-hero h1 {
-    font-size: clamp(2.55rem, 7vw, 5.6rem);
-    font-weight: 400;
+    font-size: clamp(3.25rem, 5.7vw, 5.75rem);
+    font-weight: 500;
     letter-spacing: 0;
     line-height: 1;
     margin: 0 0 26px;
-    max-width: 880px;
+    max-width: 720px;
   }
 
   .framework-hero p {
-    color: #374151;
-    font-size: clamp(1.05rem, 1.5vw, 1.32rem);
-    line-height: 1.55;
-    max-width: 720px;
+    color: #3b3b44;
+    font-size: 1.2rem;
+    line-height: 1.56;
+    margin: 0;
+    max-width: 600px;
   }
 
   .framework-button {
     align-items: center;
+    background: #5630d6;
     border: 1px solid #5630d6;
     border-radius: 7px;
-    color: #5630d6;
+    color: #ffffff;
     display: inline-flex;
     font-weight: 800;
     justify-content: center;
@@ -90,24 +118,58 @@ const insightCards = [
     text-decoration: none;
   }
 
+  .framework-button:hover {
+    background: #4420bd;
+    border-color: #4420bd;
+    color: #ffffff;
+  }
+
+  .framework-visual {
+    justify-self: end;
+    margin: 0;
+    max-width: 620px;
+    width: 100%;
+  }
+
+  .framework-visual img {
+    display: block;
+    height: auto;
+    margin: 0;
+    object-fit: contain;
+    transform: translateX(16px);
+    width: 100%;
+  }
+
   .framework-grid {
     display: grid;
-    gap: 22px;
+    gap: 24px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    padding: clamp(48px, 6vw, 78px) clamp(24px, 6vw, 84px);
+    margin: 0 auto;
+    max-width: 1190px;
+    padding: 0 24px 96px;
   }
 
   .framework-grid article {
     background: #ffffff;
     border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    min-height: 210px;
+    border-radius: 8px;
+    min-height: 214px;
     padding: 28px;
   }
 
+  .step-number {
+    color: #5630d6;
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    margin-bottom: 24px;
+  }
+
   .framework-grid h2 {
-    font-size: 1.35rem;
-    font-weight: 600;
+    font-size: 1.28rem;
+    font-weight: 650;
+    line-height: 1.16;
     margin: 0 0 14px;
   }
 
@@ -118,14 +180,60 @@ const insightCards = [
   }
 
   @media (max-width: 900px) {
+    .framework-hero {
+      grid-template-columns: 1fr;
+      padding: 56px 20px 72px;
+    }
+
+    .framework-hero h1 {
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.1;
+      max-width: 340px;
+    }
+
+    .framework-hero p {
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 330px;
+    }
+
+    .framework-button {
+      min-height: 42px;
+    }
+
+    .framework-visual {
+      justify-self: stretch;
+      max-width: none;
+    }
+
+    .framework-visual img {
+      transform: none;
+    }
+
     .framework-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding: 0 20px 72px;
     }
   }
 
   @media (max-width: 560px) {
     .framework-hero {
-      padding-top: 54px;
+      gap: 42px;
+      padding-top: 56px;
+    }
+
+    .framework-hero span {
+      font-size: 0.86rem;
+      line-height: 1.35;
+      margin-bottom: 26px;
+      max-width: 320px;
+    }
+
+    .framework-visual {
+      margin-left: -14px;
+      margin-top: -8px;
+      width: calc(100% + 28px);
     }
 
     .framework-grid {

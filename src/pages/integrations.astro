@@ -524,8 +524,11 @@ const integrationSections = [
   .integrations-hero {
     background: radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.22), transparent 28%), linear-gradient(135deg, #c27ff5 0%, #8b23ff 46%, #5b11e6 100%);
     color: #ffffff;
-    min-height: 500px;
-    padding: 82px clamp(18px, 4vw, 52px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 86px);
+    padding: 96px clamp(20px, 4vw, 52px) 112px;
     text-align: center;
   }
 
@@ -538,7 +541,7 @@ const integrationSections = [
   .integrations-hero p {
     color: rgba(255, 255, 255, 0.9);
     margin-inline: auto;
-    max-width: 1180px;
+    max-width: 960px;
   }
 
   .hero-actions,
@@ -549,6 +552,7 @@ const integrationSections = [
   }
 
   .hero-actions {
+    align-items: center;
     justify-content: center;
     margin-top: 28px;
   }
@@ -557,9 +561,11 @@ const integrationSections = [
   .integration-row {
     align-items: center;
     display: grid;
-    gap: clamp(28px, 5vw, 72px);
+    gap: clamp(34px, 5vw, 68px);
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    padding: clamp(58px, 8vw, 96px) clamp(18px, 4vw, 52px);
+    margin: 0 auto;
+    max-width: 1190px;
+    padding: clamp(64px, 8vw, 92px) 24px;
   }
 
   .intro-section,
@@ -616,7 +622,9 @@ const integrationSections = [
     display: grid;
     gap: clamp(22px, 4vw, 44px);
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    padding: 42px clamp(20px, 4vw, 52px);
+    margin: 0 auto;
+    max-width: 1190px;
+    padding: 38px 24px;
     text-align: center;
   }
 
@@ -641,7 +649,7 @@ const integrationSections = [
 
   .orchestration-section {
     background: var(--page-bg);
-    padding: 70px clamp(18px, 4vw, 52px);
+    padding: 64px 24px;
   }
 
   .section-heading {
@@ -654,8 +662,8 @@ const integrationSections = [
   }
 
   .integration-row {
-    padding-bottom: 46px;
-    padding-top: 46px;
+    padding-bottom: 52px;
+    padding-top: 52px;
   }
 
   .integration-row.reverse .photo-card {
@@ -941,6 +949,8 @@ const integrationSections = [
     .integration-row,
     .integration-row {
       grid-template-columns: 1fr;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     .integration-row.reverse .photo-card,
@@ -963,6 +973,14 @@ const integrationSections = [
       max-width: 100%;
       width: fit-content !important;
     }
+
+    .integrations-page .hero-actions {
+      align-items: center !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap;
+      gap: 10px;
+      justify-content: center !important;
+    }
   }
 
   @media (max-width: 520px) {
@@ -971,8 +989,10 @@ const integrationSections = [
     }
 
     .integrations-hero {
-      min-height: 430px;
-      padding-top: 58px;
+      justify-content: flex-start;
+      min-height: 720px;
+      padding-bottom: 88px;
+      padding-top: 120px;
     }
 
     .photo-card {
@@ -983,10 +1003,15 @@ const integrationSections = [
     .integrations-page .hero-actions > .secondary-button,
     .integrations-page .integration-copy .primary-button.small,
     .integrations-page .integration-copy .secondary-button.small {
-      font-size: 0.9rem !important;
+      font-size: 0.84rem !important;
       min-height: 40px !important;
-      padding: 0 18px !important;
+      padding: 0 14px !important;
       white-space: normal;
+    }
+
+    .integrations-page .hero-actions > .primary-button,
+    .integrations-page .hero-actions > .secondary-button {
+      white-space: nowrap;
     }
   }
 </style>

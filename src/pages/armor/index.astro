@@ -296,6 +296,8 @@ const resources = [
   .armor-page h3,
   .armor-page p { margin: 0; }
 
+  .armor-page { background: #fff; }
+
   .site-header {
     align-items: center;
     background: var(--header-bg);
@@ -371,19 +373,19 @@ const resources = [
     grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.08fr);
     margin: 0 auto;
     max-width: 1190px;
-    padding: 52px 24px 48px;
+    padding: 68px 24px 104px;
   }
 
   .armor-lockup { align-items: center; color: var(--purple); display: flex; gap: 18px; margin-bottom: 28px; }
   .armor-lockup strong { font-size: clamp(4rem, 8vw, 7.3rem); font-weight: 800; letter-spacing: 0.03em; line-height: 0.8; }
   .armor-mark { display: block; flex: 0 0 auto; height: clamp(62px, 8vw, 90px); width: clamp(62px, 8vw, 90px); }
-  .hero-copy h1 { font-size: clamp(3.4rem, 7vw, 6.55rem); font-weight: 500; line-height: 0.96; }
-  .hero-copy > p { color: var(--page-text); font-size: 1.22rem; line-height: 1.5; margin-top: 1.35rem; max-width: 620px; }
+  .hero-copy h1 { font-size: clamp(3.2rem, 6.7vw, 6.55rem); font-weight: 500; line-height: 0.98; letter-spacing: 0; }
+  .hero-copy > p { color: var(--page-text); font-size: 1.25rem; line-height: 1.55; margin-top: 1.5rem; max-width: 620px; }
   .hero-copy .primary-button { margin-top: 1.45rem; min-height: 48px; min-width: 132px; padding-inline: 28px; }
   .hero-dashboard { border-radius: 22px; overflow: hidden; }
   .hero-dashboard img { display: block; width: 100%; }
 
-  .trust-strip { margin-top: 38px; max-width: min(920px, 100vw - 40px); overflow: hidden; }
+  .trust-strip { margin-top: 56px; max-width: min(920px, 100vw - 40px); overflow: hidden; padding-bottom: 16px; }
   .trust-strip p { color: var(--page-text); font-size: 1.18rem; }
   .logo-row { margin-top: 24px; overflow: hidden; width: 100%; }
   .logo-track { align-items: center; display: flex; width: max-content; animation: armorLogoMarquee 26s linear infinite; }
@@ -531,8 +533,8 @@ const resources = [
     .armor-hero,
     .works-grid,
     .demo-band { grid-template-columns: 1fr; }
-    .armor-hero { gap: 30px; padding: 42px 24px 40px; }
-    .trust-strip { margin-top: 32px; }
+    .armor-hero { gap: 42px; padding: 58px 24px 88px; }
+    .trust-strip { margin-top: 58px; }
     .logo-row { margin-top: 22px; }
     .promise-section,
     .works-section,
@@ -548,15 +550,15 @@ const resources = [
   }
 
   @media (max-width: 640px) {
-    .armor-hero { gap: 26px; padding: 34px 20px 32px; }
-    .armor-lockup { margin-bottom: 20px; }
-    .armor-lockup strong { font-size: 3.1rem; }
-    .armor-mark { height: 52px; width: 52px; }
-    .hero-copy h1 { font-size: 3.25rem; }
-    .hero-copy > p { font-size: 1.08rem; margin-top: 1.15rem; }
-    .hero-copy .primary-button { margin-top: 1.3rem; min-width: 128px; }
-    .trust-strip { margin-top: 26px; max-width: 100%; }
-    .trust-strip p { font-size: 1.05rem; }
+    .armor-hero { gap: 128px; padding: 56px 20px 76px; }
+    .armor-lockup { margin-bottom: 26px; }
+    .armor-lockup strong { font-size: 3.55rem; letter-spacing: 0.035em; }
+    .armor-mark { height: 58px; width: 58px; }
+    .hero-copy h1 { font-size: 34px !important; font-weight: 400; line-height: 1.18; max-width: 340px; width: calc(100vw - 32px); }
+    .hero-copy > p { font-size: 19px !important; line-height: 1.5; margin-top: 2rem; max-width: 288px; }
+    .hero-copy .primary-button { margin-top: 1.9rem; min-height: 42px; min-width: 152px; }
+    .trust-strip { margin-top: 72px; max-width: 100%; padding-bottom: 18px; }
+    .trust-strip p { font-size: 22px !important; line-height: 1.32; max-width: 300px; }
     .logo-row { margin-top: 18px; }
     .promise-section,
     .works-section,

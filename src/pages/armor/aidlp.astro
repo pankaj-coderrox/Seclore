@@ -1111,13 +1111,14 @@ const platformRows = [
 
   .aidlp-hero {
     align-items: center;
-    background:
-      radial-gradient(circle at 85% 15%, rgba(22, 184, 166, 0.16), transparent 28%),
-      linear-gradient(180deg, var(--card), #f7f2ff);
+    background: var(--card);
     display: grid;
-    gap: 42px;
+    gap: clamp(52px, 5vw, 76px);
     grid-template-columns: minmax(0, 0.98fr) minmax(320px, 1.02fr);
-    min-height: 620px;
+    margin: 0 auto;
+    max-width: 1190px;
+    min-height: 0;
+    padding: 68px 24px 104px;
   }
 
   html[data-theme="dark"] .aidlp-hero {
@@ -1127,13 +1128,21 @@ const platformRows = [
   }
 
   .hero-copy p {
-    max-width: 620px;
+    font-size: 1.22rem;
+    line-height: 1.55;
+    max-width: 600px;
+  }
+
+  .hero-copy > .primary-button {
+    margin-top: 28px;
   }
 
   .hero-visual-stack {
     display: grid;
     gap: clamp(24px, 3.4vw, 40px);
+    justify-self: end;
     min-width: 0;
+    width: min(100%, 680px);
   }
 
   .hero-trust {
@@ -1178,6 +1187,7 @@ const platformRows = [
     overflow: hidden;
     padding: clamp(16px, 2.8vw, 30px);
     position: relative;
+    width: 100%;
   }
 
   html[data-theme="dark"] .ai-dlp-diagram {
@@ -2080,11 +2090,55 @@ const platformRows = [
       max-width: 100%;
       width: fit-content !important;
     }
+
+    .aidlp-hero {
+      gap: 84px;
+      padding: 56px 20px 76px;
+    }
+
+    .aidlp-page h1 {
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      max-width: 340px;
+      width: calc(100vw - 32px);
+    }
+
+    .aidlp-page .eyebrow {
+      font-size: 0.88rem;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      max-width: 320px;
+    }
+
+    .hero-copy p {
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 310px;
+    }
+
+    .hero-copy > .primary-button {
+      margin-top: 8px;
+      min-height: 42px !important;
+      min-width: 128px;
+    }
+
+    .hero-visual-stack {
+      justify-self: stretch;
+      width: 100%;
+    }
+
+    .hero-trust p {
+      font-size: 20px;
+      line-height: 1.32;
+      max-width: 320px;
+    }
   }
 
   @media (max-width: 520px) {
     .hero-visual-stack {
-      gap: 20px;
+      gap: 28px;
     }
 
     .hero-trust {
@@ -2092,7 +2146,7 @@ const platformRows = [
     }
 
     .hero-trust p {
-      font-size: 1rem;
+      font-size: 20px;
       line-height: 1.25;
     }
 
