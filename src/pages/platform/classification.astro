@@ -22,29 +22,50 @@ const complianceCards = [
 const capabilityCards = [
   {
     title: "Visual labels and dynamic watermarking",
+    icon: "watermark",
     text: "Add visible markers, headers, footers, and dynamic watermarks to classified assets so people handle sensitive data correctly."
   },
   {
     title: "Classification of legacy and bulk data",
+    icon: "bulk",
     text: "Bulk-classify digital assets through DLP, discovery, and built-in classification capabilities that support retention policies."
   },
   {
     title: "DLP-driven classification",
+    icon: "dlp",
     text: "Use trusted discovery tools to scan sensitive information and programmatically classify assets through connectors and APIs."
   },
   {
     title: "Readable metadata classification tags",
+    icon: "metadata",
     text: "Add multi-level tags to document and email metadata so downstream DLP, CASB, DSPM, and EDRM tools can act."
   },
   {
     title: "Email and file classification",
+    icon: "emailFile",
     text: "Classify emails and files with suggested sensitivity labels based on each asset's content and data."
   },
   {
     title: "Enterprise-wide visibility",
+    icon: "visibility",
     text: "Explore classification trends by label, user, policy, or file to find anomalies and improve governance."
   }
 ];
+
+const capabilityIcons = {
+  watermark:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M11 9h26v30H11z"/><path d="M16 16h16M16 22h10"/><path d="M19 31c3-6 7-6 10 0 1.6 3.1 4.1 3.1 6 0"/></svg>',
+  bulk:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 13h22v24H13z"/><path d="M17 8h22v24"/><path d="M9 18h22v24"/><path d="M16 25h10M16 31h8"/></svg>',
+  dlp:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M21 34a13 13 0 1 1 9-3.7L39 39"/><path d="M17 20h11M17 25h7"/><path d="M31 12l5 5-5 5"/></svg>',
+  metadata:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 12h19l9 9v15H10z"/><path d="M29 12v9h9"/><path d="M16 25h16M16 31h11"/><path d="M17 18h7"/></svg>',
+  emailFile:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 16h21v18H8z"/><path d="m9 17 9.5 8L28 17"/><path d="M31 10h9v25H25v-7"/><path d="M31 16h4M31 22h4"/></svg>',
+  visibility:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 24s7-10 18-10 18 10 18 10-7 10-18 10S6 24 6 24Z"/><circle cx="24" cy="24" r="5"/><path d="M37 34l4 4"/></svg>'
+};
 
 const screenshotSlides = [
   "User-driven document classification",
@@ -75,6 +96,8 @@ const relatedProducts = [
     text: "Use file and user activity insights to quickly address unauthorized access or non-compliance."
   }
 ];
+
+const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare", "STC", "American Express", "Adani"];
 ---
 
 <BaseLayout
@@ -94,20 +117,14 @@ const relatedProducts = [
         </p>
         <a class="primary-button" href="#demo">Get a Demo</a>
       </div>
-      <div class="laptop-visual" aria-label="Classification interface preview">
-        <div class="screen">
-          <div class="toolbar"></div>
-          <div class="sheet">
-            {Array.from({ length: 9 }).map((_, index) => <span class={`row row-${index + 1}`}></span>)}
-          </div>
-          <div class="label-stack">
-            <span>Public</span>
-            <span>Internal</span>
-            <span>Confidential</span>
-          </div>
-        </div>
-        <div class="base"></div>
-      </div>
+      <figure class="laptop-visual" aria-label="Classification interface preview">
+        <img
+          src="/images/platform/classification-hero-laptop.png"
+          alt="Laptop showing digital asset classification intelligence"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
     </section>
 
     <section class="split-section">
@@ -158,7 +175,7 @@ const relatedProducts = [
       <div class="capability-grid">
         {capabilityCards.map((card) => (
           <article class="capability-card">
-            <div class="line-icon"></div>
+            <div class={`line-icon capability-icon ${card.icon}`} set:html={capabilityIcons[card.icon]}></div>
             <h3>{card.title}</h3>
             <p>{card.text}</p>
           </article>
@@ -171,22 +188,14 @@ const relatedProducts = [
         <h2>Product screenshots</h2>
       </div>
       <div class="screenshot-shell">
-        <div class="mock-window">
-          <div class="mock-sidebar">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="mock-content">
-            <div class="mock-title"></div>
-            <div class="classification-labels">
-              <strong>Suggested label</strong>
-              <span>Confidential - Regulatory</span>
-              <button type="button">Apply label</button>
-            </div>
-            <div class="mock-lines">
-              <span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-        </div>
+        <figure class="classification-screenshot-frame">
+          <img
+            src="/images/platform/classification-product-screenshot.png"
+            alt="Spreadsheet classification interface with protected enterprise data"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
         <div class="slide-controls" aria-label="Screenshot carousel controls">
           <button type="button" aria-label="Previous screenshot">‹</button>
           <button type="button" aria-label="Next screenshot">›</button>
@@ -209,9 +218,14 @@ const relatedProducts = [
       <span>Shilpa Medicare</span>
       <a class="secondary-button" href="#demo">Customer Story</a>
       <div class="customer-row">
-        <strong>deccan</strong>
-        <strong>Eugenus</strong>
-        <strong>IDFC FIRST Bank</strong>
+        <div class="customer-track">
+          <div class="customer-group">
+            {customerLogos.map((logo) => <strong>{logo}</strong>)}
+          </div>
+          <div class="customer-group" aria-hidden="true">
+            {customerLogos.map((logo) => <strong>{logo}</strong>)}
+          </div>
+        </div>
       </div>
     </section>
 
@@ -851,74 +865,17 @@ const relatedProducts = [
   }
 
   .laptop-visual {
-    min-height: 330px;
-    perspective: 900px;
-    position: relative;
+    margin: 0;
+    min-width: 0;
   }
 
-  .screen {
-    background: linear-gradient(145deg, #ffffff, #f4efff);
-    border: 10px solid #f7f4ff;
-    border-radius: 12px;
-    box-shadow: 34px 28px 48px rgba(91, 43, 215, 0.22);
-    display: grid;
-    gap: 16px;
-    grid-template-columns: 1fr 130px;
-    min-height: 245px;
-    padding: 20px;
-    transform: rotateY(-18deg) rotateX(4deg);
-  }
-
-  html[data-theme="dark"] .screen {
-    background: linear-gradient(145deg, #151d31, #21173a);
-    border-color: #2b2350;
-  }
-
-  .toolbar {
-    background: linear-gradient(90deg, #6841dc, #f15f79);
-    border-radius: 999px;
-    grid-column: 1 / -1;
-    height: 10px;
-    width: 56%;
-  }
-
-  .sheet {
-    display: grid;
-    gap: 10px;
-  }
-
-  .sheet span {
-    background: linear-gradient(90deg, rgba(91, 43, 215, 0.18), rgba(239, 63, 95, 0.35));
-    border-radius: 999px;
-    height: 12px;
-  }
-
-  .sheet span:nth-child(2n) {
-    opacity: 0.6;
+  .laptop-visual img {
+    display: block;
+    height: auto;
+    object-fit: contain;
     width: 80%;
-  }
-
-  .label-stack {
-    display: grid;
-    gap: 12px;
-  }
-
-  .label-stack span {
-    background: rgba(91, 43, 215, 0.08);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    color: var(--purple);
-    font-size: 0.84rem;
-    font-weight: 900;
-    padding: 12px;
-  }
-
-  .base {
-    background: linear-gradient(90deg, #272038, #d6d0e8);
-    border-radius: 999px;
-    height: 18px;
-    margin: -12px auto 0;
-    width: 80%;
+    max-width: 720px;
+    margin-left: auto;
   }
 
   .split-section,
@@ -1011,27 +968,40 @@ const relatedProducts = [
   }
 
   .line-icon {
-    border: 2px solid #ff4267;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 66, 103, 0.08), rgba(91, 43, 215, 0.08));
+    border: 1px solid rgba(255, 66, 103, 0.24);
     border-radius: 12px;
+    color: #ff4267;
+    display: inline-flex;
+    justify-content: center;
     position: relative;
   }
 
-  .line-icon::before,
-  .line-icon::after {
-    background: #ff4267;
-    content: "";
-    height: 2px;
-    left: 10px;
-    position: absolute;
-    right: 10px;
+  .line-icon svg {
+    display: block;
+    height: 27px;
+    width: 27px;
   }
 
-  .line-icon::before {
-    top: 15px;
+  .line-icon svg path,
+  .line-icon svg circle {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.7;
   }
 
-  .line-icon::after {
-    bottom: 15px;
+  .capability-card:nth-child(2) .line-icon,
+  .capability-card:nth-child(5) .line-icon {
+    color: var(--purple);
+    border-color: rgba(91, 43, 215, 0.24);
+  }
+
+  .capability-card:nth-child(3) .line-icon,
+  .capability-card:nth-child(6) .line-icon {
+    color: #d94673;
   }
 
   .comply-section,
@@ -1053,6 +1023,22 @@ const relatedProducts = [
   .screenshot-shell {
     margin: 0 auto;
     max-width: 1120px;
+  }
+
+  .classification-screenshot-frame {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 22px 70px rgba(15, 23, 42, 0.1);
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .classification-screenshot-frame img {
+    display: block;
+    height: auto;
+    object-fit: contain;
+    width: 100%;
   }
 
   .mock-window {
@@ -1189,18 +1175,47 @@ const relatedProducts = [
   }
 
   .customer-row {
-    align-items: center;
     border-top: 1px solid var(--line);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 28px;
     margin-top: 32px;
+    overflow: hidden;
     padding-top: 24px;
+    width: 100%;
+  }
+
+  .customer-track {
+    align-items: center;
+    animation: classificationCustomerMarquee 24s linear infinite;
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .customer-group {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    gap: clamp(38px, 6vw, 82px);
+    padding-right: clamp(38px, 6vw, 82px);
   }
 
   .customer-row strong {
     color: var(--purple);
+    display: inline-flex;
     font-size: clamp(1.15rem, 2vw, 1.7rem);
+    font-weight: 900;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  @keyframes classificationCustomerMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .customer-track {
+      animation-duration: 60s;
+    }
   }
 
   .related-grid {
@@ -1279,11 +1294,6 @@ const relatedProducts = [
   html[data-theme="dark"] .classification-page .products-section,
   html[data-theme="dark"] .classification-page .classification-footer {
     background: #f7f7fb;
-  }
-
-  html[data-theme="dark"] .classification-page .screen {
-    background: linear-gradient(145deg, #ffffff, #f4efff);
-    border-color: #f7f4ff;
   }
 
   html[data-theme="dark"] .classification-page .demo-band {

@@ -66,25 +66,9 @@ const useCases = [
         </p>
         <a class="primary-button" href="#demo">Get a Demo</a>
       </div>
-      <div class="dashboard-shell" aria-label="ARMOR DSPM dashboard preview">
-        <div class="dashboard-bar">
-          <strong>Overview</strong>
-          <span></span>
-        </div>
-        <div class="dashboard-metrics">
-          <div><strong>100K</strong><span>Data repository</span></div>
-          <div><strong>80K</strong><span>Business context</span></div>
-          <div><strong>24.8K</strong><span>Records at risk</span></div>
-        </div>
-        <div class="risk-band"></div>
-        <div class="dashboard-grid">
-          <div class="table-lines">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="mini-card"></div>
-          <div class="mini-card muted"></div>
-        </div>
-      </div>
+      <figure class="dashboard-shell image-shell" aria-label="ARMOR DSPM dashboard preview">
+        <img src="/images/armor/armor-dashboard.png" alt="ARMOR data security intelligence preview" loading="eager" decoding="async" />
+      </figure>
     </section>
 
     <section class="soft-section">
@@ -94,7 +78,7 @@ const useCases = [
       <div class="meaning-grid">
         {meaningCards.map((card) => (
           <article class="meaning-card">
-            <div class="icon-box"></div>
+            <div class="icon-box"><img src="/images/armor/seclore-armor-logo.png" alt="" loading="lazy" decoding="async" /></div>
             <h3>{card.title}</h3>
             <p>{card.text}</p>
             <ul>
@@ -111,10 +95,7 @@ const useCases = [
       </div>
       <div class="split-grid">
         <div class="ai-visual">
-          <div class="orb"></div>
-          <div class="floating-card one"></div>
-          <div class="floating-card two"></div>
-          <div class="floating-card three"></div>
+          <img src="/images/armor/armor-card-visual.png" alt="ARMOR powered by Seclore intelligence card" loading="lazy" decoding="async" />
         </div>
         <div>
           <h3>AI is rewriting the rules</h3>
@@ -154,7 +135,7 @@ const useCases = [
       <div class="layer-grid">
         {layers.map(([title, text]) => (
           <article class="layer-card">
-            <div class="small-icon"></div>
+            <div class="small-icon"><img src="/images/armor/seclore-armor-logo.png" alt="" loading="lazy" decoding="async" /></div>
             <h3>{title}</h3>
             <p>{text}</p>
           </article>
@@ -174,12 +155,9 @@ const useCases = [
           and audit readiness.
         </p>
       </div>
-      <div class="dashboard-shell compact" aria-label="Data intelligence table preview">
-        <div class="dashboard-bar"><strong>Data risk</strong><span></span></div>
-        <div class="table-lines large">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-      </div>
+      <figure class="dashboard-shell compact image-shell" aria-label="Data intelligence table preview">
+        <img src="/images/armor/armor-data-repository.png" alt="ARMOR data repository risk visualization" loading="lazy" decoding="async" />
+      </figure>
     </section>
 
     <section class="text-section">
@@ -220,6 +198,7 @@ const useCases = [
       <div class="benefit-grid">
         {benefits.map(([title, text]) => (
           <article class="benefit-card">
+            <div class="small-icon"><img src="/images/armor/seclore-armor-logo.png" alt="" loading="lazy" decoding="async" /></div>
             <h3>{title}</h3>
             <strong>{title === "From Diagnosis to Cure" ? "Visibility is not control." : title === "Zero-Configuration Value" ? "Install. Connect. Protect." : title === "Sovereign-Ready Architecture" ? "Private and sovereign-first DSPM." : "Intelligence starts here."}</strong>
             <p>{text}</p>
@@ -236,6 +215,7 @@ const useCases = [
       <div class="step-grid">
         {steps.map(([number, title, text]) => (
           <article class="step-card">
+            <div class="small-icon"><img src="/images/armor/seclore-armor-logo.png" alt="" loading="lazy" decoding="async" /></div>
             <span>{number}</span>
             <h3>{title}</h3>
             <p>{text}</p>
@@ -864,7 +844,23 @@ const useCases = [
     border: 1px solid #ded0ff;
     border-radius: 8px;
     box-shadow: 0 28px 80px rgba(91, 43, 215, 0.14);
+    margin: 0;
     padding: 22px;
+  }
+
+  .dashboard-shell.image-shell {
+    background: linear-gradient(145deg, #f7f4ff, #fff7fb);
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 26px 70px rgba(86, 48, 214, 0.14);
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .dashboard-shell.image-shell img {
+    display: block;
+    height: auto;
+    width: 100%;
   }
 
   html[data-theme="dark"] .dashboard-shell {
@@ -996,12 +992,25 @@ const useCases = [
 
   .icon-box,
   .small-icon {
-    background: linear-gradient(135deg, rgba(91, 43, 215, 0.08), rgba(91, 43, 215, 0.28));
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    height: 42px;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid rgba(86, 48, 214, 0.14);
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(86, 48, 214, 0.08);
+    display: inline-flex;
+    height: 50px;
+    justify-content: center;
     margin-bottom: 20px;
-    width: 42px;
+    padding: 8px;
+    width: 50px;
+  }
+
+  .icon-box img,
+  .small-icon img {
+    display: block;
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
   }
 
   .split-grid,
@@ -1013,11 +1022,19 @@ const useCases = [
   }
 
   .ai-visual {
-    background: radial-gradient(circle at 50% 50%, rgba(91, 43, 215, 0.18), transparent 56%), #ffffff;
-    border: 1px solid #b99cff;
-    border-radius: 12px;
-    min-height: 330px;
+    background: linear-gradient(145deg, #f8f5ff, #fff8fb);
+    border: 1px solid #e3d7ff;
+    border-radius: 18px;
+    box-shadow: 0 24px 70px rgba(86, 48, 214, 0.1);
+    min-height: 0;
+    overflow: hidden;
     position: relative;
+  }
+
+  .ai-visual img {
+    display: block;
+    height: auto;
+    width: 100%;
   }
 
   html[data-theme="dark"] .ai-visual {
@@ -1100,7 +1117,7 @@ const useCases = [
   }
 
   .compact {
-    min-height: 250px;
+    min-height: 0;
   }
 
   .table-lines.large span {
@@ -1262,6 +1279,12 @@ const useCases = [
   html[data-theme="dark"] .dspm-page p,
   html[data-theme="dark"] .dspm-page li {
     color: #5f6670;
+  }
+
+  html[data-theme="dark"] .dspm-page .generation-card.current p,
+  html[data-theme="dark"] .dspm-page .generation-card.current span,
+  html[data-theme="dark"] .dspm-page .generation-card.current h3 {
+    color: #ffffff;
   }
 
   html[data-theme="dark"] .dspm-page .primary-button {

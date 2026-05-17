@@ -1,6 +1,33 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
+const portalCards = [
+  {
+    id: "solutions",
+    title: "Solutions",
+    text: "Find solutions to the most common problems",
+    href: "/support/solutions/"
+  },
+  {
+    id: "forums",
+    title: "Forums",
+    text: "Discuss, debate, analyze, and give suggestions for improving Seclore",
+    href: "/support/discussions/"
+  },
+  {
+    id: "tickets",
+    title: "Tickets",
+    text: "Having a problem with Seclore? Get it resolved quickly by creating a ticket",
+    href: "/support/tickets/new/"
+  },
+  {
+    id: "escalate",
+    title: "Escalate Ticket",
+    text: "Created a ticket and want to escalate it? Click here to get started",
+    href: "#escalate-ticket"
+  }
+];
+
 const socialLinks = [
   ["LinkedIn", "https://www.linkedin.com/company/seclore", "in"],
   ["Facebook", "https://www.facebook.com/Seclore", "f"],
@@ -10,79 +37,67 @@ const socialLinks = [
 ---
 
 <BaseLayout
-  title="Submit a Ticket | Seclore Support"
-  description="Submit a support ticket to the Seclore support portal."
+  title="Seclore Support Portal"
+  description="Search Seclore support articles, browse solutions, join forums, create tickets, and contact Seclore support."
+  hideFooter={true}
 >
-  <main class="support-ticket-page">
+  <main class="support-home-page">
     <header class="support-header" aria-label="Seclore support header">
       <a class="support-logo" href="/support/home/" aria-label="Seclore support home">
         <img src="/images/home/seclore-logo-2026.svg" alt="Seclore" loading="eager" decoding="async" />
       </a>
+      <a class="contact-pill" href="#contact">Contact Us</a>
     </header>
 
+    <section class="support-hero" aria-labelledby="support-hero-title">
+      <div class="support-hero-inner">
+        <h1 id="support-hero-title">Welcome to the Seclore Support Portal</h1>
+      </div>
+    </section>
+
     <nav class="portal-nav" aria-label="Support portal navigation">
-      <a class="support-home-link" href="/support/home/" aria-current="page">Support Home</a>
-      <div class="portal-menu">
-        <button class="portal-menu-toggle" type="button" aria-label="Open support menu" aria-expanded="false" aria-controls="support-portal-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <div class="portal-menu-panel" id="support-portal-menu" hidden>
-          <a href="/support/home/">Support Home</a>
-          <a href="/support/solutions/">Solutions</a>
-          <a href="/support/discussions/">Forums</a>
-          <a href="/support/tickets/new/">Login</a>
-        </div>
+      <a class="support-home-link active" href="/support/home/" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5v8a1 1 0 0 1-1 1h-5.5v-6h-5v6H4a1 1 0 0 1-1-1v-8Z" /></svg>
+        Support Home
+      </a>
+
+      <button class="portal-menu-toggle" type="button" aria-label="Open support menu" aria-expanded="false" aria-controls="support-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="portal-links" id="support-menu">
+        <a href="/support/solutions/">Solutions</a>
+        <a href="/support/discussions/">Forums</a>
+        <a class="login-link" href="/support/login/">Login</a>
+        <a class="ticket-pill" href="/support/tickets/new/">New Support Ticket</a>
       </div>
     </nav>
 
-    <section class="ticket-form-section" aria-labelledby="ticket-title">
-      <form class="ticket-form" id="support-ticket-form" novalidate>
-        <h1 id="ticket-title">Submit a ticket</h1>
-
-        <label class="field">
-          <span>Requester <strong>*</strong></span>
-          <input name="requester" type="email" placeholder="Email" autocomplete="email" required />
-        </label>
-
-        <label class="field">
-          <span>Subject <strong>*</strong></span>
-          <input name="subject" type="text" required />
-        </label>
-
-        <label class="field">
-          <span>Description <strong>*</strong></span>
-          <textarea name="description" rows="6" required></textarea>
-        </label>
-
-        <div class="attach-row">
-          <label for="ticket-attachment">Attach</label>
-          <button class="attach-toggle" type="button" aria-label="Open attachment picker"></button>
-          <input id="ticket-attachment" name="attachment" type="file" hidden />
-          <span class="attachment-name" data-attachment-name hidden></span>
-        </div>
-
-        <button class="recaptcha-box" type="button" aria-pressed="false" data-recaptcha>
-          <span class="recaptcha-check" aria-hidden="true"></span>
-          <span class="recaptcha-copy">
-            <strong>I'm not a robot</strong>
-            <small>For site owner: v1beta1 is deprecated.<br />Take action.</small>
-          </span>
-          <span class="recaptcha-brand" aria-hidden="true">
-            <img src="/images/support/recaptcha-logo.svg" alt="" loading="lazy" decoding="async" />
-            <small>reCAPTCHA</small>
-          </span>
-        </button>
-
-        <p class="form-message error" data-ticket-error hidden>Please complete all required fields and confirm reCAPTCHA.</p>
-        <p class="form-message success" data-ticket-success hidden>Your support ticket details are ready to submit.</p>
-
-        <div class="form-actions">
-          <button class="submit-button" type="submit">SUBMIT</button>
-          <button class="cancel-button" type="reset">CANCEL</button>
-        </div>
+    <section class="search-band" aria-label="Search support content">
+      <form class="support-search" action="/support/search/" method="get">
+        <label class="sr-only" for="support-search-input">Search support articles and community discussions</label>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20 20-4.4-4.4M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" /></svg>
+        <input id="support-search-input" name="term" type="search" placeholder="Search Articles and Community Discussions.." autocomplete="off" />
       </form>
+    </section>
+
+    <section class="portal-cards" aria-label="Support portal options">
+      <div class="portal-card-grid">
+        {portalCards.map((card) => (
+          <a
+            class={`portal-card ${card.id}`}
+            href={card.href}
+            data-escalate-ticket={card.id === "escalate" ? "true" : undefined}
+            aria-haspopup={card.id === "escalate" ? "dialog" : undefined}
+          >
+            <span class={`portal-card-icon icon-${card.id}`} aria-hidden="true"></span>
+            <strong>{card.title}</strong>
+            <span>{card.text}</span>
+          </a>
+        ))}
+      </div>
     </section>
 
     <footer class="support-footer" id="contact" aria-labelledby="support-contact-title">
@@ -104,7 +119,7 @@ const socialLinks = [
             </a>
           </p>
           <p>
-            <span class="sr-only">Email</span>
+            <span>Email</span>
             <a href="mailto:support@seclore.com">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5Zm2 3 7 5 7-5" /></svg>
               support@seclore.com
@@ -128,8 +143,7 @@ const socialLinks = [
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2026 SECLORE. ALL RIGHTS RESERVED.</p>
-          <a href="/privacy/">PRIVACY STATEMENT</a>
+          <p>&copy; 2026 SECLORE. ALL RIGHTS RESERVED. <a href="/privacy/">PRIVACY STATEMENT</a>.</p>
         </div>
       </div>
     </footer>
@@ -148,115 +162,102 @@ const socialLinks = [
       <a href="mailto:support@seclore.com">Email Support</a>
     </section>
 
+    <section class="escalate-modal" role="dialog" aria-modal="true" aria-labelledby="escalate-ticket-title" hidden>
+      <button class="escalate-modal-backdrop" type="button" aria-label="Close escalation dialog" data-escalate-close></button>
+      <div class="escalate-modal-card" tabindex="-1">
+        <div class="escalate-modal-header">
+          <h2 id="escalate-ticket-title">Escalate Ticket</h2>
+          <button class="escalate-modal-close" type="button" aria-label="Close escalation dialog" data-escalate-close>x</button>
+        </div>
+        <p>
+          Anyone can escalate a ticket by sending an email to <a href="mailto:supportescalation@seclore.com">supportescalation@seclore.com</a>.
+          This will open a ticket in our support system for tracking, and the support management will be notified along with the Seclore leadership team.
+        </p>
+        <a class="escalate-continue" href="mailto:supportescalation@seclore.com?subject=Escalate%20Support%20Ticket">Continue</a>
+      </div>
+    </section>
+
     <script>
-      const form = document.querySelector("#support-ticket-form");
-      const recaptcha = document.querySelector("[data-recaptcha]");
-      const ticketError = document.querySelector("[data-ticket-error]");
-      const ticketSuccess = document.querySelector("[data-ticket-success]");
-      const attachmentInput = document.querySelector("#ticket-attachment");
-      const attachmentName = document.querySelector("[data-attachment-name]");
-      const attachToggle = document.querySelector(".attach-toggle");
-      const portalMenu = document.querySelector(".portal-menu");
-      const portalMenuButton = document.querySelector(".portal-menu-toggle");
-      const portalMenuPanel = document.querySelector(".portal-menu-panel");
+      const menuButton = document.querySelector(".portal-menu-toggle");
+      const portalNav = document.querySelector(".portal-nav");
       const chatButton = document.querySelector(".chat-button");
       const chatPanel = document.querySelector(".chat-panel");
       const chatClose = document.querySelector(".chat-close");
+      const escalateTriggers = document.querySelectorAll("[data-escalate-ticket]");
+      const escalateModal = document.querySelector(".escalate-modal");
+      const escalateDialog = document.querySelector(".escalate-modal-card");
+      const escalateCloseButtons = document.querySelectorAll("[data-escalate-close]");
+      let lastEscalateFocus = null;
 
-      function setPortalMenuOpen(open: boolean) {
-        if (portalMenuButton instanceof HTMLButtonElement && portalMenuPanel instanceof HTMLElement) {
-          portalMenuButton.setAttribute("aria-expanded", String(open));
-          portalMenuPanel.hidden = !open;
+      const openEscalateModal = () => {
+        if (!(escalateModal instanceof HTMLElement)) {
+          return;
         }
-      }
+        lastEscalateFocus = document.activeElement;
+        escalateModal.hidden = false;
+        document.body.style.overflow = "hidden";
+        if (escalateDialog instanceof HTMLElement) {
+          escalateDialog.focus();
+        }
+      };
 
-      portalMenuButton?.addEventListener("click", () => {
-        if (portalMenuButton instanceof HTMLButtonElement) {
-          setPortalMenuOpen(portalMenuButton.getAttribute("aria-expanded") !== "true");
+      const closeEscalateModal = () => {
+        if (!(escalateModal instanceof HTMLElement) || escalateModal.hidden) {
+          return;
         }
-      });
+        escalateModal.hidden = true;
+        document.body.style.overflow = "";
+        if (lastEscalateFocus instanceof HTMLElement) {
+          lastEscalateFocus.focus();
+        }
+      };
 
-      document.addEventListener("click", (event) => {
-        if (portalMenu instanceof HTMLElement && event.target instanceof Node && !portalMenu.contains(event.target)) {
-          setPortalMenuOpen(false);
+      menuButton?.addEventListener("click", () => {
+        if (!(menuButton instanceof HTMLButtonElement) || !(portalNav instanceof HTMLElement)) {
+          return;
         }
+        const open = menuButton.getAttribute("aria-expanded") !== "true";
+        menuButton.setAttribute("aria-expanded", String(open));
+        portalNav.classList.toggle("is-open", open);
       });
 
       document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          setPortalMenuOpen(false);
-          if (chatPanel instanceof HTMLElement && chatButton instanceof HTMLButtonElement) {
-            chatPanel.hidden = true;
-            chatButton.setAttribute("aria-expanded", "false");
-          }
-        }
-      });
-
-      recaptcha?.addEventListener("click", () => {
-        if (recaptcha instanceof HTMLButtonElement) {
-          const nextState = recaptcha.getAttribute("aria-pressed") !== "true";
-          recaptcha.setAttribute("aria-pressed", String(nextState));
-        }
-      });
-
-      attachToggle?.addEventListener("click", () => {
-        if (attachmentInput instanceof HTMLInputElement) {
-          attachmentInput.click();
-        }
-      });
-
-      attachmentInput?.addEventListener("change", () => {
-        if (attachmentInput instanceof HTMLInputElement && attachmentName instanceof HTMLElement) {
-          const file = attachmentInput.files?.[0];
-          attachmentName.hidden = !file;
-          attachmentName.textContent = file ? file.name : "";
-        }
-      });
-
-      form?.addEventListener("submit", (event) => {
-        event.preventDefault();
-        if (!(form instanceof HTMLFormElement)) {
+        if (event.key !== "Escape") {
           return;
         }
-        const captchaComplete = recaptcha instanceof HTMLButtonElement && recaptcha.getAttribute("aria-pressed") === "true";
-        const isValid = form.checkValidity() && captchaComplete;
-        form.classList.toggle("was-validated", !isValid);
-        if (ticketError instanceof HTMLElement) {
-          ticketError.hidden = isValid;
+        if (menuButton instanceof HTMLButtonElement && portalNav instanceof HTMLElement) {
+          menuButton.setAttribute("aria-expanded", "false");
+          portalNav.classList.remove("is-open");
         }
-        if (ticketSuccess instanceof HTMLElement) {
-          ticketSuccess.hidden = !isValid;
+        if (chatPanel instanceof HTMLElement && chatButton instanceof HTMLButtonElement) {
+          chatPanel.hidden = true;
+          chatButton.setAttribute("aria-expanded", "false");
         }
+        closeEscalateModal();
       });
 
-      form?.addEventListener("reset", () => {
-        window.setTimeout(() => {
-          if (ticketError instanceof HTMLElement) {
-            ticketError.hidden = true;
-          }
-          if (ticketSuccess instanceof HTMLElement) {
-            ticketSuccess.hidden = true;
-          }
-          if (attachmentName instanceof HTMLElement) {
-            attachmentName.hidden = true;
-            attachmentName.textContent = "";
-          }
-          if (recaptcha instanceof HTMLButtonElement) {
-            recaptcha.setAttribute("aria-pressed", "false");
-          }
-        }, 0);
+      escalateTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openEscalateModal();
+        });
+      });
+
+      escalateCloseButtons.forEach((button) => {
+        button.addEventListener("click", closeEscalateModal);
       });
 
       chatButton?.addEventListener("click", () => {
-        if (chatButton instanceof HTMLButtonElement && chatPanel instanceof HTMLElement) {
-          const open = chatPanel.hidden;
-          chatPanel.hidden = !open;
-          chatButton.setAttribute("aria-expanded", String(open));
+        if (!(chatButton instanceof HTMLButtonElement) || !(chatPanel instanceof HTMLElement)) {
+          return;
         }
+        const open = chatPanel.hidden;
+        chatPanel.hidden = !open;
+        chatButton.setAttribute("aria-expanded", String(open));
       });
 
       chatClose?.addEventListener("click", () => {
-        if (chatButton instanceof HTMLButtonElement && chatPanel instanceof HTMLElement) {
+        if (chatPanel instanceof HTMLElement && chatButton instanceof HTMLButtonElement) {
           chatPanel.hidden = true;
           chatButton.setAttribute("aria-expanded", "false");
         }
@@ -265,391 +266,395 @@ const socialLinks = [
   </main>
 </BaseLayout>
 
-<style>
-  :global(body) {
-    background: #f7f7f7;
-    color: #222229;
-    font-family: Arial, Helvetica, sans-serif;
+<style is:global>
+  :root {
+    --support-purple: #633dde;
+    --support-purple-dark: #4d25cd;
+    --support-purple-deep: #260085;
+    --support-lilac: #e9dcff;
+    --support-text: #121019;
   }
 
-  :global(body.modal-open) {
-    overflow: hidden;
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: #fff;
+    color: var(--support-text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
 
-  .support-ticket-page {
-    --blue: #0b457b;
-    --line: #e5e5ea;
-    --purple: #6539dd;
-    --teal: #0d7d87;
-    background: #f7f7f7;
+  a { color: inherit; text-decoration: none; }
+  button, input { font: inherit; }
+
+  .support-home-page {
+    color: var(--support-text);
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    font-weight: 400;
     min-height: 100vh;
     overflow-x: hidden;
-  }
-
-  .support-ticket-page,
-  .support-ticket-page * {
-    box-sizing: border-box;
+    position: relative;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
   }
 
   .support-header {
     align-items: center;
-    background: #ffffff;
+    background: #fff;
+    border-top: 1px solid #dedede;
     display: flex;
-    justify-content: center;
-    min-height: 84px;
-    padding: 14px 20px;
+    justify-content: flex-start;
+    min-height: 95px;
+    padding: 18px clamp(22px, 4.4vw, 54px);
+    position: relative;
   }
 
   .support-logo {
     display: inline-flex;
-    line-height: 1;
+    line-height: 0;
   }
 
   .support-logo img {
     display: block;
-    width: clamp(260px, 62vw, 380px);
+    height: auto;
+    filter: contrast(1.12) saturate(1.08);
+    transform: scaleX(1.03);
+    transform-origin: center;
+    width: clamp(300px, 34vw, 410px);
+  }
+
+  .contact-pill {
+    align-items: center;
+    background: var(--support-purple);
+    border-radius: 999px;
+    color: #fff;
+    display: inline-flex;
+    font-size: 1.05rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 28px;
+    position: absolute;
+    right: clamp(22px, 4.4vw, 54px);
+    white-space: nowrap;
+  }
+
+  .ticket-pill {
+    align-items: center;
+    background: var(--support-purple);
+    border-radius: 999px;
+    color: #fff;
+    display: inline-flex;
+    font-size: 1.05rem;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 28px;
+    white-space: nowrap;
+  }
+
+  .support-hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 28% 90%, rgba(236, 180, 255, 0.75), transparent 34%),
+      linear-gradient(115deg, #8d37ff 0%, #7c2de8 42%, #2d008a 100%);
+    color: #fff;
+    display: flex;
+    min-height: 438px;
+    padding: 86px 24px;
+    text-align: center;
+  }
+
+  .support-hero-inner {
+    margin: 0 auto;
+    max-width: 1040px;
+  }
+
+  .support-hero h1 {
+    color: #fff;
+    font-size: clamp(2.6rem, 4.9vw, 4.25rem);
+    font-weight: 750;
+    letter-spacing: 0;
+    line-height: 1.04;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(28, 0, 93, 0.12);
+  }
+
+  .support-hero p {
+    color: rgba(255, 255, 255, 0.96);
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 42px 0 0;
   }
 
   .portal-nav {
     align-items: center;
-    background: var(--purple);
-    color: #ffffff;
+    background: var(--support-purple);
+    color: #fff;
     display: flex;
-    min-height: 52px;
-    padding: 0 clamp(20px, 5vw, 44px);
+    min-height: 67px;
     position: relative;
-    z-index: 3;
+    z-index: 5;
+  }
+
+  .support-home-link,
+  .portal-links a {
+    align-items: center;
+    display: inline-flex;
+    font-size: 1.2rem;
+    font-weight: 650;
+    min-height: 67px;
+    padding: 0 clamp(18px, 2.2vw, 26px);
   }
 
   .support-home-link {
-    color: #ffffff;
-    font-size: 0.92rem;
-    font-weight: 500;
-    text-decoration: none;
+    background: var(--support-purple-dark);
+    gap: 10px;
+    font-weight: 800;
   }
 
-  .portal-menu {
+  .support-home-link svg {
+    fill: none;
+    height: 24px;
+    stroke: rgba(255, 255, 255, 0.75);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+    width: 24px;
+  }
+
+  .portal-links {
+    align-items: center;
+    display: flex;
+    flex: 1;
+  }
+
+  .portal-links .login-link {
     margin-left: auto;
-    position: relative;
+  }
+
+  .portal-links .ticket-pill {
+    background: #fff;
+    color: var(--support-purple);
+    font-weight: 850;
+    margin-right: 7px;
+    min-height: 50px;
+    padding-inline: 28px;
   }
 
   .portal-menu-toggle {
     align-items: center;
     background: transparent;
     border: 0;
-    cursor: pointer;
-    display: inline-flex;
+    display: none;
     flex-direction: column;
-    gap: 4px;
-    height: 44px;
+    gap: 5px;
+    height: 48px;
     justify-content: center;
-    padding: 0;
-    width: 44px;
+    margin-left: auto;
+    width: 54px;
   }
 
   .portal-menu-toggle span {
-    background: rgba(255, 255, 255, 0.72);
+    background: #fff;
     border-radius: 999px;
     display: block;
     height: 2px;
-    transition: transform 180ms ease, opacity 180ms ease;
-    width: 17px;
+    width: 24px;
   }
 
-  .portal-menu-toggle[aria-expanded="true"] span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+  .search-band {
+    background: #fff;
+    border-left: 1px solid #0f0f0f;
+    border-right: 1px solid #0f0f0f;
+    padding: 25px 6px;
   }
 
-  .portal-menu-toggle[aria-expanded="true"] span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .portal-menu-toggle[aria-expanded="true"] span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-
-  .portal-menu-panel {
-    background: #ffffff;
-    border: 1px solid rgba(15, 23, 42, 0.12);
-    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.16);
-    display: grid;
-    min-width: 220px;
-    padding: 8px;
-    position: absolute;
-    right: 0;
-    top: calc(100% + 8px);
-  }
-
-  .portal-menu-panel[hidden] {
-    display: none;
-  }
-
-  .portal-menu-panel a {
-    color: #202027;
-    font-size: 0.94rem;
-    padding: 11px 12px;
-    text-decoration: none;
-  }
-
-  .portal-menu-panel a:hover {
-    background: #f1ecff;
-    color: var(--purple);
-  }
-
-  .ticket-form-section {
-    background: #f7f7f7;
-    min-height: 690px;
-    padding: clamp(30px, 7vw, 58px) 20px clamp(62px, 8vw, 92px);
-  }
-
-  .ticket-form {
-    display: grid;
-    gap: 22px;
-    margin: 0 auto;
-    max-width: 720px;
-    padding: 0 clamp(12px, 4vw, 30px);
-  }
-
-  .ticket-form h1 {
-    color: #2b2b32;
-    font-size: clamp(1.08rem, 2.6vw, 1.28rem);
-    font-weight: 400;
-    line-height: 1.25;
-    margin: 0 0 6px;
-    white-space: nowrap;
-  }
-
-  .field {
-    display: grid;
-    gap: 9px;
-  }
-
-  .field span {
-    color: #25252c;
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-
-  .field strong {
-    color: #e02d43;
-    font-size: 1.1em;
-  }
-
-  .field input,
-  .field textarea {
-    background: #ffffff;
-    border: 1px solid #c8c8cf;
-    border-radius: 0;
-    color: #202027;
-    font: inherit;
-    font-size: 0.9rem;
+  .support-search {
+    align-items: center;
+    border: 1px solid #d9c7ff;
+    display: flex;
+    gap: 16px;
+    min-height: 67px;
+    padding: 0 24px;
     width: 100%;
   }
 
-  .field input {
-    height: 42px;
-    padding: 0 12px;
+  .support-search svg {
+    fill: none;
+    flex: 0 0 auto;
+    height: 28px;
+    stroke: var(--support-purple);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.4;
+    width: 28px;
   }
 
-  .field textarea {
-    min-height: 154px;
-    padding: 12px;
-    resize: vertical;
-  }
-
-  .field input:focus,
-  .field textarea:focus {
-    border-color: #263747;
-    box-shadow: 0 0 0 1px #263747;
+  .support-search input {
+    border: 0;
+    color: var(--support-purple-dark);
+    flex: 1;
+    font-size: 1.35rem;
+    font-weight: 500;
+    min-width: 0;
     outline: none;
   }
 
-  .field input::placeholder {
-    color: #8d8d95;
-    font-size: 0.9rem;
+  .support-search input::placeholder {
+    color: #835dea;
+    opacity: 1;
   }
 
-  .attach-row {
-    align-items: center;
-    display: flex;
-    gap: 8px;
-    margin-top: -18px;
-    min-height: 22px;
+  .portal-cards {
+    background: var(--support-lilac);
+    padding: 40px 24px 55px;
   }
 
-  .attach-row label {
-    color: var(--teal);
-    cursor: pointer;
-    font-size: 0.92rem;
-    font-weight: 600;
-  }
-
-  .attach-toggle {
-    background: transparent;
-    border: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid #34343c;
-    cursor: pointer;
-    height: 0;
-    padding: 0;
-    width: 0;
-  }
-
-  .attachment-name {
-    color: #56565e;
-    font-size: 0.86rem;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .recaptcha-box {
-    align-items: center;
-    background: #ffffff;
-    border: 1px solid #d7d7dc;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
-    color: #202027;
-    cursor: pointer;
+  .portal-card-grid {
     display: grid;
-    gap: 12px;
-    grid-template-columns: 34px minmax(0, 1fr) auto;
-    margin-top: 4px;
-    max-width: 430px;
-    min-height: 78px;
-    padding: 12px 14px;
-    text-align: left;
-    width: 100%;
-  }
-
-  .recaptcha-check {
-    align-items: center;
-    border: 3px solid #7f7f86;
-    display: inline-flex;
-    height: 32px;
+    gap: 74px clamp(52px, 14vw, 180px);
+    grid-template-columns: repeat(2, minmax(220px, 360px));
     justify-content: center;
-    width: 32px;
+    margin: 0 auto;
+    max-width: 1040px;
   }
 
-  .recaptcha-box[aria-pressed="true"] .recaptcha-check::after {
-    border-bottom: 3px solid #167c2f;
-    border-right: 3px solid #167c2f;
+  .portal-card {
+    align-items: center;
+    border-radius: 18px;
+    color: #1b1029;
+    display: grid;
+    justify-items: center;
+    min-height: 198px;
+    padding: 0 16px;
+    text-align: center;
+    transition: transform 180ms ease, background 180ms ease;
+  }
+
+  .portal-card:hover,
+  .portal-card:focus-visible {
+    background: rgba(255, 255, 255, 0.36);
+    outline: none;
+    transform: translateY(-3px);
+  }
+
+  .portal-card strong {
+    color: var(--support-purple-dark);
+    font-size: 1.9rem;
+    font-weight: 850;
+    line-height: 1.05;
+    margin-top: 10px;
+  }
+
+  .portal-card span:not(.portal-card-icon) {
+    color: #12091d;
+    font-size: 1.42rem;
+    font-weight: 500;
+    line-height: 1.18;
+    max-width: 360px;
+  }
+
+  .portal-card-icon {
+    color: var(--support-purple);
+    display: block;
+    height: 60px;
+    position: relative;
+    width: 68px;
+  }
+
+  .portal-card-icon::before,
+  .portal-card-icon::after {
     content: "";
-    height: 16px;
-    transform: rotate(45deg) translate(-1px, -2px);
+    position: absolute;
+  }
+
+  .icon-solutions::before {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    height: 30px;
+    left: 19px;
+    top: 3px;
+    width: 30px;
+  }
+
+  .icon-solutions::after {
+    border: 2px solid currentColor;
+    border-top: 0;
+    height: 38px;
+    left: 8px;
+    top: 16px;
+    width: 52px;
+    clip-path: polygon(0 20%, 32% 0, 68% 0, 100% 20%, 100% 100%, 0 100%);
+  }
+
+  .icon-forums::before {
+    border: 2px solid currentColor;
+    border-radius: 4px;
+    box-shadow: 24px 0 0 -2px var(--support-lilac), 24px 0 0 0 currentColor, 12px 24px 0 -2px var(--support-lilac), 12px 24px 0 0 currentColor;
+    height: 18px;
+    left: 6px;
+    top: 7px;
+    width: 22px;
+  }
+
+  .icon-forums::after {
+    border-left: 2px solid currentColor;
+    border-top: 2px solid currentColor;
+    height: 8px;
+    left: 22px;
+    top: 31px;
+    transform: rotate(45deg);
     width: 8px;
   }
 
-  .recaptcha-copy {
-    display: grid;
-    gap: 5px;
+  .icon-tickets::before {
+    border: 2px solid currentColor;
+    height: 50px;
+    left: 7px;
+    top: 3px;
+    width: 54px;
   }
 
-  .recaptcha-copy strong {
-    font-size: 0.9rem;
-    font-weight: 500;
+  .icon-tickets::after {
+    background: repeating-linear-gradient(to bottom, currentColor 0 2px, transparent 2px 8px);
+    height: 31px;
+    left: 17px;
+    top: 16px;
+    width: 34px;
   }
 
-  .recaptcha-copy small {
-    color: #6f6f76;
-    font-size: 0.7rem;
-    line-height: 1.05;
-  }
-
-  .recaptcha-brand {
-    align-items: center;
-    display: grid;
-    gap: 3px;
-    justify-items: center;
-  }
-
-  .recaptcha-brand img {
-    display: block;
-    height: 36px;
+  .icon-escalate::before {
+    border-bottom: 2px solid currentColor;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    height: 56px;
+    left: 14px;
+    top: 0;
+    transform: skewX(-20deg);
     width: 36px;
   }
 
-  .recaptcha-brand small {
-    color: #56565e;
-    font-size: 0.74rem;
-  }
-
-  .form-message {
-    border-radius: 5px;
-    font-size: 0.92rem;
-    line-height: 1.35;
-    margin: -2px 0 0;
-    padding: 10px 12px;
-  }
-
-  .form-message.error {
-    background: #fff0f0;
-    color: #9b1c1c;
-  }
-
-  .form-message.success {
-    background: #eefaf4;
-    color: #0b6b45;
-  }
-
-  .form-actions {
-    border-top: 1px solid var(--line);
-    display: flex;
-    gap: 14px;
-    margin-top: 8px;
-    padding-top: 26px;
-  }
-
-  .submit-button,
-  .cancel-button {
-    border: 0;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.78rem;
-    font-weight: 700;
-    height: 38px;
-    letter-spacing: 0.12em;
-    min-width: 126px;
-    padding: 0 22px;
-    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
-  }
-
-  .submit-button {
-    background: var(--blue);
-    color: #ffffff;
-  }
-
-  .cancel-button {
-    background: #f5f5f7;
-    box-shadow: inset 0 0 0 1px #dedee4, 0 2px 8px rgba(15, 23, 42, 0.07);
-    color: #55555c;
-  }
-
-  .submit-button:hover,
-  .cancel-button:hover {
-    transform: translateY(-1px);
-  }
-
-  .submit-button:hover {
-    background: #073a68;
-    box-shadow: 0 10px 20px rgba(11, 69, 123, 0.22);
-  }
-
-  .cancel-button:hover {
-    box-shadow: inset 0 0 0 1px #d3d3db, 0 10px 20px rgba(15, 23, 42, 0.1);
+  .icon-escalate::after {
+    background: repeating-linear-gradient(to bottom, currentColor 0 2px, transparent 2px 8px);
+    height: 48px;
+    left: 31px;
+    top: 8px;
+    width: 2px;
   }
 
   .support-footer {
-    background: var(--purple);
-    color: #ffffff;
-    padding: clamp(42px, 8vw, 72px) 20px 34px;
+    background: var(--support-purple);
+    color: #fff;
+    padding: 46px 30px 82px;
   }
 
   .footer-inner {
+    border-top: 1px solid rgba(255, 255, 255, 0.32);
     margin: 0 auto;
-    max-width: 720px;
-    padding: 0 clamp(0px, 4vw, 30px);
+    max-width: 1168px;
+    padding-top: 40px;
   }
 
   .support-footer h2,
@@ -660,279 +665,436 @@ const socialLinks = [
 
   .support-footer h2,
   .support-footer h3 {
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: 1.05rem;
+    font-weight: 850;
   }
 
   .contact-list {
     display: grid;
-    gap: 22px;
-    margin-top: 16px;
+    gap: 18px;
+    margin-top: 14px;
+    max-width: 520px;
   }
 
-  .contact-list p {
+  .contact-list p,
+  .contact-list a {
     display: grid;
-    gap: 8px;
+    gap: 6px;
   }
 
   .contact-list span {
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 0.9rem;
+    color: #fff;
+    font-size: 1.02rem;
+    font-weight: 650;
+    line-height: 1.3;
   }
 
   .contact-list a {
     align-items: center;
-    color: #ffffff;
-    display: inline-flex;
-    gap: 14px;
-    font-size: 0.92rem;
+    color: #fff;
+    display: flex;
+    font-size: 1.12rem;
+    font-weight: 700;
     line-height: 1.35;
-    text-decoration: none;
   }
 
   .contact-list svg {
-    fill: currentColor;
-    height: 22px;
-    flex: 0 0 auto;
-    width: 22px;
+    fill: #fff;
+    height: 24px;
+    margin-right: 14px;
+    width: 24px;
   }
 
   .social-block {
-    margin-top: 32px;
+    margin-top: 36px;
   }
 
   .social-links {
-    align-items: center;
     display: flex;
-    gap: clamp(30px, 11vw, 58px);
+    gap: 30px;
     margin-top: 20px;
   }
 
   .social-links a {
     align-items: center;
-    color: #ffffff;
+    color: #fff;
     display: inline-flex;
-    font-size: 1.35rem;
-    font-weight: 700;
-    height: 26px;
+    font-size: 1.45rem;
+    font-weight: 900;
+    height: 24px;
     justify-content: center;
-    text-decoration: none;
     width: 26px;
-  }
-
-  .social-links span {
-    line-height: 1;
   }
 
   .social-links svg {
     fill: currentColor;
-    height: 24px;
-    width: 24px;
+    height: 28px;
+    width: 28px;
   }
 
   .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
-    display: grid;
-    gap: 4px;
-    margin-top: 44px;
+    border-top: 1px solid rgba(255, 255, 255, 0.34);
+    margin-top: 34px;
     padding-top: 24px;
   }
 
   .footer-bottom p,
   .footer-bottom a {
-    color: #ffffff;
-    font-size: clamp(0.82rem, 3.4vw, 0.98rem);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    line-height: 1.25;
-    text-decoration: none;
+    color: #fff;
+    font-size: 1.18rem;
+    font-weight: 650;
+    letter-spacing: 0.01em;
   }
 
   .chat-button {
     align-items: center;
-    background: #5532c9;
+    background: var(--support-purple-dark);
     border: 0;
-    border-radius: 50%;
-    bottom: 20px;
-    box-shadow: 0 12px 28px rgba(44, 25, 120, 0.28);
-    color: #ffffff;
+    border-radius: 24px;
+    bottom: 32px;
+    box-shadow: 0 12px 28px rgba(25, 0, 80, 0.24);
+    color: #fff;
     cursor: pointer;
-    display: inline-flex;
-    height: 58px;
+    display: flex;
+    height: 74px;
     justify-content: center;
     position: fixed;
     right: 20px;
-    width: 58px;
+    width: 74px;
     z-index: 20;
   }
 
   .chat-button svg {
     fill: none;
-    height: 28px;
+    height: 34px;
     stroke: currentColor;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 2;
-    width: 28px;
+    width: 34px;
   }
 
   .chat-panel {
-    background: #ffffff;
-    border-radius: 8px;
-    bottom: 90px;
-    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.2);
-    color: #1f1f26;
-    max-width: min(320px, calc(100vw - 32px));
+    background: #fff;
+    border-radius: 18px;
+    bottom: 118px;
+    box-shadow: 0 18px 48px rgba(22, 7, 56, 0.28);
+    color: #24143d;
     padding: 24px;
     position: fixed;
-    right: 18px;
-    z-index: 19;
-  }
-
-  .chat-panel[hidden] {
-    display: none;
+    right: 22px;
+    width: min(330px, calc(100vw - 44px));
+    z-index: 21;
   }
 
   .chat-panel h2 {
-    font-size: 1.1rem;
-    margin: 0 0 8px;
+    margin: 0;
   }
 
   .chat-panel p {
-    color: #60606a;
     line-height: 1.5;
-    margin: 0 0 16px;
+    margin: 12px 0 18px;
   }
 
   .chat-panel a {
-    color: var(--purple);
-    font-weight: 700;
-    text-decoration: none;
+    color: var(--support-purple);
+    font-weight: 800;
   }
 
   .chat-close {
     background: transparent;
     border: 0;
-    color: #33333b;
+    color: #24143d;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     position: absolute;
-    right: 12px;
-    top: 10px;
+    right: 14px;
+    top: 12px;
+  }
+
+  .escalate-modal[hidden] {
+    display: none;
+  }
+
+  .escalate-modal {
+    align-items: center;
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    padding: 24px;
+    position: fixed;
+    z-index: 80;
+  }
+
+  .escalate-modal-backdrop {
+    background: rgba(21, 10, 50, 0.5);
+    border: 0;
+    cursor: pointer;
+    inset: 0;
+    position: absolute;
+  }
+
+  .escalate-modal-card {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 26px 70px rgba(24, 5, 82, 0.28);
+    color: #21182f;
+    max-width: 540px;
+    outline: none;
+    position: relative;
+    width: min(540px, 100%);
+  }
+
+  .escalate-modal-header {
+    align-items: center;
+    border-bottom: 1px solid rgba(101, 61, 222, 0.16);
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 26px 18px;
+  }
+
+  .escalate-modal-header h2 {
+    color: #21182f;
+    font-size: 1.5rem;
+    font-weight: 750;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .escalate-modal-close {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #2b2536;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 1.4rem;
+    height: 34px;
+    justify-content: center;
+    line-height: 1;
+    width: 34px;
+  }
+
+  .escalate-modal-card p {
+    color: #332842;
+    font-size: 1rem;
+    font-weight: 450;
+    line-height: 1.62;
+    margin: 0;
+    padding: 24px 26px 4px;
+  }
+
+  .escalate-modal-card p a {
+    color: var(--support-purple-dark);
+    font-weight: 750;
+  }
+
+  .escalate-continue {
+    align-items: center;
+    background: var(--support-purple-dark);
+    border-radius: 3px;
+    color: #fff;
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 800;
+    justify-content: center;
+    margin: 22px 26px 26px;
+    min-height: 42px;
+    min-width: 116px;
+    padding: 0 24px;
+  }
+
+  .escalate-continue:hover,
+  .escalate-continue:focus-visible {
+    background: var(--support-purple-deep);
   }
 
   .sr-only {
-    clip: rect(0 0 0 0);
-    border: 0;
     height: 1px;
     margin: -1px;
     overflow: hidden;
-    padding: 0;
     position: absolute;
-    white-space: nowrap;
     width: 1px;
+    clip: rect(0 0 0 0);
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 900px) {
     .support-header {
-      min-height: 74px;
-      padding: 12px 16px;
+      justify-content: center;
+      min-height: 78px;
+      padding: 14px 20px;
     }
 
     .support-logo img {
-      width: min(320px, 86vw);
+      width: clamp(250px, 62vw, 340px);
+    }
+
+    .contact-pill {
+      display: none;
+    }
+
+    .support-hero {
+      min-height: 330px;
+      padding: 64px 20px;
     }
 
     .portal-nav {
-      min-height: 52px;
-      padding: 0 20px;
-    }
-
-    .ticket-form-section {
-      min-height: 700px;
-      padding: 30px 0 66px;
-    }
-
-    .ticket-form {
-      max-width: 100%;
-      padding: 0 52px;
-    }
-
-    .field input {
-      height: 42px;
-    }
-
-    .field textarea {
-      min-height: 132px;
-    }
-
-    .recaptcha-box {
-      grid-template-columns: 34px minmax(0, 1fr) auto;
-      max-width: 100%;
-      padding: 10px 12px;
-    }
-
-    .form-actions {
-      gap: 8px;
-    }
-
-    .submit-button,
-    .cancel-button {
-      height: 38px;
-      min-width: 100px;
-      padding: 0 18px;
-    }
-
-    .footer-inner {
-      max-width: 100%;
-      padding: 0;
-    }
-  }
-
-  @media (max-width: 420px) {
-    .ticket-form {
-      padding: 0 36px;
-    }
-
-    .ticket-form h1 {
-      font-size: 1.08rem;
-    }
-
-    .field span {
-      font-size: 0.86rem;
-    }
-
-    .recaptcha-box {
-      grid-template-columns: 30px minmax(0, 1fr) auto;
-      gap: 9px;
-    }
-
-    .recaptcha-check {
-      height: 28px;
-      width: 28px;
-    }
-
-    .recaptcha-brand img {
-      height: 32px;
-      width: 32px;
-    }
-
-    .recaptcha-copy strong {
-      font-size: 0.9rem;
-    }
-
-    .recaptcha-copy small,
-    .recaptcha-brand small {
-      font-size: 0.62rem;
-    }
-
-    .form-actions {
+      align-items: stretch;
+      background: var(--support-purple-dark);
       flex-wrap: wrap;
     }
 
+    .support-home-link {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .portal-menu-toggle {
+      display: inline-flex;
+      height: auto;
+      min-height: 67px;
+      width: 67px;
+    }
+
+    .portal-links {
+      background: var(--support-purple);
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      display: none;
+      flex-basis: 100%;
+      padding: 8px 0 14px;
+    }
+
+    .portal-nav.is-open .portal-links {
+      display: grid;
+    }
+
+    .portal-links a,
+    .portal-links .ticket-pill {
+      border-radius: 0;
+      justify-content: flex-start;
+      margin: 0;
+      min-height: 46px;
+      padding: 0 22px;
+      width: 100%;
+    }
+
+    .portal-links .ticket-pill {
+      background: transparent;
+      color: #fff;
+    }
+
+    .search-band {
+      padding: 18px 0;
+    }
+
+    .support-search {
+      border-left: 0;
+      border-right: 0;
+      min-height: 58px;
+      padding-inline: 20px;
+    }
+
+    .support-search input {
+      font-size: 1.08rem !important;
+      font-weight: 550;
+    }
+
+    .portal-card-grid {
+      gap: 44px;
+      grid-template-columns: 1fr;
+      max-width: 430px;
+    }
+
+    .portal-card {
+      min-height: 168px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .support-header {
+      justify-content: center;
+    }
+
+    .support-logo img {
+      width: clamp(215px, 66vw, 270px);
+    }
+
+    .support-hero h1 {
+      font-size: clamp(2rem, 8.2vw, 2.45rem) !important;
+      font-weight: 750;
+    }
+
+    .support-hero p {
+      font-size: clamp(1.3rem, 5.4vw, 1.6rem) !important;
+      font-weight: 500;
+      margin-top: 24px;
+    }
+
+    .support-home-link,
+    .portal-links a {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .portal-cards {
+      padding: 34px 20px 48px;
+    }
+
+    .portal-card strong {
+      font-size: 1.62rem !important;
+      font-weight: 850;
+    }
+
+    .portal-card span:not(.portal-card-icon) {
+      font-size: 1.2rem !important;
+      font-weight: 500;
+      line-height: 1.22;
+    }
+
     .support-footer {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding: 38px 20px 74px;
+    }
+
+    .footer-bottom {
+      margin-top: 32px;
+      padding-top: 22px;
+    }
+
+    .footer-bottom p,
+    .footer-bottom a {
+      font-size: 1rem !important;
+      font-weight: 650;
+    }
+
+    .chat-button {
+      border-radius: 20px;
+      bottom: 22px;
+      height: 60px;
+      width: 60px;
+    }
+
+    .escalate-modal {
+      align-items: flex-start;
+      padding: 80px 18px 24px;
+    }
+
+    .escalate-modal-header {
+      padding: 18px 20px 14px;
+    }
+
+    .escalate-modal-header h2 {
+      font-size: 1.3rem;
+    }
+
+    .escalate-modal-card p {
+      font-size: 0.96rem;
+      line-height: 1.55;
+      padding: 20px 20px 2px;
+    }
+
+    .escalate-continue {
+      margin: 20px 20px 22px;
+      width: calc(100% - 40px);
     }
   }
 </style>

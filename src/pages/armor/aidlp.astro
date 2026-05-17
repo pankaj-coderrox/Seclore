@@ -4,11 +4,47 @@ import Nav from "@components/Nav.astro";
 
 const apiBase = import.meta.env.PUBLIC_API_BASE_URL || (import.meta.env.DEV ? "http://127.0.0.1:5000" : "");
 
-const interactionTabs = [
-  "AI Chat Protection",
-  "Internal AI Systems Protection",
-  "AI App Data Redaction",
-  "Data Sovereignty for AI"
+const interactionModes = [
+  {
+    title: "AI Chat Protection",
+    visualIn: "Customer SSN: 468-92-1284",
+    visualOut: "Customer SSN: [masked]",
+    heading: "Protect AI chat interactions before sensitive data leaves the enterprise.",
+    paragraphs: [
+      "Employees access public AI tools through the ARMOR AI-DLP Portal. Sensitive data such as PII, PHI, financial records, IP, source material, and credentials is masked before it reaches an AI service.",
+      "Productivity is preserved while enterprise policies, privacy controls, and evidence stay intact."
+    ]
+  },
+  {
+    title: "Internal AI Systems Protection",
+    visualIn: "Quarterly forecast and customer list",
+    visualOut: "Policy-safe business context",
+    heading: "Secure internal AI systems without slowing teams down.",
+    paragraphs: [
+      "ARMOR AI-DLP applies data-aware controls inside approved enterprise AI systems, copilots, and private models so internal teams can keep using AI safely.",
+      "Sensitive context is classified, masked, governed, and tracked across the full AI workflow."
+    ]
+  },
+  {
+    title: "AI App Data Redaction",
+    visualIn: "Prompt + file attachment",
+    visualOut: "Redacted prompt package",
+    heading: "Redact sensitive data before AI applications process it.",
+    paragraphs: [
+      "Applications and agents can call ARMOR AI-DLP to sanitize prompts, files, and generated responses before they reach an LLM or downstream automation.",
+      "The result is a privacy-preserving AI experience with policy proof for audits and investigations."
+    ]
+  },
+  {
+    title: "Data Sovereignty for AI",
+    visualIn: "Regional customer record",
+    visualOut: "Tokenized regional data",
+    heading: "Keep regulated data protected across AI services and geographies.",
+    paragraphs: [
+      "ARMOR AI-DLP helps enforce sovereignty and privacy expectations by protecting regulated data before it travels into AI tools, models, or agents.",
+      "Teams can adopt AI while retaining control of where real values are exposed, stored, and audited."
+    ]
+  }
 ];
 
 const platformCards = [
@@ -57,12 +93,45 @@ const deploymentCards = [
 ];
 
 const industries = [
-  ["Healthcare", "Protect patient data, billing details, clinical notes, and provider information before AI interactions."],
-  ["Financial Services", "Safeguard account data, transaction signals, customer records, and analyst workflows."],
-  ["Government", "Control citizen data, mission-sensitive documents, and regulated public-sector information."],
-  ["Insurance", "Protect claims, policyholder information, underwriting data, and agent workflows."],
-  ["B2B SaaS", "Secure customer data, product telemetry, support context, and collaboration workflows."]
+  {
+    title: "Healthcare",
+    icon: "healthcare",
+    text: "Protect patient data, billing details, clinical notes, and provider information before AI interactions."
+  },
+  {
+    title: "Financial Services",
+    icon: "financial",
+    text: "Safeguard account data, transaction signals, customer records, and analyst workflows."
+  },
+  {
+    title: "Government",
+    icon: "government",
+    text: "Control citizen data, mission-sensitive documents, and regulated public-sector information."
+  },
+  {
+    title: "Insurance",
+    icon: "insurance",
+    text: "Protect claims, policyholder information, underwriting data, and agent workflows."
+  },
+  {
+    title: "B2B SaaS",
+    icon: "saas",
+    text: "Secure customer data, product telemetry, support context, and collaboration workflows."
+  }
 ];
+
+const industryIcons = {
+  healthcare:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 40s-14-7.6-14-19a8 8 0 0 1 14-5.3A8 8 0 0 1 38 21c0 11.4-14 19-14 19Z"/><path d="M24 17v12M18 23h12"/></svg>',
+  financial:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 19 24 9l16 10"/><path d="M12 20h24v18H12z"/><path d="M17 24v10M24 24v10M31 24v10"/><path d="M9 38h30"/></svg>',
+  government:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8 8 18h32L24 8Z"/><path d="M12 20v16M20 20v16M28 20v16M36 20v16"/><path d="M9 38h30"/></svg>',
+  insurance:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8 10 14v10c0 9 5.8 14 14 18 8.2-4 14-9 14-18V14L24 8Z"/><path d="M18 25h12M24 19v12"/></svg>',
+  saas:
+    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M15 32h20a8 8 0 0 0 0-16 10 10 0 0 0-19-2 9 9 0 0 0-1 18Z"/><path d="M17 32v5h14M24 32v5"/></svg>'
+};
 
 const compliance = [
   ["HIPAA", "Mask and govern protected health information in AI-assisted workflows."],
@@ -97,61 +166,189 @@ const platformRows = [
         </p>
         <a class="primary-button" href="#demo">Book a Demo</a>
       </div>
-      <div class="ai-flow" aria-label="AI-DLP protection flow preview">
-        <div class="flow-column left">
-          <span>Files</span>
-          <span>Chats</span>
-          <span>Apps</span>
+      <div class="hero-visual-stack">
+        <section class="trust-strip hero-trust">
+          <p>Trusted by industry leading enterprises</p>
+          <div class="logo-row" aria-label="Customer trust examples">
+            <div class="logo-track">
+              <div class="logo-group">
+                <span>MANULIFE</span>
+                <span>MAHINDRA</span>
+                <span>BMO</span>
+                <span>American Express</span>
+                <span>Adani</span>
+                <span>STC</span>
+                <span>Skyworks</span>
+                <span>QIB</span>
+              </div>
+              <div class="logo-group" aria-hidden="true">
+                <span>MANULIFE</span>
+                <span>MAHINDRA</span>
+                <span>BMO</span>
+                <span>American Express</span>
+                <span>Adani</span>
+                <span>STC</span>
+                <span>Skyworks</span>
+                <span>QIB</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="ai-dlp-diagram" aria-label="ARMOR AI-DLP masking flow">
+        <div class="diagram-lane enterprise-lane">
+          <span class="diagram-title">Enterprise Environment</span>
+          <div class="source-card">
+            <span class="source-icon">AI</span>
+            <strong>Employee<br />using AI Model</strong>
+          </div>
+          <div class="source-card">
+            <span class="source-icon">APP</span>
+            <strong>Internal AI<br />Application</strong>
+          </div>
+          <div class="source-card">
+            <span class="source-icon">RAG</span>
+            <strong>RAG<br />Knowledge Base</strong>
+          </div>
+          <div class="source-card">
+            <span class="source-icon">AGT</span>
+            <strong>AI Agent</strong>
+          </div>
         </div>
-        <div class="flow-core">
-          <strong>ARMOR<br />AI-DLP</strong>
+
+        <div class="flow-line in-line" aria-hidden="true"></div>
+
+        <div class="armor-node">
+          <div>
+            <strong>ARMOR</strong>
+            <span>AI DLP</span>
+          </div>
+          <i class="shield-mark" aria-hidden="true"></i>
         </div>
-        <div class="flow-column right">
-          <span>Private AI</span>
-          <span>Copilots</span>
-          <span>Public AI</span>
+
+        <div class="flow-line out-line" aria-hidden="true"></div>
+
+        <div class="diagram-lane masked-lane">
+          <span class="diagram-title">Masked Data</span>
+          <span class="token-card">[TOKENIZED_SSN]</span>
+          <span class="token-card">[TOKENIZED_EMAIL]</span>
+          <span class="token-card">[TOKENIZED_RECORD]</span>
+          <span class="token-card">[TOKENIZED_QUERY]</span>
+          <span class="secure-badge">Real values secured</span>
         </div>
-        <div class="flow-card prompt">Prompt</div>
-        <div class="flow-card mask">Masked</div>
+
+        <div class="diagram-lane models-lane">
+          <span class="diagram-title">AI Models</span>
+          <div class="model-card">
+            <span class="model-icon">LLM</span>
+            <strong>Public LLM</strong>
+          </div>
+          <div class="model-card">
+            <span class="model-icon">BOT</span>
+            <strong>AI Agent</strong>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
 
-    <section class="trust-strip">
-      <p>Trusted by industry leading enterprises</p>
-      <div class="logo-row" aria-label="Customer trust examples">
-        <span>MANULIFE</span>
-        <span>MAHINDRA</span>
-        <span>BMO</span>
-      </div>
-    </section>
+    <style is:inline>
+      .aidlp-page .trust-strip .logo-row {
+        display: block;
+        margin-top: 18px;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .aidlp-page .trust-strip .logo-track {
+        align-items: center;
+        animation: aidlpLogoMarquee 26s linear infinite;
+        display: flex;
+        width: max-content;
+        will-change: transform;
+      }
+
+      .aidlp-page .trust-strip .logo-group {
+        align-items: center;
+        display: flex;
+        flex-shrink: 0;
+        gap: clamp(44px, 7vw, 88px);
+        padding-right: clamp(44px, 7vw, 88px);
+      }
+
+      .aidlp-page .trust-strip .logo-row span {
+        display: inline-flex;
+        font-size: clamp(1rem, 1.6vw, 1.28rem);
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      @keyframes aidlpLogoMarquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+    </style>
 
     <section class="interactions-section">
       <div class="section-heading centered">
         <h2>Built for the Interactions That Matter Most.</h2>
       </div>
       <div class="interaction-tabs" aria-label="AI-DLP interaction modes">
-        {interactionTabs.map((item, index) => <span class={index === 0 ? "active" : ""}>{item}</span>)}
+        {interactionModes.map((item, index) => (
+          <button
+            type="button"
+            class={index === 0 ? "active" : ""}
+            aria-selected={index === 0 ? "true" : "false"}
+            data-tab-index={index}
+          >
+            {item.title}
+          </button>
+        ))}
       </div>
       <div class="interaction-panel">
         <div class="chat-visual" aria-hidden="true">
-          <div class="chat-bubble user">Customer SSN: 468-92-1284</div>
+          <div class="chat-bubble user" data-interaction-input>{interactionModes[0].visualIn}</div>
           <div class="shield-node">AI-DLP</div>
-          <div class="chat-bubble safe">Customer SSN: [masked]</div>
+          <div class="chat-bubble safe" data-interaction-output>{interactionModes[0].visualOut}</div>
         </div>
-        <div>
-          <h3>AI Chat Protection</h3>
-          <p>
-            Employees access public AI tools through the ARMOR AI-DLP Portal. Sensitive data such
-            as PII, PHI, financial records, IP, source material, and credentials is masked before it
-            reaches an AI service.
-          </p>
-          <p>
-            Productivity is preserved while enterprise policies, privacy controls, and evidence stay
-            intact.
-          </p>
+        <div class="interaction-copy">
+          <span class="interaction-kicker" data-interaction-kicker>{interactionModes[0].title}</span>
+          <h3 data-interaction-heading>{interactionModes[0].heading}</h3>
+          {interactionModes[0].paragraphs.map((paragraph) => (
+            <p data-interaction-paragraph>{paragraph}</p>
+          ))}
         </div>
       </div>
     </section>
+
+    <script define:vars={{ interactionModes }}>
+      const tabButtons = Array.from(document.querySelectorAll("[data-tab-index]"));
+      const inputBubble = document.querySelector("[data-interaction-input]");
+      const outputBubble = document.querySelector("[data-interaction-output]");
+      const kicker = document.querySelector("[data-interaction-kicker]");
+      const heading = document.querySelector("[data-interaction-heading]");
+      const paragraphNodes = Array.from(document.querySelectorAll("[data-interaction-paragraph]"));
+
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const mode = interactionModes[Number(button.dataset.tabIndex)] || interactionModes[0];
+
+          tabButtons.forEach((item) => {
+            const isActive = item === button;
+            item.classList.toggle("active", isActive);
+            item.setAttribute("aria-selected", String(isActive));
+          });
+
+          if (inputBubble) inputBubble.textContent = mode.visualIn;
+          if (outputBubble) outputBubble.textContent = mode.visualOut;
+          if (kicker) kicker.textContent = mode.title;
+          if (heading) heading.textContent = mode.heading;
+          paragraphNodes.forEach((paragraph, index) => {
+            paragraph.textContent = mode.paragraphs[index] || "";
+          });
+        });
+      });
+    </script>
 
     <section class="outcomes-section">
       <div class="section-heading centered">
@@ -184,13 +381,14 @@ const platformRows = [
         <h2>A Next-Generation DLP, Built for the AI Interaction Layer.</h2>
       </div>
       <div class="next-gen-grid">
-        <div class="orbital-visual" aria-hidden="true">
-          <span class="center-node">AI-DLP</span>
-          <span class="satellite one">Policy</span>
-          <span class="satellite two">Mask</span>
-          <span class="satellite three">Audit</span>
-          <span class="satellite four">Govern</span>
-        </div>
+        <figure class="next-gen-visual" aria-label="ARMOR AI-DLP interaction layer preview">
+          <img
+            src="/images/armor/aidlp-next-gen-visual.png"
+            alt="ARMOR AI-DLP AI interaction layer dashboard"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
         <div>
           <h3>ARMOR AI-DLP enables safe AI use without blocking it.</h3>
           <p>
@@ -252,11 +450,11 @@ const platformRows = [
         <h2>Built for Organizations Where Data Governance Is Not Optional.</h2>
       </div>
       <div class="industry-grid">
-        {industries.map(([title, text]) => (
+        {industries.map((industry) => (
           <article class="industry-card">
-            <div class="small-icon"></div>
-            <h3>{title}</h3>
-            <p>{text}</p>
+            <div class={`small-icon industry-icon ${industry.icon}`} set:html={industryIcons[industry.icon]}></div>
+            <h3>{industry.title}</h3>
+            <p>{industry.text}</p>
           </article>
         ))}
       </div>
@@ -932,67 +1130,233 @@ const platformRows = [
     max-width: 620px;
   }
 
-  .ai-flow {
-    background: linear-gradient(145deg, #ffffff, #f8f4ff);
-    border: 1px solid #dfd2ff;
+  .hero-visual-stack {
+    display: grid;
+    gap: clamp(24px, 3.4vw, 40px);
+    min-width: 0;
+  }
+
+  .hero-trust {
+    background: transparent !important;
+    overflow: hidden;
+    padding: 0 !important;
+    text-align: left;
+  }
+
+  .hero-trust p {
+    color: var(--page-text);
+    font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+    font-weight: 380;
+    line-height: 1.22;
+    margin: 0;
+  }
+
+  .aidlp-page .hero-trust .logo-row {
+    margin-top: 14px;
+  }
+
+  .aidlp-page .hero-trust .logo-row span {
+    color: #5f5f66;
+    font-size: clamp(0.88rem, 1.25vw, 1.08rem) !important;
+    font-weight: 850;
+    opacity: 0.78;
+  }
+
+  .ai-dlp-diagram {
+    align-items: center;
+    background:
+      radial-gradient(circle, rgba(91, 43, 215, 0.18) 1px, transparent 1.4px),
+      linear-gradient(145deg, #ffffff, #f7f0ff 52%, #ffffff);
+    background-size: 12px 12px, auto;
+    border: 1px solid #d8c8ff;
     border-radius: 8px;
     box-shadow: 0 28px 80px rgba(91, 43, 215, 0.14);
     display: grid;
-    gap: 24px;
-    grid-template-columns: 1fr 140px 1fr;
-    min-height: 360px;
-    padding: clamp(22px, 4vw, 38px);
+    gap: clamp(8px, 1.4vw, 18px);
+    grid-template-columns: minmax(132px, 1.2fr) minmax(34px, 0.24fr) minmax(114px, 0.92fr) minmax(34px, 0.24fr) minmax(128px, 1fr) minmax(92px, 0.78fr);
+    min-height: 330px;
+    overflow: hidden;
+    padding: clamp(16px, 2.8vw, 30px);
     position: relative;
   }
 
-  html[data-theme="dark"] .ai-flow {
-    background: linear-gradient(145deg, #151d31, #21173a);
+  html[data-theme="dark"] .ai-dlp-diagram {
+    background:
+      radial-gradient(circle, rgba(91, 43, 215, 0.18) 1px, transparent 1.4px),
+      linear-gradient(145deg, #ffffff, #f7f0ff 52%, #ffffff);
   }
 
-  .flow-column {
-    align-content: center;
+  .diagram-lane {
     display: grid;
-    gap: 16px;
+    gap: 10px;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
   }
 
-  .flow-column span,
-  .flow-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    box-shadow: 0 14px 35px rgba(91, 43, 215, 0.1);
-    color: var(--page-text);
-    font-weight: 800;
-    padding: 14px;
+  .diagram-title {
+    color: #1e1c27;
+    display: block;
+    font-size: clamp(0.68rem, 0.95vw, 0.88rem);
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 2px;
   }
 
-  .flow-column.right span {
-    border-color: rgba(22, 184, 166, 0.28);
+  .source-card,
+  .token-card,
+  .model-card {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(91, 43, 215, 0.24);
+    border-radius: 6px;
+    box-shadow: 0 10px 22px rgba(49, 25, 97, 0.12);
+    color: #1f182b;
+    display: flex;
+    gap: 9px;
+    min-height: 42px;
+    padding: 8px 10px;
   }
 
-  .flow-core {
+  .source-card strong,
+  .model-card strong {
+    color: #1f182b;
+    font-size: clamp(0.67rem, 0.95vw, 0.86rem);
+    font-weight: 520;
+    line-height: 1.14;
+  }
+
+  .source-icon,
+  .model-icon {
+    align-items: center;
+    background: #eadbff;
+    border: 1px solid rgba(91, 43, 215, 0.28);
+    border-radius: 5px;
+    color: var(--purple);
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: clamp(0.54rem, 0.72vw, 0.68rem);
+    font-weight: 900;
+    height: 28px;
+    justify-content: center;
+    line-height: 1;
+    width: 28px;
+  }
+
+  .armor-node {
+    align-items: center;
     align-self: center;
-    background: linear-gradient(135deg, var(--purple), #25115f);
+    background: linear-gradient(135deg, #4d28c7, #25115f);
     border-radius: 8px;
+    box-shadow: 0 18px 34px rgba(49, 17, 111, 0.28);
     color: #ffffff;
-    display: grid;
-    min-height: 92px;
-    place-items: center;
-    text-align: center;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    min-height: 78px;
+    padding: 16px 18px;
+    position: relative;
+    z-index: 2;
   }
 
-  .flow-card {
-    bottom: 24px;
-    font-size: 0.86rem;
+  .armor-node strong,
+  .armor-node span {
+    color: #ffffff;
+    display: block;
+    letter-spacing: 0.01em;
+  }
+
+  .armor-node strong {
+    font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .armor-node span {
+    font-size: clamp(0.78rem, 1.15vw, 1rem);
+    font-weight: 540;
+    margin-top: 4px;
+  }
+
+  .shield-mark {
+    border: 2px solid #ffffff;
+    border-radius: 12px 12px 16px 16px;
+    clip-path: polygon(50% 0, 88% 16%, 82% 70%, 50% 100%, 18% 70%, 12% 16%);
+    display: block;
+    flex: 0 0 auto;
+    height: 34px;
+    width: 28px;
+  }
+
+  .flow-line {
+    align-self: center;
+    border-top: 2px dotted rgba(91, 43, 215, 0.55);
+    min-width: 24px;
+    position: relative;
+  }
+
+  .flow-line::after {
+    border-right: 2px solid rgba(91, 43, 215, 0.65);
+    border-top: 2px solid rgba(91, 43, 215, 0.65);
+    content: "";
+    height: 7px;
     position: absolute;
+    right: -1px;
+    top: -5px;
+    transform: rotate(45deg);
+    width: 7px;
   }
 
-  .flow-card.prompt {
-    left: 28%;
+  .masked-lane {
+    align-self: center;
   }
 
-  .flow-card.mask {
-    right: 18%;
+  .token-card {
+    font-family: "Courier New", monospace;
+    font-size: clamp(0.58rem, 0.88vw, 0.8rem);
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1;
+    min-height: 38px;
+    white-space: nowrap;
+  }
+
+  .secure-badge {
+    align-items: center;
+    background: #4b22c5;
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: clamp(0.58rem, 0.82vw, 0.76rem);
+    font-weight: 650;
+    justify-content: center;
+    line-height: 1;
+    min-height: 30px;
+    padding: 8px 10px;
+  }
+
+  .secure-badge::before {
+    content: "";
+    border: 2px solid #ffffff;
+    border-radius: 2px;
+    height: 8px;
+    margin-right: 6px;
+    position: relative;
+    width: 8px;
+  }
+
+  .models-lane {
+    align-self: stretch;
+    border-right: 3px solid rgba(91, 43, 215, 0.8);
+    justify-content: center;
+    padding-right: 12px;
+  }
+
+  .model-card {
+    flex-direction: column;
+    justify-content: center;
+    min-height: 72px;
+    text-align: center;
   }
 
   .trust-strip,
@@ -1009,41 +1373,88 @@ const platformRows = [
   }
 
   .logo-row {
+    margin-top: 18px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .logo-track {
+    align-items: center;
+    animation: aidlpLogoMarquee 26s linear infinite;
+    display: flex;
+    width: max-content;
+  }
+
+  .logo-group {
     align-items: center;
     display: flex;
-    flex-wrap: wrap;
-    gap: 22px;
-    justify-content: center;
+    flex-shrink: 0;
+    gap: clamp(44px, 7vw, 88px);
+    padding-right: clamp(44px, 7vw, 88px);
   }
 
   .logo-row span {
     color: var(--page-muted);
-    font-size: 0.9rem;
+    display: inline-flex;
+    font-size: clamp(1rem, 1.6vw, 1.28rem);
     font-weight: 900;
     letter-spacing: 0.08em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  @keyframes aidlpLogoMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-track { animation-duration: 60s; }
   }
 
   .interaction-tabs {
+    align-items: center;
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
     justify-content: center;
-    margin-bottom: 34px;
+    margin: 0 auto 34px;
+    max-width: 1120px;
+    overflow-x: auto;
+    padding: 2px 2px 8px;
+    scrollbar-width: none;
   }
 
-  .interaction-tabs span,
+  .interaction-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .interaction-tabs button,
   .deploy-badge {
-    background: rgba(91, 43, 215, 0.08);
-    border: 1px solid var(--line);
-    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(91, 43, 215, 0.18);
+    border-radius: 8px;
     color: var(--purple);
-    font-size: 0.86rem;
-    font-weight: 850;
-    padding: 10px 14px;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-size: clamp(0.82rem, 1.05vw, 0.96rem);
+    font-weight: 740;
+    line-height: 1.16;
+    min-height: 42px;
+    padding: 10px 16px;
+    transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
   }
 
-  .interaction-tabs .active {
-    background: var(--purple);
+  .interaction-tabs button:hover,
+  .interaction-tabs button:focus-visible {
+    border-color: rgba(91, 43, 215, 0.42);
+    box-shadow: 0 10px 24px rgba(91, 43, 215, 0.1);
+    outline: none;
+  }
+
+  .interaction-tabs button.active {
+    background: linear-gradient(135deg, var(--purple), #321581);
+    border-color: transparent;
+    box-shadow: 0 14px 30px rgba(91, 43, 215, 0.2);
     color: #ffffff;
   }
 
@@ -1054,6 +1465,16 @@ const platformRows = [
     display: grid;
     gap: 44px;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .interaction-panel {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(91, 43, 215, 0.14);
+    border-radius: 8px;
+    box-shadow: 0 18px 48px rgba(91, 43, 215, 0.08);
+    margin-inline: auto;
+    max-width: 1160px;
+    padding: clamp(18px, 3vw, 34px);
   }
 
   .chat-visual,
@@ -1111,6 +1532,32 @@ const platformRows = [
     width: 100px;
   }
 
+  .interaction-copy {
+    max-width: 560px;
+  }
+
+  .interaction-kicker {
+    color: var(--purple);
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  .interaction-copy h3 {
+    font-size: clamp(1.65rem, 3vw, 2.6rem);
+    font-weight: 430;
+    letter-spacing: 0;
+    line-height: 1.08;
+    margin-bottom: 18px;
+  }
+
+  .interaction-copy p {
+    margin-bottom: 14px;
+  }
+
   .outcome-grid,
   .deploy-grid {
     display: grid;
@@ -1162,6 +1609,20 @@ const platformRows = [
   .compliance-section,
   .platform-section {
     background: var(--card);
+  }
+
+  .next-gen-visual {
+    margin: 0;
+    min-width: 0;
+  }
+
+  .next-gen-visual img {
+    border-radius: 8px;
+    box-shadow: 0 24px 68px rgba(91, 43, 215, 0.16);
+    display: block;
+    height: auto;
+    object-fit: contain;
+    width: 100%;
   }
 
   .orbital-visual {
@@ -1243,12 +1704,31 @@ const platformRows = [
   }
 
   .small-icon {
-    background: linear-gradient(135deg, rgba(91, 43, 215, 0.08), rgba(22, 184, 166, 0.24));
-    border: 1px solid var(--line);
+    align-items: center;
+    background: linear-gradient(135deg, rgba(91, 43, 215, 0.1), rgba(247, 240, 255, 0.95));
+    border: 1px solid rgba(91, 43, 215, 0.2);
     border-radius: 8px;
-    height: 42px;
+    box-shadow: 0 12px 28px rgba(91, 43, 215, 0.1);
+    color: var(--purple);
+    display: inline-flex;
+    height: 48px;
+    justify-content: center;
     margin-bottom: 20px;
-    width: 42px;
+    width: 48px;
+  }
+
+  .small-icon svg {
+    display: block;
+    height: 28px;
+    width: 28px;
+  }
+
+  .small-icon svg path {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.8;
   }
 
   .compliance-grid {
@@ -1334,7 +1814,7 @@ const platformRows = [
       linear-gradient(180deg, #ffffff, #f7f7fb);
   }
 
-  html[data-theme="dark"] .aidlp-page .ai-flow,
+  html[data-theme="dark"] .aidlp-page .ai-dlp-diagram,
   html[data-theme="dark"] .aidlp-page .chat-visual,
   html[data-theme="dark"] .aidlp-page .orbital-visual {
     background: linear-gradient(145deg, #ffffff, #f8f4ff);
@@ -1564,12 +2044,21 @@ const platformRows = [
       grid-template-columns: 1fr;
     }
 
-    .ai-flow {
-      grid-template-columns: 1fr;
+    .interaction-tabs {
+      justify-content: flex-start;
+      margin-bottom: 24px;
+      padding-inline: 0;
     }
 
-    .flow-card {
-      position: static;
+    .interaction-tabs button {
+      min-height: 40px;
+      padding-inline: 13px;
+      white-space: nowrap;
+    }
+
+    .ai-dlp-diagram {
+      margin-inline: auto;
+      max-width: 680px;
     }
 
     .step-card {
@@ -1594,6 +2083,155 @@ const platformRows = [
   }
 
   @media (max-width: 520px) {
+    .hero-visual-stack {
+      gap: 20px;
+    }
+
+    .hero-trust {
+      text-align: left;
+    }
+
+    .hero-trust p {
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    .aidlp-page .hero-trust .logo-row {
+      margin-top: 10px;
+    }
+
+    .aidlp-page .hero-trust .logo-row span {
+      font-size: 0.78rem !important;
+    }
+
+    .ai-dlp-diagram {
+      gap: 4px;
+      grid-template-columns: 1.2fr 0.16fr 0.88fr 0.16fr 0.96fr 0.68fr;
+      min-height: 216px;
+      padding: 10px;
+    }
+
+    .diagram-lane {
+      gap: 5px;
+    }
+
+    .diagram-title {
+      font-size: 0.5rem;
+      margin-bottom: 1px;
+    }
+
+    .source-card,
+    .token-card,
+    .model-card {
+      border-radius: 5px;
+      box-shadow: 0 6px 14px rgba(49, 25, 97, 0.1);
+      gap: 4px;
+      min-height: 28px;
+      padding: 4px;
+    }
+
+    .source-card strong,
+    .model-card strong {
+      font-size: 0.46rem;
+      line-height: 1.05;
+    }
+
+    .source-icon,
+    .model-icon {
+      border-radius: 4px;
+      font-size: 0.38rem;
+      height: 18px;
+      width: 18px;
+    }
+
+    .armor-node {
+      border-radius: 6px;
+      gap: 5px;
+      min-height: 48px;
+      padding: 8px;
+    }
+
+    .armor-node strong {
+      font-size: 0.78rem;
+    }
+
+    .armor-node span {
+      font-size: 0.58rem;
+      margin-top: 2px;
+    }
+
+    .shield-mark {
+      border-width: 1.5px;
+      height: 22px;
+      width: 18px;
+    }
+
+    .flow-line {
+      border-top-width: 1.5px;
+      min-width: 8px;
+    }
+
+    .flow-line::after {
+      height: 5px;
+      top: -4px;
+      width: 5px;
+    }
+
+    .token-card {
+      font-size: 0.4rem;
+      min-height: 25px;
+      padding-inline: 2px;
+    }
+
+    .secure-badge {
+      border-radius: 5px;
+      font-size: 0.4rem;
+      min-height: 20px;
+      padding: 5px 4px;
+    }
+
+    .secure-badge::before {
+      border-width: 1px;
+      height: 6px;
+      margin-right: 3px;
+      width: 6px;
+    }
+
+    .models-lane {
+      border-right-width: 2px;
+      padding-right: 4px;
+    }
+
+    .model-card {
+      min-height: 50px;
+    }
+
+    .interaction-tabs {
+      gap: 8px;
+      margin-left: -2px;
+      margin-right: -2px;
+    }
+
+    .interaction-tabs button {
+      font-size: 0.76rem;
+      min-height: 38px;
+      padding: 8px 11px;
+    }
+
+    .interaction-panel {
+      gap: 18px;
+      padding: 16px;
+    }
+
+    .interaction-copy h3 {
+      font-size: 1.45rem;
+      line-height: 1.12;
+    }
+
+    .next-gen-visual img {
+      box-shadow: 0 16px 42px rgba(91, 43, 215, 0.14);
+    }
+
     .chat-bubble,
     .shield-node,
     .center-node,

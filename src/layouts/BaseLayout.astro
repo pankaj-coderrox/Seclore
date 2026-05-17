@@ -3,7 +3,8 @@ import Footer from "@components/Footer.astro";
 
 const {
   title = "seclore | Data Security Platform",
-  description = "An original enterprise cybersecurity SaaS website for data-first protection, visibility, and governance."
+  description = "An original enterprise cybersecurity SaaS website for data-first protection, visibility, and governance.",
+  hideFooter = false
 } = Astro.props;
 ---
 
@@ -24,7 +25,7 @@ const {
   </head>
   <body>
     <slot />
-    <Footer />
+    {!hideFooter && <Footer />}
     <script is:inline>
       document.addEventListener("click", (event) => {
         const link = event.target instanceof Element ? event.target.closest("a[href]") : null;
