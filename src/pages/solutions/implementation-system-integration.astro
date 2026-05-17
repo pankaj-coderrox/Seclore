@@ -43,7 +43,7 @@ const integrationServices = [
           Our experts and verified partners are available to help you deploy Seclore, and integrate it into your existing
           landscape to provide data-centric security across the enterprise.
         </p>
-        <a class="primary-button alert" href="#integration-services">Contact Us</a>
+        <a class="primary-button alert" href="#integration-services" style="max-width: 100%; width: fit-content;">Contact Us</a>
       </div>
       <img
         src="/assets/implementation-system-integration-hero.png"
@@ -77,7 +77,7 @@ const integrationServices = [
           custom integrations for your business and security applications. Now organizations can secure data across all
           applications, on-prem, and cloud environments.
         </p>
-        <a class="primary-button dark" href="#integration-services">Contact Support</a>
+        <a class="primary-button dark" href="#integration-services" style="max-width: 100%; width: fit-content;">Contact Support.</a>
       </div>
     </section>
 
@@ -164,7 +164,7 @@ const integrationServices = [
   .nav-utilities { flex: 0 0 auto; gap: clamp(12px, 1.5vw, 20px); margin-left: clamp(12px, 2vw, 28px); }
   .utility-link, .language-button, .utility-icon, .theme-toggle { display: none; }
 
-  .demo-button, .primary-button { align-items: center; background: var(--demo-button-bg); border: 0; border-radius: 7px; color: var(--demo-button-text); cursor: pointer; display: inline-flex; font-size: 0.88rem; font-weight: 850; justify-content: center; min-height: 39px; padding: 0 18px; }
+  .demo-button, .primary-button { align-items: center; background: var(--demo-button-bg); border: 0; border-radius: 7px; color: var(--demo-button-text); cursor: pointer; display: inline-flex; font-size: 0.88rem; font-weight: 850; justify-content: center; line-height: 1; min-height: 39px; padding: 0 18px; white-space: nowrap; width: fit-content; }
   .primary-button.alert { background: var(--alert); }
   .primary-button.dark { background: #211326; color: #ffffff; }
   .nav-toggle { background: transparent; border: 0; display: none; height: 42px; width: 42px; }
@@ -238,6 +238,11 @@ const integrationServices = [
     .integration-hero, .split-section { grid-template-columns: 1fr; }
     .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .integration-hero { padding-top: 54px; }
+    .integration-page .integration-hero .primary-button,
+    .integration-page .intro-section .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 520px) {
@@ -245,5 +250,12 @@ const integrationServices = [
     h2 { font-size: 2.45rem; }
     .hero-photo, .feature-photo { aspect-ratio: 1.28; }
     .line-icon { margin-bottom: 30px; }
+    .integration-page .integration-hero .primary-button,
+    .integration-page .intro-section .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
   }
 </style>

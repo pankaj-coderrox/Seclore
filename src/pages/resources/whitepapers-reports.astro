@@ -5,69 +5,70 @@ import Nav from "@components/Nav.astro";
 const featured = {
   title: "Enhancing Compliance with Jordan Cybersecurity Framework and Seclore Solutions",
   summary:
-    "Read this whitepaper to learn how Seclore helps organizations in Jordan ensure data privacy along with data protection."
+    "Read this whitepaper to learn how Seclore helps organizations in Jordan ensure data privacy along with data protection.",
+  imageUrl: "https://www.seclore.com/wp-content/uploads/complying-with-jordan-cybersecurity-law-thumbnail.png"
 };
 
 const papers = [
   {
     title: "Complying with the National Information Assurance Policy (NIAP)",
     tags: ["Whitepaper", "Compliance"],
-    image: "meeting"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/lp-image-complying-with-the-national-information-assurance-policy-768x401.png"
   },
   {
     title: "Enterprise Digital Rights Management for Banking and Financial Services",
     tags: ["Whitepaper", "Banking & Financial Services", "EDRM"],
-    image: "bank"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/EDRM-for-BFSI-thumbnail-768x401.png"
   },
   {
     title: "Enhancing Compliance with Jordan Cybersecurity Framework and Seclore Solutions",
     tags: ["Whitepaper", "Compliance"],
-    image: "jordan"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/complying-with-jordan-cybersecurity-law-thumbnail.png"
   },
   {
     title: "A Guide to ISR Compliance and Data Protection for Dubai Government Entities",
     tags: ["Whitepaper", "Government/Public Sector", "Compliance"],
-    image: "blank"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/ISR-Preview-image.png"
   },
   {
     title: "AI Brings Speed, Profit, and Cybersecurity Risk to the Semiconductor Industry",
     tags: ["Whitepaper", "Semiconductor Manufacturing", "AI Risk"],
-    image: "blank"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/ai-brings-speed-profit-and-cybersecurity-risk-to-the-semiconductor-industry-1.png"
   },
   {
     title: "Complying with the Personal Data Protection Law (PDPL) Using Seclore's Data-Centric Security Platform",
     tags: ["Whitepaper", "Compliance"],
-    image: "blank"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/complying-with-the-personal-data-protection-law-pdpl-using-seclore-s-data-centric-security-platform.png"
   },
   {
     title: "Embracing Oman's Cyber Security & Resilience Framework (CS&RF) With Data-Centric Security",
     tags: ["Whitepaper", "Banking & Financial Services", "Compliance"],
-    image: "blank"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Embracing-Omans-Cyber-Security-Resilience-Framework-CSRF-With-Data-Centric-Security-1024x538.png"
   },
   {
     title: "A Comprehensive Guide to Data-Centric Email Security",
     tags: ["Whitepaper", "Email Encryption"],
-    image: "blank"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/a-comprehensive-guide-to-data-centric-email-security-1.png"
   },
   {
     title: "Enhancing Banking Security and Compliance: Navigating RBI Guidelines with a Data-Centric Approach",
     tags: ["Whitepaper", "Banking", "Compliance"],
-    image: "blank"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Enhancing-Banking-Security-and-Compliance-with-RBI-Guidelines-with-Data-Centric-Approach-1024x538.png"
   },
   {
     title: "An Overview of State-Level Data Privacy Laws: Implications for Businesses and Academics",
     tags: ["Whitepaper", "Compliance"],
-    image: "blank"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/an-overview-of-state-level-data-privacy-laws-1.png"
   },
   {
     title: "Complying with the Multitudes of Data Privacy Regulations in Financial Services",
     tags: ["Whitepaper", "Financial Services", "Compliance"],
-    image: "blank"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/complying-with-the-multitudes-of-data-privacy-regulations-in-financial-services-1.png"
   },
   {
     title: "Safeguarding Intellectual Property in the Semiconductor Equipment Industry",
     tags: ["Whitepaper", "Semiconductor Manufacturing", "Third Party Risk"],
-    image: "blank"
+    imageUrl: "https://www.seclore.com/wp-content/uploads/safeguarding-intellectual-property-in-the-semiconductor-equipment-industry-1.png"
   }
 ];
 
@@ -107,8 +108,8 @@ const categoryLinks = [
             <button type="button" aria-label="Next featured paper"></button>
           </div>
         </div>
-        <div class="paper-image jordan large" aria-hidden="true">
-          <span></span>
+        <div class="paper-image large">
+          <img src={featured.imageUrl} alt="" loading="eager" decoding="async" />
         </div>
         <div class="carousel-dots" aria-label="Slide position">
           <span></span><span class="active"></span><span></span>
@@ -135,8 +136,8 @@ const categoryLinks = [
       <div class="paper-grid">
         {papers.map((paper) => (
           <article class="paper-card">
-            <div class={`paper-thumb ${paper.image}`} aria-hidden="true">
-              {paper.image !== "blank" && <span></span>}
+            <div class="paper-thumb">
+              <img src={paper.imageUrl} alt="" loading="lazy" decoding="async" />
             </div>
             <div class="paper-card-copy">
               <div class="meta-row">
@@ -166,11 +167,6 @@ const categoryLinks = [
       ))}
     </section>
 
-    <section class="ready-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#demo">Book a Demo</a>
-    </section>
   </main>
 </BaseLayout>
 
@@ -567,8 +563,20 @@ const categoryLinks = [
 
   .paper-image,
   .paper-thumb {
+    background: #f3f2f5;
     overflow: hidden;
     position: relative;
+  }
+
+  .paper-image img,
+  .paper-thumb img {
+    display: block;
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    width: 100%;
   }
 
   .paper-image {
@@ -867,23 +875,11 @@ const categoryLinks = [
     padding: 0 20px;
   }
 
-  .ready-section,
   .resource-footer {
     background: #ffffff;
     padding-inline: clamp(16px, 2.5vw, 34px);
   }
 
-  .ready-section {
-    padding-block: 32px 40px;
-  }
-
-  .ready-section h2 {
-    font-size: clamp(1.45rem, 2.2vw, 2rem);
-    font-weight: 450;
-    margin-bottom: 8px;
-  }
-
-  .ready-section p,
   .resource-footer p {
     color: var(--page-muted);
     font-size: 0.98rem;

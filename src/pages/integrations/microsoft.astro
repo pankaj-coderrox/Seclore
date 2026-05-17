@@ -96,7 +96,7 @@ const resources = [
           Embed data-centric security from Seclore within your Microsoft 365 environment to
           enhance protection and control while ensuring a seamless collaborative workspace.
         </p>
-        <a class="primary-button" href="#demo">Book a Demo</a>
+        <a class="primary-button" href="/demo/">Book a Demo</a>
       </div>
       <div class="photo-card hero-photo">
         <img src="/images/integrations/microsoft/microsoft-hero.png" alt="Microsoft 365 security briefing in a conference room" />
@@ -180,12 +180,6 @@ const resources = [
         <button type="button" aria-label="Previous resources">&larr;</button>
         <button type="button" aria-label="Next resources">&rarr;</button>
       </div>
-    </section>
-
-    <section class="cta-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#top">Book a Demo</a>
     </section>
   </main>
 </BaseLayout>
@@ -679,7 +673,6 @@ const resources = [
   .split-copy p,
   .outcome-grid p,
   .feature-card p,
-  .cta-section p,
   .site-footer p {
     color: var(--muted);
     font-size: 1.02rem;
@@ -857,19 +850,6 @@ const resources = [
     width: 48px;
   }
 
-  .cta-section {
-    background: #fff;
-    padding: 30px clamp(24px, 4vw, 82px) 54px;
-  }
-
-  .cta-section h2 {
-    font-size: clamp(2rem, 3vw, 2.85rem);
-    font-weight: 500;
-    margin-bottom: 10px;
-  }
-
-  .cta-section .primary-button { margin-top: 26px; }
-
   .site-footer {
     background: #fff;
     border-top: 1px solid #cac9cf;
@@ -957,8 +937,7 @@ const resources = [
     .resource-grid { gap: 28px; }
 
     .microsoft-page .hero-copy > .primary-button,
-    .microsoft-page .split-copy > .primary-button,
-    .microsoft-page .cta-section > .primary-button {
+    .microsoft-page .split-copy > .primary-button {
       max-width: 100%;
       width: fit-content !important;
     }
@@ -966,8 +945,7 @@ const resources = [
 
   @media (max-width: 560px) {
     .microsoft-page .hero-copy > .primary-button,
-    .microsoft-page .split-copy > .primary-button,
-    .microsoft-page .cta-section > .primary-button {
+    .microsoft-page .split-copy > .primary-button {
       font-size: 0.9rem !important;
       min-height: 40px;
       padding-inline: 18px;

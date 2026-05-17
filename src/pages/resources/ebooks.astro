@@ -3,13 +3,41 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/Nav.astro";
 
 const ebooks = [
-  { title: "Evaluation Checklist for Data-Centric Security Solutions", tags: ["eBook", "EDRM"] },
-  { title: "A Guide to Financial Data Protection, Security, Compliance, and Regulations", tags: ["eBook", "Financial Services", "Compliance"] },
-  { title: "Introduction to Enterprise Digital Rights Management", tags: ["eBook", "EDRM"] },
-  { title: "Evaluation Checklist for Email Security Solutions", tags: ["eBook", "Email Encryption"] },
-  { title: "Why Data is the New Edge", tags: ["eBook", "Data Security"] },
-  { title: "Evaluation Checklist for Enterprise Digital Rights Management (EDRM)", tags: ["eBook", "EDRM"] },
-  { title: "How to Build a Smarter Data-Centric Security Infrastructure", tags: ["eBook", "EDRM"] }
+  {
+    title: "Evaluation Checklist for Data-Centric Security Solutions",
+    tags: ["eBook", "EDRM"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Evaluation-Checklist-for-Data-Centric-Security-Solution-1024x538.png"
+  },
+  {
+    title: "A Guide to Financial Data Protection, Security, Compliance, and Regulations",
+    tags: ["eBook", "Financial Services", "Compliance"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/A-Guide-to-Financial-Data-Protection-Security-Compliance-and-Regulations-1024x538.png"
+  },
+  {
+    title: "Introduction to Enterprise Digital Rights Management",
+    tags: ["eBook", "EDRM"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Introduction-to-EDRM.png"
+  },
+  {
+    title: "Evaluation Checklist for Email Security Solutions",
+    tags: ["eBook", "Email Encryption"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Evaluation-Checklist-for-Email-Security-Solutions-1024x538.png"
+  },
+  {
+    title: "Why Data is the New Edge",
+    tags: ["eBook", "Data Security"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Data-Is-the-New-Edge.png"
+  },
+  {
+    title: "Evaluation Checklist for Enterprise Digital Rights Management (EDRM)",
+    tags: ["eBook", "EDRM"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Evaluation-Checklist-for-Enterprise-Digital-Rights-Management-EDRM-1024x538.png"
+  },
+  {
+    title: "How to Build a Smarter Data-Centric Security Infrastructure",
+    tags: ["eBook", "EDRM"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/How-to-Build-a-Smarter-Data-Centric-Security-Infrastructure-1.png"
+  }
 ];
 
 const categoryLinks = [
@@ -55,6 +83,9 @@ const categoryLinks = [
       <div class="ebook-grid">
         {ebooks.map((ebook) => (
           <article class="ebook-card">
+            <div class="ebook-thumb">
+              <img src={ebook.imageUrl} alt="" loading="eager" decoding="async" />
+            </div>
             <div class="ebook-card-copy">
               <div class="meta-row">
                 {ebook.tags.map((tag) => <span>{tag}</span>)}
@@ -76,11 +107,6 @@ const categoryLinks = [
       ))}
     </section>
 
-    <section class="ready-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#demo">Book a Demo</a>
-    </section>
   </main>
 </BaseLayout>
 
@@ -521,12 +547,30 @@ const categoryLinks = [
     border: 1px solid var(--line);
     border-radius: 8px;
     display: grid;
-    min-height: 308px;
+    grid-template-rows: auto 1fr;
+    min-height: 390px;
     overflow: hidden;
   }
 
+  .ebook-thumb {
+    aspect-ratio: 1.9 / 1;
+    background: #f3f2f5;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ebook-thumb img {
+    display: block;
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    width: 100%;
+  }
+
   .ebook-card-copy {
-    align-content: end;
+    align-content: start;
     display: grid;
     padding: 28px;
   }
@@ -559,9 +603,11 @@ const categoryLinks = [
   }
 
   .ebook-card a {
+    align-self: end;
     color: #2d2936;
     font-size: 0.82rem;
     font-weight: 800;
+    margin-top: auto;
   }
 
   .category-band {
@@ -585,23 +631,11 @@ const categoryLinks = [
     padding: 0 20px;
   }
 
-  .ready-section,
   .resource-footer {
     background: #ffffff;
     padding-inline: clamp(16px, 2.5vw, 34px);
   }
 
-  .ready-section {
-    padding-block: 32px 40px;
-  }
-
-  .ready-section h2 {
-    font-size: clamp(1.45rem, 2.2vw, 2rem);
-    font-weight: 450;
-    margin-bottom: 8px;
-  }
-
-  .ready-section p,
   .resource-footer p {
     color: var(--page-muted);
     font-size: 0.98rem;
@@ -819,7 +853,7 @@ const categoryLinks = [
     }
 
     .ebook-card {
-      min-height: 192px;
+      min-height: 255px;
     }
 
     .ebook-card-copy {

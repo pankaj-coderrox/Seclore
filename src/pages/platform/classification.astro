@@ -305,11 +305,11 @@ const relatedProducts = [
 <style is:global>
   :root {
     color-scheme: light;
-    --page-bg: #f1f2f4;
-    --page-text: #17131f;
-    --page-muted: #5b5665;
-    --purple: #5b2bd7;
-    --purple-dark: #341184;
+    --page-bg: #ffffff;
+    --page-text: #202020;
+    --page-muted: #5f6670;
+    --purple: #5630d6;
+    --purple-dark: #4321b4;
     --rose: #ef3f5f;
     --orange: #ff9900;
     --plum: #8e1f4b;
@@ -367,8 +367,20 @@ const relatedProducts = [
 
   body {
     margin: 0;
-    background: var(--page-bg);
-    color: var(--page-text);
+    background: #ffffff;
+    color: #202020;
+  }
+
+  .classification-page {
+    --page-bg: #ffffff;
+    --page-text: #202020;
+    --page-muted: #5f6670;
+    --purple: #5630d6;
+    --purple-dark: #4321b4;
+    --card: #ffffff;
+    --line: rgba(15, 23, 42, 0.1);
+    background: #ffffff;
+    color: #202020;
   }
 
   a {
@@ -1238,6 +1250,65 @@ const relatedProducts = [
 
   .classification-form button {
     margin-top: 12px;
+  }
+
+  html[data-theme="dark"] .classification-page {
+    --page-bg: #ffffff;
+    --page-text: #202020;
+    --page-muted: #5f6670;
+    --purple: #5630d6;
+    --purple-dark: #4321b4;
+    --card: #ffffff;
+    --line: rgba(15, 23, 42, 0.1);
+    background: #ffffff;
+    color: #202020;
+  }
+
+  html[data-theme="dark"] .classification-page .classification-hero,
+  html[data-theme="dark"] .classification-page .split-section,
+  html[data-theme="dark"] .classification-page .capabilities-section,
+  html[data-theme="dark"] .classification-page .screenshots-section,
+  html[data-theme="dark"] .classification-page .related-card,
+  html[data-theme="dark"] .classification-page .classification-form,
+  html[data-theme="dark"] .classification-page .classification-labels {
+    background: #ffffff;
+  }
+
+  html[data-theme="dark"] .classification-page .comply-section,
+  html[data-theme="dark"] .classification-page .related-section,
+  html[data-theme="dark"] .classification-page .products-section,
+  html[data-theme="dark"] .classification-page .classification-footer {
+    background: #f7f7fb;
+  }
+
+  html[data-theme="dark"] .classification-page .screen {
+    background: linear-gradient(145deg, #ffffff, #f4efff);
+    border-color: #f7f4ff;
+  }
+
+  html[data-theme="dark"] .classification-page .demo-band {
+    background: #ffffff;
+  }
+
+  html[data-theme="dark"] .classification-page h1,
+  html[data-theme="dark"] .classification-page h2,
+  html[data-theme="dark"] .classification-page h3,
+  html[data-theme="dark"] .classification-page strong,
+  html[data-theme="dark"] .classification-page label,
+  html[data-theme="dark"] .classification-page blockquote {
+    color: #202020;
+  }
+
+  html[data-theme="dark"] .classification-page p,
+  html[data-theme="dark"] .classification-page li,
+  html[data-theme="dark"] .classification-page .classification-labels span {
+    color: #5f6670;
+  }
+
+  html[data-theme="dark"] .classification-page .primary-button,
+  html[data-theme="dark"] .classification-page .secondary-button {
+    background: #5630d6;
+    color: #ffffff;
   }
 
   .form-status {

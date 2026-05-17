@@ -2,9 +2,13 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/Nav.astro";
 
-const apiBase = import.meta.env.PUBLIC_API_BASE_URL || (import.meta.env.DEV ? "http://127.0.0.1:5000" : "");
-
-const logos = ["Microsoft", "FIRMEX", "knovos", "forcepoint", "BRC"];
+const logos = [
+  { name: "Microsoft", src: "/images/integrations/logos/microsoft.svg" },
+  { name: "FIRMEX", src: "/images/integrations/logos/firmex.svg" },
+  { name: "knovos", src: "/images/integrations/logos/knovos.svg" },
+  { name: "forcepoint", src: "/images/integrations/logos/forcepoint.svg" },
+  { name: "BRC", src: "/images/integrations/logos/brc.svg" }
+];
 
 const integrationSections = [
   {
@@ -19,6 +23,7 @@ const integrationSections = [
     id: "discovery-classification",
     title: "Discovery and classification integrations",
     text: "Extend discovery, classification, and categorization systems by automatically applying granular protection, usage controls, and persistent remote tracking to sensitive assets.",
+    image: "/images/integrations/discovery-classification/datacenter.png",
     href: "/integrations/discovery-classification/",
     reverse: true
   },
@@ -26,6 +31,7 @@ const integrationSections = [
     id: "microsoft-365",
     title: "Microsoft 365 integrations",
     text: "Embed data-centric security within your Microsoft 365 environment so classification, access controls, and activity protection work inside the tools teams already use.",
+    image: "/images/integrations/microsoft/microsoft-cloud.png",
     href: "/integrations/microsoft/",
     reverse: false,
     bullets: [
@@ -38,6 +44,7 @@ const integrationSections = [
     id: "content-storage",
     title: "Content storage and collaboration platform integrations",
     text: "Protect content stored across enterprise repositories and collaboration tools. Seclore integrates with storage platforms to automate protection, enforce policies, and preserve audit trails.",
+    image: "/images/integrations/content-storage/enterprise-benefits.png",
     href: "/integrations/content-storage-and-collaboration-platforms/",
     reverse: true
   },
@@ -45,18 +52,21 @@ const integrationSections = [
     id: "analytics",
     title: "Data analytics and insight application integrations",
     text: "Integrate with SIEM and BI tools to visualize user activity, data interaction patterns, policy events, and risk insights for faster decisions.",
+    image: "/images/armor/armor-dashboard.png",
     reverse: false
   },
   {
     id: "identity",
     title: "Identity and single sign-on integrations",
     text: "Use enterprise identity and access management systems to simplify authentication and enforce authorization policies across protected files and applications.",
+    image: "/images/platform/idp-sso/authentication-lead.png",
     reverse: true
   },
   {
     id: "custom",
     title: "Custom application integrations",
     text: "Integrate custom applications and internal systems through RESTful APIs and SDKs. Add classification, encryption, access controls, tracking, and usage enforcement into business workflows.",
+    image: "/images/platform/custom-integrations/custom-integrations-lead.png",
     reverse: false,
     secondary: true
   }
@@ -78,7 +88,7 @@ const integrationSections = [
         enterprise data discovery, classification, protection, and tracking.
       </p>
       <div class="hero-actions">
-        <a class="primary-button" href="#demo">Get a Demo</a>
+        <a class="primary-button" href="/demo/">Get a Demo</a>
         <a class="secondary-button" href="#custom">Professional Services</a>
       </div>
     </section>
@@ -103,7 +113,11 @@ const integrationSections = [
     </section>
 
     <section class="logo-strip" aria-label="Integration partner examples">
-      {logos.map((logo) => <span>{logo}</span>)}
+      {logos.map((logo) => (
+        <span>
+          <img src={logo.src} alt={`${logo.name} logo`} loading="lazy" />
+        </span>
+      ))}
     </section>
 
     <section class="orchestration-section">
@@ -135,66 +149,14 @@ const integrationSections = [
               </ul>
             )}
             <div class="button-row">
-              <a class="primary-button small" href={item.href || "#demo"}>Learn More</a>
-              {item.secondary && <a class="secondary-button small" href="#demo">Professional Services</a>}
+              <a class="primary-button small" href={item.href || "/demo/"}>Learn More</a>
+              {item.secondary && <a class="secondary-button small" href="/demo/">Professional Services</a>}
             </div>
           </div>
         </article>
       ))}
     </section>
-
-    <section class="demo-section" id="demo">
-      <div class="demo-copy">
-        <h2>Ready to get started?</h2>
-        <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-        <a class="primary-button" href="#demo-form">Book a Demo</a>
-      </div>
-      <form class="integrations-form" id="demo-form" data-endpoint="/api/demo">
-        <h3>Book a Demo</h3>
-        <label>Email<input name="email" type="email" required /></label>
-        <label>First Name<input name="name" required minlength="2" /></label>
-        <label>Company Name<input name="company" required /></label>
-        <label>Job Title<input name="role" /></label>
-        <label>Phone Number<input name="phone" /></label>
-        <label>Comments<textarea name="message" rows="4"></textarea></label>
-        <button class="primary-button" type="submit">Schedule a Demo</button>
-        <p class="form-status" role="status" aria-live="polite"></p>
-      </form>
-    </section>
   </main>
-
-  <script is:inline define:vars={{ apiBase }}>
-    document.querySelectorAll(".integrations-form").forEach((form) => {
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const status = form.querySelector(".form-status");
-        const button = form.querySelector("button[type='submit']");
-        const payload = Object.fromEntries(new FormData(form).entries());
-
-        status.textContent = "Sending...";
-        status.className = "form-status";
-        button.disabled = true;
-
-        try {
-          const response = await fetch(`${apiBase}${form.dataset.endpoint}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          const data = await response.json();
-          if (!response.ok) throw new Error(data.message || "Request failed.");
-          form.reset();
-          status.textContent = data.message || "Submitted successfully.";
-          status.classList.add("success");
-        } catch (error) {
-          status.textContent = error.message || "Something went wrong.";
-          status.classList.add("error");
-        } finally {
-          button.disabled = false;
-        }
-      });
-    });
-  </script>
 </BaseLayout>
 
 <style is:global>
@@ -491,9 +453,7 @@ const integrationSections = [
   .integrations-page .hero-actions > .primary-button,
   .integrations-page .hero-actions > .secondary-button,
   .integrations-page .integration-copy .primary-button.small,
-  .integrations-page .integration-copy .secondary-button.small,
-  .integrations-page .demo-copy > .primary-button,
-  .integrations-page .integrations-form > .primary-button {
+  .integrations-page .integration-copy .secondary-button.small {
     border-radius: 7px !important;
     min-height: 42px !important;
     padding: 0 22px !important;
@@ -594,8 +554,7 @@ const integrationSections = [
   }
 
   .intro-section,
-  .integration-row,
-  .demo-section {
+  .integration-row {
     align-items: center;
     display: grid;
     gap: clamp(28px, 5vw, 72px);
@@ -605,13 +564,14 @@ const integrationSections = [
 
   .intro-section,
   .integration-list,
-  .demo-section,
   .integrations-footer {
     background: var(--card);
   }
 
   .photo-card {
+    background: #eef0f3;
     border-radius: 8px;
+    box-shadow: 0 18px 54px rgba(15, 23, 42, 0.1);
     min-height: 320px;
     overflow: hidden;
     position: relative;
@@ -654,15 +614,29 @@ const integrationSections = [
     align-items: center;
     background: var(--page-bg);
     display: grid;
-    gap: 34px;
+    gap: clamp(22px, 4vw, 44px);
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    padding: 42px clamp(18px, 4vw, 52px);
+    padding: 42px clamp(20px, 4vw, 52px);
     text-align: center;
   }
 
   .logo-strip span {
+    align-items: center;
     color: rgba(36, 35, 41, 0.48);
+    display: flex;
     font-weight: 900;
+    justify-content: center;
+    min-height: 58px;
+  }
+
+  .logo-strip img {
+    display: block;
+    filter: grayscale(1);
+    height: auto;
+    max-height: 46px;
+    max-width: min(170px, 100%);
+    opacity: 0.78;
+    width: 100%;
   }
 
   .orchestration-section {
@@ -827,55 +801,6 @@ const integrationSections = [
   .support span:nth-child(2) { left: 44%; top: 40%; }
   .support span:nth-child(3) { right: 18%; }
 
-  .demo-section {
-    border-top: 1px solid var(--line);
-  }
-
-  .integrations-form {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 28px;
-  }
-
-  .integrations-form h3 {
-    text-align: center;
-  }
-
-  .integrations-form label {
-    color: var(--page-text);
-    display: grid;
-    font-size: 0.88rem;
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-
-  .integrations-form input,
-  .integrations-form textarea {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(15, 23, 42, 0.16);
-    border-radius: 4px;
-    color: #111827;
-    min-height: 40px;
-    padding: 10px;
-  }
-
-  .integrations-form textarea {
-    resize: vertical;
-  }
-
-  .form-status {
-    min-height: 24px;
-  }
-
-  .form-status.success {
-    color: #087f6f;
-  }
-
-  .form-status.error {
-    color: #bd2b2b;
-  }
-
   .integrations-footer {
     padding: 24px clamp(18px, 4vw, 52px) 34px;
   }
@@ -1014,7 +939,7 @@ const integrationSections = [
 
     .intro-section,
     .integration-row,
-    .demo-section {
+    .integration-row {
       grid-template-columns: 1fr;
     }
 
@@ -1034,9 +959,7 @@ const integrationSections = [
     .integrations-page .hero-actions > .primary-button,
     .integrations-page .hero-actions > .secondary-button,
     .integrations-page .integration-copy .primary-button.small,
-    .integrations-page .integration-copy .secondary-button.small,
-    .integrations-page .demo-copy > .primary-button,
-    .integrations-page .integrations-form > .primary-button {
+    .integrations-page .integration-copy .secondary-button.small {
       max-width: 100%;
       width: fit-content !important;
     }
@@ -1059,9 +982,7 @@ const integrationSections = [
     .integrations-page .hero-actions > .primary-button,
     .integrations-page .hero-actions > .secondary-button,
     .integrations-page .integration-copy .primary-button.small,
-    .integrations-page .integration-copy .secondary-button.small,
-    .integrations-page .demo-copy > .primary-button,
-    .integrations-page .integrations-form > .primary-button {
+    .integrations-page .integration-copy .secondary-button.small {
       font-size: 0.9rem !important;
       min-height: 40px !important;
       padding: 0 18px !important;

@@ -88,7 +88,7 @@ const resources = [
         Seclore integrates with the tools you trust, automating and streamlining enterprise data
         discovery, classification, protection, tracking, and revocation.
       </p>
-      <a class="primary-button" href="#demo">Get a Demo</a>
+      <a class="primary-button" href="/demo/">Get a Demo</a>
     </section>
 
     <section class="split-section intro">
@@ -160,7 +160,7 @@ const resources = [
             <strong class={`partner-logo ${partner.id}`}>{partner.logo}</strong>
             <h3>{partner.title}</h3>
             <p>{partner.text}</p>
-            <a href={partner.href || "#demo"}>Learn more <span aria-hidden="true">&rarr;</span></a>
+            <a href={partner.href || "/demo/"}>Learn more <span aria-hidden="true">&rarr;</span></a>
           </article>
         ))}
       </div>
@@ -187,12 +187,6 @@ const resources = [
         <button type="button" aria-label="Previous resources">&larr;</button>
         <button type="button" aria-label="Next resources">&rarr;</button>
       </div>
-    </section>
-
-    <section class="cta-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#top">Book a Demo</a>
     </section>
   </main>
 </BaseLayout>
@@ -528,8 +522,7 @@ const resources = [
   }
 
   .dlp-casb-page .dlp-hero > .primary-button,
-  .dlp-casb-page .split-copy > .primary-button,
-  .dlp-casb-page .cta-section > .primary-button {
+  .dlp-casb-page .split-copy > .primary-button {
     border-radius: 7px !important;
     min-height: 42px !important;
     padding: 0 22px !important;
@@ -930,35 +923,6 @@ const resources = [
     width: 64px;
   }
 
-  .cta-section {
-    background: #fff;
-    padding: 55px 30px 65px;
-  }
-
-  .cta-section h2,
-  .cta-section p,
-  .cta-section a {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1120px;
-  }
-
-  .cta-section h2 {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 500;
-  }
-
-  .cta-section p {
-    color: #92939b;
-    font-size: 1.16rem;
-    line-height: 1.55;
-    margin-top: 0.8rem;
-  }
-
-  .cta-section .primary-button {
-    margin-top: 2rem;
-  }
-
   .site-footer {
     background: #fff;
     color: #5f626b;
@@ -1154,8 +1118,7 @@ const resources = [
     }
 
     .dlp-casb-page .dlp-hero > .primary-button,
-    .dlp-casb-page .split-copy > .primary-button,
-    .dlp-casb-page .cta-section > .primary-button {
+    .dlp-casb-page .split-copy > .primary-button {
       max-width: 100%;
       width: fit-content !important;
     }
@@ -1181,8 +1144,7 @@ const resources = [
     }
 
     .dlp-casb-page .dlp-hero > .primary-button,
-    .dlp-casb-page .split-copy > .primary-button,
-    .dlp-casb-page .cta-section > .primary-button {
+    .dlp-casb-page .split-copy > .primary-button {
       font-size: 0.9rem !important;
       min-height: 40px !important;
       padding: 0 18px !important;

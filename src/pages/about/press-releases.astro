@@ -243,29 +243,19 @@ const learnCards = [
     </section>
 
     <section class="release-section" aria-labelledby="release-heading">
-      <div class="release-toolbar">
-        <div>
-          <span class="eyebrow">Filter by:</span>
-          <label>
-            <span>Year</span>
-            <select id="year-filter">
-              <option value="all">All years</option>
-              {years.map((year) => <option value={year}>{year}</option>)}
-            </select>
-          </label>
-        </div>
-        <label class="search-field">
-          <span>Search</span>
-          <input id="release-search" type="search" placeholder="Search press releases" />
-        </label>
-        <p>Results: <strong data-result-count>{releases.length}</strong></p>
-      </div>
-
       <h2 id="release-heading" class="sr-only">Press releases</h2>
       <div class="release-grid">
         {releases.map((release) => (
           <article class="release-card" data-year={release.year} data-title={release.title.toLowerCase()}>
-            <a class="release-image" href={release.link} target="_blank" rel="noreferrer">
+            <a
+              class:list={["release-image", { "is-placeholder": release.image.includes("social-share-thumbnail") }]}
+              href={release.link}
+              target="_blank"
+              rel="noreferrer"
+              style={release.image.includes("social-share-thumbnail")
+                ? "--release-image-height: 150px; --release-image-mobile-height: 96px;"
+                : undefined}
+            >
               <img src={release.image} alt="" loading="lazy" />
             </a>
             <div class="release-body">
@@ -291,7 +281,13 @@ const learnCards = [
 
     <section class="learn-section">
       <h2>Learn more about Seclore</h2>
-      <a class="primary-button" href="/about/">Learn More</a>
+      <a
+        class="primary-button learn-more-button"
+        href="/about/why-seclore/"
+        style="align-items: center !important; background: #32373c !important; border-radius: 7.5px !important; color: #ffffff !important; display: inline-flex !important; font-size: 15px !important; font-weight: 500 !important; justify-content: center !important; line-height: 1 !important; margin: 0 auto !important; min-height: 39px !important; padding: 0 30px !important; width: fit-content !important;"
+      >
+        Learn More
+      </a>
       <div class="learn-grid">
         {learnCards.map(([title, text, href, icon]) => (
           <a class="learn-card" href={href}>
@@ -303,34 +299,19 @@ const learnCards = [
       </div>
     </section>
 
-    <section class="ready-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#top">Book a Demo</a>
-    </section>
   </main>
 </BaseLayout>
 
 <script is:inline>
   const cards = Array.from(document.querySelectorAll(".release-card"));
-  const yearFilter = document.querySelector("#year-filter");
-  const searchInput = document.querySelector("#release-search");
   const pageButtons = Array.from(document.querySelectorAll("[data-page-button]"));
   const nextButton = document.querySelector("[data-next-page]");
-  const resultCount = document.querySelector("[data-result-count]");
   const emptyState = document.querySelector(".empty-state");
   const perPage = 12;
   let activePage = 1;
 
   function getMatches() {
-    const year = yearFilter ? yearFilter.value : "all";
-    const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
-
-    return cards.filter((card) => {
-      const yearMatch = year === "all" || card.dataset.year === year;
-      const titleMatch = !query || (card.dataset.title || "").includes(query);
-      return yearMatch && titleMatch;
-    });
+    return cards;
   }
 
   function renderCards() {
@@ -350,24 +331,10 @@ const learnCards = [
       button.disabled = buttonPage > maxPage;
     });
 
-    if (resultCount) {
-      resultCount.textContent = String(matches.length);
-    }
-
     if (emptyState) {
       emptyState.hidden = matches.length > 0;
     }
   }
-
-  yearFilter?.addEventListener("change", () => {
-    activePage = 1;
-    renderCards();
-  });
-
-  searchInput?.addEventListener("input", () => {
-    activePage = 1;
-    renderCards();
-  });
 
   pageButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -738,50 +705,7 @@ const learnCards = [
 
   .release-section {
     background: #ffffff;
-    padding: clamp(42px, 7vw, 72px) clamp(18px, 4vw, 56px) clamp(60px, 8vw, 92px);
-  }
-
-  .release-toolbar {
-    align-items: end;
-    display: grid;
-    gap: 16px;
-    grid-template-columns: minmax(220px, 0.7fr) minmax(260px, 1fr) auto;
-    margin: 0 auto 30px;
-    max-width: 1180px;
-  }
-
-  .release-toolbar > div,
-  .release-toolbar label {
-    display: grid;
-    gap: 8px;
-  }
-
-  .release-toolbar > div {
-    grid-template-columns: auto 1fr;
-  }
-
-  .release-toolbar label span,
-  .release-toolbar .eyebrow {
-    color: #6e6b74;
-    font-size: 0.74rem;
-    font-weight: 900;
-    text-transform: uppercase;
-  }
-
-  .release-toolbar input,
-  .release-toolbar select {
-    background: #f6f7f8;
-    border: 1px solid var(--line);
-    border-radius: 7px;
-    min-height: 44px;
-    padding: 0 14px;
-    width: 100%;
-  }
-
-  .release-toolbar p {
-    color: var(--muted);
-    margin: 0;
-    white-space: nowrap;
+    padding: clamp(30px, 5vw, 56px) clamp(18px, 4vw, 56px) clamp(48px, 7vw, 78px);
   }
 
   .release-grid {
@@ -809,7 +733,8 @@ const learnCards = [
     align-items: center;
     background: #e3e5e8;
     display: flex;
-    min-height: 190px;
+    height: var(--release-image-height, auto);
+    min-height: 160px;
     overflow: hidden;
   }
 
@@ -822,7 +747,7 @@ const learnCards = [
 
   .release-image img[src*="social-share-thumbnail"] {
     object-fit: contain;
-    padding: clamp(28px, 6vw, 54px);
+    padding: clamp(12px, 3vw, 24px);
   }
 
   .release-body {
@@ -899,6 +824,24 @@ const learnCards = [
     margin-bottom: 24px;
   }
 
+  .learn-section .learn-more-button {
+    background: #32373c !important;
+    border-radius: 7.5px !important;
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+    margin: 0 auto;
+    min-height: 39px !important;
+    padding: 0 30px !important;
+    width: fit-content !important;
+  }
+
+  .learn-section .learn-more-button:hover {
+    background: #32373c !important;
+    color: #ffffff !important;
+  }
+
   .learn-grid {
     display: grid;
     gap: clamp(18px, 3vw, 34px);
@@ -959,32 +902,14 @@ const learnCards = [
     width: 14px;
   }
 
-  .ready-section,
   .press-footer {
     background: #ffffff;
     padding-inline: clamp(18px, 4vw, 56px);
   }
 
-  .ready-section {
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 44px;
-    padding-top: 42px;
-  }
-
-  .ready-section h2 {
-    font-size: clamp(2rem, 3vw, 3rem);
-    margin-bottom: 10px;
-  }
-
-  .ready-section p,
   .press-footer p {
     color: var(--muted);
     line-height: 1.58;
-  }
-
-  .ready-section .primary-button {
-    margin-top: 24px;
-    min-width: 170px;
   }
 
   .press-footer {
@@ -1060,6 +985,8 @@ const learnCards = [
   }
 
   .sr-only {
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
     height: 1px;
     margin: -1px;
     overflow: hidden;
@@ -1140,13 +1067,9 @@ const learnCards = [
   }
 
   @media (max-width: 860px) {
-    .release-toolbar {
-      align-items: stretch;
-      grid-template-columns: 1fr;
-    }
-
-    .release-toolbar > div {
-      grid-template-columns: 1fr;
+    .release-section {
+      padding-bottom: 46px !important;
+      padding-top: 30px !important;
     }
 
     .learn-grid {
@@ -1164,11 +1087,16 @@ const learnCards = [
     }
 
     .release-card {
-      min-height: 320px;
+      min-height: 280px;
     }
 
     .release-image {
-      min-height: 122px;
+      height: var(--release-image-mobile-height, var(--release-image-height, auto));
+      min-height: 96px;
+    }
+
+    .release-image img[src*="social-share-thumbnail"] {
+      padding: 12px;
     }
 
     .release-body {
@@ -1188,7 +1116,11 @@ const learnCards = [
       padding: 22px;
     }
 
-    .ready-section,
+    .learn-section .learn-more-button {
+      min-height: 39px !important;
+      width: fit-content !important;
+    }
+
     .press-footer,
     .release-section,
     .learn-section {

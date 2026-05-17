@@ -51,7 +51,7 @@ const transactions = [
         Empower businesses with secure, compliant, and efficient content storage and collaboration
         solutions that enhance productivity, protect sensitive data, and streamline workflows.
       </p>
-      <a class="primary-button" href="#demo">Book a Demo</a>
+      <a class="primary-button" href="/demo/">Book a Demo</a>
     </section>
 
     <section class="intro-section">
@@ -102,12 +102,6 @@ const transactions = [
           </article>
         ))}
       </div>
-    </section>
-
-    <section class="cta-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#top">Book a Demo</a>
     </section>
   </main>
 </BaseLayout>
@@ -251,12 +245,6 @@ const transactions = [
   .transaction-card h3 { color: #050506; font-size: clamp(2rem, 3.3vw, 3.35rem); font-weight: 500; line-height: 1.05; }
   .transaction-card p { color: #1e1d25; font-size: 1.12rem; line-height: 1.62; margin-top: 2.6rem; }
 
-  .cta-section { background: #fff; padding: 55px 30px 65px; }
-  .cta-section h2, .cta-section p, .cta-section a { margin-left: auto; margin-right: auto; max-width: 1120px; }
-  .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 500; }
-  .cta-section p { color: #92939b; font-size: 1.16rem; line-height: 1.55; margin-top: 0.8rem; }
-  .cta-section .primary-button { margin-top: 2rem; }
-
   .site-footer { background: #fff; color: #5f626b; padding: 0 30px 55px; }
   .site-footer > * { margin-left: auto; margin-right: auto; max-width: 1120px; }
   .footer-lines { border-top: 1px solid #cfcfd4; }
@@ -291,8 +279,7 @@ const transactions = [
     .benefits-grid, .transaction-grid { grid-template-columns: 1fr; }
     .benefit-photo, .benefit-item:nth-of-type(3) { grid-column: auto; margin-top: 0; }
     .transactions-section { padding: 80px 20px 120px; }
-    .content-storage-page .product-hero > .primary-button,
-    .content-storage-page .cta-section > .primary-button {
+    .content-storage-page .product-hero > .primary-button {
       max-width: 100%;
       width: fit-content !important;
     }
@@ -302,8 +289,7 @@ const transactions = [
     .product-hero h1 { font-size: 2.6rem; }
     .section-heading h2, .vdr-band h2 { font-size: 2.2rem; }
     .benefit-item h3, .transaction-card h3 { font-size: 2rem; }
-    .content-storage-page .product-hero > .primary-button,
-    .content-storage-page .cta-section > .primary-button {
+    .content-storage-page .product-hero > .primary-button {
       font-size: 0.9rem !important;
       min-height: 40px;
       padding-inline: 18px;

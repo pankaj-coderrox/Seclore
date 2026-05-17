@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="reCAPTCHA">
+  <defs>
+    <linearGradient id="blue" x1="13" x2="52" y1="10" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4b8df8"/>
+      <stop offset="1" stop-color="#1a73e8"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#blue)" d="M50.6 20.6A22 22 0 0 0 14.4 13l-4.5-4.5v16h16l-5.7-5.7a14.4 14.4 0 0 1 23.5 5.1l6.9-3.3Z"/>
+  <path fill="#1a73e8" d="M13.4 43.4A22 22 0 0 0 49.6 51l4.5 4.5v-16h-16l5.7 5.7a14.4 14.4 0 0 1-23.5-5.1l-6.9 3.3Z"/>
+  <path fill="#34a853" d="M20.1 44.9A14.3 14.3 0 0 1 17.6 32H9.8a22 22 0 0 0 3.6 11.4l6.7 1.5Z"/>
+  <path fill="#fbbc04" d="M17.6 32a14.3 14.3 0 0 1 2.6-8.2l-5.8-5.2A21.8 21.8 0 0 0 9.8 32h7.8Z"/>
+  <path fill="#4285f4" d="M46.4 32a14.3 14.3 0 0 1-2.6 8.2l5.8 5.2A21.8 21.8 0 0 0 54.2 32h-7.8Z"/>
+  <path fill="#ea4335" d="M43.9 19.1A14.3 14.3 0 0 1 46.4 32h7.8a22 22 0 0 0-3.6-11.4l-6.7-1.5Z"/>
+  <circle cx="32" cy="32" r="10.5" fill="#f8fbff"/>
+</svg>

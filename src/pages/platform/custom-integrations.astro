@@ -60,7 +60,7 @@ const solutionCards = [
         homegrown or commercial, enabling enterprises to automatically classify, protect, and track
         their sensitive, regulated data and IP based on enterprise security and compliance policies.
       </p>
-      <a class="primary-button" href="#demo">Book a Demo</a>
+      <a class="primary-button" href="/demo/">Book a Demo</a>
     </section>
 
     <section class="intro-section">
@@ -125,11 +125,6 @@ const solutionCards = [
       </div>
     </section>
 
-    <section class="cta-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#top">Book a Demo</a>
-    </section>
   </main>
 </BaseLayout>
 
@@ -250,7 +245,7 @@ const solutionCards = [
 
   .product-hero span { font-size: 0.86rem; font-weight: 850; margin-bottom: 2rem; }
   .product-hero h1 { font-size: clamp(3rem, 6.8vw, 5.75rem); font-weight: 500; letter-spacing: 0; line-height: 1.03; max-width: 1120px; }
-  .product-hero p { font-size: clamp(0.98rem, 1.5vw, 1.15rem); line-height: 1.55; margin: 2.35rem auto 2.1rem; max-width: 1140px; }
+  .product-hero p { color: #fff; font-size: clamp(0.98rem, 1.5vw, 1.15rem); line-height: 1.55; margin: 2.35rem auto 2.1rem; max-width: 1140px; }
 
   .intro-section {
     align-items: center;
@@ -320,14 +315,6 @@ const solutionCards = [
   .line-icon.support::before { border: 4px solid var(--purple); border-bottom: 0; border-radius: 20px 20px 0 0; height: 25px; left: 6px; top: 4px; width: 31px; }
   .line-icon.support::after { border: 4px solid #ef8d29; border-radius: 4px; box-shadow: 30px 0 0 -4px #fff, 30px 0 0 0 #ef8d29; height: 18px; left: 2px; top: 22px; width: 10px; }
 
-  .cta-section { background: #fff; padding: 55px 30px 65px; }
-  .cta-section h2,
-  .cta-section p,
-  .cta-section a { margin-left: auto; margin-right: auto; max-width: 1120px; }
-  .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 500; }
-  .cta-section p { color: #92939b; font-size: 1.16rem; line-height: 1.55; margin-top: 0.8rem; }
-  .cta-section .primary-button { margin-top: 2rem; }
-
   .site-footer { background: #fff; color: #5f626b; padding: 0 30px 55px; }
   .site-footer > * { margin-left: auto; margin-right: auto; max-width: 1120px; }
   .footer-lines { border-top: 1px solid #cfcfd4; }
@@ -359,7 +346,6 @@ const solutionCards = [
   @media (max-width: 900px) {
     .product-hero { min-height: 560px; padding: 105px 20px 90px; }
     .custom-page .product-hero > .primary-button,
-    .custom-page .cta-section > .primary-button,
     .custom-page .solution-card .primary-button {
       max-width: 100%;
       width: fit-content !important;
@@ -376,7 +362,6 @@ const solutionCards = [
   @media (max-width: 560px) {
     .product-hero h1 { font-size: 2.54rem; }
     .custom-page .product-hero > .primary-button,
-    .custom-page .cta-section > .primary-button,
     .custom-page .solution-card .primary-button {
       font-size: 0.9rem !important;
       min-height: 40px;

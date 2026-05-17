@@ -366,12 +366,12 @@ const platformRows = [
 <style is:global>
   :root {
     color-scheme: light;
-    --page-bg: #f7f7fb;
-    --page-text: #21192d;
-    --page-muted: #5f566c;
-    --purple: #5b2bd7;
-    --purple-dark: #38178f;
-    --violet-soft: #f2edff;
+    --page-bg: #ffffff;
+    --page-text: #202020;
+    --page-muted: #5f6670;
+    --purple: #5630d6;
+    --purple-dark: #4321b4;
+    --violet-soft: #f7f7fb;
     --aqua: #16b8a6;
     --amber: #ffb84d;
     --rose: #e85a8a;
@@ -430,8 +430,21 @@ const platformRows = [
 
   body {
     margin: 0;
-    background: var(--page-bg);
-    color: var(--page-text);
+    background: #ffffff;
+    color: #202020;
+  }
+
+  .aidlp-page {
+    --page-bg: #ffffff;
+    --page-text: #202020;
+    --page-muted: #5f6670;
+    --purple: #5630d6;
+    --purple-dark: #4321b4;
+    --violet-soft: #f7f7fb;
+    --card: #ffffff;
+    --line: rgba(15, 23, 42, 0.1);
+    background: #ffffff;
+    color: #202020;
   }
 
   a {
@@ -1300,6 +1313,70 @@ const platformRows = [
 
   .aidlp-form button {
     margin-top: 12px;
+  }
+
+  html[data-theme="dark"] .aidlp-page {
+    --page-bg: #ffffff;
+    --page-text: #202020;
+    --page-muted: #5f6670;
+    --purple: #5630d6;
+    --purple-dark: #4321b4;
+    --violet-soft: #f7f7fb;
+    --card: #ffffff;
+    --line: rgba(15, 23, 42, 0.1);
+    background: #ffffff;
+    color: #202020;
+  }
+
+  html[data-theme="dark"] .aidlp-page .aidlp-hero {
+    background:
+      radial-gradient(circle at 85% 15%, rgba(22, 184, 166, 0.1), transparent 28%),
+      linear-gradient(180deg, #ffffff, #f7f7fb);
+  }
+
+  html[data-theme="dark"] .aidlp-page .ai-flow,
+  html[data-theme="dark"] .aidlp-page .chat-visual,
+  html[data-theme="dark"] .aidlp-page .orbital-visual {
+    background: linear-gradient(145deg, #ffffff, #f8f4ff);
+  }
+
+  html[data-theme="dark"] .aidlp-page .aidlp-footer,
+  html[data-theme="dark"] .aidlp-page .trust-strip,
+  html[data-theme="dark"] .aidlp-page .works-section {
+    background: #f7f7fb;
+  }
+
+  html[data-theme="dark"] .aidlp-page .outcome-card,
+  html[data-theme="dark"] .aidlp-page .step-card,
+  html[data-theme="dark"] .aidlp-page .deploy-card,
+  html[data-theme="dark"] .aidlp-page .industry-card,
+  html[data-theme="dark"] .aidlp-page .platform-section,
+  html[data-theme="dark"] .aidlp-page .final-cta,
+  html[data-theme="dark"] .aidlp-page .aidlp-form {
+    background: #ffffff;
+  }
+
+  html[data-theme="dark"] .aidlp-page .demo-band {
+    background: linear-gradient(135deg, #f7f9fc, #f4f0ff);
+  }
+
+  html[data-theme="dark"] .aidlp-page h1,
+  html[data-theme="dark"] .aidlp-page h2,
+  html[data-theme="dark"] .aidlp-page h3,
+  html[data-theme="dark"] .aidlp-page strong,
+  html[data-theme="dark"] .aidlp-page label {
+    color: #202020;
+  }
+
+  html[data-theme="dark"] .aidlp-page p,
+  html[data-theme="dark"] .aidlp-page li,
+  html[data-theme="dark"] .aidlp-page .platform-table span {
+    color: #5f6670;
+  }
+
+  html[data-theme="dark"] .aidlp-page .primary-button {
+    background: #5630d6;
+    color: #ffffff;
   }
 
   .form-status {

@@ -54,9 +54,27 @@ const relatedTopics = [
 ];
 
 const resources = [
-  ["Whitepaper", "Manufacturing", "Five Lessons from Major Attacks on Manufacturing Supply Chains"],
-  ["Webinar", "Manufacturing", "Speeding Up on the Road to Manufacturing Supply Chain Fourth Party Risk"],
-  ["Blueprint", "Manufacturing", "10 Essential Protocols for Keeping Third-Party Cybersecurity Risks in Manufacturing"]
+  {
+    type: "Whitepaper",
+    tag: "Manufacturing",
+    title: "Five Lessons from Major Attacks on Manufacturing Supply Chains",
+    image: "/images/integrations/content-storage/enterprise-benefits.png",
+    alt: "Manufacturing engineers reviewing CAD designs"
+  },
+  {
+    type: "Webinar",
+    tag: "Manufacturing",
+    title: "Speeding Up on the Road to Manufacturing Supply Chain Fourth Party Risk",
+    image: "/images/integrations/spirion/spirion-lead.png",
+    alt: "Global supplier network visualization"
+  },
+  {
+    type: "Blueprint",
+    tag: "Manufacturing",
+    title: "10 Essential Protocols for Keeping Third-Party Cybersecurity Risks in Manufacturing",
+    image: "/images/integrations/file-storage/file-flow.png",
+    alt: "Secure file movement across systems"
+  }
 ];
 ---
 
@@ -78,7 +96,7 @@ const resources = [
         <a class="primary-button alert" href="#demo">Book a Demo</a>
       </div>
       <div class="factory-visual" aria-label="Manufacturing floor visual">
-        <span></span><span></span><span></span><span></span>
+        <img src="/images/integrations/content-storage/enterprise-benefits.png" alt="Manufacturing engineers reviewing CAD designs" loading="eager" />
       </div>
     </section>
 
@@ -91,7 +109,7 @@ const resources = [
 
     <section class="split-section">
       <div class="photo-card lab" aria-label="Manufacturing cybersecurity visual">
-        <span></span><span></span><span></span>
+        <img src="/images/integrations/file-servers/file-servers-lead.png" alt="Manufacturing team collaborating on sensitive engineering documents" />
       </div>
       <div>
         <h2>Foster productivity and innovation through cybersecurity</h2>
@@ -223,11 +241,16 @@ const resources = [
         <h2>Manufacturing industry resources</h2>
       </div>
       <div class="resource-grid">
-        {resources.map(([type, tag, title]) => (
+        {resources.map((resource) => (
           <article class="resource-card">
-            <span>{type}</span>
-            <em>{tag}</em>
-            <h3>{title}</h3>
+            <figure>
+              <img src={resource.image} alt={resource.alt} />
+            </figure>
+            <div>
+              <span>{resource.type}</span>
+              <em>{resource.tag}</em>
+              <h3>{resource.title}</h3>
+            </div>
             <a href="#demo">View More</a>
           </article>
         ))}
@@ -430,8 +453,11 @@ const resources = [
     font-size: 0.88rem;
     font-weight: 850;
     justify-content: center;
+    line-height: 1;
     min-height: 39px;
     padding: 0 18px;
+    white-space: nowrap;
+    width: fit-content;
   }
 
   .demo-button, .primary-button { background: var(--demo-button-bg); color: var(--demo-button-text); }
@@ -479,6 +505,15 @@ const resources = [
     min-height: 330px;
     overflow: hidden;
     position: relative;
+  }
+
+  .factory-visual img,
+  .photo-card img {
+    display: block;
+    height: 100%;
+    min-height: inherit;
+    object-fit: cover;
+    width: 100%;
   }
 
   .factory-visual span {
@@ -557,6 +592,7 @@ const resources = [
   .demo-band { background: linear-gradient(135deg, #dceaff, #f2eaff); }
   .demo-copy ul { padding-left: 20px; }
   .manufacturing-form h3 { text-align: center; }
+  .manufacturing-form .primary-button { justify-self: start; }
   .manufacturing-form label { color: var(--page-text); display: grid; font-size: 0.88rem; gap: 8px; margin-bottom: 14px; }
   .manufacturing-form input, .manufacturing-form select {
     background: rgba(255, 255, 255, 0.9);
@@ -591,7 +627,35 @@ const resources = [
   .related-grid { display: grid; gap: 36px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .related-card a, .resource-card a { color: var(--page-text); font-weight: 900; }
   .resource-grid { display: grid; gap: 32px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-inline: auto; max-width: 980px; }
-  .resource-card { min-height: 340px; }
+  .resource-card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 390px;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .resource-card figure {
+    aspect-ratio: 16 / 10;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .resource-card figure img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .resource-card > div {
+    padding: 24px 24px 0;
+  }
+
+  .resource-card > a {
+    align-self: end;
+    margin: 22px 24px 26px;
+  }
   .slide-controls { display: flex; gap: 10px; margin-top: 28px; }
   .slide-controls button { background: var(--card); border: 1px solid var(--line); border-radius: 50%; height: 36px; width: 36px; }
 
@@ -632,6 +696,24 @@ const resources = [
     }
 
     .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .factory-visual,
+    .photo-card {
+      min-height: 300px;
+    }
+
+    .resource-card {
+      min-height: 0;
+    }
+
+    .manufacturing-page .manufacturing-hero .primary-button,
+    .manufacturing-page .split-section .primary-button,
+    .manufacturing-page .regulations-section .primary-button,
+    .manufacturing-page .manufacturing-form .primary-button,
+    .manufacturing-page .story-card .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 520px) {
@@ -641,5 +723,20 @@ const resources = [
     }
     h2 { font-size: 2rem; }
     .factory-visual, .photo-card { min-height: 250px; }
+
+    .resource-card figure {
+      aspect-ratio: 4 / 3;
+    }
+
+    .manufacturing-page .manufacturing-hero .primary-button,
+    .manufacturing-page .split-section .primary-button,
+    .manufacturing-page .regulations-section .primary-button,
+    .manufacturing-page .manufacturing-form .primary-button,
+    .manufacturing-page .story-card .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
   }
 </style>

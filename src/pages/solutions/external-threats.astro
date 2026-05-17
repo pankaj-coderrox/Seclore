@@ -40,9 +40,27 @@ const relatedProducts = [
 ];
 
 const resources = [
-  ["Whitepaper", "General Business", "Cybersecurity's Reliance Crisis: Rethink Responsiveness Doesn't Cut It"],
-  ["Case Study", "Manufacturing", "Maruti Suzuki"],
-  ["Whitepaper", "Data Security", "A Comprehensive Guide to Data-Centric Email Security"]
+  {
+    type: "Whitepaper",
+    tag: "General Business",
+    title: "Cybersecurity's Reliance Crisis: Rethink Responsiveness Doesn't Cut It",
+    image: "/images/integrations/dlp-casb/ai-readiness.png",
+    alt: "Analyst reviewing external threat security posture"
+  },
+  {
+    type: "Case Study",
+    tag: "Manufacturing",
+    title: "Maruti Suzuki",
+    image: "/images/integrations/content-storage/enterprise-benefits.png",
+    alt: "Manufacturing team reviewing protected intellectual property"
+  },
+  {
+    type: "Whitepaper",
+    tag: "Data Security",
+    title: "A Comprehensive Guide to Data-Centric Email Security",
+    image: "/images/integrations/file-storage/file-flow.png",
+    alt: "Secure file exchange between external collaborators"
+  }
 ];
 ---
 
@@ -64,10 +82,7 @@ const resources = [
         <a class="primary-button alert" href="#demo">Book a Demo</a>
       </div>
       <div class="threat-visual" aria-label="External threat monitoring visual">
-        <div class="hood"></div>
-        <div class="monitor monitor-a"></div>
-        <div class="monitor monitor-b"></div>
-        <div class="monitor monitor-c"></div>
+        <img src="/images/integrations/spirion/spirion-lead.png" alt="Global external threat monitoring network" loading="eager" />
       </div>
     </section>
 
@@ -80,8 +95,7 @@ const resources = [
 
     <section class="split-section breach-section">
       <div class="breach-visual" aria-label="Data security analyst visual">
-        <div class="grid-wall"></div>
-        <div class="analyst"></div>
+        <img src="/images/integrations/dlp-casb/ai-readiness.png" alt="Security analyst reviewing external threat activity" />
       </div>
       <div>
         <h2>Make data breaches harmless</h2>
@@ -118,10 +132,7 @@ const resources = [
 
     <section class="split-section supply-section">
       <div class="supply-art" aria-label="Secure supply chain visual">
-        <div class="node node-a"></div>
-        <div class="node node-b"></div>
-        <div class="node node-c"></div>
-        <div class="node-line"></div>
+        <img src="/images/integrations/file-storage/file-flow.png" alt="Secure external file sharing workflow" />
       </div>
       <div>
         <h2>Supply chain security</h2>
@@ -133,7 +144,7 @@ const resources = [
           Seclore applies persistent protection directly to the file itself, so data owners can monitor, revoke, and update
           access after sharing.
         </p>
-        <a class="primary-button dark" href="#demo">Meet the Expert</a>
+        <a class="primary-button dark" href="#demo">Contact For Inc.</a>
       </div>
     </section>
 
@@ -224,11 +235,16 @@ const resources = [
         </p>
       </div>
       <div class="resource-grid">
-        {resources.map(([type, tag, title]) => (
+        {resources.map((resource) => (
           <article class="resource-card">
-            <span>{type}</span>
-            <em>{tag}</em>
-            <h3>{title}</h3>
+            <figure>
+              <img src={resource.image} alt={resource.alt} />
+            </figure>
+            <div>
+              <span>{resource.type}</span>
+              <em>{resource.tag}</em>
+              <h3>{resource.title}</h3>
+            </div>
             <a href="#demo">View More</a>
           </article>
         ))}
@@ -431,8 +447,11 @@ const resources = [
     font-size: 0.88rem;
     font-weight: 850;
     justify-content: center;
+    line-height: 1;
     min-height: 39px;
     padding: 0 18px;
+    white-space: nowrap;
+    width: fit-content;
   }
 
   .primary-button.alert { background: var(--alert); }
@@ -478,6 +497,16 @@ const resources = [
     min-height: 330px;
     overflow: hidden;
     position: relative;
+  }
+
+  .threat-visual img,
+  .breach-visual img,
+  .supply-art img {
+    display: block;
+    height: 100%;
+    min-height: inherit;
+    object-fit: cover;
+    width: 100%;
   }
 
   .hood {
@@ -601,7 +630,9 @@ const resources = [
 
   .supply-section { background: var(--card); }
   .supply-art {
+    border-radius: 8px;
     min-height: 260px;
+    overflow: hidden;
     position: relative;
   }
   .node {
@@ -632,6 +663,7 @@ const resources = [
   .demo-logos { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
   .demo-logos span { color: rgba(36, 35, 41, 0.56); font-size: 0.82rem; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; }
   .external-form h3 { text-align: center; }
+  .external-form .primary-button { justify-self: start; }
   .external-form label { color: var(--page-text); display: grid; font-size: 0.88rem; gap: 8px; margin-bottom: 14px; }
   .external-form input, .external-form select {
     background: rgba(255, 255, 255, 0.9);
@@ -675,7 +707,35 @@ const resources = [
   }
   .related-product a, .resource-card a { color: var(--page-text); font-weight: 900; }
   .resource-grid { display: grid; gap: 32px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-inline: auto; max-width: 980px; }
-  .resource-card { min-height: 340px; }
+  .resource-card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 390px;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .resource-card figure {
+    aspect-ratio: 16 / 10;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .resource-card figure img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .resource-card > div {
+    padding: 24px 24px 0;
+  }
+
+  .resource-card > a {
+    align-self: end;
+    margin: 22px 24px 26px;
+  }
   .slide-controls { display: flex; gap: 10px; margin-top: 28px; }
   .slide-controls button { background: var(--card); border: 1px solid var(--line); border-radius: 50%; height: 36px; width: 36px; }
 
@@ -715,6 +775,23 @@ const resources = [
 
     .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .related-product { min-height: 210px; padding-top: 42px; }
+
+    .threat-visual,
+    .breach-visual,
+    .supply-art {
+      min-height: 300px;
+    }
+
+    .resource-card {
+      min-height: 0;
+    }
+
+    .external-page .external-hero .primary-button,
+    .external-page .supply-section .primary-button,
+    .external-page .external-form .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 520px) {
@@ -723,7 +800,18 @@ const resources = [
       line-height: 1.05;
     }
     h2 { font-size: 2rem; }
-    .threat-visual, .breach-visual { min-height: 250px; }
+    .threat-visual,
+    .breach-visual,
+    .supply-art { min-height: 250px; }
+    .resource-card figure { aspect-ratio: 4 / 3; }
+    .external-page .external-hero .primary-button,
+    .external-page .supply-section .primary-button,
+    .external-page .external-form .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
     .hood { left: 28%; transform: scale(0.82); transform-origin: bottom center; }
     .monitor-a { left: 5%; width: 132px; }
     .monitor-b { right: 5%; width: 142px; }

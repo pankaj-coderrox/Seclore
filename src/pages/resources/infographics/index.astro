@@ -7,28 +7,28 @@ const infographics = [
     title: "Secure Collaboration in the BFSI Sector - The ASEAN Chapter",
     category: "Data Security",
     industry: "Banking & Financial Services",
-    image: "https://www.seclore.com/wp-content/uploads/secure-collaboration-in-the-bfsi-sector-the-asean-chapter.png",
+    image: "https://www.seclore.com/wp-content/uploads/secure-collaboration-in-the-bfsi-sector-the-asean-chapter-768x401.png",
     link: "https://www.seclore.com/wp-content/uploads/Infographic_secure-collaboration-in-the-bfsi-sector-the-asean-chapter.pdf"
   },
   {
     title: "Data Breaches in the Middle East Region",
     category: "Compliance",
     industry: "Government/Public Sector",
-    image: "https://www.seclore.com/wp-content/uploads/Data-Breaches-in-the-Middle-East-Region.png",
+    image: "https://www.seclore.com/wp-content/uploads/Data-Breaches-in-the-Middle-East-Region-768x768.png",
     link: "https://www.seclore.com/wp-content/uploads/Infographic_Data_Breaches_in_Middle_East_Region_2021.pdf"
   },
   {
     title: "Need for Rights Management Grows - Stats You Cannot Ignore",
     category: "EDRM",
     industry: "Any industry",
-    image: "",
+    image: "https://www.seclore.com/wp-content/uploads/Need-for-Rights-Management-Grows-%E2%80%93-Stats-You-Cannot-Ignore-768x768.png",
     link: "https://www.seclore.com/wp-content/uploads/2025/02/Data_Risk_03_Updated.pdf"
   },
   {
     title: "Securing Sensitive Data on Microsoft 365",
     category: "Partners & Integrations",
     industry: "Any industry",
-    image: "https://www.seclore.com/wp-content/uploads/Securing-Sensitive-Data-on-Microsoft-365.png",
+    image: "https://www.seclore.com/wp-content/uploads/Securing-Sensitive-Data-on-Microsoft-365-768x768.png",
     link: "https://www.seclore.com/wp-content/uploads/2025/02/Seclore-for-Microsoft-365-Infographic.pdf"
   },
   {
@@ -42,7 +42,7 @@ const infographics = [
     title: "Is Someone from Your Organization Plotting Your Downfall?",
     category: "Data Security",
     industry: "Financial Services",
-    image: "https://www.seclore.com/wp-content/uploads/2022/05/Malicious-Insiders-Thumbnail.webp",
+    image: "https://www.seclore.com/wp-content/uploads/2022/05/Malicious-Insiders-Thumbnail-768x498.webp",
     link: "https://www.seclore.com/wp-content/uploads/Seclore-Malicious-Insiders.pdf"
   },
   {
@@ -56,7 +56,7 @@ const infographics = [
     title: "Who's Protecting the Data Entering Your Organization?",
     category: "Compliance",
     industry: "Any industry",
-    image: "https://www.seclore.com/wp-content/uploads/2022/06/Incoming-Data-Protection-thumbnail.webp",
+    image: "https://www.seclore.com/wp-content/uploads/2022/06/Incoming-Data-Protection-thumbnail-1024x665.webp",
     link: "https://www.seclore.com/wp-content/uploads/2025/02/Incoming_Data_Protection.pdf"
   },
   {
@@ -77,14 +77,14 @@ const infographics = [
     title: "Are you at Risk of Data Loss Because of Careless Insiders?",
     category: "EDRM",
     industry: "Any industry",
-    image: "https://www.seclore.com/wp-content/uploads/Insider-Threats.webp",
+    image: "https://www.seclore.com/wp-content/uploads/Insider-Threats-1024x652.webp",
     link: "https://www.seclore.com/wp-content/uploads/Seclore-Are-You-at-Risk-of-Data-Loss-Because-of-Careless-Insiders.pdf"
   },
   {
     title: "Is your Organization Prone to Intellectual Property Theft?",
     category: "Third Party Risk",
     industry: "Any industry",
-    image: "https://www.seclore.com/wp-content/uploads/IP-Theft_infographic-1.png",
+    image: "https://www.seclore.com/wp-content/uploads/IP-Theft_infographic-1-1024x665.png",
     link: "https://www.seclore.com/wp-content/uploads/Seclore-Is-Your-Organization-Prone-to-IP-Theft.pdf"
   },
   {
@@ -112,14 +112,14 @@ const infographics = [
     title: "[Updated] Data Breaches in the Middle East",
     category: "Data Security",
     industry: "Government/Public Sector",
-    image: "",
+    image: "https://www.seclore.com/wp-content/uploads/Data-Breaches-in-the-Middle-East-Region-768x768.png",
     link: "https://www.seclore.com/wp-content/uploads/Seclore-Data-Breaches-in-the-Middle-East.pdf"
   },
   {
     title: "Are You at Risk of Data Loss Because of Insiders",
     category: "Data Security",
     industry: "Any industry",
-    image: "https://www.seclore.com/wp-content/uploads/Insider-Threats.webp",
+    image: "https://www.seclore.com/wp-content/uploads/Insider-Threats-1024x652.webp",
     link: "https://www.seclore.com/wp-content/uploads/Seclore-Are-You-at-Risk-of-Data-Loss-Because-of-Careless-Insiders-1.pdf"
   }
 ];
@@ -189,7 +189,7 @@ const categoryLinks = [
             data-industry={item.industry}
           >
             <a class="infographic-thumb" href={item.link} target="_blank" rel="noreferrer">
-              {item.image && <img src={item.image} alt="" loading="lazy" />}
+              {item.image && <img src={item.image} alt="" loading="eager" decoding="async" />}
             </a>
             <div class="infographic-card-copy">
               <div class="meta-row">
@@ -222,11 +222,6 @@ const categoryLinks = [
       ))}
     </section>
 
-    <section class="ready-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#top">Book a Demo</a>
-    </section>
   </main>
 </BaseLayout>
 
@@ -667,7 +662,7 @@ const categoryLinks = [
   .infographic-grid {
     display: grid;
     gap: 18px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     margin: 36px auto 0;
     max-width: 1180px;
   }
@@ -686,9 +681,10 @@ const categoryLinks = [
 
   .infographic-thumb {
     align-items: center;
-    background: #ffffff;
+    aspect-ratio: 1.76 / 1;
+    background: #f3f2f5;
     display: flex;
-    min-height: 235px;
+    min-height: 203px;
     overflow: hidden;
   }
 
@@ -696,7 +692,8 @@ const categoryLinks = [
     display: block;
     height: 100%;
     object-fit: cover;
-    opacity: 0.09;
+    object-position: center;
+    opacity: 1;
     width: 100%;
   }
 
@@ -790,32 +787,14 @@ const categoryLinks = [
     padding: 0 24px;
   }
 
-  .ready-section,
   .resource-footer {
     background: #ffffff;
     padding-inline: clamp(18px, 4vw, 56px);
   }
 
-  .ready-section {
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 44px;
-    padding-top: 42px;
-  }
-
-  .ready-section h2 {
-    font-size: clamp(2rem, 3vw, 3rem);
-    margin-bottom: 10px;
-  }
-
-  .ready-section p,
   .resource-footer p {
     color: var(--page-muted);
     line-height: 1.58;
-  }
-
-  .ready-section .primary-button {
-    margin-top: 24px;
-    min-width: 170px;
   }
 
   .resource-footer {
@@ -971,6 +950,10 @@ const categoryLinks = [
       min-height: 340px;
     }
 
+    .infographic-grid {
+      grid-template-columns: 1fr;
+    }
+
     .infographic-thumb {
       min-height: 170px;
     }
@@ -985,7 +968,6 @@ const categoryLinks = [
 
     .catalog,
     .category-band,
-    .ready-section,
     .resource-footer {
       padding-inline: 16px;
     }

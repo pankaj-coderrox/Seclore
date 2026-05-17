@@ -98,7 +98,7 @@ const capabilityBlocks = [
           services. Our experts are available to help you adopt data-centric security solutions that meet your business,
           security, and regulatory goals.
         </p>
-        <a class="primary-button alert" href="#contact">Contact Us</a>
+        <a class="primary-button alert" href="#contact" style="max-width: 100%; width: fit-content;">Book a Demo</a>
       </div>
       <img
         src="/assets/professional-services-hero.png"
@@ -130,7 +130,7 @@ const capabilityBlocks = [
           Seclore's professional services help your business get value faster, adapt your implementation to real workflows,
           and support long-term adoption across teams and markets.
         </p>
-        <a class="primary-button dark" href="#contact">Contact Us</a>
+        <a class="primary-button dark" href="#contact" style="max-width: 100%; width: fit-content;">Contact For Inc.</a>
       </div>
     </section>
 
@@ -152,7 +152,7 @@ const capabilityBlocks = [
     <section class="partner-section">
       <div class="section-heading centered">
         <h2>Verified partner network</h2>
-        <a class="primary-button alert" href="/partners/register/">Become a Partner</a>
+        <a class="primary-button alert" href="/partners/register/" style="max-width: 100%; width: fit-content;">Become a Partner</a>
       </div>
       <div class="partner-grid">
         {partnerStats.map((stat) => <p>{stat}</p>)}
@@ -248,7 +248,7 @@ const capabilityBlocks = [
   .nav-utilities { flex: 0 0 auto; gap: clamp(12px, 1.5vw, 20px); margin-left: clamp(12px, 2vw, 28px); }
   .utility-link, .language-button, .utility-icon, .theme-toggle { display: none; }
 
-  .demo-button, .primary-button { align-items: center; background: var(--demo-button-bg); border: 0; border-radius: 7px; color: var(--demo-button-text); cursor: pointer; display: inline-flex; font-size: 0.88rem; font-weight: 850; justify-content: center; min-height: 39px; padding: 0 18px; }
+  .demo-button, .primary-button { align-items: center; background: var(--demo-button-bg); border: 0; border-radius: 7px; color: var(--demo-button-text); cursor: pointer; display: inline-flex; font-size: 0.88rem; font-weight: 850; justify-content: center; line-height: 1; min-height: 39px; padding: 0 18px; white-space: nowrap; width: fit-content; }
   .primary-button.alert { background: var(--alert); }
   .primary-button.dark { background: #211326; color: #ffffff; }
   .nav-toggle { background: transparent; border: 0; display: none; height: 42px; width: 42px; }
@@ -324,6 +324,12 @@ const capabilityBlocks = [
     .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .partner-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .capability-block.reverse > div { order: 0; }
+    .services-page .services-hero .primary-button,
+    .services-page .intro-section .primary-button,
+    .services-page .partner-section .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 520px) {
@@ -331,5 +337,13 @@ const capabilityBlocks = [
     h2 { font-size: 2rem; }
     .partner-grid { grid-template-columns: 1fr; }
     .hero-photo { min-height: 220px; }
+    .services-page .services-hero .primary-button,
+    .services-page .intro-section .primary-button,
+    .services-page .partner-section .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
   }
 </style>

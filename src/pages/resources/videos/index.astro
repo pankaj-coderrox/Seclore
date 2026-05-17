@@ -3,18 +3,66 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/Nav.astro";
 
 const webinars = [
-  { title: "From AI Risk to AI Readiness: Where Trust Becomes Operational, Not Aspirational", tags: ["On-Demand Webinar", "Compliance"] },
-  { title: "DPDP Readiness in the Age of AI: The Role of Data Security Intelligence", tags: ["On-Demand Webinar", "Compliance"] },
-  { title: "2026 Data Security Reality Check: What's Critical Now and What's Coming", tags: ["On-Demand Webinar", "Data Security"] },
-  { title: "Inside the Data Intelligence Framework", tags: ["On-Demand Webinar", "Data Security"] },
-  { title: "If You Can't Answer These 3 Questions, Your Data Is Already Exposed", tags: ["On-Demand Webinar", "EDRM"] },
-  { title: "Breach Is Inevitable. Data Loss Isn't", tags: ["On-Demand Webinar", "Data Loss Prevention"] },
-  { title: "Protecting Your Data from \"Shadow\" GenAI", tags: ["On-Demand Webinar", "AI Risk"] },
-  { title: "The GenAI Security Gap: Closing It with Symantec and Seclore", tags: ["On-Demand Webinar", "AI Risk"] },
-  { title: "The New Rules for Protecting Data in an AI-Driven World", tags: ["On-Demand Webinar", "AI Risk"] },
-  { title: "The Myth of Perimeter Security: Why Your Network Is No Longer the Front Line of Defense", tags: ["On-Demand Webinar", "Data Security"] },
-  { title: "2025 Data Security Forecast: Trends to Watch and Prepare for", tags: ["On-Demand Webinar", "Data Security"] },
-  { title: "Extending Data Security Coverage with Symantec and Seclore", tags: ["On-Demand Webinar", "Partners & Integrations"] }
+  {
+    title: "From AI Risk to AI Readiness: Where Trust Becomes Operational, Not Aspirational",
+    tags: ["On-Demand Webinar", "Compliance"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/march-2026-webinar-recap-768x768.png"
+  },
+  {
+    title: "DPDP Readiness in the Age of AI: The Role of Data Security Intelligence",
+    tags: ["On-Demand Webinar", "Compliance"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/feb-2026-recap-webinar-graphic-768x768.png"
+  },
+  {
+    title: "2026 Data Security Reality Check: What's Critical Now and What's Coming",
+    tags: ["On-Demand Webinar", "Data Security"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/jan-2026-recap-webinar-graphic-768x768.png"
+  },
+  {
+    title: "Inside the Data Intelligence Framework",
+    tags: ["On-Demand Webinar", "Data Security"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/webinar-Inside-the-Data-Intelligence-Lab-768x768.png"
+  },
+  {
+    title: "If You Can't Answer These 3 Questions, Your Data Is Already Exposed",
+    tags: ["On-Demand Webinar", "EDRM"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Nov-2025-Recap-webinar-graphic.png"
+  },
+  {
+    title: "Breach Is Inevitable. Data Loss Isn't",
+    tags: ["On-Demand Webinar", "Data Loss Prevention"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Recap-graphic-October-2025-Webinar.png"
+  },
+  {
+    title: "Protecting Your Data from \"Shadow\" GenAI",
+    tags: ["On-Demand Webinar", "AI Risk"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/seclore-august-webinar-featured-image.png"
+  },
+  {
+    title: "The GenAI Security Gap: Closing It with Symantec and Seclore",
+    tags: ["On-Demand Webinar", "AI Risk"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/the-genai-security-gap-closing-it-with-symantec-and-seclore.png"
+  },
+  {
+    title: "The New Rules for Protecting Data in an AI-Driven World",
+    tags: ["On-Demand Webinar", "AI Risk"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/the-new-rules-for-protecting-data-in-an-ai-driven-world-1.png"
+  },
+  {
+    title: "The Myth of Perimeter Security: Why Your Network Is No Longer the Front Line of Defense",
+    tags: ["On-Demand Webinar", "Data Security"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/track-in-motion.png"
+  },
+  {
+    title: "2025 Data Security Forecast: Trends to Watch and Prepare for",
+    tags: ["On-Demand Webinar", "Data Security"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/2025-data-security-forecast-trends-to-watch-and-prepare-for-1.png"
+  },
+  {
+    title: "Extending Data Security Coverage with Symantec and Seclore",
+    tags: ["On-Demand Webinar", "Partners & Integrations"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/extending-data-security-coverage-with-symantec-and-seclore.png"
+  }
 ];
 
 const categoryLinks = [
@@ -63,6 +111,9 @@ const categoryLinks = [
       <div class="video-grid">
         {webinars.map((webinar) => (
           <article class="video-card">
+            <div class="video-thumb">
+              <img src={webinar.imageUrl} alt="" loading="lazy" decoding="async" />
+            </div>
             <div class="video-card-copy">
               <div class="meta-row">
                 {webinar.tags.map((tag) => <span>{tag}</span>)}
@@ -93,11 +144,6 @@ const categoryLinks = [
       ))}
     </section>
 
-    <section class="ready-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#demo">Book a Demo</a>
-    </section>
   </main>
 </BaseLayout>
 
@@ -539,12 +585,30 @@ const categoryLinks = [
     border: 1px solid var(--line);
     border-radius: 8px;
     display: grid;
+    grid-template-rows: auto 1fr;
     min-height: 380px;
     overflow: hidden;
   }
 
+  .video-thumb {
+    aspect-ratio: 1.76 / 1;
+    background: #f3f2f5;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .video-thumb img {
+    display: block;
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    width: 100%;
+  }
+
   .video-card-copy {
-    align-content: end;
+    align-content: start;
     display: grid;
     padding: 26px;
   }
@@ -577,9 +641,11 @@ const categoryLinks = [
   }
 
   .video-card a {
+    align-self: end;
     color: #2d2936;
     font-size: 0.82rem;
     font-weight: 800;
+    margin-top: auto;
   }
 
   .pagination {
@@ -623,23 +689,11 @@ const categoryLinks = [
     padding: 0 20px;
   }
 
-  .ready-section,
   .resource-footer {
     background: #ffffff;
     padding-inline: clamp(16px, 2.5vw, 34px);
   }
 
-  .ready-section {
-    padding-block: 32px 40px;
-  }
-
-  .ready-section h2 {
-    font-size: clamp(1.45rem, 2.2vw, 2rem);
-    font-weight: 450;
-    margin-bottom: 8px;
-  }
-
-  .ready-section p,
   .resource-footer p {
     color: var(--page-muted);
     font-size: 0.98rem;
@@ -867,7 +921,7 @@ const categoryLinks = [
     }
 
     .video-card {
-      min-height: 183px;
+      min-height: 255px;
     }
 
     .video-card-copy {

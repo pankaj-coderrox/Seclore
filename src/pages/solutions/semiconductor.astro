@@ -61,9 +61,27 @@ const relatedProducts = [
 ];
 
 const resources = [
-  ["Whitepaper", "Semiconductor", "AI Brings Speed, Quality, and Cybersecurity Risk to the Semiconductor Industry"],
-  ["Whitepaper", "Semiconductor", "Safeguarding Intellectual Property in the Semiconductor Equipment Industry"],
-  ["Whitepaper", "Semiconductor", "Critical Assets Protection and Control for the Semiconductor Industry"]
+  {
+    type: "Whitepaper",
+    tag: "Semiconductor",
+    title: "AI Brings Speed, Quality, and Cybersecurity Risk to the Semiconductor Industry",
+    image: "/images/integrations/dlp-casb/ai-perimeter.png",
+    alt: "Semiconductor and AI security visual"
+  },
+  {
+    type: "Whitepaper",
+    tag: "Semiconductor",
+    title: "Safeguarding Intellectual Property in the Semiconductor Equipment Industry",
+    image: "/images/integrations/content-storage/enterprise-benefits.png",
+    alt: "Engineers reviewing protected design files"
+  },
+  {
+    type: "Whitepaper",
+    tag: "Semiconductor",
+    title: "Critical Assets Protection and Control for the Semiconductor Industry",
+    image: "/images/integrations/discovery-classification/datacenter.png",
+    alt: "Protected digital infrastructure"
+  }
 ];
 ---
 
@@ -85,10 +103,7 @@ const resources = [
         <a class="primary-button alert" href="#demo">Book a Demo</a>
       </div>
       <div class="wafer-visual" aria-label="Semiconductor lab visual">
-        <div class="lab-panel"></div>
-        <div class="lab-figure"></div>
-        <div class="wafer-disc"></div>
-        <div class="chip-grid"></div>
+        <img src="/images/integrations/content-storage/enterprise-benefits.png" alt="Engineers reviewing semiconductor design files" loading="eager" />
       </div>
     </section>
 
@@ -101,11 +116,7 @@ const resources = [
 
     <section class="split-section">
       <div class="monitor-visual" aria-label="Protected semiconductor design visual">
-        <div class="monitor-screen">
-          <div class="cad-shape"></div>
-          <div class="screen-lock"></div>
-        </div>
-        <div class="monitor-stand"></div>
+        <img src="/images/integrations/discovery-classification/datacenter.png" alt="Protected semiconductor data infrastructure" />
       </div>
       <div>
         <h2>Persistent security for your semiconductor IP throughout its lifecycle</h2>
@@ -236,11 +247,16 @@ const resources = [
         <h2>Semiconductor industry resources</h2>
       </div>
       <div class="resource-grid">
-        {resources.map(([type, tag, title]) => (
+        {resources.map((resource) => (
           <article class="resource-card">
-            <span>{type}</span>
-            <em>{tag}</em>
-            <h3>{title}</h3>
+            <figure>
+              <img src={resource.image} alt={resource.alt} />
+            </figure>
+            <div>
+              <span>{resource.type}</span>
+              <em>{resource.tag}</em>
+              <h3>{resource.title}</h3>
+            </div>
             <a href="#demo">View More</a>
           </article>
         ))}
@@ -444,8 +460,11 @@ const resources = [
     font-size: 0.88rem;
     font-weight: 850;
     justify-content: center;
+    line-height: 1;
     min-height: 39px;
     padding: 0 18px;
+    white-space: nowrap;
+    width: fit-content;
   }
 
   .primary-button.alert { background: var(--alert); }
@@ -492,6 +511,15 @@ const resources = [
     min-height: 330px;
     overflow: hidden;
     position: relative;
+  }
+
+  .wafer-visual img,
+  .monitor-visual img {
+    display: block;
+    height: 100%;
+    min-height: inherit;
+    object-fit: cover;
+    width: 100%;
   }
 
   .lab-panel {
@@ -570,9 +598,11 @@ const resources = [
 
   .monitor-visual {
     align-items: center;
+    border-radius: 8px;
     display: grid;
     justify-items: center;
     min-height: 360px;
+    overflow: hidden;
   }
 
   .monitor-screen {
@@ -689,6 +719,7 @@ const resources = [
   .demo-copy ul { padding-left: 20px; }
   .demo-copy strong { color: #32263d; display: inline-block; font-size: 1.05rem; margin: 12px 22px 0 0; }
   .semiconductor-form h3 { text-align: center; }
+  .semiconductor-form .primary-button { justify-self: start; }
   .semiconductor-form label { color: var(--page-text); display: grid; font-size: 0.88rem; gap: 8px; margin-bottom: 14px; }
   .semiconductor-form input, .semiconductor-form select {
     background: rgba(255, 255, 255, 0.9);
@@ -728,7 +759,35 @@ const resources = [
   }
   .related-product a, .resource-card a { color: var(--page-text); font-weight: 900; }
   .resource-grid { display: grid; gap: 32px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-inline: auto; max-width: 980px; }
-  .resource-card { min-height: 340px; }
+  .resource-card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 390px;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .resource-card figure {
+    aspect-ratio: 16 / 10;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .resource-card figure img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .resource-card > div {
+    padding: 24px 24px 0;
+  }
+
+  .resource-card > a {
+    align-self: end;
+    margin: 22px 24px 26px;
+  }
   .slide-controls { display: flex; gap: 10px; margin-top: 28px; }
   .slide-controls button { background: var(--card); border: 1px solid var(--line); border-radius: 50%; height: 36px; width: 36px; }
 
@@ -769,6 +828,24 @@ const resources = [
 
     .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .related-product { min-height: 210px; padding-top: 42px; }
+
+    .wafer-visual,
+    .monitor-visual {
+      min-height: 300px;
+    }
+
+    .resource-card {
+      min-height: 0;
+    }
+
+    .semiconductor-page .semiconductor-hero .primary-button,
+    .semiconductor-page .split-section .primary-button,
+    .semiconductor-page .regulations-section .primary-button,
+    .semiconductor-page .semiconductor-form .primary-button,
+    .semiconductor-page .story-card .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 520px) {
@@ -777,12 +854,27 @@ const resources = [
       line-height: 1.05;
     }
     h2 { font-size: 2rem; }
-    .wafer-visual { min-height: 250px; }
+    .wafer-visual,
+    .monitor-visual {
+      min-height: 250px;
+    }
+    .resource-card figure { aspect-ratio: 4 / 3; }
     .lab-figure { height: 180px; right: 6%; width: 132px; }
     .wafer-disc { height: 112px; width: 112px; }
     .chip-grid { bottom: 18px; height: 86px; width: 150px; }
     .monitor-screen { height: 220px; }
     .cad-shape { left: 36px; width: 180px; }
     .screen-lock { right: 28px; }
+
+    .semiconductor-page .semiconductor-hero .primary-button,
+    .semiconductor-page .split-section .primary-button,
+    .semiconductor-page .regulations-section .primary-button,
+    .semiconductor-page .semiconductor-form .primary-button,
+    .semiconductor-page .story-card .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
   }
 </style>

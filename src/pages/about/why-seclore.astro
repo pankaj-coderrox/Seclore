@@ -19,8 +19,8 @@ const reasons = [
     image: "https://www.seclore.com/wp-content/uploads/prism-graphic.png"
   },
   {
-    title: "Orchestrate the lifecycle of discovery - classification - protection and tracking",
-    text: "Any comprehensive data security platform should cover all the four capabilities i.e. Data Discovery, Data Classification, Data Protection and Data Tracking. While none of these capabilities by themselves are new, the combination of an all in one powerful platform which allows orchestration increases the value manifold. Seclore's DCSP orchestrates the four capabilities allowing for enterprises to deploy best-of-breed solutions.",
+    title: "Orchestrate the lifecycle of discovery – classification – protection and tracking",
+    text: "Any comprehensive data security platform should cover all the four capabilities i.e. Data Discovery, Data Classification, Data Protection and Data Tracking. While none of these capabilities by themselves are new, the combination of an all in one powerful platform which allows orchestration increases the value manifold. Seclore’s DCSP orchestrates the four capabilities allowing for enterprises to deploy best-of-breed solutions.",
     align: "left",
     image: "https://www.seclore.com/wp-content/uploads/seclore-orchestration-platform_03062025_v2-1.png"
   },
@@ -98,7 +98,7 @@ const resources = [
           and control your data and achieve compliance wherever people and AI work.
         </p>
         <div class="hero-actions">
-          <a class="primary-button" href="#demo">Book a Demo</a>
+          <a class="primary-button" href="/demo/">Book a Demo</a>
           <a class="outline-button" href="https://www.seclore.com/wp-content/uploads/Seclore-One-Pager-Nov-2023.pdf">Download Datasheet</a>
         </div>
       </div>
@@ -109,15 +109,21 @@ const resources = [
     </section>
 
     <section class="logo-section" aria-label="Trusted by industry-leading enterprises">
-      <h2>Trusted by industry-leading enterprises</h2>
+      <h2>
+        <span>TRUSTED BY INDUSTRY-LEADING</span>
+        <span>ENTERPRISES</span>
+      </h2>
       <div class="logo-strip">
-        {logos.map(([label, src]) => <img src={src} alt={label} loading="lazy" />)}
+        <div class="logo-track">
+          {logos.map(([label, src]) => <img src={src} alt={label} loading="lazy" />)}
+          {logos.map(([label, src]) => <img src={src} alt="" aria-hidden="true" loading="lazy" />)}
+        </div>
       </div>
     </section>
 
     <section class="reason-stack">
       {reasons.map((reason) => (
-        <article class={`reason-row ${reason.align}`}>
+        <article class={`reason-row ${reason.align} ${reason.title.startsWith("Orchestrate") ? "orchestration-block" : ""}`}>
           <div class="reason-media" aria-hidden="true">
             <img src={reason.image} alt="" loading="lazy" />
           </div>
@@ -173,11 +179,6 @@ const resources = [
       </div>
     </section>
 
-    <section class="ready-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#top">Book a Demo</a>
-    </section>
   </main>
 </BaseLayout>
 
@@ -447,25 +448,35 @@ const resources = [
   .outline-button,
   .dark-button {
     align-items: center;
-    border-radius: 7px;
+    border-radius: 7.5px;
     cursor: pointer;
     display: inline-flex;
-    font-size: 0.86rem;
-    font-weight: 850;
+    font-size: 15px !important;
+    font-weight: 500 !important;
     justify-content: center;
-    min-height: 40px;
-    padding: 0 18px;
+    line-height: 1;
+    min-height: 39px;
   }
 
   .why-page .demo-button,
   .primary-button {
-    background: var(--purple);
-    color: #ffffff;
+    background: #32373c !important;
+    color: #ffffff !important;
+    padding: 0 30px !important;
+    width: fit-content !important;
   }
 
   .outline-button {
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    color: #ffffff;
+    background: transparent !important;
+    border: 0 !important;
+    color: #ffffff !important;
+    padding: 0 16px !important;
+    width: fit-content !important;
+  }
+
+  .why-page .demo-button:hover,
+  .primary-button:hover {
+    background: #32373c !important;
   }
 
   .dark-button {
@@ -552,10 +563,17 @@ const resources = [
   }
 
   .hero-actions {
+    align-items: flex-start !important;
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 16px !important;
     margin-top: 24px;
+  }
+
+  .why-page .hero-actions > .primary-button,
+  .why-page .hero-actions > .outline-button {
+    min-height: 39px !important;
+    width: fit-content !important;
   }
 
   .logo-section {
@@ -566,23 +584,50 @@ const resources = [
 
   .logo-section h2 {
     font-size: 0.72rem;
+    font-weight: 600;
     margin-bottom: 22px;
+  }
+
+  .logo-section h2 span {
+    display: block;
+    margin: 0;
   }
 
   .logo-strip {
     align-items: center;
-    display: grid;
-    gap: clamp(22px, 5vw, 76px);
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .logo-track {
+    align-items: center;
+    animation: why-logo-scroll 24s linear infinite;
+    display: flex;
+    flex: 0 0 max-content;
+    gap: clamp(46px, 7vw, 92px);
+    min-width: max-content;
+    will-change: transform;
   }
 
   .logo-strip img {
+    display: block;
+    flex: 0 0 auto;
     filter: grayscale(1);
-    margin: 0 auto;
     max-height: 32px;
     max-width: 130px;
     opacity: 0.72;
-    width: 100%;
+    width: auto;
+  }
+
+  @keyframes why-logo-scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - clamp(23px, 3.5vw, 46px)));
+    }
   }
 
   .reason-stack {
@@ -635,10 +680,22 @@ const resources = [
 
   .reason-copy p,
   .section-heading p,
-  .ready-section p,
   .why-footer p {
     color: var(--muted);
     line-height: 1.58;
+  }
+
+  .why-page .orchestration-block .reason-copy h2 {
+    font-size: clamp(3.1rem, 4.55vw, 3.625rem) !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+  }
+
+  .why-page .orchestration-block .reason-copy p {
+    color: #3d3d3d !important;
+    font-size: clamp(1rem, 1.42vw, 1.125rem) !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
   }
 
   .reason-media {
@@ -771,26 +828,9 @@ const resources = [
     width: 30px;
   }
 
-  .ready-section,
   .why-footer {
     background: #ffffff;
     padding-inline: clamp(18px, 4vw, 56px);
-  }
-
-  .ready-section {
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 44px;
-    padding-top: 42px;
-  }
-
-  .ready-section h2 {
-    font-size: clamp(2rem, 3vw, 3rem);
-    margin-bottom: 10px;
-  }
-
-  .ready-section .primary-button {
-    margin-top: 24px;
-    min-width: 170px;
   }
 
   .why-footer {
@@ -942,15 +982,23 @@ const resources = [
       min-height: auto;
     }
 
-    .logo-strip {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
     .reason-row,
     .reason-row.left,
     .reason-row.right {
       gap: 20px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
+    }
+
+    .reason-row.left .reason-copy,
+    .reason-row.right .reason-copy,
+    .reason-row.left .reason-media,
+    .reason-row.right .reason-media {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .reason-copy {
+      max-width: none;
     }
 
     .reason-media {
@@ -982,14 +1030,24 @@ const resources = [
       font-size: 0.9rem;
     }
 
+    .why-page .orchestration-block .reason-copy h2 {
+      font-size: 2.2rem !important;
+      line-height: 1.08 !important;
+    }
+
+    .why-page .orchestration-block .reason-copy p {
+      font-size: 0.95rem !important;
+      line-height: 1.55 !important;
+    }
+
     .hero-actions {
-      align-items: stretch;
+      align-items: flex-start;
       flex-direction: column;
     }
 
     .primary-button,
     .outline-button {
-      width: 100%;
+      width: fit-content !important;
     }
   }
 </style>

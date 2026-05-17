@@ -319,13 +319,13 @@ const useCases = [
 
 <style is:global>
   :root {
-    color-scheme: dark;
-    --page-bg: #f7f7fb;
-    --page-text: #221c2c;
-    --page-muted: #554a62;
-    --purple: #5b2bd7;
-    --purple-dark: #38178f;
-    --lavender: #f0edfb;
+    color-scheme: light;
+    --page-bg: #ffffff;
+    --page-text: #202020;
+    --page-muted: #5f6670;
+    --purple: #5630d6;
+    --purple-dark: #4321b4;
+    --lavender: #f7f7fb;
     --card: #ffffff;
     --line: rgba(91, 43, 215, 0.16);
     --header-bg: #ffffff;
@@ -380,8 +380,21 @@ const useCases = [
 
   body {
     margin: 0;
-    background: var(--page-bg);
-    color: var(--page-text);
+    background: #ffffff;
+    color: #202020;
+  }
+
+  .dspm-page {
+    --page-bg: #ffffff;
+    --page-text: #202020;
+    --page-muted: #5f6670;
+    --purple: #5630d6;
+    --purple-dark: #4321b4;
+    --lavender: #f7f7fb;
+    --card: #ffffff;
+    --line: rgba(15, 23, 42, 0.1);
+    background: #ffffff;
+    color: #202020;
   }
 
   a {
@@ -1192,6 +1205,68 @@ const useCases = [
 
   .dspm-form button {
     margin-top: 12px;
+  }
+
+  html[data-theme="dark"] .dspm-page {
+    --page-bg: #ffffff;
+    --page-text: #202020;
+    --page-muted: #5f6670;
+    --purple: #5630d6;
+    --purple-dark: #4321b4;
+    --lavender: #f7f7fb;
+    --card: #ffffff;
+    --line: rgba(15, 23, 42, 0.1);
+    background: #ffffff;
+    color: #202020;
+  }
+
+  html[data-theme="dark"] .dspm-page .dspm-hero,
+  html[data-theme="dark"] .dspm-page .dashboard-shell,
+  html[data-theme="dark"] .dspm-page .meaning-card,
+  html[data-theme="dark"] .dspm-page .layer-card,
+  html[data-theme="dark"] .dspm-page .benefit-card,
+  html[data-theme="dark"] .dspm-page .step-card,
+  html[data-theme="dark"] .dspm-page .use-card,
+  html[data-theme="dark"] .dspm-page .floating-card {
+    background: #ffffff;
+  }
+
+  html[data-theme="dark"] .dspm-page .generation-section,
+  html[data-theme="dark"] .dspm-page .text-section,
+  html[data-theme="dark"] .dspm-page .works-section,
+  html[data-theme="dark"] .dspm-page .dspm-footer {
+    background: #f7f7fb;
+  }
+
+  html[data-theme="dark"] .dspm-page .ai-visual {
+    background: radial-gradient(circle at 50% 50%, rgba(86, 48, 214, 0.12), transparent 56%), #ffffff;
+    border-color: #d8cffc;
+  }
+
+  html[data-theme="dark"] .dspm-page .demo-band {
+    background: linear-gradient(135deg, #f7f9fc, #f4f0ff);
+  }
+
+  html[data-theme="dark"] .dspm-page .dspm-form {
+    background: #ffffff;
+  }
+
+  html[data-theme="dark"] .dspm-page h1,
+  html[data-theme="dark"] .dspm-page h2,
+  html[data-theme="dark"] .dspm-page h3,
+  html[data-theme="dark"] .dspm-page strong,
+  html[data-theme="dark"] .dspm-page label {
+    color: #202020;
+  }
+
+  html[data-theme="dark"] .dspm-page p,
+  html[data-theme="dark"] .dspm-page li {
+    color: #5f6670;
+  }
+
+  html[data-theme="dark"] .dspm-page .primary-button {
+    background: #5630d6;
+    color: #ffffff;
   }
 
   .form-status {

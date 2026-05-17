@@ -63,7 +63,7 @@ const resources = [
         Safeguard sensitive data managed and maintained within file storage and sharing systems by
         embedding data security and compliance policies within the data itself.
       </p>
-      <a class="primary-button" href="#demo">Book a Demo</a>
+      <a class="primary-button" href="/demo/">Book a Demo</a>
     </section>
 
     <section class="intro-section">
@@ -124,7 +124,7 @@ const resources = [
             {card.icon === "folder" && <div class="folder-icon" aria-hidden="true"></div>}
             <h3>{card.title}</h3>
             <p>{card.text}</p>
-            <a href={card.href || "#demo"}>Learn More <span aria-hidden="true">&rarr;</span></a>
+            <a href={card.href || "/demo/"}>Learn More <span aria-hidden="true">&rarr;</span></a>
           </article>
         ))}
       </div>
@@ -151,12 +151,6 @@ const resources = [
         <button type="button" aria-label="Previous resources">&larr;</button>
         <button type="button" aria-label="Next resources">&rarr;</button>
       </div>
-    </section>
-
-    <section class="cta-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#top">Book a Demo</a>
     </section>
   </main>
 </BaseLayout>
@@ -350,12 +344,6 @@ const resources = [
   .resource-controls { display: flex; gap: 20px; margin: 48px auto 0; max-width: 970px; }
   .resource-controls button { background: #fff; border: 1px solid #a9a9b2; border-radius: 999px; color: #7d7d87; height: 64px; width: 64px; }
 
-  .cta-section { background: #fff; padding: 55px 30px 65px; }
-  .cta-section h2, .cta-section p, .cta-section a { margin-left: auto; margin-right: auto; max-width: 1120px; }
-  .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 500; }
-  .cta-section p { color: #92939b; font-size: 1.16rem; line-height: 1.55; margin-top: 0.8rem; }
-  .cta-section .primary-button { margin-top: 2rem; }
-
   .site-footer { background: #fff; color: #5f626b; padding: 0 30px 55px; }
   .site-footer > * { margin-left: auto; margin-right: auto; max-width: 1120px; }
   .footer-lines { border-top: 1px solid #cfcfd4; }
@@ -391,8 +379,7 @@ const resources = [
     .storage-grid, .resource-grid { grid-template-columns: 1fr; }
     .resource-grid { margin-left: auto; margin-right: auto; max-width: 365px; }
     .storage-card { min-height: 0; padding: 36px 28px; }
-    .file-storage-page .product-hero > .primary-button,
-    .file-storage-page .cta-section > .primary-button {
+    .file-storage-page .product-hero > .primary-button {
       max-width: 100%;
       width: fit-content !important;
     }
@@ -402,8 +389,7 @@ const resources = [
     .product-hero h1 { font-size: 2.7rem; }
     .intro-copy h2, .section-heading h2 { font-size: 2.2rem; }
     .band-section h2 { font-size: 2rem; }
-    .file-storage-page .product-hero > .primary-button,
-    .file-storage-page .cta-section > .primary-button {
+    .file-storage-page .product-hero > .primary-button {
       font-size: 0.9rem !important;
       min-height: 40px;
       padding-inline: 18px;

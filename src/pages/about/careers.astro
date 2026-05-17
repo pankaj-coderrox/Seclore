@@ -82,6 +82,21 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
       <a class="primary-button" href="#open-positions">View Open Positions</a>
     </section>
 
+    <section class="career-video-section" aria-labelledby="career-video-heading">
+      <div class="career-video-wrap">
+        <h2 id="career-video-heading">Join Seclore</h2>
+        <div class="career-video-frame">
+          <iframe
+            src="https://player.vimeo.com/video/1074800998?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            title="Join Seclore"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
     <section class="life-section">
       <img src="https://www.seclore.com/wp-content/uploads/Team-Seclore-fisheye-scaled.jpeg" alt="Seclore team together outdoors" loading="lazy" />
       <div>
@@ -114,30 +129,41 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
 
     <section class="gallery-section">
       <h2>Picture yourself at Seclore</h2>
-      <div class="gallery-strip" data-scroll-strip="gallery">
-        {galleryImages.map((image) => (
-          <img src={image} alt="Seclore team moment" loading="lazy" />
-        ))}
+      <div class="gallery-strip" aria-label="Seclore team moments">
+        <div class="gallery-track">
+          <div class="gallery-loop">
+            {galleryImages.map((image) => (
+              <img src={image} alt="Seclore team moment" loading="lazy" />
+            ))}
+          </div>
+          <div class="gallery-loop" aria-hidden="true">
+            {galleryImages.map((image) => (
+              <img src={image} alt="" loading="lazy" />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="testimonial-section">
-      <div class="testimonial-card">
-        {testimonials.map((item, index) => (
-          <article class="testimonial-slide" data-testimonial-slide hidden={index !== 0}>
-            <img src={item.image} alt={item.person} loading="lazy" />
-            <blockquote>{item.quote}</blockquote>
-            <p>{item.person}</p>
-          </article>
-        ))}
-        <div class="testimonial-footer">
-          <div class="round-controls">
-            <button type="button" data-testimonial-prev aria-label="Previous testimonial">&larr;</button>
-            <button type="button" data-testimonial-next aria-label="Next testimonial">&rarr;</button>
+      <div class="testimonial-marquee" aria-label="Employee testimonials">
+        <div class="testimonial-track">
+          <div class="testimonial-loop">
+            {testimonials.map((item) => (
+              <article class="testimonial-card">
+                <img src={item.image} alt={item.person} loading="lazy" />
+                <blockquote>{item.quote}</blockquote>
+                <p>{item.person}</p>
+              </article>
+            ))}
           </div>
-          <div class="dots" aria-label="Testimonial slides">
-            {testimonials.map((_, index) => (
-              <button class={index === 0 ? "active" : ""} type="button" data-testimonial-dot={index} aria-label={`Show testimonial ${index + 1}`}></button>
+          <div class="testimonial-loop" aria-hidden="true">
+            {testimonials.map((item) => (
+              <article class="testimonial-card">
+                <img src={item.image} alt="" loading="lazy" />
+                <blockquote>{item.quote}</blockquote>
+                <p>{item.person}</p>
+              </article>
             ))}
           </div>
         </div>
@@ -145,14 +171,19 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
     </section>
 
     <section class="awards-section">
-      <div class="award-strip" data-scroll-strip="awards">
-        {awards.map((image) => (
-          <img src={image} alt="Seclore workplace award" loading="lazy" />
-        ))}
-      </div>
-      <div class="round-controls">
-        <button type="button" data-scroll-prev="awards" aria-label="Previous award">&larr;</button>
-        <button type="button" data-scroll-next="awards" aria-label="Next award">&rarr;</button>
+      <div class="award-strip" aria-label="Seclore workplace awards">
+        <div class="award-track">
+          <div class="award-loop">
+            {awards.map((image) => (
+              <img src={image} alt="Seclore workplace award" loading="lazy" />
+            ))}
+          </div>
+          <div class="award-loop" aria-hidden="true">
+            {awards.map((image) => (
+              <img src={image} alt="" loading="lazy" />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
 
@@ -237,11 +268,6 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
       </div>
     </div>
 
-    <section class="ready-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#top">Book a Demo</a>
-    </section>
   </main>
 </BaseLayout>
 
@@ -260,26 +286,6 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
 
   document.querySelectorAll("[data-scroll-next]").forEach((button) => {
     button.addEventListener("click", () => scrollStrip(button.dataset.scrollNext, 1));
-  });
-
-  const slides = Array.from(document.querySelectorAll("[data-testimonial-slide]"));
-  const dots = Array.from(document.querySelectorAll("[data-testimonial-dot]"));
-  let activeTestimonial = 0;
-
-  function showTestimonial(index) {
-    activeTestimonial = (index + slides.length) % slides.length;
-    slides.forEach((slide, slideIndex) => {
-      slide.hidden = slideIndex !== activeTestimonial;
-    });
-    dots.forEach((dot, dotIndex) => {
-      dot.classList.toggle("active", dotIndex === activeTestimonial);
-    });
-  }
-
-  document.querySelector("[data-testimonial-prev]")?.addEventListener("click", () => showTestimonial(activeTestimonial - 1));
-  document.querySelector("[data-testimonial-next]")?.addEventListener("click", () => showTestimonial(activeTestimonial + 1));
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => showTestimonial(Number(dot.dataset.testimonialDot)));
   });
 
   const rows = Array.from(document.querySelectorAll("[data-job-row]"));
@@ -644,13 +650,58 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
     margin-bottom: 22px;
   }
 
+  .career-hero .primary-button {
+    border-radius: 7px !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+    margin-inline: auto;
+    min-height: 46px !important;
+    min-width: 178px;
+    padding: 0 26px !important;
+    text-align: center;
+    width: fit-content !important;
+  }
+
+  .career-video-section {
+    background: #ffffff;
+    padding: clamp(48px, 7vw, 82px) clamp(18px, 4vw, 56px);
+  }
+
+  .career-video-wrap {
+    margin: 0 auto;
+    max-width: 1040px;
+  }
+
+  .career-video-wrap h2 {
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .career-video-frame {
+    aspect-ratio: 16 / 9;
+    background: #0f1020;
+    border-radius: 8px;
+    box-shadow: 0 24px 64px rgba(25, 14, 42, 0.18);
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .career-video-frame iframe {
+    border: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
   .life-section {
     align-items: center;
     background: #ffffff;
     display: grid;
     gap: clamp(28px, 5vw, 72px);
     grid-template-columns: minmax(260px, 0.9fr) minmax(280px, 1fr);
-    margin-top: clamp(160px, 24vw, 285px);
+    margin-top: 0;
     padding: clamp(52px, 7vw, 84px) clamp(18px, 4vw, 56px);
   }
 
@@ -701,8 +752,7 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
   }
 
   .benefit-strip,
-  .gallery-strip,
-  .award-strip {
+  .benefit-strip {
     display: flex;
     gap: 24px;
     overflow-x: auto;
@@ -710,9 +760,7 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
     scrollbar-width: none;
   }
 
-  .benefit-strip::-webkit-scrollbar,
-  .gallery-strip::-webkit-scrollbar,
-  .award-strip::-webkit-scrollbar {
+  .benefit-strip::-webkit-scrollbar {
     display: none;
   }
 
@@ -796,71 +844,131 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
     text-align: center;
   }
 
-  .gallery-strip img {
-    aspect-ratio: 1.04 / 1;
-    border-radius: 8px;
-    flex: 0 0 min(250px, 56vw);
-    object-fit: cover;
-    scroll-snap-align: start;
+  .gallery-strip {
+    margin-inline: calc(clamp(18px, 4vw, 56px) * -1);
+    overflow: hidden;
+    padding-block: 4px;
   }
 
-  .testimonial-card,
+  .gallery-track {
+    animation: career-gallery-marquee 34s linear infinite;
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .gallery-loop {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 24px;
+  }
+
+  .gallery-strip img {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    flex: 0 0 clamp(132px, 14vw, 176px);
+    height: clamp(132px, 14vw, 176px);
+    object-fit: cover;
+    width: clamp(132px, 14vw, 176px);
+  }
+
+  @keyframes career-gallery-marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - 12px));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-track {
+      animation: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+      width: auto;
+    }
+
+    .gallery-track::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   .awards-section {
     border: 1px solid var(--line);
     border-radius: 8px;
   }
 
+  .testimonial-marquee {
+    overflow: hidden;
+    padding-block: 6px;
+  }
+
+  .testimonial-track {
+    animation: career-testimonials-marquee 46s linear infinite;
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .testimonial-loop {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 24px;
+  }
+
   .testimonial-card {
     background: #ffffff;
-    margin: 0 auto;
-    max-width: 1180px;
-    padding: clamp(34px, 6vw, 72px);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    flex: 0 0 clamp(320px, 42vw, 520px);
+    min-height: 520px;
+    padding: clamp(26px, 3vw, 42px);
   }
 
-  .testimonial-slide {
-    text-align: left;
-  }
-
-  .testimonial-slide img {
+  .testimonial-card img {
     border-radius: 8px;
     display: block;
-    height: 220px;
-    margin: 0 auto 32px;
+    height: clamp(150px, 16vw, 220px);
+    margin: 0 auto 28px;
     object-fit: cover;
-    width: min(280px, 82vw);
+    width: min(260px, 72vw);
   }
 
-  .testimonial-slide blockquote {
+  .testimonial-card blockquote {
     margin: 0 0 20px;
   }
 
-  .testimonial-slide p {
+  .testimonial-card p {
     color: var(--purple);
     font-size: 0.92rem;
     font-weight: 850;
   }
 
-  .testimonial-footer {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+  @keyframes career-testimonials-marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - 12px));
+    }
   }
 
-  .dots {
-    display: flex;
-    gap: 8px;
-  }
+  @media (prefers-reduced-motion: reduce) {
+    .testimonial-track {
+      animation: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+      width: auto;
+    }
 
-  .dots button {
-    background: #c7c3cb;
-    border: 0;
-    border-radius: 50%;
-    height: 7px;
-    width: 7px;
-  }
-
-  .dots button.active {
-    background: var(--purple);
+    .testimonial-track::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .awards-section {
@@ -868,14 +976,54 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
   }
 
   .award-strip {
+    overflow: hidden;
+    padding-block: 8px;
+  }
+
+  .award-track {
     align-items: center;
+    animation: career-awards-marquee 32s linear infinite;
+    display: flex;
+    gap: 42px;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .award-loop {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 42px;
   }
 
   .award-strip img {
-    flex: 0 0 min(260px, 64vw);
-    max-height: 180px;
+    flex: 0 0 clamp(150px, 17vw, 240px);
+    max-height: 150px;
     object-fit: contain;
-    scroll-snap-align: start;
+    width: clamp(150px, 17vw, 240px);
+  }
+
+  @keyframes career-awards-marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - 21px));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .award-track {
+      animation: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+      width: auto;
+    }
+
+    .award-track::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .jobs-section {
@@ -1039,32 +1187,14 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
     padding: 0 18px;
   }
 
-  .ready-section,
   .careers-footer {
     background: #ffffff;
     padding-inline: clamp(18px, 4vw, 56px);
   }
 
-  .ready-section {
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 44px;
-    padding-top: 42px;
-  }
-
-  .ready-section h2 {
-    font-size: clamp(2rem, 3vw, 3rem);
-    margin-bottom: 10px;
-  }
-
-  .ready-section p,
   .careers-footer p {
     color: var(--muted);
     line-height: 1.58;
-  }
-
-  .ready-section .primary-button {
-    margin-top: 24px;
-    min-width: 170px;
   }
 
   .careers-footer {
@@ -1214,17 +1344,72 @@ const locations = [...new Set(jobs.map((job) => job[3]))];
       font-size: 3rem;
     }
 
+    .career-hero .primary-button {
+      font-size: 0.92rem !important;
+      min-height: 44px !important;
+      min-width: 166px;
+      padding: 0 22px !important;
+      white-space: nowrap;
+      width: fit-content !important;
+    }
+
+    .career-video-section {
+      padding: 42px 16px;
+    }
+
+    .career-video-wrap h2 {
+      margin-bottom: 18px;
+    }
+
     .life-section {
-      margin-top: 170px;
+      margin-top: 0;
     }
 
     .benefits-section,
     .testimonial-section,
     .awards-section,
     .jobs-section,
-    .ready-section,
     .careers-footer {
       padding-inline: 16px;
+    }
+
+    .testimonial-track,
+    .testimonial-loop {
+      gap: 18px;
+    }
+
+    .testimonial-card {
+      flex-basis: min(310px, 82vw);
+      min-height: 500px;
+      padding: 24px;
+    }
+
+    .testimonial-card img {
+      height: 150px;
+      margin-bottom: 22px;
+      width: min(210px, 68vw);
+    }
+
+    .gallery-track,
+    .gallery-loop {
+      gap: 18px;
+    }
+
+    .gallery-strip img {
+      flex-basis: clamp(104px, 34vw, 136px);
+      height: clamp(104px, 34vw, 136px);
+      width: clamp(104px, 34vw, 136px);
+    }
+
+    .award-track,
+    .award-loop {
+      gap: 26px;
+    }
+
+    .award-strip img {
+      flex-basis: clamp(118px, 44vw, 168px);
+      max-height: 118px;
+      width: clamp(118px, 44vw, 168px);
     }
   }
 </style>

@@ -52,9 +52,27 @@ const relatedTopics = [
 ];
 
 const resources = [
-  ["Whitepaper", "Banking & Financial Services", "Embracing Quantum's Cyber Security & Resilience Transformation"],
-  ["Case Study", "Banking & Financial Services", "IDFC First Bank"],
-  ["On-Demand Webinar", "Financial Services", "2023 Survey: Email Encryption Gaps in Financial Services Firms"]
+  {
+    type: "Whitepaper",
+    tag: "Banking & Financial Services",
+    title: "Embracing Quantum's Cyber Security & Resilience Transformation",
+    image: "/images/integrations/discovery-classification/datacenter.png",
+    alt: "Enterprise data center infrastructure"
+  },
+  {
+    type: "Case Study",
+    tag: "Banking & Financial Services",
+    title: "IDFC First Bank",
+    image: "/images/integrations/intro-meeting.png",
+    alt: "Financial services leaders shaking hands in a meeting"
+  },
+  {
+    type: "On-Demand Webinar",
+    tag: "Financial Services",
+    title: "2023 Survey: Email Encryption Gaps in Financial Services Firms",
+    image: "/images/integrations/dlp-casb/strategy-meeting.png",
+    alt: "Business team joining a video conference"
+  }
 ];
 ---
 
@@ -78,8 +96,8 @@ const resources = [
           <a class="secondary-button" href="#resources">Download Datasheet</a>
         </div>
       </div>
-      <div class="tower-visual" aria-label="Financial district visual">
-        <span></span><span></span><span></span>
+      <div class="tower-visual" aria-label="Financial services strategy meeting">
+        <img src="/images/integrations/dlp-casb/strategy-meeting.png" alt="Financial services strategy meeting" loading="eager" />
       </div>
     </section>
 
@@ -91,8 +109,8 @@ const resources = [
     </section>
 
     <section class="split-section">
-      <div class="photo-card banker" aria-label="Banking customer protection visual">
-        <span></span><span></span><span></span>
+      <div class="photo-card banker" aria-label="Banking customer protection team">
+        <img src="/images/integrations/file-servers/file-servers-lead.png" alt="Banking team reviewing sensitive information" loading="lazy" />
       </div>
       <div>
         <h2>Ensure compliance and stay ahead of cybersecurity threats</h2>
@@ -209,11 +227,16 @@ const resources = [
         <h2>Banking, financial services, and insurance industry resources</h2>
       </div>
       <div class="resource-grid">
-        {resources.map(([type, tag, title]) => (
+        {resources.map((resource) => (
           <article class="resource-card">
-            <span>{type}</span>
-            <em>{tag}</em>
-            <h3>{title}</h3>
+            <figure>
+              <img src={resource.image} alt={resource.alt} loading="lazy" />
+            </figure>
+            <div>
+              <span>{resource.type}</span>
+              <em>{resource.tag}</em>
+              <h3>{resource.title}</h3>
+            </div>
             <a href="#demo">View More</a>
           </article>
         ))}
@@ -481,8 +504,11 @@ const resources = [
     font-size: 0.88rem;
     font-weight: 850;
     justify-content: center;
+    line-height: 1;
     min-height: 39px;
     padding: 0 18px;
+    white-space: nowrap;
+    width: fit-content;
   }
 
   .demo-button, .primary-button {
@@ -569,6 +595,15 @@ const resources = [
     min-height: 330px;
     overflow: hidden;
     position: relative;
+  }
+
+  .tower-visual img,
+  .photo-card img {
+    display: block;
+    height: 100%;
+    min-height: inherit;
+    object-fit: cover;
+    width: 100%;
   }
 
   .tower-visual span {
@@ -731,6 +766,10 @@ const resources = [
 
   .financial-form h3 { text-align: center; }
 
+  .financial-form .primary-button {
+    justify-self: start;
+  }
+
   .financial-form label {
     color: var(--page-text);
     display: grid;
@@ -818,7 +857,33 @@ const resources = [
   }
 
   .resource-card {
-    min-height: 340px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 390px;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .resource-card figure {
+    aspect-ratio: 16 / 10;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .resource-card figure img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .resource-card > div {
+    padding: 24px 24px 0;
+  }
+
+  .resource-card > a {
+    align-self: end;
+    margin: 22px 24px 26px;
   }
 
   .slide-controls {
@@ -958,11 +1023,44 @@ const resources = [
     .trust-row {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .tower-visual,
+    .photo-card {
+      min-height: 300px;
+    }
+
+    .resource-card {
+      min-height: 0;
+    }
+
+    .financial-page .hero-actions .primary-button,
+    .financial-page .hero-actions .secondary-button,
+    .financial-page .split-section .primary-button,
+    .financial-page .financial-form .primary-button,
+    .financial-page .story-card .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 520px) {
     h1 { font-size: 2.75rem; }
     h2 { font-size: 2rem; }
     .tower-visual, .photo-card { min-height: 250px; }
+
+    .resource-card figure {
+      aspect-ratio: 4 / 3;
+    }
+
+    .financial-page .hero-actions .primary-button,
+    .financial-page .hero-actions .secondary-button,
+    .financial-page .split-section .primary-button,
+    .financial-page .financial-form .primary-button,
+    .financial-page .story-card .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
   }
 </style>

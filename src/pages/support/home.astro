@@ -1,86 +1,27 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-const quickLinks = [
-  {
-    title: "Solutions",
-    text: "Find solutions to the most common problems",
-    icon: "solution",
-    href: "/support/solutions/"
-  },
-  {
-    title: "Forums",
-    text: "Discuss, debate, analyze, and give suggestions for improving Seclore",
-    icon: "forum",
-    href: "/support/discussions/"
-  },
-  {
-    title: "Tickets",
-    text: "Having a problem with Seclore? Get it resolved quickly by creating a ticket",
-    icon: "ticket",
-    href: "/support/tickets/new/"
-  },
-  {
-    title: "Escalate Ticket",
-    text: "Created a ticket and want to escalate it? Click here to get started",
-    icon: "escalate",
-    href: "#escalate-ticket",
-    modal: true
-  }
+const socialLinks = [
+  ["LinkedIn", "https://www.linkedin.com/company/seclore", "in"],
+  ["Facebook", "https://www.facebook.com/Seclore", "f"],
+  ["X", "https://x.com/seclore", "x"],
+  ["YouTube", "https://www.youtube.com/@Seclore", "play"]
 ];
-
-const iconPaths = {
-  solution: [
-    "M12 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z",
-    "M12 1v2m0 8v2M4.22 4.22l1.42 1.42m8.72 8.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42m8.72-8.72 1.42-1.42",
-    "M5 22v-5.6A8.5 8.5 0 0 1 3.5 9.2M19 22v-5.6a8.5 8.5 0 0 0 1.5-7.2",
-    "M8 22v-5h8v5"
-  ],
-  forum: [
-    "M5 7h8v7H8l-3 3v-3H3V7h2Z",
-    "M13 10h8v7h-2v3l-3-3h-3v-7Z",
-    "M9 4a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm8 2a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z",
-    "M6 6a3 3 0 0 1 6 0m2 2a3 3 0 0 1 6 0"
-  ],
-  ticket: [
-    "M3 5h18v14H3V5Z",
-    "M6 8h12M6 11h12M6 14h8M6 17h10",
-    "M3 9h18"
-  ],
-  escalate: [
-    "M12 3 4 20h16L12 3Z",
-    "M12 8v9M8 17h8",
-    "M8 13h8M9.5 10h5"
-  ]
-};
 ---
 
 <BaseLayout
-  title="Seclore Support Portal"
-  description="Seclore support portal home for solutions, forums, support tickets, escalation, and contact details."
+  title="Submit a Ticket | Seclore Support"
+  description="Submit a support ticket to the Seclore support portal."
 >
-  <main class="support-page">
+  <main class="support-ticket-page">
     <header class="support-header" aria-label="Seclore support header">
       <a class="support-logo" href="/support/home/" aria-label="Seclore support home">
         <img src="/images/home/seclore-logo-2026.svg" alt="Seclore" loading="eager" decoding="async" />
       </a>
-      <a class="contact-pill" href="mailto:support@seclore.com">Contact Us</a>
     </header>
-    <section class="support-hero">
-      <h1>
-        Welcome to the Seclore support portal.
-      </h1>
-    </section>
 
     <nav class="portal-nav" aria-label="Support portal navigation">
-      <a class="active" href="/support/home/" aria-current="page">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="m3 11 9-8 9 8" />
-          <path d="M5 10v10h5v-6h4v6h5V10" />
-        </svg>
-        Support Home
-      </a>
-      <span class="nav-spacer"></span>
+      <a class="support-home-link" href="/support/home/" aria-current="page">Support Home</a>
       <div class="portal-menu">
         <button class="portal-menu-toggle" type="button" aria-label="Open support menu" aria-expanded="false" aria-controls="support-portal-menu">
           <span></span>
@@ -88,43 +29,110 @@ const iconPaths = {
           <span></span>
         </button>
         <div class="portal-menu-panel" id="support-portal-menu" hidden>
+          <a href="/support/home/">Support Home</a>
           <a href="/support/solutions/">Solutions</a>
           <a href="/support/discussions/">Forums</a>
-          <a href="/support/login/">Login</a>
-          <a href="/support/tickets/new/">New Support Ticket</a>
+          <a href="/support/tickets/new/">Login</a>
         </div>
       </div>
     </nav>
 
-    <section class="search-band" aria-label="Search support content">
-      <form class="support-search" action="/support/search/" method="get">
-        <span class="sr-only">Search Articles and Community Discussions</span>
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="10.5" cy="10.5" r="6.5" />
-          <path d="m16 16 5 5" />
-        </svg>
-        <input type="search" name="term" placeholder="Search Articles and Community Discussions.." />
-        <button class="sr-only" type="submit">Search</button>
+    <section class="ticket-form-section" aria-labelledby="ticket-title">
+      <form class="ticket-form" id="support-ticket-form" novalidate>
+        <h1 id="ticket-title">Submit a ticket</h1>
+
+        <label class="field">
+          <span>Requester <strong>*</strong></span>
+          <input name="requester" type="email" placeholder="Email" autocomplete="email" required />
+        </label>
+
+        <label class="field">
+          <span>Subject <strong>*</strong></span>
+          <input name="subject" type="text" required />
+        </label>
+
+        <label class="field">
+          <span>Description <strong>*</strong></span>
+          <textarea name="description" rows="6" required></textarea>
+        </label>
+
+        <div class="attach-row">
+          <label for="ticket-attachment">Attach</label>
+          <button class="attach-toggle" type="button" aria-label="Open attachment picker"></button>
+          <input id="ticket-attachment" name="attachment" type="file" hidden />
+          <span class="attachment-name" data-attachment-name hidden></span>
+        </div>
+
+        <button class="recaptcha-box" type="button" aria-pressed="false" data-recaptcha>
+          <span class="recaptcha-check" aria-hidden="true"></span>
+          <span class="recaptcha-copy">
+            <strong>I'm not a robot</strong>
+            <small>For site owner: v1beta1 is deprecated.<br />Take action.</small>
+          </span>
+          <span class="recaptcha-brand" aria-hidden="true">
+            <img src="/images/support/recaptcha-logo.svg" alt="" loading="lazy" decoding="async" />
+            <small>reCAPTCHA</small>
+          </span>
+        </button>
+
+        <p class="form-message error" data-ticket-error hidden>Please complete all required fields and confirm reCAPTCHA.</p>
+        <p class="form-message success" data-ticket-success hidden>Your support ticket details are ready to submit.</p>
+
+        <div class="form-actions">
+          <button class="submit-button" type="submit">SUBMIT</button>
+          <button class="cancel-button" type="reset">CANCEL</button>
+        </div>
       </form>
     </section>
 
-    <section class="quick-grid" aria-label="Support options">
-      {quickLinks.map((item) => (
-        <a
-          class="quick-link"
-          id={item.title === "Solutions" ? "solutions" : item.title === "Forums" ? "forums" : item.title === "Tickets" ? "ticket" : "escalate-ticket"}
-          href={item.href}
-          aria-label={`${item.title}: ${item.text}`}
-          data-escalate={item.modal ? "true" : undefined}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            {iconPaths[item.icon as keyof typeof iconPaths].map((path: string) => <path d={path} />)}
-          </svg>
-          <h2>{item.title}</h2>
-          <p>{item.text}</p>
-        </a>
-      ))}
-    </section>
+    <footer class="support-footer" id="contact" aria-labelledby="support-contact-title">
+      <div class="footer-inner">
+        <h2 id="support-contact-title">Contact Us</h2>
+        <div class="contact-list">
+          <p>
+            <span>North America</span>
+            <a href="tel:+18552732505">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.7 3.3 3.3 4.9 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.6c0 .7-.5 1.2-1.2 1.2C10.8 22 2 13.2 2 2.4 2 1.7 2.5 1.2 3.2 1.2h3.6c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .9-.3 1.2l-1.7 3.2Z" /></svg>
+              +1-855-273-2505
+            </a>
+          </p>
+          <p>
+            <span>India &amp; Rest of the World</span>
+            <a href="tel:+912261304242">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.7 3.3 3.3 4.9 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.6c0 .7-.5 1.2-1.2 1.2C10.8 22 2 13.2 2 2.4 2 1.7 2.5 1.2 3.2 1.2h3.6c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .9-.3 1.2l-1.7 3.2Z" /></svg>
+              +91-22-61304242 / 61434848
+            </a>
+          </p>
+          <p>
+            <span class="sr-only">Email</span>
+            <a href="mailto:support@seclore.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5Zm2 3 7 5 7-5" /></svg>
+              support@seclore.com
+            </a>
+          </p>
+        </div>
+
+        <div class="social-block">
+          <h3>Connect with us</h3>
+          <div class="social-links">
+            {socialLinks.map(([label, href, glyph]) => (
+              <a href={href} target="_blank" rel="noreferrer" aria-label={label}>
+                {glyph === "play" ? (
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v12l10-6-10-6Z" /></svg>
+                ) : (
+                  <span>{glyph}</span>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 SECLORE. ALL RIGHTS RESERVED.</p>
+          <a href="/privacy/">PRIVACY STATEMENT</a>
+        </div>
+      </div>
+    </footer>
 
     <button class="chat-button" type="button" aria-label="Chat with support" aria-expanded="false">
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -136,37 +144,24 @@ const iconPaths = {
     <section class="chat-panel" aria-label="Support chat" hidden>
       <button class="chat-close" type="button" aria-label="Close chat">x</button>
       <h2>Seclore Support</h2>
-      <p>Tell us what you need help with. For urgent issues, create a support ticket.</p>
-      <a href="/support/tickets/new/">New Support Ticket</a>
-    </section>
-
-    <div class="modal-backdrop" data-modal-backdrop hidden></div>
-    <section
-      class="escalate-modal"
-      aria-modal="true"
-      aria-labelledby="escalate-title"
-      role="dialog"
-      hidden
-    >
-      <button class="modal-close" type="button" aria-label="Close escalation dialog">×</button>
-      <h2 id="escalate-title">Escalate Ticket</h2>
-      <p>
-        Anyone can escalate a ticket by sending an email to
-        <a href="mailto:supportescalation@seclore.com">supportescalation@seclore.com</a>. This
-        will open a ticket in our support system for tracking and the support management will be
-        notified along with the Seclore leadership team.
-      </p>
-      <a class="continue-button" href="mailto:supportescalation@seclore.com">Continue</a>
+      <p>Tell us what you need help with. The support team will help you track the request.</p>
+      <a href="mailto:support@seclore.com">Email Support</a>
     </section>
 
     <script>
-      const escalateModal = document.querySelector(".escalate-modal");
-      const modalBackdrop = document.querySelector("[data-modal-backdrop]");
-      const chatButton = document.querySelector(".chat-button");
-      const chatPanel = document.querySelector(".chat-panel");
+      const form = document.querySelector("#support-ticket-form");
+      const recaptcha = document.querySelector("[data-recaptcha]");
+      const ticketError = document.querySelector("[data-ticket-error]");
+      const ticketSuccess = document.querySelector("[data-ticket-success]");
+      const attachmentInput = document.querySelector("#ticket-attachment");
+      const attachmentName = document.querySelector("[data-attachment-name]");
+      const attachToggle = document.querySelector(".attach-toggle");
       const portalMenu = document.querySelector(".portal-menu");
       const portalMenuButton = document.querySelector(".portal-menu-toggle");
       const portalMenuPanel = document.querySelector(".portal-menu-panel");
+      const chatButton = document.querySelector(".chat-button");
+      const chatPanel = document.querySelector(".chat-panel");
+      const chatClose = document.querySelector(".chat-close");
 
       function setPortalMenuOpen(open: boolean) {
         if (portalMenuButton instanceof HTMLButtonElement && portalMenuPanel instanceof HTMLElement) {
@@ -174,50 +169,6 @@ const iconPaths = {
           portalMenuPanel.hidden = !open;
         }
       }
-
-      function setModalOpen(open: boolean) {
-        if (escalateModal instanceof HTMLElement && modalBackdrop instanceof HTMLElement) {
-          escalateModal.hidden = !open;
-          modalBackdrop.hidden = !open;
-          document.body.classList.toggle("modal-open", open);
-        }
-      }
-
-      document.querySelectorAll("[data-escalate]").forEach((link) => {
-        link.addEventListener("click", (event) => {
-          event.preventDefault();
-          history.replaceState(null, "", "#escalate-ticket");
-          setModalOpen(true);
-        });
-      });
-
-      function closeEscalateModal() {
-        setModalOpen(false);
-        if (location.hash === "#escalate-ticket") {
-          history.replaceState(null, "", location.pathname + location.search);
-        }
-      }
-
-      if (location.hash === "#escalate-ticket") {
-        setModalOpen(true);
-      }
-
-      window.addEventListener("hashchange", () => {
-        setModalOpen(location.hash === "#escalate-ticket");
-      });
-
-      document.querySelector(".modal-close")?.addEventListener("click", closeEscalateModal);
-      modalBackdrop?.addEventListener("click", closeEscalateModal);
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closeEscalateModal();
-          setPortalMenuOpen(false);
-          if (chatPanel instanceof HTMLElement && chatButton instanceof HTMLElement) {
-            chatPanel.hidden = true;
-            chatButton.setAttribute("aria-expanded", "false");
-          }
-        }
-      });
 
       portalMenuButton?.addEventListener("click", () => {
         if (portalMenuButton instanceof HTMLButtonElement) {
@@ -231,16 +182,81 @@ const iconPaths = {
         }
       });
 
-      chatButton?.addEventListener("click", () => {
-        if (chatPanel instanceof HTMLElement && chatButton instanceof HTMLElement) {
-          const nextOpen = chatPanel.hidden;
-          chatPanel.hidden = !nextOpen;
-          chatButton.setAttribute("aria-expanded", String(nextOpen));
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          setPortalMenuOpen(false);
+          if (chatPanel instanceof HTMLElement && chatButton instanceof HTMLButtonElement) {
+            chatPanel.hidden = true;
+            chatButton.setAttribute("aria-expanded", "false");
+          }
         }
       });
 
-      document.querySelector(".chat-close")?.addEventListener("click", () => {
-        if (chatPanel instanceof HTMLElement && chatButton instanceof HTMLElement) {
+      recaptcha?.addEventListener("click", () => {
+        if (recaptcha instanceof HTMLButtonElement) {
+          const nextState = recaptcha.getAttribute("aria-pressed") !== "true";
+          recaptcha.setAttribute("aria-pressed", String(nextState));
+        }
+      });
+
+      attachToggle?.addEventListener("click", () => {
+        if (attachmentInput instanceof HTMLInputElement) {
+          attachmentInput.click();
+        }
+      });
+
+      attachmentInput?.addEventListener("change", () => {
+        if (attachmentInput instanceof HTMLInputElement && attachmentName instanceof HTMLElement) {
+          const file = attachmentInput.files?.[0];
+          attachmentName.hidden = !file;
+          attachmentName.textContent = file ? file.name : "";
+        }
+      });
+
+      form?.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!(form instanceof HTMLFormElement)) {
+          return;
+        }
+        const captchaComplete = recaptcha instanceof HTMLButtonElement && recaptcha.getAttribute("aria-pressed") === "true";
+        const isValid = form.checkValidity() && captchaComplete;
+        form.classList.toggle("was-validated", !isValid);
+        if (ticketError instanceof HTMLElement) {
+          ticketError.hidden = isValid;
+        }
+        if (ticketSuccess instanceof HTMLElement) {
+          ticketSuccess.hidden = !isValid;
+        }
+      });
+
+      form?.addEventListener("reset", () => {
+        window.setTimeout(() => {
+          if (ticketError instanceof HTMLElement) {
+            ticketError.hidden = true;
+          }
+          if (ticketSuccess instanceof HTMLElement) {
+            ticketSuccess.hidden = true;
+          }
+          if (attachmentName instanceof HTMLElement) {
+            attachmentName.hidden = true;
+            attachmentName.textContent = "";
+          }
+          if (recaptcha instanceof HTMLButtonElement) {
+            recaptcha.setAttribute("aria-pressed", "false");
+          }
+        }, 0);
+      });
+
+      chatButton?.addEventListener("click", () => {
+        if (chatButton instanceof HTMLButtonElement && chatPanel instanceof HTMLElement) {
+          const open = chatPanel.hidden;
+          chatPanel.hidden = !open;
+          chatButton.setAttribute("aria-expanded", String(open));
+        }
+      });
+
+      chatClose?.addEventListener("click", () => {
+        if (chatButton instanceof HTMLButtonElement && chatPanel instanceof HTMLElement) {
           chatPanel.hidden = true;
           chatButton.setAttribute("aria-expanded", "false");
         }
@@ -251,33 +267,27 @@ const iconPaths = {
 
 <style>
   :global(body) {
-    background: #ffffff;
-    color: #08010f;
+    background: #f7f7f7;
+    color: #222229;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-  }
-
-  :global(body::before) {
-    display: none;
   }
 
   :global(body.modal-open) {
     overflow: hidden;
   }
 
-  .support-page {
-    --purple: #5f3fd6;
-    --deep-purple: #25007d;
-    --accent: #4d2dcc;
-    --soft: #e8ddff;
-    --line: #d8c8ff;
-    background: #ffffff;
+  .support-ticket-page {
+    --blue: #0b457b;
+    --line: #e5e5ea;
+    --purple: #6539dd;
+    --teal: #0d7d87;
+    background: #f7f7f7;
     min-height: 100vh;
     overflow-x: hidden;
   }
 
-  .support-page,
-  .support-page * {
+  .support-ticket-page,
+  .support-ticket-page * {
     box-sizing: border-box;
   }
 
@@ -285,9 +295,9 @@ const iconPaths = {
     align-items: center;
     background: #ffffff;
     display: flex;
-    justify-content: space-between;
-    min-height: 108px;
-    padding: 18px clamp(22px, 4.8vw, 64px);
+    justify-content: center;
+    min-height: 84px;
+    padding: 14px 20px;
   }
 
   .support-logo {
@@ -297,57 +307,7 @@ const iconPaths = {
 
   .support-logo img {
     display: block;
-    height: auto;
-    width: clamp(260px, 38vw, 520px);
-  }
-
-  .contact-pill,
-  .ticket-button {
-    align-items: center;
-    border-radius: 999px;
-    display: inline-flex;
-    font-weight: 700;
-    justify-content: center;
-    white-space: nowrap;
-  }
-
-  .contact-pill {
-    background: var(--purple);
-    color: #ffffff;
-    font-size: 1.02rem;
-    min-height: 47px;
-    padding: 0 27px;
-    text-decoration: none;
-  }
-
-  .support-hero {
-    align-items: center;
-    background:
-      radial-gradient(circle at 24% 65%, rgba(212, 142, 255, 0.55), transparent 30%),
-      linear-gradient(120deg, #882bff 0%, #a64ef0 37%, #7200cc 68%, #130071 100%);
-    display: flex;
-    justify-content: center;
-    min-height: 372px;
-    padding: 72px 24px 66px;
-    text-align: center;
-  }
-
-  .support-hero h1 {
-    color: #ffffff;
-    font-size: clamp(2.1rem, 4.4vw, 3.35rem);
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 1.16;
-    margin: 0;
-    max-width: 960px;
-  }
-
-  .support-hero span {
-    display: block;
-    font-size: clamp(2rem, 4.8vw, 3.6rem);
-    font-weight: 700;
-    line-height: 1.08;
-    margin-top: 14px;
+    width: clamp(260px, 62vw, 380px);
   }
 
   .portal-nav {
@@ -355,76 +315,69 @@ const iconPaths = {
     background: var(--purple);
     color: #ffffff;
     display: flex;
-    gap: 0;
-    min-height: 67px;
-    padding: 0 6px 0 0;
+    min-height: 52px;
+    padding: 0 clamp(20px, 5vw, 44px);
+    position: relative;
+    z-index: 3;
   }
 
-  .portal-nav a {
-    align-items: center;
+  .support-home-link {
     color: #ffffff;
-    display: inline-flex;
-    font-size: 1.3rem;
-    font-weight: 600;
-    gap: 10px;
-    min-height: 67px;
-    padding: 0 20px;
+    font-size: 0.92rem;
+    font-weight: 500;
     text-decoration: none;
   }
 
-  .portal-nav a.active {
-    background: transparent;
-    color: #ffffff;
-  }
-
-  .portal-nav a.active svg {
-    opacity: 1;
-  }
-
   .portal-menu {
-    align-self: stretch;
-    display: inline-flex;
     margin-left: auto;
     position: relative;
   }
 
   .portal-menu-toggle {
     align-items: center;
-    align-self: stretch;
     background: transparent;
     border: 0;
-    color: #ffffff;
     cursor: pointer;
     display: inline-flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
+    height: 44px;
     justify-content: center;
-    min-height: 67px;
-    padding: 0 22px;
+    padding: 0;
+    width: 44px;
   }
 
   .portal-menu-toggle span {
-    background: currentColor;
+    background: rgba(255, 255, 255, 0.72);
     border-radius: 999px;
     display: block;
     height: 2px;
-    width: 25px;
+    transition: transform 180ms ease, opacity 180ms ease;
+    width: 17px;
   }
 
-  .portal-menu-toggle:hover,
-  .portal-menu-toggle[aria-expanded="true"] {
-    background: #4a2abd;
+  .portal-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .portal-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .portal-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
   }
 
   .portal-menu-panel {
-    background: var(--purple);
-    box-shadow: 0 16px 32px rgba(20, 11, 72, 0.2);
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.16);
+    display: grid;
     min-width: 220px;
-    padding: 8px 0;
+    padding: 8px;
     position: absolute;
     right: 0;
-    top: 100%;
-    z-index: 20;
+    top: calc(100% + 8px);
   }
 
   .portal-menu-panel[hidden] {
@@ -432,459 +385,554 @@ const iconPaths = {
   }
 
   .portal-menu-panel a {
-    color: #ffffff;
-    font-size: 1rem;
-    min-height: 44px;
-    padding: 0 18px;
-    white-space: nowrap;
+    color: #202027;
+    font-size: 0.94rem;
+    padding: 11px 12px;
+    text-decoration: none;
   }
 
   .portal-menu-panel a:hover {
-    background: #4a2abd;
-  }
-
-  .portal-nav svg,
-  .support-search svg,
-  .chat-button svg,
-  .contact-block svg {
-    fill: none;
-    stroke: currentColor;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 2;
-  }
-
-  .portal-nav svg {
-    height: 23px;
-    opacity: 0.55;
-    width: 23px;
-  }
-
-  .nav-spacer {
-    flex: 1 1 auto;
-  }
-
-  .ticket-button {
-    background: #ffffff;
+    background: #f1ecff;
     color: var(--purple);
-    margin-left: 12px;
-    min-height: 51px;
-    padding: 0 26px;
   }
 
-  .search-band {
+  .ticket-form-section {
+    background: #f7f7f7;
+    min-height: 690px;
+    padding: clamp(30px, 7vw, 58px) 20px clamp(62px, 8vw, 92px);
+  }
+
+  .ticket-form {
+    display: grid;
+    gap: 22px;
+    margin: 0 auto;
+    max-width: 720px;
+    padding: 0 clamp(12px, 4vw, 30px);
+  }
+
+  .ticket-form h1 {
+    color: #2b2b32;
+    font-size: clamp(1.08rem, 2.6vw, 1.28rem);
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0 0 6px;
+    white-space: nowrap;
+  }
+
+  .field {
+    display: grid;
+    gap: 9px;
+  }
+
+  .field span {
+    color: #25252c;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .field strong {
+    color: #e02d43;
+    font-size: 1.1em;
+  }
+
+  .field input,
+  .field textarea {
     background: #ffffff;
-    border-left: 1px solid #140817;
-    border-top: 1px solid #16091a;
-    padding: 25px 6px;
-  }
-
-  .support-search {
-    align-items: center;
-    border: 2px solid var(--line);
-    color: #9d7cf0;
-    display: flex;
-    gap: 16px;
-    min-height: 66px;
-    padding: 0 24px;
-  }
-
-  .support-search svg {
-    color: #623ee0;
-    flex: 0 0 auto;
-    height: 27px;
-    width: 27px;
-  }
-
-  .support-search input {
-    border: 0;
-    color: #5b38d2;
-    font-size: 1.45rem;
-    min-width: 0;
-    outline: 0;
+    border: 1px solid #c8c8cf;
+    border-radius: 0;
+    color: #202027;
+    font: inherit;
+    font-size: 0.9rem;
     width: 100%;
   }
 
-  .support-search input::placeholder {
-    color: #9d7cf0;
-    opacity: 1;
+  .field input {
+    height: 42px;
+    padding: 0 12px;
   }
 
-  .quick-grid {
-    background: var(--soft);
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    min-height: 537px;
-    padding: 38px clamp(28px, 12vw, 250px) 43px;
-    row-gap: 74px;
+  .field textarea {
+    min-height: 154px;
+    padding: 12px;
+    resize: vertical;
   }
 
-  .quick-link {
-    color: #07000c;
-    cursor: pointer;
-    display: grid;
-    justify-items: center;
-    padding: 14px 18px 18px;
-    text-decoration: none;
-    text-align: center;
-    transition:
-      background-color 180ms ease,
-      box-shadow 180ms ease,
-      transform 180ms ease;
-  }
-
-  .quick-link:hover,
-  .quick-link:focus-visible {
-    background: rgba(255, 255, 255, 0.42);
-    box-shadow: 0 16px 32px rgba(69, 36, 158, 0.12);
+  .field input:focus,
+  .field textarea:focus {
+    border-color: #263747;
+    box-shadow: 0 0 0 1px #263747;
     outline: none;
-    transform: translateY(-2px);
   }
 
-  .quick-link svg {
-    color: #6641f3;
-    fill: none;
-    height: 62px;
-    margin-bottom: 10px;
-    stroke: currentColor;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.3;
-    width: 62px;
+  .field input::placeholder {
+    color: #8d8d95;
+    font-size: 0.9rem;
   }
 
-  .quick-link h2 {
-    color: var(--purple);
-    font-size: clamp(1.7rem, 2.8vw, 2rem);
-    line-height: 1.1;
-    margin: 0 0 6px;
-  }
-
-  .quick-link p {
-    color: #050007;
-    font-size: clamp(1.28rem, 2.15vw, 1.55rem);
-    line-height: 1.08;
-    margin: 0;
-    max-width: 360px;
-  }
-
-  .chat-button {
+  .attach-row {
     align-items: center;
-    background: var(--accent);
-    border: 0;
-    border-radius: 22px;
-    bottom: 32px;
-    box-shadow: 0 5px 12px rgba(23, 7, 80, 0.35);
-    color: #ffffff;
+    display: flex;
+    gap: 8px;
+    margin-top: -18px;
+    min-height: 22px;
+  }
+
+  .attach-row label {
+    color: var(--teal);
     cursor: pointer;
-    display: inline-flex;
-    height: 76px;
-    justify-content: center;
-    position: fixed;
-    right: 6px;
-    width: 76px;
-    z-index: 5;
+    font-size: 0.92rem;
+    font-weight: 600;
   }
 
-  .chat-button svg {
-    height: 34px;
-    width: 34px;
-  }
-
-  .chat-panel {
-    background: #ffffff;
-    border: 1px solid #d9d0f4;
-    border-radius: 8px;
-    bottom: 118px;
-    box-shadow: 0 12px 34px rgba(34, 18, 92, 0.28);
-    color: #1c1633;
-    padding: 22px;
-    position: fixed;
-    right: 18px;
-    width: min(340px, calc(100vw - 36px));
-    z-index: 7;
-  }
-
-  .chat-panel h2 {
-    color: var(--purple);
-    font-size: 1.18rem;
-    margin: 0 0 8px;
-  }
-
-  .chat-panel p {
-    color: #29223d;
-    font-size: 0.98rem;
-    line-height: 1.45;
-    margin: 0 0 16px;
-  }
-
-  .chat-panel a {
-    background: var(--accent);
-    border-radius: 999px;
-    color: #ffffff;
-    display: inline-flex;
-    font-weight: 700;
-    min-height: 40px;
-    padding: 10px 16px;
-  }
-
-  .chat-close,
-  .modal-close {
+  .attach-toggle {
     background: transparent;
     border: 0;
-    color: inherit;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #34343c;
     cursor: pointer;
-    font-size: 1.8rem;
-    font-weight: 300;
-    line-height: 1;
+    height: 0;
     padding: 0;
-    position: absolute;
-    right: 16px;
-    top: 12px;
+    width: 0;
   }
 
-  .modal-backdrop {
-    background: rgba(17, 10, 46, 0.5);
-    inset: 0;
-    position: fixed;
-    z-index: 30;
+  .attachment-name {
+    color: #56565e;
+    font-size: 0.86rem;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .escalate-modal {
+  .recaptcha-box {
+    align-items: center;
     background: #ffffff;
-    border-radius: 3px;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.26);
-    color: #252525;
-    left: 50%;
-    max-width: 560px;
-    padding: 30px 32px 32px;
-    position: fixed;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(100vw - 40px);
-    z-index: 31;
+    border: 1px solid #d7d7dc;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    color: #202027;
+    cursor: pointer;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    margin-top: 4px;
+    max-width: 430px;
+    min-height: 78px;
+    padding: 12px 14px;
+    text-align: left;
+    width: 100%;
   }
 
-  .escalate-modal h2 {
-    color: #252525;
-    font-size: 1.65rem;
-    line-height: 1.2;
-    margin: 0 32px 18px 0;
-  }
-
-  .escalate-modal p {
-    color: #333333;
-    font-size: 1rem;
-    line-height: 1.55;
-    margin: 0 0 22px;
-  }
-
-  .escalate-modal p a {
-    color: var(--accent);
-    font-weight: 700;
-  }
-
-  .continue-button {
-    background: var(--accent);
-    border-radius: 3px;
-    color: #ffffff;
+  .recaptcha-check {
+    align-items: center;
+    border: 3px solid #7f7f86;
     display: inline-flex;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
+  }
+
+  .recaptcha-box[aria-pressed="true"] .recaptcha-check::after {
+    border-bottom: 3px solid #167c2f;
+    border-right: 3px solid #167c2f;
+    content: "";
+    height: 16px;
+    transform: rotate(45deg) translate(-1px, -2px);
+    width: 8px;
+  }
+
+  .recaptcha-copy {
+    display: grid;
+    gap: 5px;
+  }
+
+  .recaptcha-copy strong {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .recaptcha-copy small {
+    color: #6f6f76;
+    font-size: 0.7rem;
+    line-height: 1.05;
+  }
+
+  .recaptcha-brand {
+    align-items: center;
+    display: grid;
+    gap: 3px;
+    justify-items: center;
+  }
+
+  .recaptcha-brand img {
+    display: block;
+    height: 36px;
+    width: 36px;
+  }
+
+  .recaptcha-brand small {
+    color: #56565e;
+    font-size: 0.74rem;
+  }
+
+  .form-message {
+    border-radius: 5px;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    margin: -2px 0 0;
+    padding: 10px 12px;
+  }
+
+  .form-message.error {
+    background: #fff0f0;
+    color: #9b1c1c;
+  }
+
+  .form-message.success {
+    background: #eefaf4;
+    color: #0b6b45;
+  }
+
+  .form-actions {
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 14px;
+    margin-top: 8px;
+    padding-top: 26px;
+  }
+
+  .submit-button,
+  .cancel-button {
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.78rem;
     font-weight: 700;
-    min-height: 42px;
-    padding: 10px 24px;
-    text-decoration: none;
+    height: 38px;
+    letter-spacing: 0.12em;
+    min-width: 126px;
+    padding: 0 22px;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+  }
+
+  .submit-button {
+    background: var(--blue);
+    color: #ffffff;
+  }
+
+  .cancel-button {
+    background: #f5f5f7;
+    box-shadow: inset 0 0 0 1px #dedee4, 0 2px 8px rgba(15, 23, 42, 0.07);
+    color: #55555c;
+  }
+
+  .submit-button:hover,
+  .cancel-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .submit-button:hover {
+    background: #073a68;
+    box-shadow: 0 10px 20px rgba(11, 69, 123, 0.22);
+  }
+
+  .cancel-button:hover {
+    box-shadow: inset 0 0 0 1px #d3d3db, 0 10px 20px rgba(15, 23, 42, 0.1);
   }
 
   .support-footer {
     background: var(--purple);
     color: #ffffff;
-    padding: 46px 30px 88px;
+    padding: clamp(42px, 8vw, 72px) 20px 34px;
   }
 
-  .footer-rule {
-    border-top: 1px solid rgba(255, 255, 255, 0.28);
-    margin-bottom: 38px;
-  }
-
-  .contact-block {
-    display: grid;
-    justify-items: start;
+  .footer-inner {
+    margin: 0 auto;
     max-width: 720px;
+    padding: 0 clamp(0px, 4vw, 30px);
   }
 
-  .contact-block h2 {
-    font-size: 1.12rem;
-    margin: 0 0 15px;
+  .support-footer h2,
+  .support-footer h3,
+  .support-footer p {
+    margin: 0;
   }
 
-  .contact-block p {
-    color: #ffffff;
-    font-size: 1.04rem;
-    line-height: 1.35;
-    margin: 0 0 7px;
+  .support-footer h2,
+  .support-footer h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
   }
 
-  .contact-block a {
+  .contact-list {
+    display: grid;
+    gap: 22px;
+    margin-top: 16px;
+  }
+
+  .contact-list p {
+    display: grid;
+    gap: 8px;
+  }
+
+  .contact-list span {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.9rem;
+  }
+
+  .contact-list a {
     align-items: center;
+    color: #ffffff;
     display: inline-flex;
-    font-size: 1.12rem;
-    font-weight: 600;
-    gap: 12px;
-    margin: 0 0 30px;
+    gap: 14px;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    text-decoration: none;
   }
 
-  .contact-block svg {
-    height: 25px;
-    width: 25px;
+  .contact-list svg {
+    fill: currentColor;
+    height: 22px;
+    flex: 0 0 auto;
+    width: 22px;
   }
 
-  .connect-title {
-    margin-top: 10px;
+  .social-block {
+    margin-top: 32px;
   }
 
   .social-links {
+    align-items: center;
     display: flex;
-    gap: 28px;
-    margin: 4px 0 26px;
+    gap: clamp(30px, 11vw, 58px);
+    margin-top: 20px;
   }
 
   .social-links a {
     align-items: center;
+    color: #ffffff;
     display: inline-flex;
-    font-size: 1.6rem;
-    font-weight: 900;
+    font-size: 1.35rem;
+    font-weight: 700;
     height: 26px;
     justify-content: center;
-    margin: 0;
+    text-decoration: none;
     width: 26px;
   }
 
-  .copyright {
-    font-size: 1.28rem;
-    letter-spacing: 0;
-    margin-top: 4px;
+  .social-links span {
+    line-height: 1;
+  }
+
+  .social-links svg {
+    fill: currentColor;
+    height: 24px;
+    width: 24px;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    display: grid;
+    gap: 4px;
+    margin-top: 44px;
+    padding-top: 24px;
+  }
+
+  .footer-bottom p,
+  .footer-bottom a {
+    color: #ffffff;
+    font-size: clamp(0.82rem, 3.4vw, 0.98rem);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+    text-decoration: none;
+  }
+
+  .chat-button {
+    align-items: center;
+    background: #5532c9;
+    border: 0;
+    border-radius: 50%;
+    bottom: 20px;
+    box-shadow: 0 12px 28px rgba(44, 25, 120, 0.28);
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    height: 58px;
+    justify-content: center;
+    position: fixed;
+    right: 20px;
+    width: 58px;
+    z-index: 20;
+  }
+
+  .chat-button svg {
+    fill: none;
+    height: 28px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+    width: 28px;
+  }
+
+  .chat-panel {
+    background: #ffffff;
+    border-radius: 8px;
+    bottom: 90px;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.2);
+    color: #1f1f26;
+    max-width: min(320px, calc(100vw - 32px));
+    padding: 24px;
+    position: fixed;
+    right: 18px;
+    z-index: 19;
+  }
+
+  .chat-panel[hidden] {
+    display: none;
+  }
+
+  .chat-panel h2 {
+    font-size: 1.1rem;
+    margin: 0 0 8px;
+  }
+
+  .chat-panel p {
+    color: #60606a;
+    line-height: 1.5;
+    margin: 0 0 16px;
+  }
+
+  .chat-panel a {
+    color: var(--purple);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .chat-close {
+    background: transparent;
+    border: 0;
+    color: #33333b;
+    cursor: pointer;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 12px;
+    top: 10px;
   }
 
   .sr-only {
-    clip: rect(0, 0, 0, 0);
-    clip-path: inset(50%);
+    clip: rect(0 0 0 0);
+    border: 0;
     height: 1px;
     margin: -1px;
     overflow: hidden;
     padding: 0;
     position: absolute;
+    white-space: nowrap;
     width: 1px;
   }
 
-  @media (max-width: 820px) {
-    .support-header,
-    .portal-nav {
-      padding-inline: 18px;
-    }
-
+  @media (max-width: 640px) {
     .support-header {
-      min-height: 82px;
-      padding-block: 14px;
-    }
-
-    .support-header .contact-pill {
-      display: none;
-    }
-
-    .support-logo img {
-      width: clamp(220px, 58vw, 360px);
-    }
-
-    .support-hero {
-      min-height: 310px;
-    }
-
-    .portal-nav {
-      align-items: stretch;
-      flex-wrap: wrap;
-      padding-block: 8px;
-    }
-
-    .portal-nav a {
-      font-size: 1rem;
-      min-height: 45px;
-      padding: 0 12px;
-    }
-
-    .portal-menu-toggle {
-      min-height: 45px;
-      padding-inline: 16px;
-    }
-
-    .portal-menu-panel {
-      min-width: 205px;
-    }
-
-    .nav-spacer {
-      display: none;
-    }
-
-    .ticket-button {
-      margin-left: 0;
-    }
-
-    .support-search input {
-      font-size: 1rem;
-    }
-
-    .quick-grid {
-      grid-template-columns: 1fr;
-      padding: 42px 20px;
-      row-gap: 48px;
-    }
-
-    .quick-link p {
-      line-height: 1.25;
-    }
-
-    .chat-button {
-      border-radius: 18px;
-      height: 58px;
-      width: 58px;
-    }
-  }
-
-  @media (max-width: 520px) {
-    .support-header {
-      align-items: center;
-      justify-content: center;
-      min-height: 72px;
+      min-height: 74px;
       padding: 12px 16px;
     }
 
-    .support-logo {
-      max-width: 100%;
-      width: min(82vw, 300px);
-    }
-
     .support-logo img {
-      width: 100%;
+      width: min(320px, 86vw);
     }
 
-    .support-hero h1 {
-      font-size: 2rem;
+    .portal-nav {
+      min-height: 52px;
+      padding: 0 20px;
     }
 
-    .search-band {
-      padding: 16px 0;
+    .ticket-form-section {
+      min-height: 700px;
+      padding: 30px 0 66px;
     }
 
-    .support-search {
-      min-height: 58px;
-      padding: 0 16px;
+    .ticket-form {
+      max-width: 100%;
+      padding: 0 52px;
+    }
+
+    .field input {
+      height: 42px;
+    }
+
+    .field textarea {
+      min-height: 132px;
+    }
+
+    .recaptcha-box {
+      grid-template-columns: 34px minmax(0, 1fr) auto;
+      max-width: 100%;
+      padding: 10px 12px;
+    }
+
+    .form-actions {
+      gap: 8px;
+    }
+
+    .submit-button,
+    .cancel-button {
+      height: 38px;
+      min-width: 100px;
+      padding: 0 18px;
+    }
+
+    .footer-inner {
+      max-width: 100%;
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .ticket-form {
+      padding: 0 36px;
+    }
+
+    .ticket-form h1 {
+      font-size: 1.08rem;
+    }
+
+    .field span {
+      font-size: 0.86rem;
+    }
+
+    .recaptcha-box {
+      grid-template-columns: 30px minmax(0, 1fr) auto;
+      gap: 9px;
+    }
+
+    .recaptcha-check {
+      height: 28px;
+      width: 28px;
+    }
+
+    .recaptcha-brand img {
+      height: 32px;
+      width: 32px;
+    }
+
+    .recaptcha-copy strong {
+      font-size: 0.9rem;
+    }
+
+    .recaptcha-copy small,
+    .recaptcha-brand small {
+      font-size: 0.62rem;
+    }
+
+    .form-actions {
+      flex-wrap: wrap;
     }
 
     .support-footer {
-      padding-inline: 20px;
-    }
-
-    .copyright {
-      font-size: 1rem;
+      padding-left: 20px;
+      padding-right: 20px;
     }
   }
 </style>

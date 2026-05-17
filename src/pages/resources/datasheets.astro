@@ -3,18 +3,66 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/Nav.astro";
 
 const datasheets = [
-  { title: "Seclore for DPDP Compliance", tags: ["Datasheet", "Data Compliance"], image: "map" },
-  { title: "Seclore Data Security Intelligence Framework", tags: ["Datasheet", "Third Party Risk"], image: "analyst" },
-  { title: "Joint Solution Brief - Symantec Cloud DLP", tags: ["Datasheet", "Partners & Integrations"], image: "symantec" },
-  { title: "Data-Centric Security for Financial Services", tags: ["Datasheet", "Financial Services", "EDRM"], image: "blank" },
-  { title: "Seclore - Corporate Overview", tags: ["Datasheet", "Company"], image: "blank" },
-  { title: "Seclore Data-Centric Security Platform", tags: ["Datasheet", "EDRM"], image: "blank" },
-  { title: "Datasheet: Countering the Data Protection Challenges in the African Region", tags: ["Datasheet", "Data Security"], image: "blank" },
-  { title: "Seclore vs MIP: Comparison Datasheet", tags: ["Datasheet", "EDRM"], image: "blank" },
-  { title: "Seclore for Microsoft Sensitivity Labels", tags: ["Datasheet", "Partners & Integrations"], image: "blank" },
-  { title: "Seclore for Skyhigh CASB", tags: ["Datasheet", "Partners & Integrations"], image: "blank" },
-  { title: "Safeguard Your Incoming Data with Automated Protection", tags: ["Datasheet", "EDRM"], image: "blank" },
-  { title: "Data-Centric Security: Combining the Power of DLP, ERM & Classification", tags: ["Datasheet", "EDRM"], image: "blank" }
+  {
+    title: "Seclore for DPDP Compliance",
+    tags: ["Datasheet", "Data Compliance"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/seclore-for-dpdp-compliance-768x498.png"
+  },
+  {
+    title: "Seclore Data Security Intelligence Framework",
+    tags: ["Datasheet", "Third Party Risk"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/thumbnail-seclore-data-security-intelligence-framework-data-sheet-dec-2025-1024x576.jpg"
+  },
+  {
+    title: "Joint Solution Brief - Symantec Cloud DLP",
+    tags: ["Datasheet", "Partners & Integrations"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/seclore-joint-solution-brief-symantec-cloud-dlp-300x195-2.png"
+  },
+  {
+    title: "Data-Centric Security for Financial Services",
+    tags: ["Datasheet", "Financial Services", "EDRM"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Data-Centric-Security-for-Financial-Services.png"
+  },
+  {
+    title: "Seclore - Corporate Overview",
+    tags: ["Datasheet", "Company"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Seclore-Corporate-Overview.png"
+  },
+  {
+    title: "Seclore Data-Centric Security Platform",
+    tags: ["Datasheet", "EDRM"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Seclore-Data-Centric-Security-Platform.png"
+  },
+  {
+    title: "Datasheet: Countering the Data Protection Challenges in the African Region",
+    tags: ["Datasheet", "Data Security"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Datasheet_-Countering-the-Data-Protection-Challenges-in-the-African-Region.png"
+  },
+  {
+    title: "Seclore vs MIP: Comparison Datasheet",
+    tags: ["Datasheet", "EDRM"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Seclore-vs-MIP_-Comparision-Datasheet.png"
+  },
+  {
+    title: "Seclore for Microsoft Sensitivity Labels",
+    tags: ["Datasheet", "Partners & Integrations"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Seclore-for-Microsoft-Sensitivity-Labels-Datasheet.png"
+  },
+  {
+    title: "Seclore for Skyhigh CASB",
+    tags: ["Datasheet", "Partners & Integrations"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Seclore-for-Skyhigh-CASB.png"
+  },
+  {
+    title: "Safeguard Your Incoming Data with Automated Protection",
+    tags: ["Datasheet", "EDRM"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Safeguard-Your-Incoming-Data-with-Automated-Protection.png"
+  },
+  {
+    title: "Data-Centric Security: Combining the Power of DLP, ERM & Classification",
+    tags: ["Datasheet", "EDRM"],
+    imageUrl: "https://www.seclore.com/wp-content/uploads/Data-Centric-Security_-Combining-the-Power-of-DLP-ERM-Classification.png"
+  }
 ];
 
 const categoryLinks = [
@@ -63,15 +111,8 @@ const categoryLinks = [
       <div class="datasheet-grid">
         {datasheets.map((datasheet) => (
           <article class="datasheet-card">
-            <div class={`datasheet-thumb ${datasheet.image}`} aria-hidden="true">
-              {datasheet.image === "symantec" && (
-                <>
-                  <strong>SEClore</strong>
-                  <span>Joint Solution Brief</span>
-                  <em>Symantec Cloud DLP</em>
-                  <b>BRIEF</b>
-                </>
-              )}
+            <div class="datasheet-thumb">
+              <img src={datasheet.imageUrl} alt="" loading="eager" decoding="async" />
             </div>
             <div class="datasheet-card-copy">
               <div class="meta-row">
@@ -100,11 +141,6 @@ const categoryLinks = [
       ))}
     </section>
 
-    <section class="ready-section" id="demo">
-      <h2>Ready to get started?</h2>
-      <p>Contact our sales team to find out how Seclore can help with data security and compliance.</p>
-      <a class="primary-button" href="#demo">Book a Demo</a>
-    </section>
   </main>
 </BaseLayout>
 
@@ -552,99 +588,20 @@ const categoryLinks = [
 
   .datasheet-thumb {
     aspect-ratio: 1.65 / 1;
+    background: #f3f2f5;
     min-height: 146px;
     overflow: hidden;
     position: relative;
   }
 
-  .datasheet-thumb.blank {
-    background: #ffffff;
-  }
-
-  .datasheet-thumb.map {
-    background:
-      linear-gradient(135deg, rgba(224, 236, 250, 0.35), rgba(255, 255, 255, 0.08)),
-      repeating-linear-gradient(18deg, rgba(71, 114, 170, 0.16) 0 2px, transparent 2px 18px),
-      radial-gradient(circle at 46% 56%, #d2b38d, transparent 24%),
-      #edf2f5;
-  }
-
-  .datasheet-thumb.map::after {
-    color: rgba(41, 54, 72, 0.52);
-    content: "INDIA";
-    font-size: clamp(1.6rem, 3vw, 3.2rem);
-    font-weight: 900;
-    left: 42%;
-    letter-spacing: 0.08em;
-    position: absolute;
-    top: 42%;
-    transform: rotate(-9deg) translate(-50%, -50%);
-  }
-
-  .datasheet-thumb.analyst {
-    background:
-      radial-gradient(circle at 24% 44%, #d2a57a 0 8%, transparent 9%),
-      linear-gradient(135deg, #f2e1d1 0 28%, #233343 28% 66%, #111b25 66%);
-  }
-
-  .datasheet-thumb.analyst::after {
-    background:
-      repeating-linear-gradient(0deg, #33d0b4 0 3px, transparent 3px 14px),
-      #101820;
-    border: 4px solid #1f2b34;
-    border-radius: 6px;
-    content: "";
-    height: 52%;
-    position: absolute;
-    right: 16%;
-    top: 20%;
-    width: 34%;
-  }
-
-  .datasheet-thumb.symantec {
-    background:
-      radial-gradient(circle at 80% 50%, rgba(242, 39, 96, 0.22), transparent 28%),
-      linear-gradient(135deg, #19061d, #321129);
-    color: #ffffff;
-    padding: 18px;
-  }
-
-  .datasheet-thumb.symantec strong {
-    color: #e12a68;
+  .datasheet-thumb img {
     display: block;
-    font-size: 0.9rem;
-    font-weight: 950;
-    letter-spacing: 0.04em;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-  }
-
-  .datasheet-thumb.symantec span,
-  .datasheet-thumb.symantec em {
-    display: block;
-    font-style: normal;
-    font-weight: 850;
-  }
-
-  .datasheet-thumb.symantec span {
-    font-size: 0.8rem;
-  }
-
-  .datasheet-thumb.symantec em {
-    font-size: clamp(1.05rem, 1.9vw, 1.7rem);
-    line-height: 1.1;
-    max-width: 70%;
-  }
-
-  .datasheet-thumb.symantec b {
-    background: #ff2f6f;
-    border-radius: 2px;
-    bottom: 22px;
-    color: #ffffff;
-    font-size: 0.62rem;
-    left: 28px;
-    padding: 7px 18px;
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    object-position: center;
     position: absolute;
+    width: 100%;
   }
 
   .datasheet-card-copy {
@@ -729,23 +686,11 @@ const categoryLinks = [
     padding: 0 20px;
   }
 
-  .ready-section,
   .resource-footer {
     background: #ffffff;
     padding-inline: clamp(16px, 2.5vw, 34px);
   }
 
-  .ready-section {
-    padding-block: 32px 40px;
-  }
-
-  .ready-section h2 {
-    font-size: clamp(1.45rem, 2.2vw, 2rem);
-    font-weight: 450;
-    margin-bottom: 8px;
-  }
-
-  .ready-section p,
   .resource-footer p {
     color: var(--page-muted);
     font-size: 0.98rem;

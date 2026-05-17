@@ -42,9 +42,27 @@ const relatedProducts = [
 ];
 
 const resources = [
-  ["Whitepaper", "Semiconductor", "Safeguarding Intellectual Property in the Semiconductor Equipment Industry"],
-  ["Infographic", "Trade Secrets", "Is your Organization Prone to Intellectual Property Theft?"],
-  ["Case Study", "Manufacturing", "Global Video Game Company"]
+  {
+    type: "Whitepaper",
+    tag: "Semiconductor",
+    title: "Safeguarding Intellectual Property in the Semiconductor Equipment Industry",
+    image: "/images/integrations/content-storage/enterprise-benefits.png",
+    alt: "Engineers reviewing protected intellectual property designs"
+  },
+  {
+    type: "Infographic",
+    tag: "Trade Secrets",
+    title: "Is your Organization Prone to Intellectual Property Theft?",
+    image: "/images/integrations/file-storage/file-flow.png",
+    alt: "Protected file movement for trade secret security"
+  },
+  {
+    type: "Case Study",
+    tag: "Manufacturing",
+    title: "Global Video Game Company",
+    image: "/images/integrations/intro-meeting.png",
+    alt: "Business team discussing intellectual property protection"
+  }
 ];
 ---
 
@@ -63,15 +81,14 @@ const resources = [
           Gain complete control over your enterprise's intellectual property. IP, patent submission documents, and innovation
           content remain protected across creation, collaboration, and sharing throughout their entire lifecycle.
         </p>
-        <a class="primary-button alert" href="#demo">Get a Demo</a>
+        <a class="primary-button alert" href="#demo">Book a Demo</a>
       </div>
       <div class="justice-visual" aria-label="Intellectual property protection visual">
-        <div class="scale-beam"></div>
-        <div class="scale-chain chain-left"></div>
-        <div class="scale-chain chain-right"></div>
-        <div class="scale-pan pan-left"></div>
-        <div class="scale-pan pan-right"></div>
-        <div class="statue"></div>
+        <img
+          src="/images/integrations/content-storage/enterprise-benefits.png"
+          alt="Engineers reviewing protected intellectual property designs"
+          loading="eager"
+        />
       </div>
     </section>
 
@@ -84,10 +101,10 @@ const resources = [
 
     <section class="split-section advantage-section">
       <div class="meeting-visual" aria-label="Enterprise IP collaboration visual">
-        <div class="room-panel"></div>
-        <div class="person person-a"></div>
-        <div class="person person-b"></div>
-        <div class="person person-c"></div>
+        <img
+          src="/images/integrations/intro-meeting.png"
+          alt="Enterprise team collaborating on intellectual property protection"
+        />
       </div>
       <div>
         <h2>Extend your market advantage with data-centric security</h2>
@@ -99,7 +116,10 @@ const resources = [
           Seclore empowers organizations to classify, protect, and track IP assets across digital channels and collaborative
           workflows. Protection follows the asset wherever it goes.
         </p>
-        <a class="primary-button dark" href="#resources">IP Protection Use Cases</a>
+        <div class="section-actions">
+          <a class="primary-button dark" href="#resources">IP Protection Use Cases</a>
+          <a class="primary-button dark" href="#demo">Contact For Inc.</a>
+        </div>
       </div>
     </section>
 
@@ -150,7 +170,7 @@ const resources = [
         <label>Job Title<input name="role" /></label>
         <label>Phone Number<input name="phone" /></label>
         <label>Country<select name="country"><option>Please Select</option><option>United States</option><option>India</option></select></label>
-        <button class="primary-button" type="submit">Submit Form</button>
+        <button class="primary-button" type="submit">Submit</button>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>
@@ -212,11 +232,16 @@ const resources = [
       </div>
       <div class="resource-shell">
         <div class="resource-track" data-carousel>
-          {resources.map(([type, tag, title]) => (
+          {resources.map((resource) => (
             <article class="resource-card">
-              <span>{type}</span>
-              <em>{tag}</em>
-              <h3>{title}</h3>
+              <figure>
+                <img src={resource.image} alt={resource.alt} />
+              </figure>
+              <div>
+                <span>{resource.type}</span>
+                <em>{resource.tag}</em>
+                <h3>{resource.title}</h3>
+              </div>
               <a href="#demo">Read More</a>
             </article>
           ))}
@@ -428,8 +453,11 @@ const resources = [
     font-size: 0.88rem;
     font-weight: 850;
     justify-content: center;
+    line-height: 1;
     min-height: 39px;
     padding: 0 18px;
+    white-space: nowrap;
+    width: fit-content;
   }
 
   .primary-button.alert { background: var(--alert); }
@@ -474,6 +502,15 @@ const resources = [
     min-height: 330px;
     overflow: hidden;
     position: relative;
+  }
+
+  .justice-visual img,
+  .meeting-visual img {
+    display: block;
+    height: 100%;
+    min-height: inherit;
+    object-fit: cover;
+    width: 100%;
   }
 
   .statue {
@@ -582,6 +619,13 @@ const resources = [
   .person-c { background: #3c2f35; height: 142px; right: 18%; width: 82px; }
   .person-c::before { background: #b17558; }
 
+  .section-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   .control-section, .related-section { padding: clamp(58px, 8vw, 96px) clamp(18px, 4vw, 52px); }
   .section-heading { margin: 0 auto 36px; max-width: 1040px; }
   .centered { text-align: center; }
@@ -615,6 +659,7 @@ const resources = [
   .demo-logos { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
   .demo-logos span { color: rgba(36, 35, 41, 0.56); font-size: 0.82rem; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; }
   .ip-form h3 { text-align: center; }
+  .ip-form .primary-button { justify-self: start; }
   .ip-form label { color: var(--page-text); display: grid; font-size: 0.88rem; gap: 8px; margin-bottom: 14px; }
   .ip-form input, .ip-form select {
     background: rgba(255, 255, 255, 0.9);
@@ -671,8 +716,31 @@ const resources = [
   }
   .resource-track::-webkit-scrollbar { height: 0; }
   .resource-card {
-    min-height: 340px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 390px;
+    overflow: hidden;
+    padding: 0;
     scroll-snap-align: start;
+  }
+
+  .resource-card figure {
+    aspect-ratio: 16 / 10;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .resource-card figure img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .resource-card > div { padding: 24px 24px 0; }
+  .resource-card > a {
+    align-self: end;
+    margin: 22px 24px 26px;
   }
   .slide-controls { display: flex; gap: 10px; margin-top: 18px; }
   .slide-controls button { background: var(--card); border: 1px solid var(--line); border-radius: 50%; cursor: pointer; height: 36px; width: 36px; }
@@ -713,6 +781,14 @@ const resources = [
 
     .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .related-product { min-height: 210px; padding-top: 42px; }
+    .justice-visual, .meeting-visual { min-height: 300px; }
+    .resource-card { min-height: 0; }
+    .ip-page .ip-hero .primary-button,
+    .ip-page .advantage-section .primary-button,
+    .ip-page .ip-form .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 520px) {
@@ -722,6 +798,15 @@ const resources = [
     }
     h2 { font-size: 2rem; }
     .justice-visual, .meeting-visual { min-height: 250px; }
+    .resource-card figure { aspect-ratio: 4 / 3; }
+    .ip-page .ip-hero .primary-button,
+    .ip-page .advantage-section .primary-button,
+    .ip-page .ip-form .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
     .statue { left: 45%; transform: scale(0.82); transform-origin: bottom center; }
     .scale-beam { left: 16%; width: 230px; }
     .person-a { left: 6%; }

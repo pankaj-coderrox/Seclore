@@ -42,9 +42,27 @@ const relatedProducts = [
 ];
 
 const resources = [
-  ["Whitepaper", "Banking", "Enhancing Banking Security and Compliance: Navigating RBI Guidelines with a Data-Centric Approach"],
-  ["Whitepaper", "Compliance", "Complying with the Personal Data Protection Law (PDPL) Using Seclore's Data-Centric Security Platform"],
-  ["Whitepaper", "Banking & Financial Services", "Enhancing Cloud Security and Resilience: Financial Sector Compliance with Saudi Arabian Monetary Authority Guidelines"]
+  {
+    type: "Whitepaper",
+    tag: "Banking",
+    title: "Enhancing Banking Security and Compliance: Navigating RBI Guidelines with a Data-Centric Approach",
+    image: "/images/integrations/discovery-classification/datacenter.png",
+    alt: "Secure compliance data center infrastructure"
+  },
+  {
+    type: "Whitepaper",
+    tag: "Compliance",
+    title: "Complying with the Personal Data Protection Law (PDPL) Using Seclore's Data-Centric Security Platform",
+    image: "/images/integrations/dlp-casb/ai-readiness.png",
+    alt: "Compliance dashboard and regulated data review"
+  },
+  {
+    type: "Whitepaper",
+    tag: "Banking & Financial Services",
+    title: "Enhancing Cloud Security and Resilience: Financial Sector Compliance with Saudi Arabian Monetary Authority Guidelines",
+    image: "/images/integrations/spirion/spirion-lead.png",
+    alt: "Global compliance and cloud security visualization"
+  }
 ];
 ---
 
@@ -67,10 +85,11 @@ const resources = [
         <a class="primary-button alert" href="#demo">Book a Demo</a>
       </div>
       <div class="compliance-hero-visual" aria-label="Enterprise compliance consultation visual">
-        <div class="window-panel"></div>
-        <div class="consultant consultant-a"></div>
-        <div class="consultant consultant-b"></div>
-        <div class="document-stack"></div>
+        <img
+          src="/images/integrations/dlp-casb/ai-readiness.png"
+          alt="Compliance dashboard and regulated data review"
+          loading="eager"
+        />
       </div>
     </section>
 
@@ -83,9 +102,10 @@ const resources = [
 
     <section class="split-section maintain-section">
       <div class="audit-visual" aria-label="Compliance review visual">
-        <div class="audit-glass"></div>
-        <div class="audit-person"></div>
-        <div class="audit-desk"></div>
+        <img
+          src="/images/integrations/discovery-classification/datacenter.png"
+          alt="Secure compliance audit infrastructure"
+        />
       </div>
       <div>
         <h2>Maintain and demonstrate compliance</h2>
@@ -101,7 +121,10 @@ const resources = [
           With user activity related to Seclore-protected files and audit records, you can demonstrate security control
           effectiveness for frameworks like NIST, DFARS, CMMC, and other requirements.
         </p>
-        <a class="primary-button dark" href="#resources">View Whitepaper</a>
+        <div class="section-actions">
+          <a class="primary-button dark" href="#resources">View Whitepaper</a>
+          <a class="primary-button dark" href="#demo">Contact For Inc.</a>
+        </div>
       </div>
     </section>
 
@@ -153,7 +176,7 @@ const resources = [
         <label>Job Title<input name="role" /></label>
         <label>Phone Number<input name="phone" /></label>
         <label>Country<select name="country"><option>Please Select</option><option>United States</option><option>India</option></select></label>
-        <button class="primary-button" type="submit">Submit Form</button>
+        <button class="primary-button" type="submit">Submit</button>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>
@@ -214,12 +237,17 @@ const resources = [
       </div>
       <div class="resource-shell">
         <div class="resource-track" data-carousel>
-          {resources.map(([type, tag, title]) => (
+          {resources.map((resource) => (
             <article class="resource-card">
-              <span>{type}</span>
-              <em>{tag}</em>
-              <h3>{title}</h3>
-              <a href="#demo">View {type}</a>
+              <figure>
+                <img src={resource.image} alt={resource.alt} />
+              </figure>
+              <div>
+                <span>{resource.type}</span>
+                <em>{resource.tag}</em>
+                <h3>{resource.title}</h3>
+              </div>
+              <a href="#demo">View {resource.type}</a>
             </article>
           ))}
         </div>
@@ -344,7 +372,7 @@ const resources = [
   .mega-feature strong { color: var(--dropdown-text); font-size: 1.35rem; line-height: 1.18; margin-top: auto; }
   .nav-utilities { flex: 0 0 auto; gap: clamp(12px, 1.5vw, 20px); margin-left: clamp(12px, 2vw, 28px); }
   .utility-link, .language-button, .utility-icon, .theme-toggle { display: none; }
-  .demo-button, .primary-button { align-items: center; background: var(--demo-button-bg); border: 0; border-radius: 7px; color: var(--demo-button-text); cursor: pointer; display: inline-flex; font-size: 0.88rem; font-weight: 850; justify-content: center; min-height: 39px; padding: 0 18px; }
+  .demo-button, .primary-button { align-items: center; background: var(--demo-button-bg); border: 0; border-radius: 7px; color: var(--demo-button-text); cursor: pointer; display: inline-flex; font-size: 0.88rem; font-weight: 850; justify-content: center; line-height: 1; min-height: 39px; padding: 0 18px; white-space: nowrap; width: fit-content; }
   .primary-button.alert { background: var(--alert); }
   .primary-button.dark { background: #211326; color: #ffffff; }
   .nav-toggle { background: transparent; border: 0; display: none; height: 42px; width: 42px; }
@@ -359,6 +387,7 @@ const resources = [
   .compliance-hero span { display: block; font-size: 0.88rem; font-weight: 850; letter-spacing: 0.05em; margin-bottom: 18px; text-transform: uppercase; }
   .compliance-hero p { color: rgba(255, 255, 255, 0.82); max-width: 620px; }
   .compliance-hero-visual { background: linear-gradient(135deg, #d8eef1, #ffffff 45%, #305d66); border-radius: 8px; min-height: 330px; overflow: hidden; position: relative; }
+  .compliance-hero-visual img, .audit-visual img { display: block; height: 100%; min-height: inherit; object-fit: cover; width: 100%; }
   .window-panel { background: rgba(255, 255, 255, 0.35); height: 100%; left: 0; position: absolute; top: 0; width: 44%; }
   .consultant { border-radius: 48% 48% 8px 8px; bottom: 52px; position: absolute; }
   .consultant::before { border-radius: 50%; content: ""; height: 54px; left: 24px; position: absolute; top: -38px; width: 54px; }
@@ -381,6 +410,7 @@ const resources = [
   .audit-person { background: linear-gradient(150deg, #f1f8ff, #374f67); border-radius: 48% 48% 8px 8px; bottom: 48px; height: 180px; left: 38%; position: absolute; width: 110px; }
   .audit-person::before { background: #d2a27f; border-radius: 50%; content: ""; height: 58px; left: 26px; position: absolute; top: -40px; width: 58px; }
   .audit-desk { background: rgba(37, 54, 69, 0.12); bottom: 0; height: 78px; left: 0; position: absolute; right: 0; }
+  .section-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 12px; }
 
   .protect-section, .related-section, .tools-section, .story-section, .resources-section { padding: clamp(58px, 8vw, 96px) clamp(18px, 4vw, 52px); }
   .section-heading { margin: 0 auto 36px; max-width: 1040px; }
@@ -399,6 +429,7 @@ const resources = [
   .demo-logos { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
   .demo-logos span { color: rgba(36, 35, 41, 0.56); font-size: 0.82rem; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; }
   .compliance-form h3 { text-align: center; }
+  .compliance-form .primary-button { justify-self: start; }
   .compliance-form label { color: var(--page-text); display: grid; font-size: 0.88rem; gap: 8px; margin-bottom: 14px; }
   .compliance-form input, .compliance-form select { background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(15, 23, 42, 0.16); border-radius: 4px; color: #111827; min-height: 40px; padding: 10px; }
   .form-status { min-height: 24px; }
@@ -419,7 +450,11 @@ const resources = [
   .resource-shell { margin-inline: auto; max-width: 980px; }
   .resource-track { display: grid; gap: 32px; grid-auto-columns: minmax(220px, 1fr); grid-auto-flow: column; overflow-x: auto; padding: 4px 2px 16px; scroll-behavior: smooth; scroll-snap-type: x mandatory; }
   .resource-track::-webkit-scrollbar { height: 0; }
-  .resource-card { min-height: 340px; scroll-snap-align: start; }
+  .resource-card { display: grid; grid-template-rows: auto 1fr auto; min-height: 390px; overflow: hidden; padding: 0; scroll-snap-align: start; }
+  .resource-card figure { aspect-ratio: 16 / 10; margin: 0; overflow: hidden; }
+  .resource-card figure img { display: block; height: 100%; object-fit: cover; width: 100%; }
+  .resource-card > div { padding: 24px 24px 0; }
+  .resource-card > a { align-self: end; margin: 22px 24px 26px; }
   .slide-controls { display: flex; gap: 10px; margin-top: 18px; }
   .slide-controls button { background: var(--card); border: 1px solid var(--line); border-radius: 50%; cursor: pointer; height: 36px; width: 36px; }
 
@@ -452,12 +487,29 @@ const resources = [
     .compliance-hero, .split-section, .demo-band, .card-grid.three, .tools-grid { grid-template-columns: 1fr; }
     .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .related-product { min-height: 210px; padding-top: 42px; }
+    .compliance-hero-visual, .audit-visual { min-height: 300px; }
+    .resource-card { min-height: 0; }
+    .compliance-page .compliance-hero .primary-button,
+    .compliance-page .maintain-section .primary-button,
+    .compliance-page .compliance-form .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 520px) {
     h1 { font-size: 2.35rem; line-height: 1.05; }
     h2 { font-size: 2rem; }
     .compliance-hero-visual, .audit-visual { min-height: 250px; }
+    .resource-card figure { aspect-ratio: 4 / 3; }
+    .compliance-page .compliance-hero .primary-button,
+    .compliance-page .maintain-section .primary-button,
+    .compliance-page .compliance-form .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
     .consultant-a { left: 22%; }
     .consultant-b { right: 10%; }
     .document-stack { left: 20%; width: 150px; }

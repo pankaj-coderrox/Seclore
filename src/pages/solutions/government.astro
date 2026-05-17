@@ -57,12 +57,8 @@ const relatedProducts = [
         </p>
         <a class="primary-button alert" href="#demo">Book a Demo</a>
       </div>
-      <div class="public-sector-visual" aria-label="Public sector aviation visual">
-        <div class="sun"></div>
-        <div class="soldier"></div>
-        <div class="helicopter helicopter-one"></div>
-        <div class="helicopter helicopter-two"></div>
-        <div class="field"></div>
+      <div class="public-sector-visual" aria-label="Public sector data protection visual">
+        <img src="/images/integrations/spirion/spirion-lead.png" alt="Public sector data protection across a global network" loading="eager" />
       </div>
     </section>
 
@@ -75,9 +71,7 @@ const relatedProducts = [
 
     <section class="split-section protect-section">
       <div class="operations-visual" aria-label="Government operations security visual">
-        <div class="screen-wall"></div>
-        <div class="operator"></div>
-        <div class="desk"></div>
+        <img src="/images/integrations/discovery-classification/datacenter.png" alt="Secure government data operations center" />
       </div>
       <div>
         <h2>Protect sensitive and regulated data anywhere</h2>
@@ -372,8 +366,11 @@ const relatedProducts = [
     font-size: 0.88rem;
     font-weight: 850;
     justify-content: center;
+    line-height: 1;
     min-height: 39px;
     padding: 0 18px;
+    white-space: nowrap;
+    width: fit-content;
   }
 
   .primary-button.alert { background: var(--alert); }
@@ -419,6 +416,15 @@ const relatedProducts = [
     min-height: 330px;
     overflow: hidden;
     position: relative;
+  }
+
+  .public-sector-visual img,
+  .operations-visual img {
+    display: block;
+    height: 100%;
+    min-height: inherit;
+    object-fit: cover;
+    width: 100%;
   }
 
   .sun {
@@ -603,6 +609,7 @@ const relatedProducts = [
   .demo-logos { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
   .demo-logos span { color: rgba(36, 35, 41, 0.56); font-size: 0.82rem; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; }
   .government-form h3 { text-align: center; }
+  .government-form .primary-button { justify-self: start; }
   .government-form label { color: var(--page-text); display: grid; font-size: 0.88rem; gap: 8px; margin-bottom: 14px; }
   .government-form input, .government-form select {
     background: rgba(255, 255, 255, 0.9);
@@ -667,6 +674,18 @@ const relatedProducts = [
 
     .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .related-product { min-height: 210px; padding-top: 42px; }
+
+    .public-sector-visual,
+    .operations-visual {
+      min-height: 300px;
+    }
+
+    .government-page .government-hero .primary-button,
+    .government-page .protect-section .primary-button,
+    .government-page .government-form .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 520px) {
@@ -676,6 +695,14 @@ const relatedProducts = [
     }
     h2 { font-size: 2rem; }
     .public-sector-visual, .operations-visual { min-height: 250px; }
+    .government-page .government-hero .primary-button,
+    .government-page .protect-section .primary-button,
+    .government-page .government-form .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
     .soldier { left: 24%; transform: scale(0.82); transform-origin: bottom center; }
     .helicopter-one { right: 5%; top: 24%; transform: scale(0.72) rotate(7deg); }
     .helicopter-two { right: 38%; top: 18%; transform: scale(0.46) rotate(-4deg); }

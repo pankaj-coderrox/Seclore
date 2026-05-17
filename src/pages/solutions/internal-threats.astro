@@ -42,8 +42,20 @@ const relatedProducts = [
 ];
 
 const resources = [
-  ["Blog Post", "Security", "Securing Digital Assets with Dynamic Watermarking: The Seclore Advantage"],
-  ["Case Study", "Energy", "Fugro Survey"]
+  {
+    type: "Blog Post",
+    tag: "Security",
+    title: "Securing Digital Assets with Dynamic Watermarking: The Seclore Advantage",
+    image: "/images/integrations/file-storage/file-flow.png",
+    alt: "Protected file movement with access controls"
+  },
+  {
+    type: "Case Study",
+    tag: "Energy",
+    title: "Fugro Survey",
+    image: "/images/integrations/intro-meeting.png",
+    alt: "Enterprise security team discussing insider risk controls"
+  }
 ];
 ---
 
@@ -66,10 +78,7 @@ const resources = [
         <a class="primary-button alert" href="#demo">Book a Demo</a>
       </div>
       <div class="document-visual" aria-label="Protected document review visual">
-        <div class="paper"></div>
-        <div class="hand"></div>
-        <div class="pen"></div>
-        <div class="keyboard"></div>
+        <img src="/images/integrations/file-storage/file-flow.png" alt="Protected document workflow with access controls" loading="eager" />
       </div>
     </section>
 
@@ -82,9 +91,7 @@ const resources = [
 
     <section class="split-section leak-section">
       <div class="office-visual" aria-label="Office insider threat prevention visual">
-        <div class="office-grid"></div>
-        <div class="office-person"></div>
-        <div class="office-desk"></div>
+        <img src="/images/integrations/intro-meeting.png" alt="Enterprise team reviewing insider threat prevention controls" />
       </div>
       <div>
         <h2>Prevent data leaks</h2>
@@ -96,7 +103,10 @@ const resources = [
           Seclore enables organizations to retain complete visibility and control over sensitive and proprietary information
           that employees, contractors, and third parties have access to.
         </p>
-        <a class="primary-button dark" href="#resources">View Insider Threats</a>
+        <div class="section-actions">
+          <a class="primary-button dark" href="#resources">View Insider Threats</a>
+          <a class="primary-button dark" href="#demo">Contact For Inc.</a>
+        </div>
       </div>
     </section>
 
@@ -208,11 +218,16 @@ const resources = [
         </p>
       </div>
       <div class="resource-grid">
-        {resources.map(([type, tag, title]) => (
+        {resources.map((resource) => (
           <article class="resource-card">
-            <span>{type}</span>
-            <em>{tag}</em>
-            <h3>{title}</h3>
+            <figure>
+              <img src={resource.image} alt={resource.alt} />
+            </figure>
+            <div>
+              <span>{resource.type}</span>
+              <em>{resource.tag}</em>
+              <h3>{resource.title}</h3>
+            </div>
             <a href="#demo">View More</a>
           </article>
         ))}
@@ -415,8 +430,11 @@ const resources = [
     font-size: 0.88rem;
     font-weight: 850;
     justify-content: center;
+    line-height: 1;
     min-height: 39px;
     padding: 0 18px;
+    white-space: nowrap;
+    width: fit-content;
   }
 
   .primary-button.alert { background: var(--alert); }
@@ -462,6 +480,15 @@ const resources = [
     min-height: 330px;
     overflow: hidden;
     position: relative;
+  }
+
+  .document-visual img,
+  .office-visual img {
+    display: block;
+    height: 100%;
+    min-height: inherit;
+    object-fit: cover;
+    width: 100%;
   }
 
   .paper {
@@ -588,6 +615,13 @@ const resources = [
     right: 0;
   }
 
+  .section-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   .management-section, .related-section { background: var(--page-bg); padding: clamp(58px, 8vw, 96px) clamp(18px, 4vw, 52px); }
   .section-heading { margin: 0 auto 36px; max-width: 1040px; }
   .centered { text-align: center; }
@@ -637,6 +671,7 @@ const resources = [
   .demo-logos { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
   .demo-logos span { color: rgba(36, 35, 41, 0.56); font-size: 0.82rem; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; }
   .internal-form h3 { text-align: center; }
+  .internal-form .primary-button { justify-self: start; }
   .internal-form label { color: var(--page-text); display: grid; font-size: 0.88rem; gap: 8px; margin-bottom: 14px; }
   .internal-form input, .internal-form select {
     background: rgba(255, 255, 255, 0.9);
@@ -665,7 +700,35 @@ const resources = [
   }
   .related-product a, .resource-card a { color: var(--page-text); font-weight: 900; }
   .resource-grid { display: grid; gap: 32px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-inline: auto; max-width: 680px; }
-  .resource-card { min-height: 340px; }
+  .resource-card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 390px;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .resource-card figure {
+    aspect-ratio: 16 / 10;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .resource-card figure img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .resource-card > div {
+    padding: 24px 24px 0;
+  }
+
+  .resource-card > a {
+    align-self: end;
+    margin: 22px 24px 26px;
+  }
   .slide-controls { display: flex; gap: 10px; margin-top: 28px; }
   .slide-controls button { background: var(--card); border: 1px solid var(--line); border-radius: 50%; height: 36px; width: 36px; }
 
@@ -706,6 +769,23 @@ const resources = [
 
     .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .related-product { min-height: 210px; padding-top: 42px; }
+
+    .document-visual,
+    .office-visual {
+      min-height: 300px;
+    }
+
+    .resource-card {
+      min-height: 0;
+    }
+
+    .internal-page .internal-hero .primary-button,
+    .internal-page .leak-section .primary-button,
+    .internal-page .story-card .primary-button,
+    .internal-page .internal-form .primary-button {
+      max-width: 100%;
+      width: fit-content !important;
+    }
   }
 
   @media (max-width: 520px) {
@@ -715,6 +795,16 @@ const resources = [
     }
     h2 { font-size: 2rem; }
     .document-visual, .office-visual { min-height: 250px; }
+    .resource-card figure { aspect-ratio: 4 / 3; }
+    .internal-page .internal-hero .primary-button,
+    .internal-page .leak-section .primary-button,
+    .internal-page .story-card .primary-button,
+    .internal-page .internal-form .primary-button {
+      font-size: 0.9rem !important;
+      min-height: 40px;
+      padding-inline: 18px;
+      white-space: normal;
+    }
     .paper { left: 30%; width: 190px; }
     .hand { left: 5%; width: 170px; }
     .keyboard { left: 7%; width: 260px; }

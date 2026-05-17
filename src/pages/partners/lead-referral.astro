@@ -17,15 +17,6 @@ const checklist = [
 >
   <main class="referral-page" id="top">
     <Nav />
-    <header class="simple-header">
-      <a class="simple-logo" href="/partners/" aria-label="Seclore partners">seclore</a>
-      <div class="header-actions">
-        <a class="demo-button" href="#demo">Book a Demo</a>
-        <button class="hamburger" type="button" aria-label="Open navigation">
-          <span></span><span></span>
-        </button>
-      </div>
-    </header>
 
     <section class="referral-hero">
       <div class="referral-copy">
@@ -165,28 +156,12 @@ const checklist = [
     margin-top: 0;
   }
 
-  .simple-header {
-    align-items: center;
-    background: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    min-height: 74px;
-    padding: 0 clamp(20px, 3vw, 34px);
-  }
-
-  .simple-logo,
   .footer-logo {
     color: var(--purple);
     font-size: 1.55rem;
     font-weight: 950;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-  }
-
-  .header-actions {
-    align-items: center;
-    display: flex;
-    gap: 24px;
   }
 
   .demo-button {
@@ -200,22 +175,6 @@ const checklist = [
     justify-content: center;
     min-height: 48px;
     padding: 0 32px;
-  }
-
-  .hamburger {
-    background: transparent;
-    border: 0;
-    display: grid;
-    gap: 8px;
-    padding: 0;
-    width: 30px;
-  }
-
-  .hamburger span {
-    background: #2c3037;
-    display: block;
-    height: 3px;
-    width: 100%;
   }
 
   .referral-hero {
@@ -484,17 +443,9 @@ const checklist = [
   }
 
   @media (max-width: 560px) {
-    .simple-header {
-      padding-inline: 16px;
-    }
-
     .demo-button {
       min-height: 42px;
       padding-inline: 18px;
-    }
-
-    .header-actions {
-      gap: 14px;
     }
 
     .referral-hero,
