@@ -66,8 +66,18 @@ const useCases = [
         </p>
         <a class="primary-button" href="#demo">Get a Demo</a>
       </div>
-      <figure class="dashboard-shell image-shell" aria-label="ARMOR DSPM dashboard preview">
-        <img src="/images/armor/armor-dashboard.png" alt="ARMOR data security intelligence preview" loading="eager" decoding="async" />
+      <figure
+        class="dashboard-shell image-shell dspm-dashboard-visual"
+        aria-label="ARMOR DSPM dashboard preview"
+        style="margin: 0; max-width: 640px; padding: 0; width: min(100%, 640px);"
+      >
+        <img
+          src="/images/armor/dspm-data-catalog-dashboard.png"
+          alt="ARMOR DSPM data catalog dashboard preview"
+          loading="eager"
+          decoding="async"
+          style="display: block; height: auto; object-fit: contain; width: 100%;"
+        />
       </figure>
     </section>
 
@@ -89,13 +99,13 @@ const useCases = [
       </div>
     </section>
 
-    <section class="split-section">
-      <div class="section-heading centered">
+    <section class="split-section dspm-workflow-section" style="margin: 0 auto; max-width: 1190px; padding: clamp(48px, 6vw, 72px) clamp(20px, 4vw, 24px) !important;">
+      <div class="section-heading centered" style="margin-bottom: clamp(24px, 3vw, 30px);">
         <h2>Intelligent DSPM for the AI Enterprise</h2>
       </div>
-      <div class="split-grid">
-        <div class="ai-visual">
-          <img src="/images/armor/armor-card-visual.png" alt="ARMOR powered by Seclore intelligence card" loading="lazy" decoding="async" />
+      <div class="split-grid" style="gap: clamp(28px, 5vw, 58px);">
+        <div class="ai-visual dspm-workflow-visual" style="aspect-ratio: 469 / 362; margin: 0 auto; max-width: 620px; width: 100%;">
+          <img src="/images/armor/dspm-ai-workflow-visual.png" alt="AI workflow and data security intelligence visualization" loading="lazy" decoding="async" style="display: block; height: 100%; object-fit: contain; width: 100%;" />
         </div>
         <div>
           <h3>AI is rewriting the rules</h3>
@@ -143,7 +153,7 @@ const useCases = [
       </div>
     </section>
 
-    <section class="split-section continuous">
+    <section class="split-section continuous continuous-intelligence-section" style="gap: clamp(28px, 5vw, 58px); margin: 0 auto; max-width: 1190px; padding: clamp(48px, 6vw, 78px) clamp(20px, 4vw, 24px) !important;">
       <div>
         <h2>Purpose-Built for Continuous Data Intelligence</h2>
         <p>
@@ -155,8 +165,8 @@ const useCases = [
           and audit readiness.
         </p>
       </div>
-      <figure class="dashboard-shell compact image-shell" aria-label="Data intelligence table preview">
-        <img src="/images/armor/armor-data-repository.png" alt="ARMOR data repository risk visualization" loading="lazy" decoding="async" />
+      <figure class="dashboard-shell compact image-shell continuous-dashboard-visual" aria-label="Data intelligence table preview" style="margin: 0 auto; max-width: 640px; padding: 0; width: min(100%, 640px);">
+        <img src="/images/armor/dspm-data-catalog-dashboard.png" alt="ARMOR DSPM data catalog and continuous intelligence dashboard" loading="lazy" decoding="async" style="display: block; height: auto; object-fit: contain; width: 100%;" />
       </figure>
     </section>
 
@@ -874,6 +884,12 @@ const useCases = [
     width: 100%;
   }
 
+  .dspm-dashboard-visual {
+    background: #f8f3ff;
+    border-radius: 20px;
+    box-shadow: 0 24px 64px rgba(86, 48, 214, 0.14);
+  }
+
   html[data-theme="dark"] .dashboard-shell {
     background: linear-gradient(145deg, #151d31, #21173a);
   }
@@ -1032,6 +1048,20 @@ const useCases = [
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
+  .dspm-workflow-section {
+    margin: 0 auto;
+    max-width: 1190px;
+    padding: 72px 24px;
+  }
+
+  .dspm-workflow-section .section-heading {
+    margin-bottom: 30px;
+  }
+
+  .dspm-workflow-section .split-grid {
+    gap: clamp(36px, 5vw, 58px);
+  }
+
   .ai-visual {
     background: linear-gradient(145deg, #f8f5ff, #fff8fb);
     border: 1px solid #e3d7ff;
@@ -1045,7 +1075,23 @@ const useCases = [
   .ai-visual img {
     display: block;
     height: auto;
+    object-fit: cover;
     width: 100%;
+  }
+
+  .dspm-workflow-visual {
+    align-self: center;
+    aspect-ratio: 16 / 11;
+    background: #ffffff;
+    border-color: rgba(187, 161, 255, 0.48);
+    justify-self: center;
+    max-width: 620px;
+    width: 100%;
+  }
+
+  .dspm-workflow-visual img {
+    height: 100%;
+    object-fit: cover;
   }
 
   html[data-theme="dark"] .ai-visual {
@@ -1125,6 +1171,37 @@ const useCases = [
 
   .continuous {
     background: var(--card);
+  }
+
+  .continuous-intelligence-section {
+    gap: clamp(32px, 5vw, 58px);
+    margin: 0 auto;
+    max-width: 1190px;
+    padding: clamp(52px, 6vw, 78px) clamp(20px, 4vw, 24px);
+  }
+
+  .continuous-intelligence-section h2 {
+    max-width: 520px;
+  }
+
+  .continuous-intelligence-section p {
+    max-width: 560px;
+  }
+
+  .continuous-dashboard-visual {
+    background: #f8f3ff;
+    border-radius: 20px;
+    box-shadow: 0 24px 64px rgba(86, 48, 214, 0.14);
+    justify-self: end;
+    max-width: 640px;
+    width: 100%;
+  }
+
+  .continuous-dashboard-visual img {
+    display: block;
+    height: auto;
+    object-fit: contain;
+    width: 100%;
   }
 
   .compact {
@@ -1487,6 +1564,13 @@ const useCases = [
       width: 100%;
     }
 
+    .dspm-dashboard-visual {
+      justify-self: center;
+      margin-top: 8px !important;
+      max-width: 620px !important;
+      width: 100% !important;
+    }
+
     .brand-kicker {
       font-size: 40px;
       line-height: 1.05;
@@ -1517,6 +1601,50 @@ const useCases = [
     .dashboard-shell.image-shell {
       border-radius: 18px;
     }
+
+    .dspm-dashboard-visual {
+      border-radius: 16px;
+      margin-top: 12px !important;
+    }
+
+    .continuous-intelligence-section {
+      gap: 28px;
+      padding: 48px 20px;
+    }
+
+    .continuous-intelligence-section h2,
+    .continuous-intelligence-section p {
+      max-width: 100%;
+    }
+
+    .continuous-dashboard-visual {
+      border-radius: 16px;
+      justify-self: center;
+      max-width: 620px;
+      width: 100%;
+    }
+
+    .dspm-workflow-section {
+      padding: 48px 20px;
+    }
+
+    .dspm-workflow-section .section-heading {
+      margin-bottom: 24px;
+    }
+
+    .dspm-workflow-section .split-grid {
+      gap: 28px;
+    }
+
+    .dspm-workflow-visual {
+      border-radius: 18px;
+      max-width: 560px;
+      width: 100%;
+    }
+
+    .dspm-workflow-visual img {
+      height: 100%;
+    }
   }
 
   @media (max-width: 420px) {
@@ -1527,6 +1655,15 @@ const useCases = [
       min-height: 40px !important;
       padding: 0 18px !important;
       white-space: normal;
+    }
+
+    .dspm-workflow-visual {
+      aspect-ratio: 4 / 3;
+      border-radius: 16px;
+    }
+
+    .dspm-workflow-visual img {
+      height: 100%;
     }
   }
 </style>

@@ -7,8 +7,6 @@ const apiBase = import.meta.env.PUBLIC_API_BASE_URL || (import.meta.env.DEV ? "h
 const interactionModes = [
   {
     title: "AI Chat Protection",
-    visualIn: "Customer SSN: 468-92-1284",
-    visualOut: "Customer SSN: [masked]",
     heading: "Protect AI chat interactions before sensitive data leaves the enterprise.",
     paragraphs: [
       "Employees access public AI tools through the ARMOR AI-DLP Portal. Sensitive data such as PII, PHI, financial records, IP, source material, and credentials is masked before it reaches an AI service.",
@@ -17,8 +15,6 @@ const interactionModes = [
   },
   {
     title: "Internal AI Systems Protection",
-    visualIn: "Quarterly forecast and customer list",
-    visualOut: "Policy-safe business context",
     heading: "Secure internal AI systems without slowing teams down.",
     paragraphs: [
       "ARMOR AI-DLP applies data-aware controls inside approved enterprise AI systems, copilots, and private models so internal teams can keep using AI safely.",
@@ -27,8 +23,6 @@ const interactionModes = [
   },
   {
     title: "AI App Data Redaction",
-    visualIn: "Prompt + file attachment",
-    visualOut: "Redacted prompt package",
     heading: "Redact sensitive data before AI applications process it.",
     paragraphs: [
       "Applications and agents can call ARMOR AI-DLP to sanitize prompts, files, and generated responses before they reach an LLM or downstream automation.",
@@ -37,8 +31,6 @@ const interactionModes = [
   },
   {
     title: "Data Sovereignty for AI",
-    visualIn: "Regional customer record",
-    visualOut: "Tokenized regional data",
     heading: "Keep regulated data protected across AI services and geographies.",
     paragraphs: [
       "ARMOR AI-DLP helps enforce sovereignty and privacy expectations by protecting regulated data before it travels into AI tools, models, or agents.",
@@ -306,10 +298,13 @@ const platformRows = [
         ))}
       </div>
       <div class="interaction-panel">
-        <div class="chat-visual" aria-hidden="true">
-          <div class="chat-bubble user" data-interaction-input>{interactionModes[0].visualIn}</div>
-          <div class="shield-node">AI-DLP</div>
-          <div class="chat-bubble safe" data-interaction-output>{interactionModes[0].visualOut}</div>
+        <div class="chat-visual chat-image-visual" aria-hidden="true">
+          <img
+            src="/images/armor/aidlp-ai-chat-protection.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="interaction-copy">
           <span class="interaction-kicker" data-interaction-kicker>{interactionModes[0].title}</span>
@@ -323,8 +318,6 @@ const platformRows = [
 
     <script define:vars={{ interactionModes }}>
       const tabButtons = Array.from(document.querySelectorAll("[data-tab-index]"));
-      const inputBubble = document.querySelector("[data-interaction-input]");
-      const outputBubble = document.querySelector("[data-interaction-output]");
       const kicker = document.querySelector("[data-interaction-kicker]");
       const heading = document.querySelector("[data-interaction-heading]");
       const paragraphNodes = Array.from(document.querySelectorAll("[data-interaction-paragraph]"));
@@ -339,8 +332,6 @@ const platformRows = [
             item.setAttribute("aria-selected", String(isActive));
           });
 
-          if (inputBubble) inputBubble.textContent = mode.visualIn;
-          if (outputBubble) outputBubble.textContent = mode.visualOut;
           if (kicker) kicker.textContent = mode.title;
           if (heading) heading.textContent = mode.heading;
           paragraphNodes.forEach((paragraph, index) => {
@@ -1497,9 +1488,32 @@ const platformRows = [
     position: relative;
   }
 
+  .chat-image-visual {
+    align-items: center;
+    background: #f4eaff;
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 22px 54px rgba(91, 43, 215, 0.13);
+    display: flex;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .chat-image-visual img {
+    display: block;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+
   html[data-theme="dark"] .chat-visual,
   html[data-theme="dark"] .orbital-visual {
     background: linear-gradient(145deg, #10192d, #21173a);
+  }
+
+  html[data-theme="dark"] .chat-image-visual {
+    background: #f4eaff;
   }
 
   .chat-bubble {
@@ -2298,6 +2312,14 @@ const platformRows = [
       display: grid;
       gap: 14px;
       min-height: auto;
+    }
+
+    .chat-image-visual {
+      display: flex;
+      gap: 0;
+      margin: 0 auto;
+      max-width: 620px;
+      width: 100%;
     }
 
     .orbital-visual::before {

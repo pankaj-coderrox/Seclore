@@ -2,268 +2,818 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/Nav.astro";
 
+const lifecycleCards = [
+  {
+    title: "Scalable & automated",
+    text: "Achieve enterprise scale by automating protection and classification policies across repositories, users, and business workflows.",
+    tone: "red",
+    icon: "scalable"
+  },
+  {
+    title: "Deployable anywhere",
+    text: "Deploy in the cloud, on-premises, or with existing enterprise systems to protect data wherever teams work.",
+    tone: "amber",
+    icon: "deployable"
+  },
+  {
+    title: "Easy to use",
+    text: "Automated protection and seamless access preserve productivity while keeping security controls attached to data.",
+    tone: "purple",
+    icon: "easy"
+  }
+];
+
 const controls = [
-  "Encrypt files wherever they travel",
-  "Limit view, edit, print, copy, and share actions",
-  "Revoke access after distribution",
-  "Track usage across internal and external users"
+  {
+    title: "Dynamic access control",
+    text: "Remotely enforce access control rules for protected digital assets, add or remove users and domains in near real time, and define what authorized users can do after access is granted.",
+    icon: "access"
+  },
+  {
+    title: "Dynamic watermarking",
+    text: "Add dynamic watermarks that include usernames, dates, and other information to discourage irresponsible handling and create visible accountability.",
+    icon: "watermark"
+  },
+  {
+    title: "Geo-fence digital assets",
+    text: "Prevent recipients from accessing protected digital assets based on their location to block unauthorized access and enforce compliance.",
+    icon: "geo"
+  },
+  {
+    title: "Revoke access",
+    text: "End access immediately when trust changes, even after files have already been shared outside the organization.",
+    icon: "revoke"
+  },
+  {
+    title: "Document & email protection",
+    text: "Protect, monitor, and manage access to digital assets, files, documents, CAD files, and attachments throughout their lifecycle.",
+    icon: "document"
+  },
+  {
+    title: "Audit trail & activity reporting",
+    text: "Track activity for protected digital assets by internal and external users, and analyze activity reports to establish patterns and detect anomalies.",
+    icon: "audit"
+  }
+];
+
+const integrationCards = [
+  ["DLP on endpoints, emails, and networks", "Seclore works with DLP tools on endpoint, email, and networks to orchestrate and streamline enterprise data discovery and classification."],
+  ["CASB tools", "Get unprecedented security over discovered data in cloud repositories and collaboration apps by automatically applying Seclore EDRM to sensitive data synced or copied to cloud monitoring."],
+  ["Classification tools", "Continue to leverage your existing classification system for labeling, and use Seclore EDRM for automatic protection and tracking."],
+  ["Microsoft 365 apps", "Automate EDRM protection and empower users to choose protection for sensitive assets in Outlook, SharePoint, OneDrive, Teams, and other Microsoft apps."],
+  ["File sharing & storage", "Automate protection of sensitive documents in storage, collaboration, and sharing platforms like Box, O365, Google Workspace, and content services platforms."],
+  ["File servers", "Automatically protect digital assets when they are added to a location protected folder or sync to repositories and file shares."]
+];
+
+const relatedProducts = [
+  {
+    title: "Digital Asset Classification",
+    text: "Classify digital assets based on sensitivity, business value, compliance, or regulatory requirements.",
+    href: "/platform/classification/",
+    image: "/images/platform/edrm/edrm-related-classification-new.png"
+  },
+  {
+    title: "Risk Insights & Reporting",
+    text: "Get global insights for risk management and user activity to quickly address unauthorized access or non-compliance.",
+    href: "/platform/siem/",
+    image: "/images/platform/edrm/edrm-related-digital-asset-classification.png",
+    imageAfter: true
+  }
 ];
 ---
 
 <BaseLayout
   title="Enterprise Digital Rights Management | seclore"
-  description="Protect sensitive documents and emails with persistent Enterprise Digital Rights Management controls."
+  description="Protect, monitor, and control access to sensitive digital assets with persistent Enterprise Digital Rights Management."
 >
-  <main id="top" class="simple-route-page">
+  <main id="top" class="edrm-page">
     <Nav />
 
-    <section class="simple-route-hero">
+    <section class="edrm-hero">
       <div class="hero-copy">
-        <span>Data-Centric Security Platform</span>
-        <h1>Enterprise Digital Rights Management</h1>
+        <span class="eyebrow">Data-Centric Security Platform</span>
+        <h1>Enterprise Digital Rights Management (EDRM)</h1>
         <p>
-          Apply persistent controls to sensitive files so access, usage, and revocation remain under
-          your control after data leaves repositories, applications, or your organization.
+          Persistently protect, monitor, and control access to sensitive digital assets stored or
+          shared anywhere in the world.
         </p>
-        <a class="simple-route-button" href="/demo/">Book a Demo</a>
+        <a class="primary-button" href="/demo/">Book a Demo</a>
       </div>
-      <figure
-        class="edrm-visual"
-        aria-label="Enterprise Digital Rights Management intelligence preview"
-        style="background:none;border:0;box-shadow:none;display:block;min-height:0;padding:0;"
-      >
-        <img
-          src="/images/platform/edrm-hero-laptop.png"
-          alt="Laptop showing enterprise data classification and protection intelligence"
-          loading="eager"
-          decoding="async"
-        />
+      <figure class="hero-visual" aria-label="EDRM laptop interface preview">
+        <img src="/images/platform/edrm-hero-laptop.png" alt="Laptop showing EDRM protected asset interface" loading="eager" decoding="async" />
       </figure>
     </section>
 
-    <section class="simple-route-grid" aria-label="EDRM capabilities">
-      {controls.map((control) => (
-        <article>
-          <h2>{control}</h2>
-          <p>Keep protection attached to the data itself across people, partners, devices, and AI workflows.</p>
-        </article>
-      ))}
+    <section class="asset-section">
+      <div>
+        <h2>Protect and control your sensitive digital assets</h2>
+        <p>
+          Seclore enterprise digital rights management protects sensitive digital assets by wrapping
+          them with persistent encryption, access controls, usage permissions, and revocation.
+          Files stay protected even after they leave email, repositories, and collaboration systems.
+        </p>
+      </div>
+      <figure class="vault-visual" aria-label="Protected vault">
+        <img src="/images/platform/edrm/edrm-vault-door.png" alt="Secure vault door representing protected digital assets" loading="lazy" decoding="async" />
+      </figure>
     </section>
+
+    <section class="lifecycle-section">
+      <div class="section-heading centered">
+        <h2>Protect sensitive data throughout its lifecycle</h2>
+        <p>
+          Seclore EDRM helps enterprises maintain complete control over sensitive and regulated
+          information inside and outside their organizations no matter where the data travels.
+        </p>
+      </div>
+      <div class="lifecycle-grid">
+        {lifecycleCards.map((card) => (
+          <article class={`lifecycle-card ${card.tone}`}>
+            <span class={`hex-icon ${card.icon}`} aria-hidden="true"></span>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+      <a class="primary-button centered-button" href="/demo/">EDRM Evaluation Checklist</a>
+    </section>
+
+    <section class="controls-section">
+      <div class="section-heading centered">
+        <h2>Granular data security controls</h2>
+        <p>
+          Seclore EDRM persistently protects digital assets by embedding policies that dynamically
+          authorize users based on their identity and roles, limit actions, and track every activity.
+        </p>
+      </div>
+      <div class="controls-list">
+        {controls.map(({ title, text, icon }) => (
+          <article class="control-card">
+            <span class={`control-icon ${icon}`} aria-hidden="true"></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="testimonial-card">
+      <div>
+        <img class="testimonial-logo" src="/images/platform/edrm/deccan-logo.png" alt="Deccan Fine Chemicals" width="205" height="81" loading="lazy" decoding="async" />
+        <p>
+          This case study is a testament to active management and a process to protect your customer
+          data from breaches at your branch offices. After evaluating a few products, we found
+          Seclore Rights Management solution to be the right choice, given that it is easy to use,
+          supports all file formats, offers granular usage controls, and helps us track and audit
+          protected documents.
+        </p>
+        <a href="/resources/customer-case-studies/">Read more from the case study</a>
+      </div>
+    </section>
+
+    <section class="integrations-section">
+      <div class="section-heading centered">
+        <h2>Integrate seamlessly with most data security and productivity tools</h2>
+        <p>
+          Integrate Seclore with the security solutions and productivity tools your teams already
+          trust, and automate protection to reduce dependency on user action.
+        </p>
+        <a class="primary-button" href="/integrations/">Explore all integrations</a>
+      </div>
+      <div class="integration-grid">
+        {integrationCards.map(([title, text]) => (
+          <article>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="innovation-band">
+      <h2>Protect your hard-earned innovations & IP from theft</h2>
+      <p>
+        Classify, protect, and track your enterprise intellectual property to prevent sensitive and
+        proprietary information from being viewed, leaked, or shared by mistake.
+      </p>
+      <a class="primary-button" href="/solutions/ip-protection/">Learn More About IP Protection</a>
+    </section>
+
+    <section class="products-section">
+      <div class="section-heading centered">
+        <h2>Related products</h2>
+      </div>
+      <div class="product-grid">
+        {relatedProducts.map((product) => (
+          <article class="product-card">
+            {!product.imageAfter && <img src={product.image} alt="" loading="lazy" decoding="async" />}
+            <h3>{product.title}</h3>
+            <p>{product.text}</p>
+            <a href={product.href}>Learn More</a>
+            {product.imageAfter && <img class="after-copy-image" src={product.image} alt="" loading="lazy" decoding="async" />}
+          </article>
+        ))}
+      </div>
+    </section>
+
   </main>
 </BaseLayout>
 
 <style>
-  .simple-route-page {
-    background: #ffffff;
-    color: #101828;
+  .edrm-page {
+    background: #f4f4f6;
+    color: #17171d;
     min-height: 100vh;
   }
 
-  .simple-route-hero {
-    align-items: center;
-    display: grid;
-    gap: clamp(52px, 5vw, 76px);
-    grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+  .edrm-hero,
+  .asset-section,
+  .lifecycle-section,
+  .controls-section,
+  .integrations-section,
+  .products-section {
     margin: 0 auto;
     max-width: 1190px;
-    padding: 68px 24px 104px;
+    padding: clamp(52px, 7vw, 88px) 24px;
   }
 
-  .simple-route-hero span {
+  .edrm-hero {
+    align-items: center;
+    background: #ffffff;
+    display: grid;
+    gap: clamp(48px, 5vw, 76px);
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+    padding-top: 68px;
+  }
+
+  .eyebrow {
     color: #5630d6;
     display: block;
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    margin-bottom: 20px;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    margin-bottom: 18px;
     text-transform: uppercase;
   }
 
-  .simple-route-hero h1 {
-    font-size: clamp(3.4rem, 5.8vw, 5.8rem);
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 1;
-    margin: 0 0 28px;
-    max-width: 920px;
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
   }
 
-  .simple-route-hero p {
-    color: #3b3b44;
-    font-size: 1.22rem;
-    line-height: 1.55;
-    max-width: 600px;
+  h1 {
+    font-size: clamp(3.05rem, 6vw, 5.7rem);
+    font-weight: 430;
+    line-height: 0.98;
+    margin-bottom: 24px;
+    max-width: 700px;
   }
 
-  .simple-route-button {
+  h2 {
+    font-size: clamp(2rem, 4.2vw, 4.1rem);
+    font-weight: 430;
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+
+  h3 {
+    font-size: 1.18rem;
+    font-weight: 760;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: #555c67;
+    line-height: 1.62;
+  }
+
+  .hero-copy p {
+    font-size: 1.16rem;
+    max-width: 580px;
+  }
+
+  .primary-button {
     align-items: center;
     background: #5630d6;
     border-radius: 7px;
     color: #ffffff;
     display: inline-flex;
+    font-size: 0.94rem;
     font-weight: 800;
     justify-content: center;
-    margin-top: 24px;
-    min-height: 48px;
-    padding: 0 22px;
+    line-height: 1.15;
+    min-height: 44px !important;
+    padding: 0 24px !important;
     text-decoration: none;
+    transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    white-space: nowrap;
+    width: fit-content !important;
   }
 
-  .edrm-visual {
-    background: none;
-    border: 0;
-    box-shadow: none;
-    display: block;
+  .primary-button:hover {
+    background: #4321b9;
+    box-shadow: 0 12px 24px rgba(86, 48, 214, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .hero-visual {
     justify-self: end;
     margin: 0;
-    max-width: 760px;
-    min-height: 0;
-    padding: 0;
+    max-width: 680px;
     width: 100%;
   }
 
-  .edrm-visual img {
+  .hero-visual img {
     display: block;
     height: auto;
     object-fit: contain;
-    transform: translateX(18px);
     width: 100%;
   }
 
-  .simple-route-grid {
+  .asset-section {
+    align-items: center;
+    background: #f4f4f6;
     display: grid;
-    gap: 22px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    margin: 0 auto;
-    max-width: 1190px;
-    padding: 0 24px 96px;
+    gap: clamp(34px, 5vw, 64px);
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.95fr);
   }
 
-  .simple-route-grid article {
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    min-height: 190px;
+  .asset-section p {
+    max-width: 560px;
+  }
+
+  .vault-visual {
+    aspect-ratio: 551 / 388;
+    background: transparent;
+    border-radius: 8px;
+    box-shadow: none;
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .vault-visual img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .centered {
+    margin: 0 auto clamp(28px, 4vw, 48px);
+    max-width: 900px;
+    text-align: center;
+  }
+
+  .lifecycle-section,
+  .products-section {
+    background: #f4f4f6;
+  }
+
+  .lifecycle-grid,
+  .integration-grid,
+  .product-grid {
+    display: grid;
+    gap: 22px;
+  }
+
+  .lifecycle-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lifecycle-card,
+  .control-card,
+  .integration-grid article,
+  .product-card,
+  .testimonial-card {
+    background: #ffffff;
+    border: 1px solid #e6e7eb;
+    border-radius: 8px;
+    box-shadow: 0 14px 38px rgba(15, 23, 42, 0.06);
+  }
+
+  .lifecycle-card {
+    min-height: 250px;
     padding: 28px;
   }
 
-  .simple-route-grid h2 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    line-height: 1.2;
-    margin: 0 0 16px;
+  .hex-icon {
+    background: #ef2d62;
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%);
+    display: block;
+    height: 54px;
+    margin-bottom: 20px;
+    position: relative;
+    width: 54px;
   }
 
-  .simple-route-grid p {
-    color: #5b6472;
-    line-height: 1.5;
+  .hex-icon::before,
+  .hex-icon::after {
+    content: "";
+    position: absolute;
+  }
+
+  .hex-icon.scalable::before {
+    background:
+      radial-gradient(circle at 50% 14%, #ffffff 0 4px, transparent 5px),
+      radial-gradient(circle at 24% 72%, #ffffff 0 4px, transparent 5px),
+      radial-gradient(circle at 76% 72%, #ffffff 0 4px, transparent 5px);
+    inset: 11px 10px 10px;
+  }
+
+  .hex-icon.scalable::after {
+    border-bottom: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    height: 19px;
+    left: 18px;
+    top: 19px;
+    transform: rotate(45deg);
+    width: 19px;
+  }
+
+  .hex-icon.deployable::before {
+    border: 2px solid #ffffff;
+    border-radius: 14px 14px 10px 10px;
+    height: 18px;
+    left: 13px;
+    top: 18px;
+    width: 28px;
+  }
+
+  .hex-icon.deployable::after {
+    background:
+      linear-gradient(#ffffff, #ffffff) 50% 0 / 2px 14px no-repeat,
+      linear-gradient(135deg, transparent 42%, #ffffff 44% 56%, transparent 58%) 50% 100% / 18px 12px no-repeat;
+    height: 20px;
+    left: 18px;
+    top: 27px;
+    width: 18px;
+  }
+
+  .hex-icon.easy::before {
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    height: 18px;
+    left: 16px;
+    top: 25px;
+    width: 22px;
+  }
+
+  .hex-icon.easy::after {
+    border: 2px solid #ffffff;
+    border-bottom: 0;
+    border-radius: 12px 12px 0 0;
+    height: 14px;
+    left: 19px;
+    top: 13px;
+    width: 16px;
+  }
+
+  .lifecycle-card.amber .hex-icon {
+    background: #f4a51c;
+  }
+
+  .lifecycle-card.purple .hex-icon {
+    background: #8a1b77;
+  }
+
+  .centered-button {
+    display: flex;
+    margin: 28px auto 0;
+    width: fit-content !important;
+  }
+
+  .controls-section {
+    background: #ffffff;
+  }
+
+  .controls-list {
+    display: grid;
+    gap: 16px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .control-card {
+    align-items: flex-start;
+    box-sizing: border-box;
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 46px 1fr;
+    max-width: 100%;
+    min-width: 0;
+    padding: 22px;
+    width: 100%;
+  }
+
+  .control-card > div {
+    min-width: 0;
+  }
+
+  .control-card h3,
+  .control-card p {
+    overflow-wrap: anywhere;
+  }
+
+  .control-icon {
+    display: block;
+    height: 38px;
+    position: relative;
+    width: 38px;
+  }
+
+  .control-icon::before,
+  .control-icon::after {
+    content: "";
+    position: absolute;
+  }
+
+  .control-icon.access::before {
+    border: 2px solid #ef2d62;
+    border-radius: 50%;
+    height: 12px;
+    left: 4px;
+    top: 3px;
+    width: 12px;
+  }
+
+  .control-icon.access::after {
+    border: 2px solid #ef2d62;
+    border-radius: 14px 14px 4px 4px;
+    box-shadow: 15px 3px 0 -1px #ffffff, 15px 3px 0 1px #ef2d62;
+    height: 16px;
+    left: 1px;
+    top: 20px;
+    width: 18px;
+  }
+
+  .control-icon.watermark::before {
+    border: 2px solid #ef2d62;
+    border-radius: 8px;
+    height: 27px;
+    left: 4px;
+    top: 5px;
+    width: 30px;
+  }
+
+  .control-icon.watermark::after {
+    background:
+      linear-gradient(#ef2d62, #ef2d62) 0 0 / 20px 2px no-repeat,
+      linear-gradient(#ef2d62, #ef2d62) 0 8px / 14px 2px no-repeat,
+      linear-gradient(#ef2d62, #ef2d62) 0 16px / 22px 2px no-repeat;
+    height: 20px;
+    left: 10px;
+    top: 12px;
+    transform: rotate(-8deg);
+    width: 22px;
+  }
+
+  .control-icon.geo::before {
+    border: 2px solid #ef2d62;
+    border-radius: 50% 50% 50% 0;
+    height: 22px;
+    left: 8px;
+    top: 3px;
+    transform: rotate(-45deg);
+    width: 22px;
+  }
+
+  .control-icon.geo::after {
+    border-bottom: 2px solid #ef2d62;
+    border-left: 2px solid #ef2d62;
+    height: 8px;
+    left: 11px;
+    top: 25px;
+    transform: skewX(-20deg);
+    width: 18px;
+  }
+
+  .control-icon.revoke::before {
+    border: 2px solid #ef2d62;
+    border-left-color: transparent;
+    border-radius: 50%;
+    height: 24px;
+    left: 6px;
+    top: 5px;
+    width: 24px;
+  }
+
+  .control-icon.revoke::after {
+    border-left: 8px solid #ef2d62;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    height: 0;
+    left: 4px;
+    top: 18px;
+    transform: rotate(-28deg);
+    width: 0;
+  }
+
+  .control-icon.document::before {
+    border: 2px solid #ef2d62;
+    border-radius: 5px;
+    height: 28px;
+    left: 6px;
+    top: 4px;
+    width: 24px;
+  }
+
+  .control-icon.document::after {
+    background:
+      linear-gradient(#ef2d62, #ef2d62) 0 0 / 13px 2px no-repeat,
+      linear-gradient(#ef2d62, #ef2d62) 0 7px / 17px 2px no-repeat,
+      linear-gradient(#ef2d62, #ef2d62) 0 14px / 12px 2px no-repeat;
+    height: 18px;
+    left: 12px;
+    top: 12px;
+    width: 18px;
+  }
+
+  .control-icon.audit::before {
+    border: 2px solid #ef2d62;
+    border-radius: 5px;
+    height: 26px;
+    left: 5px;
+    top: 6px;
+    width: 28px;
+  }
+
+  .control-icon.audit::after {
+    background:
+      linear-gradient(#ef2d62, #ef2d62) 0 0 / 2px 18px no-repeat,
+      linear-gradient(#ef2d62, #ef2d62) 9px 5px / 2px 13px no-repeat,
+      linear-gradient(#ef2d62, #ef2d62) 18px 2px / 2px 16px no-repeat;
+    height: 20px;
+    left: 13px;
+    top: 13px;
+    width: 22px;
+  }
+
+  .testimonial-card {
+    margin: 0 auto;
+    max-width: 1120px;
+    padding: clamp(28px, 4vw, 42px);
+  }
+
+  .testimonial-logo {
+    display: block;
+    height: auto;
+    margin-bottom: 18px;
+    max-width: min(70vw, 205px);
+    width: 205px;
+  }
+
+  .testimonial-card a,
+  .product-card a {
+    color: #17171d;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .integrations-section {
+    background: #f4f4f6;
+  }
+
+  .integration-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .integration-grid article {
+    min-height: 178px;
+    padding: 26px;
+  }
+
+  .innovation-band {
+    background: #210a22;
+    color: #ffffff;
     margin: 0;
+    padding: clamp(44px, 7vw, 78px) 24px;
+    text-align: center;
+  }
+
+  .innovation-band h2,
+  .innovation-band p {
+    color: #ffffff;
+    margin-inline: auto;
+    max-width: 900px;
+  }
+
+  .innovation-band .primary-button {
+    margin-top: 12px;
+  }
+
+  .section-heading .primary-button {
+    margin-inline: auto;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 auto;
+    max-width: 880px;
+  }
+
+  .product-card {
+    padding: 24px;
+    text-align: center;
+  }
+
+  .product-card img {
+    aspect-ratio: 1 / 1;
+    display: block;
+    height: auto;
+    margin: 0 auto 22px;
+    object-fit: contain;
+    width: min(100%, 310px);
+  }
+
+  .product-card .after-copy-image {
+    margin: 24px auto 0;
   }
 
   @media (max-width: 900px) {
-    .simple-route-hero {
+    .edrm-hero,
+    .asset-section {
       grid-template-columns: 1fr;
-      padding: 56px 20px 76px;
     }
 
-    .simple-route-hero h1 {
+    .edrm-hero,
+    .asset-section,
+    .lifecycle-section,
+    .controls-section,
+    .integrations-section,
+    .products-section {
+      padding: 48px 20px;
+    }
+
+    h1 {
       font-size: 40px;
-      font-weight: 400;
-      line-height: 1.1;
+      line-height: 1.08;
       max-width: 340px;
-      width: calc(100vw - 32px);
     }
 
-    .simple-route-hero p {
-      font-size: 18px;
-      line-height: 1.5;
-      max-width: 312px;
+    h2 {
+      font-size: 32px;
+      line-height: 1.1;
     }
 
-    .simple-route-button {
-      min-height: 42px;
+    .hero-copy p,
+    .asset-section p {
+      font-size: 17px;
+      max-width: 330px;
     }
 
-    .edrm-visual {
-      justify-self: stretch;
-      max-width: none;
-      overflow: visible;
+    .hero-visual {
+      justify-self: center;
+      max-width: 540px;
     }
 
-    .simple-route-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      padding: 0 20px 76px;
-    }
-  }
-
-  @media (max-width: 560px) {
-    .simple-route-hero {
-      gap: 76px;
-      padding-top: 56px;
-    }
-
-    .simple-route-hero span {
-      font-size: 0.88rem;
-      line-height: 1.35;
-      margin-bottom: 28px;
-      max-width: 320px;
-    }
-
-    .edrm-visual {
-      margin-left: -20px;
-      margin-top: -36px;
-      width: calc(100% + 40px);
-    }
-
-    .edrm-visual img {
-      transform: none;
-    }
-
-    .simple-route-grid {
+    .lifecycle-grid,
+    .integration-grid,
+    .product-grid {
       grid-template-columns: 1fr;
     }
-  }
-</style>
 
-<style is:inline>
-  .simple-route-page .edrm-visual {
-    background: none !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    display: block !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-  }
-
-  .simple-route-page .edrm-visual img {
-    display: block !important;
-    height: auto !important;
-    object-fit: contain !important;
-    width: 100% !important;
-  }
-
-  @media (min-width: 901px) {
-    .simple-route-page .edrm-visual {
-      max-width: min(760px, 53vw) !important;
+    .lifecycle-card,
+    .integration-grid article,
+    .product-card {
+      min-height: 0;
+      padding: 22px;
     }
 
-    .simple-route-page .edrm-visual img {
-      transform: translateX(18px);
-    }
-  }
-
-  @media (max-width: 560px) {
-    .simple-route-page .simple-route-hero {
-      gap: 48px !important;
+    .control-card {
+      gap: 14px;
+      grid-template-columns: 34px minmax(0, 1fr);
+      padding: 20px;
     }
 
-    .simple-route-page .edrm-visual {
-      margin-left: calc(50% - 50vw + 8px) !important;
-      margin-top: -26px !important;
-      width: calc(100vw - 16px) !important;
+    .control-card h3 {
+      font-size: 1.05rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
     }
 
-    .simple-route-page .edrm-visual img {
-      transform: none !important;
+    .control-card p {
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+
+    .innovation-band {
+      padding: 44px 20px;
+    }
+
+    .primary-button,
+    .centered-button,
+    .section-heading .primary-button {
+      min-height: 44px;
+      max-width: 320px;
+      padding: 0 20px !important;
+      width: min(100%, 320px) !important;
     }
   }
 </style>

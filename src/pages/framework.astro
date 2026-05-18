@@ -2,242 +2,898 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Nav from "@components/Nav.astro";
 
-const insightCards = [
-  ["Discover", "Find sensitive data, AI activity, and risky access patterns across enterprise systems."],
-  ["Context", "Understand business value, sensitivity, location, user behavior, and intent."],
-  ["Enforce", "Apply protection, classification, and access controls with the right level of friction."],
-  ["Prove", "Maintain evidence, audit trails, and reporting for security and compliance teams."]
+const pillars = [
+  {
+    title: "Enterprise Risk Insights",
+    text: "See how protected files move across teams, projects, and locations. Spot unusual behavior early.",
+    icon: "risk"
+  },
+  {
+    title: "Usage & Utilization",
+    text: "Understand daily adoption patterns. See how controls perform across the environment.",
+    icon: "usage"
+  },
+  {
+    title: "Third-party & Supply Chain Exposure",
+    text: "Trace how vendors and partners handle sensitive information. Monitor external exposure during collaboration.",
+    icon: "supply"
+  },
+  {
+    title: "Custom Dashboards",
+    text: "Build custom dashboards on top of these views and connect Power BI.",
+    icon: "dashboard"
+  }
 ];
 
+const tabs = ["Security teams", "Compliance teams", "Business teams"];
+
+const integrations = [
+  {
+    title: "Export to Data Lakes",
+    text: "Stream protection and classification events into your cloud-based data lake for unified analysis and reporting.",
+    icon: "lake"
+  },
+  {
+    title: "SIEM Platforms",
+    text: "Send alerts, behaviors, and anomalies directly into your SIEM to strengthen monitoring and accelerate investigations.",
+    icon: "siem"
+  },
+  {
+    title: "Microsoft Power BI Integration",
+    text: "Send Data Security Intelligence Framework telemetry data to Power BI.",
+    icon: "bi"
+  }
+];
+
+const trustedLogos = ["MARUTI SUZUKI", "Linde", "MANULIFE"];
+const impactLogos = ["QIB", "IDFC FIRST Bank", "EXOSTAR", "Capital Equipment"];
+
+const awardBadges = [
+  {
+    src: "/images/framework/awards/cybersecurity-awards-2025-gold.png",
+    alt: "2025 Cyber Security Excellence Awards winner"
+  },
+  {
+    src: "/images/framework/awards/mpw-it-and-ites-2024-logo.jpg",
+    alt: "Most preferred workplace IT and ITES 2024"
+  },
+  {
+    src: "/images/framework/awards/seclore-us-2025-certification-badge.png",
+    alt: "Great Place to Work certified USA 2025"
+  },
+  {
+    src: "/images/framework/awards/seclore-india-2025-certification-badge.jpg",
+    alt: "Great Place to Work certified India 2025"
+  },
+  {
+    src: "/images/framework/awards/mpw-for-women-2024-logo.jpg",
+    alt: "Most preferred workplace for women 2024"
+  },
+  {
+    src: "/images/framework/awards/company-badge-optimized.png",
+    alt: "Great Place to Work certified USA 2024"
+  },
+  {
+    src: "/images/framework/awards/gptw-india-optimized.png",
+    alt: "Great Place to Work certified India 2024"
+  },
+  {
+    src: "/images/framework/awards/maharashtra-eba-2024-logo.png",
+    alt: "Maharashtra State Best Employer Brands 2024"
+  },
+  {
+    src: "/images/framework/awards/best-workplaces-for-women.jpg",
+    alt: "Best workplaces for women India 2022"
+  },
+  {
+    src: "/images/framework/awards/indias-great-mid-size-workplaces-2022.png",
+    alt: "India great mid-size workplaces 2022"
+  }
+];
 ---
 
 <BaseLayout
-  title="Data Intelligence Framework | seclore"
-  description="Explore Seclore's data intelligence framework for discovering, contextualizing, enforcing, and proving data security controls."
+  title="Data Security Intelligence Framework | seclore"
+  description="Seclore Data Security Intelligence Framework turns protected file activity into measurable security, compliance, and operational insights."
 >
   <main id="top" class="framework-page">
     <Nav />
 
     <section class="framework-hero">
-      <div class="framework-copy">
-        <span>Data Security Intelligence</span>
-        <h1>Data Security Intelligence Framework</h1>
-        <p>
-          Turn protected file activity and classification telemetry into clear, visual insights so
-          security, compliance, and business teams can see how sensitive data moves.
-        </p>
-        <a
-          href="/resources/"
-          class="framework-button"
-          style="background:#5630d6;border-color:#5630d6;color:#ffffff;"
-        >
-          Explore Resources
-        </a>
+      <div class="hero-copy">
+        <span class="eyebrow">Data Analytics & Intelligence</span>
+        <h1>Seclore Data Security Intelligence Framework</h1>
+        <a class="primary-button" href="/demo/">Get a Demo</a>
       </div>
-
-      <figure class="framework-visual" aria-label="Data security intelligence dashboard preview">
-        <img
-          src="/images/framework/data-security-framework-monitor.png"
-          alt="Monitor showing Seclore data security intelligence dashboard bars"
-          loading="eager"
-          decoding="async"
-          style="display:block;height:auto;object-fit:contain;width:100%;"
-        />
+      <figure class="hero-visual">
+        <img src="/images/framework/framework-hero-monitor-final.png" alt="Monitor showing Seclore data security intelligence framework" loading="eager" decoding="async" />
       </figure>
     </section>
 
-    <section class="framework-grid" aria-label="Framework steps">
-      {insightCards.map(([title, text], index) => (
-        <article>
-          <span class="step-number">{String(index + 1).padStart(2, "0")}</span>
-          <h2>{title}</h2>
-          <p>{text}</p>
-        </article>
-      ))}
+    <section class="insight-section">
+      <div class="section-heading">
+        <span class="eyebrow">Seclore Data Security Intelligence Framework</span>
+        <h2>A new way to gather insights into your protected data</h2>
+        <p>Know how protected files move, who uses them, how they are used, and where exposure starts.</p>
+      </div>
+      <figure class="dashboard-frame">
+        <img src="/images/framework/framework-dashboard.png" alt="Seclore intelligence dashboard with risk charts and activity reporting" loading="lazy" decoding="async" />
+      </figure>
+      <div class="pillar-grid">
+        {pillars.map((pillar) => (
+          <article class="pillar-card">
+            <span class={`pillar-icon ${pillar.icon}`} aria-hidden="true"></span>
+            <h3>{pillar.title}</h3>
+            <p>{pillar.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="capability-section">
+      <div class="capability-inner">
+        <div class="section-heading dark">
+          <h2>Special Platform capabilities</h2>
+          <div class="tab-row" aria-label="Platform capability tabs">
+            {tabs.map((tab, index) => <button class={index === 0 ? "active" : ""} type="button">{tab}</button>)}
+          </div>
+        </div>
+        <div class="capability-grid">
+          <figure>
+            <img src="/images/framework/framework-capability-photo-final.png" alt="Security leaders reviewing intelligence insights" loading="lazy" decoding="async" />
+          </figure>
+          <article>
+            <h3>Security teams</h3>
+            <p>
+              Pinpoint where data exposure happens, detect risky usage patterns, and help response teams prioritize real threats.
+              Monitor sensitive data activity across users, partners, systems, and repositories.
+            </p>
+            <a href="/solutions/internal-threats/">Explore</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="trusted-section">
+      <span class="eyebrow">Trusted by industry-leading enterprises</span>
+      <div class="logo-marquee" aria-label="Trusted customer logos">
+        <div class="logo-track">
+          {[...trustedLogos, ...trustedLogos].map((logo) => <span>{logo}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="integrations-section">
+      <div class="section-heading">
+        <span class="eyebrow">Integrations</span>
+        <h2>Connects to the tools you rely on</h2>
+        <p>Integrate Seclore telemetry with your existing data pipelines, analytics platforms, and security systems.</p>
+      </div>
+      <div class="integration-grid">
+        {integrations.map((item) => (
+          <article>
+            <span class={`integration-icon ${item.icon}`} aria-hidden="true"></span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <a class="text-link" href="/integrations/">Learn more about Seclore Integrations</a>
+    </section>
+
+    <section class="awards-section">
+      <div class="section-heading">
+        <span class="eyebrow">Proven performance</span>
+        <h2>Security innovation recognized by the industry</h2>
+        <p>Seclore continues to earn awards for advancing protection, visibility, and control in modern data-security programs.</p>
+      </div>
+      <div class="awards-marquee" aria-label="Seclore industry recognition and workplace awards">
+        <div class="awards-track">
+          {awardBadges.map((badge) => (
+            <figure class="award-card">
+              <img src={badge.src} alt={badge.alt} loading="lazy" decoding="async" />
+            </figure>
+          ))}
+          {awardBadges.map((badge) => (
+            <figure class="award-card" aria-hidden="true">
+              <img src={badge.src} alt="" loading="lazy" decoding="async" />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="impact-section">
+      <div class="section-heading">
+        <span class="eyebrow">Real-world results</span>
+        <h2>Proven impact across security, compliance, and operations</h2>
+        <p>Explore how customers strengthened investigations, improved audit readiness, and accelerated risk detection using the framework.</p>
+      </div>
+      <article class="quote-card">
+        <img src="/images/framework/framework-impact-card.png" alt="Customer impact card with testimonial and customer logos" loading="lazy" decoding="async" />
+        <div class="impact-logo-row" aria-label="Customer logos">
+          {impactLogos.map((logo) => <span>{logo}</span>)}
+        </div>
+      </article>
+    </section>
+
+    <section class="trust-cta">
+      <div>
+        <span class="eyebrow">Built for clarity, speed, and scale</span>
+        <h2>Your teams act faster with information they can trust.</h2>
+        <p>
+          The Framework transforms Seclore protection, EDRM, and classification activity into a structured data lake.
+          Events flow into your cloud or on-prem repositories, where teams can explore the data through ready-made and custom dashboards.
+        </p>
+      </div>
+      <figure>
+        <img src="/images/framework/framework-team-photo-final.png" alt="Team collaborating around analytics dashboards" loading="lazy" decoding="async" />
+      </figure>
     </section>
   </main>
 </BaseLayout>
 
 <style>
   .framework-page {
-    background: #ffffff;
-    color: #101828;
+    background: #f4f4f6;
+    color: #17171d;
     min-height: 100vh;
+  }
+
+  .framework-hero,
+  .insight-section,
+  .integrations-section,
+  .awards-section,
+  .impact-section,
+  .trust-cta {
+    margin: 0 auto;
+    max-width: 1190px;
+    padding: clamp(52px, 7vw, 90px) 24px;
   }
 
   .framework-hero {
     align-items: center;
     background: #ffffff;
     display: grid;
-    gap: clamp(48px, 5.8vw, 84px);
-    grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
-    margin: 0 auto;
-    max-width: 1190px;
-    padding: 68px 24px 92px;
+    gap: clamp(44px, 6vw, 84px);
+    grid-template-columns: minmax(0, 0.88fr) minmax(340px, 1.12fr);
+    padding-top: 68px;
   }
 
-  .framework-hero span {
+  .eyebrow {
     color: #5630d6;
     display: block;
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    margin-bottom: 20px;
+    font-size: 0.75rem;
+    font-weight: 850;
+    letter-spacing: 0.06em;
+    margin-bottom: 15px;
     text-transform: uppercase;
   }
 
-  .framework-hero h1 {
-    font-size: clamp(3.25rem, 5.7vw, 5.75rem);
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 1;
-    margin: 0 0 26px;
-    max-width: 720px;
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
   }
 
-  .framework-hero p {
-    color: #3b3b44;
-    font-size: 1.2rem;
-    line-height: 1.56;
-    margin: 0;
-    max-width: 600px;
+  h1 {
+    font-size: clamp(3rem, 6vw, 5.75rem);
+    font-weight: 430;
+    line-height: 0.98;
+    margin-bottom: 26px;
+    max-width: 640px;
   }
 
-  .framework-button {
+  h2 {
+    font-size: clamp(2.05rem, 4.2vw, 4rem);
+    font-weight: 430;
+    line-height: 1.06;
+    margin-bottom: 18px;
+  }
+
+  h3 {
+    font-size: 1.18rem;
+    font-weight: 780;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: #5d626d;
+    line-height: 1.6;
+  }
+
+  .primary-button {
     align-items: center;
     background: #5630d6;
-    border: 1px solid #5630d6;
-    border-radius: 7px;
+    border-radius: 6px;
     color: #ffffff;
     display: inline-flex;
+    font-size: 0.9rem;
     font-weight: 800;
     justify-content: center;
-    margin-top: 24px;
-    min-height: 48px;
-    padding: 0 22px;
+    line-height: 1;
+    min-height: 42px !important;
+    min-width: 112px;
+    padding: 0 22px !important;
     text-decoration: none;
+    transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    white-space: nowrap;
+    width: fit-content !important;
   }
 
-  .framework-button:hover {
-    background: #4420bd;
-    border-color: #4420bd;
-    color: #ffffff;
+  .primary-button:hover {
+    background: #4321b9;
+    box-shadow: 0 12px 24px rgba(86, 48, 214, 0.18);
+    transform: translateY(-1px);
   }
 
-  .framework-visual {
+  .hero-visual {
     justify-self: end;
     margin: 0;
-    max-width: 620px;
+    max-width: 650px;
     width: 100%;
   }
 
-  .framework-visual img {
+  .hero-visual img,
+  .dashboard-frame img,
+  .awards-frame img,
+  .quote-card img,
+  .trust-cta img,
+  .capability-grid img {
     display: block;
     height: auto;
-    margin: 0;
     object-fit: contain;
-    transform: translateX(16px);
     width: 100%;
   }
 
-  .framework-grid {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    margin: 0 auto;
-    max-width: 1190px;
-    padding: 0 24px 96px;
+  .section-heading {
+    margin: 0 auto clamp(28px, 4vw, 46px);
+    max-width: 850px;
+    text-align: center;
   }
 
-  .framework-grid article {
+  .section-heading p {
+    margin-inline: auto;
+    max-width: 690px;
+  }
+
+  .dashboard-frame,
+  .awards-frame,
+  .quote-card {
+    background: #ffffff;
+    border: 1px solid #e6e7eb;
+    border-radius: 8px;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .dashboard-frame {
+    max-width: 1040px;
+  }
+
+  .pillar-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: clamp(30px, 5vw, 54px);
+  }
+
+  .pillar-card,
+  .integration-grid article {
     background: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
-    min-height: 214px;
-    padding: 28px;
+    box-shadow: 0 12px 34px rgba(15, 23, 42, 0.05);
+    padding: 24px;
   }
 
-  .step-number {
-    color: #5630d6;
+  .pillar-card {
+    min-height: 255px;
+  }
+
+  .pillar-icon,
+  .integration-icon {
+    background: #ef2d62;
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%);
     display: block;
-    font-size: 0.78rem;
-    font-weight: 850;
-    letter-spacing: 0.08em;
-    margin-bottom: 24px;
+    height: 52px;
+    margin-bottom: 18px;
+    position: relative;
+    width: 52px;
   }
 
-  .framework-grid h2 {
-    font-size: 1.28rem;
-    font-weight: 650;
-    line-height: 1.16;
-    margin: 0 0 14px;
+  .pillar-icon::before,
+  .pillar-icon::after,
+  .integration-icon::before,
+  .integration-icon::after {
+    content: "";
+    position: absolute;
   }
 
-  .framework-grid p {
-    color: #5b6472;
-    line-height: 1.5;
+  .pillar-icon.risk::before {
+    border: 2px solid #ffffff;
+    border-radius: 50% 50% 50% 0;
+    height: 20px;
+    left: 15px;
+    top: 9px;
+    transform: rotate(-45deg);
+    width: 20px;
+  }
+
+  .pillar-icon.risk::after {
+    border-bottom: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    height: 9px;
+    left: 16px;
+    top: 30px;
+    width: 17px;
+  }
+
+  .pillar-icon.usage::before,
+  .pillar-icon.dashboard::before {
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    height: 24px;
+    left: 13px;
+    top: 13px;
+    width: 26px;
+  }
+
+  .pillar-icon.usage::after {
+    background:
+      linear-gradient(#ffffff, #ffffff) 0 16px / 5px 8px no-repeat,
+      linear-gradient(#ffffff, #ffffff) 10px 9px / 5px 15px no-repeat,
+      linear-gradient(#ffffff, #ffffff) 20px 3px / 5px 21px no-repeat;
+    height: 24px;
+    left: 14px;
+    top: 14px;
+    width: 26px;
+  }
+
+  .pillar-icon.supply::before {
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    height: 18px;
+    left: 9px;
+    top: 16px;
+    width: 18px;
+  }
+
+  .pillar-icon.supply::after {
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    height: 18px;
+    left: 24px;
+    top: 16px;
+    width: 18px;
+  }
+
+  .pillar-icon.dashboard::after {
+    background:
+      linear-gradient(#ffffff, #ffffff) 0 0 / 18px 2px no-repeat,
+      linear-gradient(#ffffff, #ffffff) 0 8px / 11px 2px no-repeat,
+      linear-gradient(#ffffff, #ffffff) 0 16px / 20px 2px no-repeat;
+    height: 19px;
+    left: 17px;
+    top: 19px;
+    width: 20px;
+  }
+
+  .pillar-icon.usage {
+    background: #8a1b77;
+  }
+
+  .pillar-icon.supply {
+    background: #ef2d62;
+  }
+
+  .pillar-icon.dashboard,
+  .integration-icon.lake,
+  .integration-icon.bi {
+    background: #ff7a1a;
+  }
+
+  .capability-section {
+    background: #210a22;
+    color: #ffffff;
+    padding: clamp(54px, 8vw, 90px) 24px;
+  }
+
+  .capability-inner {
+    margin: 0 auto;
+    max-width: 1190px;
+  }
+
+  .section-heading.dark {
+    color: #ffffff;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .section-heading.dark h2 {
+    color: #ffffff;
+  }
+
+  .tab-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    gap: 10px;
+  }
+
+  .tab-row button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.82rem;
+    min-height: 34px;
+    padding: 0 16px;
+  }
+
+  .tab-row button.active {
+    background: #5630d6;
+    border-color: #5630d6;
+  }
+
+  .capability-grid {
+    align-items: center;
+    display: grid;
+    gap: clamp(28px, 5vw, 58px);
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  }
+
+  .capability-grid figure {
+    border-radius: 8px;
     margin: 0;
+    overflow: hidden;
+  }
+
+  .capability-grid figure img {
+    object-fit: cover;
+  }
+
+  .capability-grid article {
+    max-width: 560px;
+  }
+
+  .capability-grid h3,
+  .capability-grid p,
+  .capability-grid a {
+    color: #ffffff;
+  }
+
+  .capability-grid a {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    display: inline-flex;
+    font-weight: 800;
+    margin-top: 12px;
+    min-height: 36px;
+    padding: 0 14px;
+    text-decoration: none;
+    align-items: center;
+  }
+
+  .trusted-section {
+    background: #ffffff;
+    overflow: hidden;
+    padding: clamp(38px, 6vw, 64px) 0;
+    text-align: center;
+  }
+
+  .trusted-section .eyebrow {
+    color: #8a1b77;
+    margin-bottom: 28px;
+  }
+
+  .logo-marquee {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .logo-track {
+    animation: framework-marquee 22s linear infinite;
+    display: flex;
+    gap: clamp(54px, 8vw, 110px);
+    width: max-content;
+  }
+
+  .logo-track span,
+  .impact-logo-row span {
+    color: #56565c;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  @keyframes framework-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .integrations-section {
+    background: #ffffff;
+  }
+
+  .integration-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 auto;
+    max-width: 940px;
+  }
+
+  .integration-grid article:nth-child(3) {
+    grid-column: span 1;
+  }
+
+  .integration-icon.siem {
+    background: #ef2d62;
+  }
+
+  .integration-icon::before {
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    height: 24px;
+    left: 14px;
+    top: 14px;
+    width: 24px;
+  }
+
+  .integration-icon::after {
+    background:
+      linear-gradient(#ffffff, #ffffff) 0 0 / 15px 2px no-repeat,
+      linear-gradient(#ffffff, #ffffff) 0 7px / 10px 2px no-repeat,
+      linear-gradient(#ffffff, #ffffff) 0 14px / 17px 2px no-repeat;
+    height: 17px;
+    left: 19px;
+    top: 20px;
+    width: 18px;
+  }
+
+  .text-link {
+    color: #17171d;
+    display: flex;
+    font-weight: 850;
+    justify-content: center;
+    margin-top: 32px;
+    text-decoration: none;
+  }
+
+  .awards-section,
+  .impact-section {
+    background: #f4f4f6;
+  }
+
+  .awards-marquee,
+  .quote-card {
+    max-width: 1030px;
+  }
+
+  .awards-marquee {
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px 0;
+    position: relative;
+  }
+
+  .awards-marquee::before,
+  .awards-marquee::after {
+    bottom: 0;
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: clamp(34px, 9vw, 96px);
+    z-index: 2;
+  }
+
+  .awards-marquee::before {
+    background: linear-gradient(90deg, #f4f4f6 0%, rgba(244, 244, 246, 0) 100%);
+    left: 0;
+  }
+
+  .awards-marquee::after {
+    background: linear-gradient(270deg, #f4f4f6 0%, rgba(244, 244, 246, 0) 100%);
+    right: 0;
+  }
+
+  .awards-track {
+    align-items: stretch;
+    animation: awards-scroll 34s linear infinite;
+    display: flex;
+    gap: clamp(18px, 3vw, 34px);
+    width: max-content;
+  }
+
+  .awards-marquee:hover .awards-track {
+    animation-play-state: paused;
+  }
+
+  .award-card {
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #e6e7eb;
+    border-radius: 8px;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+    display: flex;
+    flex: 0 0 clamp(150px, 18vw, 210px);
+    height: clamp(150px, 18vw, 210px);
+    justify-content: center;
+    margin: 0;
+    overflow: hidden;
+    padding: clamp(12px, 2vw, 18px);
+  }
+
+  .award-card img {
+    display: block;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+
+  @keyframes awards-scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - clamp(9px, 1.5vw, 17px)));
+    }
+  }
+
+  .quote-card {
+    padding: 0;
+  }
+
+  .impact-logo-row {
+    align-items: center;
+    border-top: 1px solid #ececf1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    justify-content: center;
+    padding: 22px;
+  }
+
+  .trust-cta {
+    align-items: center;
+    background: #ffffff;
+    display: grid;
+    gap: clamp(30px, 5vw, 62px);
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1fr);
+  }
+
+  .trust-cta figure {
+    border-radius: 10px;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .trust-cta figure img {
+    aspect-ratio: 1.48 / 1;
+    object-fit: cover;
+    object-position: center;
   }
 
   @media (max-width: 900px) {
-    .framework-hero {
+    .framework-hero,
+    .capability-grid,
+    .trust-cta {
       grid-template-columns: 1fr;
-      padding: 56px 20px 72px;
     }
 
-    .framework-hero h1 {
+    .framework-hero,
+    .insight-section,
+    .integrations-section,
+    .awards-section,
+    .impact-section,
+    .trust-cta {
+      padding: 48px 20px;
+    }
+
+    h1 {
       font-size: 40px;
-      font-weight: 400;
-      line-height: 1.1;
+      line-height: 1.08;
       max-width: 340px;
     }
 
-    .framework-hero p {
-      font-size: 18px;
-      line-height: 1.5;
-      max-width: 330px;
+    h2 {
+      font-size: 32px;
+      line-height: 1.12;
     }
 
-    .framework-button {
-      min-height: 42px;
+    .hero-visual {
+      justify-self: center;
+      max-width: 560px;
     }
 
-    .framework-visual {
-      justify-self: stretch;
-      max-width: none;
-    }
-
-    .framework-visual img {
-      transform: none;
-    }
-
-    .framework-grid {
+    .pillar-grid,
+    .integration-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      padding: 0 20px 72px;
+    }
+
+    .pillar-card {
+      min-height: 0;
+    }
+
+    .primary-button {
+      min-height: 42px !important;
+      max-width: none;
+      padding: 0 22px !important;
+      width: fit-content !important;
     }
   }
 
   @media (max-width: 560px) {
-    .framework-hero {
-      gap: 42px;
-      padding-top: 56px;
+    .framework-hero,
+    .insight-section,
+    .integrations-section,
+    .awards-section,
+    .impact-section,
+    .trust-cta {
+      padding-left: 16px;
+      padding-right: 16px;
     }
 
-    .framework-hero span {
-      font-size: 0.86rem;
-      line-height: 1.35;
-      margin-bottom: 26px;
-      max-width: 320px;
-    }
-
-    .framework-visual {
-      margin-left: -14px;
-      margin-top: -8px;
-      width: calc(100% + 28px);
-    }
-
-    .framework-grid {
+    .pillar-grid,
+    .integration-grid {
       grid-template-columns: 1fr;
+    }
+
+    .pillar-card,
+    .integration-grid article {
+      padding: 22px;
+    }
+
+    .section-heading {
+      text-align: left;
+    }
+
+    .section-heading p {
+      margin-inline: 0;
+    }
+
+    .trusted-section .eyebrow,
+    .awards-section .section-heading,
+    .impact-section .section-heading,
+    .integrations-section .section-heading {
+      text-align: center;
+    }
+
+    .dashboard-frame,
+    .awards-frame,
+    .quote-card {
+      border-radius: 6px;
+      margin-left: -4px;
+      margin-right: -4px;
+    }
+
+    .logo-track {
+      gap: 54px;
+    }
+
+    .capability-section {
+      padding: 48px 16px;
+    }
+
+    .primary-button {
+      font-size: 0.86rem;
+      min-height: 40px !important;
+      min-width: 106px;
+      padding: 0 18px !important;
     }
   }
 </style>

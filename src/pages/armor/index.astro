@@ -70,7 +70,8 @@ const resources = [
     tag: "AI, Company, Data Security",
     title: "The Debate About AI in the Enterprise Is Over. Here Is the Only Question That Matters.",
     cta: "View Blog Post",
-    image: "/images/integrations/dlp-casb/debate-ai.png",
+    href: "/blog/the-debate-about-ai-in-the-enterprise-is-over/",
+    image: "/images/armor/debate-ai-enterprise.png",
     alt: "Enterprise AI and data security discussion"
   },
   {
@@ -78,16 +79,18 @@ const resources = [
     tag: "AI Risk, Data Security",
     title: "The Missing Link in Enterprise AI: Why Context and Behavior Are the New Security Perimeter",
     cta: "View Blog Post",
-    image: "/images/integrations/dlp-casb/ai-perimeter.png",
-    alt: "AI security perimeter visualization"
+    href: "/blog/the-missing-link-in-enterprise-ai/",
+    image: "/images/armor/missing-link-enterprise-ai.png",
+    alt: "The Missing Link in Enterprise AI blog visual"
   },
   {
     type: "Blog Post",
     tag: "AI Risk, Data Security",
     title: "ChatGPT Read 400 Internal Company Files In 42 Milliseconds. Security Stacks Saw Nothing",
     cta: "View Blog Post",
-    image: "/images/integrations/dlp-casb/ai-readiness.png",
-    alt: "AI readiness and data risk illustration"
+    href: "/blog/chatgpt-read-400-internal-company-files/",
+    image: "/images/armor/chatgpt-internal-files.png",
+    alt: "Laptop showing ChatGPT while a person types"
   }
 ];
 ---
@@ -211,7 +214,7 @@ const resources = [
       </div>
       <div class="resource-grid">
         {resources.map((resource) => (
-          <article class="resource-card">
+          <a class="resource-card" href={resource.href} aria-label={`View blog post: ${resource.title}`}>
             <figure class="resource-image">
               <img src={resource.image} alt={resource.alt} loading="lazy" />
             </figure>
@@ -219,9 +222,9 @@ const resources = [
               <span>{resource.type}</span>
               <strong>{resource.tag}</strong>
               <h3>{resource.title}</h3>
-              <a href="#resources">{resource.cta} <span aria-hidden="true">&rarr;</span></a>
+              <span class="resource-cta">{resource.cta} <span aria-hidden="true">&rarr;</span></span>
             </div>
-          </article>
+          </a>
         ))}
       </div>
       <div class="resource-controls" aria-label="Resource carousel controls">
@@ -463,15 +466,20 @@ const resources = [
   .resource-heading h2 { color: #050408; font-size: clamp(2.6rem, 4.6vw, 4.7rem); font-weight: 500; line-height: 1.05; }
   .resource-heading > a { border: 1px solid var(--purple); border-radius: 6px; color: var(--purple); font-size: 1rem; font-weight: 700; line-height: 1.2; min-width: 190px; padding: 18px 22px; text-align: center; }
   .resource-grid { display: grid; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 34px auto 0; max-width: 1190px; }
-  .resource-card { background: #fff; border: 1px solid var(--line); border-radius: 18px; display: flex; flex-direction: column; min-height: 100%; overflow: hidden; }
+  .resource-card { background: #fff; border: 1px solid var(--line); border-radius: 18px; color: inherit; display: flex; flex-direction: column; min-height: 100%; overflow: hidden; padding: 0 !important; text-decoration: none; transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease; }
+  .resource-card:hover,
+  .resource-card:focus-visible { border-color: rgba(91, 43, 215, 0.34); box-shadow: 0 18px 42px rgba(42, 25, 94, 0.12); transform: translateY(-3px); }
+  .resource-card:focus-visible { outline: 3px solid rgba(91, 43, 215, 0.24); outline-offset: 3px; }
   .resource-image { background: linear-gradient(135deg, #f7efff, #eef7ff); margin: 0; overflow: hidden; }
-  .resource-image img { aspect-ratio: 16 / 10; display: block; height: auto; object-fit: cover; width: 100%; }
-  .resource-body { background: #fff; display: grid; gap: 1rem; padding: 24px 26px 30px; }
+  .resource-image img { aspect-ratio: 16 / 9; display: block; height: auto; object-fit: cover; width: 100%; }
+  .resource-body { background: #fff; display: flex; flex: 1; flex-direction: column; gap: 10px; padding: 22px 24px 26px; }
   .resource-body span,
-  .resource-body strong { background: #f1f1f3; border-radius: 999px; color: #191826; display: inline-flex; font-size: 0.86rem; font-weight: 900; justify-content: center; line-height: 1.35; padding: 0.55rem 1rem; text-transform: uppercase; width: max-content; }
-  .resource-body strong { max-width: 270px; text-align: center; }
-  .resource-body h3 { color: #151321; font-size: clamp(1.35rem, 1.8vw, 1.72rem); font-weight: 500; line-height: 1.14; }
-  .resource-card a { color: #111118; display: inline-flex; font-weight: 800; gap: 0.5rem; }
+  .resource-body strong { background: transparent; border-radius: 0; color: #2f2c38; display: block; font-size: 0.92rem; font-weight: 500; justify-content: flex-start; line-height: 1.42; padding: 0; text-align: left; text-transform: none; width: auto; }
+  .resource-body span { color: #17131f; font-weight: 700; }
+  .resource-body h3 { color: #151321; font-size: clamp(1.18rem, 1.35vw, 1.42rem); font-weight: 500; line-height: 1.22; margin: 6px 0 8px; }
+  .resource-cta { align-items: center; color: #111118; display: inline-flex; font-size: 0.96rem; font-weight: 700; gap: 0.5rem; margin-top: auto; }
+  .resource-card:hover .resource-cta,
+  .resource-card:focus-visible .resource-cta { color: var(--purple); }
   .resource-controls { display: flex; gap: 18px; margin: 32px auto 0; max-width: 1190px; }
   .resource-controls button { background: #fff; border: 1px solid #a9a9b2; border-radius: 999px; color: #7d7d87; height: 56px; width: 56px; }
 
@@ -545,7 +553,7 @@ const resources = [
     .component-grid { margin-top: 30px; }
     .resources-section { padding: 48px 24px 42px; }
     .resource-grid { gap: 22px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 30px; }
-    .resource-body { padding: 24px 24px 30px; }
+    .resource-body { padding: 22px 22px 26px; }
     .demo-band { gap: 28px; padding: 48px 24px; }
   }
 
@@ -579,7 +587,8 @@ const resources = [
     .resource-heading h2 { font-size: clamp(2.15rem, 10vw, 3rem); }
     .resource-heading > a { min-width: 0; width: 100%; }
     .resource-image img { aspect-ratio: 16 / 9; }
-    .resource-body { gap: 1rem; padding: 22px 22px 28px; }
+    .resource-body { gap: 9px; padding: 20px 20px 24px; }
+    .resource-body h3 { font-size: 1.18rem; line-height: 1.24; margin-bottom: 6px; }
     .resource-controls { margin-top: 26px; }
     .demo-band { padding: 38px 20px; }
     .demo-form { padding: 24px 20px; }

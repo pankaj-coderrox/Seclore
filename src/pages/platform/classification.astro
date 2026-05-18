@@ -67,14 +67,6 @@ const capabilityIcons = {
     '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 24s7-10 18-10 18 10 18 10-7 10-18 10S6 24 6 24Z"/><circle cx="24" cy="24" r="5"/><path d="M37 34l4 4"/></svg>'
 };
 
-const screenshotSlides = [
-  "User-driven document classification",
-  "Suggested classification",
-  "User-driven email classification",
-  "Dynamic watermarks and visual labels",
-  "Mandatory classification"
-];
-
 const relatedTopics = [
   {
     title: "Regulatory compliance",
@@ -98,6 +90,21 @@ const relatedProducts = [
 ];
 
 const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare", "STC", "American Express", "Adani"];
+
+const productScreenshots = [
+  {
+    src: "/images/platform/classification-product-screenshot.png",
+    alt: "Spreadsheet classification interface with protected enterprise data"
+  },
+  {
+    src: "/images/platform/classification-hero-laptop.png",
+    alt: "Laptop showing digital asset classification intelligence"
+  },
+  {
+    src: "/images/platform/classification-motion-tunnel.png",
+    alt: "Fast-moving enterprise data pathways"
+  }
+];
 ---
 
 <BaseLayout
@@ -127,7 +134,7 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
       </figure>
     </section>
 
-    <section class="split-section">
+    <section class="split-section classification-intro-section" style="gap: clamp(28px, 5vw, 58px); margin: 0 auto; max-width: 1190px; padding: clamp(48px, 7vw, 82px) clamp(20px, 4vw, 24px) !important;">
       <div>
         <h2>Classify sensitive digital assets throughout your enterprise</h2>
         <p>
@@ -139,9 +146,14 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
           documents, emails, and repositories.
         </p>
       </div>
-      <div class="motion-image" aria-label="Enterprise data movement visualization">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
+      <figure class="motion-image" aria-label="Enterprise data movement visualization">
+        <img
+          src="/images/platform/classification-motion-tunnel.png"
+          alt="Fast-moving enterprise data pathways"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
     </section>
 
     <section class="comply-section">
@@ -187,25 +199,22 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
       <div class="section-heading centered">
         <h2>Product screenshots</h2>
       </div>
-      <div class="screenshot-shell">
-        <figure class="classification-screenshot-frame">
-          <img
-            src="/images/platform/classification-product-screenshot.png"
-            alt="Spreadsheet classification interface with protected enterprise data"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
+      <div class="screenshot-shell screenshot-carousel">
+        <div class="screenshot-track" data-screenshot-track>
+          {productScreenshots.map((screenshot) => (
+            <figure class="classification-screenshot-frame screenshot-slide">
+              <img
+                src={screenshot.src}
+                alt={screenshot.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          ))}
+        </div>
         <div class="slide-controls" aria-label="Screenshot carousel controls">
           <button type="button" aria-label="Previous screenshot">‹</button>
           <button type="button" aria-label="Next screenshot">›</button>
-        </div>
-        <p>
-          Suggested classification prompts users with classification suggestions based on content,
-          while allowing another label and justification when needed.
-        </p>
-        <div class="slide-list">
-          {screenshotSlides.map((slide) => <span>{slide}</span>)}
         </div>
       </div>
     </section>
@@ -237,12 +246,40 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
           is needed most.
         </p>
       </div>
+      <figure class="related-topics-image" aria-label="Enterprise compliance discussion">
+        <img
+          src="/images/platform/classification-related-topics.png"
+          alt="Business leaders reviewing compliance documents"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
       <div class="related-grid">
         {relatedTopics.map((item) => (
           <article class="related-card">
             <h3>{item.title}</h3>
             <p>{item.text}</p>
             <a href="#demo">Learn More</a>
+            {item.title === "Regulatory compliance" && (
+              <figure class="related-card-image">
+                <img
+                  src="/images/platform/classification-regulatory-compliance.png"
+                  alt="Compliance library and governance archive"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            )}
+            {item.title === "Discovery and classification integrations" && (
+              <figure class="related-card-image">
+                <img
+                  src="/images/platform/classification-discovery-integrations.png"
+                  alt="Identity and discovery integration security interface"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            )}
           </article>
         ))}
       </div>
@@ -313,6 +350,23 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
         }
       });
     });
+
+    const screenshotTrack = document.querySelector("[data-screenshot-track]");
+    const screenshotButtons = Array.from(document.querySelectorAll(".screenshot-carousel .slide-controls button"));
+
+    if (screenshotTrack && screenshotButtons.length >= 2) {
+      const scrollScreenshots = (direction) => {
+        const slide = screenshotTrack.querySelector(".screenshot-slide");
+        const slideWidth = slide ? slide.getBoundingClientRect().width : screenshotTrack.clientWidth;
+        screenshotTrack.scrollBy({
+          left: direction * (slideWidth + 24),
+          behavior: "smooth"
+        });
+      };
+
+      screenshotButtons[0].addEventListener("click", () => scrollScreenshots(-1));
+      screenshotButtons[1].addEventListener("click", () => scrollScreenshots(1));
+    }
   </script>
 </BaseLayout>
 
@@ -896,32 +950,32 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
     grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
   }
 
+  .classification-intro-section {
+    gap: clamp(32px, 5vw, 58px);
+    margin: 0 auto;
+    max-width: 1190px;
+    padding: clamp(56px, 7vw, 82px) 24px;
+  }
+
   .motion-image {
-    background:
-      linear-gradient(90deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0)),
-      linear-gradient(135deg, #0d5665, #f2d08b 46%, #4e73a8);
+    aspect-ratio: 508 / 382;
+    background: #edf5f7;
     border-radius: 8px;
     box-shadow: 0 24px 70px rgba(22, 45, 62, 0.18);
-    min-height: 330px;
+    justify-self: end;
+    margin: 0;
+    max-width: 560px;
     overflow: hidden;
     position: relative;
+    width: 100%;
   }
 
-  .motion-image span {
-    background: rgba(255, 255, 255, 0.72);
-    height: 3px;
-    left: -20%;
-    position: absolute;
-    transform: rotate(-18deg);
-    transform-origin: left center;
-    width: 150%;
+  .motion-image img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
   }
-
-  .motion-image span:nth-child(1) { top: 24%; }
-  .motion-image span:nth-child(2) { top: 34%; opacity: 0.7; }
-  .motion-image span:nth-child(3) { top: 48%; opacity: 0.9; }
-  .motion-image span:nth-child(4) { top: 62%; opacity: 0.65; }
-  .motion-image span:nth-child(5) { top: 76%; opacity: 0.5; }
 
   .section-heading {
     margin: 0 auto 36px;
@@ -1032,7 +1086,25 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
 
   .screenshot-shell {
     margin: 0 auto;
-    max-width: 1120px;
+    max-width: 1180px;
+  }
+
+  .screenshot-carousel {
+    overflow: hidden;
+  }
+
+  .screenshot-track {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    padding: 6px 2px 20px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .screenshot-track::-webkit-scrollbar {
+    display: none;
   }
 
   .classification-screenshot-frame {
@@ -1044,11 +1116,25 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
     overflow: hidden;
   }
 
+  .screenshot-slide {
+    flex: 0 0 min(82vw, 560px);
+    padding: 10px;
+    scroll-snap-align: start;
+  }
+
   .classification-screenshot-frame img {
     display: block;
     height: auto;
     object-fit: contain;
     width: 100%;
+  }
+
+  .screenshot-slide img {
+    aspect-ratio: 531 / 308;
+    background: #ffffff;
+    height: 100%;
+    image-rendering: auto;
+    object-fit: contain;
   }
 
   .mock-window {
@@ -1141,8 +1227,20 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
     border: 1px solid var(--line);
     border-radius: 50%;
     color: var(--page-text);
+    font-size: 0;
     height: 36px;
     width: 36px;
+  }
+
+  .slide-controls button::before {
+    content: "<";
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .slide-controls button + button::before {
+    content: ">";
   }
 
   .slide-list {
@@ -1232,6 +1330,23 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .related-topics-image {
+    aspect-ratio: 508 / 326;
+    border-radius: 8px;
+    box-shadow: 0 22px 64px rgba(15, 23, 42, 0.12);
+    margin: 0 auto clamp(28px, 4vw, 44px);
+    max-width: 920px;
+    overflow: hidden;
+    width: min(100%, 920px);
+  }
+
+  .related-topics-image img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
   .related-card {
     background: transparent;
     border-color: transparent;
@@ -1241,6 +1356,23 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
   .related-card a {
     color: var(--page-text);
     font-weight: 900;
+  }
+
+  .related-card-image {
+    aspect-ratio: 570 / 320;
+    border-radius: 8px;
+    box-shadow: 0 18px 46px rgba(15, 23, 42, 0.12);
+    margin: 22px 0 0;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .related-card-image img {
+    display: block;
+    height: 100%;
+    image-rendering: auto;
+    object-fit: contain;
+    width: 100%;
   }
 
   .demo-band {
@@ -1520,6 +1652,41 @@ const customerLogos = ["deccan", "Eugenus", "IDFC FIRST Bank", "Shilpa Medicare"
       margin-left: auto;
       margin-right: auto;
       width: min(100%, 330px);
+    }
+
+    .motion-image {
+      justify-self: center;
+      max-width: 560px;
+      width: 100%;
+    }
+
+    .classification-intro-section {
+      gap: 28px;
+      padding: 48px 20px;
+    }
+
+    .screenshots-section {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .screenshot-track {
+      gap: 18px;
+      padding-bottom: 14px;
+    }
+
+    .screenshot-slide {
+      flex-basis: calc(100vw - 40px);
+      padding: 8px;
+    }
+
+    .related-topics-image {
+      margin-bottom: 28px;
+      width: 100%;
+    }
+
+    .related-card-image {
+      margin-top: 20px;
     }
   }
 

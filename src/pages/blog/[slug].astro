@@ -1,0 +1,262 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Nav from "@components/Nav.astro";
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { slug: "the-debate-about-ai-in-the-enterprise-is-over" },
+      props: {
+        post: {
+          category: "AI, Company, Data Security",
+          title: "The Debate About AI in the Enterprise Is Over. Here Is the Only Question That Matters.",
+          image: "/images/armor/debate-ai-enterprise.png",
+          intro:
+            "Enterprise AI is no longer a future discussion. The real question is whether organizations can see, classify, protect, and prove what happens to sensitive data as AI becomes part of everyday work.",
+          points: [
+            "AI adoption creates new data movement paths that traditional controls do not always observe.",
+            "Security teams need context around the file, user, policy, and action before data reaches AI tools.",
+            "Persistent protection helps teams keep control even when data leaves the original application."
+          ]
+        }
+      }
+    },
+    {
+      params: { slug: "the-missing-link-in-enterprise-ai" },
+      props: {
+        post: {
+          category: "AI Risk, Data Security",
+          title: "The Missing Link in Enterprise AI: Why Context and Behavior Are the New Security Perimeter",
+          image: "/images/armor/missing-link-enterprise-ai.png",
+          intro:
+            "AI risk is shaped by context and behavior. Knowing who used sensitive data, where it moved, and what happened next is essential for building a reliable security perimeter.",
+          points: [
+            "Modern protection must follow sensitive data across people, apps, and AI workflows.",
+            "Behavioral signals help teams separate normal collaboration from risky exposure.",
+            "Security controls become stronger when discovery, classification, protection, and tracking work together."
+          ]
+        }
+      }
+    },
+    {
+      params: { slug: "chatgpt-read-400-internal-company-files" },
+      props: {
+        post: {
+          category: "AI Risk, Data Security",
+          title: "ChatGPT Read 400 Internal Company Files In 42 Milliseconds. Security Stacks Saw Nothing",
+          image: "/images/armor/chatgpt-internal-files.png",
+          intro:
+            "Invisible AI access can happen faster than human-led monitoring was designed to detect. Enterprises need protection that understands data sensitivity before access occurs.",
+          points: [
+            "Approved integrations can still create broad data exposure if context is missing.",
+            "File-level monitoring and policy enforcement help reveal activity that normal security stacks may miss.",
+            "AI readiness depends on governing data before it is copied, summarized, or shared."
+          ]
+        }
+      }
+    }
+  ];
+}
+
+const { post } = Astro.props;
+---
+
+<BaseLayout title={`${post.title} | Seclore`} description={post.intro}>
+  <main class="blog-detail-page">
+    <Nav />
+
+    <article class="blog-detail">
+      <div class="blog-layout">
+        <div class="blog-copy">
+          <h1>{post.title}</h1>
+          <p>{post.intro}</p>
+        </div>
+        <figure>
+          <img src={post.image} alt="" loading="eager" decoding="async" />
+        </figure>
+      </div>
+
+      <div class="blog-content">
+        {post.points.map((point) => <p>{point}</p>)}
+        <a class="primary-button blog-demo-button" href="/demo/">Book a Demo</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .blog-detail-page {
+    background: #ffffff;
+    color: #111118;
+    min-height: 100vh;
+  }
+
+  .blog-detail-page :global(.seclore-nav__demo-button) {
+    align-items: center !important;
+    background: #5630d6 !important;
+    border-radius: 7px !important;
+    color: #ffffff !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    height: 48px !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    min-height: 48px !important;
+    min-width: 152px !important;
+    padding: 0 24px !important;
+    white-space: nowrap !important;
+    width: auto !important;
+  }
+
+  .blog-detail-page :global(.seclore-nav__demo-label-full) {
+    display: inline !important;
+  }
+
+  .blog-detail-page :global(.seclore-nav__demo-label-mobile) {
+    display: none !important;
+  }
+
+  .blog-detail {
+    margin: 0 auto;
+    max-width: 1180px;
+    padding: clamp(42px, 6vw, 86px) 24px clamp(64px, 8vw, 110px);
+  }
+
+  .blog-layout {
+    align-items: center;
+    background:
+      radial-gradient(circle at 38% 18%, rgba(195, 161, 244, 0.72), transparent 32%),
+      radial-gradient(circle at 88% 88%, rgba(218, 152, 141, 0.9), transparent 42%),
+      linear-gradient(135deg, #35117b 0%, #6738cb 48%, #bb7f9a 100%);
+    border-radius: 18px;
+    color: #ffffff;
+    display: grid;
+    gap: clamp(32px, 6vw, 72px);
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+    overflow: hidden;
+    padding: clamp(34px, 5vw, 70px);
+  }
+
+  .blog-copy span {
+    color: #5b2bd7;
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+
+  .blog-copy h1 {
+    color: #ffffff;
+    font-size: clamp(2.35rem, 5vw, 4.9rem);
+    font-weight: 400;
+    line-height: 1.04;
+    margin: 0;
+  }
+
+  .blog-copy p,
+  .blog-content p {
+    color: #33313b;
+    font-size: clamp(1.02rem, 1.25vw, 1.18rem);
+    line-height: 1.65;
+  }
+
+  .blog-copy p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 24px;
+    max-width: 650px;
+  }
+
+  .blog-layout figure {
+    border-radius: 18px;
+    margin: 0;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(31, 12, 82, 0.24);
+  }
+
+  .blog-layout img {
+    aspect-ratio: 16 / 9;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .blog-content {
+    border-top: 1px solid #e4e0f3;
+    margin-top: clamp(42px, 6vw, 78px);
+    max-width: 760px;
+    padding-top: 34px;
+  }
+
+  .blog-content p + p {
+    margin-top: 18px;
+  }
+
+  .blog-content .primary-button {
+    margin-top: 30px;
+  }
+
+  .blog-content .blog-demo-button {
+    align-self: flex-start !important;
+    background: #5630d6 !important;
+    border-radius: 7px !important;
+    color: #ffffff !important;
+    display: inline-flex !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    justify-content: center !important;
+    max-width: max-content !important;
+    min-height: 48px !important;
+    min-width: 152px !important;
+    padding: 0 24px !important;
+    width: auto !important;
+  }
+
+  @media (max-width: 820px) {
+    .blog-detail-page :global(.seclore-nav__demo-button) {
+      flex-basis: 132px !important;
+      font-size: 0.9rem !important;
+      height: 43px !important;
+      min-height: 43px !important;
+      min-width: 132px !important;
+      padding: 0 16px !important;
+      width: 132px !important;
+    }
+
+    .blog-content .blog-demo-button {
+      align-self: flex-start !important;
+      font-size: 0.92rem !important;
+      min-height: 43px !important;
+      min-width: 132px !important;
+      padding: 0 18px !important;
+      width: auto !important;
+    }
+
+    .blog-detail {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .blog-layout {
+      grid-template-columns: 1fr;
+      padding: 30px 22px;
+    }
+
+    .blog-copy h1 {
+      font-size: 2.12rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .blog-detail-page :global(.seclore-nav__demo-button) {
+      flex-basis: 122px !important;
+      font-size: 0.86rem !important;
+      min-width: 122px !important;
+      width: 122px !important;
+    }
+  }
+</style>
