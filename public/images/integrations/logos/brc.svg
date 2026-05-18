@@ -1,6 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="220" height="64" viewBox="0 0 220 64" role="img" aria-labelledby="title">
-  <title id="title">BRC</title>
+  <title id="title">BRC Group</title>
   <rect width="220" height="64" fill="none"/>
-  <text x="32" y="42" fill="#55565a" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" letter-spacing="2">BRC</text>
-  <text x="104" y="42" fill="#77787d" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">GROUP</text>
+  <circle cx="29" cy="32" r="17" fill="none" stroke="#58595b" stroke-width="3"/>
+  <path d="M20 43V21h13c6 0 10 3 10 8 0 3-2 6-5 7l7 7h-8l-6-6h-5v6h-6Zm6-12h7c3 0 4-1 4-3s-2-3-4-3h-7v6Z" fill="#58595b"/>
+  <text x="58" y="42" fill="#58595b" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" letter-spacing="2">BRC</text>
+  <text x="130" y="42" fill="#77787d" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">GROUP</text>
 </svg>

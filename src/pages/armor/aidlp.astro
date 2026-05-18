@@ -150,11 +150,16 @@ const platformRows = [
 
     <section class="aidlp-hero">
       <div class="hero-copy">
-        <span class="eyebrow">ARMOR AI-DLP | New Generation DLP for AI</span>
-        <h1>Enable AI Safely<br />Embrace AI Freely.</h1>
-        <p>
-          Safely adopt AI without losing control of sensitive data. ARMOR AI-DLP protects
-          interactions across prompts, responses, copilots, agents, and AI applications.
+        <span class="eyebrow">ARMOR AI-DLP&nbsp; | &nbsp;Next-Generation DLP for AI</span>
+        <h1>Enable AI<br />Safely<br />Embrace AI<br />Fearlessly</h1>
+        <p class="hero-lead">
+          Safely adopt AI without losing<br />
+          control of sensitive data.
+        </p>
+        <p class="hero-sublead">
+          Intelligent masking and<br />
+          governance at every AI interaction<br />
+          without breaking AI context.
         </p>
         <a class="primary-button" href="#demo">Book a Demo</a>
       </div>
@@ -509,7 +514,7 @@ const platformRows = [
     </section>
 
     <section class="final-cta">
-      <h2>Enable Safe AI Usage Across Your Enterprise.</h2>
+        <h2>Enable Safe AI Usage Across Your Enterprise.</h2>
       <p>
         See how ARMOR AI-DLP delivers AI adoption and data protection. Book a 30-minute demo with
         the team.
@@ -1122,6 +1127,19 @@ const platformRows = [
     font-size: 1.22rem;
     line-height: 1.55;
     max-width: 600px;
+  }
+
+  .hero-copy .hero-lead,
+  .hero-copy .hero-sublead {
+    color: var(--page-muted);
+    font-size: clamp(1rem, 1.45vw, 1.22rem);
+    line-height: 1.45;
+    margin-bottom: 18px;
+    max-width: 520px;
+  }
+
+  .hero-copy .hero-sublead {
+    margin-bottom: 0;
   }
 
   .hero-copy > .primary-button {
@@ -2111,10 +2129,10 @@ const platformRows = [
     }
 
     .aidlp-page h1 {
-      font-size: 40px;
+      font-size: 38px;
       font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: 28px;
+      line-height: 1.04;
+      margin-bottom: 22px;
       max-width: 340px;
       width: calc(100vw - 32px);
     }
@@ -2130,6 +2148,18 @@ const platformRows = [
       font-size: 18px;
       line-height: 1.5;
       max-width: 310px;
+    }
+
+    .hero-copy .hero-lead,
+    .hero-copy .hero-sublead {
+      font-size: 17px;
+      line-height: 1.42;
+      margin-bottom: 14px;
+      max-width: 300px;
+    }
+
+    .hero-copy .hero-sublead {
+      margin-bottom: 0;
     }
 
     .hero-copy > .primary-button {
@@ -2151,6 +2181,31 @@ const platformRows = [
   }
 
   @media (max-width: 520px) {
+    .aidlp-hero {
+      padding-top: 44px;
+    }
+
+    .aidlp-page h1 {
+      font-size: clamp(32px, 10.4vw, 38px);
+      line-height: 1.04;
+      margin-bottom: 20px;
+      max-width: 300px;
+    }
+
+    .aidlp-page .eyebrow {
+      font-size: 0.74rem;
+      line-height: 1.35;
+      margin-bottom: 18px;
+      max-width: 280px;
+    }
+
+    .hero-copy .hero-lead,
+    .hero-copy .hero-sublead {
+      font-size: 16px;
+      line-height: 1.42;
+      max-width: 280px;
+    }
+
     .hero-visual-stack {
       gap: 28px;
     }
@@ -2335,4 +2390,5 @@ const platformRows = [
       white-space: normal;
     }
   }
+
 </style>
