@@ -37,7 +37,8 @@ const solutionCards = [
 
 const resources = [
   {
-    image: "/images/integrations/dlp-casb/debate-ai.png",
+    image: "/images/integrations/broadcom/data-catalog-dashboard.png",
+    imageClass: "dashboard-resource",
     type: "Blog Post",
     tag: "AI, Company, Data Security",
     title: "The Debate About AI in the Enterprise Is Over. Here Is the Only Question That Matters.",
@@ -127,7 +128,7 @@ const resources = [
       <div class="resource-grid">
         {resources.map((resource) => (
           <article class="resource-card">
-            <img src={resource.image} alt="" loading="lazy" />
+            <img class={resource.imageClass || ""} src={resource.image} alt="" loading="lazy" />
             <div class="resource-body">
               <span>{resource.type}</span>
               <strong>{resource.tag}</strong>
@@ -487,6 +488,7 @@ const resources = [
   }
 
   .product-hero p {
+    color: #ffffff !important;
     font-size: clamp(1rem, 2vw, 1.3rem);
     line-height: 1.55;
     margin: 2.5rem auto 2.3rem;
@@ -739,10 +741,10 @@ const resources = [
 
   .resource-grid {
     display: grid;
-    gap: 40px min(9vw, 230px);
-    grid-template-columns: repeat(2, minmax(260px, 365px));
+    gap: 28px;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     margin: 65px auto 0;
-    max-width: 970px;
+    max-width: 1180px;
   }
 
   .resource-card {
@@ -754,14 +756,24 @@ const resources = [
   .resource-card img {
     aspect-ratio: 1.5;
     display: block;
+    height: clamp(210px, 24vw, 245px) !important;
     object-fit: cover;
     object-position: top center;
     width: 100%;
   }
 
+  .broadcom-page .resource-card img.dashboard-resource {
+    background: linear-gradient(135deg, #f6f1ff 0%, #ffffff 42%, #f4f6fb 100%);
+    height: clamp(210px, 24vw, 245px) !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    padding: clamp(12px, 2vw, 18px) !important;
+    width: 100% !important;
+  }
+
   .resource-body {
     background: #fff;
-    padding: 40px 38px;
+    padding: 30px 26px 34px;
   }
 
   .resource-body span,
@@ -780,17 +792,17 @@ const resources = [
 
   .resource-body strong {
     display: flex;
-    margin-top: 1.2rem;
-    max-width: 270px;
+    margin-top: 0.9rem;
+    max-width: 100%;
     text-align: center;
   }
 
   .resource-body h3 {
     color: #11111b;
-    font-size: 1.8rem;
+    font-size: clamp(1.35rem, 1.45vw, 1.58rem);
     font-weight: 500;
-    line-height: 1.12;
-    margin-top: 2.1rem;
+    line-height: 1.18;
+    margin-top: 1.5rem;
   }
 
   .resource-card a {
@@ -805,7 +817,7 @@ const resources = [
     display: flex;
     gap: 20px;
     margin: 48px auto 0;
-    max-width: 970px;
+    max-width: 1180px;
   }
 
   .resource-controls button {
@@ -986,7 +998,7 @@ const resources = [
 
     .solution-grid,
     .resource-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr !important;
     }
 
     .solutions-section,

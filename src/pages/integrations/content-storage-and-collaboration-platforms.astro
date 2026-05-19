@@ -76,15 +76,33 @@ const transactions = [
         <h2>Enterprise benefits</h2>
       </div>
       <div class="benefits-grid">
-        <div class="photo-card benefit-photo">
-          <img src="/images/integrations/content-storage/enterprise-benefits.png" alt="Engineers reviewing product data in a collaboration platform" loading="lazy" />
-        </div>
-        {benefits.map((benefit) => (
+        <div class="benefit-card">
           <article class="benefit-item">
-            <h3>{benefit.title}</h3>
-            <p>{benefit.text}</p>
+            <h3>{benefits[0].title}</h3>
+            <p>{benefits[0].text}</p>
           </article>
-        ))}
+          <div class="photo-card benefit-photo">
+            <img src="/images/integrations/content-storage/enterprise-benefits.png" alt="Engineers reviewing product data in a collaboration platform" loading="lazy" />
+          </div>
+        </div>
+        <div class="benefit-card">
+          <article class="benefit-item">
+            <h3>{benefits[1].title}</h3>
+            <p>{benefits[1].text}</p>
+          </article>
+          <div class="photo-card collaboration-photo">
+            <img src="/images/integrations/content-storage/secure-collaboration.png" alt="Business team collaborating around a laptop" loading="lazy" />
+          </div>
+        </div>
+        <div class="benefit-card">
+          <article class="benefit-item">
+            <h3>{benefits[2].title}</h3>
+            <p>{benefits[2].text}</p>
+          </article>
+          <div class="photo-card transaction-photo">
+            <img src="/images/integrations/content-storage/secure-business-transactions.png" alt="Digital document signing for secure business transactions" loading="lazy" />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -213,37 +231,40 @@ const transactions = [
     color: #fff;
     display: flex;
     flex-direction: column;
-    min-height: 900px;
-    padding: 190px 24px 150px;
+    min-height: 760px;
+    padding: 150px 24px 110px;
     text-align: center;
   }
 
-  .product-hero span { font-size: 1rem; font-weight: 850; margin-bottom: 2.2rem; }
+  .product-hero span { font-size: 1rem; font-weight: 850; margin-bottom: 1.8rem; }
   .product-hero h1 { font-size: clamp(3rem, 7.8vw, 7.3rem); font-weight: 500; letter-spacing: 0; line-height: 1.03; max-width: 1190px; }
-  .product-hero p { font-size: clamp(1rem, 1.6vw, 1.25rem); line-height: 1.55; margin: 3rem auto 2.2rem; max-width: 1190px; }
+  .product-hero p { color: #fff !important; font-size: clamp(1rem, 1.6vw, 1.25rem); line-height: 1.55; margin: 2.2rem auto 2rem; max-width: 1190px; }
 
-  .intro-section { background: #f5f5f6; padding: 70px 30px 92px; }
+  .intro-section { background: #f5f5f6; padding: 56px 30px 70px; }
   .section-heading.centered { margin: 0 auto; max-width: 1160px; text-align: center; }
   .section-heading h2 { color: #333136; font-size: clamp(2.4rem, 4.5vw, 4.6rem); font-weight: 500; line-height: 1.08; }
-  .section-heading p { color: #17151e; font-size: 1.18rem; line-height: 1.55; margin: 2.6rem auto 0; max-width: 1140px; }
+  .section-heading p { color: #17151e; font-size: 1.18rem; line-height: 1.55; margin: 2rem auto 0; max-width: 1140px; }
 
-  .benefits-section { background: #fff; padding: 92px 30px 280px; }
-  .benefits-grid { display: grid; gap: 58px 78px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 70px auto 0; max-width: 1120px; }
+  .benefits-section { background: #fff; padding: 72px 30px 120px; }
+  .benefits-grid { align-items: stretch; display: grid; gap: 28px 34px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 46px auto 0; max-width: 1180px; width: 100%; }
+  .benefit-card { display: grid; gap: 28px; grid-template-rows: 1fr auto; min-width: 0; }
   .photo-card { border-radius: 18px; overflow: hidden; }
   .photo-card img { display: block; height: 100%; object-fit: cover; width: 100%; }
-  .benefit-photo { aspect-ratio: 1.76; grid-column: 1 / 2; }
-  .benefit-item h3 { color: #050506; font-size: clamp(2.1rem, 3.8vw, 3.4rem); font-weight: 500; line-height: 1.05; }
-  .benefit-item p { color: #1e1d25; font-size: 1.12rem; line-height: 1.62; margin-top: 3rem; }
-  .benefit-item:nth-of-type(3) { grid-column: 1 / 2; margin-top: 210px; }
+  .benefit-photo,
+  .collaboration-photo,
+  .transaction-photo { aspect-ratio: 1.76; margin-top: 0; max-width: none; }
+  .benefit-item h3 { color: #050506; font-size: clamp(1.85rem, 2.8vw, 2.7rem); font-weight: 500; line-height: 1.08; }
+  .benefit-item p { color: #1e1d25; font-size: 1.05rem; line-height: 1.58; margin-top: 1.45rem; }
 
-  .vdr-band { background: #4d27cf; color: #fff; padding: 62px 24px 70px; text-align: center; }
+  .vdr-band { background: #4d27cf; color: #fff; padding: 50px 24px 56px; text-align: center; }
   .vdr-band h2 { font-size: clamp(2.4rem, 5vw, 5rem); font-weight: 500; line-height: 1.1; margin: 0 auto; max-width: 1120px; }
-  .vdr-band p { font-size: 1.3rem; margin-top: 2.2rem; }
+  .vdr-band p { font-size: 1.3rem; margin-top: 1.5rem; }
 
-  .transactions-section { background: #fff; padding: 120px 30px 220px; }
-  .transaction-grid { display: grid; gap: clamp(38px, 6vw, 80px); grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 auto; max-width: 1120px; }
-  .transaction-card h3 { color: #050506; font-size: clamp(2rem, 3.3vw, 3.35rem); font-weight: 500; line-height: 1.05; }
-  .transaction-card p { color: #1e1d25; font-size: 1.12rem; line-height: 1.62; margin-top: 2.6rem; }
+  .transactions-section { background: #fff; padding: 74px 30px 120px; }
+  .transaction-grid { display: grid; gap: clamp(28px, 3.6vw, 56px); grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 auto; max-width: 1180px; width: 100%; }
+  .transaction-card { min-width: 0; }
+  .transaction-card h3 { color: #050506; font-size: clamp(1.62rem, 2.35vw, 2.75rem); font-weight: 500; line-height: 1.08; }
+  .transaction-card p { color: #1e1d25; font-size: 1.05rem; line-height: 1.58; margin-top: 1.8rem; }
 
   .site-footer { background: #fff; color: #5f626b; padding: 0 30px 55px; }
   .site-footer > * { margin-left: auto; margin-right: auto; max-width: 1120px; }
@@ -274,14 +295,27 @@ const transactions = [
   }
 
   @media (max-width: 900px) {
-    .product-hero { min-height: 620px; padding: 105px 20px 90px; }
-    .benefits-section { padding: 72px 20px 120px; }
+    .product-hero { min-height: 540px; padding: 88px 20px 70px; }
+    .benefits-section { padding: 56px 20px 84px; }
     .benefits-grid, .transaction-grid { grid-template-columns: 1fr; }
-    .benefit-photo, .benefit-item:nth-of-type(3) { grid-column: auto; margin-top: 0; }
-    .transactions-section { padding: 80px 20px 120px; }
+    .benefit-card { gap: 24px; }
+    .benefit-photo,
+    .collaboration-photo,
+    .transaction-photo { grid-column: auto; grid-row: auto; margin-top: 0; }
+    .transactions-section { padding: 58px 20px 86px; }
     .content-storage-page .product-hero > .primary-button {
       max-width: 100%;
       width: fit-content !important;
+    }
+  }
+
+  @media (min-width: 901px) {
+    .content-storage-page .benefits-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+
+    .content-storage-page .transaction-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     }
   }
 

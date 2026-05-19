@@ -282,7 +282,7 @@ const repositoryCards = [
   .hero-copy { display: grid; gap: 1.9rem; max-width: 480px; }
   .hero-copy span { font-size: 0.92rem; font-weight: 850; }
   .server-hero h1 { font-size: clamp(4.2rem, 7vw, 6.7rem); font-weight: 500; line-height: 1.02; }
-  .server-hero p { font-size: clamp(1.05rem, 1.7vw, 1.35rem); line-height: 1.52; }
+  .server-hero p { color: #fff !important; font-size: clamp(1.05rem, 1.7vw, 1.35rem); line-height: 1.52; }
   .hero-visual img { display: block; height: auto; width: 100%; }
 
   .intro-section {
@@ -309,7 +309,7 @@ const repositoryCards = [
   }
 
   .ransomware-band h2 { font-size: clamp(2.4rem, 4.4vw, 4.4rem); font-weight: 500; line-height: 1.1; margin: 0 auto; max-width: 1050px; }
-  .ransomware-band p { font-size: 1.13rem; line-height: 1.65; margin: 2.1rem auto 0; max-width: 1120px; }
+  .ransomware-band p { color: #fff !important; font-size: 1.13rem; line-height: 1.65; margin: 2.1rem auto 0; max-width: 1120px; }
 
   .volume-section { background: #fff; padding: 82px 30px 118px; }
   .section-heading.centered { margin: 0 auto; max-width: 1120px; text-align: center; }
@@ -353,6 +353,42 @@ const repositoryCards = [
   .social-row { border-top: 1px solid #d1d1d6; padding-top: 1.7rem; }
   .legal a { text-decoration: underline; }
 
+  @media (min-width: 761px) {
+    .file-servers-page .volume-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+  }
+
+  @media (min-width: 761px) and (max-width: 980px) {
+    .file-servers-page .volume-grid {
+      gap: 18px;
+      margin-top: 48px;
+      max-width: 100%;
+    }
+
+    .file-servers-page .volume-card {
+      min-height: 0;
+      padding: 30px 22px 34px;
+    }
+
+    .file-servers-page .volume-card h3 {
+      font-size: 1.42rem;
+      line-height: 1.08;
+      margin-top: 2rem;
+    }
+
+    .file-servers-page .volume-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-top: 1.6rem;
+    }
+
+    .file-servers-page .hex-icon {
+      height: 70px;
+      width: 60px;
+    }
+  }
+
   @media (max-width: 1280px) {
     .nav-toggle { display: block; margin-left: 12px; order: 1; }
     .site-header { flex-wrap: wrap; }
@@ -369,7 +405,7 @@ const repositoryCards = [
   }
 
   @media (max-width: 900px) {
-    .server-hero, .intro-section, .volume-grid { grid-template-columns: 1fr; }
+    .server-hero, .intro-section { grid-template-columns: 1fr; }
     .server-hero { min-height: 640px; padding: 90px 20px; }
     .intro-section { gap: 3rem; padding: 85px 20px; }
     .volume-section, .advanced-section { padding: 72px 20px; }
