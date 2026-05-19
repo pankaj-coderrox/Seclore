@@ -82,7 +82,10 @@ const integrationSections = [
 
     <section class="integrations-hero">
       <span>Integrations</span>
-      <h1>Building a Unified Ecosystem for Data Security</h1>
+      <h1>
+        <span class="hero-title-line">Building a Unified Ecosystem</span>
+        <span class="hero-title-line">for Data Security</span>
+      </h1>
       <p>
         Seclore seamlessly integrates with the tools you know and trust to automate and streamline
         enterprise data discovery, classification, protection, and tracking.
@@ -515,9 +518,15 @@ const integrationSections = [
 
   h1 {
     font-size: 4.6rem;
-    font-weight: 500;
-    line-height: 1;
+    font-weight: 420;
+    line-height: 1.04;
     margin-bottom: 22px;
+  }
+
+  .hero-title-line {
+    display: block;
+    font-weight: inherit;
+    margin: 0;
   }
 
   h2 {
@@ -543,7 +552,36 @@ const integrationSections = [
     text-align: center;
   }
 
-  .integrations-hero span {
+  @media (min-width: 901px) {
+    .integrations-hero {
+      background:
+        radial-gradient(circle at 22% 14%, rgba(255, 255, 255, 0.24), transparent 28%),
+        radial-gradient(circle at 84% 18%, rgba(255, 255, 255, 0.13), transparent 30%),
+        linear-gradient(135deg, #c27ff5 0%, #8b23ff 46%, #5b11e6 100%);
+      color: #ffffff;
+      min-height: clamp(480px, 58vh, 610px);
+      padding: clamp(86px, 9vw, 118px) clamp(24px, 5vw, 70px) clamp(74px, 8vw, 104px);
+    }
+
+    .integrations-hero h1 {
+      font-size: clamp(3.35rem, 5.8vw, 4.45rem);
+      font-weight: 420;
+      line-height: 1.04;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1080px;
+    }
+
+    .integrations-hero > span {
+      color: #ffffff;
+    }
+
+    .integrations-hero p {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+  }
+
+  .integrations-hero > span {
     display: block;
     font-weight: 900;
     margin-bottom: 18px;
