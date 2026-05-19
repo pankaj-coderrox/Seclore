@@ -71,6 +71,14 @@ const {
     overflow-x: clip;
   }
 
+  main:has(> .seclore-nav) {
+    padding-top: 0;
+  }
+
+  main:has(> .seclore-nav) > .seclore-nav + :where(section, div, article, header) {
+    padding-top: calc(var(--nav-clearance, 68px) + var(--first-section-top, 0px)) !important;
+  }
+
   main *,
   .seclore-nav *,
   .seclore-footer * {
@@ -191,6 +199,24 @@ const {
   html {
     background: var(--premium-bg);
     scroll-padding-top: 112px;
+  }
+
+  @media (min-width: 1181px) {
+    main:has(> .seclore-nav) {
+      --nav-clearance: 96px;
+    }
+  }
+
+  @media (max-width: 1180px) {
+    main:has(> .seclore-nav) {
+      --nav-clearance: 68px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    main:has(> .seclore-nav) {
+      --nav-clearance: 84px;
+    }
   }
 
   body {

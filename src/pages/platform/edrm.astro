@@ -335,6 +335,24 @@ const relatedProducts = [
     width: 100%;
   }
 
+  @media (min-width: 901px) {
+    .edrm-page .edrm-hero {
+      align-items: center;
+      gap: clamp(28px, 4vw, 58px);
+      grid-template-columns: minmax(0, 390px) minmax(0, 1fr) !important;
+    }
+
+    .edrm-page .edrm-hero .hero-copy {
+      max-width: 390px;
+    }
+
+    .edrm-page .hero-visual {
+      justify-self: end;
+      max-width: 650px;
+      width: 100%;
+    }
+  }
+
   .asset-section {
     align-items: center;
     background: #f4f4f6;
@@ -384,6 +402,12 @@ const relatedProducts = [
 
   .lifecycle-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (min-width: 901px) {
+    .edrm-page .lifecycle-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
   }
 
   .lifecycle-card,

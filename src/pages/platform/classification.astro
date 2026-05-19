@@ -942,6 +942,31 @@ const productScreenshots = [
     margin-left: auto;
   }
 
+  @media (min-width: 901px) {
+    .classification-page .classification-hero {
+      align-items: center;
+      gap: clamp(28px, 4vw, 58px);
+      grid-template-columns: minmax(0, 390px) minmax(0, 1fr) !important;
+      padding: clamp(62px, 7vw, 88px) 24px clamp(78px, 8vw, 104px);
+    }
+
+    .classification-page .classification-hero .hero-copy {
+      max-width: 390px;
+    }
+
+    .classification-page .laptop-visual {
+      justify-self: end;
+      max-width: 650px;
+      width: 100%;
+    }
+
+    .classification-page .laptop-visual img {
+      margin-left: auto;
+      max-width: 650px;
+      width: 100%;
+    }
+  }
+
   .split-section,
   .demo-band {
     align-items: center;
@@ -955,6 +980,24 @@ const productScreenshots = [
     margin: 0 auto;
     max-width: 1190px;
     padding: clamp(56px, 7vw, 82px) 24px;
+  }
+
+  @media (min-width: 901px) {
+    .classification-page .classification-intro-section {
+      align-items: center;
+      gap: clamp(32px, 5vw, 58px) !important;
+      grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1fr) !important;
+    }
+
+    .classification-page .classification-intro-section > div {
+      max-width: 540px;
+    }
+
+    .classification-page .classification-intro-section .motion-image {
+      justify-self: end;
+      max-width: 560px;
+      width: 100%;
+    }
   }
 
   .motion-image {
@@ -995,6 +1038,12 @@ const productScreenshots = [
 
   .compliance-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (min-width: 901px) {
+    .classification-page .comply-section .compliance-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
   }
 
   .capability-grid {

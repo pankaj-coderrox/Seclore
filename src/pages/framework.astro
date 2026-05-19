@@ -336,6 +336,24 @@ const awardBadges = [
     width: 100%;
   }
 
+  @media (min-width: 901px) {
+    .framework-page .framework-hero {
+      align-items: center;
+      gap: clamp(28px, 4vw, 58px);
+      grid-template-columns: minmax(0, 390px) minmax(0, 1fr) !important;
+    }
+
+    .framework-page .framework-hero .hero-copy {
+      max-width: 390px;
+    }
+
+    .framework-page .hero-visual {
+      justify-self: end;
+      max-width: 650px;
+      width: 100%;
+    }
+  }
+
   .hero-visual img,
   .dashboard-frame img,
   .awards-frame img,
@@ -392,6 +410,28 @@ const awardBadges = [
 
   .pillar-card {
     min-height: 255px;
+  }
+
+  @media (min-width: 901px) {
+    .framework-page .pillar-grid {
+      gap: 18px;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+
+    .framework-page .pillar-card {
+      min-height: 245px;
+      padding: 22px 20px;
+    }
+
+    .framework-page .pillar-card h3 {
+      font-size: clamp(18px, 1.65vw, 23px);
+      line-height: 1.12;
+    }
+
+    .framework-page .pillar-card p {
+      font-size: 15px;
+      line-height: 1.52;
+    }
   }
 
   .pillar-icon,

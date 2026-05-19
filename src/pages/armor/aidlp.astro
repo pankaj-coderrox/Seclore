@@ -1161,6 +1161,42 @@ const platformRows = [
     text-align: left;
   }
 
+  @media (min-width: 901px) {
+    .aidlp-page .aidlp-hero {
+      align-items: center;
+      column-gap: clamp(24px, 3vw, 44px);
+      grid-template-columns: minmax(0, 340px) minmax(0, 1fr) !important;
+      row-gap: 24px;
+    }
+
+    .aidlp-page .hero-copy,
+    .aidlp-page .hero-visual-stack,
+    .aidlp-page .ai-dlp-diagram {
+      min-width: 0;
+    }
+
+    .aidlp-page .hero-visual-stack {
+      display: contents;
+    }
+
+    .aidlp-page .hero-trust {
+      grid-column: 1;
+      grid-row: 2;
+      justify-self: start;
+      margin-left: -12px;
+      max-width: 380px;
+      width: 100%;
+    }
+
+    .aidlp-page .ai-dlp-diagram {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      justify-self: end;
+      max-width: 720px;
+      width: 100%;
+    }
+  }
+
   .hero-trust p {
     color: var(--page-text);
     font-size: clamp(1.1rem, 1.8vw, 1.55rem);
@@ -1190,11 +1226,11 @@ const platformRows = [
     border-radius: 8px;
     box-shadow: 0 28px 80px rgba(91, 43, 215, 0.14);
     display: grid;
-    gap: clamp(8px, 1.4vw, 18px);
-    grid-template-columns: minmax(132px, 1.2fr) minmax(34px, 0.24fr) minmax(114px, 0.92fr) minmax(34px, 0.24fr) minmax(128px, 1fr) minmax(92px, 0.78fr);
+    gap: clamp(6px, 1.1vw, 16px);
+    grid-template-columns: 1.15fr 0.16fr 0.88fr 0.16fr 0.98fr 0.66fr;
     min-height: 330px;
     overflow: hidden;
-    padding: clamp(16px, 2.8vw, 30px);
+    padding: clamp(14px, 2.2vw, 28px);
     position: relative;
     width: 100%;
   }
@@ -1232,15 +1268,15 @@ const platformRows = [
     box-shadow: 0 10px 22px rgba(49, 25, 97, 0.12);
     color: #1f182b;
     display: flex;
-    gap: 9px;
+    gap: clamp(5px, 0.8vw, 9px);
     min-height: 42px;
-    padding: 8px 10px;
+    padding: clamp(6px, 0.9vw, 8px) clamp(7px, 1vw, 10px);
   }
 
   .source-card strong,
   .model-card strong {
     color: #1f182b;
-    font-size: clamp(0.67rem, 0.95vw, 0.86rem);
+    font-size: clamp(0.56rem, 0.8vw, 0.82rem);
     font-weight: 520;
     line-height: 1.14;
   }
@@ -1332,7 +1368,7 @@ const platformRows = [
 
   .token-card {
     font-family: "Courier New", monospace;
-    font-size: clamp(0.58rem, 0.88vw, 0.8rem);
+    font-size: clamp(0.44rem, 0.68vw, 0.74rem);
     font-weight: 700;
     justify-content: center;
     line-height: 1;
@@ -1722,6 +1758,18 @@ const platformRows = [
     margin-bottom: 18px;
   }
 
+  @media (min-width: 901px) {
+    .aidlp-page .step-grid {
+      gap: 20px;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+
+    .aidlp-page .step-card {
+      min-height: 270px;
+      padding: clamp(20px, 2.2vw, 30px);
+    }
+  }
+
   .deploy-card {
     display: grid;
     gap: 14px;
@@ -1743,6 +1791,17 @@ const platformRows = [
 
   .industry-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (min-width: 901px) {
+    .aidlp-page .industry-grid {
+      gap: 18px;
+      grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    }
+
+    .aidlp-page .industry-card {
+      padding: clamp(18px, 2vw, 26px);
+    }
   }
 
   .small-icon {
@@ -1783,6 +1842,21 @@ const platformRows = [
     grid-column: 1 / -1;
   }
 
+  @media (min-width: 901px) {
+    .aidlp-page .compliance-grid {
+      gap: 18px;
+      grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    }
+
+    .aidlp-page .compliance-grid article {
+      padding: clamp(18px, 2vw, 26px);
+    }
+
+    .aidlp-page .compliance-grid article:last-child {
+      grid-column: auto;
+    }
+  }
+
   .demo-band {
     background: linear-gradient(135deg, #dbeaff, #f7f2ff);
     padding: clamp(56px, 8vw, 96px) clamp(16px, 4vw, 52px);
@@ -1794,6 +1868,29 @@ const platformRows = [
 
   .demo-copy h2 {
     font-size: clamp(3rem, 7vw, 6rem);
+  }
+
+  @media (min-width: 901px) {
+    .aidlp-page .demo-band {
+      align-items: center;
+      gap: clamp(32px, 5vw, 64px);
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 460px) !important;
+    }
+
+    .aidlp-page .demo-copy {
+      max-width: 560px;
+    }
+
+    .aidlp-page .demo-copy h2 {
+      line-height: 1.02;
+      margin-bottom: 22px;
+    }
+
+    .aidlp-page .aidlp-form {
+      justify-self: end;
+      max-width: 460px;
+      width: 100%;
+    }
   }
 
   .aidlp-form {

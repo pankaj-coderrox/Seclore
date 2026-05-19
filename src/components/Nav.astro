@@ -214,7 +214,7 @@ const navItems: NavItem[] = [
         links: [
           ["Support Portal", "/support/home/"],
           ["Docs", "/support/solutions/"],
-          ["Contact Support", "/support/home/#contact"]
+          ["Contact Support", "/support/tickets/new/"]
         ]
       }
     ],
@@ -222,7 +222,7 @@ const navItems: NavItem[] = [
       title: "Support",
       text: "Get help with rollout, integrations, and policy operations.",
       cta: "Contact support",
-      href: "/support/home/"
+      href: "/support/tickets/new/"
     }
   }
 ];
@@ -731,10 +731,11 @@ function isNavItemActive(item: NavItem) {
     left: 0;
     min-height: 68px;
     padding: 0 clamp(20px, 4vw, 42px) 0 22px;
-    position: sticky;
+    position: fixed;
     right: 0;
     top: 0;
-    z-index: 1000;
+    width: 100%;
+    z-index: 9999;
   }
 
   .seclore-nav a {
@@ -3044,6 +3045,41 @@ function isNavItemActive(item: NavItem) {
       --seclore-mobile-header-height: 84px;
       --seclore-mobile-toggle-top: 21px;
       --seclore-mobile-toggle-right: 22px;
+    }
+  }
+
+  /* Keep the visible mobile navigation controls centered in the white header bar. */
+  @media (max-width: 1180px) {
+    .seclore-nav:not(.is-menu-open):not(.is-menu-closing) {
+      align-content: center !important;
+      align-items: center !important;
+      min-height: var(--seclore-mobile-header-height, 68px) !important;
+      padding-bottom: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    .seclore-nav:not(.is-menu-open):not(.is-menu-closing) .seclore-nav__logo,
+    .seclore-nav:not(.is-menu-open):not(.is-menu-closing) .seclore-nav__demo-button,
+    .seclore-nav:not(.is-menu-open):not(.is-menu-closing) .seclore-nav__toggle {
+      align-self: center !important;
+      margin-bottom: 0 !important;
+      margin-top: 0 !important;
+      transform: none;
+    }
+  }
+
+  .seclore-nav .seclore-nav__demo-button {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    line-height: 1 !important;
+  }
+
+  @media (max-width: 560px) {
+    .seclore-nav .seclore-nav__demo-button {
+      font-size: 16px !important;
+      line-height: 1.05 !important;
     }
   }
 </style>

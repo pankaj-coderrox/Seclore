@@ -108,7 +108,10 @@ const resources = [
           <img class="armor-mark" src="/images/armor/seclore-armor-logo.png" alt="" loading="eager" decoding="async" />
           <strong>ARMOR</strong>
         </div>
-        <h1>Turn Risk into Readiness</h1>
+        <h1>
+          <span>Turn Risk into</span>
+          <span>Readiness</span>
+        </h1>
         <p>
           A unified Data Security Intelligence platform that helps organizations trust and control
           their data wherever people and AI work.
@@ -379,16 +382,22 @@ const resources = [
     padding: 68px 24px 104px;
   }
 
+  .hero-copy,
+  .hero-dashboard {
+    min-width: 0;
+  }
+
   .armor-lockup { align-items: center; color: var(--purple); display: flex; gap: 18px; margin-bottom: 28px; }
   .armor-lockup strong { font-size: clamp(4rem, 8vw, 7.3rem); font-weight: 800; letter-spacing: 0.03em; line-height: 0.8; }
   .armor-mark { display: block; flex: 0 0 auto; height: clamp(62px, 8vw, 90px); width: clamp(62px, 8vw, 90px); }
   .hero-copy h1 { font-size: clamp(3.2rem, 6.7vw, 6.55rem); font-weight: 500; line-height: 0.98; letter-spacing: 0; }
+  .hero-copy h1 span { display: inline; }
   .hero-copy > p { color: var(--page-text); font-size: 1.25rem; line-height: 1.55; margin-top: 1.5rem; max-width: 620px; }
   .hero-copy .primary-button { margin-top: 1.45rem; min-height: 48px; min-width: 132px; padding-inline: 28px; }
   .hero-dashboard { border-radius: 22px; overflow: hidden; }
   .hero-dashboard img { display: block; width: 100%; }
 
-  .trust-strip { margin-top: 56px; max-width: min(920px, 100vw - 40px); overflow: hidden; padding-bottom: 16px; }
+  .trust-strip { margin-top: 56px; max-width: min(920px, 100vw - 40px); min-width: 0; overflow: hidden; padding-bottom: 16px; width: 100%; }
   .trust-strip p { color: var(--page-text); font-size: 1.18rem; }
   .logo-row { margin-top: 24px; overflow: hidden; width: 100%; }
   .logo-track { align-items: center; display: flex; width: max-content; animation: armorLogoMarquee 26s linear infinite; }
@@ -404,6 +413,22 @@ const resources = [
   @keyframes armorLogoMarquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  }
+
+  @media (min-width: 641px) {
+    .hero-copy h1 {
+      display: grid;
+      gap: 0.06em;
+      max-width: 640px;
+    }
+
+    .hero-copy h1 span {
+      display: block;
+    }
+
+    .hero-copy > p {
+      max-width: 540px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -557,6 +582,53 @@ const resources = [
     .demo-band { gap: 28px; padding: 48px 24px; }
   }
 
+  @media (min-width: 861px) and (max-width: 980px) {
+    .armor-page .armor-hero {
+      align-items: center;
+      gap: clamp(28px, 4vw, 42px);
+      grid-template-columns: minmax(0, 440px) minmax(310px, 380px) !important;
+      padding: 58px 24px 88px;
+    }
+
+    .hero-copy {
+      overflow: hidden;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3.05rem, 5.8vw, 3.75rem);
+      max-width: 460px;
+    }
+
+    .hero-copy > p {
+      font-size: 1.08rem;
+      max-width: 430px;
+    }
+
+    .hero-dashboard {
+      align-self: center;
+      justify-self: end;
+      max-width: 380px;
+    }
+
+    .trust-strip {
+      margin-top: 44px;
+      max-width: 440px;
+    }
+
+    .logo-row {
+      max-width: 440px;
+    }
+
+    .hero-dashboard img {
+      height: auto;
+      object-fit: contain;
+    }
+
+    .trust-strip {
+      max-width: 100%;
+    }
+  }
+
   @media (max-width: 640px) {
     .armor-hero { gap: 128px; padding: 56px 20px 76px; }
     .armor-lockup { margin-bottom: 26px; }
@@ -594,4 +666,5 @@ const resources = [
     .demo-form { padding: 24px 20px; }
     .demo-form .demo-submit { max-width: none; min-height: 46px; width: 100%; }
   }
+
 </style>

@@ -114,11 +114,20 @@ const integrationSections = [
 
     <section class="logo-strip" aria-label="Integration partner examples">
       <div class="logo-track">
-        {logos.map((logo) => (
-          <span>
-            <img src={logo.src} alt={`${logo.name} logo`} loading="lazy" />
-          </span>
-        ))}
+        <div class="logo-sequence">
+          {logos.map((logo) => (
+            <span>
+              <img src={logo.src} alt={`${logo.name} logo`} loading="lazy" />
+            </span>
+          ))}
+        </div>
+        <div class="logo-sequence" aria-hidden="true">
+          {logos.map((logo) => (
+            <span>
+              <img src={logo.src} alt="" loading="lazy" />
+            </span>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -629,11 +638,22 @@ const integrationSections = [
 
   .logo-track {
     align-items: center;
-    animation: integrations-logo-scroll 22s linear infinite;
+    animation: integrations-logo-scroll 24s linear infinite;
     display: flex;
-    gap: clamp(44px, 7vw, 96px);
-    padding-inline: 24px;
+    flex-wrap: nowrap;
+    --logo-gap: clamp(44px, 7vw, 96px);
     width: max-content;
+    will-change: transform;
+  }
+
+  .logo-sequence {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    gap: var(--logo-gap);
+    padding-right: var(--logo-gap);
+    white-space: nowrap;
   }
 
   .logo-strip span {
@@ -657,10 +677,10 @@ const integrationSections = [
 
   @keyframes integrations-logo-scroll {
     from {
-      transform: translateX(100%);
+      transform: translate3d(0, 0, 0);
     }
     to {
-      transform: translateX(-100%);
+      transform: translate3d(-50%, 0, 0);
     }
   }
 
@@ -985,8 +1005,7 @@ const integrationSections = [
 
     .logo-track {
       animation-duration: 20s;
-      gap: 42px;
-      padding-inline: 20px;
+      --logo-gap: 42px;
     }
 
     .logo-strip span {
